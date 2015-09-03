@@ -17,19 +17,23 @@ namespace cirkus
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
-            MessageBox.Show("hej svejs, det här funkhgfghar!");
-        }
+            if ((textUsername.Text == "user" && textPassword.Text == "123"))
+            {
+                Form2 frm = new Form2();
+                this.Visible = false;
+                frm.abc = 0;
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("hej 2");
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hej 3");
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    this.Visible = true;
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
         }
     }
 }
