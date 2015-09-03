@@ -21,5 +21,10 @@ namespace cirkus
         {
             MessageBox.Show("hej");
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("hej 2");
+        }
     }
 }
