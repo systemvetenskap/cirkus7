@@ -38,9 +38,7 @@ namespace cirkus
         private void button1_Click_1(object sender, EventArgs e)
         {
             string anvandarnamn, losenord, behorighet;
-            
 
-            
             anvandarnamn = textUsername.Text;
             losenord = textPassword.Text;
 
@@ -52,6 +50,7 @@ namespace cirkus
                 read = command.ExecuteReader();
                 read.Read();
                 behorighet = read[0].ToString();
+                conn.Close();
 
 
 
@@ -74,6 +73,7 @@ namespace cirkus
             catch (InvalidOperationException)
             {
                 MessageBox.Show("Fel användarnamn/lösenord");
+                conn.Close();
             }
           
   
