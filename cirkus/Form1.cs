@@ -14,7 +14,7 @@ namespace cirkus
 {
     public partial class Form1 : Form
     {
-        NpgsqlConnection conn = new NpgsqlConnection("Server=miun.webblabb.se;Port=5432; User Id=;Password=;Database=;");
+        NpgsqlConnection conn = new NpgsqlConnection("Server=miun.webblabb.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         public Form1()
         {
             InitializeComponent();
