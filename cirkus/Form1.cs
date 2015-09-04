@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,10 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace cirkus
 {
     public partial class Form1 : Form
     {
+        NpgsqlConnection conn = new NpgsqlConnection("Server=miun.webblabb.se;Port=5432; User Id=;Password=;Database=;");
         public Form1()
         {
             InitializeComponent();
