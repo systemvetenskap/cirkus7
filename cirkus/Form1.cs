@@ -18,25 +18,66 @@ namespace cirkus
         public Form1()
         {
             InitializeComponent();
+
+            //Test av koppling till databas
+            conn.Open();
+            DataTable dt = new DataTable();
+
+            string sql = @"select * from personal";
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+
+            da.Fill(dt);
+
+            dataGridView1.DataSource = dt;
+            conn.Close();
+            //
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if ((textUsername.Text == "user" && textPassword.Text == "123"))
-            {
-                Form2 frm = new Form2();
-                this.Visible = false;
-                frm.abc = 0;
+            string anvandarnamn, losenord, behorighet;
+            
 
-                if (frm.ShowDialog() == DialogResult.OK)
+            
+            anvandarnamn = textUsername.Text;
+            losenord = textPassword.Text;
+            try
+            {
+                conn.Open();
+                NpgsqlCommand command = new NpgsqlCommand(@"select behorighet from personal where anvandarnamn = '" + anvandarnamn + "' and losenord = '" + losenord + "';", conn);
+                NpgsqlDataReader read;
+                read = command.ExecuteReader();
+                read.Read();
+                behorighet = read[0].ToString();
+
+                
+
+                if (behorighet == "0")
                 {
-                    this.Visible = true;
-                }
-                else
-                {
-                    Application.Exit();
+                    Form2 frm = new Form2();
+                    this.Visible = false;
+                    frm.abc = 0;
+
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        this.Visible = true;
+                    }
+                    else
+                    {
+                        Application.Exit();
+                    }
                 }
             }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+          
+  
+
+
         }
     }
 }
