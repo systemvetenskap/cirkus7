@@ -32,7 +32,10 @@ namespace cirkus
             try
             {
                 conn.Open();
-                NpgsqlCommand command = new NpgsqlCommand(@"select behorighet from personal where anvandarnamn = '" + anvandarnamn + "' and losenord = '" + losenord + "';", conn);
+                NpgsqlCommand command = new NpgsqlCommand(@"select behorighet from personal where anvandarnamn = @user and losenord = @pass;", conn);
+                command.Parameters.AddWithValue("@user", anvandarnamn);
+                command.Parameters.AddWithValue("@pass", losenord);
+
                 NpgsqlDataReader read;
                 read = command.ExecuteReader();
                 read.Read();
