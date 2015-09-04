@@ -43,6 +43,7 @@ namespace cirkus
             
             anvandarnamn = textUsername.Text;
             losenord = textPassword.Text;
+
             try
             {
                 conn.Open();
@@ -52,9 +53,9 @@ namespace cirkus
                 read.Read();
                 behorighet = read[0].ToString();
 
-                
 
-                if (behorighet == "0")
+
+                if (behorighet == "0" || behorighet == "1") ;
                 {
                     Form2 frm = new Form2();
                     this.Visible = false;
@@ -70,9 +71,9 @@ namespace cirkus
                     }
                 }
             }
-            catch (NpgsqlException ex)
+            catch (InvalidOperationException)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Fel användarnamn/lösenord");
             }
           
   
