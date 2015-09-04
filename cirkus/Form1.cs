@@ -19,19 +19,6 @@ namespace cirkus
         {
             InitializeComponent();
 
-            //Test av koppling till databas
-            conn.Open();
-            DataTable dt = new DataTable();
-
-            string sql = @"select * from personal";
-
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-
-            da.Fill(dt);
-
-            dataGridView1.DataSource = dt;
-            conn.Close();
-            //
 
         }
 
