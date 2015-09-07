@@ -44,7 +44,7 @@ namespace cirkus
 
 
 
-                if (behorighet == "0" || behorighet == "1") ;
+                if (behorighet == "0" || behorighet == "1")
                 {
                     MainForm frm = new MainForm();
                     this.Visible = false;
