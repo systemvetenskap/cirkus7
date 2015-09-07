@@ -30,11 +30,12 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabBiljett = new System.Windows.Forms.TabPage();
-            this.tabAdmin = new System.Windows.Forms.TabPage();
+            this.tabForestallning = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tabKonto = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabBiljett.SuspendLayout();
             this.SuspendLayout();
@@ -42,7 +43,8 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabBiljett);
-            this.tabControl1.Controls.Add(this.tabAdmin);
+            this.tabControl1.Controls.Add(this.tabForestallning);
+            this.tabControl1.Controls.Add(this.tabKonto);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -63,15 +65,15 @@
             this.tabBiljett.Text = "Biljettförsäljning";
             this.tabBiljett.UseVisualStyleBackColor = true;
             // 
-            // tabAdmin
+            // tabForestallning
             // 
-            this.tabAdmin.Location = new System.Drawing.Point(4, 22);
-            this.tabAdmin.Name = "tabAdmin";
-            this.tabAdmin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAdmin.Size = new System.Drawing.Size(932, 474);
-            this.tabAdmin.TabIndex = 1;
-            this.tabAdmin.Text = "Administrativa verktyg";
-            this.tabAdmin.UseVisualStyleBackColor = true;
+            this.tabForestallning.Location = new System.Drawing.Point(4, 22);
+            this.tabForestallning.Name = "tabForestallning";
+            this.tabForestallning.Padding = new System.Windows.Forms.Padding(3);
+            this.tabForestallning.Size = new System.Drawing.Size(932, 474);
+            this.tabForestallning.TabIndex = 1;
+            this.tabForestallning.Text = "Föreställning";
+            this.tabForestallning.UseVisualStyleBackColor = true;
             // 
             // listBox1
             // 
@@ -107,6 +109,15 @@
             this.textBox1.Size = new System.Drawing.Size(190, 20);
             this.textBox1.TabIndex = 4;
             // 
+            // tabKonto
+            // 
+            this.tabKonto.Location = new System.Drawing.Point(4, 22);
+            this.tabKonto.Name = "tabKonto";
+            this.tabKonto.Size = new System.Drawing.Size(932, 474);
+            this.tabKonto.TabIndex = 2;
+            this.tabKonto.Text = "Konto";
+            this.tabKonto.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,10 +137,11 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabBiljett;
-        private System.Windows.Forms.TabPage tabAdmin;
+        private System.Windows.Forms.TabPage tabForestallning;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TabPage tabKonto;
     }
 }
