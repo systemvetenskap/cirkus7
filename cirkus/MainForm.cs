@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace cirkus
 {
-    public partial class Form2 : Form
+    public partial class MainForm : Form
     {
 
         public int abc;
 
-        public Form2()
+        public MainForm()
         {
             InitializeComponent();
         }

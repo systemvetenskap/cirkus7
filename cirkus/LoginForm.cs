@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace cirkus
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-        public Form1()
+        public LoginForm()
         {
             InitializeComponent();
 
@@ -46,7 +46,7 @@ namespace cirkus
 
                 if (behorighet == "0" || behorighet == "1") ;
                 {
-                    Form2 frm = new Form2();
+                    MainForm frm = new MainForm();
                     this.Visible = false;
                     frm.abc = 0;
 
