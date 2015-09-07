@@ -39,5 +39,10 @@ namespace cirkus
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

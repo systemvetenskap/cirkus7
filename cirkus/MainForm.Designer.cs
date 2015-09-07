@@ -64,7 +64,7 @@
             this.tabControl1.Location = new System.Drawing.Point(7, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(940, 489);
+            this.tabControl1.Size = new System.Drawing.Size(933, 482);
             this.tabControl1.TabIndex = 0;
             // 
             // tabBiljett
@@ -84,7 +84,7 @@
             this.tabBiljett.Location = new System.Drawing.Point(4, 22);
             this.tabBiljett.Name = "tabBiljett";
             this.tabBiljett.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBiljett.Size = new System.Drawing.Size(932, 463);
+            this.tabBiljett.Size = new System.Drawing.Size(925, 456);
             this.tabBiljett.TabIndex = 0;
             this.tabBiljett.Text = "Biljettförsäljning";
             this.tabBiljett.UseVisualStyleBackColor = true;
@@ -101,7 +101,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(438, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(299, 443);
+            this.groupBox1.Size = new System.Drawing.Size(299, 430);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Utskrift";
@@ -171,7 +171,7 @@
             this.listBoxTicket.FormattingEnabled = true;
             this.listBoxTicket.Location = new System.Drawing.Point(233, 75);
             this.listBoxTicket.Name = "listBoxTicket";
-            this.listBoxTicket.Size = new System.Drawing.Size(190, 381);
+            this.listBoxTicket.Size = new System.Drawing.Size(190, 368);
             this.listBoxTicket.TabIndex = 6;
             // 
             // label3
@@ -215,7 +215,7 @@
             this.listBoxCustomer.FormattingEnabled = true;
             this.listBoxCustomer.Location = new System.Drawing.Point(8, 75);
             this.listBoxCustomer.Name = "listBoxCustomer";
-            this.listBoxCustomer.Size = new System.Drawing.Size(190, 381);
+            this.listBoxCustomer.Size = new System.Drawing.Size(190, 368);
             this.listBoxCustomer.TabIndex = 0;
             // 
             // tabForestallning
@@ -240,16 +240,17 @@
             // buttonPrint
             // 
             this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrint.Location = new System.Drawing.Point(218, 414);
+            this.buttonPrint.Location = new System.Drawing.Point(218, 404);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(75, 23);
             this.buttonPrint.TabIndex = 8;
             this.buttonPrint.Text = "Skriv ut";
             this.buttonPrint.UseVisualStyleBackColor = true;
+            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(761, 42);
+            this.button1.Location = new System.Drawing.Point(754, 42);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(165, 23);
             this.button1.TabIndex = 8;
@@ -259,7 +260,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(761, 83);
+            this.button2.Location = new System.Drawing.Point(754, 83);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(165, 23);
             this.button2.TabIndex = 9;
@@ -268,7 +269,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(761, 121);
+            this.button3.Location = new System.Drawing.Point(754, 121);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(165, 23);
             this.button3.TabIndex = 10;
@@ -277,7 +278,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(761, 427);
+            this.button4.Location = new System.Drawing.Point(754, 417);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(165, 23);
             this.button4.TabIndex = 11;
