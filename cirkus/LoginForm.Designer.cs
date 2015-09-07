@@ -35,7 +35,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 64);
+            this.button1.Location = new System.Drawing.Point(12, 81);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(260, 23);
             this.button1.TabIndex = 0;
@@ -56,17 +56,18 @@
             this.textPassword.Name = "textPassword";
             this.textPassword.Size = new System.Drawing.Size(260, 20);
             this.textPassword.TabIndex = 2;
+            this.textPassword.UseSystemPasswordChar = true;
             // 
-            // Form1
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 128);
+            this.ClientSize = new System.Drawing.Size(287, 116);
             this.Controls.Add(this.textPassword);
             this.Controls.Add(this.textUsername);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "LoginForm";
+            this.Text = "Logga in";
             this.ResumeLayout(false);
             this.PerformLayout();
 
