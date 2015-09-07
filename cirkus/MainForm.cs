@@ -24,5 +24,20 @@ namespace cirkus
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddCustomerForm custForm = new AddCustomerForm();
+
+            custForm.ShowDialog();
+            listBoxCustomer.Items.Clear();
+            listBoxTicket.Items.Clear();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }

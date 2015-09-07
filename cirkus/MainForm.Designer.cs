@@ -50,6 +50,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabBiljett.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -60,10 +61,10 @@
             this.tabControl1.Controls.Add(this.tabBiljett);
             this.tabControl1.Controls.Add(this.tabForestallning);
             this.tabControl1.Controls.Add(this.tabKonto);
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Location = new System.Drawing.Point(7, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(940, 500);
+            this.tabControl1.Size = new System.Drawing.Size(940, 489);
             this.tabControl1.TabIndex = 0;
             // 
             // tabBiljett
@@ -83,7 +84,7 @@
             this.tabBiljett.Location = new System.Drawing.Point(4, 22);
             this.tabBiljett.Name = "tabBiljett";
             this.tabBiljett.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBiljett.Size = new System.Drawing.Size(932, 474);
+            this.tabBiljett.Size = new System.Drawing.Size(932, 463);
             this.tabBiljett.TabIndex = 0;
             this.tabBiljett.Text = "Biljettförsäljning";
             this.tabBiljett.UseVisualStyleBackColor = true;
@@ -254,6 +255,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "Lägg till ny kund";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -282,11 +284,22 @@
             this.button4.Text = "Radera biljett";
             this.button4.UseVisualStyleBackColor = true;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(872, 1);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(68, 27);
+            this.button5.TabIndex = 1;
+            this.button5.Text = "Logga ut";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 501);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "Välkommen";
@@ -323,5 +336,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button5;
     }
 }
