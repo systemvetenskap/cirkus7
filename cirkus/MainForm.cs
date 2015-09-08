@@ -118,13 +118,9 @@ namespace cirkus
                 //nyPersonal.användarnamn = textBoxAnvandarnamn.Text;
                 //nyPersonal.lösenord = textBoxLosenord.Text;
                 //nyPersonal.behörighetsnivå = comboBoxBehorighetsniva.Text;
-
-
-
                 conn.Open();
                 string sql = "INSERT INTO staff (fname,lname,phonenumber,email,username,password,auth) VALUES(:fname, :lname, :phonenumber, :email, :username, :password, :auth)";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-
 
                 cmd.Parameters.Add(new NpgsqlParameter("fname", textBoxFornamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("lname", textBoxEfternamn.Text));
