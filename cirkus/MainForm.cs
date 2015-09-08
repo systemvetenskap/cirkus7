@@ -29,8 +29,9 @@ namespace cirkus
                     Personal nyPersonal = new Personal();
                     nyPersonal.förnamn = (dr["fname"].ToString());
                     nyPersonal.efternamn = (dr["lname"].ToString());
-                    nyPersonal.telefonnummer = (dr["phonenumber"].ToString());
+                    nyPersonal.telefonnummer = (dr["phonenumber"].ToString()); 
                     listBoxRegister.Items.Add(nyPersonal);
+                    conn.Close();
                 }
 
         }
@@ -128,23 +129,23 @@ namespace cirkus
                 cmd.Parameters.Add(new NpgsqlParameter("email", textBoxEpost.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("username", textBoxAnvandarnamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("password", textBoxLosenord.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("auth", comboBoxBehorighetsniva.Text));
-                //if (comboBoxBehorighetsniva.Text=="Biljettförsäljare")
-                //{
-                //    int auth = 0;
-                //    cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
-                //}
-                //else
-                //{
-                //    int auth = 1;
-                //    cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
 
-                //}
+                if (comboBoxBehorighetsniva.Text == "Biljettförsäljare")
+                {
+                    int auth = 0;
+                    cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
+                }
+                else
+                {
+                    int auth = 1;
+                    cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
+
+                }
 
 
                 cmd.ExecuteNonQuery();
                 conn.Close();
-
+                listBoxRegister.Items.Clear();
                 ListaPersonal();
             }
             catch (NpgsqlException ex)
