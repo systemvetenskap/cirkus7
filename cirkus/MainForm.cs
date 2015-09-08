@@ -128,6 +128,7 @@ namespace cirkus
                 cmd.Parameters.Add(new NpgsqlParameter("email", textBoxEpost.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("username", textBoxAnvandarnamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("password", textBoxLosenord.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("auth", comboBoxBehorighetsniva.Text));
                 //if (comboBoxBehorighetsniva.Text=="Biljettförsäljare")
                 //{
                 //    int auth = 0;
@@ -139,7 +140,7 @@ namespace cirkus
                 //    cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
 
                 //}
-                
+
 
                 cmd.ExecuteNonQuery();
                 conn.Close();
