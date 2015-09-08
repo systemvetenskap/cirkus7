@@ -16,23 +16,16 @@ namespace cirkus
     {
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-        NpgsqlCommand command;
+       
         public void ListaPersonal()
         {
-                string sql = "SELECT fname, lname, phonenumber FROM staff;";
-                conn.Open();
-                command = new NpgsqlCommand(sql, conn);
-                NpgsqlDataReader dr = command.ExecuteReader();
-                listBoxRegister.Items.Clear();
-                while (dr.Read())
-                {
-                    Personal nyPersonal = new Personal();
-                    nyPersonal.förnamn = (dr["fname"].ToString());
-                    nyPersonal.efternamn = (dr["lname"].ToString());
-                    nyPersonal.telefonnummer = (dr["phonenumber"].ToString()); 
-                    listBoxRegister.Items.Add(nyPersonal);
-                    conn.Close();
-                }
+            string sql = "SELECT fname, lname, phonenumber FROM staff;";
+            conn.Open();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridViewStaff.DataSource = dt;
+            conn.Close();
 
         }
 
@@ -84,21 +77,21 @@ namespace cirkus
 
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
-            if (listBoxRegister.SelectedIndex == -1)
-            {
-                MessageBox.Show("Markera ett konto att updatera först");
-            }
-            else
-            {
-                //Personal nyPersonal = new Personal();
-                //nyPersonal.förnamn = textBoxFornamn.Text;
-                //nyPersonal.efternamn = textBoxEfternamn.Text;
-                //nyPersonal.telefonnummer = textBoxTelefonnummer.Text;
-                //nyPersonal.epost = textBoxEpost.Text;
-                //nyPersonal.användarnamn = textBoxAnvandarnamn.Text;
-                //nyPersonal.lösenord = textBoxLosenord.Text;
-                //nyPersonal.behörighetsnivå = comboBoxBehorighetsniva.Text;
-            }
+            //if (listBoxRegister.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Markera ett konto att updatera först");
+            //}
+            //else
+            //{
+            //    //Personal nyPersonal = new Personal();
+            //    //nyPersonal.förnamn = textBoxFornamn.Text;
+            //    //nyPersonal.efternamn = textBoxEfternamn.Text;
+            //    //nyPersonal.telefonnummer = textBoxTelefonnummer.Text;
+            //    //nyPersonal.epost = textBoxEpost.Text;
+            //    //nyPersonal.användarnamn = textBoxAnvandarnamn.Text;
+            //    //nyPersonal.lösenord = textBoxLosenord.Text;
+            //    //nyPersonal.behörighetsnivå = comboBoxBehorighetsniva.Text;
+            //}
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
@@ -145,7 +138,7 @@ namespace cirkus
 
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                listBoxRegister.Items.Clear();
+                //listBoxRegister.Items.Clear();
                 ListaPersonal();
             }
             catch (NpgsqlException ex)

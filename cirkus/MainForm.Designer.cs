@@ -77,7 +77,6 @@
             this.comboBoxBehorighetsniva = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnTomFalten = new System.Windows.Forms.Button();
-            this.listBoxRegister = new System.Windows.Forms.ListBox();
             this.btnUpdateraKonto = new System.Windows.Forms.Button();
             this.lblFornamn = new System.Windows.Forms.Label();
             this.btnSkapaKonto = new System.Windows.Forms.Button();
@@ -94,11 +93,13 @@
             this.textBoxFornamn = new System.Windows.Forms.TextBox();
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
+            this.dataGridViewStaff = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabShow.SuspendLayout();
             this.tabAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -527,12 +528,12 @@
             // 
             // tabAccount
             // 
+            this.tabAccount.Controls.Add(this.dataGridViewStaff);
             this.tabAccount.Controls.Add(this.lblBehorighetsniva);
             this.tabAccount.Controls.Add(this.lblLosenord);
             this.tabAccount.Controls.Add(this.comboBoxBehorighetsniva);
             this.tabAccount.Controls.Add(this.label9);
             this.tabAccount.Controls.Add(this.btnTomFalten);
-            this.tabAccount.Controls.Add(this.listBoxRegister);
             this.tabAccount.Controls.Add(this.btnUpdateraKonto);
             this.tabAccount.Controls.Add(this.lblFornamn);
             this.tabAccount.Controls.Add(this.btnSkapaKonto);
@@ -606,15 +607,6 @@
             this.btnTomFalten.Text = "Töm fälten";
             this.btnTomFalten.UseVisualStyleBackColor = true;
             this.btnTomFalten.Click += new System.EventHandler(this.btnTomFalten_Click);
-            // 
-            // listBoxRegister
-            // 
-            this.listBoxRegister.FormattingEnabled = true;
-            this.listBoxRegister.Location = new System.Drawing.Point(299, 83);
-            this.listBoxRegister.Name = "listBoxRegister";
-            this.listBoxRegister.Size = new System.Drawing.Size(209, 251);
-            this.listBoxRegister.TabIndex = 37;
-            this.listBoxRegister.SelectedIndexChanged += new System.EventHandler(this.listBoxRegister_SelectedIndexChanged);
             // 
             // btnUpdateraKonto
             // 
@@ -749,6 +741,14 @@
             this.buttonLogOut.UseVisualStyleBackColor = true;
             this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
+            // dataGridViewStaff
+            // 
+            this.dataGridViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStaff.Location = new System.Drawing.Point(302, 101);
+            this.dataGridViewStaff.Name = "dataGridViewStaff";
+            this.dataGridViewStaff.Size = new System.Drawing.Size(240, 233);
+            this.dataGridViewStaff.TabIndex = 42;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -768,6 +768,7 @@
             this.tabShow.PerformLayout();
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -822,7 +823,6 @@
         private System.Windows.Forms.ComboBox comboBoxBehorighetsniva;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnTomFalten;
-        private System.Windows.Forms.ListBox listBoxRegister;
         private System.Windows.Forms.Button btnUpdateraKonto;
         private System.Windows.Forms.Label lblFornamn;
         private System.Windows.Forms.Button btnSkapaKonto;
@@ -840,5 +840,6 @@
         private System.Windows.Forms.TextBox textBoxAnvandarnamn;
         private System.Windows.Forms.Label lblBehorighetsniva;
         private System.Windows.Forms.Label lblLosenord;
+        private System.Windows.Forms.DataGridView dataGridViewStaff;
     }
 }
