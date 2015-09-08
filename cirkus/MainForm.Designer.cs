@@ -72,6 +72,8 @@
             this.labelAkter = new System.Windows.Forms.Label();
             this.labelForestallning = new System.Windows.Forms.Label();
             this.tabAccount = new System.Windows.Forms.TabPage();
+            this.lblBehorighetsniva = new System.Windows.Forms.Label();
+            this.lblLosenord = new System.Windows.Forms.Label();
             this.comboBoxBehorighetsniva = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnTomFalten = new System.Windows.Forms.Button();
@@ -109,6 +111,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(933, 482);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
             // tabTicket
             // 
@@ -524,6 +527,8 @@
             // 
             // tabAccount
             // 
+            this.tabAccount.Controls.Add(this.lblBehorighetsniva);
+            this.tabAccount.Controls.Add(this.lblLosenord);
             this.tabAccount.Controls.Add(this.comboBoxBehorighetsniva);
             this.tabAccount.Controls.Add(this.label9);
             this.tabAccount.Controls.Add(this.btnTomFalten);
@@ -550,8 +555,29 @@
             this.tabAccount.Text = "Konto";
             this.tabAccount.UseVisualStyleBackColor = true;
             // 
+            // lblBehorighetsniva
+            // 
+            this.lblBehorighetsniva.AutoSize = true;
+            this.lblBehorighetsniva.Location = new System.Drawing.Point(62, 321);
+            this.lblBehorighetsniva.Name = "lblBehorighetsniva";
+            this.lblBehorighetsniva.Size = new System.Drawing.Size(86, 13);
+            this.lblBehorighetsniva.TabIndex = 41;
+            this.lblBehorighetsniva.Text = "Behörighetsnivå:";
+            // 
+            // lblLosenord
+            // 
+            this.lblLosenord.AutoSize = true;
+            this.lblLosenord.Location = new System.Drawing.Point(62, 274);
+            this.lblLosenord.Name = "lblLosenord";
+            this.lblLosenord.Size = new System.Drawing.Size(54, 13);
+            this.lblLosenord.TabIndex = 40;
+            this.lblLosenord.Text = "Lösenord:";
+            // 
             // comboBoxBehorighetsniva
             // 
+            this.comboBoxBehorighetsniva.AutoCompleteCustomSource.AddRange(new string[] {
+            "Biljettförsäljare",
+            "Administratör"});
             this.comboBoxBehorighetsniva.FormattingEnabled = true;
             this.comboBoxBehorighetsniva.Items.AddRange(new object[] {
             "Biljettförsäljare",
@@ -579,6 +605,7 @@
             this.btnTomFalten.TabIndex = 32;
             this.btnTomFalten.Text = "Töm fälten";
             this.btnTomFalten.UseVisualStyleBackColor = true;
+            this.btnTomFalten.Click += new System.EventHandler(this.btnTomFalten_Click);
             // 
             // listBoxRegister
             // 
@@ -587,6 +614,7 @@
             this.listBoxRegister.Name = "listBoxRegister";
             this.listBoxRegister.Size = new System.Drawing.Size(209, 251);
             this.listBoxRegister.TabIndex = 37;
+            this.listBoxRegister.SelectedIndexChanged += new System.EventHandler(this.listBoxRegister_SelectedIndexChanged);
             // 
             // btnUpdateraKonto
             // 
@@ -596,6 +624,7 @@
             this.btnUpdateraKonto.TabIndex = 31;
             this.btnUpdateraKonto.Text = "Updatera konto";
             this.btnUpdateraKonto.UseVisualStyleBackColor = true;
+            this.btnUpdateraKonto.Click += new System.EventHandler(this.btnUpdateraKonto_Click);
             // 
             // lblFornamn
             // 
@@ -614,6 +643,7 @@
             this.btnSkapaKonto.TabIndex = 29;
             this.btnSkapaKonto.Text = "Skapa konto";
             this.btnSkapaKonto.UseVisualStyleBackColor = true;
+            this.btnSkapaKonto.Click += new System.EventHandler(this.btnSkapaKonto_Click);
             // 
             // textBoxSokfalt
             // 
@@ -728,6 +758,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "Välkommen";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabTicket.ResumeLayout(false);
             this.tabTicket.PerformLayout();
@@ -807,5 +838,7 @@
         private System.Windows.Forms.TextBox textBoxEpost;
         private System.Windows.Forms.TextBox textBoxFornamn;
         private System.Windows.Forms.TextBox textBoxAnvandarnamn;
+        private System.Windows.Forms.Label lblBehorighetsniva;
+        private System.Windows.Forms.Label lblLosenord;
     }
 }

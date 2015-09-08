@@ -46,7 +46,7 @@ namespace cirkus
                 {
                     MainForm frm = new MainForm();
                     this.Visible = false;
-                    frm.abc = 0;
+                    
 
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
