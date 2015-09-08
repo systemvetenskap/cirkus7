@@ -26,7 +26,6 @@ namespace cirkus
             da.Fill(dt);
             dataGridViewStaff.DataSource = dt;
             conn.Close();
-
         }
 
         public MainForm()
@@ -134,11 +133,8 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
 
                 }
-
-
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                //listBoxRegister.Items.Clear();
                 ListaPersonal();
             }
             catch (NpgsqlException ex)
