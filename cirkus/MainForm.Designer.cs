@@ -72,6 +72,7 @@
             this.labelAkter = new System.Windows.Forms.Label();
             this.labelForestallning = new System.Windows.Forms.Label();
             this.tabAccount = new System.Windows.Forms.TabPage();
+            this.dataGridViewStaff = new System.Windows.Forms.DataGridView();
             this.lblBehorighetsniva = new System.Windows.Forms.Label();
             this.lblLosenord = new System.Windows.Forms.Label();
             this.comboBoxBehorighetsniva = new System.Windows.Forms.ComboBox();
@@ -93,7 +94,6 @@
             this.textBoxFornamn = new System.Windows.Forms.TextBox();
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
-            this.dataGridViewStaff = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -556,6 +556,24 @@
             this.tabAccount.Text = "Konto";
             this.tabAccount.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewStaff
+            // 
+            this.dataGridViewStaff.AllowUserToAddRows = false;
+            this.dataGridViewStaff.AllowUserToDeleteRows = false;
+            this.dataGridViewStaff.AllowUserToResizeColumns = false;
+            this.dataGridViewStaff.AllowUserToResizeRows = false;
+            this.dataGridViewStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStaff.ColumnHeadersVisible = false;
+            this.dataGridViewStaff.Location = new System.Drawing.Point(302, 101);
+            this.dataGridViewStaff.MultiSelect = false;
+            this.dataGridViewStaff.Name = "dataGridViewStaff";
+            this.dataGridViewStaff.RowHeadersVisible = false;
+            this.dataGridViewStaff.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewStaff.Size = new System.Drawing.Size(220, 233);
+            this.dataGridViewStaff.TabIndex = 42;
+            // 
             // lblBehorighetsniva
             // 
             this.lblBehorighetsniva.AutoSize = true;
@@ -600,7 +618,7 @@
             // 
             // btnTomFalten
             // 
-            this.btnTomFalten.Location = new System.Drawing.Point(299, 374);
+            this.btnTomFalten.Location = new System.Drawing.Point(59, 412);
             this.btnTomFalten.Name = "btnTomFalten";
             this.btnTomFalten.Size = new System.Drawing.Size(121, 31);
             this.btnTomFalten.TabIndex = 32;
@@ -610,11 +628,11 @@
             // 
             // btnUpdateraKonto
             // 
-            this.btnUpdateraKonto.Location = new System.Drawing.Point(59, 412);
+            this.btnUpdateraKonto.Location = new System.Drawing.Point(302, 358);
             this.btnUpdateraKonto.Name = "btnUpdateraKonto";
             this.btnUpdateraKonto.Size = new System.Drawing.Size(121, 31);
             this.btnUpdateraKonto.TabIndex = 31;
-            this.btnUpdateraKonto.Text = "Updatera konto";
+            this.btnUpdateraKonto.Text = "Uppdatera konto";
             this.btnUpdateraKonto.UseVisualStyleBackColor = true;
             this.btnUpdateraKonto.Click += new System.EventHandler(this.btnUpdateraKonto_Click);
             // 
@@ -740,14 +758,6 @@
             this.buttonLogOut.Text = "Logga ut";
             this.buttonLogOut.UseVisualStyleBackColor = true;
             this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
-            // 
-            // dataGridViewStaff
-            // 
-            this.dataGridViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStaff.Location = new System.Drawing.Point(302, 101);
-            this.dataGridViewStaff.Name = "dataGridViewStaff";
-            this.dataGridViewStaff.Size = new System.Drawing.Size(240, 233);
-            this.dataGridViewStaff.TabIndex = 42;
             // 
             // MainForm
             // 
