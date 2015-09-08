@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace cirkus
 {
-    public partial class Konto : Form
+    public partial class ShowForm : Form
     {
-        public Konto()
+        public ShowForm()
         {
             InitializeComponent();
         }

@@ -20,29 +20,31 @@ namespace cirkus
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void buttonPrint_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonReserveTicket_Click(object sender, EventArgs e)
+        {
+            ReserveTicketForm rtf = new ReserveTicketForm();
+            rtf.ShowDialog();
+        }
+
+        private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
             AddCustomerForm custForm = new AddCustomerForm();
 
             custForm.ShowDialog();
+
             listBoxCustomer.Items.Clear();
             listBoxTicket.Items.Clear();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void buttonLogOut_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
-
-        private void buttonPrint_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

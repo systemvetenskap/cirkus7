@@ -1,6 +1,6 @@
 ﻿namespace cirkus
 {
-    partial class Forestallning
+    partial class ShowForm
     {
         /// <summary>
         /// Required designer variable.

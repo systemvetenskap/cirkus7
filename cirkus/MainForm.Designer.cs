@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabBiljett = new System.Windows.Forms.TabPage();
+            this.tabTicket = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonEditTicket = new System.Windows.Forms.Button();
+            this.buttonReserveTicket = new System.Windows.Forms.Button();
+            this.buttonAddCustomer = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -48,7 +48,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxCustomer = new System.Windows.Forms.ListBox();
-            this.tabForestallning = new System.Windows.Forms.TabPage();
+            this.tabShow = new System.Windows.Forms.TabPage();
             this.textBoxKronorVuxenbiljetter = new System.Windows.Forms.TextBox();
             this.textBoxAntalUngdomsbiljetter = new System.Windows.Forms.TextBox();
             this.textBoxKronorUngdomsbiljetter = new System.Windows.Forms.TextBox();
@@ -71,66 +71,66 @@
             this.listBoxForestallningar = new System.Windows.Forms.ListBox();
             this.labelAkter = new System.Windows.Forms.Label();
             this.labelForestallning = new System.Windows.Forms.Label();
-            this.tabKonto = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
+            this.tabAccount = new System.Windows.Forms.TabPage();
             this.comboBoxBehorighetsniva = new System.Windows.Forms.ComboBox();
-            this.btnTomFalten = new System.Windows.Forms.Button();
-            this.btnUpdateraKonto = new System.Windows.Forms.Button();
-            this.btnSkapaKonto = new System.Windows.Forms.Button();
-            this.lblSokPerson = new System.Windows.Forms.Label();
-            this.textBoxLosenord = new System.Windows.Forms.TextBox();
-            this.textBoxEfternamn = new System.Windows.Forms.TextBox();
-            this.textBoxTelefonnummer = new System.Windows.Forms.TextBox();
-            this.textBoxEpost = new System.Windows.Forms.TextBox();
-            this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
-            this.textBoxFornamn = new System.Windows.Forms.TextBox();
-            this.lblAnvandarnamn = new System.Windows.Forms.Label();
-            this.lblEpost = new System.Windows.Forms.Label();
-            this.lblTelefonnummer = new System.Windows.Forms.Label();
-            this.lblEfternamn = new System.Windows.Forms.Label();
-            this.textBoxSokfalt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.lblFornamn = new System.Windows.Forms.Label();
+            this.btnTomFalten = new System.Windows.Forms.Button();
             this.listBoxRegister = new System.Windows.Forms.ListBox();
+            this.btnUpdateraKonto = new System.Windows.Forms.Button();
+            this.lblFornamn = new System.Windows.Forms.Label();
+            this.btnSkapaKonto = new System.Windows.Forms.Button();
+            this.textBoxSokfalt = new System.Windows.Forms.TextBox();
+            this.lblSokPerson = new System.Windows.Forms.Label();
+            this.lblEfternamn = new System.Windows.Forms.Label();
+            this.textBoxLosenord = new System.Windows.Forms.TextBox();
+            this.lblTelefonnummer = new System.Windows.Forms.Label();
+            this.textBoxEfternamn = new System.Windows.Forms.TextBox();
+            this.lblEpost = new System.Windows.Forms.Label();
+            this.textBoxTelefonnummer = new System.Windows.Forms.TextBox();
+            this.lblAnvandarnamn = new System.Windows.Forms.Label();
+            this.textBoxEpost = new System.Windows.Forms.TextBox();
+            this.textBoxFornamn = new System.Windows.Forms.TextBox();
+            this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
+            this.buttonLogOut = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
-            this.tabBiljett.SuspendLayout();
+            this.tabTicket.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabForestallning.SuspendLayout();
-            this.tabKonto.SuspendLayout();
+            this.tabShow.SuspendLayout();
+            this.tabAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabBiljett);
-            this.tabControl1.Controls.Add(this.tabForestallning);
-            this.tabControl1.Controls.Add(this.tabKonto);
+            this.tabControl1.Controls.Add(this.tabTicket);
+            this.tabControl1.Controls.Add(this.tabShow);
+            this.tabControl1.Controls.Add(this.tabAccount);
             this.tabControl1.Location = new System.Drawing.Point(7, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(933, 482);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabBiljett
+            // tabTicket
             // 
-            this.tabBiljett.Controls.Add(this.button4);
-            this.tabBiljett.Controls.Add(this.button3);
-            this.tabBiljett.Controls.Add(this.button2);
-            this.tabBiljett.Controls.Add(this.button1);
-            this.tabBiljett.Controls.Add(this.groupBox1);
-            this.tabBiljett.Controls.Add(this.checkBoxOlderTickets);
-            this.tabBiljett.Controls.Add(this.listBoxTicket);
-            this.tabBiljett.Controls.Add(this.label3);
-            this.tabBiljett.Controls.Add(this.textBoxSearchCustomer);
-            this.tabBiljett.Controls.Add(this.label2);
-            this.tabBiljett.Controls.Add(this.label1);
-            this.tabBiljett.Controls.Add(this.listBoxCustomer);
-            this.tabBiljett.Location = new System.Drawing.Point(4, 22);
-            this.tabBiljett.Name = "tabBiljett";
-            this.tabBiljett.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBiljett.Size = new System.Drawing.Size(925, 456);
-            this.tabBiljett.TabIndex = 0;
-            this.tabBiljett.Text = "Biljettförsäljning";
-            this.tabBiljett.UseVisualStyleBackColor = true;
+            this.tabTicket.Controls.Add(this.button4);
+            this.tabTicket.Controls.Add(this.buttonEditTicket);
+            this.tabTicket.Controls.Add(this.buttonReserveTicket);
+            this.tabTicket.Controls.Add(this.buttonAddCustomer);
+            this.tabTicket.Controls.Add(this.groupBox1);
+            this.tabTicket.Controls.Add(this.checkBoxOlderTickets);
+            this.tabTicket.Controls.Add(this.listBoxTicket);
+            this.tabTicket.Controls.Add(this.label3);
+            this.tabTicket.Controls.Add(this.textBoxSearchCustomer);
+            this.tabTicket.Controls.Add(this.label2);
+            this.tabTicket.Controls.Add(this.label1);
+            this.tabTicket.Controls.Add(this.listBoxCustomer);
+            this.tabTicket.Location = new System.Drawing.Point(4, 22);
+            this.tabTicket.Name = "tabTicket";
+            this.tabTicket.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTicket.Size = new System.Drawing.Size(925, 456);
+            this.tabTicket.TabIndex = 0;
+            this.tabTicket.Text = "Biljettförsäljning";
+            this.tabTicket.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -141,33 +141,34 @@
             this.button4.Text = "Radera biljett";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonEditTicket
             // 
-            this.button3.Location = new System.Drawing.Point(754, 121);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(165, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Ändra biljett";
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonEditTicket.Location = new System.Drawing.Point(754, 121);
+            this.buttonEditTicket.Name = "buttonEditTicket";
+            this.buttonEditTicket.Size = new System.Drawing.Size(165, 23);
+            this.buttonEditTicket.TabIndex = 10;
+            this.buttonEditTicket.Text = "Ändra biljett";
+            this.buttonEditTicket.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonReserveTicket
             // 
-            this.button2.Location = new System.Drawing.Point(754, 83);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(165, 23);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Boka/Reservera biljett";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonReserveTicket.Location = new System.Drawing.Point(754, 83);
+            this.buttonReserveTicket.Name = "buttonReserveTicket";
+            this.buttonReserveTicket.Size = new System.Drawing.Size(165, 23);
+            this.buttonReserveTicket.TabIndex = 9;
+            this.buttonReserveTicket.Text = "Boka/Reservera biljett";
+            this.buttonReserveTicket.UseVisualStyleBackColor = true;
+            this.buttonReserveTicket.Click += new System.EventHandler(this.buttonReserveTicket_Click);
             // 
-            // button1
+            // buttonAddCustomer
             // 
-            this.button1.Location = new System.Drawing.Point(754, 42);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Lägg till ny kund";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAddCustomer.Location = new System.Drawing.Point(754, 42);
+            this.buttonAddCustomer.Name = "buttonAddCustomer";
+            this.buttonAddCustomer.Size = new System.Drawing.Size(165, 23);
+            this.buttonAddCustomer.TabIndex = 8;
+            this.buttonAddCustomer.Text = "Lägg till ny kund";
+            this.buttonAddCustomer.UseVisualStyleBackColor = true;
+            this.buttonAddCustomer.Click += new System.EventHandler(this.buttonAddCustomer_Click);
             // 
             // groupBox1
             // 
@@ -309,37 +310,37 @@
             this.listBoxCustomer.Size = new System.Drawing.Size(190, 368);
             this.listBoxCustomer.TabIndex = 0;
             // 
-            // tabForestallning
+            // tabShow
             // 
-            this.tabForestallning.Controls.Add(this.textBoxKronorVuxenbiljetter);
-            this.tabForestallning.Controls.Add(this.textBoxAntalUngdomsbiljetter);
-            this.tabForestallning.Controls.Add(this.textBoxKronorUngdomsbiljetter);
-            this.tabForestallning.Controls.Add(this.textBoxAntalBarnbiljetter);
-            this.tabForestallning.Controls.Add(this.textBoxKronorBarnbiljetter);
-            this.tabForestallning.Controls.Add(this.textBoxTotaltAntal);
-            this.tabForestallning.Controls.Add(this.textBoxTotaltKronor);
-            this.tabForestallning.Controls.Add(this.buttonSkrivUtForestallning);
-            this.tabForestallning.Controls.Add(this.buttonRaderaForestallning);
-            this.tabForestallning.Controls.Add(this.buttonAndraForestallning);
-            this.tabForestallning.Controls.Add(this.labelKronor);
-            this.tabForestallning.Controls.Add(this.labelAntal);
-            this.tabForestallning.Controls.Add(this.labelTotalt);
-            this.tabForestallning.Controls.Add(this.labelBarnbiljetter);
-            this.tabForestallning.Controls.Add(this.labelUngdomsbiljetter);
-            this.tabForestallning.Controls.Add(this.labelVuxenbiljetter);
-            this.tabForestallning.Controls.Add(this.textBoxAntalVuxenBiljetter);
-            this.tabForestallning.Controls.Add(this.buttonSkapaForestalnning);
-            this.tabForestallning.Controls.Add(this.listBoxAkter);
-            this.tabForestallning.Controls.Add(this.listBoxForestallningar);
-            this.tabForestallning.Controls.Add(this.labelAkter);
-            this.tabForestallning.Controls.Add(this.labelForestallning);
-            this.tabForestallning.Location = new System.Drawing.Point(4, 22);
-            this.tabForestallning.Name = "tabForestallning";
-            this.tabForestallning.Padding = new System.Windows.Forms.Padding(3);
-            this.tabForestallning.Size = new System.Drawing.Size(925, 456);
-            this.tabForestallning.TabIndex = 1;
-            this.tabForestallning.Text = "Föreställning";
-            this.tabForestallning.UseVisualStyleBackColor = true;
+            this.tabShow.Controls.Add(this.textBoxKronorVuxenbiljetter);
+            this.tabShow.Controls.Add(this.textBoxAntalUngdomsbiljetter);
+            this.tabShow.Controls.Add(this.textBoxKronorUngdomsbiljetter);
+            this.tabShow.Controls.Add(this.textBoxAntalBarnbiljetter);
+            this.tabShow.Controls.Add(this.textBoxKronorBarnbiljetter);
+            this.tabShow.Controls.Add(this.textBoxTotaltAntal);
+            this.tabShow.Controls.Add(this.textBoxTotaltKronor);
+            this.tabShow.Controls.Add(this.buttonSkrivUtForestallning);
+            this.tabShow.Controls.Add(this.buttonRaderaForestallning);
+            this.tabShow.Controls.Add(this.buttonAndraForestallning);
+            this.tabShow.Controls.Add(this.labelKronor);
+            this.tabShow.Controls.Add(this.labelAntal);
+            this.tabShow.Controls.Add(this.labelTotalt);
+            this.tabShow.Controls.Add(this.labelBarnbiljetter);
+            this.tabShow.Controls.Add(this.labelUngdomsbiljetter);
+            this.tabShow.Controls.Add(this.labelVuxenbiljetter);
+            this.tabShow.Controls.Add(this.textBoxAntalVuxenBiljetter);
+            this.tabShow.Controls.Add(this.buttonSkapaForestalnning);
+            this.tabShow.Controls.Add(this.listBoxAkter);
+            this.tabShow.Controls.Add(this.listBoxForestallningar);
+            this.tabShow.Controls.Add(this.labelAkter);
+            this.tabShow.Controls.Add(this.labelForestallning);
+            this.tabShow.Location = new System.Drawing.Point(4, 22);
+            this.tabShow.Name = "tabShow";
+            this.tabShow.Padding = new System.Windows.Forms.Padding(3);
+            this.tabShow.Size = new System.Drawing.Size(925, 456);
+            this.tabShow.TabIndex = 1;
+            this.tabShow.Text = "Föreställning";
+            this.tabShow.UseVisualStyleBackColor = true;
             // 
             // textBoxKronorVuxenbiljetter
             // 
@@ -521,43 +522,33 @@
             this.labelForestallning.TabIndex = 0;
             this.labelForestallning.Text = "Föreställningar";
             // 
-            // tabKonto
+            // tabAccount
             // 
-            this.tabKonto.Controls.Add(this.comboBoxBehorighetsniva);
-            this.tabKonto.Controls.Add(this.label9);
-            this.tabKonto.Controls.Add(this.btnTomFalten);
-            this.tabKonto.Controls.Add(this.listBoxRegister);
-            this.tabKonto.Controls.Add(this.btnUpdateraKonto);
-            this.tabKonto.Controls.Add(this.lblFornamn);
-            this.tabKonto.Controls.Add(this.btnSkapaKonto);
-            this.tabKonto.Controls.Add(this.textBoxSokfalt);
-            this.tabKonto.Controls.Add(this.lblSokPerson);
-            this.tabKonto.Controls.Add(this.lblEfternamn);
-            this.tabKonto.Controls.Add(this.textBoxLosenord);
-            this.tabKonto.Controls.Add(this.lblTelefonnummer);
-            this.tabKonto.Controls.Add(this.textBoxEfternamn);
-            this.tabKonto.Controls.Add(this.lblEpost);
-            this.tabKonto.Controls.Add(this.textBoxTelefonnummer);
-            this.tabKonto.Controls.Add(this.lblAnvandarnamn);
-            this.tabKonto.Controls.Add(this.textBoxEpost);
-            this.tabKonto.Controls.Add(this.textBoxFornamn);
-            this.tabKonto.Controls.Add(this.textBoxAnvandarnamn);
-            this.tabKonto.Location = new System.Drawing.Point(4, 22);
-            this.tabKonto.Name = "tabKonto";
-            this.tabKonto.Size = new System.Drawing.Size(925, 456);
-            this.tabKonto.TabIndex = 2;
-            this.tabKonto.Text = "Konto";
-            this.tabKonto.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(872, 1);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(68, 27);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Logga ut";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.tabAccount.Controls.Add(this.comboBoxBehorighetsniva);
+            this.tabAccount.Controls.Add(this.label9);
+            this.tabAccount.Controls.Add(this.btnTomFalten);
+            this.tabAccount.Controls.Add(this.listBoxRegister);
+            this.tabAccount.Controls.Add(this.btnUpdateraKonto);
+            this.tabAccount.Controls.Add(this.lblFornamn);
+            this.tabAccount.Controls.Add(this.btnSkapaKonto);
+            this.tabAccount.Controls.Add(this.textBoxSokfalt);
+            this.tabAccount.Controls.Add(this.lblSokPerson);
+            this.tabAccount.Controls.Add(this.lblEfternamn);
+            this.tabAccount.Controls.Add(this.textBoxLosenord);
+            this.tabAccount.Controls.Add(this.lblTelefonnummer);
+            this.tabAccount.Controls.Add(this.textBoxEfternamn);
+            this.tabAccount.Controls.Add(this.lblEpost);
+            this.tabAccount.Controls.Add(this.textBoxTelefonnummer);
+            this.tabAccount.Controls.Add(this.lblAnvandarnamn);
+            this.tabAccount.Controls.Add(this.textBoxEpost);
+            this.tabAccount.Controls.Add(this.textBoxFornamn);
+            this.tabAccount.Controls.Add(this.textBoxAnvandarnamn);
+            this.tabAccount.Location = new System.Drawing.Point(4, 22);
+            this.tabAccount.Name = "tabAccount";
+            this.tabAccount.Size = new System.Drawing.Size(925, 456);
+            this.tabAccount.TabIndex = 2;
+            this.tabAccount.Text = "Konto";
+            this.tabAccount.UseVisualStyleBackColor = true;
             // 
             // comboBoxBehorighetsniva
             // 
@@ -570,127 +561,6 @@
             this.comboBoxBehorighetsniva.Size = new System.Drawing.Size(121, 21);
             this.comboBoxBehorighetsniva.TabIndex = 28;
             // 
-            // btnTomFalten
-            // 
-            this.btnTomFalten.Location = new System.Drawing.Point(299, 374);
-            this.btnTomFalten.Name = "btnTomFalten";
-            this.btnTomFalten.Size = new System.Drawing.Size(121, 31);
-            this.btnTomFalten.TabIndex = 32;
-            this.btnTomFalten.Text = "Töm fälten";
-            this.btnTomFalten.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdateraKonto
-            // 
-            this.btnUpdateraKonto.Location = new System.Drawing.Point(59, 412);
-            this.btnUpdateraKonto.Name = "btnUpdateraKonto";
-            this.btnUpdateraKonto.Size = new System.Drawing.Size(121, 31);
-            this.btnUpdateraKonto.TabIndex = 31;
-            this.btnUpdateraKonto.Text = "Updatera konto";
-            this.btnUpdateraKonto.UseVisualStyleBackColor = true;
-            // 
-            // btnSkapaKonto
-            // 
-            this.btnSkapaKonto.Location = new System.Drawing.Point(59, 375);
-            this.btnSkapaKonto.Name = "btnSkapaKonto";
-            this.btnSkapaKonto.Size = new System.Drawing.Size(121, 31);
-            this.btnSkapaKonto.TabIndex = 29;
-            this.btnSkapaKonto.Text = "Skapa konto";
-            this.btnSkapaKonto.UseVisualStyleBackColor = true;
-            // 
-            // lblSokPerson
-            // 
-            this.lblSokPerson.AutoSize = true;
-            this.lblSokPerson.Location = new System.Drawing.Point(299, 33);
-            this.lblSokPerson.Name = "lblSokPerson";
-            this.lblSokPerson.Size = new System.Drawing.Size(61, 13);
-            this.lblSokPerson.TabIndex = 39;
-            this.lblSokPerson.Text = "Sök person";
-            // 
-            // textBoxLosenord
-            // 
-            this.textBoxLosenord.Location = new System.Drawing.Point(59, 289);
-            this.textBoxLosenord.Name = "textBoxLosenord";
-            this.textBoxLosenord.Size = new System.Drawing.Size(121, 20);
-            this.textBoxLosenord.TabIndex = 26;
-            // 
-            // textBoxEfternamn
-            // 
-            this.textBoxEfternamn.Location = new System.Drawing.Point(59, 101);
-            this.textBoxEfternamn.Name = "textBoxEfternamn";
-            this.textBoxEfternamn.Size = new System.Drawing.Size(121, 20);
-            this.textBoxEfternamn.TabIndex = 22;
-            // 
-            // textBoxTelefonnummer
-            // 
-            this.textBoxTelefonnummer.Location = new System.Drawing.Point(59, 148);
-            this.textBoxTelefonnummer.Name = "textBoxTelefonnummer";
-            this.textBoxTelefonnummer.Size = new System.Drawing.Size(121, 20);
-            this.textBoxTelefonnummer.TabIndex = 23;
-            // 
-            // textBoxEpost
-            // 
-            this.textBoxEpost.Location = new System.Drawing.Point(59, 195);
-            this.textBoxEpost.Name = "textBoxEpost";
-            this.textBoxEpost.Size = new System.Drawing.Size(121, 20);
-            this.textBoxEpost.TabIndex = 24;
-            // 
-            // textBoxAnvandarnamn
-            // 
-            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(59, 242);
-            this.textBoxAnvandarnamn.Name = "textBoxAnvandarnamn";
-            this.textBoxAnvandarnamn.Size = new System.Drawing.Size(121, 20);
-            this.textBoxAnvandarnamn.TabIndex = 25;
-            // 
-            // textBoxFornamn
-            // 
-            this.textBoxFornamn.Location = new System.Drawing.Point(59, 54);
-            this.textBoxFornamn.Name = "textBoxFornamn";
-            this.textBoxFornamn.Size = new System.Drawing.Size(121, 20);
-            this.textBoxFornamn.TabIndex = 21;
-            // 
-            // lblAnvandarnamn
-            // 
-            this.lblAnvandarnamn.AutoSize = true;
-            this.lblAnvandarnamn.Location = new System.Drawing.Point(62, 227);
-            this.lblAnvandarnamn.Name = "lblAnvandarnamn";
-            this.lblAnvandarnamn.Size = new System.Drawing.Size(82, 13);
-            this.lblAnvandarnamn.TabIndex = 38;
-            this.lblAnvandarnamn.Text = "Användarnamn:";
-            // 
-            // lblEpost
-            // 
-            this.lblEpost.AutoSize = true;
-            this.lblEpost.Location = new System.Drawing.Point(62, 180);
-            this.lblEpost.Name = "lblEpost";
-            this.lblEpost.Size = new System.Drawing.Size(40, 13);
-            this.lblEpost.TabIndex = 36;
-            this.lblEpost.Text = "E post:";
-            // 
-            // lblTelefonnummer
-            // 
-            this.lblTelefonnummer.AutoSize = true;
-            this.lblTelefonnummer.Location = new System.Drawing.Point(62, 133);
-            this.lblTelefonnummer.Name = "lblTelefonnummer";
-            this.lblTelefonnummer.Size = new System.Drawing.Size(83, 13);
-            this.lblTelefonnummer.TabIndex = 34;
-            this.lblTelefonnummer.Text = "Telefonnummer:";
-            // 
-            // lblEfternamn
-            // 
-            this.lblEfternamn.AutoSize = true;
-            this.lblEfternamn.Location = new System.Drawing.Point(62, 86);
-            this.lblEfternamn.Name = "lblEfternamn";
-            this.lblEfternamn.Size = new System.Drawing.Size(58, 13);
-            this.lblEfternamn.TabIndex = 33;
-            this.lblEfternamn.Text = "Efternamn:";
-            // 
-            // textBoxSokfalt
-            // 
-            this.textBoxSokfalt.Location = new System.Drawing.Point(299, 48);
-            this.textBoxSokfalt.Name = "textBoxSokfalt";
-            this.textBoxSokfalt.Size = new System.Drawing.Size(209, 20);
-            this.textBoxSokfalt.TabIndex = 35;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -701,14 +571,14 @@
             this.label9.TabIndex = 30;
             this.label9.Text = "Konto";
             // 
-            // lblFornamn
+            // btnTomFalten
             // 
-            this.lblFornamn.AutoSize = true;
-            this.lblFornamn.Location = new System.Drawing.Point(62, 39);
-            this.lblFornamn.Name = "lblFornamn";
-            this.lblFornamn.Size = new System.Drawing.Size(51, 13);
-            this.lblFornamn.TabIndex = 27;
-            this.lblFornamn.Text = "Förnamn:";
+            this.btnTomFalten.Location = new System.Drawing.Point(299, 374);
+            this.btnTomFalten.Name = "btnTomFalten";
+            this.btnTomFalten.Size = new System.Drawing.Size(121, 31);
+            this.btnTomFalten.TabIndex = 32;
+            this.btnTomFalten.Text = "Töm fälten";
+            this.btnTomFalten.UseVisualStyleBackColor = true;
             // 
             // listBoxRegister
             // 
@@ -718,24 +588,155 @@
             this.listBoxRegister.Size = new System.Drawing.Size(209, 251);
             this.listBoxRegister.TabIndex = 37;
             // 
+            // btnUpdateraKonto
+            // 
+            this.btnUpdateraKonto.Location = new System.Drawing.Point(59, 412);
+            this.btnUpdateraKonto.Name = "btnUpdateraKonto";
+            this.btnUpdateraKonto.Size = new System.Drawing.Size(121, 31);
+            this.btnUpdateraKonto.TabIndex = 31;
+            this.btnUpdateraKonto.Text = "Updatera konto";
+            this.btnUpdateraKonto.UseVisualStyleBackColor = true;
+            // 
+            // lblFornamn
+            // 
+            this.lblFornamn.AutoSize = true;
+            this.lblFornamn.Location = new System.Drawing.Point(62, 39);
+            this.lblFornamn.Name = "lblFornamn";
+            this.lblFornamn.Size = new System.Drawing.Size(51, 13);
+            this.lblFornamn.TabIndex = 27;
+            this.lblFornamn.Text = "Förnamn:";
+            // 
+            // btnSkapaKonto
+            // 
+            this.btnSkapaKonto.Location = new System.Drawing.Point(59, 375);
+            this.btnSkapaKonto.Name = "btnSkapaKonto";
+            this.btnSkapaKonto.Size = new System.Drawing.Size(121, 31);
+            this.btnSkapaKonto.TabIndex = 29;
+            this.btnSkapaKonto.Text = "Skapa konto";
+            this.btnSkapaKonto.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSokfalt
+            // 
+            this.textBoxSokfalt.Location = new System.Drawing.Point(299, 48);
+            this.textBoxSokfalt.Name = "textBoxSokfalt";
+            this.textBoxSokfalt.Size = new System.Drawing.Size(209, 20);
+            this.textBoxSokfalt.TabIndex = 35;
+            // 
+            // lblSokPerson
+            // 
+            this.lblSokPerson.AutoSize = true;
+            this.lblSokPerson.Location = new System.Drawing.Point(299, 33);
+            this.lblSokPerson.Name = "lblSokPerson";
+            this.lblSokPerson.Size = new System.Drawing.Size(61, 13);
+            this.lblSokPerson.TabIndex = 39;
+            this.lblSokPerson.Text = "Sök person";
+            // 
+            // lblEfternamn
+            // 
+            this.lblEfternamn.AutoSize = true;
+            this.lblEfternamn.Location = new System.Drawing.Point(62, 86);
+            this.lblEfternamn.Name = "lblEfternamn";
+            this.lblEfternamn.Size = new System.Drawing.Size(58, 13);
+            this.lblEfternamn.TabIndex = 33;
+            this.lblEfternamn.Text = "Efternamn:";
+            // 
+            // textBoxLosenord
+            // 
+            this.textBoxLosenord.Location = new System.Drawing.Point(59, 289);
+            this.textBoxLosenord.Name = "textBoxLosenord";
+            this.textBoxLosenord.Size = new System.Drawing.Size(121, 20);
+            this.textBoxLosenord.TabIndex = 26;
+            // 
+            // lblTelefonnummer
+            // 
+            this.lblTelefonnummer.AutoSize = true;
+            this.lblTelefonnummer.Location = new System.Drawing.Point(62, 133);
+            this.lblTelefonnummer.Name = "lblTelefonnummer";
+            this.lblTelefonnummer.Size = new System.Drawing.Size(83, 13);
+            this.lblTelefonnummer.TabIndex = 34;
+            this.lblTelefonnummer.Text = "Telefonnummer:";
+            // 
+            // textBoxEfternamn
+            // 
+            this.textBoxEfternamn.Location = new System.Drawing.Point(59, 101);
+            this.textBoxEfternamn.Name = "textBoxEfternamn";
+            this.textBoxEfternamn.Size = new System.Drawing.Size(121, 20);
+            this.textBoxEfternamn.TabIndex = 22;
+            // 
+            // lblEpost
+            // 
+            this.lblEpost.AutoSize = true;
+            this.lblEpost.Location = new System.Drawing.Point(62, 180);
+            this.lblEpost.Name = "lblEpost";
+            this.lblEpost.Size = new System.Drawing.Size(40, 13);
+            this.lblEpost.TabIndex = 36;
+            this.lblEpost.Text = "E post:";
+            // 
+            // textBoxTelefonnummer
+            // 
+            this.textBoxTelefonnummer.Location = new System.Drawing.Point(59, 148);
+            this.textBoxTelefonnummer.Name = "textBoxTelefonnummer";
+            this.textBoxTelefonnummer.Size = new System.Drawing.Size(121, 20);
+            this.textBoxTelefonnummer.TabIndex = 23;
+            // 
+            // lblAnvandarnamn
+            // 
+            this.lblAnvandarnamn.AutoSize = true;
+            this.lblAnvandarnamn.Location = new System.Drawing.Point(62, 227);
+            this.lblAnvandarnamn.Name = "lblAnvandarnamn";
+            this.lblAnvandarnamn.Size = new System.Drawing.Size(82, 13);
+            this.lblAnvandarnamn.TabIndex = 38;
+            this.lblAnvandarnamn.Text = "Användarnamn:";
+            // 
+            // textBoxEpost
+            // 
+            this.textBoxEpost.Location = new System.Drawing.Point(59, 195);
+            this.textBoxEpost.Name = "textBoxEpost";
+            this.textBoxEpost.Size = new System.Drawing.Size(121, 20);
+            this.textBoxEpost.TabIndex = 24;
+            // 
+            // textBoxFornamn
+            // 
+            this.textBoxFornamn.Location = new System.Drawing.Point(59, 54);
+            this.textBoxFornamn.Name = "textBoxFornamn";
+            this.textBoxFornamn.Size = new System.Drawing.Size(121, 20);
+            this.textBoxFornamn.TabIndex = 21;
+            // 
+            // textBoxAnvandarnamn
+            // 
+            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(59, 242);
+            this.textBoxAnvandarnamn.Name = "textBoxAnvandarnamn";
+            this.textBoxAnvandarnamn.Size = new System.Drawing.Size(121, 20);
+            this.textBoxAnvandarnamn.TabIndex = 25;
+            // 
+            // buttonLogOut
+            // 
+            this.buttonLogOut.Location = new System.Drawing.Point(872, 1);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(68, 27);
+            this.buttonLogOut.TabIndex = 1;
+            this.buttonLogOut.Text = "Logga ut";
+            this.buttonLogOut.UseVisualStyleBackColor = true;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 501);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "Välkommen";
             this.tabControl1.ResumeLayout(false);
-            this.tabBiljett.ResumeLayout(false);
-            this.tabBiljett.PerformLayout();
+            this.tabTicket.ResumeLayout(false);
+            this.tabTicket.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabForestallning.ResumeLayout(false);
-            this.tabForestallning.PerformLayout();
-            this.tabKonto.ResumeLayout(false);
-            this.tabKonto.PerformLayout();
+            this.tabShow.ResumeLayout(false);
+            this.tabShow.PerformLayout();
+            this.tabAccount.ResumeLayout(false);
+            this.tabAccount.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -743,13 +744,13 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabBiljett;
-        private System.Windows.Forms.TabPage tabForestallning;
+        private System.Windows.Forms.TabPage tabTicket;
+        private System.Windows.Forms.TabPage tabShow;
         private System.Windows.Forms.TextBox textBoxSearchCustomer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBoxCustomer;
-        private System.Windows.Forms.TabPage tabKonto;
+        private System.Windows.Forms.TabPage tabAccount;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxOlderTickets;
         private System.Windows.Forms.ListBox listBoxTicket;
@@ -761,10 +762,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonPrint;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonEditTicket;
+        private System.Windows.Forms.Button buttonReserveTicket;
+        private System.Windows.Forms.Button buttonAddCustomer;
+        private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.TextBox textBoxAntalVuxenBiljetter;
         private System.Windows.Forms.Button buttonSkapaForestalnning;
         private System.Windows.Forms.ListBox listBoxAkter;
