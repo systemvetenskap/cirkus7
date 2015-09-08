@@ -92,6 +92,7 @@
             this.textBoxFornamn = new System.Windows.Forms.TextBox();
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
+            this.labelStaffName = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -196,7 +197,6 @@
             this.buttonPrint.TabIndex = 8;
             this.buttonPrint.Text = "Skriv ut";
             this.buttonPrint.UseVisualStyleBackColor = true;
-            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
             // label8
             // 
@@ -719,11 +719,23 @@
             this.buttonLogOut.UseVisualStyleBackColor = true;
             this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
+            // labelStaffName
+            // 
+            this.labelStaffName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStaffName.AutoSize = true;
+            this.labelStaffName.Location = new System.Drawing.Point(796, 8);
+            this.labelStaffName.Name = "labelStaffName";
+            this.labelStaffName.Size = new System.Drawing.Size(35, 13);
+            this.labelStaffName.TabIndex = 2;
+            this.labelStaffName.Text = "Namn";
+            this.labelStaffName.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(944, 501);
+            this.Controls.Add(this.labelStaffName);
             this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
@@ -738,6 +750,7 @@
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -807,5 +820,6 @@
         private System.Windows.Forms.TextBox textBoxEpost;
         private System.Windows.Forms.TextBox textBoxFornamn;
         private System.Windows.Forms.TextBox textBoxAnvandarnamn;
+        private System.Windows.Forms.Label labelStaffName;
     }
 }

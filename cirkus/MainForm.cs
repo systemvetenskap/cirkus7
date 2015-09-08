@@ -12,17 +12,24 @@ namespace cirkus
 {
     public partial class MainForm : Form
     {
+        private string staffID;
+        private string staffFname;
+        private string staffLname;
 
-        public int abc;
-
-        public MainForm()
+        public MainForm(string adminAuthorization, string staffID, string staffFname, string staffLname)
         {
             InitializeComponent();
-        }
+            
+            if (adminAuthorization != "1")
+            {
+                tabControl1.TabPages.RemoveAt(2);
+                tabControl1.TabPages.RemoveAt(1);
+            }
+            this.staffID = staffID;
+            this.staffLname = staffLname;
+            this.staffFname = staffFname;
 
-        private void buttonPrint_Click(object sender, EventArgs e)
-        {
-
+            labelStaffName.Text = staffFname + " " + staffLname;
         }
 
         private void buttonReserveTicket_Click(object sender, EventArgs e)
@@ -33,8 +40,7 @@ namespace cirkus
 
         private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
-            AddCustomerForm custForm = new AddCustomerForm();
-
+            AddCustomerForm custForm = new AddCustomerForm(staffID);
             custForm.ShowDialog();
 
             listBoxCustomer.Items.Clear();
