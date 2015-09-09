@@ -16,15 +16,34 @@ namespace cirkus
         public ReserveTicketForm()
         {
             InitializeComponent();
+            string sql = "select show.showid, show.name, show.date from show";
+            
             conn.Open();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter();
-            string sql = "select show.name, show.date from show";
-            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            da.Fill(dt);
 
-            cmd.ExecuteNonQuery();
             dataGridViewShows.DataSource = dt;
+
+            
+
+           
+            
             conn.Close();
+        }
+
+        private void dataGridViewShows_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            if (e.StateChanged != DataGridViewElementStates.Selected) return;
+
+            conn.Open();
+            string sql = "select acts.name from acts where showid = '"+ +'"';
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter();
+            
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
         }
     }
 }

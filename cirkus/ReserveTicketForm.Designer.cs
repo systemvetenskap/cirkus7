@@ -171,7 +171,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(135, 27);
+            this.label6.Location = new System.Drawing.Point(226, 59);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(23, 13);
             this.label6.TabIndex = 16;
@@ -179,24 +179,30 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(264, 43);
+            this.pictureBox1.Location = new System.Drawing.Point(418, 43);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(327, 321);
+            this.pictureBox1.Size = new System.Drawing.Size(173, 321);
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
             // dataGridViewShows
             // 
+            this.dataGridViewShows.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewShows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewShows.ColumnHeadersVisible = false;
             this.dataGridViewShows.Location = new System.Drawing.Point(12, 43);
             this.dataGridViewShows.Name = "dataGridViewShows";
-            this.dataGridViewShows.Size = new System.Drawing.Size(120, 99);
+            this.dataGridViewShows.RowHeadersVisible = false;
+            this.dataGridViewShows.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewShows.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewShows.Size = new System.Drawing.Size(202, 131);
             this.dataGridViewShows.TabIndex = 18;
+            this.dataGridViewShows.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewShows_RowStateChanged);
             // 
             // dataGridViewActs
             // 
             this.dataGridViewActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewActs.Location = new System.Drawing.Point(138, 43);
+            this.dataGridViewActs.Location = new System.Drawing.Point(220, 75);
             this.dataGridViewActs.Name = "dataGridViewActs";
             this.dataGridViewActs.Size = new System.Drawing.Size(120, 99);
             this.dataGridViewActs.TabIndex = 19;
