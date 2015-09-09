@@ -14,10 +14,19 @@ namespace cirkus
     public partial class ShowForm : Form
     {
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
+        string addedshowid, acts, section, seat_number;
+        NpgsqlCommand command;
+        DataTable dt;
+        NpgsqlDataAdapter da;
 
         public ShowForm()
         {
             InitializeComponent();
+
+            loadSeats();
+
+
+
         }
 
         private void buttonLaggTillAkt_Click(object sender, EventArgs e)
@@ -32,17 +41,18 @@ namespace cirkus
                 Act newAct = new Act();
 
                 newAct.name = textBoxAkter.Text;
-                listBoxAkterPris.Items.Add(newAct);
-                listBoxAkterPris.SelectedIndex = 0;
+                listBoxAkter.Items.Add(newAct);
+                listBoxAkter.SelectedIndex = 0;
+
             }
 
         }
 
         private void buttonRaderaAkt_Click(object sender, EventArgs e)
         {
-            if (listBoxAkterPris.Items.Count != -1)
+            if (listBoxAkter.Items.Count != -1)
             {
-                listBoxAkterPris.Items.RemoveAt(listBoxAkterPris.SelectedIndex);
+                listBoxAkter.Items.RemoveAt(listBoxAkter.SelectedIndex);
             }
             
             else
@@ -53,7 +63,7 @@ namespace cirkus
 
         private void ShowForm_Load(object sender, EventArgs e)
         {
-            comboBoxAldersgrupp.Items[0] = "Vuxenbil";
+            
         }
 
         private void buttonSparaAndringar_Click(object sender, EventArgs e)
@@ -70,6 +80,7 @@ namespace cirkus
 
             else
             {
+
                 string name, date;
 
                 name = textBoxBeskrivning.Text;
@@ -78,26 +89,87 @@ namespace cirkus
 
                 conn.Open();
 
-                NpgsqlCommand command = new NpgsqlCommand(@"Insert into show (name, seat_number, date) Values (@name, @seat_number, @date)", conn);
+                command = new NpgsqlCommand(@"Insert into show (name, seat_number, date) Values (@name, @seat_number, @date)", conn);
                 command.Parameters.AddWithValue("@date", date);
                 command.Parameters.AddWithValue("@name", name);
                 command.Parameters.AddWithValue("@seat_number", seat_number);
                 command.ExecuteNonQuery();
-
-                //NpgsqlCommand command2 = new NpgsqlCommand("'select currval(show_showid_seq)';", conn);
-                //NpgsqlDataReader read;
-                //read = command.ExecuteReader();
-
-                //read.Read();
-                //string showid = read[0].ToString();
-
-                this.Close();
                 conn.Close();
+
+                conn.Open();
+                command = new NpgsqlCommand("select currval('show_showid_seq');", conn);
+                NpgsqlDataReader read;
+                read = command.ExecuteReader();
+
+                read.Read();
+                addedshowid = read[0].ToString();
+                conn.Close();
+
+                for (int i = 0; i < listBoxAkter.Items.Count; i++)
+                {
+                    acts = listBoxAkter.Items[i].ToString();
+                    conn.Open();
+                    command = new NpgsqlCommand(@"Insert into acts (name, showid) Values (@name, @showid)", conn);
+                    command.Parameters.AddWithValue("@name", acts);
+                    command.Parameters.AddWithValue("@showid", addedshowid);
+                    command.ExecuteNonQuery();
+                    conn.Close();
+                }
                 
+
+                    
+
+              
+
+                
+               
+
+
+
             }
         }
 
-        
-    
+        private void buttonaddSeat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAntalFriplatser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAkter_Click(object sender, EventArgs e)
+        {
+
+        }
+        public void loadSeats()
+        {
+            conn.Open();
+            da = new NpgsqlDataAdapter("select distinct section from seats order by section", conn);
+            dt = new DataTable();
+
+            da.Fill(dt);
+
+            comboBoxSection.DataSource = dt;
+            comboBoxSection.DisplayMember = "section";
+            conn.Close();
+
+            conn.Open();
+            da = new NpgsqlDataAdapter("select distinct rownumber from seats order by rownumber", conn);
+            dt = new DataTable();
+
+            da.Fill(dt);
+
+
+            comboBoxseatnumber.DataSource = dt;
+            comboBoxseatnumber.DisplayMember = "rownumber";
+            conn.Close();
+        }
     }
 }

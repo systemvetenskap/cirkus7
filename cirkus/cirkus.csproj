@@ -60,6 +60,7 @@
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Personal.cs" />
+    <Compile Include="show.cs" />
     <Compile Include="ShowForm.cs">
       <SubType>Form</SubType>
     </Compile>

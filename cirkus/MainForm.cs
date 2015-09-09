@@ -8,20 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using System.Configuration;
 
 namespace cirkus
 {
     public partial class MainForm : Form
     {
-        private int staffid;
-        private string staffUserId;
-        private string staffFname;
-        private string staffLname;
 
         public int abc, cde;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
+        private string sql = "";
+        public DataTable dt = new DataTable();
+        private NpgsqlDataAdapter da;
+        private List<show> allShowsList;
 
-        public MainForm()
+        public MainForm(string adminAuthorization, string staffUserID, string staffFname, string staffLname)
         {
             InitializeComponent();
         }
@@ -29,23 +30,6 @@ namespace cirkus
         private void buttonPrint_Click(object sender, EventArgs e)
         {
 
-        }
-
-        
-        public MainForm(string adminAuthorization, string staffUserID, string staffFname, string staffLname)
-        {
-            InitializeComponent();
-
-            if (adminAuthorization != "1")
-        {
-                tabControl1.TabPages.RemoveAt(2);
-                tabControl1.TabPages.RemoveAt(1);
-            }
-            this.staffUserId = staffUserID;
-            this.staffLname = staffLname;
-            this.staffFname = staffFname;
-
-            labelStaffName.Text = staffFname + " " + staffLname;
         }
 
         private void buttonReserveTicket_Click(object sender, EventArgs e)
@@ -56,12 +40,7 @@ namespace cirkus
 
         private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
-            AddCustomerForm custForm = new AddCustomerForm();
 
-                }
-
-            listBoxCustomer.Items.Clear();
-            listBoxTicket.Items.Clear();
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
@@ -103,11 +82,17 @@ namespace cirkus
             listBoxForestallningar.DataSource = allShowsList;
         }
 
+        private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
+        {
+            ShowForm shfrm = new ShowForm();
+            shfrm.ShowDialog();
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             // Lista alla Föreställningar i tab 2 .
             listForestallning();
-            listBoxForestallningar.DataSource = allShowsList; 
+            listBoxForestallningar.DataSource = allShowsList;
         }
     }
 }
