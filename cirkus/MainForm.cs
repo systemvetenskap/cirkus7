@@ -108,6 +108,7 @@ namespace cirkus
                 comboBoxBehorighetsniva.SelectedIndex = Convert.ToInt16(auth);
                 conn.Close();
                 btnUpdateraKonto.Text = "Spara ändringar";
+                textBoxAnvandarnamn.Enabled = false;
 
             }
             else if (dataGridViewStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar") 
@@ -145,6 +146,7 @@ namespace cirkus
                 tomFalt();
                 ListaPersonal();
                 btnUpdateraKonto.Text = "Uppdatera konto";
+                textBoxAnvandarnamn.Enabled = true;
                 btnSkapaKonto.Enabled = true;
 
             }
@@ -196,10 +198,10 @@ namespace cirkus
                 conn.Close();
                 ListaPersonal();
             }
-            catch (NpgsqlException ex)
+            catch (NpgsqlException)
             {
 
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Användarnamnet är upptaget");
             }
 
         }
