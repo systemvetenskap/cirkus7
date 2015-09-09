@@ -43,19 +43,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewShows = new System.Windows.Forms.DataGridView();
+            this.dataGridViewActs = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(95, 173);
+            this.numericUpDown1.Location = new System.Drawing.Point(95, 198);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(37, 20);
             this.numericUpDown1.TabIndex = 2;
@@ -63,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 173);
+            this.label1.Location = new System.Drawing.Point(20, 198);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 3;
@@ -72,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 199);
+            this.label2.Location = new System.Drawing.Point(20, 224);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 5;
@@ -80,7 +80,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(95, 199);
+            this.numericUpDown2.Location = new System.Drawing.Point(95, 224);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(37, 20);
             this.numericUpDown2.TabIndex = 4;
@@ -88,7 +88,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 225);
+            this.label3.Location = new System.Drawing.Point(20, 250);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 7;
@@ -96,7 +96,7 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(95, 225);
+            this.numericUpDown3.Location = new System.Drawing.Point(95, 250);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(37, 20);
             this.numericUpDown3.TabIndex = 6;
@@ -104,7 +104,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 251);
+            this.label4.Location = new System.Drawing.Point(20, 276);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 9;
@@ -113,7 +113,7 @@
             // labelTotalt
             // 
             this.labelTotalt.AutoSize = true;
-            this.labelTotalt.Location = new System.Drawing.Point(92, 251);
+            this.labelTotalt.Location = new System.Drawing.Point(92, 276);
             this.labelTotalt.Name = "labelTotalt";
             this.labelTotalt.Size = new System.Drawing.Size(13, 13);
             this.labelTotalt.TabIndex = 10;
@@ -123,7 +123,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(23, 287);
+            this.radioButton1.Location = new System.Drawing.Point(23, 302);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(80, 17);
             this.radioButton1.TabIndex = 11;
@@ -134,7 +134,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(23, 310);
+            this.radioButton2.Location = new System.Drawing.Point(23, 325);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(91, 17);
             this.radioButton2.TabIndex = 12;
@@ -185,29 +185,29 @@
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
-            // dataGridView1
+            // dataGridViewShows
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 43);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(120, 99);
-            this.dataGridView1.TabIndex = 18;
+            this.dataGridViewShows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewShows.Location = new System.Drawing.Point(12, 43);
+            this.dataGridViewShows.Name = "dataGridViewShows";
+            this.dataGridViewShows.Size = new System.Drawing.Size(120, 99);
+            this.dataGridViewShows.TabIndex = 18;
             // 
-            // dataGridView2
+            // dataGridViewActs
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(138, 43);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(120, 99);
-            this.dataGridView2.TabIndex = 19;
+            this.dataGridViewActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewActs.Location = new System.Drawing.Point(138, 43);
+            this.dataGridViewActs.Name = "dataGridViewActs";
+            this.dataGridViewActs.Size = new System.Drawing.Size(120, 99);
+            this.dataGridViewActs.TabIndex = 19;
             // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 405);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewActs);
+            this.Controls.Add(this.dataGridViewShows);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -229,8 +229,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,7 +252,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewShows;
+        private System.Windows.Forms.DataGridView dataGridViewActs;
     }
 }
