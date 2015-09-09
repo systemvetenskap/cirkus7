@@ -171,7 +171,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(226, 59);
+            this.label6.Location = new System.Drawing.Point(254, 59);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(23, 13);
             this.label6.TabIndex = 16;
@@ -195,15 +195,18 @@
             this.dataGridViewShows.RowHeadersVisible = false;
             this.dataGridViewShows.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewShows.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewShows.Size = new System.Drawing.Size(202, 131);
+            this.dataGridViewShows.Size = new System.Drawing.Size(223, 131);
             this.dataGridViewShows.TabIndex = 18;
-            this.dataGridViewShows.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewShows_RowStateChanged);
+            this.dataGridViewShows.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rowselection_changed);
             // 
             // dataGridViewActs
             // 
             this.dataGridViewActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewActs.Location = new System.Drawing.Point(220, 75);
+            this.dataGridViewActs.ColumnHeadersVisible = false;
+            this.dataGridViewActs.Location = new System.Drawing.Point(257, 75);
             this.dataGridViewActs.Name = "dataGridViewActs";
+            this.dataGridViewActs.RowHeadersVisible = false;
+            this.dataGridViewActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewActs.Size = new System.Drawing.Size(120, 99);
             this.dataGridViewActs.TabIndex = 19;
             // 

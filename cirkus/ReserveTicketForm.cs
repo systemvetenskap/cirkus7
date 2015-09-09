@@ -12,7 +12,9 @@ namespace cirkus
 {
     public partial class ReserveTicketForm : Form
     {
+
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
+        int showid;
         public ReserveTicketForm()
         {
             InitializeComponent();
@@ -23,27 +25,42 @@ namespace cirkus
             DataTable dt = new DataTable();
             da.Fill(dt);
 
+
+            
             dataGridViewShows.DataSource = dt;
 
-            
 
-           
-            
+            this.dataGridViewShows.Columns[0].Visible = false;
+            dataGridViewShows.Columns[1].Width = 120;
+            dataGridViewShows.Columns[2].Width = 90;
+
             conn.Close();
         }
 
-        private void dataGridViewShows_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        private void dataGridViewShows_SelectionChanged(object sender, EventArgs e)
         {
-            if (e.StateChanged != DataGridViewElementStates.Selected) return;
+         
 
-            conn.Open();
-            string sql = "select acts.name from acts where showid = '"+ +'"';
 
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter();
-            
+        }
+
+
+
+        private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
+
+            showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
+
+            string sql = "select acts.name, acts.actnumber from acts where showid = '" + showid + "'";
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+
             DataTable dt = new DataTable();
 
             da.Fill(dt);
+
+            dataGridViewActs.DataSource = dt;
         }
     }
 }
