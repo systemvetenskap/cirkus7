@@ -87,7 +87,7 @@ namespace cirkus
 
                 staffid = int.Parse(dataGridViewStaff[0, selectedIndex].Value.ToString());
 
-
+                btnTomFalten.Enabled = false;
                 btnSkapaKonto.Enabled = false;
                 dataGridViewStaff.Enabled = false;
 
