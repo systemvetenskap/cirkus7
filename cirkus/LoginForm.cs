@@ -43,7 +43,7 @@ namespace cirkus
                 read = command.ExecuteReader();
                 read.Read();
 
-                // Hämtar behörigheten från resultatet. Om det inte finns något resultat så avbryts koden här.
+                // Hämtar behörigheten från resultatet. Om det inte finns något resultat så avbryts koden här..
                 auth = read[3].ToString();
                 conn.Close();
                 this.DialogResult = DialogResult.OK;
