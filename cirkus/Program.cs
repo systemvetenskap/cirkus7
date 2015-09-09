@@ -16,28 +16,7 @@ namespace cirkus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            bool loggedOut = true;
-
-            while (loggedOut)
-            {
-                loggedOut = false;
-
-                LoginForm loginForm = new LoginForm();
-                if (loginForm.ShowDialog() == DialogResult.OK)
-                {
-
-                    MainForm mainForm = new MainForm(loginForm.auth, loginForm.fname, loginForm.lname, loginForm.staffUserId);
-                    Application.Run(mainForm);
-
-                    if (mainForm.DialogResult == DialogResult.OK)
-                    {
-                        loggedOut = true;
-                    }
-
-                }
-            }
-
+            Application.Run(new LoginForm());
         }
     }
 }
