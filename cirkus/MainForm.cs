@@ -19,7 +19,7 @@ namespace cirkus
         public MainForm(string adminAuthorization, string staffID, string staffFname, string staffLname)
         {
             InitializeComponent();
-
+            
             if (adminAuthorization != "1")
             {
                 tabControl1.TabPages.RemoveAt(2);
