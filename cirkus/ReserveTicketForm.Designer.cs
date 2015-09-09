@@ -46,6 +46,7 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkedListBoxSeat = new System.Windows.Forms.CheckedListBox();
             this.labelfreeseats = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -157,6 +158,7 @@
             this.dataGridViewShows.AllowUserToDeleteRows = false;
             this.dataGridViewShows.AllowUserToResizeColumns = false;
             this.dataGridViewShows.AllowUserToResizeRows = false;
+            this.dataGridViewShows.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewShows.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewShows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewShows.ColumnHeadersVisible = false;
@@ -172,6 +174,7 @@
             // 
             // dataGridViewActs
             // 
+            this.dataGridViewActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewActs.ColumnHeadersVisible = false;
             this.dataGridViewActs.Location = new System.Drawing.Point(6, 20);
@@ -181,12 +184,12 @@
             this.dataGridViewActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewActs.Size = new System.Drawing.Size(124, 99);
             this.dataGridViewActs.TabIndex = 19;
-            this.dataGridViewActs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selection_actChanged);
+            this.dataGridViewActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewActs_CellClick);
             // 
             // dataGridViewSeats
             // 
             this.dataGridViewSeats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSeats.Location = new System.Drawing.Point(9, 87);
+            this.dataGridViewSeats.Location = new System.Drawing.Point(138, 391);
             this.dataGridViewSeats.Name = "dataGridViewSeats";
             this.dataGridViewSeats.Size = new System.Drawing.Size(236, 88);
             this.dataGridViewSeats.TabIndex = 20;
@@ -194,7 +197,7 @@
             // Logeplatser
             // 
             this.Logeplatser.AutoSize = true;
-            this.Logeplatser.Location = new System.Drawing.Point(6, 71);
+            this.Logeplatser.Location = new System.Drawing.Point(17, 50);
             this.Logeplatser.Name = "Logeplatser";
             this.Logeplatser.Size = new System.Drawing.Size(62, 13);
             this.Logeplatser.TabIndex = 21;
@@ -235,9 +238,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkedListBoxSeat);
             this.groupBox1.Controls.Add(this.labelfreeseats);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.dataGridViewSeats);
             this.groupBox1.Controls.Add(this.Logeplatser);
             this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton3);
@@ -248,10 +251,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tillgängliga platser";
             // 
+            // checkedListBoxSeat
+            // 
+            this.checkedListBoxSeat.BackColor = System.Drawing.Color.White;
+            this.checkedListBoxSeat.FormattingEnabled = true;
+            this.checkedListBoxSeat.Location = new System.Drawing.Point(9, 101);
+            this.checkedListBoxSeat.Name = "checkedListBoxSeat";
+            this.checkedListBoxSeat.Size = new System.Drawing.Size(154, 94);
+            this.checkedListBoxSeat.TabIndex = 26;
+            // 
             // labelfreeseats
             // 
             this.labelfreeseats.AutoSize = true;
-            this.labelfreeseats.Location = new System.Drawing.Point(105, 201);
+            this.labelfreeseats.Location = new System.Drawing.Point(105, 295);
             this.labelfreeseats.Name = "labelfreeseats";
             this.labelfreeseats.Size = new System.Drawing.Size(35, 13);
             this.labelfreeseats.TabIndex = 25;
@@ -260,7 +272,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 201);
+            this.label4.Location = new System.Drawing.Point(6, 295);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 24;
@@ -310,6 +322,7 @@
             this.ClientSize = new System.Drawing.Size(556, 491);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.dataGridViewSeats);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonCancel);
@@ -361,5 +374,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckedListBox checkedListBoxSeat;
     }
 }

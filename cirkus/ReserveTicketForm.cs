@@ -31,7 +31,7 @@ namespace cirkus
 
 
             this.dataGridViewShows.Columns[0].Visible = false;
-            dataGridViewShows.Columns[1].Width = 120;
+            dataGridViewShows.Columns[1].Width = 149;
             dataGridViewShows.Columns[2].Width = 90;
 
             conn.Close();
@@ -53,6 +53,7 @@ namespace cirkus
 
             dataGridViewActs.DataSource = dt;
             this.dataGridViewActs.Columns[0].Visible = false;
+            dataGridViewActs.Columns[1].Width = 129;
 
         }
 
@@ -71,15 +72,14 @@ namespace cirkus
 
         }
 
-
-        private void selection_actChanged(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int selectedIndex = dataGridViewActs.SelectedRows[0].Index;
 
             actid = int.Parse(dataGridViewActs[0, selectedIndex].Value.ToString());
             string sql = @"select acts.actid, seats.section, seats.rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
                             inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "'";
-            
+
 
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
 
@@ -87,8 +87,10 @@ namespace cirkus
 
             da.Fill(dt);
 
-            dataGridViewSeats.DataSource = dt;
-            this.dataGridViewSeats.Columns[0].Visible = false;
+            checkedListBoxSeat.DataSource = dt;
+            checkedListBoxSeat.DisplayMember = "rownumber";
         }
+
+
     }
 }
