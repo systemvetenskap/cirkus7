@@ -162,7 +162,12 @@ namespace cirkus
         private void load_Seats()
         {
             string getSeatnr = @"select rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
-                            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "'";
+                                    inner join acts on available_seats.actid = acts.actid 
+                                        left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                                            where booked_seat_id is null and acts.actid = '" + actid + "'";
+
+
+
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(getSeatnr, conn);
             DataTable dt = new DataTable();
 
