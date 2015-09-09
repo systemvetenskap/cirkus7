@@ -89,7 +89,7 @@ namespace cirkus
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // Lista alla Föreställningar i tab 2
+            // Lista alla Föreställningar i tab 2 .
             listForestallning();
             listBoxForestallningar.DataSource = allShowsList; 
         }
