@@ -87,8 +87,8 @@ namespace cirkus
 
             da.Fill(dt);
 
-            checkedListBoxSeat.DataSource = dt;
-            checkedListBoxSeat.DisplayMember = "rownumber";
+            comboBoxSection.DataSource = dt;
+            comboBoxSection.DisplayMember = "section";
         }
 
 
