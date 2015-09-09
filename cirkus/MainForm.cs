@@ -12,7 +12,7 @@ namespace cirkus
 {
     public partial class MainForm : Form
     {
-        private string staffID;
+        private string staffUserId;
         private string staffFname;
         private string staffLname;
 
@@ -26,7 +26,7 @@ namespace cirkus
             
         }
 
-        public MainForm(string adminAuthorization, string staffID, string staffFname, string staffLname)
+        public MainForm(string adminAuthorization, string staffUserID, string staffFname, string staffLname)
         {
             InitializeComponent();
             
@@ -35,7 +35,7 @@ namespace cirkus
                 tabControl1.TabPages.RemoveAt(2);
                 tabControl1.TabPages.RemoveAt(1);
             }
-            this.staffID = staffID;
+            this.staffUserId = staffUserID;
             this.staffLname = staffLname;
             this.staffFname = staffFname;
 
@@ -50,7 +50,7 @@ namespace cirkus
 
         private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
-            AddCustomerForm custForm = new AddCustomerForm(staffID);
+            AddCustomerForm custForm = new AddCustomerForm(staffUserId);
             custForm.ShowDialog();
         }
 
