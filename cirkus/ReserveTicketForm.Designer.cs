@@ -40,7 +40,6 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.dataGridViewShows = new System.Windows.Forms.DataGridView();
             this.dataGridViewActs = new System.Windows.Forms.DataGridView();
-            this.dataGridViewSeats = new System.Windows.Forms.DataGridView();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -55,12 +54,12 @@
             this.lblYouth = new System.Windows.Forms.Label();
             this.lblAdult = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.lblSelectedSeats = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericChild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericYouth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericAdult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSeats)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -198,14 +197,6 @@
             this.dataGridViewActs.TabIndex = 19;
             this.dataGridViewActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewActs_CellClick);
             // 
-            // dataGridViewSeats
-            // 
-            this.dataGridViewSeats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSeats.Location = new System.Drawing.Point(138, 391);
-            this.dataGridViewSeats.Name = "dataGridViewSeats";
-            this.dataGridViewSeats.Size = new System.Drawing.Size(236, 88);
-            this.dataGridViewSeats.TabIndex = 20;
-            // 
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
@@ -268,6 +259,7 @@
             this.checkedListBoxSeats.Name = "checkedListBoxSeats";
             this.checkedListBoxSeats.Size = new System.Drawing.Size(120, 79);
             this.checkedListBoxSeats.TabIndex = 1;
+            this.checkedListBoxSeats.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checked_seats);
             // 
             // comboBoxSection
             // 
@@ -350,19 +342,28 @@
             this.lblTotal.TabIndex = 32;
             this.lblTotal.Text = "label6";
             // 
+            // lblSelectedSeats
+            // 
+            this.lblSelectedSeats.AutoSize = true;
+            this.lblSelectedSeats.Location = new System.Drawing.Point(504, 261);
+            this.lblSelectedSeats.Name = "lblSelectedSeats";
+            this.lblSelectedSeats.Size = new System.Drawing.Size(35, 13);
+            this.lblSelectedSeats.TabIndex = 33;
+            this.lblSelectedSeats.Text = "label4";
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(685, 491);
+            this.Controls.Add(this.lblSelectedSeats);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblAdult);
             this.Controls.Add(this.lblYouth);
             this.Controls.Add(this.lblChild);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.dataGridViewSeats);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonCancel);
@@ -376,7 +377,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericAdult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSeats)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -403,7 +403,6 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.DataGridView dataGridViewShows;
         private System.Windows.Forms.DataGridView dataGridViewActs;
-        private System.Windows.Forms.DataGridView dataGridViewSeats;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.CheckBox checkBox1;
@@ -418,5 +417,6 @@
         private System.Windows.Forms.Label lblYouth;
         private System.Windows.Forms.Label lblAdult;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Label lblSelectedSeats;
     }
 }

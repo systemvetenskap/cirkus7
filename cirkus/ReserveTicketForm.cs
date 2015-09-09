@@ -15,7 +15,7 @@ namespace cirkus
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int showid, actid;
-        int totalChild, totalYouth, totalAdult, total;
+        int totalChild, totalYouth, totalAdult, total, checkedseats;
         public ReserveTicketForm()
         {
             InitializeComponent();
@@ -25,6 +25,7 @@ namespace cirkus
         private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
         {
             loadActs();
+          
 
         }
 
@@ -36,9 +37,12 @@ namespace cirkus
         }
         private void loadSection()
         {
+            comboBoxSection.DataSource = null;
+            comboBoxSection.Items.Clear();
+
             try
             {
-                comboBoxSection.Items.Clear();
+                
                 int selectedIndex = dataGridViewActs.SelectedRows[0].Index;
 
                 actid = int.Parse(dataGridViewActs[0, selectedIndex].Value.ToString());
@@ -58,6 +62,8 @@ namespace cirkus
             catch
             {
                 comboBoxSection.DataSource = null;
+                comboBoxSection.Items.Clear();
+               
 
             }
 
@@ -98,6 +104,12 @@ namespace cirkus
             calculate_people();
         }
 
+        private void checked_seats(object sender, ItemCheckEventArgs e)
+        {
+            checkedseats++;
+            calculate_people();
+        }
+
         private void added_child(object sender, EventArgs e)
         {
             totalChild = Convert.ToInt16(numericChild.Value);
@@ -106,16 +118,9 @@ namespace cirkus
 
         private void seat_sectionchanged(object sender, EventArgs e)
         {
-            string getSeatnr = @"select rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
-                            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "'";
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(getSeatnr, conn);
-            DataTable dt = new DataTable();
 
-            da.Fill(dt);
 
-            checkedListBoxSeats.DataSource = dt;
-            checkedListBoxSeats.DisplayMember = "rownumber";
-            
+            load_Seats();
            
         }
 
@@ -139,6 +144,7 @@ namespace cirkus
             this.dataGridViewActs.Columns[0].Visible = false;
             dataGridViewActs.Columns[1].Width = 129;
             loadSection();
+            load_Seats();
 
         }
         public void calculate_people()
@@ -147,9 +153,23 @@ namespace cirkus
             lblChild.Text = totalChild.ToString();
             lblYouth.Text = totalYouth.ToString();
             lblAdult.Text = totalAdult.ToString();
-
             lblTotal.Text = total.ToString();
+            if(checkedseats == total)
+            {
+                checkedListBoxSeats.SelectionMode = SelectionMode.None;
+            }
+        }
+        private void load_Seats()
+        {
+            string getSeatnr = @"select rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
+                            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "'";
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(getSeatnr, conn);
+            DataTable dt = new DataTable();
 
+            da.Fill(dt);
+
+            checkedListBoxSeats.DataSource = dt;
+            checkedListBoxSeats.DisplayMember = "rownumber";
         }
 
 
