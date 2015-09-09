@@ -93,11 +93,13 @@
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
+            this.dgvShowsList = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabShow.SuspendLayout();
             this.tabAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -312,6 +314,7 @@
             // 
             // tabShow
             // 
+            this.tabShow.Controls.Add(this.dgvShowsList);
             this.tabShow.Controls.Add(this.textBoxKronorVuxenbiljetter);
             this.tabShow.Controls.Add(this.textBoxAntalUngdomsbiljetter);
             this.tabShow.Controls.Add(this.textBoxKronorUngdomsbiljetter);
@@ -731,6 +734,22 @@
             this.labelStaffName.Text = "Namn";
             this.labelStaffName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // dgvShowsList
+            // 
+            this.dgvShowsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvShowsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvShowsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShowsList.ColumnHeadersVisible = false;
+            this.dgvShowsList.GridColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dgvShowsList.Location = new System.Drawing.Point(26, 256);
+            this.dgvShowsList.MultiSelect = false;
+            this.dgvShowsList.Name = "dgvShowsList";
+            this.dgvShowsList.ReadOnly = true;
+            this.dgvShowsList.RowHeadersVisible = false;
+            this.dgvShowsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvShowsList.Size = new System.Drawing.Size(228, 174);
+            this.dgvShowsList.TabIndex = 22;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -751,6 +770,7 @@
             this.tabShow.PerformLayout();
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -823,5 +843,6 @@
         private System.Windows.Forms.TextBox textBoxFornamn;
         private System.Windows.Forms.TextBox textBoxAnvandarnamn;
         private System.Windows.Forms.Label labelStaffName;
+        private System.Windows.Forms.DataGridView dgvShowsList;
     }
 }

@@ -27,6 +27,15 @@ namespace cirkus
             InitializeComponent();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            // Lista alla Föreställningar i tab 2 .
+            listForestallning();
+            listBoxForestallningar.DataSource = allShowsList;
+
+            LoadShows();
+        }
+
         private void buttonPrint_Click(object sender, EventArgs e)
         {
 
@@ -88,11 +97,28 @@ namespace cirkus
             shfrm.ShowDialog();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+       
+        public void LoadShows()
         {
-            // Lista alla Föreställningar i tab 2 .
-            listForestallning();
-            listBoxForestallningar.DataSource = allShowsList;
+            dt = new DataTable();
+            String sql;
+            dgvShowsList.DataSource = null;
+            dgvShowsList.Rows.Clear();
+            try
+            {
+
+                conn.Open();
+                sql = "select date, name from show order by date DESC";
+                da = new NpgsqlDataAdapter(sql, conn);
+                da.Fill(dt);
+                dgvShowsList.DataSource = dt;
+                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

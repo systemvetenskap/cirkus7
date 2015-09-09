@@ -15,7 +15,7 @@ namespace cirkus
 
         public override string ToString()
         {
-            return  name + " " + date;
+            return name + " " + date + " " + id.ToString(); 
         }
     }
 }

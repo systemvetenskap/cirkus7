@@ -115,17 +115,10 @@ namespace cirkus
                     command.ExecuteNonQuery();
                     conn.Close();
                 }
-                
 
-                    
-
-              
-
-                
-               
-
-
-
+                this.Close();
+                var frm = Application.OpenForms.OfType<MainForm>().Single();
+                frm.LoadShows();
             }
         }
 
