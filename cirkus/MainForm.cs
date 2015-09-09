@@ -21,22 +21,31 @@ namespace cirkus
 
         private void listCustomers()
         {
-            string sql = "SELECT lname, fname, customerid FROM customer;";
-            conn.Open();
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            string sqlSearch = textBoxSearchCustomer.Text;
+            string sql= "SELECT lname, fname, customerid FROM customer WHERE lname LIKE '%" + sqlSearch + "%' OR fname LIKE '%" + sqlSearch + "%'";
+            try
+            {
+                conn.Open();
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-            dgCustomers.DataSource = dt;
-            //DataGridViewColumn column = dgCustomers.Columns[0];
-            //DataGridViewColumn column1 = dgCustomers.Columns[1];
-            //DataGridViewColumn column2 = dgCustomers.Columns[2];
-            ////this.dgCustomers.Columns[0].Visible = false;
-            //column.Width = 60;
-            //column1.Width = 60;
-            //column2.Width = 80;
-
-            conn.Close();
+                dgCustomers.DataSource = dt;
+                dgCustomers.Columns[0].HeaderText = "Efternamn";
+                dgCustomers.Columns[1].HeaderText = "Förnamn";
+                dgCustomers.Columns[2].HeaderText = "ID";
+                dgCustomers.Columns[0].Width = 60;
+                dgCustomers.Columns[1].Width = 60;
+                dgCustomers.Columns[2].Width = 60;
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void listTickets()
@@ -99,7 +108,8 @@ namespace cirkus
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-           ListaPersonal();
+            ListaPersonal();
+            listCustomers();
         }
 
         private void btnTomFalten_Click(object sender, EventArgs e)
@@ -270,6 +280,16 @@ namespace cirkus
                 case 2:
                     break;
             }
+        }
+
+        private void textBoxSearchCustomer_TextChanged(object sender, EventArgs e)
+        {
+            listCustomers();
+        }
+
+        private void dgCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

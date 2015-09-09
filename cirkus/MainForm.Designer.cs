@@ -160,8 +160,11 @@
             this.dgCustomers.Location = new System.Drawing.Point(12, 75);
             this.dgCustomers.Name = "dgCustomers";
             this.dgCustomers.ReadOnly = true;
+            this.dgCustomers.RowHeadersVisible = false;
+            this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgCustomers.Size = new System.Drawing.Size(186, 368);
             this.dgCustomers.TabIndex = 12;
+            this.dgCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomer_CellClick);
             // 
             // button4
             // 
@@ -304,6 +307,7 @@
             this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
             this.textBoxSearchCustomer.Size = new System.Drawing.Size(158, 20);
             this.textBoxSearchCustomer.TabIndex = 4;
+            this.textBoxSearchCustomer.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
             // 
             // label2
             // 
