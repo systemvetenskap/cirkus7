@@ -14,7 +14,7 @@ namespace cirkus
 {
     public partial class MainForm : Form
     {
-        int staffid;
+        private int staffid;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
        
         public void ListaPersonal()
@@ -24,12 +24,7 @@ namespace cirkus
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            dataGridViewStaff.DataSource = dt;
-          
-
-
-
-            
+            dataGridViewStaff.DataSource = dt;       
 
             DataGridViewColumn column = dataGridViewStaff.Columns[0];
             DataGridViewColumn column1 = dataGridViewStaff.Columns[1];
@@ -85,7 +80,7 @@ namespace cirkus
 
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
-
+            
             if (dataGridViewStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera konto")
             {
                 int selectedIndex = dataGridViewStaff.SelectedRows[0].Index;
@@ -144,8 +139,6 @@ namespace cirkus
 
                 cmd.ExecuteNonQuery();
 
-                
-
                 conn.Close();
 
                 dataGridViewStaff.Enabled = true;
@@ -168,14 +161,7 @@ namespace cirkus
         {
             try
             {
-                //Personal nyPersonal = new Personal();
-                //nyPersonal.förnamn = textBoxFornamn.Text;
-                //nyPersonal.efternamn = textBoxEfternamn.Text;
-                //nyPersonal.telefonnummer = textBoxTelefonnummer.Text;
-                //nyPersonal.epost = textBoxEpost.Text;
-                //nyPersonal.användarnamn = textBoxAnvandarnamn.Text;
-                //nyPersonal.lösenord = textBoxLosenord.Text;
-                //nyPersonal.behörighetsnivå = comboBoxBehorighetsniva.Text;
+       
                 conn.Open();
                 string sql = "INSERT INTO staff (fname,lname,phonenumber,email,username,password,auth) VALUES(:fname, :lname, :phonenumber, :email, :username, :password, :auth)";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
