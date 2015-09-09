@@ -64,11 +64,9 @@ namespace cirkus
             catch
             {
                 comboBoxSection.DataSource = null;
-                comboBoxSection.Items.Clear();
-               
+                comboBoxSection.Items.Clear();             
 
             }
-
 
         }
         public void loadShows()
@@ -80,10 +78,7 @@ namespace cirkus
             DataTable dt = new DataTable();
             da.Fill(dt);
 
-
-
             dataGridViewShows.DataSource = dt;
-
 
             this.dataGridViewShows.Columns[0].Visible = false;
             dataGridViewShows.Columns[1].Width = 149;
@@ -91,8 +86,7 @@ namespace cirkus
 
             conn.Close();
 
-            
-
+           
         }
 
         private void added_youth(object sender, EventArgs e)
@@ -109,8 +103,23 @@ namespace cirkus
 
         private void checked_seats(object sender, ItemCheckEventArgs e)
         {
-            checkedseats++;
-            calculate_people();
+            CheckedListBox items = (CheckedListBox)sender;
+            if (items.CheckedItems.Count > total)
+            {
+                e.NewValue = CheckState.Unchecked;
+            }
+            if (e.CurrentValue == CheckState.Unchecked)
+            {
+                checkedseats++;
+                calculate_people();
+            }
+            else if(e.CurrentValue == CheckState.Checked)
+            {
+                checkedseats--;
+                calculate_people();
+
+            }
+         
         }
 
         private void added_child(object sender, EventArgs e)
@@ -121,12 +130,8 @@ namespace cirkus
 
         private void seat_sectionchanged(object sender, EventArgs e)
         {
-
-
-            load_Seats();
-           
+            load_Seats();        
         }
-
 
 
         private void loadActs()
@@ -158,6 +163,7 @@ namespace cirkus
             lblYouth.Text = totalYouth.ToString();
             lblAdult.Text = totalAdult.ToString();
             lblTotal.Text = total.ToString();
+            lblSelectedSeats.Text = checkedseats.ToString();
             if(checkedseats == total)
             {
                 checkedListBoxSeats.SelectionMode = SelectionMode.None;
@@ -193,13 +199,13 @@ namespace cirkus
                 DataGridViewRow selectedAct = dataGridViewActs.Rows[selectedact];
                 act = Convert.ToString(selectedAct.Cells[1].Value);
                 lblActs.Text = act;
-                   
+                lblTickets.Text = total.ToString();  
 
 
             }
             catch
             {
-                MessageBox.Show("Nu blev det fel");
+                
             }
         }
 

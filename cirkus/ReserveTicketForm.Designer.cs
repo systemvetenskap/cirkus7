@@ -56,21 +56,21 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblSelectedSeats = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblShow = new System.Windows.Forms.Label();
-            this.lblTickets = new System.Windows.Forms.Label();
-            this.lblActs = new System.Windows.Forms.Label();
-            this.lblBseats = new System.Windows.Forms.Label();
             this.lblPrice = new System.Windows.Forms.Label();
+            this.lblBseats = new System.Windows.Forms.Label();
+            this.lblActs = new System.Windows.Forms.Label();
+            this.lblTickets = new System.Windows.Forms.Label();
+            this.lblShow = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericChild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericYouth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericAdult)).BeginInit();
@@ -151,7 +151,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(14, 417);
+            this.radioButton2.Location = new System.Drawing.Point(94, 394);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(91, 17);
             this.radioButton2.TabIndex = 12;
@@ -160,7 +160,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(465, 452);
+            this.buttonAdd.Location = new System.Drawing.Point(94, 429);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 13;
@@ -169,7 +169,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(8, 452);
+            this.buttonCancel.Location = new System.Drawing.Point(8, 429);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 14;
@@ -327,7 +327,7 @@
             // lblChild
             // 
             this.lblChild.AutoSize = true;
-            this.lblChild.Location = new System.Drawing.Point(135, 379);
+            this.lblChild.Location = new System.Drawing.Point(638, 455);
             this.lblChild.Name = "lblChild";
             this.lblChild.Size = new System.Drawing.Size(35, 13);
             this.lblChild.TabIndex = 29;
@@ -336,7 +336,7 @@
             // lblYouth
             // 
             this.lblYouth.AutoSize = true;
-            this.lblYouth.Location = new System.Drawing.Point(135, 403);
+            this.lblYouth.Location = new System.Drawing.Point(638, 479);
             this.lblYouth.Name = "lblYouth";
             this.lblYouth.Size = new System.Drawing.Size(35, 13);
             this.lblYouth.TabIndex = 30;
@@ -345,7 +345,7 @@
             // lblAdult
             // 
             this.lblAdult.AutoSize = true;
-            this.lblAdult.Location = new System.Drawing.Point(135, 430);
+            this.lblAdult.Location = new System.Drawing.Point(638, 506);
             this.lblAdult.Name = "lblAdult";
             this.lblAdult.Size = new System.Drawing.Size(35, 13);
             this.lblAdult.TabIndex = 31;
@@ -354,7 +354,7 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(135, 456);
+            this.lblTotal.Location = new System.Drawing.Point(638, 532);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(35, 13);
             this.lblTotal.TabIndex = 32;
@@ -363,7 +363,7 @@
             // lblSelectedSeats
             // 
             this.lblSelectedSeats.AutoSize = true;
-            this.lblSelectedSeats.Location = new System.Drawing.Point(135, 475);
+            this.lblSelectedSeats.Location = new System.Drawing.Point(638, 551);
             this.lblSelectedSeats.Name = "lblSelectedSeats";
             this.lblSelectedSeats.Size = new System.Drawing.Size(35, 13);
             this.lblSelectedSeats.TabIndex = 33;
@@ -382,21 +382,13 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Kunduppgifter";
             // 
-            // textBox1
+            // textBox4
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Förnamn";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(6, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "Efternamn";
+            this.textBox4.Location = new System.Drawing.Point(7, 103);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 3;
+            this.textBox4.Text = "E-post";
             // 
             // textBox3
             // 
@@ -406,16 +398,25 @@
             this.textBox3.TabIndex = 2;
             this.textBox3.Text = "Telefonnummer";
             // 
-            // textBox4
+            // textBox2
             // 
-            this.textBox4.Location = new System.Drawing.Point(7, 103);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.Text = "E-post";
+            this.textBox2.Location = new System.Drawing.Point(6, 49);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 1;
+            this.textBox2.Text = "Efternamn";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(6, 22);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "Förnamn";
             // 
             // groupBox7
             // 
+            this.groupBox7.BackColor = System.Drawing.Color.White;
             this.groupBox7.Controls.Add(this.lblPrice);
             this.groupBox7.Controls.Add(this.lblBseats);
             this.groupBox7.Controls.Add(this.lblActs);
@@ -433,41 +434,45 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Sammanfattning";
             // 
-            // label4
+            // lblPrice
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Föreställning:";
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.Location = new System.Drawing.Point(106, 103);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(0, 13);
+            this.lblPrice.TabIndex = 45;
             // 
-            // label5
+            // lblBseats
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 41);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "Antal biljetter:";
+            this.lblBseats.AutoSize = true;
+            this.lblBseats.Location = new System.Drawing.Point(106, 83);
+            this.lblBseats.Name = "lblBseats";
+            this.lblBseats.Size = new System.Drawing.Size(0, 13);
+            this.lblBseats.TabIndex = 44;
             // 
-            // label6
+            // lblActs
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 61);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 38;
-            this.label6.Text = "Akter:";
+            this.lblActs.AutoSize = true;
+            this.lblActs.Location = new System.Drawing.Point(106, 61);
+            this.lblActs.Name = "lblActs";
+            this.lblActs.Size = new System.Drawing.Size(0, 13);
+            this.lblActs.TabIndex = 43;
             // 
-            // label7
+            // lblTickets
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 83);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 13);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "Bokade platser:";
+            this.lblTickets.AutoSize = true;
+            this.lblTickets.Location = new System.Drawing.Point(106, 41);
+            this.lblTickets.Name = "lblTickets";
+            this.lblTickets.Size = new System.Drawing.Size(0, 13);
+            this.lblTickets.TabIndex = 42;
+            // 
+            // lblShow
+            // 
+            this.lblShow.AutoSize = true;
+            this.lblShow.Location = new System.Drawing.Point(106, 20);
+            this.lblShow.Name = "lblShow";
+            this.lblShow.Size = new System.Drawing.Size(0, 13);
+            this.lblShow.TabIndex = 41;
             // 
             // label8
             // 
@@ -478,57 +483,48 @@
             this.label8.TabIndex = 40;
             this.label8.Text = "Pris:";
             // 
-            // lblShow
+            // label7
             // 
-            this.lblShow.AutoSize = true;
-            this.lblShow.Location = new System.Drawing.Point(106, 20);
-            this.lblShow.Name = "lblShow";
-            this.lblShow.Size = new System.Drawing.Size(35, 13);
-            this.lblShow.TabIndex = 41;
-            this.lblShow.Text = "label9";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 83);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(81, 13);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Bokade platser:";
             // 
-            // lblTickets
+            // label6
             // 
-            this.lblTickets.AutoSize = true;
-            this.lblTickets.Location = new System.Drawing.Point(106, 41);
-            this.lblTickets.Name = "lblTickets";
-            this.lblTickets.Size = new System.Drawing.Size(41, 13);
-            this.lblTickets.TabIndex = 42;
-            this.lblTickets.Text = "label10";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 38;
+            this.label6.Text = "Akter:";
             // 
-            // lblActs
+            // label5
             // 
-            this.lblActs.AutoSize = true;
-            this.lblActs.Location = new System.Drawing.Point(106, 61);
-            this.lblActs.Name = "lblActs";
-            this.lblActs.Size = new System.Drawing.Size(41, 13);
-            this.lblActs.TabIndex = 43;
-            this.lblActs.Text = "label11";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 41);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Antal biljetter:";
             // 
-            // lblBseats
+            // label4
             // 
-            this.lblBseats.AutoSize = true;
-            this.lblBseats.Location = new System.Drawing.Point(106, 83);
-            this.lblBseats.Name = "lblBseats";
-            this.lblBseats.Size = new System.Drawing.Size(41, 13);
-            this.lblBseats.TabIndex = 44;
-            this.lblBseats.Text = "label12";
-            // 
-            // lblPrice
-            // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(106, 103);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(41, 13);
-            this.lblPrice.TabIndex = 45;
-            this.lblPrice.Text = "label13";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "Föreställning:";
             // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(685, 491);
+            this.ClientSize = new System.Drawing.Size(685, 461);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.lblSelectedSeats);
