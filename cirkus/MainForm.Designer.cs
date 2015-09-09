@@ -487,6 +487,7 @@
             this.buttonSkapaForestalnning.TabIndex = 4;
             this.buttonSkapaForestalnning.Text = "Skapa ny";
             this.buttonSkapaForestalnning.UseVisualStyleBackColor = true;
+            this.buttonSkapaForestalnning.Click += new System.EventHandler(this.buttonSkapaForestalnning_Click);
             // 
             // listBoxAkter
             // 
@@ -740,6 +741,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "Välkommen";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabTicket.ResumeLayout(false);
             this.tabTicket.PerformLayout();
