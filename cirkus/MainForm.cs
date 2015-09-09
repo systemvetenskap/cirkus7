@@ -159,6 +159,14 @@ namespace cirkus
 
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBoxFornamn.Text)||string.IsNullOrEmpty(textBoxEfternamn.Text)
+                ||string.IsNullOrEmpty(textBoxTelefonnummer.Text)||string.IsNullOrEmpty(textBoxEpost.Text)
+                ||string.IsNullOrEmpty(textBoxAnvandarnamn.Text)||string.IsNullOrEmpty(textBoxLosenord.Text)
+                ||string.IsNullOrEmpty(comboBoxBehorighetsniva.Text))
+            {
+                MessageBox.Show("Ett eller flera fält är tomma. Fyll i alla fält");
+                return;
+            }
             try
             {
        
@@ -203,6 +211,7 @@ namespace cirkus
             textBoxTelefonnummer.Clear();
             textBoxAnvandarnamn.Clear();
             textBoxLosenord.Clear();
+            comboBoxBehorighetsniva.ResetText();
         }
 
         private void listBoxRegister_SelectedIndexChanged(object sender, EventArgs e)
