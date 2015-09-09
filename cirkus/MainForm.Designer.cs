@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
+            this.dgTickets = new System.Windows.Forms.DataGridView();
             this.dgCustomers = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
             this.buttonEditTicket = new System.Windows.Forms.Button();
@@ -92,14 +93,13 @@
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
-            this.dgTickets = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabShow.SuspendLayout();
             this.tabAccount.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -112,6 +112,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(933, 482);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabTicket
             // 
@@ -134,6 +135,18 @@
             this.tabTicket.TabIndex = 0;
             this.tabTicket.Text = "Biljettförsäljning";
             this.tabTicket.UseVisualStyleBackColor = true;
+            // 
+            // dgTickets
+            // 
+            this.dgTickets.AllowUserToAddRows = false;
+            this.dgTickets.AllowUserToDeleteRows = false;
+            this.dgTickets.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTickets.Location = new System.Drawing.Point(233, 75);
+            this.dgTickets.Name = "dgTickets";
+            this.dgTickets.ReadOnly = true;
+            this.dgTickets.Size = new System.Drawing.Size(186, 368);
+            this.dgTickets.TabIndex = 13;
             // 
             // dgCustomers
             // 
@@ -728,18 +741,6 @@
             this.labelStaffName.Text = "Namn";
             this.labelStaffName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // dgTickets
-            // 
-            this.dgTickets.AllowUserToAddRows = false;
-            this.dgTickets.AllowUserToDeleteRows = false;
-            this.dgTickets.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTickets.Location = new System.Drawing.Point(233, 75);
-            this.dgTickets.Name = "dgTickets";
-            this.dgTickets.ReadOnly = true;
-            this.dgTickets.Size = new System.Drawing.Size(186, 368);
-            this.dgTickets.TabIndex = 13;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -753,6 +754,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabTicket.ResumeLayout(false);
             this.tabTicket.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -760,7 +762,6 @@
             this.tabShow.PerformLayout();
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
