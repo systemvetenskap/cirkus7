@@ -26,7 +26,7 @@ namespace cirkus
         private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
         {
             loadActs();
-            
+            create_summary();
 
         }
 
@@ -34,6 +34,7 @@ namespace cirkus
         {
             
             loadSection();
+            create_summary();
           
         }
         private void loadSection()
@@ -90,7 +91,7 @@ namespace cirkus
 
             conn.Close();
 
-            //lblShow.Text = this.dataGridViewShows.Sel
+            
 
         }
 
@@ -147,6 +148,7 @@ namespace cirkus
             dataGridViewActs.Columns[1].Width = 129;
             loadSection();
             load_Seats();
+            
 
         }
         public void calculate_people()
@@ -177,6 +179,28 @@ namespace cirkus
 
             checkedListBoxSeats.DataSource = dt;
             checkedListBoxSeats.DisplayMember = "rownumber";
+        }
+        private void create_summary()
+        {
+            try
+            {
+              
+                int selectedshow = dataGridViewShows.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedShow= dataGridViewShows.Rows[selectedshow];
+                show = Convert.ToString(selectedShow.Cells[1].Value);
+                lblShow.Text = show;
+                int selectedact = dataGridViewActs.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedAct = dataGridViewActs.Rows[selectedact];
+                act = Convert.ToString(selectedAct.Cells[1].Value);
+                lblActs.Text = act;
+                   
+
+
+            }
+            catch
+            {
+                MessageBox.Show("Nu blev det fel");
+            }
         }
 
 
