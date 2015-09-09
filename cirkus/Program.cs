@@ -16,7 +16,24 @@ namespace cirkus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+
+            // Medans man är utloggad ska programmet loopa koden.
+            bool loggedOut = true;
+            while(loggedOut)
+            {
+                loggedOut = false;
+
+                // Om man har loggat in visas nästa steg i programmet.
+                LoginForm loginForm = new LoginForm();
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    if (new MainForm(loginForm.auth, loginForm.fname, loginForm.lname, loginForm.staffUserId).ShowDialog() == DialogResult.OK)
+                    {
+                        loggedOut = true;
+                    }
+                }
+            }
+
         }
     }
 }
