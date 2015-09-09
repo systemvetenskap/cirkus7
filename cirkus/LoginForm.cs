@@ -41,7 +41,7 @@ namespace cirkus
                 read.Read();
 
                 // Hämtar behörigheten från resultatet. Om det inte finns något resultat så avbryts koden här.
-                auth = read[3].ToString();
+                auth = read[0].ToString();
 
                 // Huvudfönstret skapas och öppnas, auth bestämmer om adminverktygen ska visas eller inte. om värdet är 1 så visas de.
                 MainForm frm = new MainForm(auth, read[0].ToString(), read[1].ToString(), read[2].ToString());
