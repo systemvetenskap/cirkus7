@@ -164,34 +164,40 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 27);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 13);
+            this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Föreställning";
+            this.label5.Text = "Föreställningar";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(254, 59);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 13);
+            this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 16;
-            this.label6.Text = "Akt";
+            this.label6.Text = "Akter";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(418, 43);
+            this.pictureBox1.Location = new System.Drawing.Point(448, 43);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(173, 321);
+            this.pictureBox1.Size = new System.Drawing.Size(143, 321);
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
             // dataGridViewShows
             // 
+            this.dataGridViewShows.AllowUserToAddRows = false;
+            this.dataGridViewShows.AllowUserToDeleteRows = false;
+            this.dataGridViewShows.AllowUserToResizeColumns = false;
+            this.dataGridViewShows.AllowUserToResizeRows = false;
             this.dataGridViewShows.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataGridViewShows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewShows.ColumnHeadersVisible = false;
             this.dataGridViewShows.Location = new System.Drawing.Point(12, 43);
             this.dataGridViewShows.Name = "dataGridViewShows";
+            this.dataGridViewShows.ReadOnly = true;
             this.dataGridViewShows.RowHeadersVisible = false;
             this.dataGridViewShows.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewShows.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -207,7 +213,7 @@
             this.dataGridViewActs.Name = "dataGridViewActs";
             this.dataGridViewActs.RowHeadersVisible = false;
             this.dataGridViewActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewActs.Size = new System.Drawing.Size(120, 99);
+            this.dataGridViewActs.Size = new System.Drawing.Size(160, 99);
             this.dataGridViewActs.TabIndex = 19;
             // 
             // ReserveTicketForm

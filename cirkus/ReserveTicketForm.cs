@@ -62,5 +62,10 @@ namespace cirkus
 
             dataGridViewActs.DataSource = dt;
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
