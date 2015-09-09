@@ -52,7 +52,7 @@ namespace cirkus
         {
             
         }
-        public void ListaPersonal()
+        public void ListaPersonal()//Metod för att lista personalen i Datagriden
         {
             string sql = "SELECT staffid, fname, lname, phonenumber FROM staff;";
             conn.Open();
@@ -71,8 +71,32 @@ namespace cirkus
 
             conn.Close();
         }
+        public bool EndastSiffror(string värde) //Metod för att kontrollera om det bara är siffror
+        {
+            bool barasiffror = true;
+            foreach (char siffra in värde)
+            {
+                if (!char.IsDigit(siffra))
+                {
+                    barasiffror = false;
+                }
+            }
+            return barasiffror;
+        }
+        public bool BaraBokstäver(string namn)//Metod för att kontrollera om det bara är bokstäver
+        {
+            bool okej = true;
+            foreach (char bokstav in namn)
+            {
+                if (!char.IsLetter(bokstav))
+                {
+                    okej = false;
+                }
+            }
+            return okej;
+        }
 
-        
+
         public MainForm(string adminAuthorization, string staffUserID, string staffFname, string staffLname)
         {
             InitializeComponent();
@@ -119,7 +143,17 @@ namespace cirkus
 
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
-            
+            if (!EndastSiffror(textBoxTelefonnummer.Text))
+            {
+                MessageBox.Show("Telefonnummret får bara innehålla siffror");
+                return;
+            }
+            if (!BaraBokstäver(textBoxFornamn.Text) || !BaraBokstäver(textBoxEfternamn.Text))
+            {
+                MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
+                return;
+            }
+
             if (dataGridViewStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera konto")
             {
                 int selectedIndex = dataGridViewStaff.SelectedRows[0].Index;
@@ -200,6 +234,16 @@ namespace cirkus
 
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
+            if (!EndastSiffror(textBoxTelefonnummer.Text))
+            {
+                MessageBox.Show("Telefonnummret får bara innehålla siffror");
+                return;
+            }
+            if (!BaraBokstäver(textBoxFornamn.Text)||!BaraBokstäver(textBoxEfternamn.Text))
+            {
+                MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
+                return;
+            }
             if (string.IsNullOrEmpty(textBoxFornamn.Text)||string.IsNullOrEmpty(textBoxEfternamn.Text)
                 ||string.IsNullOrEmpty(textBoxTelefonnummer.Text)||string.IsNullOrEmpty(textBoxEpost.Text)
                 ||string.IsNullOrEmpty(textBoxAnvandarnamn.Text)||string.IsNullOrEmpty(textBoxLosenord.Text)
