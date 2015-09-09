@@ -33,7 +33,7 @@ namespace cirkus
             loadSection();
           
         }
-        public void loadSection()
+        private void loadSection()
         {
             try
             {
@@ -84,7 +84,23 @@ namespace cirkus
 
 
         }
-        public void loadActs()
+
+        private void seat_sectionchanged(object sender, EventArgs e)
+        {
+            string getSeatnr = @"select rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
+                            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "'";
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(getSeatnr, conn);
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            checkedListBoxSeats.DataSource = dt;
+            checkedListBoxSeats.DisplayMember = "rownumber";
+            
+           
+        }
+
+        private void loadActs()
         {
             int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
 

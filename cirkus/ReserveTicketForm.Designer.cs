@@ -178,7 +178,6 @@
             this.dataGridViewActs.AllowUserToDeleteRows = false;
             this.dataGridViewActs.AllowUserToResizeColumns = false;
             this.dataGridViewActs.AllowUserToResizeRows = false;
-            this.dataGridViewActs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridViewActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewActs.ColumnHeadersVisible = false;
@@ -270,6 +269,7 @@
             this.comboBoxSection.Name = "comboBoxSection";
             this.comboBoxSection.Size = new System.Drawing.Size(82, 21);
             this.comboBoxSection.TabIndex = 0;
+            this.comboBoxSection.SelectedIndexChanged += new System.EventHandler(this.seat_sectionchanged);
             // 
             // groupBox2
             // 
