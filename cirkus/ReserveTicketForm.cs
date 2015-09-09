@@ -15,6 +15,7 @@ namespace cirkus
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int showid, actid;
+        int totalChild, totalYouth, totalAdult, total;
         public ReserveTicketForm()
         {
             InitializeComponent();
@@ -85,6 +86,24 @@ namespace cirkus
 
         }
 
+        private void added_youth(object sender, EventArgs e)
+        {
+            totalYouth = Convert.ToInt16(numericYouth.Value);
+            calculate_people();
+        }
+
+        private void added_adult(object sender, EventArgs e)
+        {
+            totalAdult = Convert.ToInt16(numericAdult.Value);
+            calculate_people();
+        }
+
+        private void added_child(object sender, EventArgs e)
+        {
+            totalChild = Convert.ToInt16(numericChild.Value);
+            calculate_people();
+        }
+
         private void seat_sectionchanged(object sender, EventArgs e)
         {
             string getSeatnr = @"select rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
@@ -99,6 +118,8 @@ namespace cirkus
             
            
         }
+
+
 
         private void loadActs()
         {
@@ -118,6 +139,16 @@ namespace cirkus
             this.dataGridViewActs.Columns[0].Visible = false;
             dataGridViewActs.Columns[1].Width = 129;
             loadSection();
+
+        }
+        public void calculate_people()
+        {
+           total = totalChild + totalYouth + totalAdult;
+            lblChild.Text = totalChild.ToString();
+            lblYouth.Text = totalYouth.ToString();
+            lblAdult.Text = totalAdult.ToString();
+
+            lblTotal.Text = total.ToString();
 
         }
 
