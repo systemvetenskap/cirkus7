@@ -15,7 +15,7 @@ namespace cirkus
     public partial class MainForm : Form
     {
 
-        public int abc;
+        public int abc, cde;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         private string sql = "";
         public DataTable dt = new DataTable();
