@@ -46,12 +46,8 @@ namespace cirkus
                 // Hämtar behörigheten från resultatet. Om det inte finns något resultat så avbryts koden här.
                 auth = read[3].ToString();
                 conn.Close();
-
-                if (behorighet == "0" || behorighet == "1")
-                {
-                    MainForm frm = new MainForm();
-                    this.Visible = false;
-                    frm.abc = 0;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
 
             }
             catch (InvalidOperationException)
@@ -62,7 +58,7 @@ namespace cirkus
             {
                 conn.Close();
             }
-          
+
         }
     }
 }
