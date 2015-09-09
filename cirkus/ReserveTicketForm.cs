@@ -15,7 +15,8 @@ namespace cirkus
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int showid, actid;
-        int totalChild, totalYouth, totalAdult, total, checkedseats;
+        int totalChild, totalYouth, totalAdult, total, checkedseats, price;
+        string show, act, bseats;
         public ReserveTicketForm()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace cirkus
         private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
         {
             loadActs();
-          
+            
 
         }
 
@@ -89,6 +90,7 @@ namespace cirkus
 
             conn.Close();
 
+            //lblShow.Text = this.dataGridViewShows.Sel
 
         }
 
