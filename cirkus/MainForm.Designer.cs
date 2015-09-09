@@ -81,7 +81,7 @@
             this.btnUpdateraKonto = new System.Windows.Forms.Button();
             this.lblFornamn = new System.Windows.Forms.Label();
             this.btnSkapaKonto = new System.Windows.Forms.Button();
-            this.textBoxSokfalt = new System.Windows.Forms.TextBox();
+            this.textBoxSearchStaff = new System.Windows.Forms.TextBox();
             this.lblSokPerson = new System.Windows.Forms.Label();
             this.lblEfternamn = new System.Windows.Forms.Label();
             this.textBoxLosenord = new System.Windows.Forms.TextBox();
@@ -551,7 +551,7 @@
             this.tabAccount.Controls.Add(this.btnUpdateraKonto);
             this.tabAccount.Controls.Add(this.lblFornamn);
             this.tabAccount.Controls.Add(this.btnSkapaKonto);
-            this.tabAccount.Controls.Add(this.textBoxSokfalt);
+            this.tabAccount.Controls.Add(this.textBoxSearchStaff);
             this.tabAccount.Controls.Add(this.lblSokPerson);
             this.tabAccount.Controls.Add(this.lblEfternamn);
             this.tabAccount.Controls.Add(this.textBoxLosenord);
@@ -669,12 +669,13 @@
             this.btnSkapaKonto.UseVisualStyleBackColor = true;
             this.btnSkapaKonto.Click += new System.EventHandler(this.btnSkapaKonto_Click);
             // 
-            // textBoxSokfalt
+            // textBoxSearchStaff
             // 
-            this.textBoxSokfalt.Location = new System.Drawing.Point(299, 48);
-            this.textBoxSokfalt.Name = "textBoxSokfalt";
-            this.textBoxSokfalt.Size = new System.Drawing.Size(209, 20);
-            this.textBoxSokfalt.TabIndex = 35;
+            this.textBoxSearchStaff.Location = new System.Drawing.Point(299, 48);
+            this.textBoxSearchStaff.Name = "textBoxSearchStaff";
+            this.textBoxSearchStaff.Size = new System.Drawing.Size(209, 20);
+            this.textBoxSearchStaff.TabIndex = 35;
+            this.textBoxSearchStaff.TextChanged += new System.EventHandler(this.textBoxSearchStaff_TextChanged_1);
             // 
             // lblSokPerson
             // 
@@ -863,7 +864,7 @@
         private System.Windows.Forms.Button btnUpdateraKonto;
         private System.Windows.Forms.Label lblFornamn;
         private System.Windows.Forms.Button btnSkapaKonto;
-        private System.Windows.Forms.TextBox textBoxSokfalt;
+        private System.Windows.Forms.TextBox textBoxSearchStaff;
         private System.Windows.Forms.Label lblSokPerson;
         private System.Windows.Forms.Label lblEfternamn;
         private System.Windows.Forms.TextBox textBoxLosenord;

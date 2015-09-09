@@ -52,24 +52,39 @@ namespace cirkus
         {
             
         }
-        public void ListaPersonal()//Metod för att lista personalen i Datagriden
+        private void ListaPersonal()//Metod för att lista personalen i Datagriden
         {
-            string sql = "SELECT staffid, fname, lname, phonenumber FROM staff;";
-            conn.Open();
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridViewStaff.DataSource = dt;       
+            string sqlSearchStaff = textBoxSearchStaff.Text;
+            string sql = "SELECT staffid, lname, fname, phonenumber  FROM staff WHERE fname LIKE '%" + sqlSearchStaff + "%' OR lname LIKE '%" + sqlSearchStaff + "%'";
+            try
+            {
+                conn.Open();
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridViewStaff.DataSource = dt;
 
-            DataGridViewColumn column = dataGridViewStaff.Columns[0];
-            DataGridViewColumn column1 = dataGridViewStaff.Columns[1];
-            DataGridViewColumn column2 = dataGridViewStaff.Columns[2];
-            this.dataGridViewStaff.Columns[0].Visible = false;
-            column.Width = 60;
-            column1.Width = 60;
-            column2.Width = 80;
+                DataGridViewColumn column = dataGridViewStaff.Columns[0];
+                DataGridViewColumn column1 = dataGridViewStaff.Columns[1];
+                DataGridViewColumn column2 = dataGridViewStaff.Columns[2];
+                this.dataGridViewStaff.Columns[0].Visible = false;
+                
+                column.Width = 60;
+                column1.Width = 60;
+                column2.Width = 80;
 
-            conn.Close();
+                conn.Close();
+
+            }
+            catch(NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
         }
         public bool EndastSiffror(string värde) //Metod för att kontrollera om det bara är siffror
         {
@@ -330,10 +345,16 @@ namespace cirkus
         {
             listCustomers();
         }
+        private void textBoxSearchStaff_TextChanged_1(object sender, EventArgs e)
+        {
+            ListaPersonal();
+        }
 
         private void dgCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
+
     }
 }
