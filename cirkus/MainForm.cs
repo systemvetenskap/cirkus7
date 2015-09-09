@@ -16,6 +16,16 @@ namespace cirkus
         private string staffFname;
         private string staffLname;
 
+        private void listCustomers()
+        {
+
+        }
+
+        private void listTickets()
+        {
+            
+        }
+
         public MainForm(string adminAuthorization, string staffID, string staffFname, string staffLname)
         {
             InitializeComponent();
@@ -42,9 +52,6 @@ namespace cirkus
         {
             AddCustomerForm custForm = new AddCustomerForm(staffID);
             custForm.ShowDialog();
-
-            listBoxCustomer.Items.Clear();
-            listBoxTicket.Items.Clear();
         }
 
         private void buttonLogOut_Click(object sender, EventArgs e)
