@@ -14,7 +14,10 @@ namespace cirkus
 {
     public partial class LoginForm : Form
     {
-        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
+        public string staffUserId, fname, lname, auth;
+
+        private NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
+
         public LoginForm()
         {
             InitializeComponent();
@@ -23,7 +26,7 @@ namespace cirkus
         private void button1_Click_1(object sender, EventArgs e)
         {
             // nya strängar som kommer att bestämma vilket konto vi hämtar från databasen
-            string username, password, auth;
+            string username, password;
 
             username = textUsername.Text;
             password = textPassword.Text;
@@ -42,24 +45,10 @@ namespace cirkus
 
                 // Hämtar behörigheten från resultatet. Om det inte finns något resultat så avbryts koden här.
                 auth = read[3].ToString();
-
-                // Huvudfönstret skapas och öppnas, auth bestämmer om adminverktygen ska visas eller inte. om värdet är 1 så visas de.
-                MainForm frm = new MainForm(auth, read[0].ToString(), read[1].ToString(), read[2].ToString());
                 conn.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
 
-                this.Visible = false;
-                    
-                // Visa dialogfönstret.
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    // det här används när man väljer att logga ut.
-                    this.Visible = true;
-                }
-                else
-                {
-                    // Det här används när programmet avslutas. Då ska hela applikationen avslutas.
-                    Application.Exit();
-                }
             }
             catch (InvalidOperationException)
             {
