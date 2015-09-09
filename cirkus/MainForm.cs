@@ -17,7 +17,7 @@ namespace cirkus
         private int staffid;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
        
-        public void ListaPersonal() //Metod för att lista all personal
+        public void ListaPersonal()
         {
             string sql = "SELECT staffid, fname, lname, phonenumber FROM staff;";
             conn.Open();
@@ -37,17 +37,6 @@ namespace cirkus
             conn.Close();
         }
 
-        public void tomFalt() //Metod för att tömma fälten
-        {
-            textBoxFornamn.Clear();
-            textBoxEfternamn.Clear();
-            textBoxEpost.Clear();
-            textBoxTelefonnummer.Clear();
-            textBoxAnvandarnamn.Clear();
-            textBoxLosenord.Clear();
-            comboBoxBehorighetsniva.ResetText();
-        }
-
         public MainForm()
         {
             InitializeComponent();
@@ -55,7 +44,7 @@ namespace cirkus
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void buttonReserveTicket_Click(object sender, EventArgs e)
@@ -69,6 +58,7 @@ namespace cirkus
             AddCustomerForm custForm = new AddCustomerForm();
 
             custForm.ShowDialog();
+
             listBoxCustomer.Items.Clear();
             listBoxTicket.Items.Clear();
         }
@@ -107,7 +97,7 @@ namespace cirkus
                 NpgsqlDataReader read;
                 read = cmd.ExecuteReader();
                 read.Read();
-                //Visar kolumerna i textboxarna.
+
                 textBoxFornamn.Text = read[0].ToString();
                 textBoxEfternamn.Text = read[1].ToString();
                 textBoxTelefonnummer.Text = read[2].ToString();
@@ -128,7 +118,7 @@ namespace cirkus
 
                 NpgsqlCommand cmd = new NpgsqlCommand(@"update staff set fname = @fn, lname = @ln, phonenumber = @pn, email = @email, 
                                                         username = @un, password = @pass, auth = @auth where staffid =@id", conn);
-                                                       
+                                                        
                 cmd.Parameters.Add(new NpgsqlParameter("fn", textBoxFornamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("ln", textBoxEfternamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("pn", textBoxTelefonnummer.Text));
@@ -147,14 +137,18 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
 
                 }
+
                 cmd.ExecuteNonQuery();
+
                 conn.Close();
+
                 dataGridViewStaff.Enabled = true;
                 tomFalt();
                 ListaPersonal();
                 btnUpdateraKonto.Text = "Uppdatera konto";
                 textBoxAnvandarnamn.Enabled = true;
                 btnSkapaKonto.Enabled = true;
+
             }
 
         }
@@ -167,7 +161,6 @@ namespace cirkus
 
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
-            //Kontroll
             if (string.IsNullOrEmpty(textBoxFornamn.Text)||string.IsNullOrEmpty(textBoxEfternamn.Text)
                 ||string.IsNullOrEmpty(textBoxTelefonnummer.Text)||string.IsNullOrEmpty(textBoxEpost.Text)
                 ||string.IsNullOrEmpty(textBoxAnvandarnamn.Text)||string.IsNullOrEmpty(textBoxLosenord.Text)
@@ -176,8 +169,6 @@ namespace cirkus
                 MessageBox.Show("Ett eller flera fält är tomma. Fyll i alla fält");
                 return;
             }
-            //Slut kontroll
-
             try
             {
        
@@ -191,8 +182,7 @@ namespace cirkus
                 cmd.Parameters.Add(new NpgsqlParameter("email", textBoxEpost.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("username", textBoxAnvandarnamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("password", textBoxLosenord.Text));
-                
-                //Sätter behörighetsnivån
+
                 if (comboBoxBehorighetsniva.Text == "Biljettförsäljare")
                 {
                     int auth = 0;
@@ -210,9 +200,29 @@ namespace cirkus
             }
             catch (NpgsqlException)
             {
+
                 MessageBox.Show("Användarnamnet är upptaget");
-                  
             }
+
         }
+        public void tomFalt()
+        {
+            textBoxFornamn.Clear();
+            textBoxEfternamn.Clear();
+            textBoxEpost.Clear();
+            textBoxTelefonnummer.Clear();
+            textBoxAnvandarnamn.Clear();
+            textBoxLosenord.Clear();
+            comboBoxBehorighetsniva.ResetText();
+        }
+
+        private void listBoxRegister_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+  
     }
 }
