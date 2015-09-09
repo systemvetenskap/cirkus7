@@ -73,7 +73,7 @@ namespace cirkus
                 column1.Width = 60;
                 column2.Width = 80;
 
-                conn.Close()
+                conn.Close();
 
             }
             catch(NpgsqlException ex)
