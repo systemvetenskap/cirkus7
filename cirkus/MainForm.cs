@@ -131,14 +131,13 @@ namespace cirkus
         }
         #endregion
         #region Föreställningar
-        private void buttonSkapaForestalnning_Click(object sender, EventArgs e)
-        {
-            ShowForm showForm = new ShowForm();
-            showForm.ShowDialog();
-        }
+
+
         private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
         {
             ShowForm showForm = new ShowForm();
+            showForm.ButtonVisibleSparaAndringar();
+
             showForm.ShowDialog();
         }
         private void buttonRaderaForestallning_Click(object sender, EventArgs e)
@@ -179,6 +178,8 @@ namespace cirkus
 
             ShowForm frm = new ShowForm();
             frm.SetID(nySelectedID);
+
+            frm.ButtonVisibleLaggTillForestallning();
 
             frm.ShowDialog();
         }

@@ -26,7 +26,17 @@ namespace cirkus
             InitializeComponent();
 
             loadSeats();
-            
+
+        }
+
+        public void ButtonVisibleSparaAndringar()
+        {
+            buttonSparaAndringar.Visible = false;
+        }
+
+        public void ButtonVisibleLaggTillForestallning()
+        {
+            buttonLaggTIllForestallning.Visible = false;
         }
 
         public void SetID(string s)
@@ -35,14 +45,16 @@ namespace cirkus
             textBoxBeskrivning.Text = Name;
 
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("select * from show where showid = '" + Name + "'", conn); 
-            NpgsqlDataReader dr = cmd.ExecuteReader();  
+            NpgsqlCommand cmd = new NpgsqlCommand("select * from show where showid = '" + Name + "'", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
 
-            while (dr.Read()) 
+            while (dr.Read())
             {
-                textBoxBeskrivning.Text = dr.GetValue(1).ToString(); 
+                textBoxBeskrivning.Text = dr.GetValue(1).ToString();
                 textBoxAntalFriplatser.Text = dr.GetValue(2).ToString();
                 dateTimePickerDatum.Value = Convert.ToDateTime(dr.GetValue(0).ToString());
+                dateTimePickerForsaljningstidFran.Value = Convert.ToDateTime(dr.GetValue(4).ToString());
+                dateTimePickerForsaljningstidTill.Value = Convert.ToDateTime(dr.GetValue(5).ToString());
             }
             conn.Close();
         }
@@ -73,7 +85,7 @@ namespace cirkus
             {
                 listBoxAkter.Items.RemoveAt(listBoxAkter.SelectedIndex);
             }
-            
+
             else
             {
                 MessageBox.Show("Listan är redan tom");
@@ -82,24 +94,29 @@ namespace cirkus
 
         private void ShowForm_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttonSparaAndringar_Click(object sender, EventArgs e)
         {
-            string name, date;
+            string name, date, sale_start, sale_stop;
 
             name = textBoxBeskrivning.Text;
             date = dateTimePickerDatum.Text;
+            sale_start = dateTimePickerForsaljningstidFran.Text;
+            sale_stop = dateTimePickerForsaljningstidTill.Text;
+
             int seat_number = Convert.ToInt16(textBoxAntalFriplatser.Text);
 
-            string sql = "update show set name = @name, date = @date, seat_number = @seat_number where showid = '" + Name + "'";
+            string sql = "update show set name = @name, date = @date, seat_number = @seat_number, sale_start = @sale_start, sale_stop = @sale_stop where showid = '" + Name + "'";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
             cmd.Parameters.AddWithValue("@name", name);
             cmd.Parameters.AddWithValue("@date", date);
             cmd.Parameters.AddWithValue("@seat_number", seat_number);
-            
+            cmd.Parameters.AddWithValue("@sale_start", sale_start);
+            cmd.Parameters.AddWithValue("@sale_stop", sale_stop);
+
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -121,18 +138,23 @@ namespace cirkus
             else
             {
 
-                string name, date;
+                string name, date, sale_start, sale_stop;
 
                 name = textBoxBeskrivning.Text;
                 date = dateTimePickerDatum.Text;
+                sale_start = dateTimePickerForsaljningstidFran.Text;
+                sale_stop = dateTimePickerForsaljningstidTill.Text;
+
                 int seat_number = Convert.ToInt16(textBoxAntalFriplatser.Text);
 
                 conn.Open();
 
-                command = new NpgsqlCommand(@"Insert into show (name, seat_number, date) Values (@name, @seat_number, @date)", conn);
+                command = new NpgsqlCommand(@"Insert into show (name, seat_number, date, sale_start, sale_stop) Values (@name, @seat_number, @date, @sale_start, @sale_stop)", conn);
                 command.Parameters.AddWithValue("@date", date);
                 command.Parameters.AddWithValue("@name", name);
                 command.Parameters.AddWithValue("@seat_number", seat_number);
+                command.Parameters.AddWithValue("@sale_start", sale_start);
+                command.Parameters.AddWithValue("@sale_stop", sale_stop);
                 command.ExecuteNonQuery();
                 conn.Close();
 
@@ -205,4 +227,6 @@ namespace cirkus
             conn.Close();
         }
     }
+}
+
 }
