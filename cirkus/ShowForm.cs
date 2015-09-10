@@ -45,16 +45,23 @@ namespace cirkus
             textBoxBeskrivning.Text = Name;
 
             conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("select * from show where showid = '" + Name + "'", conn);
+            //NpgsqlCommand cmd = new NpgsqlCommand("select * from show where showid = '" + Name + "'", conn);
+            NpgsqlCommand cmd = new NpgsqlCommand("select a.actid, a.name , s.date, s.name, s.seat_number, s.showid, s.sale_start, s.sale_stop from show s inner join acts a on s.showid = a.showid where s.showid = '" + Name + "' group by a.actid, a.name , s.date, s.name, s.seat_number, s.showid, s.sale_start, s.sale_stop ", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
 
             while (dr.Read())
             {
-                textBoxBeskrivning.Text = dr.GetValue(1).ToString();
-                textBoxAntalFriplatser.Text = dr.GetValue(2).ToString();
-                dateTimePickerDatum.Value = Convert.ToDateTime(dr.GetValue(0).ToString());
-                dateTimePickerForsaljningstidFran.Value = Convert.ToDateTime(dr.GetValue(4).ToString());
-                dateTimePickerForsaljningstidTill.Value = Convert.ToDateTime(dr.GetValue(5).ToString());
+                //textBoxBeskrivning.Text = dr.GetValue(1).ToString();
+                //textBoxAntalFriplatser.Text = dr.GetValue(2).ToString();
+                //dateTimePickerDatum.Value = Convert.ToDateTime(dr.GetValue(0).ToString());
+                //dateTimePickerForsaljningstidFran.Value = Convert.ToDateTime(dr.GetValue(4).ToString());
+                //dateTimePickerForsaljningstidTill.Value = Convert.ToDateTime(dr.GetValue(5).ToString());
+
+                textBoxBeskrivning.Text = dr.GetValue(3).ToString();
+                textBoxAntalFriplatser.Text = dr.GetValue(4).ToString();
+                dateTimePickerDatum.Value = Convert.ToDateTime(dr.GetValue(2).ToString());
+                dateTimePickerForsaljningstidFran.Value = Convert.ToDateTime(dr.GetValue(6).ToString());
+                dateTimePickerForsaljningstidTill.Value = Convert.ToDateTime(dr.GetValue(7).ToString());
             }
             conn.Close();
         }
