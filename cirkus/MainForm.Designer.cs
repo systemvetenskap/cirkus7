@@ -44,10 +44,8 @@
             this.checkBoxOlderTickets = new System.Windows.Forms.CheckBox();
             this.listBoxTicket = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxSearchCustomer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBoxCustomer = new System.Windows.Forms.ListBox();
             this.tabShow = new System.Windows.Forms.TabPage();
             this.dgvAkterList = new System.Windows.Forms.DataGridView();
             this.dgvShowsList = new System.Windows.Forms.DataGridView();
@@ -93,6 +91,8 @@
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
+            this.dgCustomers = new System.Windows.Forms.DataGridView();
+            this.textBoxSearchCustomer = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -100,6 +100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAkterList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).BeginInit();
             this.tabAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -115,6 +116,8 @@
             // 
             // tabTicket
             // 
+            this.tabTicket.Controls.Add(this.dgCustomers);
+            this.tabTicket.Controls.Add(this.textBoxSearchCustomer);
             this.tabTicket.Controls.Add(this.button4);
             this.tabTicket.Controls.Add(this.buttonEditTicket);
             this.tabTicket.Controls.Add(this.buttonReserveTicket);
@@ -123,10 +126,8 @@
             this.tabTicket.Controls.Add(this.checkBoxOlderTickets);
             this.tabTicket.Controls.Add(this.listBoxTicket);
             this.tabTicket.Controls.Add(this.label3);
-            this.tabTicket.Controls.Add(this.textBoxSearchCustomer);
             this.tabTicket.Controls.Add(this.label2);
             this.tabTicket.Controls.Add(this.label1);
-            this.tabTicket.Controls.Add(this.listBoxCustomer);
             this.tabTicket.Location = new System.Drawing.Point(4, 22);
             this.tabTicket.Name = "tabTicket";
             this.tabTicket.Padding = new System.Windows.Forms.Padding(3);
@@ -134,33 +135,6 @@
             this.tabTicket.TabIndex = 0;
             this.tabTicket.Text = "Biljettförsäljning";
             this.tabTicket.UseVisualStyleBackColor = true;
-            // 
-            // dgTickets
-            // 
-            this.dgTickets.AllowUserToAddRows = false;
-            this.dgTickets.AllowUserToDeleteRows = false;
-            this.dgTickets.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTickets.Location = new System.Drawing.Point(233, 75);
-            this.dgTickets.Name = "dgTickets";
-            this.dgTickets.ReadOnly = true;
-            this.dgTickets.Size = new System.Drawing.Size(186, 368);
-            this.dgTickets.TabIndex = 13;
-            // 
-            // dgCustomers
-            // 
-            this.dgCustomers.AllowUserToAddRows = false;
-            this.dgCustomers.AllowUserToDeleteRows = false;
-            this.dgCustomers.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCustomers.Location = new System.Drawing.Point(12, 75);
-            this.dgCustomers.Name = "dgCustomers";
-            this.dgCustomers.ReadOnly = true;
-            this.dgCustomers.RowHeadersVisible = false;
-            this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomers.Size = new System.Drawing.Size(186, 368);
-            this.dgCustomers.TabIndex = 12;
-            this.dgCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomer_CellClick);
             // 
             // button4
             // 
@@ -305,14 +279,6 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Biljett";
             // 
-            // textBoxSearchCustomer
-            // 
-            this.textBoxSearchCustomer.Location = new System.Drawing.Point(40, 49);
-            this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
-            this.textBoxSearchCustomer.Size = new System.Drawing.Size(158, 20);
-            this.textBoxSearchCustomer.TabIndex = 4;
-            this.textBoxSearchCustomer.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -331,14 +297,6 @@
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Sök";
-            // 
-            // listBoxCustomer
-            // 
-            this.listBoxCustomer.FormattingEnabled = true;
-            this.listBoxCustomer.Location = new System.Drawing.Point(8, 75);
-            this.listBoxCustomer.Name = "listBoxCustomer";
-            this.listBoxCustomer.Size = new System.Drawing.Size(190, 368);
-            this.listBoxCustomer.TabIndex = 0;
             // 
             // tabShow
             // 
@@ -669,7 +627,6 @@
             this.textBoxSearchStaff.Name = "textBoxSearchStaff";
             this.textBoxSearchStaff.Size = new System.Drawing.Size(209, 20);
             this.textBoxSearchStaff.TabIndex = 35;
-            this.textBoxSearchStaff.TextChanged += new System.EventHandler(this.textBoxSearchStaff_TextChanged_1);
             // 
             // lblSokPerson
             // 
@@ -779,6 +736,27 @@
             this.labelStaffName.Text = "Namn";
             this.labelStaffName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // dgCustomers
+            // 
+            this.dgCustomers.AllowUserToAddRows = false;
+            this.dgCustomers.AllowUserToDeleteRows = false;
+            this.dgCustomers.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCustomers.Location = new System.Drawing.Point(12, 75);
+            this.dgCustomers.Name = "dgCustomers";
+            this.dgCustomers.ReadOnly = true;
+            this.dgCustomers.RowHeadersVisible = false;
+            this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgCustomers.Size = new System.Drawing.Size(186, 368);
+            this.dgCustomers.TabIndex = 14;
+            // 
+            // textBoxSearchCustomer
+            // 
+            this.textBoxSearchCustomer.Location = new System.Drawing.Point(40, 49);
+            this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
+            this.textBoxSearchCustomer.Size = new System.Drawing.Size(158, 20);
+            this.textBoxSearchCustomer.TabIndex = 13;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -789,7 +767,6 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "Välkommen";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabTicket.ResumeLayout(false);
             this.tabTicket.PerformLayout();
@@ -801,6 +778,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).EndInit();
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -811,10 +789,8 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabTicket;
         private System.Windows.Forms.TabPage tabShow;
-        private System.Windows.Forms.TextBox textBoxSearchCustomer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBoxCustomer;
         private System.Windows.Forms.TabPage tabAccount;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxOlderTickets;
@@ -873,5 +849,7 @@
         private System.Windows.Forms.Label labelStaffName;
         private System.Windows.Forms.DataGridView dgvShowsList;
         private System.Windows.Forms.DataGridView dgvAkterList;
+        private System.Windows.Forms.DataGridView dgCustomers;
+        private System.Windows.Forms.TextBox textBoxSearchCustomer;
     }
 }
