@@ -151,15 +151,15 @@ namespace cirkus
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            listCustomers();
-        }
-
         //private void MainForm_Load(object sender, EventArgs e)
         //{
         //    listCustomers();
         //}
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            listCustomers();
+        }
 
         private void btnTomFalten_Click(object sender, EventArgs e)
         {
@@ -370,7 +370,7 @@ namespace cirkus
 
 
 
-        }
+        
         public void tomFalt()
         {
             textBoxFornamn.Clear();
@@ -383,28 +383,29 @@ namespace cirkus
         }
         public void LoadShows()
         {
-           DataTable dt = new DataTable();
-            String sql;
-            dgvShowsList.DataSource = null;
-            dgvShowsList.Rows.Clear();
-    try
-    {
+        //    DataTable dt = new DataTable();
+        //    String sql;
+        //    dgvShowsList.DataSource = null;
+        //    dgvShowsList.Rows.Clear();
+
+        //     try
+        //    {
 
 
 
-        conn.Open();
-        sql = "select showid, date, name from show order by date DESC";
-        da = new NpgsqlDataAdapter(sql, conn);
-        da.Fill(dt);
-        dgvShowsList.DataSource = dt;
-        conn.Close();
-        dgvShowsList.Columns["showid"].Visible = false;
-    }
-    catch
-    {
+        //    conn.Open();
+        //    sql = "select showid, date, name from show order by date DESC";
+        //    da = new NpgsqlDataAdapter(sql, conn);
+        //    da.Fill(dt);
+        //    dgvShowsList.DataSource = dt;
+        //    conn.Close();
+        //    dgvShowsList.Columns["showid"].Visible = false;
+        //    }
+        //catch
+        //{
 
-    }
-}
+    
+            }
 
 
   
