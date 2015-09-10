@@ -215,11 +215,7 @@ namespace cirkus
         {
             ListaPersonal();
         }
-        private void btnTomFalten_Click(object sender, EventArgs e)
-        {
-            tomFalt();
-        }
-        private void ListaPersonal()//Metod för att lista personalen i Datagriden....
+        private void ListaPersonal()//Metod för att lista personalen i Datagriden under konto tabben.
         {
             string sqlSearchStaff = textBoxSearchStaff.Text;
             string sql = "SELECT staffid, lname, fname, phonenumber  FROM staff WHERE LOWER(fname) LIKE LOWER('%" + sqlSearchStaff + "%') OR LOWER(lname) LIKE LOWER('%" + sqlSearchStaff + "%')";
@@ -229,13 +225,21 @@ namespace cirkus
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dataGridViewStaff.DataSource = dt;
+                dgStaff.DataSource = dt;
 
-                DataGridViewColumn column = dataGridViewStaff.Columns[0];
-                DataGridViewColumn column1 = dataGridViewStaff.Columns[1];
-                DataGridViewColumn column2 = dataGridViewStaff.Columns[2];
-                this.dataGridViewStaff.Columns[0].Visible = false;
+                dgStaff.Columns[0].Visible = false;
+                dgStaff.Columns[1].Visible = true;
+                dgStaff.Columns[2].Visible = true;
+                dgStaff.Columns[3].Visible = true;
 
+                dgStaff.Columns[1].HeaderText = "Efternamn";
+                dgStaff.Columns[2].HeaderText = "Förnamn";
+                dgStaff.Columns[3].HeaderText = "Telefonnummer";               
+
+                DataGridViewColumn column = dgStaff.Columns[0];
+                DataGridViewColumn column1 = dgStaff.Columns[1];
+                DataGridViewColumn column2 = dgStaff.Columns[2];
+               
                 column.Width = 60;
                 column1.Width = 60;
                 column2.Width = 80;
@@ -267,6 +271,30 @@ namespace cirkus
         }
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
+            //Kontrollerar längden på textboxarna
+            if (textBoxFornamn.TextLength>60 || textBoxEfternamn.TextLength>60)
+            {
+                MessageBox.Show("Förnamn och efternamn får max innehålla 60 tecken");
+                return;
+            }
+            if (textBoxTelefonnummer.TextLength>10)
+            {
+                MessageBox.Show("Telefonnummret får max innehålla 10 siffror");
+                return;
+            }
+            if (textBoxEpost.TextLength>60)
+            {
+                MessageBox.Show("Epostadressen får innehålla max 60 tecken");
+                return;
+            }
+            if (textBoxAnvandarnamn.TextLength>60 || textBoxLosenord.TextLength>60)
+            {
+                MessageBox.Show("Användarnamnet och lösenordet får max innehålla 60 tecken.");
+                return;
+            }
+            //Slut kontrollera längd på textboxar
+
+            //Kontrollerar siffror och bokstäver
             if (!EndastSiffror(textBoxTelefonnummer.Text))
             {
                 MessageBox.Show("Telefonnummret får bara innehålla siffror");
@@ -277,6 +305,9 @@ namespace cirkus
                 MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
                 return;
             }
+            //Slut kontrollerar siffror och bokstäver
+
+            //Kontrollerar tomma textboxar
             if (string.IsNullOrEmpty(textBoxFornamn.Text) || string.IsNullOrEmpty(textBoxEfternamn.Text)
                 || string.IsNullOrEmpty(textBoxTelefonnummer.Text) || string.IsNullOrEmpty(textBoxEpost.Text)
                 || string.IsNullOrEmpty(textBoxAnvandarnamn.Text) || string.IsNullOrEmpty(textBoxLosenord.Text)
@@ -285,6 +316,7 @@ namespace cirkus
                 MessageBox.Show("Ett eller flera fält är tomma. Fyll i alla fält");
                 return;
             }
+            //Slut konrtrollerar tomma textboxar
             try
             {
                 conn.Open();
@@ -312,6 +344,7 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 ListaPersonal();
+                tomFalt();
             }
             catch (NpgsqlException)
             {
@@ -335,6 +368,29 @@ namespace cirkus
         }
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
+            //Kontrollerar längden på textboxarna
+            if (textBoxFornamn.TextLength > 60 || textBoxEfternamn.TextLength > 60)
+            {
+                MessageBox.Show("Förnamn och efternamn får max innehålla 60 tecken");
+                return;
+            }
+            if (textBoxTelefonnummer.TextLength > 10)
+            {
+                MessageBox.Show("Telefonnummret får max innehålla 10 siffror");
+                return;
+            }
+            if (textBoxEpost.TextLength > 60)
+            {
+                MessageBox.Show("Epostadressen får innehålla max 60 tecken");
+                return;
+            }
+            if (textBoxAnvandarnamn.TextLength > 60 || textBoxLosenord.TextLength > 60)
+            {
+                MessageBox.Show("Användarnamnet och lösenordet får max innehålla 60 tecken.");
+                return;
+            }
+            //Slut kontrollera längden på textboxar
+            //Kontrollerar siffror och bokstäver
             if (!EndastSiffror(textBoxTelefonnummer.Text))
             {
                 MessageBox.Show("Telefonnummret får bara innehålla siffror");
@@ -345,15 +401,17 @@ namespace cirkus
                 MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
                 return;
             }
-            if (dataGridViewStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera konto")
-            {
-                int selectedIndex = dataGridViewStaff.SelectedRows[0].Index;
+            //Slut kontrollerar siffror och bokstäver
 
-                staffid = int.Parse(dataGridViewStaff[0, selectedIndex].Value.ToString());
+            if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera konto")
+            {
+                int selectedIndex = dgStaff.SelectedRows[0].Index;
+
+                staffid = int.Parse(dgStaff[0, selectedIndex].Value.ToString());
 
                 btnTomFalten.Enabled = false;
                 btnSkapaKonto.Enabled = false;
-                dataGridViewStaff.Enabled = false;
+                dgStaff.Enabled = false;
 
                 conn.Open();
                 NpgsqlCommand cmd = new NpgsqlCommand(@"select fname, lname, phonenumber, email, username, password, auth
@@ -375,7 +433,7 @@ namespace cirkus
                 textBoxAnvandarnamn.Enabled = false;
 
             }
-            else if (dataGridViewStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar")
+            else if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar")
             {
 
                 conn.Open();
@@ -406,7 +464,7 @@ namespace cirkus
 
                 conn.Close();
 
-                dataGridViewStaff.Enabled = true;
+                dgStaff.Enabled = true;
                 tomFalt();
                 ListaPersonal();
                 btnUpdateraKonto.Text = "Uppdatera konto";
@@ -416,10 +474,10 @@ namespace cirkus
             }
 
         }
-        
-        
+        private void btnTomFalten_Click(object sender, EventArgs e)
+        {
+            tomFalt();
+        }
         #endregion
-
-
     }
 }
