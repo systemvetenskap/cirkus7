@@ -21,6 +21,7 @@ namespace cirkus
         {
             InitializeComponent();
             loadShows();
+                
         }
         public void loadShows()
         {
@@ -39,9 +40,9 @@ namespace cirkus
 
             conn.Close();
 
-            dataGridViewShows.Rows[1].Selected = true;
 
-            loadActs();
+            
+            //loadActs();
 
         }
         private void loadActs()
@@ -99,7 +100,7 @@ namespace cirkus
 
                 string s = comboBoxSection.Text.ToString();
                 selectedsection = s;
-                lblTest.Text = selectedsection;
+                
 
                 comboBoxSection.SelectedIndex = 0;
 
@@ -119,7 +120,7 @@ namespace cirkus
         {
             conn.Open();
             selectedsection = comboBoxSection.Text.ToString();
-            lblTest.Text = selectedsection;
+            
             string getSeatnr = @"select rownumber, section from seats inner join available_seats on seats.seatid = available_seats.seatid 
                                     inner join acts on available_seats.actid = acts.actid 
                                         left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
@@ -136,12 +137,41 @@ namespace cirkus
             checkedListBoxSeats.DisplayMember = "rownumber";
             conn.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridViewShows.CurrentCell.Selected = false;
+        }
+
         private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
         {
             conn.Close();
             loadActs();
             create_summary();
 
+        }
+
+        private void ReserveTicketForm_Load(object sender, EventArgs e)
+        {
+            clearSelect();
+            panel1.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = true;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            panel3.Visible = true;
         }
 
         private void dataGridViewActs_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -205,11 +235,7 @@ namespace cirkus
         public void calculate_people()
         {
            total = totalChild + totalYouth + totalAdult;
-            lblChild.Text = totalChild.ToString();
-            lblYouth.Text = totalYouth.ToString();
-            lblAdult.Text = totalAdult.ToString();
-            lblTotal.Text = total.ToString();
-            lblSelectedSeats.Text = checkedseats.ToString();
+ 
             if(checkedseats == total)
             {
                 checkedListBoxSeats.SelectionMode = SelectionMode.None;
@@ -237,6 +263,11 @@ namespace cirkus
             {
                 
             }
+        }
+        private void clearSelect()
+        {
+            dataGridViewShows.CurrentCell.Selected = false;
+
         }
 
 
