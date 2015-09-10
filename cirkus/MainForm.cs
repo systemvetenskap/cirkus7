@@ -29,9 +29,6 @@ namespace cirkus
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            // Lista alla Föreställningar i tab 2 .
-            listForestallning();
-            listBoxForestallningar.DataSource = allShowsList;
 
             LoadShows();
         }
@@ -66,38 +63,59 @@ namespace cirkus
 
         private void listForestallning()
         {
-            conn.Open();
-            sql = "select date, name from show order by date";
-            dt = new DataTable();
-            da = new NpgsqlDataAdapter(sql, conn);
-            da.Fill(dt);
-            conn.Close();
 
-            allShowsList = new List<show>();
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                show curS = new show();
-                curS.name = dt.Rows[i][0].ToString();
-                curS.date = dt.Rows[i][1].ToString();
-                allShowsList.Add(curS);
-            }
-
-        }
-
-        public void refreshForestallningslist()
-        {
-            listBoxForestallningar.Items.Clear();
-            listForestallning();
-            listBoxForestallningar.DataSource = allShowsList;
         }
 
         private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
         {
-            ShowForm shfrm = new ShowForm();
-            shfrm.ShowDialog();
+            ShowForm showForm = new ShowForm();
+            showForm.ShowDialog();
         }
 
-       
+        private void buttonRaderaForestallning_Click(object sender, EventArgs e)
+        {
+            int selectedID;
+
+            DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
+
+            selectedID = Convert.ToInt32(row.Cells["showid"].Value);
+
+            string sql = "DELETE FROM show WHERE showid = '" + selectedID + "'";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+
+
+            conn.Open();
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            conn.Close();
+
+            LoadShows();
+            MessageBox.Show("Förestälningen är raderad!");
+        }
+
+        private void buttonAndraForestallning_Click(object sender, EventArgs e)
+        {
+            int selectedID;
+
+            DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
+            selectedID = Convert.ToInt32(row.Cells["showid"].Value);
+
+            string nySelectedID = selectedID.ToString();
+
+            ShowForm frm = new ShowForm();
+            //frm.SetID(nySelectedID);
+
+            frm.ShowDialog();
+        }
+
+
+
         public void LoadShows()
         {
             dt = new DataTable();
@@ -108,12 +126,12 @@ namespace cirkus
             {
 
                 conn.Open();
-                sql = "select date, name from show order by date DESC";
+                sql = "select showid, date, name from show order by date DESC";
                 da = new NpgsqlDataAdapter(sql, conn);
                 da.Fill(dt);
                 dgvShowsList.DataSource = dt;
                 conn.Close();
-
+                dgvShowsList.Columns["showid"].Visible = false;
             }
             catch (Exception ex)
             {

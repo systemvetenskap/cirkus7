@@ -52,18 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\Dropbox\Visual Studio 2013\Projects\listbox i databas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="..\..\..\..\Dropbox\Visual Studio 2013\Projects\listbox i databas.Designer.cs">
-      <DependentUpon>listbox i databas.cs</DependentUpon>
-    </Compile>
     <Compile Include="Act.cs" />
     <Compile Include="AddCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddCustomerForm.Designer.cs">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Personal.cs" />
     <Compile Include="show.cs" />
@@ -87,11 +87,11 @@
     <Compile Include="ReserveTicketForm.Designer.cs">
       <DependentUpon>ReserveTicketForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="..\..\..\..\Dropbox\Visual Studio 2013\Projects\listbox i databas.resx">
-      <DependentUpon>listbox i databas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AddCustomerForm.resx">
       <DependentUpon>AddCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowForm.resx">
       <DependentUpon>ShowForm.cs</DependentUpon>

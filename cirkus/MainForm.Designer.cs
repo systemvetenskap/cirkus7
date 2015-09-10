@@ -49,6 +49,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxCustomer = new System.Windows.Forms.ListBox();
             this.tabShow = new System.Windows.Forms.TabPage();
+            this.dgvAkterList = new System.Windows.Forms.DataGridView();
+            this.dgvShowsList = new System.Windows.Forms.DataGridView();
             this.textBoxKronorVuxenbiljetter = new System.Windows.Forms.TextBox();
             this.textBoxAntalUngdomsbiljetter = new System.Windows.Forms.TextBox();
             this.textBoxKronorUngdomsbiljetter = new System.Windows.Forms.TextBox();
@@ -67,8 +69,6 @@
             this.labelVuxenbiljetter = new System.Windows.Forms.Label();
             this.textBoxAntalVuxenBiljetter = new System.Windows.Forms.TextBox();
             this.buttonSkapaForestalnning = new System.Windows.Forms.Button();
-            this.listBoxAkter = new System.Windows.Forms.ListBox();
-            this.listBoxForestallningar = new System.Windows.Forms.ListBox();
             this.labelAkter = new System.Windows.Forms.Label();
             this.labelForestallning = new System.Windows.Forms.Label();
             this.tabAccount = new System.Windows.Forms.TabPage();
@@ -93,13 +93,13 @@
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
-            this.dgvShowsList = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabShow.SuspendLayout();
-            this.tabAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAkterList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).BeginInit();
+            this.tabAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -314,6 +314,7 @@
             // 
             // tabShow
             // 
+            this.tabShow.Controls.Add(this.dgvAkterList);
             this.tabShow.Controls.Add(this.dgvShowsList);
             this.tabShow.Controls.Add(this.textBoxKronorVuxenbiljetter);
             this.tabShow.Controls.Add(this.textBoxAntalUngdomsbiljetter);
@@ -333,8 +334,6 @@
             this.tabShow.Controls.Add(this.labelVuxenbiljetter);
             this.tabShow.Controls.Add(this.textBoxAntalVuxenBiljetter);
             this.tabShow.Controls.Add(this.buttonSkapaForestalnning);
-            this.tabShow.Controls.Add(this.listBoxAkter);
-            this.tabShow.Controls.Add(this.listBoxForestallningar);
             this.tabShow.Controls.Add(this.labelAkter);
             this.tabShow.Controls.Add(this.labelForestallning);
             this.tabShow.Location = new System.Drawing.Point(4, 22);
@@ -344,6 +343,37 @@
             this.tabShow.TabIndex = 1;
             this.tabShow.Text = "Föreställning";
             this.tabShow.UseVisualStyleBackColor = true;
+            // 
+            // dgvAkterList
+            // 
+            this.dgvAkterList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvAkterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAkterList.ColumnHeadersVisible = false;
+            this.dgvAkterList.Location = new System.Drawing.Point(291, 53);
+            this.dgvAkterList.MultiSelect = false;
+            this.dgvAkterList.Name = "dgvAkterList";
+            this.dgvAkterList.ReadOnly = true;
+            this.dgvAkterList.RowHeadersVisible = false;
+            this.dgvAkterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAkterList.Size = new System.Drawing.Size(106, 107);
+            this.dgvAkterList.TabIndex = 23;
+            // 
+            // dgvShowsList
+            // 
+            this.dgvShowsList.AllowUserToResizeColumns = false;
+            this.dgvShowsList.AllowUserToResizeRows = false;
+            this.dgvShowsList.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvShowsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvShowsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShowsList.ColumnHeadersVisible = false;
+            this.dgvShowsList.Location = new System.Drawing.Point(26, 53);
+            this.dgvShowsList.MultiSelect = false;
+            this.dgvShowsList.Name = "dgvShowsList";
+            this.dgvShowsList.ReadOnly = true;
+            this.dgvShowsList.RowHeadersVisible = false;
+            this.dgvShowsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvShowsList.Size = new System.Drawing.Size(228, 348);
+            this.dgvShowsList.TabIndex = 22;
             // 
             // textBoxKronorVuxenbiljetter
             // 
@@ -405,21 +435,23 @@
             // 
             // buttonRaderaForestallning
             // 
-            this.buttonRaderaForestallning.Location = new System.Drawing.Point(182, 227);
+            this.buttonRaderaForestallning.Location = new System.Drawing.Point(182, 407);
             this.buttonRaderaForestallning.Name = "buttonRaderaForestallning";
             this.buttonRaderaForestallning.Size = new System.Drawing.Size(72, 23);
             this.buttonRaderaForestallning.TabIndex = 13;
             this.buttonRaderaForestallning.Text = "Radera";
             this.buttonRaderaForestallning.UseVisualStyleBackColor = true;
+            this.buttonRaderaForestallning.Click += new System.EventHandler(this.buttonRaderaForestallning_Click);
             // 
             // buttonAndraForestallning
             // 
-            this.buttonAndraForestallning.Location = new System.Drawing.Point(104, 227);
+            this.buttonAndraForestallning.Location = new System.Drawing.Point(104, 407);
             this.buttonAndraForestallning.Name = "buttonAndraForestallning";
             this.buttonAndraForestallning.Size = new System.Drawing.Size(72, 23);
             this.buttonAndraForestallning.TabIndex = 12;
             this.buttonAndraForestallning.Text = "Ändra";
             this.buttonAndraForestallning.UseVisualStyleBackColor = true;
+            this.buttonAndraForestallning.Click += new System.EventHandler(this.buttonAndraForestallning_Click);
             // 
             // labelKronor
             // 
@@ -484,29 +516,13 @@
             // 
             // buttonSkapaForestalnning
             // 
-            this.buttonSkapaForestalnning.Location = new System.Drawing.Point(26, 227);
+            this.buttonSkapaForestalnning.Location = new System.Drawing.Point(26, 407);
             this.buttonSkapaForestalnning.Name = "buttonSkapaForestalnning";
             this.buttonSkapaForestalnning.Size = new System.Drawing.Size(72, 23);
             this.buttonSkapaForestalnning.TabIndex = 4;
             this.buttonSkapaForestalnning.Text = "Skapa ny";
             this.buttonSkapaForestalnning.UseVisualStyleBackColor = true;
             this.buttonSkapaForestalnning.Click += new System.EventHandler(this.buttonSkapaForestalnning_Click_1);
-            // 
-            // listBoxAkter
-            // 
-            this.listBoxAkter.FormattingEnabled = true;
-            this.listBoxAkter.Location = new System.Drawing.Point(291, 65);
-            this.listBoxAkter.Name = "listBoxAkter";
-            this.listBoxAkter.Size = new System.Drawing.Size(102, 147);
-            this.listBoxAkter.TabIndex = 3;
-            // 
-            // listBoxForestallningar
-            // 
-            this.listBoxForestallningar.FormattingEnabled = true;
-            this.listBoxForestallningar.Location = new System.Drawing.Point(26, 65);
-            this.listBoxForestallningar.Name = "listBoxForestallningar";
-            this.listBoxForestallningar.Size = new System.Drawing.Size(228, 147);
-            this.listBoxForestallningar.TabIndex = 2;
             // 
             // labelAkter
             // 
@@ -734,22 +750,6 @@
             this.labelStaffName.Text = "Namn";
             this.labelStaffName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // dgvShowsList
-            // 
-            this.dgvShowsList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvShowsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvShowsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowsList.ColumnHeadersVisible = false;
-            this.dgvShowsList.GridColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dgvShowsList.Location = new System.Drawing.Point(26, 256);
-            this.dgvShowsList.MultiSelect = false;
-            this.dgvShowsList.Name = "dgvShowsList";
-            this.dgvShowsList.ReadOnly = true;
-            this.dgvShowsList.RowHeadersVisible = false;
-            this.dgvShowsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShowsList.Size = new System.Drawing.Size(228, 174);
-            this.dgvShowsList.TabIndex = 22;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -768,9 +768,10 @@
             this.groupBox1.PerformLayout();
             this.tabShow.ResumeLayout(false);
             this.tabShow.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAkterList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).EndInit();
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -803,8 +804,6 @@
         private System.Windows.Forms.Button buttonLogOut;
         private System.Windows.Forms.TextBox textBoxAntalVuxenBiljetter;
         private System.Windows.Forms.Button buttonSkapaForestalnning;
-        private System.Windows.Forms.ListBox listBoxAkter;
-        private System.Windows.Forms.ListBox listBoxForestallningar;
         private System.Windows.Forms.Label labelAkter;
         private System.Windows.Forms.Label labelForestallning;
         private System.Windows.Forms.Button buttonSkrivUtForestallning;
@@ -844,5 +843,6 @@
         private System.Windows.Forms.TextBox textBoxAnvandarnamn;
         private System.Windows.Forms.Label labelStaffName;
         private System.Windows.Forms.DataGridView dgvShowsList;
+        private System.Windows.Forms.DataGridView dgvAkterList;
     }
 }
