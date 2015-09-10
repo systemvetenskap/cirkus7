@@ -156,10 +156,10 @@ namespace cirkus
             listCustomers();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            listCustomers();
-        }
+        //private void MainForm_Load(object sender, EventArgs e)
+        //{
+        //    listCustomers();
+        //}
 
         private void btnTomFalten_Click(object sender, EventArgs e)
         {
@@ -306,7 +306,7 @@ namespace cirkus
 
             frm.ShowDialog();
         }
-    }
+    
 
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
@@ -381,12 +381,12 @@ namespace cirkus
             textBoxLosenord.Clear();
             comboBoxBehorighetsniva.ResetText();
         }
-public void LoadShows()
-{
-    dt = new DataTable();
-    String sql;
-    dgvShowsList.DataSource = null;
-    dgvShowsList.Rows.Clear();
+        public void LoadShows()
+        {
+           DataTable dt = new DataTable();
+            String sql;
+            dgvShowsList.DataSource = null;
+            dgvShowsList.Rows.Clear();
     try
     {
 

@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
+            this.dgCustomers = new System.Windows.Forms.DataGridView();
+            this.textBoxSearchCustomer = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.buttonEditTicket = new System.Windows.Forms.Button();
             this.buttonReserveTicket = new System.Windows.Forms.Button();
@@ -73,11 +75,9 @@
             this.comboBoxBehorighetsniva = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnTomFalten = new System.Windows.Forms.Button();
-            this.listBoxRegister = new System.Windows.Forms.ListBox();
             this.btnUpdateraKonto = new System.Windows.Forms.Button();
             this.lblFornamn = new System.Windows.Forms.Label();
             this.btnSkapaKonto = new System.Windows.Forms.Button();
-            this.textBoxSearchStaff = new System.Windows.Forms.TextBox();
             this.lblSokPerson = new System.Windows.Forms.Label();
             this.lblEfternamn = new System.Windows.Forms.Label();
             this.textBoxLosenord = new System.Windows.Forms.TextBox();
@@ -91,16 +91,17 @@
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
-            this.dgCustomers = new System.Windows.Forms.DataGridView();
-            this.textBoxSearchCustomer = new System.Windows.Forms.TextBox();
+            this.dataGridViewStaff = new System.Windows.Forms.DataGridView();
+            this.textBoxSearchStaff = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabShow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAkterList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).BeginInit();
             this.tabAccount.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -135,6 +136,27 @@
             this.tabTicket.TabIndex = 0;
             this.tabTicket.Text = "Biljettförsäljning";
             this.tabTicket.UseVisualStyleBackColor = true;
+            // 
+            // dgCustomers
+            // 
+            this.dgCustomers.AllowUserToAddRows = false;
+            this.dgCustomers.AllowUserToDeleteRows = false;
+            this.dgCustomers.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCustomers.Location = new System.Drawing.Point(12, 75);
+            this.dgCustomers.Name = "dgCustomers";
+            this.dgCustomers.ReadOnly = true;
+            this.dgCustomers.RowHeadersVisible = false;
+            this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgCustomers.Size = new System.Drawing.Size(186, 368);
+            this.dgCustomers.TabIndex = 14;
+            // 
+            // textBoxSearchCustomer
+            // 
+            this.textBoxSearchCustomer.Location = new System.Drawing.Point(40, 49);
+            this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
+            this.textBoxSearchCustomer.Size = new System.Drawing.Size(158, 20);
+            this.textBoxSearchCustomer.TabIndex = 13;
             // 
             // button4
             // 
@@ -530,14 +552,14 @@
             // 
             // tabAccount
             // 
+            this.tabAccount.Controls.Add(this.dataGridViewStaff);
+            this.tabAccount.Controls.Add(this.textBoxSearchStaff);
             this.tabAccount.Controls.Add(this.comboBoxBehorighetsniva);
             this.tabAccount.Controls.Add(this.label9);
             this.tabAccount.Controls.Add(this.btnTomFalten);
-            this.tabAccount.Controls.Add(this.listBoxRegister);
             this.tabAccount.Controls.Add(this.btnUpdateraKonto);
             this.tabAccount.Controls.Add(this.lblFornamn);
             this.tabAccount.Controls.Add(this.btnSkapaKonto);
-            this.tabAccount.Controls.Add(this.textBoxSearchStaff);
             this.tabAccount.Controls.Add(this.lblSokPerson);
             this.tabAccount.Controls.Add(this.lblEfternamn);
             this.tabAccount.Controls.Add(this.textBoxLosenord);
@@ -586,14 +608,6 @@
             this.btnTomFalten.Text = "Töm fälten";
             this.btnTomFalten.UseVisualStyleBackColor = true;
             // 
-            // listBoxRegister
-            // 
-            this.listBoxRegister.FormattingEnabled = true;
-            this.listBoxRegister.Location = new System.Drawing.Point(299, 83);
-            this.listBoxRegister.Name = "listBoxRegister";
-            this.listBoxRegister.Size = new System.Drawing.Size(209, 251);
-            this.listBoxRegister.TabIndex = 37;
-            // 
             // btnUpdateraKonto
             // 
             this.btnUpdateraKonto.Location = new System.Drawing.Point(59, 412);
@@ -620,13 +634,6 @@
             this.btnSkapaKonto.TabIndex = 29;
             this.btnSkapaKonto.Text = "Skapa konto";
             this.btnSkapaKonto.UseVisualStyleBackColor = true;
-            // 
-            // textBoxSearchStaff
-            // 
-            this.textBoxSearchStaff.Location = new System.Drawing.Point(299, 48);
-            this.textBoxSearchStaff.Name = "textBoxSearchStaff";
-            this.textBoxSearchStaff.Size = new System.Drawing.Size(209, 20);
-            this.textBoxSearchStaff.TabIndex = 35;
             // 
             // lblSokPerson
             // 
@@ -736,26 +743,30 @@
             this.labelStaffName.Text = "Namn";
             this.labelStaffName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // dgCustomers
+            // dataGridViewStaff
             // 
-            this.dgCustomers.AllowUserToAddRows = false;
-            this.dgCustomers.AllowUserToDeleteRows = false;
-            this.dgCustomers.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCustomers.Location = new System.Drawing.Point(12, 75);
-            this.dgCustomers.Name = "dgCustomers";
-            this.dgCustomers.ReadOnly = true;
-            this.dgCustomers.RowHeadersVisible = false;
-            this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomers.Size = new System.Drawing.Size(186, 368);
-            this.dgCustomers.TabIndex = 14;
+            this.dataGridViewStaff.AllowUserToAddRows = false;
+            this.dataGridViewStaff.AllowUserToDeleteRows = false;
+            this.dataGridViewStaff.AllowUserToResizeColumns = false;
+            this.dataGridViewStaff.AllowUserToResizeRows = false;
+            this.dataGridViewStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStaff.ColumnHeadersVisible = false;
+            this.dataGridViewStaff.Location = new System.Drawing.Point(302, 101);
+            this.dataGridViewStaff.MultiSelect = false;
+            this.dataGridViewStaff.Name = "dataGridViewStaff";
+            this.dataGridViewStaff.RowHeadersVisible = false;
+            this.dataGridViewStaff.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewStaff.Size = new System.Drawing.Size(220, 233);
+            this.dataGridViewStaff.TabIndex = 44;
             // 
-            // textBoxSearchCustomer
+            // textBoxSearchStaff
             // 
-            this.textBoxSearchCustomer.Location = new System.Drawing.Point(40, 49);
-            this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
-            this.textBoxSearchCustomer.Size = new System.Drawing.Size(158, 20);
-            this.textBoxSearchCustomer.TabIndex = 13;
+            this.textBoxSearchStaff.Location = new System.Drawing.Point(299, 48);
+            this.textBoxSearchStaff.Name = "textBoxSearchStaff";
+            this.textBoxSearchStaff.Size = new System.Drawing.Size(209, 20);
+            this.textBoxSearchStaff.TabIndex = 43;
             // 
             // MainForm
             // 
@@ -770,6 +781,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabTicket.ResumeLayout(false);
             this.tabTicket.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabShow.ResumeLayout(false);
@@ -778,7 +790,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).EndInit();
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -830,11 +842,9 @@
         private System.Windows.Forms.ComboBox comboBoxBehorighetsniva;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnTomFalten;
-        private System.Windows.Forms.ListBox listBoxRegister;
         private System.Windows.Forms.Button btnUpdateraKonto;
         private System.Windows.Forms.Label lblFornamn;
         private System.Windows.Forms.Button btnSkapaKonto;
-        private System.Windows.Forms.TextBox textBoxSearchStaff;
         private System.Windows.Forms.Label lblSokPerson;
         private System.Windows.Forms.Label lblEfternamn;
         private System.Windows.Forms.TextBox textBoxLosenord;
@@ -851,5 +861,7 @@
         private System.Windows.Forms.DataGridView dgvAkterList;
         private System.Windows.Forms.DataGridView dgCustomers;
         private System.Windows.Forms.TextBox textBoxSearchCustomer;
+        private System.Windows.Forms.DataGridView dataGridViewStaff;
+        private System.Windows.Forms.TextBox textBoxSearchStaff;
     }
 }
