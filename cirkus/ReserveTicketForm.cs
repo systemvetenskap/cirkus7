@@ -137,7 +137,38 @@ namespace cirkus
             checkedListBoxSeats.DisplayMember = "rownumber";
             conn.Close();
         }
+        private void listCustomers()
+        {
+            string sqlSearch = textBoxSearchCustomer.Text;
+            string sql = "SELECT lname, fname, customerid FROM customer WHERE LOWER(lname) LIKE LOWER('%" + sqlSearch + "%') OR LOWER(fname) LIKE LOWER('%" + sqlSearch + "%');";
+            try
+            {
+                conn.Open();
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
+                dgCustom.DataSource = dt;
+                dgCustom.Columns[0].HeaderText = "Efternamn";
+                dgCustom.Columns[1].HeaderText = "Förnamn";
+                dgCustom.Columns[2].HeaderText = "ID";
+                dgCustom.Columns[0].Width = 60;
+                dgCustom.Columns[1].Width = 60;
+                dgCustom.Columns[2].Width = 60;
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        private void textBoxSearchCustomer_TextChanged(object sender, EventArgs e)
+        {
+            listCustomers();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             dataGridViewShows.CurrentCell.Selected = false;
@@ -154,9 +185,14 @@ namespace cirkus
         private void ReserveTicketForm_Load(object sender, EventArgs e)
         {
             clearSelect();
-            panel1.Visible = false;
-            panel2.Visible = false;
-            panel3.Visible = false;
+            listCustomers();
+            txtenamn.Enabled = false;
+            txtepost.Enabled = false;
+            txtfnamn.Enabled = false;
+            txttel.Enabled = false;
+            //panel1.Visible = false;
+            //panel2.Visible = false;
+            //panel3.Visible = false;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -172,6 +208,47 @@ namespace cirkus
         private void button5_Click(object sender, EventArgs e)
         {
             panel3.Visible = true;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                if (this.dgCustom.DataSource != null)
+                {
+                    this.dgCustom.DataSource = null;
+                }
+                else
+                {
+                  this.dgCustom.Rows.Clear();
+                   dgCustom.BackgroundColor = Color.Gray;
+                    dgCustom.ForeColor = Color.Gray;
+                }
+
+                txtenamn.Enabled = true;
+                txtepost.Enabled = true;
+                txtfnamn.Enabled = true;
+                txttel.Enabled = true;
+
+            }
+            else if (checkBox2.Checked == false)
+            {
+                dgCustom.BackgroundColor = Color.White;
+                dgCustom.ForeColor = Color.White;
+                
+                dgCustom.Visible = true;
+                listCustomers();
+                txtenamn.Enabled = false;
+                txtepost.Enabled = false;
+                txtfnamn.Enabled = false;
+                txttel.Enabled = false;
+
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void dataGridViewActs_CellClick(object sender, DataGridViewCellEventArgs e)

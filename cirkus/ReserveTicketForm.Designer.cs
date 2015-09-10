@@ -51,10 +51,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtepost = new System.Windows.Forms.TextBox();
+            this.txttel = new System.Windows.Forms.TextBox();
+            this.txtenamn = new System.Windows.Forms.TextBox();
+            this.txtfnamn = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lblPrice = new System.Windows.Forms.Label();
             this.lblBseats = new System.Windows.Forms.Label();
@@ -67,7 +67,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.dgCustomers = new System.Windows.Forms.DataGridView();
+            this.dgCustom = new System.Windows.Forms.DataGridView();
             this.textBoxSearchCustomer = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -92,7 +92,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -342,10 +342,10 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.checkBox2);
-            this.groupBox6.Controls.Add(this.textBox4);
-            this.groupBox6.Controls.Add(this.textBox3);
-            this.groupBox6.Controls.Add(this.textBox2);
-            this.groupBox6.Controls.Add(this.textBox1);
+            this.groupBox6.Controls.Add(this.txtepost);
+            this.groupBox6.Controls.Add(this.txttel);
+            this.groupBox6.Controls.Add(this.txtenamn);
+            this.groupBox6.Controls.Add(this.txtfnamn);
             this.groupBox6.Location = new System.Drawing.Point(312, 40);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(113, 195);
@@ -353,37 +353,38 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Kunduppgifter";
             // 
-            // textBox4
+            // txtepost
             // 
-            this.textBox4.Location = new System.Drawing.Point(7, 103);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.Text = "E-post";
+            this.txtepost.Location = new System.Drawing.Point(7, 103);
+            this.txtepost.Name = "txtepost";
+            this.txtepost.Size = new System.Drawing.Size(100, 20);
+            this.txtepost.TabIndex = 3;
+            this.txtepost.Text = "E-post";
+            this.txtepost.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
-            // textBox3
+            // txttel
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 75);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(97, 20);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.Text = "Telefonnummer";
+            this.txttel.Location = new System.Drawing.Point(6, 75);
+            this.txttel.Name = "txttel";
+            this.txttel.Size = new System.Drawing.Size(97, 20);
+            this.txttel.TabIndex = 2;
+            this.txttel.Text = "Telefonnummer";
             // 
-            // textBox2
+            // txtenamn
             // 
-            this.textBox2.Location = new System.Drawing.Point(6, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "Efternamn";
+            this.txtenamn.Location = new System.Drawing.Point(6, 49);
+            this.txtenamn.Name = "txtenamn";
+            this.txtenamn.Size = new System.Drawing.Size(100, 20);
+            this.txtenamn.TabIndex = 1;
+            this.txtenamn.Text = "Efternamn";
             // 
-            // textBox1
+            // txtfnamn
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Förnamn";
+            this.txtfnamn.Location = new System.Drawing.Point(6, 22);
+            this.txtfnamn.Name = "txtfnamn";
+            this.txtfnamn.Size = new System.Drawing.Size(100, 20);
+            this.txtfnamn.TabIndex = 0;
+            this.txtfnamn.Text = "Förnamn";
             // 
             // groupBox7
             // 
@@ -499,20 +500,24 @@
             this.checkBox2.TabIndex = 4;
             this.checkBox2.Text = "Ny Kund";
             this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // dgCustomers
+            // dgCustom
             // 
-            this.dgCustomers.AllowUserToAddRows = false;
-            this.dgCustomers.AllowUserToDeleteRows = false;
-            this.dgCustomers.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCustomers.Location = new System.Drawing.Point(23, 51);
-            this.dgCustomers.Name = "dgCustomers";
-            this.dgCustomers.ReadOnly = true;
-            this.dgCustomers.RowHeadersVisible = false;
-            this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomers.Size = new System.Drawing.Size(186, 184);
-            this.dgCustomers.TabIndex = 39;
+            this.dgCustom.AllowUserToAddRows = false;
+            this.dgCustom.AllowUserToDeleteRows = false;
+            this.dgCustom.AllowUserToResizeColumns = false;
+            this.dgCustom.AllowUserToResizeRows = false;
+            this.dgCustom.BackgroundColor = System.Drawing.Color.White;
+            this.dgCustom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCustom.Location = new System.Drawing.Point(23, 51);
+            this.dgCustom.MultiSelect = false;
+            this.dgCustom.Name = "dgCustom";
+            this.dgCustom.ReadOnly = true;
+            this.dgCustom.RowHeadersVisible = false;
+            this.dgCustom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgCustom.Size = new System.Drawing.Size(186, 184);
+            this.dgCustom.TabIndex = 39;
             // 
             // textBoxSearchCustomer
             // 
@@ -520,6 +525,7 @@
             this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
             this.textBoxSearchCustomer.Size = new System.Drawing.Size(131, 20);
             this.textBoxSearchCustomer.TabIndex = 38;
+            this.textBoxSearchCustomer.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
             // 
             // panel1
             // 
@@ -536,7 +542,7 @@
             // 
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.dgCustomers);
+            this.panel2.Controls.Add(this.dgCustom);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.textBoxSearchCustomer);
             this.panel2.Controls.Add(this.groupBox6);
@@ -666,7 +672,7 @@
             this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -700,10 +706,10 @@
         private System.Windows.Forms.CheckedListBox checkedListBoxSeats;
         private System.Windows.Forms.ComboBox comboBoxSection;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtepost;
+        private System.Windows.Forms.TextBox txttel;
+        private System.Windows.Forms.TextBox txtenamn;
+        private System.Windows.Forms.TextBox txtfnamn;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label lblPrice;
         private System.Windows.Forms.Label lblBseats;
@@ -716,7 +722,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.DataGridView dgCustomers;
+        private System.Windows.Forms.DataGridView dgCustom;
         private System.Windows.Forms.TextBox textBoxSearchCustomer;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
