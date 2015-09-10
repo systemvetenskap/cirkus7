@@ -89,7 +89,7 @@ namespace cirkus
         private void listCustomers()
         {
             string sqlSearch = textBoxSearchCustomer.Text;
-            string sql = "SELECT lname, fname, customerid FROM customer WHERE lname LIKE '%" + sqlSearch + "%' OR fname LIKE '%" + sqlSearch + "%'";
+            string sql = "SELECT lname, fname, customerid FROM customer WHERE LOWER(lname) LIKE LOWER('%" + sqlSearch + "%') OR LOWER(fname) LIKE LOWER('%" + sqlSearch + "%');";
             try
             {
                 conn.Open();
@@ -222,7 +222,7 @@ namespace cirkus
         private void ListaPersonal()//Metod för att lista personalen i Datagriden....
         {
             string sqlSearchStaff = textBoxSearchStaff.Text;
-            string sql = "SELECT staffid, lname, fname, phonenumber  FROM staff WHERE fname LIKE '%" + sqlSearchStaff + "%' OR lname LIKE '%" + sqlSearchStaff + "%'";
+            string sql = "SELECT staffid, lname, fname, phonenumber  FROM staff WHERE LOWER(fname) LIKE LOWER('%" + sqlSearchStaff + "%') OR LOWER(lname) LIKE LOWER('%" + sqlSearchStaff + "%')";
             try
             {
                 conn.Open();
