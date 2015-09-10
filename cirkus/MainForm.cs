@@ -14,6 +14,7 @@ namespace cirkus
 {
     public partial class MainForm : Form
     {
+        #region Variables
         private int staffid;
         private string staffUserId;
         private string staffFname;
@@ -23,11 +24,62 @@ namespace cirkus
         public DataTable dt = new DataTable();
         private NpgsqlDataAdapter da;
         private List<show> allShowsList;
+        #endregion
+        #region Main
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int curTab = tabControl1.SelectedIndex;
 
+            switch (curTab)
+            {
+                default:
+                    //Sälja biljetter tabben.
+                    listCustomers();
+                    break;
+                case 1:
+                    LoadShows();
+                    break;
+                case 2:
+                    ListaPersonal();
+                    break;
+            }
+        }
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+        public MainForm(string adminAuthorization, string staffUserID, string staffFname, string staffLname)
+        {
+            InitializeComponent();
+
+            if (adminAuthorization != "1")
+            {
+                tabControl1.TabPages.RemoveAt(2);
+                tabControl1.TabPages.RemoveAt(1);
+            }
+            this.staffUserId = staffUserID;
+            this.staffLname = staffLname;
+            this.staffFname = staffFname;
+
+            labelStaffName.Text = staffFname + " " + staffLname;
+        }
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            listCustomers();
+
+        }
+       
+        #endregion
+        #region Biljettförsäljning
+        private void textBoxSearchCustomer_TextChanged(object sender, EventArgs e)
+        {
+            listCustomers();
+        }
         private void listCustomers()
         {
             string sqlSearch = textBoxSearchCustomer.Text;
-            string sql= "SELECT lname, fname, customerid FROM customer WHERE lname LIKE '%" + sqlSearch + "%' OR fname LIKE '%" + sqlSearch + "%'";
+            string sql = "SELECT lname, fname, customerid FROM customer WHERE lname LIKE '%" + sqlSearch + "%' OR fname LIKE '%" + sqlSearch + "%'";
             try
             {
                 conn.Open();
@@ -50,12 +102,111 @@ namespace cirkus
             finally
             {
                 conn.Close();
+            }
         }
-        }
-
         private void listTickets()
         {
-            
+
+        }
+        private void buttonAddCustomer_Click(object sender, EventArgs e)
+        {
+            AddCustomerForm custForm = new AddCustomerForm(staffUserId);
+            custForm.ShowDialog();
+
+        }
+        private void buttonReserveTicket_Click(object sender, EventArgs e)
+        {
+            ReserveTicketForm rtf = new ReserveTicketForm();
+            rtf.ShowDialog();
+        }
+        #endregion
+        #region Föreställningar
+        private void buttonSkapaForestalnning_Click(object sender, EventArgs e)
+        {
+            ShowForm showForm = new ShowForm();
+            showForm.ShowDialog();
+        }
+        private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
+        {
+            ShowForm showForm = new ShowForm();
+            showForm.ShowDialog();
+        }
+        private void buttonRaderaForestallning_Click(object sender, EventArgs e)
+        {
+            int selectedID;
+
+            DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
+
+            selectedID = Convert.ToInt32(row.Cells["showid"].Value);
+
+            string sql = "DELETE FROM show WHERE showid = '" + selectedID + "'";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+
+
+            conn.Open();
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            conn.Close();
+
+            LoadShows();
+            MessageBox.Show("Förestälningen är raderad!");
+        }
+
+        private void buttonAndraForestallning_Click(object sender, EventArgs e)
+        {
+            int selectedID;
+            DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
+            selectedID = Convert.ToInt32(row.Cells["showid"].Value);
+
+
+            string nySelectedID = selectedID.ToString();
+
+            ShowForm frm = new ShowForm();
+            frm.SetID(nySelectedID);
+
+            frm.ShowDialog();
+        }
+        public void LoadShows()
+        {
+            DataTable dt = new DataTable();
+            String sql;
+            dgvShowsList.DataSource = null;
+            dgvShowsList.Rows.Clear();
+
+            try
+            {
+
+
+
+                conn.Open();
+                sql = "select showid, date, name from show order by date DESC";
+                da = new NpgsqlDataAdapter(sql, conn);
+                da.Fill(dt);
+                dgvShowsList.DataSource = dt;
+                conn.Close();
+                dgvShowsList.Columns["showid"].Visible = false;
+            }
+            catch
+            {
+            }
+
+
+        }
+        #endregion
+        #region Konto
+        private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
+        {
+            ListaPersonal();
+        }
+        private void btnTomFalten_Click(object sender, EventArgs e)
+        {
+            tomFalt();
         }
         private void ListaPersonal()//Metod för att lista personalen i Datagriden....
         {
@@ -73,7 +224,7 @@ namespace cirkus
                 DataGridViewColumn column1 = dataGridViewStaff.Columns[1];
                 DataGridViewColumn column2 = dataGridViewStaff.Columns[2];
                 this.dataGridViewStaff.Columns[0].Visible = false;
-                
+
                 column.Width = 60;
                 column1.Width = 60;
                 column2.Width = 80;
@@ -81,7 +232,7 @@ namespace cirkus
                 conn.Close();
 
             }
-            catch(NpgsqlException ex)
+            catch (NpgsqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -103,6 +254,62 @@ namespace cirkus
             }
             return barasiffror;
         }
+        private void btnSkapaKonto_Click(object sender, EventArgs e)
+        {
+            if (!EndastSiffror(textBoxTelefonnummer.Text))
+            {
+                MessageBox.Show("Telefonnummret får bara innehålla siffror");
+                return;
+            }
+            if (!BaraBokstäver(textBoxFornamn.Text) || !BaraBokstäver(textBoxEfternamn.Text))
+            {
+                MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
+                return;
+            }
+            if (string.IsNullOrEmpty(textBoxFornamn.Text) || string.IsNullOrEmpty(textBoxEfternamn.Text)
+                || string.IsNullOrEmpty(textBoxTelefonnummer.Text) || string.IsNullOrEmpty(textBoxEpost.Text)
+                || string.IsNullOrEmpty(textBoxAnvandarnamn.Text) || string.IsNullOrEmpty(textBoxLosenord.Text)
+                || string.IsNullOrEmpty(comboBoxBehorighetsniva.Text))
+            {
+                MessageBox.Show("Ett eller flera fält är tomma. Fyll i alla fält");
+                return;
+            }
+            try
+            {
+                conn.Open();
+                string sql = "INSERT INTO staff (fname,lname,phonenumber,email,username,password,auth) VALUES(:fname, :lname, :phonenumber, :email, :username, :password, :auth)";
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+
+                cmd.Parameters.Add(new NpgsqlParameter("fname", textBoxFornamn.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("lname", textBoxEfternamn.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("phonenumber", textBoxTelefonnummer.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("email", textBoxEpost.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("username", textBoxAnvandarnamn.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("password", textBoxLosenord.Text));
+
+                if (comboBoxBehorighetsniva.Text == "Biljettförsäljare")
+                {
+                    int auth = 0;
+                    cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
+                }
+                else
+                {
+                    int auth = 1;
+                    cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
+
+                }
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                ListaPersonal();
+            }
+            catch (NpgsqlException)
+            {
+
+                MessageBox.Show("Användarnamnet är upptaget");
+                conn.Close();
+            }
+
+        }
         public bool BaraBokstäver(string namn)//Metod för att kontrollera om det bara är bokstäver
         {
             bool okej = true;
@@ -115,73 +322,6 @@ namespace cirkus
             }
             return okej;
         }
-
-
-        public MainForm(string adminAuthorization, string staffUserID, string staffFname, string staffLname)
-        {
-            InitializeComponent();
-
-            if (adminAuthorization != "1")
-        {
-                tabControl1.TabPages.RemoveAt(2);
-                tabControl1.TabPages.RemoveAt(1);
-            }
-            this.staffUserId = staffUserID;
-            this.staffLname = staffLname;
-            this.staffFname = staffFname;
-
-            labelStaffName.Text = staffFname + " " + staffLname;
-        }
-
-        private void buttonReserveTicket_Click(object sender, EventArgs e)
-        {
-            ReserveTicketForm rtf = new ReserveTicketForm();
-            rtf.ShowDialog();
-        }
-
-        private void buttonAddCustomer_Click(object sender, EventArgs e)
-        {
-            AddCustomerForm custForm = new AddCustomerForm(staffUserId);
-            custForm.ShowDialog();
-            
-        }
-
-        private void buttonLogOut_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-        //private void MainForm_Load(object sender, EventArgs e)
-        //{
-        //    listCustomers();
-        //}
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            listCustomers();
-            
-        }
-
-        private void btnTomFalten_Click(object sender, EventArgs e)
-        {
-            tomFalt();
-        }
-        private void buttonSkapaForestalnning_Click(object sender, EventArgs e)
-        {
-            ShowForm showForm = new ShowForm();
-            showForm.ShowDialog();
-        }
-
-        private void listForestallning()
-        {
-
-        }
-        private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
-        {
-            ShowForm showForm = new ShowForm();
-            showForm.ShowDialog();
-        }
-
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
             if (!EndastSiffror(textBoxTelefonnummer.Text))
@@ -265,180 +405,9 @@ namespace cirkus
             }
 
         }
-
-        private void buttonRaderaForestallning_Click(object sender, EventArgs e)
-            {
-            int selectedID;
-
-            DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
-
-            selectedID = Convert.ToInt32(row.Cells["showid"].Value);
-
-            string sql = "DELETE FROM show WHERE showid = '" + selectedID + "'";
-            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-
-
-                conn.Open();
-            try
-                {
-                cmd.ExecuteNonQuery();
-                }
-            catch (NpgsqlException ex)
-                {
-                MessageBox.Show(ex.Message);
-                }
-                conn.Close();
-
-            LoadShows();
-            MessageBox.Show("Förestälningen är raderad!");
-        }
-
-        private void buttonAndraForestallning_Click(object sender, EventArgs e)
-        {
-            int selectedID;
-            DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
-            selectedID = Convert.ToInt32(row.Cells["showid"].Value);
-           
-
-            string nySelectedID = selectedID.ToString();
-
-            ShowForm frm = new ShowForm();
-            frm.SetID(nySelectedID);
-
-            frm.ShowDialog();
-        }
-    
-
-        private void btnSkapaKonto_Click(object sender, EventArgs e)
-        {
-            if (!EndastSiffror(textBoxTelefonnummer.Text))
-            {
-                MessageBox.Show("Telefonnummret får bara innehålla siffror");
-                return;
-            }
-            if (!BaraBokstäver(textBoxFornamn.Text)||!BaraBokstäver(textBoxEfternamn.Text))
-            {
-                MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
-                return;
-            }
-            if (string.IsNullOrEmpty(textBoxFornamn.Text)||string.IsNullOrEmpty(textBoxEfternamn.Text)
-                ||string.IsNullOrEmpty(textBoxTelefonnummer.Text)||string.IsNullOrEmpty(textBoxEpost.Text)
-                ||string.IsNullOrEmpty(textBoxAnvandarnamn.Text)||string.IsNullOrEmpty(textBoxLosenord.Text)
-                ||string.IsNullOrEmpty(comboBoxBehorighetsniva.Text))
-            {
-                MessageBox.Show("Ett eller flera fält är tomma. Fyll i alla fält");
-                return;
-            }
-            try
-            {
-            conn.Open();
-            string sql = "INSERT INTO staff (fname,lname,phonenumber,email,username,password,auth) VALUES(:fname, :lname, :phonenumber, :email, :username, :password, :auth)";
-            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-
-            cmd.Parameters.Add(new NpgsqlParameter("fname", textBoxFornamn.Text));
-            cmd.Parameters.Add(new NpgsqlParameter("lname", textBoxEfternamn.Text));
-            cmd.Parameters.Add(new NpgsqlParameter("phonenumber", textBoxTelefonnummer.Text));
-            cmd.Parameters.Add(new NpgsqlParameter("email", textBoxEpost.Text));
-            cmd.Parameters.Add(new NpgsqlParameter("username", textBoxAnvandarnamn.Text));
-            cmd.Parameters.Add(new NpgsqlParameter("password", textBoxLosenord.Text));
-
-            if (comboBoxBehorighetsniva.Text == "Biljettförsäljare")
-            {
-                int auth = 0;
-                cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
-            }
-            else
-            {
-                int auth = 1;
-                cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
-
-            }
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            ListaPersonal();
-        }
-        catch (NpgsqlException)
-        {
-
-            MessageBox.Show("Användarnamnet är upptaget");
-            conn.Close();
-        }
-
-    }
-
-
-
-
-
-
         
-        public void tomFalt()
-        {
-            textBoxFornamn.Clear();
-            textBoxEfternamn.Clear();
-            textBoxEpost.Clear();
-            textBoxTelefonnummer.Clear();
-            textBoxAnvandarnamn.Clear();
-            textBoxLosenord.Clear();
-            comboBoxBehorighetsniva.ResetText();
-        }
-        public void LoadShows()
-        {
-            DataTable dt = new DataTable();
-            String sql;
-            dgvShowsList.DataSource = null;
-            dgvShowsList.Rows.Clear();
-
-            try
-            {
-
-
-
-                conn.Open();
-                sql = "select showid, date, name from show order by date DESC";
-                da = new NpgsqlDataAdapter(sql, conn);
-                da.Fill(dt);
-                dgvShowsList.DataSource = dt;
-                conn.Close();
-                dgvShowsList.Columns["showid"].Visible = false;
-            }
-            catch
-            {
-            }
-
-
-        }
-
-
-  
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int curTab = tabControl1.SelectedIndex;
-
-            switch (curTab)
-            {
-                default:
-                    //Sälja biljetter tabben.
-                    listCustomers();
-                    break;
-                case 1:
-                    LoadShows();
-                    break;
-                case 2:
-                    ListaPersonal();
-                    break;
-            }
-        }
-
-        private void textBoxSearchCustomer_TextChanged(object sender, EventArgs e)
-        {
-            listCustomers();
-        }
-        private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
-        {
-            ListaPersonal();
-        }
+        
+        #endregion
 
 
     }
