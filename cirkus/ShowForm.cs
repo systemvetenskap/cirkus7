@@ -75,13 +75,15 @@ namespace cirkus
                 listBoxAkter.Items.Add(newAct);
                 listBoxAkter.SelectedIndex = 0;
 
+                listBoxAkter.BackColor = Color.White;
+                labelAngeAkt.Visible = false;
             }
 
         }
 
         private void buttonRaderaAkt_Click(object sender, EventArgs e)
         {
-            if (listBoxAkter.Items.Count != -1)
+            if (listBoxAkter.Items.Count != 0)
             {
                 listBoxAkter.Items.RemoveAt(listBoxAkter.SelectedIndex);
             }
@@ -132,7 +134,21 @@ namespace cirkus
         {
             if (string.IsNullOrWhiteSpace(textBoxBeskrivning.Text))
             {
-                MessageBox.Show("Du måste ange beskrivning");
+                //MessageBox.Show("Du måste ange beskrivning");
+                textBoxBeskrivning.BackColor = Color.Tomato;
+                labelAngeBeskrivningen.Visible = true;
+            }
+
+            if (listBoxAkter.Items.Count == 0)
+            {
+                listBoxAkter.BackColor = Color.Tomato;
+                labelAngeAkt.Visible = true;
+            }
+
+            if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
+            {
+                textBoxAntalFriplatser.BackColor = Color.Tomato;
+                labelAngeStaplatser.Visible = true;
             }
 
             else
@@ -192,6 +208,34 @@ namespace cirkus
         private void labelAntalFriplatser_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxAntalFriplatser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxAntalFriplatser_TextChanged(object sender, EventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(textBoxAntalFriplatser.Text, "  ^ [0-9]"))
+            {
+                textBoxAntalFriplatser.Text = "";
+            }
+        }
+
+        private void textBoxBeskrivning_Click(object sender, EventArgs e)
+        {
+            textBoxBeskrivning.BackColor = Color.White;
+            labelAngeBeskrivningen.Visible = false;
+        }
+
+        private void textBoxAntalFriplatser_Click(object sender, EventArgs e)
+        {
+            textBoxAntalFriplatser.BackColor = Color.White;
+            labelAngeStaplatser.Visible = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
