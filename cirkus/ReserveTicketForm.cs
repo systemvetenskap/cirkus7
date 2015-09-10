@@ -139,7 +139,7 @@ namespace cirkus
         }
         private void listCustomers()
         {
-            string sqlSearch = textBoxSearchCustomer.Text;
+            string sqlSearch = textBoxSearchCust.Text;
             string sql = "SELECT lname, fname, customerid FROM customer WHERE LOWER(lname) LIKE LOWER('%" + sqlSearch + "%') OR LOWER(fname) LIKE LOWER('%" + sqlSearch + "%');";
             try
             {
@@ -214,6 +214,7 @@ namespace cirkus
         {
             if (checkBox2.Checked == true)
             {
+                textBoxSearchCust.Enabled = false;
                 if (this.dgCustom.DataSource != null)
                 {
                     this.dgCustom.DataSource = null;
@@ -222,7 +223,8 @@ namespace cirkus
                 {
                   this.dgCustom.Rows.Clear();
                    dgCustom.BackgroundColor = Color.Gray;
-                    dgCustom.ForeColor = Color.Gray;
+                    
+                    
                 }
 
                 txtenamn.Enabled = true;
@@ -231,12 +233,13 @@ namespace cirkus
                 txttel.Enabled = true;
 
             }
-            else if (checkBox2.Checked == false)
+            if (checkBox2.Checked == false)
             {
                 dgCustom.BackgroundColor = Color.White;
-                dgCustom.ForeColor = Color.White;
+               
                 
                 dgCustom.Visible = true;
+                textBoxSearchCust.Enabled = true; 
                 listCustomers();
                 txtenamn.Enabled = false;
                 txtepost.Enabled = false;
@@ -281,7 +284,7 @@ namespace cirkus
         private void checked_seats(object sender, ItemCheckEventArgs e)
         {
             CheckedListBox items = (CheckedListBox)sender;
-            if (items.CheckedItems.Count > total)
+            if (items.CheckedItems.Count > total + 1)
             {
                 e.NewValue = CheckState.Unchecked;
             }

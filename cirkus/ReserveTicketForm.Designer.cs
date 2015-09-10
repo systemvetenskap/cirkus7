@@ -68,7 +68,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.dgCustom = new System.Windows.Forms.DataGridView();
-            this.textBoxSearchCustomer = new System.Windows.Forms.TextBox();
+            this.textBoxSearchCust = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -519,13 +519,13 @@
             this.dgCustom.Size = new System.Drawing.Size(186, 184);
             this.dgCustom.TabIndex = 39;
             // 
-            // textBoxSearchCustomer
+            // textBoxSearchCust
             // 
-            this.textBoxSearchCustomer.Location = new System.Drawing.Point(78, 25);
-            this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
-            this.textBoxSearchCustomer.Size = new System.Drawing.Size(131, 20);
-            this.textBoxSearchCustomer.TabIndex = 38;
-            this.textBoxSearchCustomer.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
+            this.textBoxSearchCust.Location = new System.Drawing.Point(78, 25);
+            this.textBoxSearchCust.Name = "textBoxSearchCust";
+            this.textBoxSearchCust.Size = new System.Drawing.Size(131, 20);
+            this.textBoxSearchCust.TabIndex = 38;
+            this.textBoxSearchCust.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
             // 
             // panel1
             // 
@@ -544,7 +544,7 @@
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.dgCustom);
             this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.textBoxSearchCustomer);
+            this.panel2.Controls.Add(this.textBoxSearchCust);
             this.panel2.Controls.Add(this.groupBox6);
             this.panel2.Location = new System.Drawing.Point(577, 282);
             this.panel2.Name = "panel2";
@@ -723,7 +723,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.DataGridView dgCustom;
-        private System.Windows.Forms.TextBox textBoxSearchCustomer;
+        private System.Windows.Forms.TextBox textBoxSearchCust;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
