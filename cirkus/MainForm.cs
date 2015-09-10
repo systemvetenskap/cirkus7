@@ -52,7 +52,7 @@ namespace cirkus
         {
             
         }
-        private void ListaPersonal()//Metod för att lista personalen i Datagriden
+        private void ListaPersonal()//Metod för att lista personalen i Datagriden....
         {
             string sqlSearchStaff = textBoxSearchStaff.Text;
             string sql = "SELECT staffid, lname, fname, phonenumber  FROM staff WHERE fname LIKE '%" + sqlSearchStaff + "%' OR lname LIKE '%" + sqlSearchStaff + "%'";
