@@ -72,6 +72,8 @@
             this.labelAkter = new System.Windows.Forms.Label();
             this.labelForestallning = new System.Windows.Forms.Label();
             this.tabAccount = new System.Windows.Forms.TabPage();
+            this.dataGridViewStaff = new System.Windows.Forms.DataGridView();
+            this.textBoxSearchStaff = new System.Windows.Forms.TextBox();
             this.comboBoxBehorighetsniva = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnTomFalten = new System.Windows.Forms.Button();
@@ -91,8 +93,6 @@
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
-            this.dataGridViewStaff = new System.Windows.Forms.DataGridView();
-            this.textBoxSearchStaff = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
@@ -114,6 +114,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(933, 482);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabTicket
             // 
@@ -157,6 +158,7 @@
             this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
             this.textBoxSearchCustomer.Size = new System.Drawing.Size(158, 20);
             this.textBoxSearchCustomer.TabIndex = 13;
+            this.textBoxSearchCustomer.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
             // 
             // button4
             // 
@@ -578,6 +580,32 @@
             this.tabAccount.Text = "Konto";
             this.tabAccount.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewStaff
+            // 
+            this.dataGridViewStaff.AllowUserToAddRows = false;
+            this.dataGridViewStaff.AllowUserToDeleteRows = false;
+            this.dataGridViewStaff.AllowUserToResizeColumns = false;
+            this.dataGridViewStaff.AllowUserToResizeRows = false;
+            this.dataGridViewStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStaff.ColumnHeadersVisible = false;
+            this.dataGridViewStaff.Location = new System.Drawing.Point(302, 101);
+            this.dataGridViewStaff.MultiSelect = false;
+            this.dataGridViewStaff.Name = "dataGridViewStaff";
+            this.dataGridViewStaff.RowHeadersVisible = false;
+            this.dataGridViewStaff.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewStaff.Size = new System.Drawing.Size(220, 233);
+            this.dataGridViewStaff.TabIndex = 44;
+            // 
+            // textBoxSearchStaff
+            // 
+            this.textBoxSearchStaff.Location = new System.Drawing.Point(299, 48);
+            this.textBoxSearchStaff.Name = "textBoxSearchStaff";
+            this.textBoxSearchStaff.Size = new System.Drawing.Size(209, 20);
+            this.textBoxSearchStaff.TabIndex = 43;
+            this.textBoxSearchStaff.TextChanged += new System.EventHandler(this.textBoxSearchStaff_TextChanged);
+            // 
             // comboBoxBehorighetsniva
             // 
             this.comboBoxBehorighetsniva.FormattingEnabled = true;
@@ -601,7 +629,7 @@
             // 
             // btnTomFalten
             // 
-            this.btnTomFalten.Location = new System.Drawing.Point(299, 374);
+            this.btnTomFalten.Location = new System.Drawing.Point(59, 412);
             this.btnTomFalten.Name = "btnTomFalten";
             this.btnTomFalten.Size = new System.Drawing.Size(121, 31);
             this.btnTomFalten.TabIndex = 32;
@@ -610,12 +638,13 @@
             // 
             // btnUpdateraKonto
             // 
-            this.btnUpdateraKonto.Location = new System.Drawing.Point(59, 412);
+            this.btnUpdateraKonto.Location = new System.Drawing.Point(302, 340);
             this.btnUpdateraKonto.Name = "btnUpdateraKonto";
             this.btnUpdateraKonto.Size = new System.Drawing.Size(121, 31);
             this.btnUpdateraKonto.TabIndex = 31;
-            this.btnUpdateraKonto.Text = "Updatera konto";
+            this.btnUpdateraKonto.Text = "Uppdatera konto";
             this.btnUpdateraKonto.UseVisualStyleBackColor = true;
+            this.btnUpdateraKonto.Click += new System.EventHandler(this.btnUpdateraKonto_Click);
             // 
             // lblFornamn
             // 
@@ -634,6 +663,7 @@
             this.btnSkapaKonto.TabIndex = 29;
             this.btnSkapaKonto.Text = "Skapa konto";
             this.btnSkapaKonto.UseVisualStyleBackColor = true;
+            this.btnSkapaKonto.Click += new System.EventHandler(this.btnSkapaKonto_Click);
             // 
             // lblSokPerson
             // 
@@ -743,31 +773,6 @@
             this.labelStaffName.Text = "Namn";
             this.labelStaffName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // dataGridViewStaff
-            // 
-            this.dataGridViewStaff.AllowUserToAddRows = false;
-            this.dataGridViewStaff.AllowUserToDeleteRows = false;
-            this.dataGridViewStaff.AllowUserToResizeColumns = false;
-            this.dataGridViewStaff.AllowUserToResizeRows = false;
-            this.dataGridViewStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataGridViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStaff.ColumnHeadersVisible = false;
-            this.dataGridViewStaff.Location = new System.Drawing.Point(302, 101);
-            this.dataGridViewStaff.MultiSelect = false;
-            this.dataGridViewStaff.Name = "dataGridViewStaff";
-            this.dataGridViewStaff.RowHeadersVisible = false;
-            this.dataGridViewStaff.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStaff.Size = new System.Drawing.Size(220, 233);
-            this.dataGridViewStaff.TabIndex = 44;
-            // 
-            // textBoxSearchStaff
-            // 
-            this.textBoxSearchStaff.Location = new System.Drawing.Point(299, 48);
-            this.textBoxSearchStaff.Name = "textBoxSearchStaff";
-            this.textBoxSearchStaff.Size = new System.Drawing.Size(209, 20);
-            this.textBoxSearchStaff.TabIndex = 43;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -778,6 +783,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "MainForm";
             this.Text = "Välkommen";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabTicket.ResumeLayout(false);
             this.tabTicket.PerformLayout();

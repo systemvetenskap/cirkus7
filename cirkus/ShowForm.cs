@@ -158,7 +158,7 @@ namespace cirkus
 
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
-                //frm.LoadShows();
+                frm.LoadShows();
             }
         }
 

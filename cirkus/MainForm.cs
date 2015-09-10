@@ -159,6 +159,7 @@ namespace cirkus
         private void MainForm_Load(object sender, EventArgs e)
         {
             listCustomers();
+            MessageBox.Show("hej");
         }
 
         private void btnTomFalten_Click(object sender, EventArgs e)
@@ -383,29 +384,30 @@ namespace cirkus
         }
         public void LoadShows()
         {
-        //    DataTable dt = new DataTable();
-        //    String sql;
-        //    dgvShowsList.DataSource = null;
-        //    dgvShowsList.Rows.Clear();
+            DataTable dt = new DataTable();
+            String sql;
+            dgvShowsList.DataSource = null;
+            dgvShowsList.Rows.Clear();
 
-        //     try
-        //    {
+            try
+            {
 
 
 
-        //    conn.Open();
-        //    sql = "select showid, date, name from show order by date DESC";
-        //    da = new NpgsqlDataAdapter(sql, conn);
-        //    da.Fill(dt);
-        //    dgvShowsList.DataSource = dt;
-        //    conn.Close();
-        //    dgvShowsList.Columns["showid"].Visible = false;
-        //    }
-        //catch
-        //{
-
-    
+                conn.Open();
+                sql = "select showid, date, name from show order by date DESC";
+                da = new NpgsqlDataAdapter(sql, conn);
+                da.Fill(dt);
+                dgvShowsList.DataSource = dt;
+                conn.Close();
+                dgvShowsList.Columns["showid"].Visible = false;
             }
+            catch
+            {
+            }
+
+
+        }
 
 
   
@@ -421,6 +423,7 @@ namespace cirkus
                     listCustomers();
                     break;
                 case 1:
+                    LoadShows();
                     break;
                 case 2:
                     ListaPersonal();
@@ -432,14 +435,9 @@ namespace cirkus
         {
             listCustomers();
         }
-        private void textBoxSearchStaff_TextChanged_1(object sender, EventArgs e)
+        private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
         {
             ListaPersonal();
-        }
-
-        private void dgCustomer_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
 
