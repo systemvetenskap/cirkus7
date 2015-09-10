@@ -228,5 +228,3 @@ namespace cirkus
         }
     }
 }
-
-}
