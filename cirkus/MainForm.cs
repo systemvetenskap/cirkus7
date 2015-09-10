@@ -131,8 +131,6 @@ namespace cirkus
         }
         #endregion
         #region Föreställningar
-
-
         private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
         {
             ShowForm showForm = new ShowForm();
@@ -409,7 +407,7 @@ namespace cirkus
 
                 staffid = int.Parse(dgStaff[0, selectedIndex].Value.ToString());
 
-                btnTomFalten.Enabled = false;
+                //btnTomFalten.Enabled = false;
                 btnSkapaKonto.Enabled = false;
                 dgStaff.Enabled = false;
 
