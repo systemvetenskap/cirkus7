@@ -16,58 +16,11 @@ namespace cirkus
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int showid, actid;
         int totalChild, totalYouth, totalAdult, total, checkedseats, price;
-        string show, act, bseats;
+        string show, act, bseats, selectedsection;
         public ReserveTicketForm()
         {
             InitializeComponent();
             loadShows();
-        }
-
-        private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
-        {
-            loadActs();
-            create_summary();
-
-        }
-
-        private void dataGridViewActs_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            loadSection();
-            create_summary();
-          
-        }
-        private void loadSection()
-        {
-            comboBoxSection.DataSource = null;
-            comboBoxSection.Items.Clear();
-
-            try
-            {
-                
-                int selectedIndex = dataGridViewActs.SelectedRows[0].Index;
-
-                actid = int.Parse(dataGridViewActs[0, selectedIndex].Value.ToString());
-                string sql = @"select distinct section from seats inner join available_seats on seats.seatid = available_seats.seatid 
-                            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "'";
-
-
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-
-                DataTable dt = new DataTable();
-
-                da.Fill(dt);
-
-                comboBoxSection.DataSource = dt;
-                comboBoxSection.DisplayMember = "section";
-            }
-            catch
-            {
-                comboBoxSection.DataSource = null;
-                comboBoxSection.Items.Clear();             
-
-            }
-
         }
         public void loadShows()
         {
@@ -86,8 +39,125 @@ namespace cirkus
 
             conn.Close();
 
-           
+            dataGridViewShows.Rows[1].Selected = true;
+
+            loadActs();
+
         }
+        private void loadActs()
+        {
+            
+            int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
+
+            showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
+            conn.Open();
+            string sql = "select acts.actid, acts.name from acts where showid = '" + showid + "'";
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            dataGridViewActs.DataSource = dt;
+            this.dataGridViewActs.Columns[0].Visible = false;
+            dataGridViewActs.Columns[1].Width = 129;
+
+           
+
+            dataGridViewActs.Rows[0].Selected = true;
+            conn.Close();
+
+            loadSection();
+
+
+        }
+        private void loadSection()
+        {
+
+            comboBoxSection.DataSource = null;
+            comboBoxSection.Items.Clear();
+
+            try
+            {
+
+                int selectedIndex = dataGridViewActs.SelectedRows[0].Index;
+
+                actid = int.Parse(dataGridViewActs[0, selectedIndex].Value.ToString());
+                string sql = @"select distinct section from seats inner join available_seats on seats.seatid = available_seats.seatid 
+                            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "' order by section";
+
+                conn.Open();
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+
+                DataTable dt = new DataTable();
+
+                da.Fill(dt);
+
+                comboBoxSection.DataSource = dt;
+                comboBoxSection.DisplayMember = "section";
+
+                string s = comboBoxSection.Text.ToString();
+                selectedsection = s;
+                lblTest.Text = selectedsection;
+
+                comboBoxSection.SelectedIndex = 0;
+
+                conn.Close();
+
+                load_Seats();
+            }
+            catch
+            {
+                comboBoxSection.DataSource = null;
+                comboBoxSection.Items.Clear();
+
+            }
+
+        }
+        private void load_Seats()
+        {
+            conn.Open();
+            selectedsection = comboBoxSection.Text.ToString();
+            lblTest.Text = selectedsection;
+            string getSeatnr = @"select rownumber, section from seats inner join available_seats on seats.seatid = available_seats.seatid 
+                                    inner join acts on available_seats.actid = acts.actid 
+                                        left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                                            where booked_seat_id is null and acts.actid = '" + actid + "' and seats.section = '"+selectedsection+"' order by rownumber ";
+
+
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(getSeatnr, conn);
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            checkedListBoxSeats.DataSource = dt;
+            checkedListBoxSeats.DisplayMember = "rownumber";
+            conn.Close();
+        }
+        private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
+        {
+            conn.Close();
+            loadActs();
+            create_summary();
+
+        }
+
+        private void dataGridViewActs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            conn.Close();
+            loadSection();
+            create_summary();
+          
+        }
+        private void seat_sectionchanged(object sender, EventArgs e)
+        {
+            conn.Close();
+            load_Seats();
+        }
+
+
 
         private void added_youth(object sender, EventArgs e)
         {
@@ -128,34 +198,10 @@ namespace cirkus
             calculate_people();
         }
 
-        private void seat_sectionchanged(object sender, EventArgs e)
-        {
-            load_Seats();        
-        }
+      
 
 
-        private void loadActs()
-        {
-            int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
-
-            showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
-
-            string sql = "select acts.actid, acts.name from acts where showid = '" + showid + "'";
-
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-
-            DataTable dt = new DataTable();
-
-            da.Fill(dt);
-
-            dataGridViewActs.DataSource = dt;
-            this.dataGridViewActs.Columns[0].Visible = false;
-            dataGridViewActs.Columns[1].Width = 129;
-            loadSection();
-            load_Seats();
-            
-
-        }
+      
         public void calculate_people()
         {
            total = totalChild + totalYouth + totalAdult;
@@ -169,23 +215,7 @@ namespace cirkus
                 checkedListBoxSeats.SelectionMode = SelectionMode.None;
             }
         }
-        private void load_Seats()
-        {
-            string getSeatnr = @"select rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
-                                    inner join acts on available_seats.actid = acts.actid 
-                                        left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                            where booked_seat_id is null and acts.actid = '" + actid + "'";
-
-
-
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(getSeatnr, conn);
-            DataTable dt = new DataTable();
-
-            da.Fill(dt);
-
-            checkedListBoxSeats.DataSource = dt;
-            checkedListBoxSeats.DisplayMember = "rownumber";
-        }
+       
         private void create_summary()
         {
             try

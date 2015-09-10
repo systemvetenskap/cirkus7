@@ -126,6 +126,7 @@ namespace cirkus
         }
         private void buttonReserveTicket_Click(object sender, EventArgs e)
         {
+            conn.Close();
             ReserveTicketForm rtf = new ReserveTicketForm();
             rtf.ShowDialog();
         }
