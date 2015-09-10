@@ -159,7 +159,7 @@ namespace cirkus
         private void MainForm_Load(object sender, EventArgs e)
         {
             listCustomers();
-            MessageBox.Show("hej");
+            
         }
 
         private void btnTomFalten_Click(object sender, EventArgs e)
