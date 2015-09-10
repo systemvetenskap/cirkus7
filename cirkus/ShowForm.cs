@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using System.IO;
 
 namespace cirkus
 {
@@ -18,16 +19,34 @@ namespace cirkus
         NpgsqlCommand command;
         DataTable dt;
         NpgsqlDataAdapter da;
+        public string Name;
 
         public ShowForm()
         {
             InitializeComponent();
 
             loadSeats();
-
-
-
+            
         }
+
+        public void SetID(string s)
+        {
+            Name = s;
+            textBoxBeskrivning.Text = Name;
+
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("select * from show where showid = '" + Name + "'", conn); 
+            NpgsqlDataReader dr = cmd.ExecuteReader();  
+
+            while (dr.Read()) 
+            {
+                textBoxBeskrivning.Text = dr.GetValue(1).ToString(); 
+                textBoxAntalFriplatser.Text = dr.GetValue(2).ToString();
+                dateTimePickerDatum.Value = Convert.ToDateTime(dr.GetValue(0).ToString());
+            }
+            conn.Close();
+        }
+
 
         private void buttonLaggTillAkt_Click(object sender, EventArgs e)
         {
@@ -68,7 +87,28 @@ namespace cirkus
 
         private void buttonSparaAndringar_Click(object sender, EventArgs e)
         {
+            string name, date;
 
+            name = textBoxBeskrivning.Text;
+            date = dateTimePickerDatum.Text;
+            int seat_number = Convert.ToInt16(textBoxAntalFriplatser.Text);
+
+            string sql = "update show set name = @name, date = @date, seat_number = @seat_number where showid = '" + Name + "'";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@date", date);
+            cmd.Parameters.AddWithValue("@seat_number", seat_number);
+            
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            this.Close();
+            var frm = Application.OpenForms.OfType<MainForm>().Single();
+            frm.LoadShows();
+
+            MessageBox.Show("Ändringarna har sparats!");
         }
 
         private void buttonLaggTIllForestallning_Click(object sender, EventArgs e)
