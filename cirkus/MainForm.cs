@@ -69,7 +69,17 @@ namespace cirkus
             listCustomers();
 
         }
-       
+        public void tomFalt()
+        {
+            textBoxFornamn.Clear();
+            textBoxEfternamn.Clear();
+            textBoxEpost.Clear();
+            textBoxTelefonnummer.Clear();
+            textBoxAnvandarnamn.Clear();
+            textBoxLosenord.Clear();
+            comboBoxBehorighetsniva.ResetText();
+        }
+
         #endregion
         #region Biljettförsäljning
         private void textBoxSearchCustomer_TextChanged(object sender, EventArgs e)
