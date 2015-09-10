@@ -147,7 +147,6 @@ namespace cirkus
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ListaPersonal();
             listCustomers();
         }
 
@@ -337,6 +336,7 @@ namespace cirkus
                 case 1:
                     break;
                 case 2:
+                    ListaPersonal();
                     break;
             }
         }
