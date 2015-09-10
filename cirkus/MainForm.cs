@@ -16,6 +16,7 @@ namespace cirkus
     {
         #region Variables
         private int staffid;
+        private int showid;
         private string staffUserId;
         private string staffFname;
         private string staffLname;
@@ -38,6 +39,7 @@ namespace cirkus
                     break;
                 case 1:
                     LoadShows();
+                    LoadAkter();
                     break;
                 case 2:
                     ListaPersonal();
@@ -192,9 +194,6 @@ namespace cirkus
 
             try
             {
-
-
-
                 conn.Open();
                 sql = "select showid, date, name from show order by date DESC";
                 da = new NpgsqlDataAdapter(sql, conn);
@@ -203,11 +202,62 @@ namespace cirkus
                 conn.Close();
                 dgvShowsList.Columns["showid"].Visible = false;
             }
-            catch
+            catch (NpgsqlException ex)
             {
+                MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                conn.Close();
+            }
+            
+        }
 
+        public void LoadAkter()
+        {
+            //DataTable dt = new DataTable();
+            //dgvShowsList.DataSource = null;
+            //dgvShowsList.Rows.Clear();
 
+            //int selectedIndex = dgvShowsList.SelectedRows[0].Index;
+
+            //showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
+
+            //string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
+
+            //try
+            //{
+            //    conn.Open();
+            //    da = new NpgsqlDataAdapter(sql, conn);
+            //    da.Fill(dt);
+            //    dgvAkter.DataSource = dt;
+            //    conn.Close();
+            //    dgvAkter.Columns["actid"].Visible = false;
+            //}
+            //catch (NpgsqlException ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
+            int selectedIndex = dgvShowsList.SelectedRows[0].Index;
+
+            showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
+
+            //string sql = "select acts.actid, acts.name from acts where showid = '" + showid + "'";
+            string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
+            // select name, actid from acts where showid = '" + showid + "' group by name, actid order by name
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            dgvAkter.DataSource = dt;
+            this.dgvAkter.Columns[1].Visible = false;
         }
         #endregion
         #region Konto
@@ -416,10 +466,29 @@ namespace cirkus
             }
 
         }
-        
-        
+
+
+
         #endregion
 
+        private void dgvAkter_SelectionChanged(object sender, EventArgs e)
+        {
+            //LoadAkter();
+        }
 
+        private void dgvShowsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadAkter();
+        }
+
+        private void dgvShowsList_KeyDown(object sender, KeyEventArgs e)
+        {
+            LoadAkter();
+        }
+
+        private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
+        {
+            LoadAkter();
+        }
     }
 }
