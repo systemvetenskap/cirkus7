@@ -109,7 +109,7 @@ namespace cirkus
             string nySelectedID = selectedID.ToString();
 
             ShowForm frm = new ShowForm();
-            //frm.SetID(nySelectedID);
+            frm.SetID(nySelectedID);
 
             frm.ShowDialog();
         }
