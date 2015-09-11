@@ -305,7 +305,7 @@ namespace cirkus
         {
             tomFalt();
         }
-        private void ListaPersonal()//Metod för att lista personalen i Datagriden....
+        private void ListaPersonal()//Metod för att lista personalen i Datagriden.
         {
             string sqlSearchStaff = textBoxSearchStaff.Text;
             string sql = "SELECT staffid, lname, fname, phonenumber  FROM staff WHERE LOWER(fname) LIKE LOWER('%" + sqlSearchStaff + "%') OR LOWER(lname) LIKE LOWER('%" + sqlSearchStaff + "%')";
@@ -541,7 +541,6 @@ namespace cirkus
             }
             catch (NpgsqlException)
             {
-
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Användaren finns redan";
@@ -605,24 +604,25 @@ namespace cirkus
 
                 staffid = int.Parse(dgStaff[0, selectedIndex].Value.ToString());
 
-                //btnTomFalten.Enabled = false;
                 btnSkapaKonto.Enabled = false;
                 dgStaff.Enabled = false;
 
                 conn.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand(@"select fname, lname, phonenumber, email, username, password, auth
+                NpgsqlCommand cmd = new NpgsqlCommand(@"select ssn, fname, lname, phonenumber, email, username, password, auth
                                                         from staff where staffid = '" + staffid + "'", conn);
                 NpgsqlDataReader read;
                 read = cmd.ExecuteReader();
                 read.Read();
 
-                textBoxFornamn.Text = read[0].ToString();
-                textBoxEfternamn.Text = read[1].ToString();
-                textBoxTelefonnummer.Text = read[2].ToString();
-                textBoxEpost.Text = read[3].ToString();
-                textBoxAnvandarnamn.Text = read[4].ToString();
-                textBoxLosenord.Text = read[5].ToString();
-                string auth = read[6].ToString();
+                textBoxPersonnummer.Text = read[0].ToString();
+                textBoxFornamn.Text = read[1].ToString();
+                textBoxEfternamn.Text = read[2].ToString();
+                textBoxTelefonnummer.Text = read[3].ToString();
+                textBoxEpost.Text = read[4].ToString();
+                textBoxAnvandarnamn.Text = read[5].ToString();
+                textBoxLosenord.Text = read[6].ToString();
+                string auth = read[7].ToString();
+            
                 comboBoxBehorighetsniva.SelectedIndex = Convert.ToInt16(auth);
                 conn.Close();
                 btnUpdateraKonto.Text = "Spara ändringar";
