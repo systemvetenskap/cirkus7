@@ -444,7 +444,10 @@
             this.dgvAkter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAkter.Size = new System.Drawing.Size(193, 107);
             this.dgvAkter.TabIndex = 23;
+            this.dgvAkter.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAkter_CellClick);
             this.dgvAkter.SelectionChanged += new System.EventHandler(this.dgvAkter_SelectionChanged);
+            this.dgvAkter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAkter_KeyDown);
+            this.dgvAkter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAkter_KeyUp);
             // 
             // dgvShowsList
             // 
@@ -464,6 +467,8 @@
             this.dgvShowsList.Size = new System.Drawing.Size(228, 348);
             this.dgvShowsList.TabIndex = 22;
             this.dgvShowsList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowsList_CellClick);
+            this.dgvShowsList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvShowsList_KeyDown);
+            this.dgvShowsList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvShowsList_KeyUp);
             // 
             // textBoxKronorVuxenbiljetter
             // 

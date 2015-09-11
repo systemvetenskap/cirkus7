@@ -41,8 +41,8 @@ namespace cirkus
                     break;
                 case 1:
                     LoadShows();
-                    LoadStatistics();
                     LoadAkter();
+                    LoadStatistics();
                     break;
                 case 2:
                     ListaPersonal();
@@ -249,35 +249,151 @@ namespace cirkus
 
         public void LoadStatistics()
         {
-            //DataGridViewRow row = dgvAkter.SelectedRows[1];
-            //actid = Convert.ToInt32(row.Cells["actid"].Value);
-            //actid = Convert.ToInt32(row.Cells[1].Value);
-            
+            //Antal Vuxenbiljetter
             int selectedIndex = dgvAkter.SelectedRows[0].Index;
-            actid = int.Parse(dgvAkter[0, selectedIndex].Value.ToString());
+            actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
 
-            //int antalVuxen, antalUngdoms, antalBarn, antalTotalt, kronorVuxen, kronorUngdom, kronorBarn, kronorTotalt;
-            //antalVuxen = Convert.ToInt16(textBoxAntalVuxenBiljetter.Text);
-            //antalUngdoms = Convert.ToInt16(textBoxAntalUngdomsbiljetter.Text);
-            //antalBarn = Convert.ToInt16(textBoxAntalBarnbiljetter.Text);
-            //antalTotalt = Convert.ToInt16(textBoxTotaltAntal.Text);
-            //kronorVuxen = Convert.ToInt16(textBoxKronorVuxenbiljetter.Text);
-            //kronorUngdom = Convert.ToInt16(textBoxKronorUngdomsbiljetter.Text);
-            //kronorBarn = Convert.ToInt16(textBoxKronorBarnbiljetter.Text);
-            //kronorTotalt = Convert.ToInt16(textBoxTotaltKronor.Text);
+           
             conn.Open();
-                string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
-                //string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '29' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
+            string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
 
-                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-                NpgsqlDataReader dr = cmd.ExecuteReader();
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
 
-                while (dr.Read())
-                {
-                    textBoxAntalVuxenBiljetter.Text = dr.GetValue(1).ToString();
-                }
+            textBoxAntalVuxenBiljetter.Clear();
 
-                conn.Close();
+            while (dr.Read())
+            {
+                textBoxAntalVuxenBiljetter.Text = dr.GetValue(1).ToString();
+            }
+
+            if (textBoxAntalVuxenBiljetter.Text == "")
+            {
+                textBoxAntalVuxenBiljetter.Text = "0";
+            }
+            conn.Close();
+
+            //Anttal ungdomsbiljetter
+            conn.Open();
+            string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'ungdom' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
+            NpgsqlDataReader drAU = cmdAU.ExecuteReader();
+
+            textBoxAntalUngdomsbiljetter.Clear();
+
+            while (drAU.Read())
+            {
+                textBoxAntalUngdomsbiljetter.Text = drAU.GetValue(1).ToString();
+            }
+
+            if (textBoxAntalUngdomsbiljetter.Text == "")
+            {
+                textBoxAntalUngdomsbiljetter.Text = "0";
+            }
+            conn.Close();
+
+            //Antal ungdomsbiljetter
+            conn.Open();
+            string sqlAB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'barn' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmdAB = new NpgsqlCommand(sqlAB, conn);
+            NpgsqlDataReader drAB = cmdAB.ExecuteReader();
+
+            textBoxAntalBarnbiljetter.Clear();
+
+            while (drAB.Read())
+            {
+                textBoxAntalBarnbiljetter.Text = drAB.GetValue(1).ToString();
+            }
+
+            if (textBoxAntalBarnbiljetter.Text == "")
+            {
+                textBoxAntalBarnbiljetter.Text = "0";
+            }
+            conn.Close();
+
+            //Totalt antal
+            int antalVuxen, antalUngdom, antalBarn;
+            string totaltSumma;
+
+            antalVuxen = Convert.ToInt32(textBoxAntalVuxenBiljetter.Text);
+            antalUngdom = Convert.ToInt32(textBoxAntalUngdomsbiljetter.Text);
+            antalBarn = Convert.ToInt32(textBoxAntalBarnbiljetter.Text);
+            totaltSumma = Convert.ToString(antalVuxen + antalUngdom + antalBarn);
+
+            textBoxTotaltAntal.Text = totaltSumma;
+
+            //Kronor vuxen
+            conn.Open();
+            string sqlKV = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmdKV = new NpgsqlCommand(sqlKV, conn);
+            NpgsqlDataReader drKV = cmdKV.ExecuteReader();
+
+            textBoxKronorVuxenbiljetter.Clear();
+
+            while (drKV.Read())
+            {
+                textBoxKronorVuxenbiljetter.Text = drKV.GetValue(0).ToString();
+            }
+
+            if (textBoxKronorVuxenbiljetter.Text == "")
+            {
+                textBoxKronorVuxenbiljetter.Text = "0";
+            }
+            conn.Close();
+
+            //Kronor ungdom
+            conn.Open();
+            string sqlKU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'ungdom' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmdKU = new NpgsqlCommand(sqlKU, conn);
+            NpgsqlDataReader drKU = cmdKU.ExecuteReader();
+
+            textBoxKronorUngdomsbiljetter.Clear();
+
+            while (drKU.Read())
+            {
+                textBoxKronorUngdomsbiljetter.Text = drKU.GetValue(0).ToString();
+            }
+
+            if (textBoxKronorUngdomsbiljetter.Text == "")
+            {
+                textBoxKronorUngdomsbiljetter.Text = "0";
+            }
+            conn.Close();
+
+            //Kronor ungdom
+            conn.Open();
+            string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'barn' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
+            NpgsqlDataReader drKB = cmdKB.ExecuteReader();
+
+            textBoxKronorBarnbiljetter.Clear();
+
+            while (drKB.Read())
+            {
+                textBoxKronorBarnbiljetter.Text = drKB.GetValue(0).ToString();
+            }
+
+            if (textBoxKronorBarnbiljetter.Text == "")
+            {
+                textBoxKronorBarnbiljetter.Text = "0";
+            }
+            conn.Close();
+            
+            //Totalt antal
+            int kronorVuxen, kronorUngdom, kornorBarn;
+            string totaltKornor;
+
+            kronorVuxen = Convert.ToInt32(textBoxKronorVuxenbiljetter.Text);
+            kronorUngdom = Convert.ToInt32(textBoxKronorUngdomsbiljetter.Text);
+            kornorBarn = Convert.ToInt32(textBoxKronorBarnbiljetter.Text);
+            totaltKornor = Convert.ToString(antalVuxen + antalUngdom + antalBarn);
+
+            textBoxTotaltKronor.Text = totaltKornor;
             
         }
 
@@ -295,11 +411,12 @@ namespace cirkus
             dgvAkter.DataSource = dt;
             conn.Close();
 
-           // this.dgvAkter.Columns[1].Visible = false;
+           this.dgvAkter.Columns[1].Visible = false;
         }
         private void dgvShowsList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             LoadAkter();
+            LoadStatistics();
         }
         #endregion
         #region Konto
@@ -571,5 +688,32 @@ namespace cirkus
 
         }
         #endregion
+
+        private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadStatistics();
+        }
+
+        private void dgvShowsList_KeyDown(object sender, KeyEventArgs e)
+        {
+            LoadAkter();
+            LoadStatistics();
+        }
+
+        private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
+        {
+            LoadAkter();
+            LoadStatistics();
+        }
+
+        private void dgvAkter_KeyDown(object sender, KeyEventArgs e)
+        {
+            LoadStatistics();
+        }
+
+        private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
+        {
+            LoadStatistics();
+        }
     }
 }
