@@ -646,7 +646,8 @@ namespace cirkus
         }
         private void btnRaderaKonto_Click(object sender, EventArgs e)
         {
-            DialogResult Confirmation = MessageBox.Show("Vill du ta bort användaren ?", "Bekräftelse", MessageBoxButtons.YesNo);
+            DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade användaren ?",
+                "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (Confirmation == DialogResult.Yes)
             {
