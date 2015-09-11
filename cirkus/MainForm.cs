@@ -529,7 +529,7 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 ListaPersonal();
-                tomFalt();
+                tomFaltochFarg();
             }
             catch (NpgsqlException)
             {
@@ -653,7 +653,7 @@ namespace cirkus
                 conn.Close();
 
                 dgStaff.Enabled = true;
-                tomFalt();
+                tomFaltochFarg();
                 ListaPersonal();
                 btnUpdateraKonto.Text = "Uppdatera konto";
                 textBoxAnvandarnamn.Enabled = true;
