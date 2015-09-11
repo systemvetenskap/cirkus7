@@ -38,6 +38,11 @@
             this.buttonReserveTicket = new System.Windows.Forms.Button();
             this.buttonAddCustomer = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxPrintPrice = new System.Windows.Forms.TextBox();
+            this.textBoxPrintAct = new System.Windows.Forms.TextBox();
+            this.textBoxPrintShow = new System.Windows.Forms.TextBox();
+            this.textBoxPrintAge = new System.Windows.Forms.TextBox();
+            this.textBoxPrintSeat = new System.Windows.Forms.TextBox();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -96,11 +101,6 @@
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.textBoxPrintSeat = new System.Windows.Forms.TextBox();
-            this.textBoxPrintAge = new System.Windows.Forms.TextBox();
-            this.textBoxPrintShow = new System.Windows.Forms.TextBox();
-            this.textBoxPrintAct = new System.Windows.Forms.TextBox();
-            this.textBoxPrintPrice = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
@@ -250,6 +250,51 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Utskrift";
             // 
+            // textBoxPrintPrice
+            // 
+            this.textBoxPrintPrice.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintPrice.Location = new System.Drawing.Point(32, 309);
+            this.textBoxPrintPrice.Name = "textBoxPrintPrice";
+            this.textBoxPrintPrice.ReadOnly = true;
+            this.textBoxPrintPrice.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintPrice.TabIndex = 18;
+            // 
+            // textBoxPrintAct
+            // 
+            this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintAct.Location = new System.Drawing.Point(32, 252);
+            this.textBoxPrintAct.Name = "textBoxPrintAct";
+            this.textBoxPrintAct.ReadOnly = true;
+            this.textBoxPrintAct.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintAct.TabIndex = 17;
+            // 
+            // textBoxPrintShow
+            // 
+            this.textBoxPrintShow.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintShow.Location = new System.Drawing.Point(32, 195);
+            this.textBoxPrintShow.Name = "textBoxPrintShow";
+            this.textBoxPrintShow.ReadOnly = true;
+            this.textBoxPrintShow.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintShow.TabIndex = 16;
+            // 
+            // textBoxPrintAge
+            // 
+            this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintAge.Location = new System.Drawing.Point(32, 81);
+            this.textBoxPrintAge.Name = "textBoxPrintAge";
+            this.textBoxPrintAge.ReadOnly = true;
+            this.textBoxPrintAge.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintAge.TabIndex = 15;
+            // 
+            // textBoxPrintSeat
+            // 
+            this.textBoxPrintSeat.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintSeat.Location = new System.Drawing.Point(32, 138);
+            this.textBoxPrintSeat.Name = "textBoxPrintSeat";
+            this.textBoxPrintSeat.ReadOnly = true;
+            this.textBoxPrintSeat.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintSeat.TabIndex = 14;
+            // 
             // buttonPrint
             // 
             this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -384,6 +429,7 @@
             // 
             // dgvAkter
             // 
+            this.dgvAkter.AllowUserToAddRows = false;
             this.dgvAkter.AllowUserToResizeColumns = false;
             this.dgvAkter.AllowUserToResizeRows = false;
             this.dgvAkter.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -423,6 +469,7 @@
             // 
             this.textBoxKronorVuxenbiljetter.Location = new System.Drawing.Point(790, 74);
             this.textBoxKronorVuxenbiljetter.Name = "textBoxKronorVuxenbiljetter";
+            this.textBoxKronorVuxenbiljetter.ReadOnly = true;
             this.textBoxKronorVuxenbiljetter.Size = new System.Drawing.Size(79, 20);
             this.textBoxKronorVuxenbiljetter.TabIndex = 21;
             // 
@@ -430,6 +477,7 @@
             // 
             this.textBoxAntalUngdomsbiljetter.Location = new System.Drawing.Point(677, 113);
             this.textBoxAntalUngdomsbiljetter.Name = "textBoxAntalUngdomsbiljetter";
+            this.textBoxAntalUngdomsbiljetter.ReadOnly = true;
             this.textBoxAntalUngdomsbiljetter.Size = new System.Drawing.Size(79, 20);
             this.textBoxAntalUngdomsbiljetter.TabIndex = 20;
             // 
@@ -437,6 +485,7 @@
             // 
             this.textBoxKronorUngdomsbiljetter.Location = new System.Drawing.Point(790, 111);
             this.textBoxKronorUngdomsbiljetter.Name = "textBoxKronorUngdomsbiljetter";
+            this.textBoxKronorUngdomsbiljetter.ReadOnly = true;
             this.textBoxKronorUngdomsbiljetter.Size = new System.Drawing.Size(79, 20);
             this.textBoxKronorUngdomsbiljetter.TabIndex = 19;
             // 
@@ -444,6 +493,7 @@
             // 
             this.textBoxAntalBarnbiljetter.Location = new System.Drawing.Point(677, 140);
             this.textBoxAntalBarnbiljetter.Name = "textBoxAntalBarnbiljetter";
+            this.textBoxAntalBarnbiljetter.ReadOnly = true;
             this.textBoxAntalBarnbiljetter.Size = new System.Drawing.Size(79, 20);
             this.textBoxAntalBarnbiljetter.TabIndex = 18;
             // 
@@ -451,6 +501,7 @@
             // 
             this.textBoxKronorBarnbiljetter.Location = new System.Drawing.Point(790, 140);
             this.textBoxKronorBarnbiljetter.Name = "textBoxKronorBarnbiljetter";
+            this.textBoxKronorBarnbiljetter.ReadOnly = true;
             this.textBoxKronorBarnbiljetter.Size = new System.Drawing.Size(79, 20);
             this.textBoxKronorBarnbiljetter.TabIndex = 17;
             // 
@@ -458,6 +509,7 @@
             // 
             this.textBoxTotaltAntal.Location = new System.Drawing.Point(677, 192);
             this.textBoxTotaltAntal.Name = "textBoxTotaltAntal";
+            this.textBoxTotaltAntal.ReadOnly = true;
             this.textBoxTotaltAntal.Size = new System.Drawing.Size(79, 20);
             this.textBoxTotaltAntal.TabIndex = 16;
             // 
@@ -465,6 +517,7 @@
             // 
             this.textBoxTotaltKronor.Location = new System.Drawing.Point(790, 192);
             this.textBoxTotaltKronor.Name = "textBoxTotaltKronor";
+            this.textBoxTotaltKronor.ReadOnly = true;
             this.textBoxTotaltKronor.Size = new System.Drawing.Size(79, 20);
             this.textBoxTotaltKronor.TabIndex = 15;
             // 
@@ -555,6 +608,7 @@
             // 
             this.textBoxAntalVuxenBiljetter.Location = new System.Drawing.Point(677, 74);
             this.textBoxAntalVuxenBiljetter.Name = "textBoxAntalVuxenBiljetter";
+            this.textBoxAntalVuxenBiljetter.ReadOnly = true;
             this.textBoxAntalVuxenBiljetter.Size = new System.Drawing.Size(79, 20);
             this.textBoxAntalVuxenBiljetter.TabIndex = 5;
             // 
@@ -832,51 +886,6 @@
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // textBoxPrintSeat
-            // 
-            this.textBoxPrintSeat.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintSeat.Location = new System.Drawing.Point(32, 138);
-            this.textBoxPrintSeat.Name = "textBoxPrintSeat";
-            this.textBoxPrintSeat.ReadOnly = true;
-            this.textBoxPrintSeat.Size = new System.Drawing.Size(162, 26);
-            this.textBoxPrintSeat.TabIndex = 14;
-            // 
-            // textBoxPrintAge
-            // 
-            this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAge.Location = new System.Drawing.Point(32, 81);
-            this.textBoxPrintAge.Name = "textBoxPrintAge";
-            this.textBoxPrintAge.ReadOnly = true;
-            this.textBoxPrintAge.Size = new System.Drawing.Size(162, 26);
-            this.textBoxPrintAge.TabIndex = 15;
-            // 
-            // textBoxPrintShow
-            // 
-            this.textBoxPrintShow.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintShow.Location = new System.Drawing.Point(32, 195);
-            this.textBoxPrintShow.Name = "textBoxPrintShow";
-            this.textBoxPrintShow.ReadOnly = true;
-            this.textBoxPrintShow.Size = new System.Drawing.Size(162, 26);
-            this.textBoxPrintShow.TabIndex = 16;
-            // 
-            // textBoxPrintAct
-            // 
-            this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAct.Location = new System.Drawing.Point(32, 252);
-            this.textBoxPrintAct.Name = "textBoxPrintAct";
-            this.textBoxPrintAct.ReadOnly = true;
-            this.textBoxPrintAct.Size = new System.Drawing.Size(162, 26);
-            this.textBoxPrintAct.TabIndex = 17;
-            // 
-            // textBoxPrintPrice
-            // 
-            this.textBoxPrintPrice.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintPrice.Location = new System.Drawing.Point(32, 309);
-            this.textBoxPrintPrice.Name = "textBoxPrintPrice";
-            this.textBoxPrintPrice.ReadOnly = true;
-            this.textBoxPrintPrice.Size = new System.Drawing.Size(162, 26);
-            this.textBoxPrintPrice.TabIndex = 18;
             // 
             // MainForm
             // 

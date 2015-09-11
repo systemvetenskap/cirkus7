@@ -18,6 +18,7 @@ namespace cirkus
         #region Variables
         private int staffid;
         private int showid;
+        private int actid;
         private string staffUserId;
         private string staffFname;
         private string staffLname;
@@ -40,6 +41,7 @@ namespace cirkus
                     break;
                 case 1:
                     LoadShows();
+                    LoadStatistics();
                     LoadAkter();
                     break;
                 case 2:
@@ -231,7 +233,7 @@ namespace cirkus
                 da = new NpgsqlDataAdapter(sql, conn);
                 da.Fill(dt);
                 dgvShowsList.DataSource = dt;
-                conn.Close();
+                //conn.Close();
                 dgvShowsList.Columns["showid"].Visible = false;
             }
             catch (NpgsqlException ex)
@@ -244,51 +246,56 @@ namespace cirkus
             }
             
         }
+
+        public void LoadStatistics()
+        {
+            //DataGridViewRow row = dgvAkter.SelectedRows[1];
+            //actid = Convert.ToInt32(row.Cells["actid"].Value);
+            //actid = Convert.ToInt32(row.Cells[1].Value);
+            
+            int selectedIndex = dgvAkter.SelectedRows[0].Index;
+            actid = int.Parse(dgvAkter[0, selectedIndex].Value.ToString());
+
+            //int antalVuxen, antalUngdoms, antalBarn, antalTotalt, kronorVuxen, kronorUngdom, kronorBarn, kronorTotalt;
+            //antalVuxen = Convert.ToInt16(textBoxAntalVuxenBiljetter.Text);
+            //antalUngdoms = Convert.ToInt16(textBoxAntalUngdomsbiljetter.Text);
+            //antalBarn = Convert.ToInt16(textBoxAntalBarnbiljetter.Text);
+            //antalTotalt = Convert.ToInt16(textBoxTotaltAntal.Text);
+            //kronorVuxen = Convert.ToInt16(textBoxKronorVuxenbiljetter.Text);
+            //kronorUngdom = Convert.ToInt16(textBoxKronorUngdomsbiljetter.Text);
+            //kronorBarn = Convert.ToInt16(textBoxKronorBarnbiljetter.Text);
+            //kronorTotalt = Convert.ToInt16(textBoxTotaltKronor.Text);
+            conn.Open();
+                string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
+                //string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '29' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
+
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                NpgsqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    textBoxAntalVuxenBiljetter.Text = dr.GetValue(1).ToString();
+                }
+
+                conn.Close();
+            
+        }
+
         public void LoadAkter()
         {
-            //DataTable dt = new DataTable();
-            //dgvShowsList.DataSource = null;
-            //dgvShowsList.Rows.Clear();
-
-            //int selectedIndex = dgvShowsList.SelectedRows[0].Index;
-
-            //showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
-
-            //string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
-
-            //try
-            //{
-            //    conn.Open();
-            //    da = new NpgsqlDataAdapter(sql, conn);
-            //    da.Fill(dt);
-            //    dgvAkter.DataSource = dt;
-            //    conn.Close();
-            //    dgvAkter.Columns["actid"].Visible = false;
-            //}
-            //catch (NpgsqlException ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
             int selectedIndex = dgvShowsList.SelectedRows[0].Index;
-
             showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
-
-            //string sql = "select acts.actid, acts.name from acts where showid = '" + showid + "'";
-            string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
-            // select name, actid from acts where showid = '" + showid + "' group by name, actid order by name
+            
+            string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";       
 
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-
             DataTable dt = new DataTable();
 
             da.Fill(dt);
-
             dgvAkter.DataSource = dt;
-            this.dgvAkter.Columns[1].Visible = false;
+            conn.Close();
+
+           // this.dgvAkter.Columns[1].Visible = false;
         }
         private void dgvShowsList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
