@@ -387,7 +387,7 @@ namespace cirkus
                 textBoxEpost.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Ange en epost.";
+                LblVarning.Text = "";
             }
             if (textBoxAnvandarnamn.TextLength>60)
             {
@@ -490,9 +490,10 @@ namespace cirkus
             try
             {
                 conn.Open();
-                string sql = "INSERT INTO staff (fname,lname,phonenumber,email,username,password,auth) VALUES(:fname, :lname, :phonenumber, :email, :username, :password, :auth)";
+                string sql = "INSERT INTO staff (ssn,fname,lname,phonenumber,email,username,password,auth) VALUES(:ssn, :fname, :lname, :phonenumber, :email, :username, :password, :auth)";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
+                cmd.Parameters.Add(new NpgsqlParameter("ssn", textBoxPersonnummer.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("fname", textBoxFornamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("lname", textBoxEfternamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("phonenumber", textBoxTelefonnummer.Text));
