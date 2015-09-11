@@ -65,7 +65,7 @@ namespace cirkus
             dataGridViewActs.Columns[1].Width = 129;
 
            
-
+            
             dataGridViewActs.Rows[0].Selected = true;
             conn.Close();
 
@@ -284,22 +284,25 @@ namespace cirkus
         private void checked_seats(object sender, ItemCheckEventArgs e)
         {
             CheckedListBox items = (CheckedListBox)sender;
-            if (items.CheckedItems.Count > total + 1)
+            if (items.CheckedItems.Count > total - 1)
             {
                 e.NewValue = CheckState.Unchecked;
+               
             }
-            if (e.CurrentValue == CheckState.Unchecked)
-            {
-                checkedseats++;
-                calculate_people();
-            }
-            else if(e.CurrentValue == CheckState.Checked)
-            {
-                checkedseats--;
-                calculate_people();
+            //if (e.CurrentValue == CheckState.Unchecked)
+            //{
+            //    checkedseats++;
+            //    calculate_people();
+            //}
+            //else if (e.CurrentValue == CheckState.Checked)
+            //{
+            //    checkedseats--;
+            //    calculate_people();
 
-            }
-         
+            //}
+
+            
+
         }
 
         private void added_child(object sender, EventArgs e)
