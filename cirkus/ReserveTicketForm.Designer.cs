@@ -87,8 +87,14 @@
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblPricID = new System.Windows.Forms.Label();
-            this.lblpriceid = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblshowid = new System.Windows.Forms.Label();
+            this.lblactid = new System.Windows.Forms.Label();
+            this.lblaseatid = new System.Windows.Forms.Label();
+            this.lblcustid = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericChild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericYouth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericAdult)).BeginInit();
@@ -307,7 +313,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(239, 62);
+            this.label12.Location = new System.Drawing.Point(202, 64);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 13);
             this.label12.TabIndex = 48;
@@ -349,13 +355,13 @@
             this.dgBseats.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgBseats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgBseats.ColumnHeadersVisible = false;
-            this.dgBseats.Location = new System.Drawing.Point(242, 80);
+            this.dgBseats.Location = new System.Drawing.Point(205, 80);
             this.dgBseats.Name = "dgBseats";
             this.dgBseats.ReadOnly = true;
             this.dgBseats.RowHeadersVisible = false;
             this.dgBseats.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgBseats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgBseats.Size = new System.Drawing.Size(124, 99);
+            this.dgBseats.Size = new System.Drawing.Size(161, 99);
             this.dgBseats.TabIndex = 25;
             // 
             // dgSeats
@@ -609,6 +615,7 @@
             this.dgCustom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgCustom.Size = new System.Drawing.Size(186, 184);
             this.dgCustom.TabIndex = 39;
+            this.dgCustom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selected_customer);
             // 
             // textBoxSearchCust
             // 
@@ -739,23 +746,77 @@
             this.button1.Text = "Slutför";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // lblPricID
+            // label13
             // 
-            this.lblPricID.AutoSize = true;
-            this.lblPricID.Location = new System.Drawing.Point(515, 42);
-            this.lblPricID.Name = "lblPricID";
-            this.lblPricID.Size = new System.Drawing.Size(41, 13);
-            this.lblPricID.TabIndex = 43;
-            this.lblPricID.Text = "label13";
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(530, 32);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 13);
+            this.label13.TabIndex = 43;
+            this.label13.Text = "Showid";
             // 
-            // lblpriceid
+            // label14
             // 
-            this.lblpriceid.AutoSize = true;
-            this.lblpriceid.Location = new System.Drawing.Point(515, 73);
-            this.lblpriceid.Name = "lblpriceid";
-            this.lblpriceid.Size = new System.Drawing.Size(41, 13);
-            this.lblpriceid.TabIndex = 44;
-            this.lblpriceid.Text = "label13";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(531, 59);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(31, 13);
+            this.label14.TabIndex = 44;
+            this.label14.Text = "Actid";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(531, 87);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(89, 13);
+            this.label15.TabIndex = 45;
+            this.label15.Text = "available_seat_id";
+            // 
+            // lblshowid
+            // 
+            this.lblshowid.AutoSize = true;
+            this.lblshowid.Location = new System.Drawing.Point(609, 32);
+            this.lblshowid.Name = "lblshowid";
+            this.lblshowid.Size = new System.Drawing.Size(41, 13);
+            this.lblshowid.TabIndex = 46;
+            this.lblshowid.Text = "label16";
+            // 
+            // lblactid
+            // 
+            this.lblactid.AutoSize = true;
+            this.lblactid.Location = new System.Drawing.Point(609, 59);
+            this.lblactid.Name = "lblactid";
+            this.lblactid.Size = new System.Drawing.Size(41, 13);
+            this.lblactid.TabIndex = 47;
+            this.lblactid.Text = "label16";
+            // 
+            // lblaseatid
+            // 
+            this.lblaseatid.AutoSize = true;
+            this.lblaseatid.Location = new System.Drawing.Point(626, 87);
+            this.lblaseatid.Name = "lblaseatid";
+            this.lblaseatid.Size = new System.Drawing.Size(41, 13);
+            this.lblaseatid.TabIndex = 48;
+            this.lblaseatid.Text = "label16";
+            // 
+            // lblcustid
+            // 
+            this.lblcustid.AutoSize = true;
+            this.lblcustid.Location = new System.Drawing.Point(626, 114);
+            this.lblcustid.Name = "lblcustid";
+            this.lblcustid.Size = new System.Drawing.Size(37, 13);
+            this.lblcustid.TabIndex = 49;
+            this.lblcustid.Text = "lblcust";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(531, 116);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(62, 13);
+            this.label16.TabIndex = 50;
+            this.label16.Text = "Customer id";
             // 
             // ReserveTicketForm
             // 
@@ -763,8 +824,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1199, 923);
-            this.Controls.Add(this.lblpriceid);
-            this.Controls.Add(this.lblPricID);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.lblcustid);
+            this.Controls.Add(this.lblaseatid);
+            this.Controls.Add(this.lblactid);
+            this.Controls.Add(this.lblshowid);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.checkedListBoxSeats);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -864,10 +931,16 @@
         private System.Windows.Forms.TextBox textBoxSeats;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lblPricID;
         private System.Windows.Forms.Button btnRemSeats;
         private System.Windows.Forms.ComboBox cbAgegroup;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Label lblpriceid;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblshowid;
+        private System.Windows.Forms.Label lblactid;
+        private System.Windows.Forms.Label lblaseatid;
+        private System.Windows.Forms.Label lblcustid;
+        private System.Windows.Forms.Label label16;
     }
 }

@@ -14,7 +14,7 @@ namespace cirkus
     {
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-        int showid, actid, seatid,agegroup;
+        int showid, actid, seatid,agegroup, customerid;
         int totalChild, totalYouth, totalAdult, total, checkedseats, priceid;
         string show, act, bseats, selectedsection;
         DataTable section;
@@ -54,6 +54,8 @@ namespace cirkus
             int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
 
             showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
+
+            lblshowid.Text = showid.ToString();
             conn.Open();
             string sql = "select acts.actid, acts.name from acts where showid = '" + showid + "'";
 
@@ -91,7 +93,7 @@ namespace cirkus
                 actid = int.Parse(dataGridViewActs[0, selectedIndex].Value.ToString());
                 //string sql = @"select section, rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
                 //            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "' order by section, rownumber";
-
+                lblactid.Text = actid.ToString();
                 string sqlSearch = textBoxSeats.Text;
                 string sql3 = @"select available_seats.available_seats_id as seatid, seats.section, seats.rownumber from seats 
                                 inner join available_seats on seats.seatid = available_seats.seatid
@@ -165,8 +167,7 @@ namespace cirkus
 
             da.Fill(dt);
 
-            checkedListBoxSeats.DataSource = dt;
-            checkedListBoxSeats.DisplayMember = "rownumber";
+          
             conn.Close();
         }
         private void listCustomers()
@@ -240,6 +241,23 @@ namespace cirkus
         private void button2_Click(object sender, EventArgs e)
         {
             panel2.Visible = true;
+
+            foreach (DataRow row in selectedseats.Rows)
+            {
+                string seatid = row[0].ToString();
+                string priceid = row[3].ToString();
+                conn.Open();
+                string sql = "insert into booked_seats(available_seats_id,priceid) values(:sid, :pid)";
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));
+                cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+
+            }
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -315,7 +333,7 @@ namespace cirkus
                     MessageBox.Show("True");
                     int s = priceid;
                     
-                    lblpriceid.Text = s.ToString();
+                    
                     break;
                 case 2:
                     priceid = 3;
@@ -332,26 +350,25 @@ namespace cirkus
                     t.Cells[0].Value = r.Cells[2].Value;
                     t.Cells[1].Value = r.Cells[1].Value;
                     t.Cells[2].Value = r.Cells[0].Value;
-                    t.Cells[3].Value = r.Cells[3].Value;
+
+                 
+
                     selectedseats.Rows.Add(r.Cells[0].Value, r.Cells[1].Value, r.Cells[2].Value, priceid);
+                   
                     this.dgBseats.Columns[0].Visible = false;
 
                     dgBseats.Columns[1].Width = 60;
                     dgBseats.Columns[2].Width = 60;
-
+                    dgBseats.Columns[3].Width = 20;
+                    
                     DataRow[] rows = section.Select("seatid ='" + seatid + "'");
                     foreach (DataRow rw in rows)
                         rw.Delete();
                     checkedseats++;
                     reload_datable();
                 }
-
-
+                
             }
-
-
-
-
 
         }
 
@@ -365,23 +382,32 @@ namespace cirkus
 
         }
 
+        private void selected_customer(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedIndex = dgCustom.SelectedRows[0].Index;
+
+            customerid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
+
+            lblcustid.Text = customerid.ToString();
+        }
+
         private void cbAgegroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbAgegroup.Text == "Barn")
             {
                 agegroup = 1;
-                lblPricID.Text = agegroup.ToString();
+                
             }
             if (cbAgegroup.Text == "Ungdom")
             {
                 agegroup = 2;
-                lblPricID.Text = agegroup.ToString();
+                
             }
             if (cbAgegroup.Text == "Vuxen")
             {
 
                 agegroup = 3;
-                lblPricID.Text = agegroup.ToString();
+               
             }
             if (cbAgegroup.Text == "Åldersgrupp")
             {
@@ -454,7 +480,7 @@ namespace cirkus
         public void calculate_people()
         {
             total = totalChild + totalYouth + totalAdult;
-            lblPricID.Text = total.ToString();
+            
   
         }
 
@@ -492,13 +518,23 @@ namespace cirkus
             this.dgSeats.Columns[0].Visible = false;
             dgSeats.Columns[1].Width = 60;
             dgSeats.Columns[2].Width = 60;
-            this.dgSeats.CurrentCell = this.dgSeats[1, 0];
+            //this.dgSeats.CurrentCell = this.dgSeats[1, 0];
 
-            int selectedIndex = dgSeats.SelectedRows[0].Index;
+            try
+            {
 
-            seatid = int.Parse(dgSeats[0, selectedIndex].Value.ToString());
+                int selectedIndex = dgSeats.SelectedRows[0].Index;
 
-            label11.Text = seatid.ToString();
+                seatid = int.Parse(dgSeats[0, selectedIndex].Value.ToString());
+
+                label11.Text = seatid.ToString();
+
+            }
+            catch
+            {
+
+            }
+       
 
            
 
