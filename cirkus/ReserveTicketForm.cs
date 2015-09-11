@@ -351,7 +351,7 @@ namespace cirkus
             {
                 case 1:
                     priceid = 1;
-                    MessageBox.Show("True");
+                    
                     int s = priceid;
                     
                     
