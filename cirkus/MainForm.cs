@@ -74,6 +74,7 @@ namespace cirkus
         }
         public void tomFalt()
         {
+            textBoxPersonnummer.Clear();
             textBoxFornamn.Clear();
             textBoxEfternamn.Clear();
             textBoxEpost.Clear();
@@ -366,42 +367,48 @@ namespace cirkus
                 textBoxFornamn.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "";
+                LblVarning.Text = "Förnamnet är för långt";
+                return;
             }
             if (textBoxEfternamn.TextLength > 60)
             {
                 textBoxEfternamn.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "";
+                LblVarning.Text = "Efternamnet är för långt";
+                return;
             }
             if (textBoxTelefonnummer.TextLength>10)
             {
                 textBoxTelefonnummer.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "";
+                LblVarning.Text = "Telefonnummer anges med max 10 siffror";
+                return;
             }
             if (textBoxEpost.TextLength>60)
             {
                 textBoxEpost.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "";
+                LblVarning.Text = "Epost adressen är för lång";
+                return;
             }
             if (textBoxAnvandarnamn.TextLength>60)
             {
                 textBoxAnvandarnamn.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "";
+                LblVarning.Text = "Användarnamnet är för långt";
+                return;
             }
             if (textBoxLosenord.TextLength > 60)
             {
                 textBoxLosenord.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "";
+                LblVarning.Text = "Lösenordet är för långt";
+                return;
             }
             //Slut kontrollera längd på textboxar
 
@@ -412,6 +419,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Telefonnummret får endast innehålla siffror.";
+                return;
             }
             if (!BaraBokstäver(textBoxFornamn.Text))
             {
@@ -419,6 +427,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Förnamn får endast innehålla bokstäver.";
+                return;
             }
             if (!BaraBokstäver(textBoxEfternamn.Text))
             {
@@ -426,6 +435,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Efternamn får endast innehålla bokstäver.";
+                return;
             }
             //Slut kontrollerar siffror och bokstäver
 
@@ -436,6 +446,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Ange personnummer.";
+                return;
             }
             if (string.IsNullOrEmpty(textBoxFornamn.Text))
             {
@@ -443,6 +454,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Ange förnamn.";
+                return;
             }
             if (string.IsNullOrEmpty(textBoxEfternamn.Text))
             {
@@ -450,6 +462,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Ange efternamn.";
+                return;
             }
             if (string.IsNullOrEmpty(textBoxTelefonnummer.Text))
             {
@@ -457,6 +470,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Ange telefonnummer.";
+                return;
             }
             if (string.IsNullOrEmpty(textBoxEpost.Text))
             {
@@ -464,6 +478,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Ange en epost.";
+                return;
             }
             if (string.IsNullOrEmpty(textBoxAnvandarnamn.Text))
             {
@@ -471,6 +486,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Ange ett användarnamn.";
+                return;
             }
             if (string.IsNullOrEmpty(textBoxLosenord.Text))
             {
@@ -478,6 +494,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Ange ett lösenord.";
+                return;
             }
             if (string.IsNullOrEmpty(comboBoxBehorighetsniva.Text))
             {
@@ -485,6 +502,7 @@ namespace cirkus
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
                 LblVarning.Text = "Välj en behörighet";
+                return;
             }
             //Slut konrtrollerar tomma textboxar
             try
