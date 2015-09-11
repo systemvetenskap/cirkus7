@@ -76,8 +76,8 @@ namespace cirkus
         private void loadSection()
         {
 
-            comboBoxSection.DataSource = null;
-            comboBoxSection.Items.Clear();
+            //comboBoxSection.DataSource = null;
+            //comboBoxSection.Items.Clear();
 
             try
             {
@@ -85,8 +85,11 @@ namespace cirkus
                 int selectedIndex = dataGridViewActs.SelectedRows[0].Index;
 
                 actid = int.Parse(dataGridViewActs[0, selectedIndex].Value.ToString());
-                string sql = @"select distinct section from seats inner join available_seats on seats.seatid = available_seats.seatid 
-                            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "' order by section";
+                //string sql = @"select section, rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
+                //            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "' order by section, rownumber";
+
+                string sqlSearch = textBoxSeats.Text;
+                string sql2 = "SELECT section, rownumber FROM customer WHERE acts.actid = '"+actid+"' and LOWER(section) LIKE LOWER('%" + sqlSearch + "%') OR LOWER(rownumber) LIKE LOWER('%" + sqlSearch + "%') order by section, rownumber;";
 
                 conn.Open();
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
@@ -95,14 +98,18 @@ namespace cirkus
 
                 da.Fill(dt);
 
-                comboBoxSection.DataSource = dt;
-                comboBoxSection.DisplayMember = "section";
+                //comboBoxSection.DataSource = dt;
+                //comboBoxSection.DisplayMember = "section";
 
-                string s = comboBoxSection.Text.ToString();
-                selectedsection = s;
-                
+                //string s = comboBoxSection.Text.ToString();
+                //selectedsection = s;
 
-                comboBoxSection.SelectedIndex = 0;
+
+                //comboBoxSection.SelectedIndex = 0;
+
+                dgSeats.DataSource = dt;
+                dgSeats.Columns[0].Width = 60;
+                dgSeats.Columns[1].Width = 60;
 
                 conn.Close();
 
@@ -251,6 +258,12 @@ namespace cirkus
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            loadSection();
 
         }
 

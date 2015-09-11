@@ -34,7 +34,6 @@
             this.numericYouth = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.numericAdult = new System.Windows.Forms.NumericUpDown();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -44,9 +43,7 @@
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.checkedListBoxSeats = new System.Windows.Forms.CheckedListBox();
-            this.comboBoxSection = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -80,21 +77,18 @@
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.comboBoxSection = new System.Windows.Forms.ComboBox();
+            this.dgSeats = new System.Windows.Forms.DataGridView();
+            this.dgBseats = new System.Windows.Forms.DataGridView();
             this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.textBoxSeats = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericChild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericYouth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericAdult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -104,6 +98,8 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBseats)).BeginInit();
             this.SuspendLayout();
             // 
             // numericChild
@@ -156,18 +152,6 @@
             this.numericAdult.Size = new System.Drawing.Size(37, 20);
             this.numericAdult.TabIndex = 6;
             this.numericAdult.ValueChanged += new System.EventHandler(this.added_adult);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(-31, 131);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(74, 17);
-            this.radioButton1.TabIndex = 11;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Reservera";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -271,34 +255,19 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.groupBox5);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.textBoxSeats);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.dgBseats);
+            this.groupBox1.Controls.Add(this.dgSeats);
             this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Location = new System.Drawing.Point(173, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(266, 195);
+            this.groupBox1.Size = new System.Drawing.Size(295, 214);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Välj Platser";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.button14);
-            this.groupBox5.Controls.Add(this.button13);
-            this.groupBox5.Controls.Add(this.button12);
-            this.groupBox5.Controls.Add(this.button11);
-            this.groupBox5.Controls.Add(this.button10);
-            this.groupBox5.Controls.Add(this.button9);
-            this.groupBox5.Controls.Add(this.button8);
-            this.groupBox5.Controls.Add(this.button7);
-            this.groupBox5.Controls.Add(this.comboBoxSection);
-            this.groupBox5.Controls.Add(this.radioButton1);
-            this.groupBox5.Location = new System.Drawing.Point(6, 53);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(257, 126);
-            this.groupBox5.TabIndex = 26;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Sektioner";
             // 
             // checkedListBoxSeats
             // 
@@ -308,15 +277,6 @@
             this.checkedListBoxSeats.Size = new System.Drawing.Size(120, 79);
             this.checkedListBoxSeats.TabIndex = 1;
             this.checkedListBoxSeats.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checked_seats);
-            // 
-            // comboBoxSection
-            // 
-            this.comboBoxSection.FormattingEnabled = true;
-            this.comboBoxSection.Location = new System.Drawing.Point(6, 30);
-            this.comboBoxSection.Name = "comboBoxSection";
-            this.comboBoxSection.Size = new System.Drawing.Size(82, 21);
-            this.comboBoxSection.TabIndex = 0;
-            this.comboBoxSection.SelectedIndexChanged += new System.EventHandler(this.seat_sectionchanged);
             // 
             // groupBox2
             // 
@@ -544,6 +504,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.comboBoxSection);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox1);
@@ -653,77 +614,76 @@
             this.button1.Text = "Slutför";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // comboBoxSection
+            // 
+            this.comboBoxSection.FormattingEnabled = true;
+            this.comboBoxSection.Location = new System.Drawing.Point(84, 228);
+            this.comboBoxSection.Name = "comboBoxSection";
+            this.comboBoxSection.Size = new System.Drawing.Size(82, 21);
+            this.comboBoxSection.TabIndex = 0;
+            this.comboBoxSection.SelectedIndexChanged += new System.EventHandler(this.seat_sectionchanged);
+            // 
+            // dgSeats
+            // 
+            this.dgSeats.AllowUserToAddRows = false;
+            this.dgSeats.AllowUserToDeleteRows = false;
+            this.dgSeats.AllowUserToResizeColumns = false;
+            this.dgSeats.AllowUserToResizeRows = false;
+            this.dgSeats.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgSeats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSeats.ColumnHeadersVisible = false;
+            this.dgSeats.Location = new System.Drawing.Point(6, 81);
+            this.dgSeats.Name = "dgSeats";
+            this.dgSeats.ReadOnly = true;
+            this.dgSeats.RowHeadersVisible = false;
+            this.dgSeats.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgSeats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgSeats.Size = new System.Drawing.Size(124, 99);
+            this.dgSeats.TabIndex = 25;
+            // 
+            // dgBseats
+            // 
+            this.dgBseats.AllowUserToAddRows = false;
+            this.dgBseats.AllowUserToDeleteRows = false;
+            this.dgBseats.AllowUserToResizeColumns = false;
+            this.dgBseats.AllowUserToResizeRows = false;
+            this.dgBseats.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgBseats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgBseats.ColumnHeadersVisible = false;
+            this.dgBseats.Location = new System.Drawing.Point(165, 81);
+            this.dgBseats.Name = "dgBseats";
+            this.dgBseats.ReadOnly = true;
+            this.dgBseats.RowHeadersVisible = false;
+            this.dgBseats.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgBseats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgBseats.Size = new System.Drawing.Size(124, 99);
+            this.dgBseats.TabIndex = 25;
+            // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(103, 28);
+            this.button7.Location = new System.Drawing.Point(84, 185);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(19, 23);
-            this.button7.TabIndex = 12;
-            this.button7.Text = "1";
+            this.button7.Size = new System.Drawing.Size(46, 23);
+            this.button7.TabIndex = 44;
+            this.button7.Text = "Välj";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // textBoxSeats
             // 
-            this.button8.Location = new System.Drawing.Point(128, 28);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(19, 23);
-            this.button8.TabIndex = 13;
-            this.button8.Text = "2";
-            this.button8.UseVisualStyleBackColor = true;
+            this.textBoxSeats.Location = new System.Drawing.Point(38, 55);
+            this.textBoxSeats.Name = "textBoxSeats";
+            this.textBoxSeats.Size = new System.Drawing.Size(92, 20);
+            this.textBoxSeats.TabIndex = 47;
+            this.textBoxSeats.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // button9
+            // label10
             // 
-            this.button9.Location = new System.Drawing.Point(153, 28);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(19, 23);
-            this.button9.TabIndex = 14;
-            this.button9.Text = "3";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(177, 28);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(19, 23);
-            this.button10.TabIndex = 15;
-            this.button10.Text = "4";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(103, 57);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(19, 23);
-            this.button11.TabIndex = 16;
-            this.button11.Text = "5";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(128, 57);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(19, 23);
-            this.button12.TabIndex = 17;
-            this.button12.Text = "6";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(153, 57);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(19, 23);
-            this.button13.TabIndex = 18;
-            this.button13.Text = "7";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(178, 57);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(19, 23);
-            this.button14.TabIndex = 19;
-            this.button14.Text = "8";
-            this.button14.UseVisualStyleBackColor = true;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 58);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(26, 13);
+            this.label10.TabIndex = 47;
+            this.label10.Text = "Sök";
             // 
             // ReserveTicketForm
             // 
@@ -749,8 +709,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -766,6 +724,8 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBseats)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -777,7 +737,6 @@
         private System.Windows.Forms.NumericUpDown numericYouth;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericAdult;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonCancel;
@@ -790,9 +749,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.CheckedListBox checkedListBoxSeats;
-        private System.Windows.Forms.ComboBox comboBoxSection;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox txtepost;
         private System.Windows.Forms.TextBox txttel;
@@ -823,13 +780,11 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DataGridView dgBseats;
+        private System.Windows.Forms.DataGridView dgSeats;
+        private System.Windows.Forms.ComboBox comboBoxSection;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxSeats;
     }
 }
