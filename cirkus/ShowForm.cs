@@ -19,7 +19,7 @@ namespace cirkus
         NpgsqlCommand command;
         DataTable dt;
         NpgsqlDataAdapter da;
-        public string Name;
+        public string name;
 
         public ShowForm()
         {
