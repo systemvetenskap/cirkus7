@@ -72,7 +72,7 @@ namespace cirkus
             listCustomers();
 
         }
-        public void tomFalt()
+        public void tomFaltochFarg()
         {
             textBoxPersonnummer.Clear();
             textBoxFornamn.Clear();
@@ -82,6 +82,17 @@ namespace cirkus
             textBoxAnvandarnamn.Clear();
             textBoxLosenord.Clear();
             comboBoxBehorighetsniva.ResetText();
+
+            textBoxPersonnummer.BackColor=Color.White;
+            textBoxFornamn.BackColor = Color.White;
+            textBoxEfternamn.BackColor = Color.White;
+            textBoxEpost.BackColor = Color.White;
+            textBoxTelefonnummer.BackColor = Color.White;
+            textBoxAnvandarnamn.BackColor = Color.White;
+            textBoxLosenord.BackColor = Color.White;
+            comboBoxBehorighetsniva.BackColor = Color.White;
+
+
         }
 
         #endregion
@@ -303,7 +314,7 @@ namespace cirkus
         }
         private void btnTomFalten_Click(object sender, EventArgs e)
         {
-            tomFalt();
+            tomFaltochFarg();
         }
         private void ListaPersonal()//Metod för att lista personalen i Datagriden.
         {
@@ -367,7 +378,7 @@ namespace cirkus
                 textBoxPersonnummer.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Personnummret anged med 10 siffror";
+                LblVarning.Text = "Personnummret anges med 10 siffror";
                 return;
             }
             if (textBoxFornamn.TextLength>60 || !BaraBokstäver(textBoxFornamn.Text))
