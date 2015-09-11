@@ -77,6 +77,10 @@
             this.labelAkter = new System.Windows.Forms.Label();
             this.labelForestallning = new System.Windows.Forms.Label();
             this.tabAccount = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblPersonnummer = new System.Windows.Forms.Label();
+            this.textBoxPersonnummer = new System.Windows.Forms.TextBox();
+            this.LblVarning = new System.Windows.Forms.Label();
             this.lblBehorighetsniva = new System.Windows.Forms.Label();
             this.lblLosenord = new System.Windows.Forms.Label();
             this.dgStaff = new System.Windows.Forms.DataGridView();
@@ -101,10 +105,6 @@
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.LblVarning = new System.Windows.Forms.Label();
-            this.lblPersonnummer = new System.Windows.Forms.Label();
-            this.textBoxPersonnummer = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
@@ -669,10 +669,45 @@
             this.tabAccount.Text = "Konto";
             this.tabAccount.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(602, 376);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 31);
+            this.button1.TabIndex = 58;
+            this.button1.Text = "Radera konto";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // lblPersonnummer
+            // 
+            this.lblPersonnummer.AutoSize = true;
+            this.lblPersonnummer.Location = new System.Drawing.Point(47, 72);
+            this.lblPersonnummer.Name = "lblPersonnummer";
+            this.lblPersonnummer.Size = new System.Drawing.Size(129, 13);
+            this.lblPersonnummer.TabIndex = 57;
+            this.lblPersonnummer.Text = "Personnummer: (10 siffror)";
+            // 
+            // textBoxPersonnummer
+            // 
+            this.textBoxPersonnummer.Location = new System.Drawing.Point(47, 87);
+            this.textBoxPersonnummer.Name = "textBoxPersonnummer";
+            this.textBoxPersonnummer.Size = new System.Drawing.Size(152, 20);
+            this.textBoxPersonnummer.TabIndex = 56;
+            // 
+            // LblVarning
+            // 
+            this.LblVarning.AutoSize = true;
+            this.LblVarning.Location = new System.Drawing.Point(47, 343);
+            this.LblVarning.Name = "LblVarning";
+            this.LblVarning.Size = new System.Drawing.Size(41, 13);
+            this.LblVarning.TabIndex = 49;
+            this.LblVarning.Text = "label12";
+            this.LblVarning.Visible = false;
+            // 
             // lblBehorighetsniva
             // 
             this.lblBehorighetsniva.AutoSize = true;
-            this.lblBehorighetsniva.Location = new System.Drawing.Point(266, 223);
+            this.lblBehorighetsniva.Location = new System.Drawing.Point(266, 267);
             this.lblBehorighetsniva.Name = "lblBehorighetsniva";
             this.lblBehorighetsniva.Size = new System.Drawing.Size(86, 13);
             this.lblBehorighetsniva.TabIndex = 46;
@@ -681,7 +716,7 @@
             // lblLosenord
             // 
             this.lblLosenord.AutoSize = true;
-            this.lblLosenord.Location = new System.Drawing.Point(266, 156);
+            this.lblLosenord.Location = new System.Drawing.Point(266, 202);
             this.lblLosenord.Name = "lblLosenord";
             this.lblLosenord.Size = new System.Drawing.Size(54, 13);
             this.lblLosenord.TabIndex = 45;
@@ -720,7 +755,7 @@
             this.comboBoxBehorighetsniva.Items.AddRange(new object[] {
             "Biljettförsäljare",
             "Administratör"});
-            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(266, 238);
+            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(266, 282);
             this.comboBoxBehorighetsniva.Name = "comboBoxBehorighetsniva";
             this.comboBoxBehorighetsniva.Size = new System.Drawing.Size(152, 21);
             this.comboBoxBehorighetsniva.TabIndex = 28;
@@ -729,7 +764,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(47, 8);
+            this.label9.Location = new System.Drawing.Point(47, 19);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 20);
             this.label9.TabIndex = 30;
@@ -737,7 +772,7 @@
             // 
             // btnTomFalten
             // 
-            this.btnTomFalten.Location = new System.Drawing.Point(234, 344);
+            this.btnTomFalten.Location = new System.Drawing.Point(47, 376);
             this.btnTomFalten.Name = "btnTomFalten";
             this.btnTomFalten.Size = new System.Drawing.Size(118, 31);
             this.btnTomFalten.TabIndex = 32;
@@ -747,7 +782,7 @@
             // 
             // btnUpdateraKonto
             // 
-            this.btnUpdateraKonto.Location = new System.Drawing.Point(468, 353);
+            this.btnUpdateraKonto.Location = new System.Drawing.Point(468, 376);
             this.btnUpdateraKonto.Name = "btnUpdateraKonto";
             this.btnUpdateraKonto.Size = new System.Drawing.Size(118, 31);
             this.btnUpdateraKonto.TabIndex = 31;
@@ -758,7 +793,7 @@
             // lblFornamn
             // 
             this.lblFornamn.AutoSize = true;
-            this.lblFornamn.Location = new System.Drawing.Point(47, 101);
+            this.lblFornamn.Location = new System.Drawing.Point(47, 137);
             this.lblFornamn.Name = "lblFornamn";
             this.lblFornamn.Size = new System.Drawing.Size(51, 13);
             this.lblFornamn.TabIndex = 27;
@@ -766,7 +801,7 @@
             // 
             // btnSkapaKonto
             // 
-            this.btnSkapaKonto.Location = new System.Drawing.Point(47, 344);
+            this.btnSkapaKonto.Location = new System.Drawing.Point(300, 376);
             this.btnSkapaKonto.Name = "btnSkapaKonto";
             this.btnSkapaKonto.Size = new System.Drawing.Size(118, 31);
             this.btnSkapaKonto.TabIndex = 29;
@@ -786,7 +821,7 @@
             // lblEfternamn
             // 
             this.lblEfternamn.AutoSize = true;
-            this.lblEfternamn.Location = new System.Drawing.Point(47, 156);
+            this.lblEfternamn.Location = new System.Drawing.Point(47, 202);
             this.lblEfternamn.Name = "lblEfternamn";
             this.lblEfternamn.Size = new System.Drawing.Size(58, 13);
             this.lblEfternamn.TabIndex = 33;
@@ -794,7 +829,7 @@
             // 
             // textBoxLosenord
             // 
-            this.textBoxLosenord.Location = new System.Drawing.Point(266, 171);
+            this.textBoxLosenord.Location = new System.Drawing.Point(266, 217);
             this.textBoxLosenord.Name = "textBoxLosenord";
             this.textBoxLosenord.Size = new System.Drawing.Size(152, 20);
             this.textBoxLosenord.TabIndex = 26;
@@ -802,7 +837,7 @@
             // lblTelefonnummer
             // 
             this.lblTelefonnummer.AutoSize = true;
-            this.lblTelefonnummer.Location = new System.Drawing.Point(47, 223);
+            this.lblTelefonnummer.Location = new System.Drawing.Point(47, 268);
             this.lblTelefonnummer.Name = "lblTelefonnummer";
             this.lblTelefonnummer.Size = new System.Drawing.Size(83, 13);
             this.lblTelefonnummer.TabIndex = 34;
@@ -810,7 +845,7 @@
             // 
             // textBoxEfternamn
             // 
-            this.textBoxEfternamn.Location = new System.Drawing.Point(47, 171);
+            this.textBoxEfternamn.Location = new System.Drawing.Point(47, 217);
             this.textBoxEfternamn.Name = "textBoxEfternamn";
             this.textBoxEfternamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxEfternamn.TabIndex = 22;
@@ -818,7 +853,7 @@
             // lblEpost
             // 
             this.lblEpost.AutoSize = true;
-            this.lblEpost.Location = new System.Drawing.Point(266, 40);
+            this.lblEpost.Location = new System.Drawing.Point(266, 72);
             this.lblEpost.Name = "lblEpost";
             this.lblEpost.Size = new System.Drawing.Size(40, 13);
             this.lblEpost.TabIndex = 36;
@@ -826,7 +861,7 @@
             // 
             // textBoxTelefonnummer
             // 
-            this.textBoxTelefonnummer.Location = new System.Drawing.Point(47, 238);
+            this.textBoxTelefonnummer.Location = new System.Drawing.Point(47, 283);
             this.textBoxTelefonnummer.Name = "textBoxTelefonnummer";
             this.textBoxTelefonnummer.Size = new System.Drawing.Size(152, 20);
             this.textBoxTelefonnummer.TabIndex = 23;
@@ -834,7 +869,7 @@
             // lblAnvandarnamn
             // 
             this.lblAnvandarnamn.AutoSize = true;
-            this.lblAnvandarnamn.Location = new System.Drawing.Point(266, 101);
+            this.lblAnvandarnamn.Location = new System.Drawing.Point(266, 137);
             this.lblAnvandarnamn.Name = "lblAnvandarnamn";
             this.lblAnvandarnamn.Size = new System.Drawing.Size(82, 13);
             this.lblAnvandarnamn.TabIndex = 38;
@@ -842,21 +877,21 @@
             // 
             // textBoxEpost
             // 
-            this.textBoxEpost.Location = new System.Drawing.Point(266, 55);
+            this.textBoxEpost.Location = new System.Drawing.Point(266, 87);
             this.textBoxEpost.Name = "textBoxEpost";
             this.textBoxEpost.Size = new System.Drawing.Size(152, 20);
             this.textBoxEpost.TabIndex = 24;
             // 
             // textBoxFornamn
             // 
-            this.textBoxFornamn.Location = new System.Drawing.Point(47, 116);
+            this.textBoxFornamn.Location = new System.Drawing.Point(47, 152);
             this.textBoxFornamn.Name = "textBoxFornamn";
             this.textBoxFornamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxFornamn.TabIndex = 21;
             // 
             // textBoxAnvandarnamn
             // 
-            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(266, 116);
+            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(266, 152);
             this.textBoxAnvandarnamn.Name = "textBoxAnvandarnamn";
             this.textBoxAnvandarnamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxAnvandarnamn.TabIndex = 25;
@@ -885,41 +920,6 @@
             // printDocument1
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // LblVarning
-            // 
-            this.LblVarning.AutoSize = true;
-            this.LblVarning.Location = new System.Drawing.Point(48, 276);
-            this.LblVarning.Name = "LblVarning";
-            this.LblVarning.Size = new System.Drawing.Size(41, 13);
-            this.LblVarning.TabIndex = 49;
-            this.LblVarning.Text = "label12";
-            this.LblVarning.Visible = false;
-            // 
-            // lblPersonnummer
-            // 
-            this.lblPersonnummer.AutoSize = true;
-            this.lblPersonnummer.Location = new System.Drawing.Point(47, 40);
-            this.lblPersonnummer.Name = "lblPersonnummer";
-            this.lblPersonnummer.Size = new System.Drawing.Size(80, 13);
-            this.lblPersonnummer.TabIndex = 57;
-            this.lblPersonnummer.Text = "Personnummer:";
-            // 
-            // textBoxPersonnummer
-            // 
-            this.textBoxPersonnummer.Location = new System.Drawing.Point(47, 55);
-            this.textBoxPersonnummer.Name = "textBoxPersonnummer";
-            this.textBoxPersonnummer.Size = new System.Drawing.Size(152, 20);
-            this.textBoxPersonnummer.TabIndex = 56;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(602, 353);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 31);
-            this.button1.TabIndex = 58;
-            this.button1.Text = "Radera konto";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
