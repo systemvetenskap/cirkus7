@@ -713,7 +713,7 @@ namespace cirkus
                     LblVarning.Text = "Välj en behörighet";
                     return;
                 }
-                //Slut konrtrollerar tomma textboxar
+                //Slut kontrollerar tomma textboxar
 
                 conn.Open();
 
@@ -759,6 +759,5 @@ namespace cirkus
 
         }
         #endregion
-
     }
 }

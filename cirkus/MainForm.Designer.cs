@@ -77,7 +77,7 @@
             this.labelAkter = new System.Windows.Forms.Label();
             this.labelForestallning = new System.Windows.Forms.Label();
             this.tabAccount = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRaderaKonto = new System.Windows.Forms.Button();
             this.lblPersonnummer = new System.Windows.Forms.Label();
             this.textBoxPersonnummer = new System.Windows.Forms.TextBox();
             this.LblVarning = new System.Windows.Forms.Label();
@@ -637,7 +637,7 @@
             // 
             // tabAccount
             // 
-            this.tabAccount.Controls.Add(this.button1);
+            this.tabAccount.Controls.Add(this.btnRaderaKonto);
             this.tabAccount.Controls.Add(this.lblPersonnummer);
             this.tabAccount.Controls.Add(this.textBoxPersonnummer);
             this.tabAccount.Controls.Add(this.LblVarning);
@@ -669,14 +669,14 @@
             this.tabAccount.Text = "Konto";
             this.tabAccount.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnRaderaKonto
             // 
-            this.button1.Location = new System.Drawing.Point(602, 376);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 31);
-            this.button1.TabIndex = 58;
-            this.button1.Text = "Radera konto";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRaderaKonto.Location = new System.Drawing.Point(602, 376);
+            this.btnRaderaKonto.Name = "btnRaderaKonto";
+            this.btnRaderaKonto.Size = new System.Drawing.Size(118, 31);
+            this.btnRaderaKonto.TabIndex = 58;
+            this.btnRaderaKonto.Text = "Radera konto";
+            this.btnRaderaKonto.UseVisualStyleBackColor = true;
             // 
             // lblPersonnummer
             // 
@@ -1029,6 +1029,6 @@
         private System.Windows.Forms.Label lblPersonnummer;
         private System.Windows.Forms.TextBox textBoxPersonnummer;
         private System.Windows.Forms.Label LblVarning;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRaderaKonto;
     }
 }
