@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace cirkus
     {
         #region Variables
         private int staffid;
+        private int showid;
         private string staffUserId;
         private string staffFname;
         private string staffLname;
@@ -38,6 +40,7 @@ namespace cirkus
                     break;
                 case 1:
                     LoadShows();
+                    LoadAkter();
                     break;
                 case 2:
                     ListaPersonal();
@@ -86,6 +89,14 @@ namespace cirkus
         {
             listCustomers();
         }
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Biljett", new Font("arial", 17), new SolidBrush(Color.Black), 10, 10);
+            e.Graphics.DrawString("Kundens namn", new Font("arial", 17), new SolidBrush(Color.Black), 10, 50);
+            e.Graphics.DrawString("Plats", new Font("arial", 17), new SolidBrush(Color.Black), 10, 90);
+            e.Graphics.DrawString("Föreställning", new Font("arial", 17), new SolidBrush(Color.Black), 10, 130);
+            e.Graphics.DrawString("Akter", new Font("arial", 17), new SolidBrush(Color.Black), 10, 170);
+        }
         private void listCustomers()
         {
             string sqlSearch = textBoxSearchCustomer.Text;
@@ -116,6 +127,11 @@ namespace cirkus
         }
         private void listTickets()
         {
+            int currentRow = dgCustomers.SelectedRows[0].Index;
+            if (currentRow != -1)
+            {
+
+        }
 
         }
         private void buttonAddCustomer_Click(object sender, EventArgs e)
@@ -130,10 +146,24 @@ namespace cirkus
             ReserveTicketForm rtf = new ReserveTicketForm();
             rtf.ShowDialog();
         }
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            //PrintDialog pdialog = new PrintDialog();
+            //pdialog.Document = printDocument1;
+            //pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(partOfForm());
+
+            //if (pdialog.ShowDialog() == DialogResult.OK)
+            //{
+            printDocument1.Print();
+            //}
+
+        }
+        private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            listTickets();
+        }
         #endregion
         #region Föreställningar
-
-
         private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
         {
             ShowForm showForm = new ShowForm();
@@ -167,7 +197,6 @@ namespace cirkus
             LoadShows();
             MessageBox.Show("Förestälningen är raderad!");
         }
-
         private void buttonAndraForestallning_Click(object sender, EventArgs e)
         {
             int selectedID;
@@ -184,6 +213,10 @@ namespace cirkus
 
             frm.ShowDialog();
         }
+        private void dgvAkter_SelectionChanged(object sender, EventArgs e)
+        {
+            //LoadAkter();
+        }
         public void LoadShows()
         {
             DataTable dt = new DataTable();
@@ -193,9 +226,6 @@ namespace cirkus
 
             try
             {
-
-
-
                 conn.Open();
                 sql = "select showid, date, name from show order by date DESC";
                 da = new NpgsqlDataAdapter(sql, conn);
@@ -204,11 +234,65 @@ namespace cirkus
                 conn.Close();
                 dgvShowsList.Columns["showid"].Visible = false;
             }
-            catch
+            catch (NpgsqlException ex)
             {
+                MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                conn.Close();
+            }
+            
+        }
+        public void LoadAkter()
+        {
+            //DataTable dt = new DataTable();
+            //dgvShowsList.DataSource = null;
+            //dgvShowsList.Rows.Clear();
 
+            //int selectedIndex = dgvShowsList.SelectedRows[0].Index;
 
+            //showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
+
+            //string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
+
+            //try
+            //{
+            //    conn.Open();
+            //    da = new NpgsqlDataAdapter(sql, conn);
+            //    da.Fill(dt);
+            //    dgvAkter.DataSource = dt;
+            //    conn.Close();
+            //    dgvAkter.Columns["actid"].Visible = false;
+            //}
+            //catch (NpgsqlException ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
+            int selectedIndex = dgvShowsList.SelectedRows[0].Index;
+
+            showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
+
+            //string sql = "select acts.actid, acts.name from acts where showid = '" + showid + "'";
+            string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
+            // select name, actid from acts where showid = '" + showid + "' group by name, actid order by name
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            dgvAkter.DataSource = dt;
+            this.dgvAkter.Columns[1].Visible = false;
+        }
+        private void dgvShowsList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadAkter();
         }
         #endregion
         #region Konto
@@ -230,12 +314,20 @@ namespace cirkus
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dataGridViewStaff.DataSource = dt;
+                dgStaff.DataSource = dt;
 
-                DataGridViewColumn column = dataGridViewStaff.Columns[0];
-                DataGridViewColumn column1 = dataGridViewStaff.Columns[1];
-                DataGridViewColumn column2 = dataGridViewStaff.Columns[2];
-                this.dataGridViewStaff.Columns[0].Visible = false;
+                dgStaff.Columns[0].Visible = false;
+                dgStaff.Columns[1].Visible = true;
+                dgStaff.Columns[2].Visible = true;
+                dgStaff.Columns[3].Visible = true;
+
+                dgStaff.Columns[1].HeaderText = "Efternamn";
+                dgStaff.Columns[2].HeaderText = "Förnamn";
+                dgStaff.Columns[3].HeaderText = "Telefonnummer";               
+
+                DataGridViewColumn column = dgStaff.Columns[0];
+                DataGridViewColumn column1 = dgStaff.Columns[1];
+                DataGridViewColumn column2 = dgStaff.Columns[2];
 
                 column.Width = 60;
                 column1.Width = 60;
@@ -268,6 +360,30 @@ namespace cirkus
         }
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
+            //Kontrollerar längden på textboxarna
+            if (textBoxFornamn.TextLength>60 || textBoxEfternamn.TextLength>60)
+            {
+                MessageBox.Show("Förnamn och efternamn får max innehålla 60 tecken");
+                return;
+            }
+            if (textBoxTelefonnummer.TextLength>10)
+            {
+                MessageBox.Show("Telefonnummret får max innehålla 10 siffror");
+                return;
+            }
+            if (textBoxEpost.TextLength>60)
+            {
+                MessageBox.Show("Epostadressen får innehålla max 60 tecken");
+                return;
+            }
+            if (textBoxAnvandarnamn.TextLength>60 || textBoxLosenord.TextLength>60)
+            {
+                MessageBox.Show("Användarnamnet och lösenordet får max innehålla 60 tecken.");
+                return;
+            }
+            //Slut kontrollera längd på textboxar
+
+            //Kontrollerar siffror och bokstäver
             if (!EndastSiffror(textBoxTelefonnummer.Text))
             {
                 MessageBox.Show("Telefonnummret får bara innehålla siffror");
@@ -278,6 +394,9 @@ namespace cirkus
                 MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
                 return;
             }
+            //Slut kontrollerar siffror och bokstäver
+
+            //Kontrollerar tomma textboxar
             if (string.IsNullOrEmpty(textBoxFornamn.Text) || string.IsNullOrEmpty(textBoxEfternamn.Text)
                 || string.IsNullOrEmpty(textBoxTelefonnummer.Text) || string.IsNullOrEmpty(textBoxEpost.Text)
                 || string.IsNullOrEmpty(textBoxAnvandarnamn.Text) || string.IsNullOrEmpty(textBoxLosenord.Text)
@@ -286,6 +405,7 @@ namespace cirkus
                 MessageBox.Show("Ett eller flera fält är tomma. Fyll i alla fält");
                 return;
             }
+            //Slut konrtrollerar tomma textboxar
             try
             {
                 conn.Open();
@@ -313,6 +433,7 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 ListaPersonal();
+                tomFalt();
             }
             catch (NpgsqlException)
             {
@@ -336,6 +457,29 @@ namespace cirkus
         }
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
+            //Kontrollerar längden på textboxarna
+            if (textBoxFornamn.TextLength > 60 || textBoxEfternamn.TextLength > 60)
+            {
+                MessageBox.Show("Förnamn och efternamn får max innehålla 60 tecken");
+                return;
+            }
+            if (textBoxTelefonnummer.TextLength > 10)
+            {
+                MessageBox.Show("Telefonnummret får max innehålla 10 siffror");
+                return;
+            }
+            if (textBoxEpost.TextLength > 60)
+            {
+                MessageBox.Show("Epostadressen får innehålla max 60 tecken");
+                return;
+            }
+            if (textBoxAnvandarnamn.TextLength > 60 || textBoxLosenord.TextLength > 60)
+            {
+                MessageBox.Show("Användarnamnet och lösenordet får max innehålla 60 tecken.");
+                return;
+            }
+            //Slut kontrollera längden på textboxar
+            //Kontrollerar siffror och bokstäver
             if (!EndastSiffror(textBoxTelefonnummer.Text))
             {
                 MessageBox.Show("Telefonnummret får bara innehålla siffror");
@@ -346,15 +490,17 @@ namespace cirkus
                 MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
                 return;
             }
-            if (dataGridViewStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera konto")
+            //Slut kontrollerar siffror och bokstäver
+
+            if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera konto")
             {
-                int selectedIndex = dataGridViewStaff.SelectedRows[0].Index;
+                int selectedIndex = dgStaff.SelectedRows[0].Index;
 
-                staffid = int.Parse(dataGridViewStaff[0, selectedIndex].Value.ToString());
+                staffid = int.Parse(dgStaff[0, selectedIndex].Value.ToString());
 
-                btnTomFalten.Enabled = false;
+                //btnTomFalten.Enabled = false;
                 btnSkapaKonto.Enabled = false;
-                dataGridViewStaff.Enabled = false;
+                dgStaff.Enabled = false;
 
                 conn.Open();
                 NpgsqlCommand cmd = new NpgsqlCommand(@"select fname, lname, phonenumber, email, username, password, auth
@@ -376,7 +522,7 @@ namespace cirkus
                 textBoxAnvandarnamn.Enabled = false;
 
             }
-            else if (dataGridViewStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar")
+            else if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar")
             {
 
                 conn.Open();
@@ -407,7 +553,7 @@ namespace cirkus
 
                 conn.Close();
 
-                dataGridViewStaff.Enabled = true;
+                dgStaff.Enabled = true;
                 tomFalt();
                 ListaPersonal();
                 btnUpdateraKonto.Text = "Uppdatera konto";
@@ -417,10 +563,6 @@ namespace cirkus
             }
 
         }
-        
-        
         #endregion
-
-
     }
 }

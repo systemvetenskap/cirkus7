@@ -52,6 +52,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.buttonaddSeat = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.labelAngeBeskrivningen = new System.Windows.Forms.Label();
+            this.labelAngeAkt = new System.Windows.Forms.Label();
+            this.labelAngeStaplatser = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonLaggTillAkt
@@ -70,6 +73,7 @@
             this.textBoxBeskrivning.Name = "textBoxBeskrivning";
             this.textBoxBeskrivning.Size = new System.Drawing.Size(100, 20);
             this.textBoxBeskrivning.TabIndex = 1;
+            this.textBoxBeskrivning.Click += new System.EventHandler(this.textBoxBeskrivning_Click);
             // 
             // listBoxAkter
             // 
@@ -139,6 +143,9 @@
             this.textBoxAntalFriplatser.Name = "textBoxAntalFriplatser";
             this.textBoxAntalFriplatser.Size = new System.Drawing.Size(100, 20);
             this.textBoxAntalFriplatser.TabIndex = 24;
+            this.textBoxAntalFriplatser.Click += new System.EventHandler(this.textBoxAntalFriplatser_Click);
+            this.textBoxAntalFriplatser.TextChanged += new System.EventHandler(this.textBoxAntalFriplatser_TextChanged);
+            this.textBoxAntalFriplatser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAntalFriplatser_KeyPress);
             // 
             // buttonLaggTIllForestallning
             // 
@@ -152,7 +159,7 @@
             // 
             // buttonSparaAndringar
             // 
-            this.buttonSparaAndringar.Location = new System.Drawing.Point(479, 442);
+            this.buttonSparaAndringar.Location = new System.Drawing.Point(587, 442);
             this.buttonSparaAndringar.Name = "buttonSparaAndringar";
             this.buttonSparaAndringar.Size = new System.Drawing.Size(100, 23);
             this.buttonSparaAndringar.TabIndex = 30;
@@ -265,12 +272,51 @@
             this.label4.TabIndex = 44;
             this.label4.Text = "Tillagda akter";
             // 
+            // labelAngeBeskrivningen
+            // 
+            this.labelAngeBeskrivningen.AutoSize = true;
+            this.labelAngeBeskrivningen.BackColor = System.Drawing.Color.White;
+            this.labelAngeBeskrivningen.ForeColor = System.Drawing.Color.Red;
+            this.labelAngeBeskrivningen.Location = new System.Drawing.Point(136, 49);
+            this.labelAngeBeskrivningen.Name = "labelAngeBeskrivningen";
+            this.labelAngeBeskrivningen.Size = new System.Drawing.Size(148, 13);
+            this.labelAngeBeskrivningen.TabIndex = 45;
+            this.labelAngeBeskrivningen.Text = "Du måste ange beskrivningen";
+            this.labelAngeBeskrivningen.Visible = false;
+            // 
+            // labelAngeAkt
+            // 
+            this.labelAngeAkt.AutoSize = true;
+            this.labelAngeAkt.BackColor = System.Drawing.Color.White;
+            this.labelAngeAkt.ForeColor = System.Drawing.Color.Red;
+            this.labelAngeAkt.Location = new System.Drawing.Point(177, 243);
+            this.labelAngeAkt.Name = "labelAngeAkt";
+            this.labelAngeAkt.Size = new System.Drawing.Size(153, 13);
+            this.labelAngeAkt.TabIndex = 46;
+            this.labelAngeAkt.Text = "Du måste lägga till minst en akt";
+            this.labelAngeAkt.Visible = false;
+            // 
+            // labelAngeStaplatser
+            // 
+            this.labelAngeStaplatser.AutoSize = true;
+            this.labelAngeStaplatser.BackColor = System.Drawing.Color.White;
+            this.labelAngeStaplatser.ForeColor = System.Drawing.Color.Red;
+            this.labelAngeStaplatser.Location = new System.Drawing.Point(136, 144);
+            this.labelAngeStaplatser.Name = "labelAngeStaplatser";
+            this.labelAngeStaplatser.Size = new System.Drawing.Size(129, 13);
+            this.labelAngeStaplatser.TabIndex = 47;
+            this.labelAngeStaplatser.Text = "Du måste antal ståplatser ";
+            this.labelAngeStaplatser.Visible = false;
+            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(728, 477);
+            this.Controls.Add(this.labelAngeStaplatser);
+            this.Controls.Add(this.labelAngeAkt);
+            this.Controls.Add(this.labelAngeBeskrivningen);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonaddSeat);
             this.Controls.Add(this.label3);
@@ -329,5 +375,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonaddSeat;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelAngeBeskrivningen;
+        private System.Windows.Forms.Label labelAngeAkt;
+        private System.Windows.Forms.Label labelAngeStaplatser;
     }
 }
