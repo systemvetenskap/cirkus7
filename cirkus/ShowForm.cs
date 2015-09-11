@@ -105,26 +105,30 @@ namespace cirkus
 
         private void buttonSparaAndringar_Click(object sender, EventArgs e)
         {
+            bool allowAdd = true;
             if (string.IsNullOrWhiteSpace(textBoxBeskrivning.Text))
             {
                 //MessageBox.Show("Du måste ange beskrivning");
                 textBoxBeskrivning.BackColor = Color.Tomato;
                 labelAngeBeskrivningen.Visible = true;
+                allowAdd = false;
             }
 
             if (listBoxAkter.Items.Count == 0)
             {
                 listBoxAkter.BackColor = Color.Tomato;
                 labelAngeAkt.Visible = true;
+                allowAdd = false;
             }
 
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
                 textBoxAntalFriplatser.BackColor = Color.Tomato;
                 labelAngeStaplatser.Visible = true;
+                allowAdd = false;
             }
 
-            else
+            if (allowAdd)
             {
                 string name, date, sale_start, sale_stop;
 
@@ -169,26 +173,30 @@ namespace cirkus
 
         private void buttonLaggTIllForestallning_Click(object sender, EventArgs e)
         {
+            bool allowAdd = true;
             if (string.IsNullOrWhiteSpace(textBoxBeskrivning.Text))
             {
                 //MessageBox.Show("Du måste ange beskrivning");
                 textBoxBeskrivning.BackColor = Color.Tomato;
                 labelAngeBeskrivningen.Visible = true;
+                allowAdd = false;
             }
 
             if (listBoxAkter.Items.Count == 0)
             {
                 listBoxAkter.BackColor = Color.Tomato;
                 labelAngeAkt.Visible = true;
+                allowAdd = false;
             }
 
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
                 textBoxAntalFriplatser.BackColor = Color.Tomato;
                 labelAngeStaplatser.Visible = true;
+                allowAdd = false;
             }
 
-            else
+            if (allowAdd)
             {
 
                 string name, date, sale_start, sale_stop;

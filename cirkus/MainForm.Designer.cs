@@ -49,6 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabShow = new System.Windows.Forms.TabPage();
+            this.dgvAkter = new System.Windows.Forms.DataGridView();
             this.dgvShowsList = new System.Windows.Forms.DataGridView();
             this.textBoxKronorVuxenbiljetter = new System.Windows.Forms.TextBox();
             this.textBoxAntalUngdomsbiljetter = new System.Windows.Forms.TextBox();
@@ -92,16 +93,15 @@
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
-            this.dgvAkter = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabShow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAkter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).BeginInit();
             this.tabAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAkter)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -354,6 +354,24 @@
             this.tabShow.Text = "Föreställning";
             this.tabShow.UseVisualStyleBackColor = true;
             // 
+            // dgvAkter
+            // 
+            this.dgvAkter.AllowUserToResizeColumns = false;
+            this.dgvAkter.AllowUserToResizeRows = false;
+            this.dgvAkter.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvAkter.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvAkter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAkter.ColumnHeadersVisible = false;
+            this.dgvAkter.Location = new System.Drawing.Point(291, 53);
+            this.dgvAkter.MultiSelect = false;
+            this.dgvAkter.Name = "dgvAkter";
+            this.dgvAkter.ReadOnly = true;
+            this.dgvAkter.RowHeadersVisible = false;
+            this.dgvAkter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAkter.Size = new System.Drawing.Size(193, 107);
+            this.dgvAkter.TabIndex = 23;
+            this.dgvAkter.SelectionChanged += new System.EventHandler(this.dgvAkter_SelectionChanged);
+            // 
             // dgvShowsList
             // 
             this.dgvShowsList.AllowUserToAddRows = false;
@@ -371,9 +389,7 @@
             this.dgvShowsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShowsList.Size = new System.Drawing.Size(228, 348);
             this.dgvShowsList.TabIndex = 22;
-            this.dgvShowsList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowsList_CellContentClick);
-            this.dgvShowsList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvShowsList_KeyDown);
-            this.dgvShowsList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvShowsList_KeyUp);
+            this.dgvShowsList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowsList_CellClick);
             // 
             // textBoxKronorVuxenbiljetter
             // 
@@ -763,24 +779,6 @@
             this.labelStaffName.Text = "Namn";
             this.labelStaffName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // dgvAkter
-            // 
-            this.dgvAkter.AllowUserToResizeColumns = false;
-            this.dgvAkter.AllowUserToResizeRows = false;
-            this.dgvAkter.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvAkter.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvAkter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAkter.ColumnHeadersVisible = false;
-            this.dgvAkter.Location = new System.Drawing.Point(291, 53);
-            this.dgvAkter.MultiSelect = false;
-            this.dgvAkter.Name = "dgvAkter";
-            this.dgvAkter.ReadOnly = true;
-            this.dgvAkter.RowHeadersVisible = false;
-            this.dgvAkter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAkter.Size = new System.Drawing.Size(193, 107);
-            this.dgvAkter.TabIndex = 23;
-            this.dgvAkter.SelectionChanged += new System.EventHandler(this.dgvAkter_SelectionChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -800,11 +798,11 @@
             this.groupBox1.PerformLayout();
             this.tabShow.ResumeLayout(false);
             this.tabShow.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAkter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).EndInit();
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStaff)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAkter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

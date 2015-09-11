@@ -133,8 +133,6 @@ namespace cirkus
         }
         #endregion
         #region Föreställningar
-
-
         private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
         {
             ShowForm showForm = new ShowForm();
@@ -168,7 +166,6 @@ namespace cirkus
             LoadShows();
             MessageBox.Show("Förestälningen är raderad!");
         }
-
         private void buttonAndraForestallning_Click(object sender, EventArgs e)
         {
             int selectedID;
@@ -184,6 +181,10 @@ namespace cirkus
             frm.ButtonVisibleLaggTillForestallning();
 
             frm.ShowDialog();
+        }
+        private void dgvAkter_SelectionChanged(object sender, EventArgs e)
+        {
+            //LoadAkter();
         }
         public void LoadShows()
         {
@@ -212,7 +213,6 @@ namespace cirkus
             }
             
         }
-
         public void LoadAkter()
         {
             //DataTable dt = new DataTable();
@@ -258,6 +258,10 @@ namespace cirkus
 
             dgvAkter.DataSource = dt;
             this.dgvAkter.Columns[1].Visible = false;
+        }
+        private void dgvShowsList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadAkter();
         }
         #endregion
         #region Konto
@@ -469,26 +473,7 @@ namespace cirkus
 
 
 
+
         #endregion
-
-        private void dgvAkter_SelectionChanged(object sender, EventArgs e)
-        {
-            //LoadAkter();
-        }
-
-        private void dgvShowsList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            LoadAkter();
-        }
-
-        private void dgvShowsList_KeyDown(object sender, KeyEventArgs e)
-        {
-            LoadAkter();
-        }
-
-        private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
-        {
-            LoadAkter();
-        }
     }
 }
