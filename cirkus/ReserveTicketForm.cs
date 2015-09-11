@@ -21,6 +21,7 @@ namespace cirkus
         {
             InitializeComponent();
             loadShows();
+                
         }
         public void loadShows()
         {
@@ -39,9 +40,9 @@ namespace cirkus
 
             conn.Close();
 
-            dataGridViewShows.Rows[1].Selected = true;
 
-            loadActs();
+            
+            //loadActs();
 
         }
         private void loadActs()
@@ -64,7 +65,7 @@ namespace cirkus
             dataGridViewActs.Columns[1].Width = 129;
 
            
-
+            
             dataGridViewActs.Rows[0].Selected = true;
             conn.Close();
 
@@ -99,7 +100,7 @@ namespace cirkus
 
                 string s = comboBoxSection.Text.ToString();
                 selectedsection = s;
-                lblTest.Text = selectedsection;
+                
 
                 comboBoxSection.SelectedIndex = 0;
 
@@ -119,7 +120,7 @@ namespace cirkus
         {
             conn.Open();
             selectedsection = comboBoxSection.Text.ToString();
-            lblTest.Text = selectedsection;
+            
             string getSeatnr = @"select rownumber, section from seats inner join available_seats on seats.seatid = available_seats.seatid 
                                     inner join acts on available_seats.actid = acts.actid 
                                         left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
@@ -136,11 +137,120 @@ namespace cirkus
             checkedListBoxSeats.DisplayMember = "rownumber";
             conn.Close();
         }
+        private void listCustomers()
+        {
+            string sqlSearch = textBoxSearchCust.Text;
+            string sql = "SELECT lname, fname, customerid FROM customer WHERE LOWER(lname) LIKE LOWER('%" + sqlSearch + "%') OR LOWER(fname) LIKE LOWER('%" + sqlSearch + "%');";
+            try
+            {
+                conn.Open();
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                dgCustom.DataSource = dt;
+                dgCustom.Columns[0].HeaderText = "Efternamn";
+                dgCustom.Columns[1].HeaderText = "Förnamn";
+                dgCustom.Columns[2].HeaderText = "ID";
+                dgCustom.Columns[0].Width = 60;
+                dgCustom.Columns[1].Width = 60;
+                dgCustom.Columns[2].Width = 60;
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        private void textBoxSearchCustomer_TextChanged(object sender, EventArgs e)
+        {
+            listCustomers();
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridViewShows.CurrentCell.Selected = false;
+        }
+
         private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
         {
             conn.Close();
             loadActs();
             create_summary();
+
+        }
+
+        private void ReserveTicketForm_Load(object sender, EventArgs e)
+        {
+            clearSelect();
+            listCustomers();
+            txtenamn.Enabled = false;
+            txtepost.Enabled = false;
+            txtfnamn.Enabled = false;
+            txttel.Enabled = false;
+            //panel1.Visible = false;
+            //panel2.Visible = false;
+            //panel3.Visible = false;
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = true;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            panel3.Visible = true;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                textBoxSearchCust.Enabled = false;
+                if (this.dgCustom.DataSource != null)
+                {
+                    this.dgCustom.DataSource = null;
+                }
+                else
+                {
+                  this.dgCustom.Rows.Clear();
+                   dgCustom.BackgroundColor = Color.Gray;
+                    
+                    
+                }
+
+                txtenamn.Enabled = true;
+                txtepost.Enabled = true;
+                txtfnamn.Enabled = true;
+                txttel.Enabled = true;
+
+            }
+            if (checkBox2.Checked == false)
+            {
+                dgCustom.BackgroundColor = Color.White;
+               
+                
+                dgCustom.Visible = true;
+                textBoxSearchCust.Enabled = true; 
+                listCustomers();
+                txtenamn.Enabled = false;
+                txtepost.Enabled = false;
+                txtfnamn.Enabled = false;
+                txttel.Enabled = false;
+
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
@@ -174,22 +284,25 @@ namespace cirkus
         private void checked_seats(object sender, ItemCheckEventArgs e)
         {
             CheckedListBox items = (CheckedListBox)sender;
-            if (items.CheckedItems.Count > total)
+            if (items.CheckedItems.Count > total - 1)
             {
                 e.NewValue = CheckState.Unchecked;
+               
             }
-            if (e.CurrentValue == CheckState.Unchecked)
-            {
-                checkedseats++;
-                calculate_people();
-            }
-            else if(e.CurrentValue == CheckState.Checked)
-            {
-                checkedseats--;
-                calculate_people();
+            //if (e.CurrentValue == CheckState.Unchecked)
+            //{
+            //    checkedseats++;
+            //    calculate_people();
+            //}
+            //else if (e.CurrentValue == CheckState.Checked)
+            //{
+            //    checkedseats--;
+            //    calculate_people();
 
-            }
-         
+            //}
+
+            
+
         }
 
         private void added_child(object sender, EventArgs e)
@@ -205,11 +318,7 @@ namespace cirkus
         public void calculate_people()
         {
            total = totalChild + totalYouth + totalAdult;
-            lblChild.Text = totalChild.ToString();
-            lblYouth.Text = totalYouth.ToString();
-            lblAdult.Text = totalAdult.ToString();
-            lblTotal.Text = total.ToString();
-            lblSelectedSeats.Text = checkedseats.ToString();
+ 
             if(checkedseats == total)
             {
                 checkedListBoxSeats.SelectionMode = SelectionMode.None;
@@ -237,6 +346,11 @@ namespace cirkus
             {
                 
             }
+        }
+        private void clearSelect()
+        {
+            dataGridViewShows.CurrentCell.Selected = false;
+
         }
 
 
