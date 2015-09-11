@@ -17,6 +17,7 @@ namespace cirkus
     {
         #region Variables
         private int staffid;
+        private int showid;
         private string staffUserId;
         private string staffFname;
         private string staffLname;
@@ -39,6 +40,7 @@ namespace cirkus
                     break;
                 case 1:
                     LoadShows();
+                    LoadAkter();
                     break;
                 case 2:
                     ListaPersonal();
@@ -129,7 +131,7 @@ namespace cirkus
             if (currentRow != -1)
             {
 
-            }
+        }
 
         }
         private void buttonAddCustomer_Click(object sender, EventArgs e)
@@ -195,7 +197,6 @@ namespace cirkus
             LoadShows();
             MessageBox.Show("Förestälningen är raderad!");
         }
-
         private void buttonAndraForestallning_Click(object sender, EventArgs e)
         {
             int selectedID;
@@ -212,6 +213,10 @@ namespace cirkus
 
             frm.ShowDialog();
         }
+        private void dgvAkter_SelectionChanged(object sender, EventArgs e)
+        {
+            //LoadAkter();
+        }
         public void LoadShows()
         {
             DataTable dt = new DataTable();
@@ -221,9 +226,6 @@ namespace cirkus
 
             try
             {
-
-
-
                 conn.Open();
                 sql = "select showid, date, name from show order by date DESC";
                 da = new NpgsqlDataAdapter(sql, conn);
@@ -232,11 +234,65 @@ namespace cirkus
                 conn.Close();
                 dgvShowsList.Columns["showid"].Visible = false;
             }
-            catch
+            catch (NpgsqlException ex)
             {
+                MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                conn.Close();
+            }
+            
+        }
+        public void LoadAkter()
+        {
+            //DataTable dt = new DataTable();
+            //dgvShowsList.DataSource = null;
+            //dgvShowsList.Rows.Clear();
 
+            //int selectedIndex = dgvShowsList.SelectedRows[0].Index;
 
+            //showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
+
+            //string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
+
+            //try
+            //{
+            //    conn.Open();
+            //    da = new NpgsqlDataAdapter(sql, conn);
+            //    da.Fill(dt);
+            //    dgvAkter.DataSource = dt;
+            //    conn.Close();
+            //    dgvAkter.Columns["actid"].Visible = false;
+            //}
+            //catch (NpgsqlException ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
+            int selectedIndex = dgvShowsList.SelectedRows[0].Index;
+
+            showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
+
+            //string sql = "select acts.actid, acts.name from acts where showid = '" + showid + "'";
+            string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
+            // select name, actid from acts where showid = '" + showid + "' group by name, actid order by name
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            dgvAkter.DataSource = dt;
+            this.dgvAkter.Columns[1].Visible = false;
+        }
+        private void dgvShowsList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadAkter();
         }
         #endregion
         #region Konto
@@ -272,7 +328,7 @@ namespace cirkus
                 DataGridViewColumn column = dgStaff.Columns[0];
                 DataGridViewColumn column1 = dgStaff.Columns[1];
                 DataGridViewColumn column2 = dgStaff.Columns[2];
-               
+
                 column.Width = 60;
                 column1.Width = 60;
                 column2.Width = 80;

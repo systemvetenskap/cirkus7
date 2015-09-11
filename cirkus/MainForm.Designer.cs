@@ -49,7 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabShow = new System.Windows.Forms.TabPage();
-            this.dgvAkterList = new System.Windows.Forms.DataGridView();
+            this.dgvAkter = new System.Windows.Forms.DataGridView();
             this.dgvShowsList = new System.Windows.Forms.DataGridView();
             this.textBoxKronorVuxenbiljetter = new System.Windows.Forms.TextBox();
             this.textBoxAntalUngdomsbiljetter = new System.Windows.Forms.TextBox();
@@ -107,7 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabShow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAkterList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAkter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).BeginInit();
             this.tabAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgStaff)).BeginInit();
@@ -352,7 +352,7 @@
             // 
             // tabShow
             // 
-            this.tabShow.Controls.Add(this.dgvAkterList);
+            this.tabShow.Controls.Add(this.dgvAkter);
             this.tabShow.Controls.Add(this.dgvShowsList);
             this.tabShow.Controls.Add(this.textBoxKronorVuxenbiljetter);
             this.tabShow.Controls.Add(this.textBoxAntalUngdomsbiljetter);
@@ -382,22 +382,27 @@
             this.tabShow.Text = "Föreställning";
             this.tabShow.UseVisualStyleBackColor = true;
             // 
-            // dgvAkterList
+            // dgvAkter
             // 
-            this.dgvAkterList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvAkterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAkterList.ColumnHeadersVisible = false;
-            this.dgvAkterList.Location = new System.Drawing.Point(291, 53);
-            this.dgvAkterList.MultiSelect = false;
-            this.dgvAkterList.Name = "dgvAkterList";
-            this.dgvAkterList.ReadOnly = true;
-            this.dgvAkterList.RowHeadersVisible = false;
-            this.dgvAkterList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAkterList.Size = new System.Drawing.Size(106, 107);
-            this.dgvAkterList.TabIndex = 23;
+            this.dgvAkter.AllowUserToResizeColumns = false;
+            this.dgvAkter.AllowUserToResizeRows = false;
+            this.dgvAkter.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvAkter.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvAkter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAkter.ColumnHeadersVisible = false;
+            this.dgvAkter.Location = new System.Drawing.Point(291, 53);
+            this.dgvAkter.MultiSelect = false;
+            this.dgvAkter.Name = "dgvAkter";
+            this.dgvAkter.ReadOnly = true;
+            this.dgvAkter.RowHeadersVisible = false;
+            this.dgvAkter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAkter.Size = new System.Drawing.Size(193, 107);
+            this.dgvAkter.TabIndex = 23;
+            this.dgvAkter.SelectionChanged += new System.EventHandler(this.dgvAkter_SelectionChanged);
             // 
             // dgvShowsList
             // 
+            this.dgvShowsList.AllowUserToAddRows = false;
             this.dgvShowsList.AllowUserToResizeColumns = false;
             this.dgvShowsList.AllowUserToResizeRows = false;
             this.dgvShowsList.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -412,6 +417,7 @@
             this.dgvShowsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShowsList.Size = new System.Drawing.Size(228, 348);
             this.dgvShowsList.TabIndex = 22;
+            this.dgvShowsList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowsList_CellClick);
             // 
             // textBoxKronorVuxenbiljetter
             // 
@@ -892,7 +898,7 @@
             this.groupBox1.PerformLayout();
             this.tabShow.ResumeLayout(false);
             this.tabShow.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAkterList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAkter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).EndInit();
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
@@ -963,7 +969,6 @@
         private System.Windows.Forms.TextBox textBoxAnvandarnamn;
         private System.Windows.Forms.Label labelStaffName;
         private System.Windows.Forms.DataGridView dgvShowsList;
-        private System.Windows.Forms.DataGridView dgvAkterList;
         private System.Windows.Forms.DataGridView dgCustomers;
         private System.Windows.Forms.TextBox textBoxSearchCustomer;
         private System.Windows.Forms.DataGridView dgStaff;
@@ -977,5 +982,6 @@
         private System.Windows.Forms.TextBox textBoxPrintSeat;
         private System.Windows.Forms.Label lblBehorighetsniva;
         private System.Windows.Forms.Label lblLosenord;
+        private System.Windows.Forms.DataGridView dgvAkter;
     }
 }
