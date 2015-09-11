@@ -48,20 +48,17 @@ namespace cirkus
             //NpgsqlCommand cmd = new NpgsqlCommand("select * from show where showid = '" + Name + "'", conn);
             NpgsqlCommand cmd = new NpgsqlCommand("select a.actid, a.name , s.date, s.name, s.seat_number, s.showid, s.sale_start, s.sale_stop from show s inner join acts a on s.showid = a.showid where s.showid = '" + Name + "' group by a.actid, a.name , s.date, s.name, s.seat_number, s.showid, s.sale_start, s.sale_stop ", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
+            Act newAct = new Act();
 
             while (dr.Read())
             {
-                //textBoxBeskrivning.Text = dr.GetValue(1).ToString();
-                //textBoxAntalFriplatser.Text = dr.GetValue(2).ToString();
-                //dateTimePickerDatum.Value = Convert.ToDateTime(dr.GetValue(0).ToString());
-                //dateTimePickerForsaljningstidFran.Value = Convert.ToDateTime(dr.GetValue(4).ToString());
-                //dateTimePickerForsaljningstidTill.Value = Convert.ToDateTime(dr.GetValue(5).ToString());
-
                 textBoxBeskrivning.Text = dr.GetValue(3).ToString();
                 textBoxAntalFriplatser.Text = dr.GetValue(4).ToString();
                 dateTimePickerDatum.Value = Convert.ToDateTime(dr.GetValue(2).ToString());
                 dateTimePickerForsaljningstidFran.Value = Convert.ToDateTime(dr.GetValue(6).ToString());
                 dateTimePickerForsaljningstidTill.Value = Convert.ToDateTime(dr.GetValue(7).ToString());
+                listBoxAkter.Items.Add(dr.GetValue(1).ToString());
+                listBoxAkter.SelectedIndex = 0;
             }
             conn.Close();
         }
@@ -81,7 +78,7 @@ namespace cirkus
                 newAct.name = textBoxAkter.Text;
                 listBoxAkter.Items.Add(newAct);
                 listBoxAkter.SelectedIndex = 0;
-
+                textBoxAkter.Text = "";
                 listBoxAkter.BackColor = Color.White;
                 labelAngeAkt.Visible = false;
             }
@@ -108,33 +105,66 @@ namespace cirkus
 
         private void buttonSparaAndringar_Click(object sender, EventArgs e)
         {
-            string name, date, sale_start, sale_stop;
+            if (string.IsNullOrWhiteSpace(textBoxBeskrivning.Text))
+            {
+                //MessageBox.Show("Du måste ange beskrivning");
+                textBoxBeskrivning.BackColor = Color.Tomato;
+                labelAngeBeskrivningen.Visible = true;
+            }
 
-            name = textBoxBeskrivning.Text;
-            date = dateTimePickerDatum.Text;
-            sale_start = dateTimePickerForsaljningstidFran.Text;
-            sale_stop = dateTimePickerForsaljningstidTill.Text;
+            if (listBoxAkter.Items.Count == 0)
+            {
+                listBoxAkter.BackColor = Color.Tomato;
+                labelAngeAkt.Visible = true;
+            }
 
-            int seat_number = Convert.ToInt16(textBoxAntalFriplatser.Text);
+            if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
+            {
+                textBoxAntalFriplatser.BackColor = Color.Tomato;
+                labelAngeStaplatser.Visible = true;
+            }
 
-            string sql = "update show set name = @name, date = @date, seat_number = @seat_number, sale_start = @sale_start, sale_stop = @sale_stop where showid = '" + Name + "'";
-            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            else
+            {
+                string name, date, sale_start, sale_stop;
 
-            cmd.Parameters.AddWithValue("@name", name);
-            cmd.Parameters.AddWithValue("@date", date);
-            cmd.Parameters.AddWithValue("@seat_number", seat_number);
-            cmd.Parameters.AddWithValue("@sale_start", sale_start);
-            cmd.Parameters.AddWithValue("@sale_stop", sale_stop);
+                name = textBoxBeskrivning.Text;
+                date = dateTimePickerDatum.Text;
+                sale_start = dateTimePickerForsaljningstidFran.Text;
+                sale_stop = dateTimePickerForsaljningstidTill.Text;
 
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+                int seat_number = Convert.ToInt16(textBoxAntalFriplatser.Text);
 
-            this.Close();
-            var frm = Application.OpenForms.OfType<MainForm>().Single();
-            frm.LoadShows();
+                string sql = "update show set name = @name, date = @date, seat_number = @seat_number, sale_start = @sale_start, sale_stop = @sale_stop where showid = '" + Name + "'";
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
-            MessageBox.Show("Ändringarna har sparats!");
+                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@date", date);
+                cmd.Parameters.AddWithValue("@seat_number", seat_number);
+                cmd.Parameters.AddWithValue("@sale_start", sale_start);
+                cmd.Parameters.AddWithValue("@sale_stop", sale_stop);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                //for (int i = 0; i < listBoxAkter.Items.Count; i++)
+                //{
+                //    acts = listBoxAkter.Items[i].ToString();
+                //    conn.Open();
+                //    command = new NpgsqlCommand(@"Insert into acts (name, showid) Values (@name, @showid)", conn);
+                //    command.Parameters.AddWithValue("@name", acts);
+                //    command.Parameters.AddWithValue("@showid", addedshowid);
+                //    command.ExecuteNonQuery();
+                //    conn.Close();
+                //}
+
+                this.Close();
+                var frm = Application.OpenForms.OfType<MainForm>().Single();
+                frm.LoadShows();
+
+                MessageBox.Show("Ändringarna har sparats!");
+            }
         }
 
         private void buttonLaggTIllForestallning_Click(object sender, EventArgs e)

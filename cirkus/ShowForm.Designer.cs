@@ -159,7 +159,7 @@
             // 
             // buttonSparaAndringar
             // 
-            this.buttonSparaAndringar.Location = new System.Drawing.Point(479, 442);
+            this.buttonSparaAndringar.Location = new System.Drawing.Point(587, 442);
             this.buttonSparaAndringar.Name = "buttonSparaAndringar";
             this.buttonSparaAndringar.Size = new System.Drawing.Size(100, 23);
             this.buttonSparaAndringar.TabIndex = 30;
