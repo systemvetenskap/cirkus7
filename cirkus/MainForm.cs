@@ -362,23 +362,31 @@ namespace cirkus
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
             //Kontrollerar längden på textboxarna
-            if (textBoxFornamn.TextLength>60)
+            if (textBoxPersonnummer.TextLength>10||textBoxPersonnummer.TextLength<10)
+            {
+                textBoxPersonnummer.BackColor = Color.Tomato;
+                LblVarning.Visible = true;
+                LblVarning.ForeColor = Color.Tomato;
+                LblVarning.Text = "Personnummret anged med 10 siffror";
+                return;
+            }
+            if (textBoxFornamn.TextLength>60 || !BaraBokstäver(textBoxFornamn.Text))
             {
                 textBoxFornamn.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Förnamnet är för långt";
+                LblVarning.Text = "Förnamnet är för långt, eller innehåller siffror.";
                 return;
             }
-            if (textBoxEfternamn.TextLength > 60)
+            if (textBoxEfternamn.TextLength > 60 || !BaraBokstäver(textBoxEfternamn.Text))
             {
                 textBoxEfternamn.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Efternamnet är för långt";
+                LblVarning.Text = "Efternamnet är för långt, eller innehåller siffror.";
                 return;
             }
-            if (textBoxTelefonnummer.TextLength>10)
+            if (textBoxTelefonnummer.TextLength>10||!EndastSiffror(textBoxTelefonnummer.Text))
             {
                 textBoxTelefonnummer.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
@@ -411,33 +419,6 @@ namespace cirkus
                 return;
             }
             //Slut kontrollera längd på textboxar
-
-            //Kontrollerar siffror och bokstäver
-            if (!EndastSiffror(textBoxTelefonnummer.Text))
-            {
-                textBoxTelefonnummer.BackColor = Color.Tomato;
-                LblVarning.Visible = true;
-                LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Telefonnummret får endast innehålla siffror.";
-                return;
-            }
-            if (!BaraBokstäver(textBoxFornamn.Text))
-            {
-                textBoxFornamn.BackColor = Color.Tomato;
-                LblVarning.Visible = true;
-                LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Förnamn får endast innehålla bokstäver.";
-                return;
-            }
-            if (!BaraBokstäver(textBoxEfternamn.Text))
-            {
-                textBoxEfternamn.BackColor = Color.Tomato;
-                LblVarning.Visible = true;
-                LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Efternamn får endast innehålla bokstäver.";
-                return;
-            }
-            //Slut kontrollerar siffror och bokstäver
 
             //Kontrollerar tomma textboxar
             if (string.IsNullOrEmpty(textBoxPersonnummer.Text))
