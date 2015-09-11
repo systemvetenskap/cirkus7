@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.numericChild = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericYouth = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numericAdult = new System.Windows.Forms.NumericUpDown();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -54,7 +49,6 @@
             this.checkedListBoxSeats = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -96,8 +90,6 @@
             this.lblcustid = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericChild)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericYouth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericAdult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -105,7 +97,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -117,54 +108,11 @@
             // 
             // numericChild
             // 
-            this.numericChild.Location = new System.Drawing.Point(53, 62);
+            this.numericChild.Location = new System.Drawing.Point(40, 32);
             this.numericChild.Name = "numericChild";
-            this.numericChild.Size = new System.Drawing.Size(37, 20);
+            this.numericChild.Size = new System.Drawing.Size(51, 20);
             this.numericChild.TabIndex = 2;
             this.numericChild.ValueChanged += new System.EventHandler(this.added_child);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 64);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Barn";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Ungdom";
-            // 
-            // numericYouth
-            // 
-            this.numericYouth.Location = new System.Drawing.Point(53, 89);
-            this.numericYouth.Name = "numericYouth";
-            this.numericYouth.Size = new System.Drawing.Size(37, 20);
-            this.numericYouth.TabIndex = 4;
-            this.numericYouth.ValueChanged += new System.EventHandler(this.added_youth);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 117);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Vuxen";
-            // 
-            // numericAdult
-            // 
-            this.numericAdult.Location = new System.Drawing.Point(53, 115);
-            this.numericAdult.Name = "numericAdult";
-            this.numericAdult.Size = new System.Drawing.Size(37, 20);
-            this.numericAdult.TabIndex = 6;
-            this.numericAdult.ValueChanged += new System.EventHandler(this.added_adult);
             // 
             // radioButton2
             // 
@@ -404,26 +352,13 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.numericUpDown1);
-            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.numericChild);
-            this.groupBox3.Controls.Add(this.numericYouth);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.numericAdult);
-            this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Location = new System.Drawing.Point(311, 25);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(136, 195);
+            this.groupBox3.Size = new System.Drawing.Size(136, 75);
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Antal personer";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(93, 0);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(37, 20);
-            this.numericUpDown1.TabIndex = 8;
             // 
             // groupBox4
             // 
@@ -845,8 +780,6 @@
             this.Text = "ReserveTicketForm";
             this.Load += new System.EventHandler(this.ReserveTicketForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericChild)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericYouth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericAdult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -855,8 +788,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -877,11 +808,6 @@
 
         #endregion
         private System.Windows.Forms.NumericUpDown numericChild;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericYouth;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numericAdult;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonCancel;
@@ -934,7 +860,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnRemSeats;
         private System.Windows.Forms.ComboBox cbAgegroup;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;

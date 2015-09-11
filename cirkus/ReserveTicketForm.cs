@@ -14,9 +14,9 @@ namespace cirkus
     {
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-        int showid, actid, seatid,agegroup, customerid;
-        int totalChild, totalYouth, totalAdult, total, checkedseats, priceid;
+        int showid, actid, seatid,agegroup, customerid, total, checkedseats, priceid;      
         string show, act, bseats, selectedsection;
+        bool newcust;
         DataTable section;
         DataTable selectedseats = new DataTable();
         NpgsqlCommand cmd;
@@ -249,7 +249,40 @@ namespace cirkus
 
         private void button5_Click(object sender, EventArgs e)
         {
-            panel3.Visible = true;
+            
+            if (newcust == true)
+            {
+                string fn = txtfnamn.Text;
+                string ln = txtenamn.Text;
+                string pn = txttel.Text;
+                string em = txtepost.Text;
+                conn.Open();
+                
+                cmd = new NpgsqlCommand("insert into customer(fname, lname, phonenumber, email) values(:fn, :ln, :pn, :em)", conn);
+                cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
+                cmd.Parameters.Add(new NpgsqlParameter("ln", ln));
+                cmd.Parameters.Add(new NpgsqlParameter("pn", pn));
+                cmd.Parameters.Add(new NpgsqlParameter("em", em));
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                conn.Open();
+                cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
+                NpgsqlDataReader read;
+                read = cmd.ExecuteReader();
+
+                read.Read();
+                customerid = int.Parse(read[0].ToString());
+                conn.Close();
+                panel3.Visible = true;
+
+
+            }
+            if (newcust == false)
+            {
+               panel3.Visible = true;
+
+            }
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -260,6 +293,7 @@ namespace cirkus
                 if (this.dgCustom.DataSource != null)
                 {
                     this.dgCustom.DataSource = null;
+
                 }
                 else
                 {
@@ -268,7 +302,7 @@ namespace cirkus
 
 
                 }
-
+                newcust = true;
                 txtenamn.Enabled = true;
                 txtepost.Enabled = true;
                 txtfnamn.Enabled = true;
@@ -279,7 +313,7 @@ namespace cirkus
             {
                 dgCustom.BackgroundColor = Color.White;
 
-
+                newcust = false;
                 dgCustom.Visible = true;
                 textBoxSearchCust.Enabled = true;
                 listCustomers();
@@ -423,17 +457,7 @@ namespace cirkus
 
 
 
-        private void added_youth(object sender, EventArgs e)
-        {
-            totalYouth = Convert.ToInt16(numericYouth.Value);
-            calculate_people();
-        }
 
-        private void added_adult(object sender, EventArgs e)
-        {
-            totalAdult = Convert.ToInt16(numericAdult.Value);
-            calculate_people();
-        }
 
         private void checked_seats(object sender, ItemCheckEventArgs e)
         {
@@ -461,20 +485,15 @@ namespace cirkus
 
         private void added_child(object sender, EventArgs e)
         {
-            totalChild = Convert.ToInt16(numericChild.Value);
-            calculate_people();
-        }
-
-
-
-
-
-        public void calculate_people()
-        {
-            total = totalChild + totalYouth + totalAdult;
+            total = Convert.ToInt16(numericChild.Value);
             
-  
         }
+
+
+
+
+
+
 
         private void create_summary()
         {
