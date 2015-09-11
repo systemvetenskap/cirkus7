@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
+            this.dgTickets = new System.Windows.Forms.DataGridView();
             this.dgCustomers = new System.Windows.Forms.DataGridView();
             this.textBoxSearchCustomer = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBoxOlderTickets = new System.Windows.Forms.CheckBox();
-            this.listBoxTicket = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -93,8 +93,15 @@
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.textBoxPrintSeat = new System.Windows.Forms.TextBox();
+            this.textBoxPrintAge = new System.Windows.Forms.TextBox();
+            this.textBoxPrintShow = new System.Windows.Forms.TextBox();
+            this.textBoxPrintAct = new System.Windows.Forms.TextBox();
+            this.textBoxPrintPrice = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabShow.SuspendLayout();
@@ -118,6 +125,7 @@
             // 
             // tabTicket
             // 
+            this.tabTicket.Controls.Add(this.dgTickets);
             this.tabTicket.Controls.Add(this.dgCustomers);
             this.tabTicket.Controls.Add(this.textBoxSearchCustomer);
             this.tabTicket.Controls.Add(this.button4);
@@ -126,7 +134,6 @@
             this.tabTicket.Controls.Add(this.buttonAddCustomer);
             this.tabTicket.Controls.Add(this.groupBox1);
             this.tabTicket.Controls.Add(this.checkBoxOlderTickets);
-            this.tabTicket.Controls.Add(this.listBoxTicket);
             this.tabTicket.Controls.Add(this.label3);
             this.tabTicket.Controls.Add(this.label2);
             this.tabTicket.Controls.Add(this.label1);
@@ -138,25 +145,46 @@
             this.tabTicket.Text = "Biljettförsäljning";
             this.tabTicket.UseVisualStyleBackColor = true;
             // 
+            // dgTickets
+            // 
+            this.dgTickets.AllowUserToAddRows = false;
+            this.dgTickets.AllowUserToDeleteRows = false;
+            this.dgTickets.AllowUserToResizeColumns = false;
+            this.dgTickets.AllowUserToResizeRows = false;
+            this.dgTickets.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgTickets.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTickets.Location = new System.Drawing.Point(250, 75);
+            this.dgTickets.Name = "dgTickets";
+            this.dgTickets.ReadOnly = true;
+            this.dgTickets.RowHeadersVisible = false;
+            this.dgTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgTickets.Size = new System.Drawing.Size(200, 368);
+            this.dgTickets.TabIndex = 15;
+            // 
             // dgCustomers
             // 
             this.dgCustomers.AllowUserToAddRows = false;
             this.dgCustomers.AllowUserToDeleteRows = false;
+            this.dgCustomers.AllowUserToResizeColumns = false;
+            this.dgCustomers.AllowUserToResizeRows = false;
             this.dgCustomers.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgCustomers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCustomers.Location = new System.Drawing.Point(12, 75);
             this.dgCustomers.Name = "dgCustomers";
             this.dgCustomers.ReadOnly = true;
             this.dgCustomers.RowHeadersVisible = false;
             this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomers.Size = new System.Drawing.Size(186, 368);
+            this.dgCustomers.Size = new System.Drawing.Size(200, 368);
             this.dgCustomers.TabIndex = 14;
+            this.dgCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellClick);
             // 
             // textBoxSearchCustomer
             // 
             this.textBoxSearchCustomer.Location = new System.Drawing.Point(40, 49);
             this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
-            this.textBoxSearchCustomer.Size = new System.Drawing.Size(158, 20);
+            this.textBoxSearchCustomer.Size = new System.Drawing.Size(172, 20);
             this.textBoxSearchCustomer.TabIndex = 13;
             this.textBoxSearchCustomer.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
             // 
@@ -201,6 +229,11 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.textBoxPrintPrice);
+            this.groupBox1.Controls.Add(this.textBoxPrintAct);
+            this.groupBox1.Controls.Add(this.textBoxPrintShow);
+            this.groupBox1.Controls.Add(this.textBoxPrintAge);
+            this.groupBox1.Controls.Add(this.textBoxPrintSeat);
             this.groupBox1.Controls.Add(this.buttonPrint);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -208,9 +241,9 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(438, 13);
+            this.groupBox1.Location = new System.Drawing.Point(489, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(299, 430);
+            this.groupBox1.Size = new System.Drawing.Size(226, 430);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Utskrift";
@@ -218,18 +251,19 @@
             // buttonPrint
             // 
             this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrint.Location = new System.Drawing.Point(218, 404);
+            this.buttonPrint.Location = new System.Drawing.Point(145, 401);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(75, 23);
             this.buttonPrint.TabIndex = 8;
             this.buttonPrint.Text = "Skriv ut";
             this.buttonPrint.UseVisualStyleBackColor = true;
+            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(31, 239);
+            this.label8.Location = new System.Drawing.Point(29, 290);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(39, 16);
             this.label8.TabIndex = 12;
@@ -239,7 +273,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(31, 190);
+            this.label7.Location = new System.Drawing.Point(29, 233);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(34, 16);
             this.label7.TabIndex = 11;
@@ -249,7 +283,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(31, 153);
+            this.label6.Location = new System.Drawing.Point(29, 176);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 16);
             this.label6.TabIndex = 10;
@@ -259,7 +293,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(31, 108);
+            this.label5.Location = new System.Drawing.Point(29, 119);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 16);
             this.label5.TabIndex = 9;
@@ -269,7 +303,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(31, 70);
+            this.label4.Location = new System.Drawing.Point(29, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 16);
             this.label4.TabIndex = 8;
@@ -278,26 +312,18 @@
             // checkBoxOlderTickets
             // 
             this.checkBoxOlderTickets.AutoSize = true;
-            this.checkBoxOlderTickets.Location = new System.Drawing.Point(233, 52);
+            this.checkBoxOlderTickets.Location = new System.Drawing.Point(250, 52);
             this.checkBoxOlderTickets.Name = "checkBoxOlderTickets";
             this.checkBoxOlderTickets.Size = new System.Drawing.Size(108, 17);
             this.checkBoxOlderTickets.TabIndex = 7;
             this.checkBoxOlderTickets.Text = "Visa äldre biljetter";
             this.checkBoxOlderTickets.UseVisualStyleBackColor = true;
             // 
-            // listBoxTicket
-            // 
-            this.listBoxTicket.FormattingEnabled = true;
-            this.listBoxTicket.Location = new System.Drawing.Point(233, 75);
-            this.listBoxTicket.Name = "listBoxTicket";
-            this.listBoxTicket.Size = new System.Drawing.Size(190, 368);
-            this.listBoxTicket.TabIndex = 6;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(229, 13);
+            this.label3.Location = new System.Drawing.Point(246, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 20);
             this.label3.TabIndex = 5;
@@ -773,6 +799,55 @@
             this.labelStaffName.Text = "Namn";
             this.labelStaffName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // textBoxPrintSeat
+            // 
+            this.textBoxPrintSeat.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintSeat.Location = new System.Drawing.Point(32, 138);
+            this.textBoxPrintSeat.Name = "textBoxPrintSeat";
+            this.textBoxPrintSeat.ReadOnly = true;
+            this.textBoxPrintSeat.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintSeat.TabIndex = 14;
+            // 
+            // textBoxPrintAge
+            // 
+            this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintAge.Location = new System.Drawing.Point(32, 81);
+            this.textBoxPrintAge.Name = "textBoxPrintAge";
+            this.textBoxPrintAge.ReadOnly = true;
+            this.textBoxPrintAge.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintAge.TabIndex = 15;
+            // 
+            // textBoxPrintShow
+            // 
+            this.textBoxPrintShow.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintShow.Location = new System.Drawing.Point(32, 195);
+            this.textBoxPrintShow.Name = "textBoxPrintShow";
+            this.textBoxPrintShow.ReadOnly = true;
+            this.textBoxPrintShow.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintShow.TabIndex = 16;
+            // 
+            // textBoxPrintAct
+            // 
+            this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintAct.Location = new System.Drawing.Point(32, 252);
+            this.textBoxPrintAct.Name = "textBoxPrintAct";
+            this.textBoxPrintAct.ReadOnly = true;
+            this.textBoxPrintAct.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintAct.TabIndex = 17;
+            // 
+            // textBoxPrintPrice
+            // 
+            this.textBoxPrintPrice.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintPrice.Location = new System.Drawing.Point(32, 309);
+            this.textBoxPrintPrice.Name = "textBoxPrintPrice";
+            this.textBoxPrintPrice.ReadOnly = true;
+            this.textBoxPrintPrice.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintPrice.TabIndex = 18;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -787,6 +862,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabTicket.ResumeLayout(false);
             this.tabTicket.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -812,7 +888,6 @@
         private System.Windows.Forms.TabPage tabAccount;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxOlderTickets;
-        private System.Windows.Forms.ListBox listBoxTicket;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -869,5 +944,12 @@
         private System.Windows.Forms.TextBox textBoxSearchCustomer;
         private System.Windows.Forms.DataGridView dataGridViewStaff;
         private System.Windows.Forms.TextBox textBoxSearchStaff;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.DataGridView dgTickets;
+        private System.Windows.Forms.TextBox textBoxPrintPrice;
+        private System.Windows.Forms.TextBox textBoxPrintAct;
+        private System.Windows.Forms.TextBox textBoxPrintShow;
+        private System.Windows.Forms.TextBox textBoxPrintAge;
+        private System.Windows.Forms.TextBox textBoxPrintSeat;
     }
 }

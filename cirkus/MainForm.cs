@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -86,6 +87,14 @@ namespace cirkus
         {
             listCustomers();
         }
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Biljett", new Font("arial", 17), new SolidBrush(Color.Black), 10, 10);
+            e.Graphics.DrawString("Kundens namn", new Font("arial", 17), new SolidBrush(Color.Black), 10, 50);
+            e.Graphics.DrawString("Plats", new Font("arial", 17), new SolidBrush(Color.Black), 10, 90);
+            e.Graphics.DrawString("Föreställning", new Font("arial", 17), new SolidBrush(Color.Black), 10, 130);
+            e.Graphics.DrawString("Akter", new Font("arial", 17), new SolidBrush(Color.Black), 10, 170);
+        }
         private void listCustomers()
         {
             string sqlSearch = textBoxSearchCustomer.Text;
@@ -116,7 +125,11 @@ namespace cirkus
         }
         private void listTickets()
         {
-
+            int currentRow = dgCustomers.SelectedRows[0].Index;
+            if (currentRow != -1)
+            {
+                
+            }
         }
         private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
@@ -129,6 +142,22 @@ namespace cirkus
             conn.Close();
             ReserveTicketForm rtf = new ReserveTicketForm();
             rtf.ShowDialog();
+        }
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            //PrintDialog pdialog = new PrintDialog();
+            //pdialog.Document = printDocument1;
+            //pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(partOfForm());
+
+            //if (pdialog.ShowDialog() == DialogResult.OK)
+            //{
+            printDocument1.Print();
+            //}
+
+        }
+        private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            listTickets();
         }
         #endregion
         #region Föreställningar
@@ -417,10 +446,9 @@ namespace cirkus
             }
 
         }
-        
-        
+
+
         #endregion
-
-
+        
     }
 }
