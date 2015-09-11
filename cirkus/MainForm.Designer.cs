@@ -38,6 +38,11 @@
             this.buttonReserveTicket = new System.Windows.Forms.Button();
             this.buttonAddCustomer = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxPrintPrice = new System.Windows.Forms.TextBox();
+            this.textBoxPrintAct = new System.Windows.Forms.TextBox();
+            this.textBoxPrintShow = new System.Windows.Forms.TextBox();
+            this.textBoxPrintAge = new System.Windows.Forms.TextBox();
+            this.textBoxPrintSeat = new System.Windows.Forms.TextBox();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -96,11 +101,10 @@
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.textBoxPrintSeat = new System.Windows.Forms.TextBox();
-            this.textBoxPrintAge = new System.Windows.Forms.TextBox();
-            this.textBoxPrintShow = new System.Windows.Forms.TextBox();
-            this.textBoxPrintAct = new System.Windows.Forms.TextBox();
-            this.textBoxPrintPrice = new System.Windows.Forms.TextBox();
+            this.LblVarning = new System.Windows.Forms.Label();
+            this.lblPersonnummer = new System.Windows.Forms.Label();
+            this.textBoxPersonnummer = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
@@ -249,6 +253,51 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Utskrift";
+            // 
+            // textBoxPrintPrice
+            // 
+            this.textBoxPrintPrice.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintPrice.Location = new System.Drawing.Point(32, 309);
+            this.textBoxPrintPrice.Name = "textBoxPrintPrice";
+            this.textBoxPrintPrice.ReadOnly = true;
+            this.textBoxPrintPrice.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintPrice.TabIndex = 18;
+            // 
+            // textBoxPrintAct
+            // 
+            this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintAct.Location = new System.Drawing.Point(32, 252);
+            this.textBoxPrintAct.Name = "textBoxPrintAct";
+            this.textBoxPrintAct.ReadOnly = true;
+            this.textBoxPrintAct.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintAct.TabIndex = 17;
+            // 
+            // textBoxPrintShow
+            // 
+            this.textBoxPrintShow.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintShow.Location = new System.Drawing.Point(32, 195);
+            this.textBoxPrintShow.Name = "textBoxPrintShow";
+            this.textBoxPrintShow.ReadOnly = true;
+            this.textBoxPrintShow.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintShow.TabIndex = 16;
+            // 
+            // textBoxPrintAge
+            // 
+            this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintAge.Location = new System.Drawing.Point(32, 81);
+            this.textBoxPrintAge.Name = "textBoxPrintAge";
+            this.textBoxPrintAge.ReadOnly = true;
+            this.textBoxPrintAge.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintAge.TabIndex = 15;
+            // 
+            // textBoxPrintSeat
+            // 
+            this.textBoxPrintSeat.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintSeat.Location = new System.Drawing.Point(32, 138);
+            this.textBoxPrintSeat.Name = "textBoxPrintSeat";
+            this.textBoxPrintSeat.ReadOnly = true;
+            this.textBoxPrintSeat.Size = new System.Drawing.Size(162, 26);
+            this.textBoxPrintSeat.TabIndex = 14;
             // 
             // buttonPrint
             // 
@@ -588,6 +637,10 @@
             // 
             // tabAccount
             // 
+            this.tabAccount.Controls.Add(this.button1);
+            this.tabAccount.Controls.Add(this.lblPersonnummer);
+            this.tabAccount.Controls.Add(this.textBoxPersonnummer);
+            this.tabAccount.Controls.Add(this.LblVarning);
             this.tabAccount.Controls.Add(this.lblBehorighetsniva);
             this.tabAccount.Controls.Add(this.lblLosenord);
             this.tabAccount.Controls.Add(this.dgStaff);
@@ -619,7 +672,7 @@
             // lblBehorighetsniva
             // 
             this.lblBehorighetsniva.AutoSize = true;
-            this.lblBehorighetsniva.Location = new System.Drawing.Point(47, 320);
+            this.lblBehorighetsniva.Location = new System.Drawing.Point(266, 223);
             this.lblBehorighetsniva.Name = "lblBehorighetsniva";
             this.lblBehorighetsniva.Size = new System.Drawing.Size(86, 13);
             this.lblBehorighetsniva.TabIndex = 46;
@@ -628,7 +681,7 @@
             // lblLosenord
             // 
             this.lblLosenord.AutoSize = true;
-            this.lblLosenord.Location = new System.Drawing.Point(47, 273);
+            this.lblLosenord.Location = new System.Drawing.Point(266, 156);
             this.lblLosenord.Name = "lblLosenord";
             this.lblLosenord.Size = new System.Drawing.Size(54, 13);
             this.lblLosenord.TabIndex = 45;
@@ -644,7 +697,7 @@
             this.dgStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgStaff.GridColor = System.Drawing.SystemColors.Window;
-            this.dgStaff.Location = new System.Drawing.Point(299, 101);
+            this.dgStaff.Location = new System.Drawing.Point(468, 87);
             this.dgStaff.MultiSelect = false;
             this.dgStaff.Name = "dgStaff";
             this.dgStaff.RowHeadersVisible = false;
@@ -655,9 +708,9 @@
             // 
             // textBoxSearchStaff
             // 
-            this.textBoxSearchStaff.Location = new System.Drawing.Point(299, 53);
+            this.textBoxSearchStaff.Location = new System.Drawing.Point(468, 51);
             this.textBoxSearchStaff.Name = "textBoxSearchStaff";
-            this.textBoxSearchStaff.Size = new System.Drawing.Size(209, 20);
+            this.textBoxSearchStaff.Size = new System.Drawing.Size(252, 20);
             this.textBoxSearchStaff.TabIndex = 43;
             this.textBoxSearchStaff.TextChanged += new System.EventHandler(this.textBoxSearchStaff_TextChanged);
             // 
@@ -667,7 +720,7 @@
             this.comboBoxBehorighetsniva.Items.AddRange(new object[] {
             "Biljettförsäljare",
             "Administratör"});
-            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(47, 335);
+            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(266, 238);
             this.comboBoxBehorighetsniva.Name = "comboBoxBehorighetsniva";
             this.comboBoxBehorighetsniva.Size = new System.Drawing.Size(152, 21);
             this.comboBoxBehorighetsniva.TabIndex = 28;
@@ -684,9 +737,9 @@
             // 
             // btnTomFalten
             // 
-            this.btnTomFalten.Location = new System.Drawing.Point(47, 411);
+            this.btnTomFalten.Location = new System.Drawing.Point(234, 344);
             this.btnTomFalten.Name = "btnTomFalten";
-            this.btnTomFalten.Size = new System.Drawing.Size(152, 31);
+            this.btnTomFalten.Size = new System.Drawing.Size(118, 31);
             this.btnTomFalten.TabIndex = 32;
             this.btnTomFalten.Text = "Töm fälten";
             this.btnTomFalten.UseVisualStyleBackColor = true;
@@ -694,9 +747,9 @@
             // 
             // btnUpdateraKonto
             // 
-            this.btnUpdateraKonto.Location = new System.Drawing.Point(299, 375);
+            this.btnUpdateraKonto.Location = new System.Drawing.Point(468, 353);
             this.btnUpdateraKonto.Name = "btnUpdateraKonto";
-            this.btnUpdateraKonto.Size = new System.Drawing.Size(152, 31);
+            this.btnUpdateraKonto.Size = new System.Drawing.Size(118, 31);
             this.btnUpdateraKonto.TabIndex = 31;
             this.btnUpdateraKonto.Text = "Uppdatera konto";
             this.btnUpdateraKonto.UseVisualStyleBackColor = true;
@@ -705,7 +758,7 @@
             // lblFornamn
             // 
             this.lblFornamn.AutoSize = true;
-            this.lblFornamn.Location = new System.Drawing.Point(47, 38);
+            this.lblFornamn.Location = new System.Drawing.Point(47, 101);
             this.lblFornamn.Name = "lblFornamn";
             this.lblFornamn.Size = new System.Drawing.Size(51, 13);
             this.lblFornamn.TabIndex = 27;
@@ -713,9 +766,9 @@
             // 
             // btnSkapaKonto
             // 
-            this.btnSkapaKonto.Location = new System.Drawing.Point(47, 374);
+            this.btnSkapaKonto.Location = new System.Drawing.Point(47, 344);
             this.btnSkapaKonto.Name = "btnSkapaKonto";
-            this.btnSkapaKonto.Size = new System.Drawing.Size(152, 31);
+            this.btnSkapaKonto.Size = new System.Drawing.Size(118, 31);
             this.btnSkapaKonto.TabIndex = 29;
             this.btnSkapaKonto.Text = "Skapa konto";
             this.btnSkapaKonto.UseVisualStyleBackColor = true;
@@ -724,7 +777,7 @@
             // lblSokPerson
             // 
             this.lblSokPerson.AutoSize = true;
-            this.lblSokPerson.Location = new System.Drawing.Point(299, 38);
+            this.lblSokPerson.Location = new System.Drawing.Point(468, 35);
             this.lblSokPerson.Name = "lblSokPerson";
             this.lblSokPerson.Size = new System.Drawing.Size(61, 13);
             this.lblSokPerson.TabIndex = 39;
@@ -733,7 +786,7 @@
             // lblEfternamn
             // 
             this.lblEfternamn.AutoSize = true;
-            this.lblEfternamn.Location = new System.Drawing.Point(47, 85);
+            this.lblEfternamn.Location = new System.Drawing.Point(47, 156);
             this.lblEfternamn.Name = "lblEfternamn";
             this.lblEfternamn.Size = new System.Drawing.Size(58, 13);
             this.lblEfternamn.TabIndex = 33;
@@ -741,7 +794,7 @@
             // 
             // textBoxLosenord
             // 
-            this.textBoxLosenord.Location = new System.Drawing.Point(47, 288);
+            this.textBoxLosenord.Location = new System.Drawing.Point(266, 171);
             this.textBoxLosenord.Name = "textBoxLosenord";
             this.textBoxLosenord.Size = new System.Drawing.Size(152, 20);
             this.textBoxLosenord.TabIndex = 26;
@@ -749,7 +802,7 @@
             // lblTelefonnummer
             // 
             this.lblTelefonnummer.AutoSize = true;
-            this.lblTelefonnummer.Location = new System.Drawing.Point(47, 132);
+            this.lblTelefonnummer.Location = new System.Drawing.Point(47, 223);
             this.lblTelefonnummer.Name = "lblTelefonnummer";
             this.lblTelefonnummer.Size = new System.Drawing.Size(83, 13);
             this.lblTelefonnummer.TabIndex = 34;
@@ -757,7 +810,7 @@
             // 
             // textBoxEfternamn
             // 
-            this.textBoxEfternamn.Location = new System.Drawing.Point(47, 100);
+            this.textBoxEfternamn.Location = new System.Drawing.Point(47, 171);
             this.textBoxEfternamn.Name = "textBoxEfternamn";
             this.textBoxEfternamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxEfternamn.TabIndex = 22;
@@ -765,7 +818,7 @@
             // lblEpost
             // 
             this.lblEpost.AutoSize = true;
-            this.lblEpost.Location = new System.Drawing.Point(47, 179);
+            this.lblEpost.Location = new System.Drawing.Point(266, 40);
             this.lblEpost.Name = "lblEpost";
             this.lblEpost.Size = new System.Drawing.Size(40, 13);
             this.lblEpost.TabIndex = 36;
@@ -773,7 +826,7 @@
             // 
             // textBoxTelefonnummer
             // 
-            this.textBoxTelefonnummer.Location = new System.Drawing.Point(47, 147);
+            this.textBoxTelefonnummer.Location = new System.Drawing.Point(47, 238);
             this.textBoxTelefonnummer.Name = "textBoxTelefonnummer";
             this.textBoxTelefonnummer.Size = new System.Drawing.Size(152, 20);
             this.textBoxTelefonnummer.TabIndex = 23;
@@ -781,7 +834,7 @@
             // lblAnvandarnamn
             // 
             this.lblAnvandarnamn.AutoSize = true;
-            this.lblAnvandarnamn.Location = new System.Drawing.Point(47, 226);
+            this.lblAnvandarnamn.Location = new System.Drawing.Point(266, 101);
             this.lblAnvandarnamn.Name = "lblAnvandarnamn";
             this.lblAnvandarnamn.Size = new System.Drawing.Size(82, 13);
             this.lblAnvandarnamn.TabIndex = 38;
@@ -789,21 +842,21 @@
             // 
             // textBoxEpost
             // 
-            this.textBoxEpost.Location = new System.Drawing.Point(47, 194);
+            this.textBoxEpost.Location = new System.Drawing.Point(266, 55);
             this.textBoxEpost.Name = "textBoxEpost";
             this.textBoxEpost.Size = new System.Drawing.Size(152, 20);
             this.textBoxEpost.TabIndex = 24;
             // 
             // textBoxFornamn
             // 
-            this.textBoxFornamn.Location = new System.Drawing.Point(47, 53);
+            this.textBoxFornamn.Location = new System.Drawing.Point(47, 116);
             this.textBoxFornamn.Name = "textBoxFornamn";
             this.textBoxFornamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxFornamn.TabIndex = 21;
             // 
             // textBoxAnvandarnamn
             // 
-            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(47, 241);
+            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(266, 116);
             this.textBoxAnvandarnamn.Name = "textBoxAnvandarnamn";
             this.textBoxAnvandarnamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxAnvandarnamn.TabIndex = 25;
@@ -833,50 +886,40 @@
             // 
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
-            // textBoxPrintSeat
+            // LblVarning
             // 
-            this.textBoxPrintSeat.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintSeat.Location = new System.Drawing.Point(32, 138);
-            this.textBoxPrintSeat.Name = "textBoxPrintSeat";
-            this.textBoxPrintSeat.ReadOnly = true;
-            this.textBoxPrintSeat.Size = new System.Drawing.Size(162, 26);
-            this.textBoxPrintSeat.TabIndex = 14;
+            this.LblVarning.AutoSize = true;
+            this.LblVarning.Location = new System.Drawing.Point(48, 276);
+            this.LblVarning.Name = "LblVarning";
+            this.LblVarning.Size = new System.Drawing.Size(41, 13);
+            this.LblVarning.TabIndex = 49;
+            this.LblVarning.Text = "label12";
+            this.LblVarning.Visible = false;
             // 
-            // textBoxPrintAge
+            // lblPersonnummer
             // 
-            this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAge.Location = new System.Drawing.Point(32, 81);
-            this.textBoxPrintAge.Name = "textBoxPrintAge";
-            this.textBoxPrintAge.ReadOnly = true;
-            this.textBoxPrintAge.Size = new System.Drawing.Size(162, 26);
-            this.textBoxPrintAge.TabIndex = 15;
+            this.lblPersonnummer.AutoSize = true;
+            this.lblPersonnummer.Location = new System.Drawing.Point(47, 40);
+            this.lblPersonnummer.Name = "lblPersonnummer";
+            this.lblPersonnummer.Size = new System.Drawing.Size(80, 13);
+            this.lblPersonnummer.TabIndex = 57;
+            this.lblPersonnummer.Text = "Personnummer:";
             // 
-            // textBoxPrintShow
+            // textBoxPersonnummer
             // 
-            this.textBoxPrintShow.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintShow.Location = new System.Drawing.Point(32, 195);
-            this.textBoxPrintShow.Name = "textBoxPrintShow";
-            this.textBoxPrintShow.ReadOnly = true;
-            this.textBoxPrintShow.Size = new System.Drawing.Size(162, 26);
-            this.textBoxPrintShow.TabIndex = 16;
+            this.textBoxPersonnummer.Location = new System.Drawing.Point(47, 55);
+            this.textBoxPersonnummer.Name = "textBoxPersonnummer";
+            this.textBoxPersonnummer.Size = new System.Drawing.Size(152, 20);
+            this.textBoxPersonnummer.TabIndex = 56;
             // 
-            // textBoxPrintAct
+            // button1
             // 
-            this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAct.Location = new System.Drawing.Point(32, 252);
-            this.textBoxPrintAct.Name = "textBoxPrintAct";
-            this.textBoxPrintAct.ReadOnly = true;
-            this.textBoxPrintAct.Size = new System.Drawing.Size(162, 26);
-            this.textBoxPrintAct.TabIndex = 17;
-            // 
-            // textBoxPrintPrice
-            // 
-            this.textBoxPrintPrice.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintPrice.Location = new System.Drawing.Point(32, 309);
-            this.textBoxPrintPrice.Name = "textBoxPrintPrice";
-            this.textBoxPrintPrice.ReadOnly = true;
-            this.textBoxPrintPrice.Size = new System.Drawing.Size(162, 26);
-            this.textBoxPrintPrice.TabIndex = 18;
+            this.button1.Location = new System.Drawing.Point(602, 353);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 31);
+            this.button1.TabIndex = 58;
+            this.button1.Text = "Radera konto";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -983,5 +1026,9 @@
         private System.Windows.Forms.Label lblBehorighetsniva;
         private System.Windows.Forms.Label lblLosenord;
         private System.Windows.Forms.DataGridView dgvAkter;
+        private System.Windows.Forms.Label lblPersonnummer;
+        private System.Windows.Forms.TextBox textBoxPersonnummer;
+        private System.Windows.Forms.Label LblVarning;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -397,13 +397,12 @@ namespace cirkus
             //Slut kontrollerar siffror och bokstäver
 
             //Kontrollerar tomma textboxar
-            if (string.IsNullOrEmpty(textBoxFornamn.Text) || string.IsNullOrEmpty(textBoxEfternamn.Text)
-                || string.IsNullOrEmpty(textBoxTelefonnummer.Text) || string.IsNullOrEmpty(textBoxEpost.Text)
-                || string.IsNullOrEmpty(textBoxAnvandarnamn.Text) || string.IsNullOrEmpty(textBoxLosenord.Text)
-                || string.IsNullOrEmpty(comboBoxBehorighetsniva.Text))
+            if (string.IsNullOrEmpty(textBoxPersonnummer.Text))
             {
-                MessageBox.Show("Ett eller flera fält är tomma. Fyll i alla fält");
-                return;
+                textBoxPersonnummer.BackColor = Color.Tomato;
+                LblVarning.Visible = true;
+                LblVarning.ForeColor = Color.Tomato;
+                LblVarning.Text = "Ange personnummer";
             }
             //Slut konrtrollerar tomma textboxar
             try
