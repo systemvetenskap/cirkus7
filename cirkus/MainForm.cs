@@ -44,6 +44,7 @@ namespace cirkus
                     break;
                 case 2:
                     ListaPersonal();
+                    btnRaderaKonto.Enabled = false;
                     break;
             }
         }
@@ -498,8 +499,9 @@ namespace cirkus
         }
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
+            btnRaderaKonto.Enabled = true;
 
-            if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera konto")
+            if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera/ändra konto")
             {
                 int selectedIndex = dgStaff.SelectedRows[0].Index;
 
@@ -532,6 +534,9 @@ namespace cirkus
             }
             else if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar")
             {
+                btnRaderaKonto.Enabled = false;
+
+
                 //Kontrollerar längden, siffror/bokstäver och tomma fält
                 if (textBoxPersonnummer.TextLength > 10 || textBoxPersonnummer.TextLength < 10 || string.IsNullOrWhiteSpace(textBoxPersonnummer.Text))
                 {
@@ -598,7 +603,7 @@ namespace cirkus
                     return;
                 }
                 //Slut kontrollera längden, siffror/bokstäver och tomma fält
-
+               
                 conn.Open();
 
                 NpgsqlCommand cmd = new NpgsqlCommand(@"update staff set ssn = @ssn, fname = @fn, lname = @ln, phonenumber = @pn, email = @email, 
@@ -634,7 +639,7 @@ namespace cirkus
 
                 dgStaff.Enabled = true;
                 ListaPersonal();
-                btnUpdateraKonto.Text = "Uppdatera konto";
+                btnUpdateraKonto.Text = "Uppdatera/ändra konto";
                 textBoxAnvandarnamn.Enabled = true;
                 btnSkapaKonto.Enabled = true;
                 tomFaltochFarg();

@@ -671,9 +671,9 @@
             // 
             // btnRaderaKonto
             // 
-            this.btnRaderaKonto.Location = new System.Drawing.Point(602, 376);
+            this.btnRaderaKonto.Location = new System.Drawing.Point(662, 358);
             this.btnRaderaKonto.Name = "btnRaderaKonto";
-            this.btnRaderaKonto.Size = new System.Drawing.Size(118, 31);
+            this.btnRaderaKonto.Size = new System.Drawing.Size(130, 31);
             this.btnRaderaKonto.TabIndex = 58;
             this.btnRaderaKonto.Text = "Radera konto";
             this.btnRaderaKonto.UseVisualStyleBackColor = true;
@@ -699,7 +699,7 @@
             // 
             this.LblVarning.AutoSize = true;
             this.LblVarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblVarning.Location = new System.Drawing.Point(47, 343);
+            this.LblVarning.Location = new System.Drawing.Point(47, 334);
             this.LblVarning.Name = "LblVarning";
             this.LblVarning.Size = new System.Drawing.Size(48, 13);
             this.LblVarning.TabIndex = 49;
@@ -734,18 +734,18 @@
             this.dgStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgStaff.GridColor = System.Drawing.SystemColors.Window;
-            this.dgStaff.Location = new System.Drawing.Point(468, 87);
+            this.dgStaff.Location = new System.Drawing.Point(468, 113);
             this.dgStaff.MultiSelect = false;
             this.dgStaff.Name = "dgStaff";
             this.dgStaff.RowHeadersVisible = false;
             this.dgStaff.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgStaff.Size = new System.Drawing.Size(324, 256);
+            this.dgStaff.Size = new System.Drawing.Size(324, 230);
             this.dgStaff.TabIndex = 44;
             // 
             // textBoxSearchStaff
             // 
-            this.textBoxSearchStaff.Location = new System.Drawing.Point(468, 51);
+            this.textBoxSearchStaff.Location = new System.Drawing.Point(468, 87);
             this.textBoxSearchStaff.Name = "textBoxSearchStaff";
             this.textBoxSearchStaff.Size = new System.Drawing.Size(252, 20);
             this.textBoxSearchStaff.TabIndex = 43;
@@ -774,9 +774,9 @@
             // 
             // btnTomFalten
             // 
-            this.btnTomFalten.Location = new System.Drawing.Point(47, 376);
+            this.btnTomFalten.Location = new System.Drawing.Point(47, 358);
             this.btnTomFalten.Name = "btnTomFalten";
-            this.btnTomFalten.Size = new System.Drawing.Size(118, 31);
+            this.btnTomFalten.Size = new System.Drawing.Size(130, 31);
             this.btnTomFalten.TabIndex = 32;
             this.btnTomFalten.Text = "Töm fälten";
             this.btnTomFalten.UseVisualStyleBackColor = true;
@@ -784,11 +784,11 @@
             // 
             // btnUpdateraKonto
             // 
-            this.btnUpdateraKonto.Location = new System.Drawing.Point(468, 376);
+            this.btnUpdateraKonto.Location = new System.Drawing.Point(468, 358);
             this.btnUpdateraKonto.Name = "btnUpdateraKonto";
-            this.btnUpdateraKonto.Size = new System.Drawing.Size(118, 31);
+            this.btnUpdateraKonto.Size = new System.Drawing.Size(130, 31);
             this.btnUpdateraKonto.TabIndex = 31;
-            this.btnUpdateraKonto.Text = "Uppdatera konto";
+            this.btnUpdateraKonto.Text = "Uppdatera/ändra konto";
             this.btnUpdateraKonto.UseVisualStyleBackColor = true;
             this.btnUpdateraKonto.Click += new System.EventHandler(this.btnUpdateraKonto_Click);
             // 
@@ -803,18 +803,18 @@
             // 
             // btnSkapaKonto
             // 
-            this.btnSkapaKonto.Location = new System.Drawing.Point(300, 376);
+            this.btnSkapaKonto.Location = new System.Drawing.Point(288, 358);
             this.btnSkapaKonto.Name = "btnSkapaKonto";
-            this.btnSkapaKonto.Size = new System.Drawing.Size(118, 31);
+            this.btnSkapaKonto.Size = new System.Drawing.Size(130, 31);
             this.btnSkapaKonto.TabIndex = 29;
-            this.btnSkapaKonto.Text = "Skapa\\Lägg till konto";
+            this.btnSkapaKonto.Text = "Skapa/Lägg till konto";
             this.btnSkapaKonto.UseVisualStyleBackColor = true;
             this.btnSkapaKonto.Click += new System.EventHandler(this.btnSkapaKonto_Click);
             // 
             // lblSokPerson
             // 
             this.lblSokPerson.AutoSize = true;
-            this.lblSokPerson.Location = new System.Drawing.Point(468, 35);
+            this.lblSokPerson.Location = new System.Drawing.Point(468, 72);
             this.lblSokPerson.Name = "lblSokPerson";
             this.lblSokPerson.Size = new System.Drawing.Size(61, 13);
             this.lblSokPerson.TabIndex = 39;
