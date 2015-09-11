@@ -671,6 +671,7 @@
             // 
             // btnRaderaKonto
             // 
+            this.btnRaderaKonto.Enabled = false;
             this.btnRaderaKonto.Location = new System.Drawing.Point(662, 358);
             this.btnRaderaKonto.Name = "btnRaderaKonto";
             this.btnRaderaKonto.Size = new System.Drawing.Size(130, 31);

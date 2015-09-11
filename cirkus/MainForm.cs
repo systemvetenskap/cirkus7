@@ -44,7 +44,6 @@ namespace cirkus
                     break;
                 case 2:
                     ListaPersonal();
-                    btnRaderaKonto.Enabled = false;
                     break;
             }
         }
@@ -534,8 +533,6 @@ namespace cirkus
             }
             else if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar")
             {
-                btnRaderaKonto.Enabled = false;
-
 
                 //Kontrollerar längden, siffror/bokstäver och tomma fält
                 if (textBoxPersonnummer.TextLength > 10 || textBoxPersonnummer.TextLength < 10 || string.IsNullOrWhiteSpace(textBoxPersonnummer.Text))
@@ -653,8 +650,7 @@ namespace cirkus
 
             if (Confirmation == DialogResult.Yes)
             {
-                //MessageBox.Show("You answered yes");
-
+                MessageBox.Show("Kod för borttagning av konto");
             }
             if (Confirmation==DialogResult.No)
             {
