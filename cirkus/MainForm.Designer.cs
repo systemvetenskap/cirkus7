@@ -677,6 +677,7 @@
             this.btnRaderaKonto.TabIndex = 58;
             this.btnRaderaKonto.Text = "Radera konto";
             this.btnRaderaKonto.UseVisualStyleBackColor = true;
+            this.btnRaderaKonto.Click += new System.EventHandler(this.btnRaderaKonto_Click);
             // 
             // lblPersonnummer
             // 
@@ -697,9 +698,10 @@
             // LblVarning
             // 
             this.LblVarning.AutoSize = true;
+            this.LblVarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblVarning.Location = new System.Drawing.Point(47, 343);
             this.LblVarning.Name = "LblVarning";
-            this.LblVarning.Size = new System.Drawing.Size(41, 13);
+            this.LblVarning.Size = new System.Drawing.Size(48, 13);
             this.LblVarning.TabIndex = 49;
             this.LblVarning.Text = "label12";
             this.LblVarning.Visible = false;
@@ -738,7 +740,7 @@
             this.dgStaff.RowHeadersVisible = false;
             this.dgStaff.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgStaff.Size = new System.Drawing.Size(252, 256);
+            this.dgStaff.Size = new System.Drawing.Size(324, 256);
             this.dgStaff.TabIndex = 44;
             // 
             // textBoxSearchStaff
@@ -805,7 +807,7 @@
             this.btnSkapaKonto.Name = "btnSkapaKonto";
             this.btnSkapaKonto.Size = new System.Drawing.Size(118, 31);
             this.btnSkapaKonto.TabIndex = 29;
-            this.btnSkapaKonto.Text = "Skapa konto";
+            this.btnSkapaKonto.Text = "Skapa\\Lägg till konto";
             this.btnSkapaKonto.UseVisualStyleBackColor = true;
             this.btnSkapaKonto.Click += new System.EventHandler(this.btnSkapaKonto_Click);
             // 

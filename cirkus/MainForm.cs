@@ -340,10 +340,12 @@ namespace cirkus
                 DataGridViewColumn column = dgStaff.Columns[0];
                 DataGridViewColumn column1 = dgStaff.Columns[1];
                 DataGridViewColumn column2 = dgStaff.Columns[2];
+                DataGridViewColumn column3 = dgStaff.Columns[3];
 
                 column.Width = 60;
-                column1.Width = 60;
-                column2.Width = 80;
+                column1.Width = 100;
+                column2.Width = 100;
+                column3.Width = 100;
 
                 conn.Close();
 
@@ -372,120 +374,61 @@ namespace cirkus
         }
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
-            //Kontrollerar längden och siffror/bokstäver
-            if (textBoxPersonnummer.TextLength>10||textBoxPersonnummer.TextLength<10)
+            //Kontrollerar längden, siffror/bokstäver och tomma fält
+            if (textBoxPersonnummer.TextLength>10||textBoxPersonnummer.TextLength<10 ||string.IsNullOrWhiteSpace(textBoxPersonnummer.Text))
             {
                 textBoxPersonnummer.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Personnummret anges med 10 siffror";
+                LblVarning.Text = "Ange personnummret, med 10 siffror";
                 return;
             }
-            if (textBoxFornamn.TextLength>60 || !BaraBokstäver(textBoxFornamn.Text))
+            if (textBoxFornamn.TextLength>60 || !BaraBokstäver(textBoxFornamn.Text)||string.IsNullOrWhiteSpace(textBoxFornamn.Text))
             {
                 textBoxFornamn.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Förnamnet är för långt, eller innehåller siffror.";
+                LblVarning.Text = "Ange förnamn, utan siffror, max 60 bokstäver";
                 return;
             }
-            if (textBoxEfternamn.TextLength > 60 || !BaraBokstäver(textBoxEfternamn.Text))
+            if (textBoxEfternamn.TextLength > 60 || !BaraBokstäver(textBoxEfternamn.Text)||string.IsNullOrWhiteSpace(textBoxEfternamn.Text))
             {
                 textBoxEfternamn.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Efternamnet är för långt, eller innehåller siffror.";
+                LblVarning.Text = "Ange förnamn, utan siffror, max 60 bokstäver.";
                 return;
             }
-            if (textBoxTelefonnummer.TextLength>10||!EndastSiffror(textBoxTelefonnummer.Text))
+            if (textBoxTelefonnummer.TextLength>10||!EndastSiffror(textBoxTelefonnummer.Text)||string.IsNullOrWhiteSpace(textBoxTelefonnummer.Text))
             {
                 textBoxTelefonnummer.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Telefonnummer anges med max 10 siffror";
+                LblVarning.Text = "Ange telefonnummer, max 10 siffror";
                 return;
             }
-            if (textBoxEpost.TextLength>60)
+            if (textBoxEpost.TextLength>60||string.IsNullOrWhiteSpace(textBoxEpost.Text))
             {
                 textBoxEpost.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Epost adressen är för lång";
+                LblVarning.Text = "Ange epost, max 60 tecken";
                 return;
             }
-            if (textBoxAnvandarnamn.TextLength>60)
+            if (textBoxAnvandarnamn.TextLength>60||string.IsNullOrWhiteSpace(textBoxAnvandarnamn.Text))
             {
                 textBoxAnvandarnamn.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Användarnamnet är för långt";
+                LblVarning.Text = "Ange epost, max 60 tecken";
                 return;
             }
-            if (textBoxLosenord.TextLength > 60)
+            if (textBoxLosenord.TextLength > 60||string.IsNullOrWhiteSpace(textBoxLosenord.Text))
             {
                 textBoxLosenord.BackColor = Color.Tomato;
                 LblVarning.Visible = true;
                 LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Lösenordet är för långt";
-                return;
-            }
-            //Slut kontrollera längden och siffror/bokstäver
-
-            //Kontrollerar tomma textboxar
-            if (string.IsNullOrEmpty(textBoxPersonnummer.Text))
-            {
-                textBoxPersonnummer.BackColor = Color.Tomato;
-                LblVarning.Visible = true;
-                LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Ange personnummer.";
-                return;
-            }
-            if (string.IsNullOrEmpty(textBoxFornamn.Text))
-            {
-                textBoxFornamn.BackColor = Color.Tomato;
-                LblVarning.Visible = true;
-                LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Ange förnamn.";
-                return;
-            }
-            if (string.IsNullOrEmpty(textBoxEfternamn.Text))
-            {
-                textBoxEfternamn.BackColor = Color.Tomato;
-                LblVarning.Visible = true;
-                LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Ange efternamn.";
-                return;
-            }
-            if (string.IsNullOrEmpty(textBoxTelefonnummer.Text))
-            {
-                textBoxTelefonnummer.BackColor = Color.Tomato;
-                LblVarning.Visible = true;
-                LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Ange telefonnummer.";
-                return;
-            }
-            if (string.IsNullOrEmpty(textBoxEpost.Text))
-            {
-                textBoxEpost.BackColor = Color.Tomato;
-                LblVarning.Visible = true;
-                LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Ange en epost.";
-                return;
-            }
-            if (string.IsNullOrEmpty(textBoxAnvandarnamn.Text))
-            {
-                textBoxAnvandarnamn.BackColor = Color.Tomato;
-                LblVarning.Visible = true;
-                LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Ange ett användarnamn.";
-                return;
-            }
-            if (string.IsNullOrEmpty(textBoxLosenord.Text))
-            {
-                textBoxLosenord.BackColor = Color.Tomato;
-                LblVarning.Visible = true;
-                LblVarning.ForeColor = Color.Tomato;
-                LblVarning.Text = "Ange ett lösenord.";
+                LblVarning.Text = "Ange lösenord, max 60 tecken";
                 return;
             }
             if (string.IsNullOrEmpty(comboBoxBehorighetsniva.Text))
@@ -496,7 +439,7 @@ namespace cirkus
                 LblVarning.Text = "Välj en behörighet";
                 return;
             }
-            //Slut konrtrollerar tomma textboxar
+            //Slut kontrollera längden, siffror/bokstäver och tomma fält
             try
             {
                 conn.Open();
@@ -589,120 +532,61 @@ namespace cirkus
             }
             else if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar")
             {
-                //Kontrollerar längden och siffror/bokstäver
-                if (textBoxPersonnummer.TextLength > 10 || textBoxPersonnummer.TextLength < 10)
+                //Kontrollerar längden, siffror/bokstäver och tomma fält
+                if (textBoxPersonnummer.TextLength > 10 || textBoxPersonnummer.TextLength < 10 || string.IsNullOrWhiteSpace(textBoxPersonnummer.Text))
                 {
                     textBoxPersonnummer.BackColor = Color.Tomato;
                     LblVarning.Visible = true;
                     LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Personnummret anges med 10 siffror";
+                    LblVarning.Text = "Ange personnummret, med 10 siffror";
                     return;
                 }
-                if (textBoxFornamn.TextLength > 60 || !BaraBokstäver(textBoxFornamn.Text))
+                if (textBoxFornamn.TextLength > 60 || !BaraBokstäver(textBoxFornamn.Text) || string.IsNullOrWhiteSpace(textBoxFornamn.Text))
                 {
                     textBoxFornamn.BackColor = Color.Tomato;
                     LblVarning.Visible = true;
                     LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Förnamnet är för långt, eller innehåller siffror.";
+                    LblVarning.Text = "Ange förnamn, utan siffror, max 60 bokstäver";
                     return;
                 }
-                if (textBoxEfternamn.TextLength > 60 || !BaraBokstäver(textBoxEfternamn.Text))
+                if (textBoxEfternamn.TextLength > 60 || !BaraBokstäver(textBoxEfternamn.Text) || string.IsNullOrWhiteSpace(textBoxEfternamn.Text))
                 {
                     textBoxEfternamn.BackColor = Color.Tomato;
                     LblVarning.Visible = true;
                     LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Efternamnet är för långt, eller innehåller siffror.";
+                    LblVarning.Text = "Ange förnamn, utan siffror, max 60 bokstäver.";
                     return;
                 }
-                if (textBoxTelefonnummer.TextLength > 10 || !EndastSiffror(textBoxTelefonnummer.Text))
+                if (textBoxTelefonnummer.TextLength > 10 || !EndastSiffror(textBoxTelefonnummer.Text) || string.IsNullOrWhiteSpace(textBoxTelefonnummer.Text))
                 {
                     textBoxTelefonnummer.BackColor = Color.Tomato;
                     LblVarning.Visible = true;
                     LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Telefonnummer anges med max 10 siffror";
+                    LblVarning.Text = "Ange telefonnummer, max 10 siffror";
                     return;
                 }
-                if (textBoxEpost.TextLength > 60)
+                if (textBoxEpost.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxEpost.Text))
                 {
                     textBoxEpost.BackColor = Color.Tomato;
                     LblVarning.Visible = true;
                     LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Epost adressen är för lång";
+                    LblVarning.Text = "Ange epost, max 60 tecken";
                     return;
                 }
-                if (textBoxAnvandarnamn.TextLength > 60)
+                if (textBoxAnvandarnamn.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxAnvandarnamn.Text))
                 {
                     textBoxAnvandarnamn.BackColor = Color.Tomato;
                     LblVarning.Visible = true;
                     LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Användarnamnet är för långt";
+                    LblVarning.Text = "Ange epost, max 60 tecken";
                     return;
                 }
-                if (textBoxLosenord.TextLength > 60)
+                if (textBoxLosenord.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxLosenord.Text))
                 {
                     textBoxLosenord.BackColor = Color.Tomato;
                     LblVarning.Visible = true;
                     LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Lösenordet är för långt";
-                    return;
-                }
-                //Slut kontrollera längden och siffror/bokstäver
-
-                //Kontrollerar tomma textboxar
-                if (string.IsNullOrEmpty(textBoxPersonnummer.Text))
-                {
-                    textBoxPersonnummer.BackColor = Color.Tomato;
-                    LblVarning.Visible = true;
-                    LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Ange personnummer.";
-                    return;
-                }
-                if (string.IsNullOrEmpty(textBoxFornamn.Text))
-                {
-                    textBoxFornamn.BackColor = Color.Tomato;
-                    LblVarning.Visible = true;
-                    LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Ange förnamn.";
-                    return;
-                }
-                if (string.IsNullOrEmpty(textBoxEfternamn.Text))
-                {
-                    textBoxEfternamn.BackColor = Color.Tomato;
-                    LblVarning.Visible = true;
-                    LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Ange efternamn.";
-                    return;
-                }
-                if (string.IsNullOrEmpty(textBoxTelefonnummer.Text))
-                {
-                    textBoxTelefonnummer.BackColor = Color.Tomato;
-                    LblVarning.Visible = true;
-                    LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Ange telefonnummer.";
-                    return;
-                }
-                if (string.IsNullOrEmpty(textBoxEpost.Text))
-                {
-                    textBoxEpost.BackColor = Color.Tomato;
-                    LblVarning.Visible = true;
-                    LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Ange en epost.";
-                    return;
-                }
-                if (string.IsNullOrEmpty(textBoxAnvandarnamn.Text))
-                {
-                    textBoxAnvandarnamn.BackColor = Color.Tomato;
-                    LblVarning.Visible = true;
-                    LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Ange ett användarnamn.";
-                    return;
-                }
-                if (string.IsNullOrEmpty(textBoxLosenord.Text))
-                {
-                    textBoxLosenord.BackColor = Color.Tomato;
-                    LblVarning.Visible = true;
-                    LblVarning.ForeColor = Color.Tomato;
-                    LblVarning.Text = "Ange ett lösenord.";
+                    LblVarning.Text = "Ange lösenord, max 60 tecken";
                     return;
                 }
                 if (string.IsNullOrEmpty(comboBoxBehorighetsniva.Text))
@@ -713,7 +597,7 @@ namespace cirkus
                     LblVarning.Text = "Välj en behörighet";
                     return;
                 }
-                //Slut kontrollerar tomma textboxar
+                //Slut kontrollera längden, siffror/bokstäver och tomma fält
 
                 conn.Open();
 
@@ -757,6 +641,20 @@ namespace cirkus
 
             }
 
+        }
+        private void btnRaderaKonto_Click(object sender, EventArgs e)
+        {
+            DialogResult Confirmation = MessageBox.Show("Vill du ta bort användaren ?", "Bekräftelse", MessageBoxButtons.YesNo);
+
+            if (Confirmation == DialogResult.Yes)
+            {
+                //MessageBox.Show("You answered yes");
+
+            }
+            if (Confirmation==DialogResult.No)
+            {
+                return;
+            }
         }
         #endregion
     }
