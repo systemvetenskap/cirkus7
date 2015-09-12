@@ -282,9 +282,7 @@ namespace cirkus
 
         private void buttonaddSeat_Click(object sender, EventArgs e)
         {
-            //int selectedIndex = dgSeats.SelectedRows[0].Index;
-
-            //dtSelectedSeats.Rows.Add()
+            
 
             
         }
