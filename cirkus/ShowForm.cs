@@ -17,7 +17,9 @@ namespace cirkus
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         string addedshowid, acts, section, seat_number;
         NpgsqlCommand command;
-        DataTable dt;
+        DataTable dt, dtSeats,dtSelectedSeats;
+        DataTable dtActs = new DataTable();
+        DataTable cact = new DataTable();
         NpgsqlDataAdapter da;
         public string name;
 
@@ -57,8 +59,7 @@ namespace cirkus
                 dateTimePickerDatum.Value = Convert.ToDateTime(dr.GetValue(2).ToString());
                 dateTimePickerForsaljningstidFran.Value = Convert.ToDateTime(dr.GetValue(6).ToString());
                 dateTimePickerForsaljningstidTill.Value = Convert.ToDateTime(dr.GetValue(7).ToString());
-                listBoxAkter.Items.Add(dr.GetValue(1).ToString());
-                listBoxAkter.SelectedIndex = 0;
+              
             }
             conn.Close();
         }
@@ -66,7 +67,7 @@ namespace cirkus
 
         private void buttonLaggTillAkt_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxAkter.Text))
+            if (string.IsNullOrWhiteSpace(txtActname.Text))
             {
                 MessageBox.Show("Du måste ange akt i textboxen");
             }
@@ -75,11 +76,45 @@ namespace cirkus
             {
                 Act newAct = new Act();
 
-                newAct.name = textBoxAkter.Text;
-                listBoxAkter.Items.Add(newAct);
-                listBoxAkter.SelectedIndex = 0;
-                textBoxAkter.Text = "";
-                listBoxAkter.BackColor = Color.White;
+                DataRow row = dtActs.NewRow();
+
+                row[1] = txtActname.Text.ToString();
+
+                dtActs.Rows.Add(row);
+
+                dgTest.DataSource = dtActs;
+
+                //foreach (DataGridViewRow r in dgActs.SelectedRows)
+                //{
+                //    DataGridViewRow t = (DataGridViewRow)r.Clone();
+
+                //    t.Cells[0].Value = r.Cells[0].Value;
+                //    t.Cells[1].Value = r.Cells[1].Value;
+
+                //    cact.Rows.Add(r.Cells[0].Value, r.Cells[1].Value);
+
+
+
+                //}
+                
+                NpgsqlDataAdapter cmd = new NpgsqlDataAdapter("select seatid, section, rownumber from seats order by section, rownumber", conn);
+
+                dtSeats = new DataTable();
+
+                cmd.Fill(dtSeats);
+
+                dgSeats.DataSource = dtSeats;
+
+                dgSeats.Columns[0].Visible = false;
+
+                
+              
+                dgActs.DataSource = dtActs;
+
+                
+                this.dgActs.Columns[0].Visible = false;
+                dgActs.Columns[1].Width = 80;
+
                 labelAngeAkt.Visible = false;
             }
 
@@ -87,19 +122,19 @@ namespace cirkus
 
         private void buttonRaderaAkt_Click(object sender, EventArgs e)
         {
-            if (listBoxAkter.Items.Count != 0)
-            {
-                listBoxAkter.Items.RemoveAt(listBoxAkter.SelectedIndex);
-            }
-
-            else
-            {
-                MessageBox.Show("Listan är redan tom");
-            }
+   
         }
 
         private void ShowForm_Load(object sender, EventArgs e)
         {
+            DataColumn id = new DataColumn();
+            id.DataType = System.Type.GetType("System.Int32");
+            id.AutoIncrement = true;
+            id.AutoIncrementSeed = 1;
+            id.AutoIncrementStep = 1;
+            id.ColumnName = "id";
+            dtActs.Columns.Add(id);
+            dtActs.Columns.Add("name");
 
         }
 
@@ -114,12 +149,12 @@ namespace cirkus
                 allowAdd = false;
             }
 
-            if (listBoxAkter.Items.Count == 0)
-            {
-                listBoxAkter.BackColor = Color.Tomato;
-                labelAngeAkt.Visible = true;
-                allowAdd = false;
-            }
+            //if (listBoxAkter.Items.Count == 0)
+            //{
+            //    listBoxAkter.BackColor = Color.Tomato;
+            //    labelAngeAkt.Visible = true;
+            //    allowAdd = false;
+            //}
 
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
@@ -182,12 +217,12 @@ namespace cirkus
                 allowAdd = false;
             }
 
-            if (listBoxAkter.Items.Count == 0)
-            {
-                listBoxAkter.BackColor = Color.Tomato;
-                labelAngeAkt.Visible = true;
-                allowAdd = false;
-            }
+            //if (listBoxAkter.Items.Count == 0)
+            //{
+            //    listBoxAkter.BackColor = Color.Tomato;
+            //    labelAngeAkt.Visible = true;
+            //    allowAdd = false;
+            //}
 
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
@@ -228,16 +263,16 @@ namespace cirkus
                 addedshowid = read[0].ToString();
                 conn.Close();
 
-                for (int i = 0; i < listBoxAkter.Items.Count; i++)
-                {
-                    acts = listBoxAkter.Items[i].ToString();
-                    conn.Open();
-                    command = new NpgsqlCommand(@"Insert into acts (name, showid) Values (@name, @showid)", conn);
-                    command.Parameters.AddWithValue("@name", acts);
-                    command.Parameters.AddWithValue("@showid", addedshowid);
-                    command.ExecuteNonQuery();
-                    conn.Close();
-                }
+                //for (int i = 0; i < listBoxAkter.Items.Count; i++)
+                //{
+                //    acts = listBoxAkter.Items[i].ToString();
+                //    conn.Open();
+                //    command = new NpgsqlCommand(@"Insert into acts (name, showid) Values (@name, @showid)", conn);
+                //    command.Parameters.AddWithValue("@name", acts);
+                //    command.Parameters.AddWithValue("@showid", addedshowid);
+                //    command.ExecuteNonQuery();
+                //    conn.Close();
+                //}
 
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
@@ -247,7 +282,11 @@ namespace cirkus
 
         private void buttonaddSeat_Click(object sender, EventArgs e)
         {
+            //int selectedIndex = dgSeats.SelectedRows[0].Index;
 
+            //dtSelectedSeats.Rows.Add()
+
+            
         }
 
         private void labelAntalFriplatser_Click(object sender, EventArgs e)
@@ -300,8 +339,7 @@ namespace cirkus
 
             da.Fill(dt);
 
-            comboBoxSection.DataSource = dt;
-            comboBoxSection.DisplayMember = "section";
+           
             conn.Close();
 
             conn.Open();
@@ -311,8 +349,7 @@ namespace cirkus
             da.Fill(dt);
 
 
-            comboBoxseatnumber.DataSource = dt;
-            comboBoxseatnumber.DisplayMember = "rownumber";
+            
             conn.Close();
         }
     }

@@ -30,13 +30,12 @@
         {
             this.buttonLaggTillAkt = new System.Windows.Forms.Button();
             this.textBoxBeskrivning = new System.Windows.Forms.TextBox();
-            this.listBoxAkter = new System.Windows.Forms.ListBox();
             this.labelBeskrivning = new System.Windows.Forms.Label();
             this.labelAkter = new System.Windows.Forms.Label();
             this.labelDatum = new System.Windows.Forms.Label();
             this.labelAntalFriplatser = new System.Windows.Forms.Label();
             this.labelForsaljningstid = new System.Windows.Forms.Label();
-            this.textBoxAkter = new System.Windows.Forms.TextBox();
+            this.txtActname = new System.Windows.Forms.TextBox();
             this.textBoxAntalFriplatser = new System.Windows.Forms.TextBox();
             this.buttonLaggTIllForestallning = new System.Windows.Forms.Button();
             this.buttonSparaAndringar = new System.Windows.Forms.Button();
@@ -44,17 +43,21 @@
             this.dateTimePickerForsaljningstidFran = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerForsaljningstidTill = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerDatum = new System.Windows.Forms.DateTimePicker();
-            this.listBoxT_platser = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxSection = new System.Windows.Forms.ComboBox();
-            this.comboBoxseatnumber = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.buttonaddSeat = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.labelAngeBeskrivningen = new System.Windows.Forms.Label();
             this.labelAngeAkt = new System.Windows.Forms.Label();
             this.labelAngeStaplatser = new System.Windows.Forms.Label();
+            this.textBoxSeats = new System.Windows.Forms.TextBox();
+            this.dgSeats = new System.Windows.Forms.DataGridView();
+            this.dgAseats = new System.Windows.Forms.DataGridView();
+            this.dgActs = new System.Windows.Forms.DataGridView();
+            this.dgTest = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAseats)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTest)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLaggTillAkt
@@ -74,14 +77,6 @@
             this.textBoxBeskrivning.Size = new System.Drawing.Size(100, 20);
             this.textBoxBeskrivning.TabIndex = 1;
             this.textBoxBeskrivning.Click += new System.EventHandler(this.textBoxBeskrivning_Click);
-            // 
-            // listBoxAkter
-            // 
-            this.listBoxAkter.FormattingEnabled = true;
-            this.listBoxAkter.Location = new System.Drawing.Point(30, 243);
-            this.listBoxAkter.Name = "listBoxAkter";
-            this.listBoxAkter.Size = new System.Drawing.Size(141, 56);
-            this.listBoxAkter.TabIndex = 2;
             // 
             // labelBeskrivning
             // 
@@ -124,18 +119,18 @@
             // labelForsaljningstid
             // 
             this.labelForsaljningstid.AutoSize = true;
-            this.labelForsaljningstid.Location = new System.Drawing.Point(28, 418);
+            this.labelForsaljningstid.Location = new System.Drawing.Point(28, 474);
             this.labelForsaljningstid.Name = "labelForsaljningstid";
             this.labelForsaljningstid.Size = new System.Drawing.Size(108, 13);
             this.labelForsaljningstid.TabIndex = 14;
             this.labelForsaljningstid.Text = "Försäljningstid från/till";
             // 
-            // textBoxAkter
+            // txtActname
             // 
-            this.textBoxAkter.Location = new System.Drawing.Point(30, 189);
-            this.textBoxAkter.Name = "textBoxAkter";
-            this.textBoxAkter.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAkter.TabIndex = 21;
+            this.txtActname.Location = new System.Drawing.Point(30, 189);
+            this.txtActname.Name = "txtActname";
+            this.txtActname.Size = new System.Drawing.Size(100, 20);
+            this.txtActname.TabIndex = 21;
             // 
             // textBoxAntalFriplatser
             // 
@@ -169,7 +164,7 @@
             // 
             // buttonRaderaAkt
             // 
-            this.buttonRaderaAkt.Location = new System.Drawing.Point(177, 276);
+            this.buttonRaderaAkt.Location = new System.Drawing.Point(165, 302);
             this.buttonRaderaAkt.Name = "buttonRaderaAkt";
             this.buttonRaderaAkt.Size = new System.Drawing.Size(100, 23);
             this.buttonRaderaAkt.TabIndex = 31;
@@ -180,7 +175,7 @@
             // dateTimePickerForsaljningstidFran
             // 
             this.dateTimePickerForsaljningstidFran.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerForsaljningstidFran.Location = new System.Drawing.Point(30, 434);
+            this.dateTimePickerForsaljningstidFran.Location = new System.Drawing.Point(30, 490);
             this.dateTimePickerForsaljningstidFran.Name = "dateTimePickerForsaljningstidFran";
             this.dateTimePickerForsaljningstidFran.Size = new System.Drawing.Size(152, 20);
             this.dateTimePickerForsaljningstidFran.TabIndex = 32;
@@ -188,7 +183,7 @@
             // dateTimePickerForsaljningstidTill
             // 
             this.dateTimePickerForsaljningstidTill.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerForsaljningstidTill.Location = new System.Drawing.Point(209, 434);
+            this.dateTimePickerForsaljningstidTill.Location = new System.Drawing.Point(209, 490);
             this.dateTimePickerForsaljningstidTill.Name = "dateTimePickerForsaljningstidTill";
             this.dateTimePickerForsaljningstidTill.Size = new System.Drawing.Size(153, 20);
             this.dateTimePickerForsaljningstidTill.TabIndex = 33;
@@ -201,61 +196,19 @@
             this.dateTimePickerDatum.Size = new System.Drawing.Size(99, 20);
             this.dateTimePickerDatum.TabIndex = 34;
             // 
-            // listBoxT_platser
-            // 
-            this.listBoxT_platser.FormattingEnabled = true;
-            this.listBoxT_platser.Location = new System.Drawing.Point(30, 323);
-            this.listBoxT_platser.Name = "listBoxT_platser";
-            this.listBoxT_platser.Size = new System.Drawing.Size(139, 56);
-            this.listBoxT_platser.TabIndex = 37;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 307);
+            this.label1.Location = new System.Drawing.Point(27, 349);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(142, 13);
             this.label1.TabIndex = 38;
             this.label1.Text = "Tillgängliga sittplatser i akten";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // comboBoxSection
-            // 
-            this.comboBoxSection.FormattingEnabled = true;
-            this.comboBoxSection.Location = new System.Drawing.Point(187, 358);
-            this.comboBoxSection.Name = "comboBoxSection";
-            this.comboBoxSection.Size = new System.Drawing.Size(50, 21);
-            this.comboBoxSection.TabIndex = 39;
-            // 
-            // comboBoxseatnumber
-            // 
-            this.comboBoxseatnumber.FormattingEnabled = true;
-            this.comboBoxseatnumber.Location = new System.Drawing.Point(243, 358);
-            this.comboBoxseatnumber.Name = "comboBoxseatnumber";
-            this.comboBoxseatnumber.Size = new System.Drawing.Size(64, 21);
-            this.comboBoxseatnumber.TabIndex = 40;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(188, 342);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "Sektion";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(240, 342);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "Platsnummer";
-            // 
             // buttonaddSeat
             // 
-            this.buttonaddSeat.Location = new System.Drawing.Point(322, 356);
+            this.buttonaddSeat.Location = new System.Drawing.Point(497, 407);
             this.buttonaddSeat.Name = "buttonaddSeat";
             this.buttonaddSeat.Size = new System.Drawing.Size(100, 23);
             this.buttonaddSeat.TabIndex = 43;
@@ -289,7 +242,7 @@
             this.labelAngeAkt.AutoSize = true;
             this.labelAngeAkt.BackColor = System.Drawing.Color.White;
             this.labelAngeAkt.ForeColor = System.Drawing.Color.Red;
-            this.labelAngeAkt.Location = new System.Drawing.Point(177, 243);
+            this.labelAngeAkt.Location = new System.Drawing.Point(243, 199);
             this.labelAngeAkt.Name = "labelAngeAkt";
             this.labelAngeAkt.Size = new System.Drawing.Size(153, 13);
             this.labelAngeAkt.TabIndex = 46;
@@ -308,23 +261,92 @@
             this.labelAngeStaplatser.Text = "Du måste antal ståplatser ";
             this.labelAngeStaplatser.Visible = false;
             // 
+            // textBoxSeats
+            // 
+            this.textBoxSeats.Location = new System.Drawing.Point(296, 339);
+            this.textBoxSeats.Name = "textBoxSeats";
+            this.textBoxSeats.Size = new System.Drawing.Size(92, 20);
+            this.textBoxSeats.TabIndex = 49;
+            // 
+            // dgSeats
+            // 
+            this.dgSeats.AllowUserToAddRows = false;
+            this.dgSeats.AllowUserToDeleteRows = false;
+            this.dgSeats.AllowUserToResizeColumns = false;
+            this.dgSeats.AllowUserToResizeRows = false;
+            this.dgSeats.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgSeats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSeats.ColumnHeadersVisible = false;
+            this.dgSeats.Location = new System.Drawing.Point(264, 365);
+            this.dgSeats.Name = "dgSeats";
+            this.dgSeats.ReadOnly = true;
+            this.dgSeats.RowHeadersVisible = false;
+            this.dgSeats.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgSeats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgSeats.Size = new System.Drawing.Size(227, 65);
+            this.dgSeats.TabIndex = 48;
+            // 
+            // dgAseats
+            // 
+            this.dgAseats.AllowUserToAddRows = false;
+            this.dgAseats.AllowUserToDeleteRows = false;
+            this.dgAseats.AllowUserToResizeColumns = false;
+            this.dgAseats.AllowUserToResizeRows = false;
+            this.dgAseats.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgAseats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAseats.ColumnHeadersVisible = false;
+            this.dgAseats.Location = new System.Drawing.Point(30, 365);
+            this.dgAseats.Name = "dgAseats";
+            this.dgAseats.ReadOnly = true;
+            this.dgAseats.RowHeadersVisible = false;
+            this.dgAseats.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgAseats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgAseats.Size = new System.Drawing.Size(161, 65);
+            this.dgAseats.TabIndex = 50;
+            // 
+            // dgActs
+            // 
+            this.dgActs.AllowUserToAddRows = false;
+            this.dgActs.AllowUserToDeleteRows = false;
+            this.dgActs.AllowUserToResizeColumns = false;
+            this.dgActs.AllowUserToResizeRows = false;
+            this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgActs.ColumnHeadersVisible = false;
+            this.dgActs.Location = new System.Drawing.Point(30, 243);
+            this.dgActs.Name = "dgActs";
+            this.dgActs.ReadOnly = true;
+            this.dgActs.RowHeadersVisible = false;
+            this.dgActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgActs.Size = new System.Drawing.Size(124, 82);
+            this.dgActs.TabIndex = 51;
+            // 
+            // dgTest
+            // 
+            this.dgTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTest.Location = new System.Drawing.Point(420, 46);
+            this.dgTest.Name = "dgTest";
+            this.dgTest.Size = new System.Drawing.Size(240, 150);
+            this.dgTest.TabIndex = 52;
+            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(728, 477);
+            this.ClientSize = new System.Drawing.Size(728, 559);
+            this.Controls.Add(this.dgTest);
+            this.Controls.Add(this.dgActs);
+            this.Controls.Add(this.dgAseats);
+            this.Controls.Add(this.textBoxSeats);
+            this.Controls.Add(this.dgSeats);
             this.Controls.Add(this.labelAngeStaplatser);
             this.Controls.Add(this.labelAngeAkt);
             this.Controls.Add(this.labelAngeBeskrivningen);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonaddSeat);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBoxseatnumber);
-            this.Controls.Add(this.comboBoxSection);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBoxT_platser);
             this.Controls.Add(this.dateTimePickerDatum);
             this.Controls.Add(this.dateTimePickerForsaljningstidTill);
             this.Controls.Add(this.dateTimePickerForsaljningstidFran);
@@ -332,18 +354,21 @@
             this.Controls.Add(this.buttonSparaAndringar);
             this.Controls.Add(this.buttonLaggTIllForestallning);
             this.Controls.Add(this.textBoxAntalFriplatser);
-            this.Controls.Add(this.textBoxAkter);
+            this.Controls.Add(this.txtActname);
             this.Controls.Add(this.labelForsaljningstid);
             this.Controls.Add(this.labelAntalFriplatser);
             this.Controls.Add(this.labelDatum);
             this.Controls.Add(this.labelAkter);
             this.Controls.Add(this.labelBeskrivning);
-            this.Controls.Add(this.listBoxAkter);
             this.Controls.Add(this.textBoxBeskrivning);
             this.Controls.Add(this.buttonLaggTillAkt);
             this.Name = "ShowForm";
             this.Text = "Forestallning";
             this.Load += new System.EventHandler(this.ShowForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAseats)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,13 +378,12 @@
 
         private System.Windows.Forms.Button buttonLaggTillAkt;
         private System.Windows.Forms.TextBox textBoxBeskrivning;
-        private System.Windows.Forms.ListBox listBoxAkter;
         private System.Windows.Forms.Label labelBeskrivning;
         private System.Windows.Forms.Label labelAkter;
         private System.Windows.Forms.Label labelDatum;
         private System.Windows.Forms.Label labelAntalFriplatser;
         private System.Windows.Forms.Label labelForsaljningstid;
-        private System.Windows.Forms.TextBox textBoxAkter;
+        private System.Windows.Forms.TextBox txtActname;
         private System.Windows.Forms.TextBox textBoxAntalFriplatser;
         private System.Windows.Forms.Button buttonLaggTIllForestallning;
         private System.Windows.Forms.Button buttonSparaAndringar;
@@ -367,16 +391,16 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerForsaljningstidFran;
         private System.Windows.Forms.DateTimePicker dateTimePickerForsaljningstidTill;
         private System.Windows.Forms.DateTimePicker dateTimePickerDatum;
-        private System.Windows.Forms.ListBox listBoxT_platser;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxSection;
-        private System.Windows.Forms.ComboBox comboBoxseatnumber;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonaddSeat;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelAngeBeskrivningen;
         private System.Windows.Forms.Label labelAngeAkt;
         private System.Windows.Forms.Label labelAngeStaplatser;
+        private System.Windows.Forms.TextBox textBoxSeats;
+        private System.Windows.Forms.DataGridView dgSeats;
+        private System.Windows.Forms.DataGridView dgAseats;
+        private System.Windows.Forms.DataGridView dgActs;
+        private System.Windows.Forms.DataGridView dgTest;
     }
 }
