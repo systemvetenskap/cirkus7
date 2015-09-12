@@ -54,6 +54,7 @@
             this.dgAseats = new System.Windows.Forms.DataGridView();
             this.dgActs = new System.Windows.Forms.DataGridView();
             this.dgTest = new System.Windows.Forms.DataGridView();
+            this.test = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAseats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
@@ -299,7 +300,6 @@
             this.dgAseats.Name = "dgAseats";
             this.dgAseats.ReadOnly = true;
             this.dgAseats.RowHeadersVisible = false;
-            this.dgAseats.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgAseats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgAseats.Size = new System.Drawing.Size(161, 65);
             this.dgAseats.TabIndex = 50;
@@ -321,6 +321,7 @@
             this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgActs.Size = new System.Drawing.Size(124, 82);
             this.dgActs.TabIndex = 51;
+            this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellClick);
             // 
             // dgTest
             // 
@@ -330,12 +331,23 @@
             this.dgTest.Size = new System.Drawing.Size(240, 150);
             this.dgTest.TabIndex = 52;
             // 
+            // test
+            // 
+            this.test.Location = new System.Drawing.Point(497, 313);
+            this.test.Name = "test";
+            this.test.Size = new System.Drawing.Size(100, 23);
+            this.test.TabIndex = 53;
+            this.test.Text = "test";
+            this.test.UseVisualStyleBackColor = true;
+            this.test.Click += new System.EventHandler(this.test_Click);
+            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(728, 559);
+            this.Controls.Add(this.test);
             this.Controls.Add(this.dgTest);
             this.Controls.Add(this.dgActs);
             this.Controls.Add(this.dgAseats);
@@ -402,5 +414,6 @@
         private System.Windows.Forms.DataGridView dgAseats;
         private System.Windows.Forms.DataGridView dgActs;
         private System.Windows.Forms.DataGridView dgTest;
+        private System.Windows.Forms.Button test;
     }
 }

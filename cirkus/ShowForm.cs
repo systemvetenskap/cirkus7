@@ -17,11 +17,14 @@ namespace cirkus
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         string addedshowid, acts, section, seat_number;
         NpgsqlCommand command;
-        DataTable dt, dtSeats,dtSelectedSeats;
+        DataTable dt, dtSeats;
+        DataTable dtSelectedSeats;
         DataTable dtActs = new DataTable();
         DataTable cact = new DataTable();
         NpgsqlDataAdapter da;
         public string name;
+        int selected_actid;
+        string selected_actname;
 
         public ShowForm()
         {
@@ -74,11 +77,20 @@ namespace cirkus
 
             else
             {
-                Act newAct = new Act();
+                DataColumn id = new DataColumn();
+                id.DataType = System.Type.GetType("System.Int32");
+                id.AutoIncrement = true;
+                id.AutoIncrementSeed = 0;
+                id.AutoIncrementStep = 1;
+                id.ColumnName = "id";
+                dtActs.Columns.Add(id);
+                dtActs.Columns.Add("name");
+          
 
                 DataRow row = dtActs.NewRow();
 
                 row[1] = txtActname.Text.ToString();
+                
 
                 dtActs.Rows.Add(row);
 
@@ -105,7 +117,7 @@ namespace cirkus
 
                 dgSeats.DataSource = dtSeats;
 
-                dgSeats.Columns[0].Visible = false;
+                //dgSeats.Columns[0].Visible = false;
 
                 
               
@@ -127,14 +139,7 @@ namespace cirkus
 
         private void ShowForm_Load(object sender, EventArgs e)
         {
-            DataColumn id = new DataColumn();
-            id.DataType = System.Type.GetType("System.Int32");
-            id.AutoIncrement = true;
-            id.AutoIncrementSeed = 1;
-            id.AutoIncrementStep = 1;
-            id.ColumnName = "id";
-            dtActs.Columns.Add(id);
-            dtActs.Columns.Add("name");
+
 
         }
 
@@ -282,9 +287,38 @@ namespace cirkus
 
         private void buttonaddSeat_Click(object sender, EventArgs e)
         {
-            
+            dtSelectedSeats = new DataTable();
+            dtSelectedSeats.Columns.Add("id");
+            dtSelectedSeats.Columns.Add("name");
+            dtSelectedSeats.Columns.Add("seatid");
+            dtSelectedSeats.Columns.Add("section");
+            dtSelectedSeats.Columns.Add("rownumber");
 
-            
+
+            foreach (DataGridViewRow r in dgSeats.SelectedRows)
+            {
+                DataGridViewRow t = (DataGridViewRow)r.Clone();
+                
+
+                t.Cells[0].Value = r.Cells[0].Value;
+                t.Cells[1].Value = r.Cells[1].Value;
+                t.Cells[2].Value = r.Cells[2].Value;
+
+                DataRow row = dtSelectedSeats.NewRow();
+                row[0] = selected_actid;
+                row[1] = selected_actname;
+                row[2] = r.Cells[0].Value;
+                row[3] = r.Cells[1].Value;
+                row[4] = r.Cells[2].Value;
+                dtSelectedSeats.Rows.Add(row);
+      
+                dgAseats.DataSource = dtSelectedSeats;
+                dgTest.DataSource = dtSelectedSeats;
+            }
+
+
+
+
         }
 
         private void labelAntalFriplatser_Click(object sender, EventArgs e)
@@ -312,6 +346,23 @@ namespace cirkus
         {
             textBoxBeskrivning.BackColor = Color.White;
             labelAngeBeskrivningen.Visible = false;
+        }
+
+        private void test_Click(object sender, EventArgs e)
+        {
+         
+
+        }
+
+        private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedIndex = dgActs.SelectedRows[0].Index;
+
+            selected_actid = int.Parse(dgActs[0, selectedIndex].Value.ToString());
+
+            selected_actname = dgActs[1, selectedIndex].Value.ToString();
+
+
         }
 
         private void textBoxAntalFriplatser_Click(object sender, EventArgs e)
