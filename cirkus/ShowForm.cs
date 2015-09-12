@@ -78,8 +78,6 @@ namespace cirkus
             else
             {
            
-          
-
                 DataRow row = dtActs.NewRow();
 
                 row[1] = txtActname.Text.ToString();
@@ -87,27 +85,8 @@ namespace cirkus
 
                 dtActs.Rows.Add(row);
 
-                dgTest.DataSource = dtActs;
-
-                //foreach (DataGridViewRow r in dgActs.SelectedRows)
-                //{
-                //    DataGridViewRow t = (DataGridViewRow)r.Clone();
-
-                //    t.Cells[0].Value = r.Cells[0].Value;
-                //    t.Cells[1].Value = r.Cells[1].Value;
-
-                //    cact.Rows.Add(r.Cells[0].Value, r.Cells[1].Value);
-
-
-
-                //}
                 
-              
-
-                //dgSeats.Columns[0].Visible = false;
-
-                
-              
+    
                 dgActs.DataSource = dtActs;
 
                 
@@ -141,6 +120,8 @@ namespace cirkus
             id.ColumnName = "id";
             dtActs.Columns.Add(id);
             dtActs.Columns.Add("name");
+            dtSeats = new DataTable();
+            dtSeats.Columns.Add("id");
 
         }
 
@@ -359,20 +340,39 @@ namespace cirkus
             selected_actname = dgActs[1, selectedIndex].Value.ToString();
             NpgsqlDataAdapter cmd = new NpgsqlDataAdapter("select seatid, section, rownumber from seats order by section, rownumber", conn);
 
-            dtSeats = new DataTable();
+            
 
             cmd.Fill(dtSeats);
 
+            
+            for(int r = 0; r < dtSeats.Rows.Count; r++)
+            {
+                DataRow dr = dtSeats.Rows[r];
+       
+                object value = dr[0];
+                if (value == DBNull.Value)
+                {
+                    dr[0] = selected_actid;
+                }
+        
+            }
+
+
+            dgTest.DataSource = dtSeats;
             dgSeats.DataSource = dtSeats;
+
             bs.DataSource = dtSelectedSeats;
             bs.Filter = string.Format("id = '{0}'", selected_actid);
 
             fs.DataSource = dtSeats;
+            fs.Filter = string.Format("id = '{0}'", selected_actid);
 
-            
 
 
-         
+
+
+
+
 
         }
 
