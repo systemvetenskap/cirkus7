@@ -14,16 +14,16 @@ namespace cirkus
 {
     public partial class ShowForm : Form
     {
-        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-        string addedshowid, acts, section, seat_number;
+        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");        
         NpgsqlCommand command;
-        DataTable dt, dtSeats;
-        DataTable dtSelectedSeats;
-        DataTable dtActs = new DataTable();
-        DataTable cact = new DataTable();
+        DataRow row;
+        DataTable dtActs, dtSelectedSeats, dt, dtSeats;
+        BindingSource bs = new BindingSource();
+        BindingSource fs = new BindingSource();
         NpgsqlDataAdapter da;
         public string name;
         int selected_actid;
+        string addedshowid, acts, section, seat_number;
         string selected_actname;
 
         public ShowForm()
@@ -77,14 +77,7 @@ namespace cirkus
 
             else
             {
-                DataColumn id = new DataColumn();
-                id.DataType = System.Type.GetType("System.Int32");
-                id.AutoIncrement = true;
-                id.AutoIncrementSeed = 0;
-                id.AutoIncrementStep = 1;
-                id.ColumnName = "id";
-                dtActs.Columns.Add(id);
-                dtActs.Columns.Add("name");
+           
           
 
                 DataRow row = dtActs.NewRow();
@@ -109,13 +102,7 @@ namespace cirkus
 
                 //}
                 
-                NpgsqlDataAdapter cmd = new NpgsqlDataAdapter("select seatid, section, rownumber from seats order by section, rownumber", conn);
-
-                dtSeats = new DataTable();
-
-                cmd.Fill(dtSeats);
-
-                dgSeats.DataSource = dtSeats;
+              
 
                 //dgSeats.Columns[0].Visible = false;
 
@@ -126,7 +113,7 @@ namespace cirkus
                 
                 this.dgActs.Columns[0].Visible = false;
                 dgActs.Columns[1].Width = 80;
-
+                dgActs.ClearSelection();
                 labelAngeAkt.Visible = false;
             }
 
@@ -139,7 +126,21 @@ namespace cirkus
 
         private void ShowForm_Load(object sender, EventArgs e)
         {
-
+            DataColumn id = new DataColumn();
+            dtSelectedSeats = new DataTable();           
+            dtSelectedSeats.Columns.Add("id");
+            dtSelectedSeats.Columns.Add("name");
+            dtSelectedSeats.Columns.Add("seatid");
+            dtSelectedSeats.Columns.Add("section");
+            dtSelectedSeats.Columns.Add("rownumber");
+            dtActs = new DataTable();
+            id.DataType = System.Type.GetType("System.Int32");
+            id.AutoIncrement = true;
+            id.AutoIncrementSeed = 1;
+            id.AutoIncrementStep = 1;
+            id.ColumnName = "id";
+            dtActs.Columns.Add(id);
+            dtActs.Columns.Add("name");
 
         }
 
@@ -287,12 +288,7 @@ namespace cirkus
 
         private void buttonaddSeat_Click(object sender, EventArgs e)
         {
-            dtSelectedSeats = new DataTable();
-            dtSelectedSeats.Columns.Add("id");
-            dtSelectedSeats.Columns.Add("name");
-            dtSelectedSeats.Columns.Add("seatid");
-            dtSelectedSeats.Columns.Add("section");
-            dtSelectedSeats.Columns.Add("rownumber");
+          
 
 
             foreach (DataGridViewRow r in dgSeats.SelectedRows)
@@ -304,7 +300,7 @@ namespace cirkus
                 t.Cells[1].Value = r.Cells[1].Value;
                 t.Cells[2].Value = r.Cells[2].Value;
 
-                DataRow row = dtSelectedSeats.NewRow();
+                row = dtSelectedSeats.NewRow();
                 row[0] = selected_actid;
                 row[1] = selected_actname;
                 row[2] = r.Cells[0].Value;
@@ -361,7 +357,22 @@ namespace cirkus
             selected_actid = int.Parse(dgActs[0, selectedIndex].Value.ToString());
 
             selected_actname = dgActs[1, selectedIndex].Value.ToString();
+            NpgsqlDataAdapter cmd = new NpgsqlDataAdapter("select seatid, section, rownumber from seats order by section, rownumber", conn);
 
+            dtSeats = new DataTable();
+
+            cmd.Fill(dtSeats);
+
+            dgSeats.DataSource = dtSeats;
+            bs.DataSource = dtSelectedSeats;
+            bs.Filter = string.Format("id = '{0}'", selected_actid);
+
+            fs.DataSource = dtSeats;
+
+            
+
+
+         
 
         }
 
