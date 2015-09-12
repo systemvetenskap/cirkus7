@@ -136,12 +136,7 @@ namespace cirkus
                 allowAdd = false;
             }
 
-            //if (listBoxAkter.Items.Count == 0)
-            //{
-            //    listBoxAkter.BackColor = Color.Tomato;
-            //    labelAngeAkt.Visible = true;
-            //    allowAdd = false;
-            //}
+
 
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
@@ -174,16 +169,7 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
-                //for (int i = 0; i < listBoxAkter.Items.Count; i++)
-                //{
-                //    acts = listBoxAkter.Items[i].ToString();
-                //    conn.Open();
-                //    command = new NpgsqlCommand(@"Insert into acts (name, showid) Values (@name, @showid)", conn);
-                //    command.Parameters.AddWithValue("@name", acts);
-                //    command.Parameters.AddWithValue("@showid", addedshowid);
-                //    command.ExecuteNonQuery();
-                //    conn.Close();
-                //}
+        
 
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
@@ -204,12 +190,7 @@ namespace cirkus
                 allowAdd = false;
             }
 
-            //if (listBoxAkter.Items.Count == 0)
-            //{
-            //    listBoxAkter.BackColor = Color.Tomato;
-            //    labelAngeAkt.Visible = true;
-            //    allowAdd = false;
-            //}
+   
 
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
@@ -250,16 +231,7 @@ namespace cirkus
                 addedshowid = read[0].ToString();
                 conn.Close();
 
-                //for (int i = 0; i < listBoxAkter.Items.Count; i++)
-                //{
-                //    acts = listBoxAkter.Items[i].ToString();
-                //    conn.Open();
-                //    command = new NpgsqlCommand(@"Insert into acts (name, showid) Values (@name, @showid)", conn);
-                //    command.Parameters.AddWithValue("@name", acts);
-                //    command.Parameters.AddWithValue("@showid", addedshowid);
-                //    command.ExecuteNonQuery();
-                //    conn.Close();
-                //}
+
 
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
@@ -288,9 +260,13 @@ namespace cirkus
                 row[3] = r.Cells[1].Value;
                 row[4] = r.Cells[2].Value;
                 dtSelectedSeats.Rows.Add(row);
-      
+
+                DataRow[] rows = dtSeats.Select("id='" + selected_actid + "'");
+                foreach (DataRow rw in rows)
+                    rw.Delete();
+
                 dgAseats.DataSource = dtSelectedSeats;
-                dgTest.DataSource = dtSelectedSeats;
+                
             }
 
 
@@ -367,7 +343,7 @@ namespace cirkus
             fs.DataSource = dtSeats;
             fs.Filter = string.Format("id = '{0}'", selected_actid);
 
-
+           
 
 
 
