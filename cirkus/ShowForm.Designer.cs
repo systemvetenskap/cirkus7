@@ -98,7 +98,7 @@
             // labelDatum
             // 
             this.labelDatum.AutoSize = true;
-            this.labelDatum.Location = new System.Drawing.Point(32, 78);
+            this.labelDatum.Location = new System.Drawing.Point(298, 27);
             this.labelDatum.Name = "labelDatum";
             this.labelDatum.Size = new System.Drawing.Size(38, 13);
             this.labelDatum.TabIndex = 11;
@@ -117,7 +117,7 @@
             // labelForsaljningstid
             // 
             this.labelForsaljningstid.AutoSize = true;
-            this.labelForsaljningstid.Location = new System.Drawing.Point(44, 498);
+            this.labelForsaljningstid.Location = new System.Drawing.Point(29, 73);
             this.labelForsaljningstid.Name = "labelForsaljningstid";
             this.labelForsaljningstid.Size = new System.Drawing.Size(108, 13);
             this.labelForsaljningstid.TabIndex = 14;
@@ -142,9 +142,9 @@
             // 
             // buttonLaggTIllForestallning
             // 
-            this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(751, 457);
+            this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(751, 425);
             this.buttonLaggTIllForestallning.Name = "buttonLaggTIllForestallning";
-            this.buttonLaggTIllForestallning.Size = new System.Drawing.Size(155, 23);
+            this.buttonLaggTIllForestallning.Size = new System.Drawing.Size(184, 55);
             this.buttonLaggTIllForestallning.TabIndex = 29;
             this.buttonLaggTIllForestallning.Text = "Skapa föreställning";
             this.buttonLaggTIllForestallning.UseVisualStyleBackColor = true;
@@ -152,9 +152,9 @@
             // 
             // buttonSparaAndringar
             // 
-            this.buttonSparaAndringar.Location = new System.Drawing.Point(630, 457);
+            this.buttonSparaAndringar.Location = new System.Drawing.Point(820, 364);
             this.buttonSparaAndringar.Name = "buttonSparaAndringar";
-            this.buttonSparaAndringar.Size = new System.Drawing.Size(100, 23);
+            this.buttonSparaAndringar.Size = new System.Drawing.Size(115, 55);
             this.buttonSparaAndringar.TabIndex = 30;
             this.buttonSparaAndringar.Text = "Spara ändringar";
             this.buttonSparaAndringar.UseVisualStyleBackColor = true;
@@ -173,7 +173,7 @@
             // dateTimePickerForsaljningstidFran
             // 
             this.dateTimePickerForsaljningstidFran.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerForsaljningstidFran.Location = new System.Drawing.Point(46, 514);
+            this.dateTimePickerForsaljningstidFran.Location = new System.Drawing.Point(30, 89);
             this.dateTimePickerForsaljningstidFran.Name = "dateTimePickerForsaljningstidFran";
             this.dateTimePickerForsaljningstidFran.Size = new System.Drawing.Size(152, 20);
             this.dateTimePickerForsaljningstidFran.TabIndex = 32;
@@ -181,7 +181,7 @@
             // dateTimePickerForsaljningstidTill
             // 
             this.dateTimePickerForsaljningstidTill.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerForsaljningstidTill.Location = new System.Drawing.Point(225, 514);
+            this.dateTimePickerForsaljningstidTill.Location = new System.Drawing.Point(209, 89);
             this.dateTimePickerForsaljningstidTill.Name = "dateTimePickerForsaljningstidTill";
             this.dateTimePickerForsaljningstidTill.Size = new System.Drawing.Size(153, 20);
             this.dateTimePickerForsaljningstidTill.TabIndex = 33;
@@ -189,7 +189,7 @@
             // dateTimePickerDatum
             // 
             this.dateTimePickerDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDatum.Location = new System.Drawing.Point(31, 94);
+            this.dateTimePickerDatum.Location = new System.Drawing.Point(297, 43);
             this.dateTimePickerDatum.Name = "dateTimePickerDatum";
             this.dateTimePickerDatum.Size = new System.Drawing.Size(99, 20);
             this.dateTimePickerDatum.TabIndex = 34;
@@ -206,9 +206,9 @@
             // 
             // buttonaddSeat
             // 
-            this.buttonaddSeat.Location = new System.Drawing.Point(497, 457);
+            this.buttonaddSeat.Location = new System.Drawing.Point(497, 425);
             this.buttonaddSeat.Name = "buttonaddSeat";
-            this.buttonaddSeat.Size = new System.Drawing.Size(100, 23);
+            this.buttonaddSeat.Size = new System.Drawing.Size(111, 55);
             this.buttonaddSeat.TabIndex = 43;
             this.buttonaddSeat.Text = "Lägg till ";
             this.buttonaddSeat.UseVisualStyleBackColor = true;
@@ -261,7 +261,7 @@
             // 
             // textBoxSeats
             // 
-            this.textBoxSeats.Location = new System.Drawing.Point(296, 339);
+            this.textBoxSeats.Location = new System.Drawing.Point(399, 339);
             this.textBoxSeats.Name = "textBoxSeats";
             this.textBoxSeats.Size = new System.Drawing.Size(92, 20);
             this.textBoxSeats.TabIndex = 49;
@@ -324,8 +324,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(947, 714);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(947, 495);
             this.Controls.Add(this.dgActs);
             this.Controls.Add(this.dgAseats);
             this.Controls.Add(this.textBoxSeats);
