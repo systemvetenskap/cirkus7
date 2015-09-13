@@ -80,7 +80,7 @@
             this.btnRaderaKonto = new System.Windows.Forms.Button();
             this.lblPersonnummer = new System.Windows.Forms.Label();
             this.textBoxPersonnummer = new System.Windows.Forms.TextBox();
-            this.LblVarning = new System.Windows.Forms.Label();
+            this.LblStatus = new System.Windows.Forms.Label();
             this.lblBehorighetsniva = new System.Windows.Forms.Label();
             this.lblLosenord = new System.Windows.Forms.Label();
             this.dgStaff = new System.Windows.Forms.DataGridView();
@@ -640,7 +640,7 @@
             this.tabAccount.Controls.Add(this.btnRaderaKonto);
             this.tabAccount.Controls.Add(this.lblPersonnummer);
             this.tabAccount.Controls.Add(this.textBoxPersonnummer);
-            this.tabAccount.Controls.Add(this.LblVarning);
+            this.tabAccount.Controls.Add(this.LblStatus);
             this.tabAccount.Controls.Add(this.lblBehorighetsniva);
             this.tabAccount.Controls.Add(this.lblLosenord);
             this.tabAccount.Controls.Add(this.dgStaff);
@@ -696,16 +696,16 @@
             this.textBoxPersonnummer.Size = new System.Drawing.Size(152, 20);
             this.textBoxPersonnummer.TabIndex = 56;
             // 
-            // LblVarning
+            // LblStatus
             // 
-            this.LblVarning.AutoSize = true;
-            this.LblVarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblVarning.Location = new System.Drawing.Point(47, 334);
-            this.LblVarning.Name = "LblVarning";
-            this.LblVarning.Size = new System.Drawing.Size(48, 13);
-            this.LblVarning.TabIndex = 49;
-            this.LblVarning.Text = "label12";
-            this.LblVarning.Visible = false;
+            this.LblStatus.AutoSize = true;
+            this.LblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblStatus.Location = new System.Drawing.Point(47, 334);
+            this.LblStatus.Name = "LblStatus";
+            this.LblStatus.Size = new System.Drawing.Size(48, 13);
+            this.LblStatus.TabIndex = 49;
+            this.LblStatus.Text = "label12";
+            this.LblStatus.Visible = false;
             // 
             // lblBehorighetsniva
             // 
@@ -1031,7 +1031,7 @@
         private System.Windows.Forms.DataGridView dgvAkter;
         private System.Windows.Forms.Label lblPersonnummer;
         private System.Windows.Forms.TextBox textBoxPersonnummer;
-        private System.Windows.Forms.Label LblVarning;
+        private System.Windows.Forms.Label LblStatus;
         private System.Windows.Forms.Button btnRaderaKonto;
     }
 }
