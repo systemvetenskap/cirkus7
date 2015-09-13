@@ -654,7 +654,7 @@ namespace cirkus
 
             if (Confirmation == DialogResult.Yes)
             {
-                int SelectedStaff;// = dgStaff.SelectedRows[0].Index;
+                int SelectedStaff;
 
                 DataGridViewRow selectedrow = this.dgStaff.SelectedRows[0];
                 SelectedStaff = Convert.ToInt32(selectedrow.Cells["staffid"].Value);
@@ -670,6 +670,10 @@ namespace cirkus
                 {
 
                     MessageBox.Show(ex.Message);
+                    
+                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna användaren. Användaren har en eller flera aktiva föreställningar kopplade till kontot.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    conn.Close();
+                    return;
                 }
                 conn.Close();
 
