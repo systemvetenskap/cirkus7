@@ -499,6 +499,7 @@ namespace cirkus
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
             btnRaderaKonto.Enabled = true;
+            btnTomFalten.Enabled = false;
 
             if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera/ändra konto")
             {
@@ -633,6 +634,8 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
+
+                btnTomFalten.Enabled = true;
                 btnRaderaKonto.Enabled = false;
                 dgStaff.Enabled = true;
                 ListaPersonal();
