@@ -17,8 +17,9 @@ namespace cirkus
         int showid, actid, seatid,agegroup, customerid, total, checkedseats, priceid;      
         string show, act, bseats, selectedsection;
         bool newcust;
-        DataTable section;
+        DataTable shows, acts, seats, section;
         DataTable selectedseats = new DataTable();
+        BindingSource filterseats = new BindingSource();
         NpgsqlCommand cmd;
 
         public ReserveTicketForm()
@@ -33,10 +34,10 @@ namespace cirkus
 
             conn.Open();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
+            shows = new DataTable();
+            da.Fill(shows);
 
-            dataGridViewShows.DataSource = dt;
+            dataGridViewShows.DataSource = shows;
 
             this.dataGridViewShows.Columns[0].Visible = false;
             dataGridViewShows.Columns[1].Width = 149;
@@ -62,11 +63,11 @@ namespace cirkus
 
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
 
-            DataTable dt = new DataTable();
+            acts = new DataTable();
 
-            da.Fill(dt);
+            da.Fill(acts);
 
-            dataGridViewActs.DataSource = dt;
+            dataGridViewActs.DataSource = acts;
             this.dataGridViewActs.Columns[0].Visible = false;
             dataGridViewActs.Columns[1].Width = 129;
 
@@ -76,7 +77,7 @@ namespace cirkus
             //dataGridViewActs.CurrentCell.Selected = false;
             conn.Close();
 
-            loadSection();
+            
 
 
         }
@@ -156,19 +157,20 @@ namespace cirkus
             conn.Open();
             
 
-            string getSeatnr = @"select rownumber, section from seats inner join available_seats on seats.seatid = available_seats.seatid 
-                                    inner join acts on available_seats.actid = acts.actid 
+            string getSeatnr = @"select available_seats.available_seats_id as seatid, acts.actid, rownumber, section from seats inner join available_seats on seats.seatid = available_seats.seatid 
+                                    inner join acts on available_seats.actid = acts.actid
+                                    inner join show on acts.showid = show.showid
                                         left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                            where booked_seat_id is null and acts.actid = '" + actid + "' and seats.section = '" + selectedsection + "' order by rownumber ";
+                                            where booked_seat_id is null and show.showid = '"+showid+"' order by rownumber ";
 
 
 
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(getSeatnr, conn);
-            DataTable dt = new DataTable();
+            seats = new DataTable();
 
-            da.Fill(dt);
+            da.Fill(seats);
 
-          
+            dataGridViewActs.ClearSelection();
             conn.Close();
         }
         private void listCustomers()
@@ -237,6 +239,8 @@ namespace cirkus
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             panel1.Visible = true;
+            //loadSection();
+            load_Seats();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -444,8 +448,10 @@ namespace cirkus
 
         private void dataGridViewActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            conn.Close();
-            loadSection();
+            filterseats.DataSource = seats;
+
+            filterseats.Filter = "actid = '"{0}"', actid;
+            
             create_summary();
 
         }
