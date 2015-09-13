@@ -82,18 +82,38 @@ namespace cirkus
 
                 row[1] = txtActname.Text.ToString();
                 
-
                 dtActs.Rows.Add(row);
-
-                
-    
+                   
                 dgActs.DataSource = dtActs;
-
-                
+               
                 this.dgActs.Columns[0].Visible = false;
                 dgActs.Columns[1].Width = 80;
                 dgActs.ClearSelection();
                 labelAngeAkt.Visible = false;
+
+                DataRow lastRow = dtActs.Rows[dgActs.Rows.Count - 1];
+                selected_actid = int.Parse(lastRow[0].ToString());
+
+                NpgsqlDataAdapter cmd = new NpgsqlDataAdapter("select seatid, section, rownumber from seats order by section, rownumber", conn);
+
+                cmd.Fill(dtSeats);
+
+
+                for (int r = 0; r < dtSeats.Rows.Count; r++)
+                {
+                    DataRow dr = dtSeats.Rows[r];
+
+                    object value = dr[0];
+                    if (value == DBNull.Value)
+                    {
+                        dr[0] = selected_actid;
+                    }
+
+                }
+
+                dgTest.DataSource = dtSeats;
+                dgSeats.DataSource = dtSeats;
+
             }
 
         }
@@ -314,30 +334,17 @@ namespace cirkus
             selected_actid = int.Parse(dgActs[0, selectedIndex].Value.ToString());
 
             selected_actname = dgActs[1, selectedIndex].Value.ToString();
-            NpgsqlDataAdapter cmd = new NpgsqlDataAdapter("select seatid, section, rownumber from seats order by section, rownumber", conn);
+   
 
             
-
-            cmd.Fill(dtSeats);
-
-            
-            for(int r = 0; r < dtSeats.Rows.Count; r++)
-            {
-                DataRow dr = dtSeats.Rows[r];
-       
-                object value = dr[0];
-                if (value == DBNull.Value)
-                {
-                    dr[0] = selected_actid;
-                }
-        
-            }
+  
 
 
             dgTest.DataSource = dtSeats;
             dgSeats.DataSource = dtSeats;
 
             bs.DataSource = dtSelectedSeats;
+
             bs.Filter = string.Format("id = '{0}'", selected_actid);
 
             fs.DataSource = dtSeats;
