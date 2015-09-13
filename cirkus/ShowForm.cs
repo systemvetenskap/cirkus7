@@ -112,7 +112,7 @@ namespace cirkus
                 }
 
                 dgTest.DataSource = dtSeats;
-                dgSeats.DataSource = dtSeats;
+                
 
             }
 
@@ -251,6 +251,17 @@ namespace cirkus
                 addedshowid = read[0].ToString();
                 conn.Close();
 
+                foreach (DataRow r in dtActs.Rows)
+                {
+                    int id = int.Parse(r[0].ToString());
+                    string an = r[1].ToString();
+
+                    NpgsqlCommand cmd = new NpgsqlCommand("insert into acts(name, showid) values(:nm, :shid)", conn);
+                    cmd.Parameters.Add(new NpgsqlParameter)
+
+
+                }
+
 
 
                 this.Close();
@@ -281,9 +292,12 @@ namespace cirkus
                 row[4] = r.Cells[2].Value;
                 dtSelectedSeats.Rows.Add(row);
 
-                DataRow[] rows = dtSeats.Select("id='" + selected_actid + "'");
-                foreach (DataRow rw in rows)
-                    rw.Delete();
+              
+
+                int i = this.dgSeats.SelectedCells[0].RowIndex;
+
+                dtSeats.Rows.RemoveAt(dgSeats.CurrentCell.RowIndex);
+                
 
                 dgAseats.DataSource = dtSelectedSeats;
                 
