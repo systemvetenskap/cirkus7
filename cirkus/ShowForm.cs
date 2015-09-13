@@ -23,14 +23,13 @@ namespace cirkus
         NpgsqlDataAdapter da;
         public string name;
         int selected_actid;
-        string addedshowid,addedactid, acts, section, seat_number;
+        string addedshowid,addedactid;
         string selected_actname;
 
         public ShowForm()
         {
             InitializeComponent();
-
-            loadSeats();
+  
 
         }
 
@@ -102,16 +101,20 @@ namespace cirkus
                 for (int r = 0; r < dtSeats.Rows.Count; r++)
                 {
                     DataRow dr = dtSeats.Rows[r];
-
-                    object value = dr[0];
-                    if (value == DBNull.Value)
+                    if (dr.RowState != DataRowState.Deleted)
                     {
-                        dr[0] = selected_actid;
+                        object value = dr[0];
+                        if (value == DBNull.Value)
+                        {
+                            dr[0] = selected_actid;
+                        }
+
                     }
+           
 
                 }
 
-                dgTest.DataSource = dtSeats;
+                //dgTest.DataSource = dtSeats;
                 
 
             }
@@ -142,6 +145,11 @@ namespace cirkus
             dtActs.Columns.Add("name");
             dtSeats = new DataTable();
             dtSeats.Columns.Add("id");
+
+            
+            dgAseats.Columns["section"].DisplayIndex = 3;
+            dgAseats.Columns["rownumber"].DisplayIndex = 4;
+          
 
         }
 
@@ -320,15 +328,14 @@ namespace cirkus
                 row[3] = r.Cells[1].Value;
                 row[4] = r.Cells[2].Value;
                 dtSelectedSeats.Rows.Add(row);
+   
 
-              
-
-                int i = this.dgSeats.SelectedCells[0].RowIndex;
-
-                dtSeats.Rows.RemoveAt(dgSeats.CurrentCell.RowIndex);
-                
+                //dtSeats.Rows.RemoveAt(dgSeats.CurrentCell.RowIndex);
+                fs.RemoveAt(dgSeats.CurrentCell.RowIndex);
 
                 dgAseats.DataSource = dtSelectedSeats;
+                this.dgAseats.Columns[4].DisplayIndex = 3;
+                this.dgAseats.Columns[3].DisplayIndex = 4;
                 this.dgAseats.Columns[0].Visible = false;
                 this.dgAseats.Columns[1].Visible = false;
                 this.dgAseats.Columns[2].Visible = false;
@@ -360,8 +367,34 @@ namespace cirkus
             }
         }
 
+        private void textBoxBeskrivning_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelBeskrivning_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxSeats_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxSeats.Text))
+            {
+                fs.DataSource = dtSeats;
+                fs.Filter = string.Format("id = '{0}'", selected_actid);
+            }
+            else
+            {
+                fs.DataSource = dtSeats;
+                fs.Filter = string.Format("section = '{0}' and id ='{1}'", textBoxSeats.Text, selected_actid);
+            }
+            
+        }
+
         private void textBoxBeskrivning_Click(object sender, EventArgs e)
         {
+            
             textBoxBeskrivning.BackColor = Color.White;
             labelAngeBeskrivningen.Visible = false;
         }
@@ -385,7 +418,7 @@ namespace cirkus
   
 
 
-            dgTest.DataSource = dtSeats;
+            
             dgSeats.DataSource = dtSeats;
 
             bs.DataSource = dtSelectedSeats;
@@ -395,7 +428,7 @@ namespace cirkus
             fs.DataSource = dtSeats;
             fs.Filter = string.Format("id = '{0}'", selected_actid);
 
-           
+            
             this.dgSeats.Columns[0].Visible = false;
             this.dgSeats.Columns[1].Visible = false;
 
@@ -421,26 +454,6 @@ namespace cirkus
         {
 
         }
-        public void loadSeats()
-        {
-            conn.Open();
-            da = new NpgsqlDataAdapter("select distinct section from seats order by section", conn);
-            dt = new DataTable();
 
-            da.Fill(dt);
-
-           
-            conn.Close();
-
-            conn.Open();
-            da = new NpgsqlDataAdapter("select distinct rownumber from seats order by rownumber", conn);
-            dt = new DataTable();
-
-            da.Fill(dt);
-
-
-            
-            conn.Close();
-        }
     }
 }
