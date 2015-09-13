@@ -23,7 +23,7 @@ namespace cirkus
         NpgsqlDataAdapter da;
         public string name;
         int selected_actid;
-        string addedshowid, acts, section, seat_number;
+        string addedshowid,addedactid, acts, section, seat_number;
         string selected_actname;
 
         public ShowForm()
@@ -50,7 +50,7 @@ namespace cirkus
             textBoxBeskrivning.Text = Name;
 
             conn.Open();
-            //NpgsqlCommand cmd = new NpgsqlCommand("select * from show where showid = '" + Name + "'", conn);
+          
             NpgsqlCommand cmd = new NpgsqlCommand("select a.actid, a.name , s.date, s.name, s.seat_number, s.showid, s.sale_start, s.sale_stop from show s inner join acts a on s.showid = a.showid where s.showid = '" + Name + "' group by a.actid, a.name , s.date, s.name, s.seat_number, s.showid, s.sale_start, s.sale_stop ", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             Act newAct = new Act();
@@ -246,7 +246,6 @@ namespace cirkus
                 command = new NpgsqlCommand("select currval('show_showid_seq');", conn);
                 NpgsqlDataReader read;
                 read = command.ExecuteReader();
-
                 read.Read();
                 addedshowid = read[0].ToString();
                 conn.Close();
@@ -256,10 +255,40 @@ namespace cirkus
                     int id = int.Parse(r[0].ToString());
                     string an = r[1].ToString();
 
-                    NpgsqlCommand cmd = new NpgsqlCommand("insert into acts(name, showid) values(:nm, :shid)", conn);
-                    cmd.Parameters.Add(new NpgsqlParameter)
+                    conn.Open();
+                    command = new NpgsqlCommand("insert into acts(name, showid) values(:nm, :shid)", conn);
+                    command.Parameters.Add(new NpgsqlParameter("nm", an));
+                    command.Parameters.Add(new NpgsqlParameter("shid", addedshowid));
+                    command.ExecuteNonQuery();
+                    
+
+                    
+                    command = new NpgsqlCommand("select currval('acts_actid_seq');", conn);                   
+                    read = command.ExecuteReader();
+                    read.Read();
+                    addedactid = read[0].ToString();
+                    conn.Close();
+
+                    foreach (DataRow rw in dtSelectedSeats.Rows)
+                    {
+                        if (int.Parse(rw[0].ToString()) == id)
+                        {
+                            int seatid = int.Parse(rw[3].ToString());
+                            conn.Open();
+                            command = new NpgsqlCommand("insert into available_seats(actid, seatid) values (:aid, :sid)", conn);
+                            command.Parameters.Add(new NpgsqlParameter("aid", addedactid));
+                            command.Parameters.Add(new NpgsqlParameter("sid", seatid));
+                            command.ExecuteNonQuery();
+                            conn.Close();
+
+                            
+
+                        }
+
+                    }
 
 
+                    MessageBox.Show("Föreställning skapad");
                 }
 
 
@@ -364,6 +393,7 @@ namespace cirkus
             fs.DataSource = dtSeats;
             fs.Filter = string.Format("id = '{0}'", selected_actid);
 
+            dgSeats.
            
 
 

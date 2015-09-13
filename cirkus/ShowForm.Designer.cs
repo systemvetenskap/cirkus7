@@ -145,17 +145,17 @@
             // 
             // buttonLaggTIllForestallning
             // 
-            this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(757, 417);
+            this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(751, 457);
             this.buttonLaggTIllForestallning.Name = "buttonLaggTIllForestallning";
-            this.buttonLaggTIllForestallning.Size = new System.Drawing.Size(100, 23);
+            this.buttonLaggTIllForestallning.Size = new System.Drawing.Size(155, 23);
             this.buttonLaggTIllForestallning.TabIndex = 29;
-            this.buttonLaggTIllForestallning.Text = "Lägg till föreställningen";
+            this.buttonLaggTIllForestallning.Text = "Skapa föreställning";
             this.buttonLaggTIllForestallning.UseVisualStyleBackColor = true;
             this.buttonLaggTIllForestallning.Click += new System.EventHandler(this.buttonLaggTIllForestallning_Click);
             // 
             // buttonSparaAndringar
             // 
-            this.buttonSparaAndringar.Location = new System.Drawing.Point(757, 457);
+            this.buttonSparaAndringar.Location = new System.Drawing.Point(772, 511);
             this.buttonSparaAndringar.Name = "buttonSparaAndringar";
             this.buttonSparaAndringar.Size = new System.Drawing.Size(100, 23);
             this.buttonSparaAndringar.TabIndex = 30;
