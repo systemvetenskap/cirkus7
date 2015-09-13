@@ -329,7 +329,9 @@ namespace cirkus
                 
 
                 dgAseats.DataSource = dtSelectedSeats;
-                
+                this.dgAseats.Columns[0].Visible = false;
+                this.dgAseats.Columns[1].Visible = false;
+                this.dgAseats.Columns[2].Visible = false;
             }
 
 
@@ -393,8 +395,9 @@ namespace cirkus
             fs.DataSource = dtSeats;
             fs.Filter = string.Format("id = '{0}'", selected_actid);
 
-            dgSeats.
            
+            this.dgSeats.Columns[0].Visible = false;
+            this.dgSeats.Columns[1].Visible = false;
 
 
 
