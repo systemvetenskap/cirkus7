@@ -146,7 +146,7 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select show.name, acts.name, seats.section, seats.rownumber, price_group_seat.group, price_group_seat.price from show inner join acts on show.showid = acts.showid inner
+                string sql = @"select show.name, acts.name, seats.section, seats.rownumber, price_group_seat.group, price_group_seat.price, booking.reserved_to from show inner join acts on show.showid = acts.showid inner
 join available_seats on acts.actid = available_seats.actid
 inner
 join seats on available_seats.seatid = seats.seatid
@@ -898,23 +898,56 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         private void buttonEditTicket_Click(object sender, EventArgs e)
         {
             int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
-            
             int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
 
             ChangeTicketForm Ctf;
-
             if (SelectedTicket != -1 && SelectedCustomer !=-1)
-            {
-                string sql = "";
 
-                try
+
+            {
+                foreach (DataGridViewRow r in dgTickets.SelectedRows)
                 {
-                    conn.Open();
-                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                    DataGridViewRow t = (DataGridViewRow)r.Clone();
+                    t.Cells[0].Value = r.Cells[0].Value;
+                    t.Cells[1].Value = r.Cells[1].Value;
+                    t.Cells[2].Value = r.Cells[2].Value;
+                    t.Cells[3].Value = r.Cells[3].Value;
+                    t.Cells[4].Value = r.Cells[4].Value;
+                    t.Cells[5].Value = r.Cells[5].Value;
+                    t.Cells[6].Value = r.Cells[6].Value;
+
                     DataTable dt = new DataTable();
-                    da.Fill(dt);
+                    dt.Columns.Add("Föreställning");
+                    dt.Columns.Add("Akt");
+                    dt.Columns.Add("Sektion");
+                    dt.Columns.Add("Platsnummer");
+                    dt.Columns.Add("Biljettyp");
+                    dt.Columns.Add("Pris");
+                    dt.Columns.Add("Reserverad till");
+
+                    DataRow row;
+                    row = dt.NewRow();
+                    row[0] = r.Cells[0].Value;
+                    row[1] = r.Cells[1].Value;
+                    row[2] = r.Cells[2].Value;
+                    row[3] = r.Cells[3].Value;
+                    row[4] = r.Cells[4].Value;
+                    row[5] = r.Cells[5].Value;
+                    row[6] = r.Cells[6].Value;
+
+
+
+
+                    dt.Rows.Add(row);
                     Ctf = new ChangeTicketForm(dt);
                     Ctf.ShowDialog();
+
+
+                }
+                try
+                {
+                    //Ctf = new ChangeTicketForm(dt);
+                    //Ctf.ShowDialog();
                 }
                 catch (NpgsqlException ex)
                 {
