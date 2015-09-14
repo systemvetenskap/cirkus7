@@ -397,14 +397,14 @@ namespace cirkus
                 }
                 conn.Close();
 
-                //Totalt antal
-                int kronorVuxen, kronorUngdom, kornorBarn;
+                //Totalt kronor
+                int kronorVuxen, kronorUngdom, kronorBarn;
                 string totaltKornor;
 
                 kronorVuxen = Convert.ToInt32(textBoxKronorVuxenbiljetter.Text);
                 kronorUngdom = Convert.ToInt32(textBoxKronorUngdomsbiljetter.Text);
-                kornorBarn = Convert.ToInt32(textBoxKronorBarnbiljetter.Text);
-                totaltKornor = Convert.ToString(antalVuxen + antalUngdom + antalBarn);
+                kronorBarn = Convert.ToInt32(textBoxKronorBarnbiljetter.Text);
+                totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
 
                 textBoxTotaltKronor.Text = totaltKornor;
             }
