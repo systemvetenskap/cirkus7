@@ -147,8 +147,7 @@ namespace cirkus
             dtSeats.Columns.Add("id");
 
             
-            dgAseats.Columns["section"].DisplayIndex = 3;
-            dgAseats.Columns["rownumber"].DisplayIndex = 4;
+            
           
 
         }
@@ -304,6 +303,7 @@ namespace cirkus
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
                 frm.LoadShows();
+                frm.LoadAkter();
             }
         }
 
@@ -331,7 +331,7 @@ namespace cirkus
    
 
                 //dtSeats.Rows.RemoveAt(dgSeats.CurrentCell.RowIndex);
-                fs.RemoveAt(dgSeats.CurrentCell.RowIndex);
+                fs.RemoveAt(dgSeats.SelectedRows[0].Index);
 
                 dgAseats.DataSource = dtSelectedSeats;
                 this.dgAseats.Columns[4].DisplayIndex = 3;
@@ -339,6 +339,7 @@ namespace cirkus
                 this.dgAseats.Columns[0].Visible = false;
                 this.dgAseats.Columns[1].Visible = false;
                 this.dgAseats.Columns[2].Visible = false;
+
             }
 
 

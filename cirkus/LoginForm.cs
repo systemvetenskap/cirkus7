@@ -16,6 +16,17 @@ namespace cirkus
     {
         public string staffUserId, fname, lname, auth;
 
+
+        private void textUsername_Click(object sender, EventArgs e)
+        {
+            textUsername.Clear();
+        }
+
+        private void textPassword_Click(object sender, EventArgs e)
+        {
+            textPassword.Clear();
+        }
+
         private NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
 
         public LoginForm()
