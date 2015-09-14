@@ -238,20 +238,22 @@ namespace cirkus
             //dgBseats.DataSource = selectedseats;
             chosenacts.Columns.Add("actid");
             chosenacts.Columns.Add("name");
-            //panel1.Visible = false;
-            //panel2.Visible = false;
-            //panel3.Visible = false;
+            panel1.Visible = false;
+            panel2.Visible = false;
+            panel3.Visible = false;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             panel1.Visible = true;
+            panel2.Visible = false;
             //loadSection();
             load_Seats();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
             panel2.Visible = true;
 
    
@@ -286,12 +288,14 @@ namespace cirkus
                 customerid = int.Parse(read[0].ToString());
                 conn.Close();
                 panel3.Visible = true;
+                //panel2.Visible = false;
 
 
             }
             if (newcust == false)
             {
                panel3.Visible = true;
+                //panel2.Visible = false;
 
             }
         }
@@ -456,6 +460,18 @@ namespace cirkus
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            panel2.Visible = true;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            panel3.Visible = false;
+            panel2.Visible = true;
+        }
+
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -473,6 +489,7 @@ namespace cirkus
         private void button1_Click_1(object sender, EventArgs e)
         {
             createBooking();
+            
         }
 
         private void cbAgegroup_SelectedIndexChanged(object sender, EventArgs e)

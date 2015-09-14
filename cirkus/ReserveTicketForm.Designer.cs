@@ -45,10 +45,14 @@
             this.btnAddSeats = new System.Windows.Forms.Button();
             this.dgBseats = new System.Windows.Forms.DataGridView();
             this.dgSeats = new System.Windows.Forms.DataGridView();
-            this.checkedListBoxSeats = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.dgActs = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.txtepost = new System.Windows.Forms.TextBox();
@@ -87,11 +91,6 @@
             this.lblaseatid = new System.Windows.Forms.Label();
             this.lblcustid = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.dgActs = new System.Windows.Forms.DataGridView();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericChild)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
@@ -101,13 +100,13 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
             this.SuspendLayout();
             // 
             // numericChild
@@ -130,7 +129,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(398, 226);
+            this.buttonAdd.Location = new System.Drawing.Point(523, 226);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(106, 35);
             this.buttonAdd.TabIndex = 13;
@@ -140,7 +139,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(280, 226);
+            this.buttonCancel.Location = new System.Drawing.Point(417, 226);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 35);
             this.buttonCancel.TabIndex = 14;
@@ -323,15 +322,6 @@
             this.dgSeats.TabIndex = 25;
             this.dgSeats.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selected_seat);
             // 
-            // checkedListBoxSeats
-            // 
-            this.checkedListBoxSeats.FormattingEnabled = true;
-            this.checkedListBoxSeats.Location = new System.Drawing.Point(944, 742);
-            this.checkedListBoxSeats.Name = "checkedListBoxSeats";
-            this.checkedListBoxSeats.Size = new System.Drawing.Size(120, 79);
-            this.checkedListBoxSeats.TabIndex = 1;
-            this.checkedListBoxSeats.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checked_seats);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridViewShows);
@@ -366,6 +356,62 @@
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Akter";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(147, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Valda akter";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Tillgängliga akter";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(147, 186);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(95, 23);
+            this.button8.TabIndex = 27;
+            this.button8.Text = "Ta bort";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(6, 186);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(95, 23);
+            this.button7.TabIndex = 26;
+            this.button7.Text = "Välj";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // dgActs
+            // 
+            this.dgActs.AllowUserToAddRows = false;
+            this.dgActs.AllowUserToDeleteRows = false;
+            this.dgActs.AllowUserToResizeColumns = false;
+            this.dgActs.AllowUserToResizeRows = false;
+            this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgActs.ColumnHeadersVisible = false;
+            this.dgActs.Location = new System.Drawing.Point(147, 81);
+            this.dgActs.Name = "dgActs";
+            this.dgActs.ReadOnly = true;
+            this.dgActs.RowHeadersVisible = false;
+            this.dgActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgActs.Size = new System.Drawing.Size(95, 99);
+            this.dgActs.TabIndex = 25;
+            this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellClick);
             // 
             // groupBox6
             // 
@@ -558,29 +604,32 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(8, 282);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(629, 288);
+            this.panel1.Size = new System.Drawing.Size(697, 309);
             this.panel1.TabIndex = 40;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(450, 249);
+            this.button3.Location = new System.Drawing.Point(409, 243);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(69, 23);
+            this.button3.Size = new System.Drawing.Size(100, 35);
             this.button3.TabIndex = 43;
             this.button3.Text = "Tillbaka";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(539, 249);
+            this.button2.Location = new System.Drawing.Point(515, 243);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 23);
+            this.button2.Size = new System.Drawing.Size(100, 35);
             this.button2.TabIndex = 43;
             this.button2.Text = "Nästa";
             this.button2.UseVisualStyleBackColor = true;
@@ -588,15 +637,17 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.dgCustom);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.textBoxSearchCust);
             this.panel2.Controls.Add(this.groupBox6);
-            this.panel2.Location = new System.Drawing.Point(577, 607);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(496, 288);
+            this.panel2.Size = new System.Drawing.Size(697, 309);
             this.panel2.TabIndex = 41;
             // 
             // label9
@@ -610,18 +661,18 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(295, 249);
+            this.button4.Location = new System.Drawing.Point(409, 249);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(69, 23);
+            this.button4.Size = new System.Drawing.Size(100, 35);
             this.button4.TabIndex = 44;
             this.button4.Text = "Tillbaka";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(378, 249);
+            this.button5.Location = new System.Drawing.Point(515, 249);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(61, 23);
+            this.button5.Size = new System.Drawing.Size(100, 35);
             this.button5.TabIndex = 45;
             this.button5.Text = "Nästa";
             this.button5.UseVisualStyleBackColor = true;
@@ -634,9 +685,10 @@
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.groupBox7);
             this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Location = new System.Drawing.Point(14, 596);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(490, 288);
+            this.panel3.Size = new System.Drawing.Size(697, 309);
             this.panel3.TabIndex = 42;
             // 
             // radioButton5
@@ -651,18 +703,19 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(289, 262);
+            this.button6.Location = new System.Drawing.Point(401, 231);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(69, 23);
+            this.button6.Size = new System.Drawing.Size(100, 35);
             this.button6.TabIndex = 46;
             this.button6.Text = "Tillbaka";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(369, 262);
+            this.button1.Location = new System.Drawing.Point(507, 231);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 23);
+            this.button1.Size = new System.Drawing.Size(100, 35);
             this.button1.TabIndex = 36;
             this.button1.Text = "Slutför";
             this.button1.UseVisualStyleBackColor = true;
@@ -740,69 +793,14 @@
             this.label16.TabIndex = 50;
             this.label16.Text = "Customer id";
             // 
-            // dgActs
-            // 
-            this.dgActs.AllowUserToAddRows = false;
-            this.dgActs.AllowUserToDeleteRows = false;
-            this.dgActs.AllowUserToResizeColumns = false;
-            this.dgActs.AllowUserToResizeRows = false;
-            this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgActs.ColumnHeadersVisible = false;
-            this.dgActs.Location = new System.Drawing.Point(147, 81);
-            this.dgActs.Name = "dgActs";
-            this.dgActs.ReadOnly = true;
-            this.dgActs.RowHeadersVisible = false;
-            this.dgActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgActs.Size = new System.Drawing.Size(95, 99);
-            this.dgActs.TabIndex = 25;
-            this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellClick);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(6, 186);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(95, 23);
-            this.button7.TabIndex = 26;
-            this.button7.Text = "Välj";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(147, 186);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(95, 23);
-            this.button8.TabIndex = 27;
-            this.button8.Text = "Ta bort";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 59);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 13);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Tillgängliga akter";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(147, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Valda akter";
-            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1199, 923);
+            this.ClientSize = new System.Drawing.Size(697, 309);
             this.Controls.Add(this.label16);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblcustid);
             this.Controls.Add(this.lblaseatid);
             this.Controls.Add(this.lblactid);
@@ -810,10 +808,6 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.checkedListBoxSeats);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonCancel);
@@ -832,6 +826,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -842,7 +837,6 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -861,7 +855,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.CheckedListBox checkedListBoxSeats;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox txtepost;
         private System.Windows.Forms.TextBox txttel;
