@@ -524,9 +524,19 @@ namespace cirkus
                 textBoxEpost.Text = read[4].ToString();
                 textBoxAnvandarnamn.Text = read[5].ToString();
                 textBoxLosenord.Text = read[6].ToString();
-                string auth = read[7].ToString();
-            
-                comboBoxBehorighetsniva.SelectedIndex = Convert.ToInt16(auth);
+                int auth = int.Parse(read[7].ToString());
+
+                if (auth==0)
+                {
+                    comboBoxBehorighetsniva.SelectedText = "Biljettförsäljare";
+
+                }
+                else if (auth==1)
+                {
+                    comboBoxBehorighetsniva.SelectedText = "Administratör";
+
+                }
+
                 conn.Close();
                 btnUpdateraKonto.Text = "Spara ändringar";
                 textBoxAnvandarnamn.Enabled = false;
@@ -615,16 +625,16 @@ namespace cirkus
                 cmd.Parameters.Add(new NpgsqlParameter("un", textBoxAnvandarnamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("pass", textBoxLosenord.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("id", staffid));
+
                 if (comboBoxBehorighetsniva.SelectedIndex == 0)
                 {
                     int auth = 0;
                     cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
                 }
-                if (comboBoxBehorighetsniva.SelectedIndex == 1)
+                else if (comboBoxBehorighetsniva.SelectedIndex == 1)
                 {
                     int auth = 1;
                     cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
-
                 }
 
                 LblStatus.Visible = true;
