@@ -27,6 +27,7 @@ namespace cirkus
         public DataTable dt = new DataTable();
         private NpgsqlDataAdapter da;
         private List<show> allShowsList;
+        private int CustomerID;
         #endregion
         #region Main
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,10 +143,40 @@ namespace cirkus
         private void listTickets()
         {
             int currentRow = dgCustomers.SelectedRows[0].Index;
+            string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
+                string sql = @"select show.name, acts.name, seats.section, seats.rownumber, price_group_seat.group, price_group_seat.price from show inner join acts on show.showid = acts.showid inner
+join available_seats on acts.actid = available_seats.actid
+inner
+join seats on available_seats.seatid = seats.seatid
+inner
+join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+inner
+join price_group_seat on booked_seats.priceid = price_group_seat.priceid
+inner
+join booking on booked_seats.bookingid = booking.bookingid
+inner
+join customer on booking.customerid = customer.customerid WHERE customer.customerid = '"+ CustomerID + "'";
 
-        }
+                try
+                {
+                    conn.Open();
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgTickets.DataSource = dt;
+                }
+                catch (NpgsqlException ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
 
         }
         private void buttonAddCustomer_Click(object sender, EventArgs e)
@@ -862,6 +893,40 @@ namespace cirkus
         private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
         {
             LoadStatistics();
+        }
+
+        private void buttonEditTicket_Click(object sender, EventArgs e)
+        {
+            int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
+            
+            int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
+
+            ChangeTicketForm Ctf;
+
+            if (SelectedTicket != -1 && SelectedCustomer !=-1)
+            {
+                string sql = "";
+
+                try
+                {
+                    conn.Open();
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    Ctf = new ChangeTicketForm(dt);
+                    Ctf.ShowDialog();
+                }
+                catch (NpgsqlException ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
         }
     }
 }
