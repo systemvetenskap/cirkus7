@@ -429,6 +429,7 @@ namespace cirkus
         {
             LoadAkter();
             LoadStatistics();
+            
         }
         #endregion
         #region Konto
