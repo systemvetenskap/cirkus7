@@ -685,6 +685,7 @@ namespace cirkus
                     conn.Close();
                     return;
                 }
+
                 conn.Close();
 
                 textBoxAnvandarnamn.Enabled = true;
