@@ -738,6 +738,7 @@
             this.dgStaff.Location = new System.Drawing.Point(51, 97);
             this.dgStaff.MultiSelect = false;
             this.dgStaff.Name = "dgStaff";
+            this.dgStaff.ReadOnly = true;
             this.dgStaff.RowHeadersVisible = false;
             this.dgStaff.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
