@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace cirkus
     {
         #region Variables
         private int staffid;
+        private int showid;
+        private int actid;
         private string staffUserId;
         private string staffFname;
         private string staffLname;
@@ -38,6 +41,8 @@ namespace cirkus
                     break;
                 case 1:
                     LoadShows();
+                    LoadAkter();
+                    LoadStatistics();
                     break;
                 case 2:
                     ListaPersonal();
@@ -86,6 +91,14 @@ namespace cirkus
         {
             listCustomers();
         }
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawString("Biljett", new Font("arial", 17), new SolidBrush(Color.Black), 10, 10);
+            e.Graphics.DrawString("Kundens namn", new Font("arial", 17), new SolidBrush(Color.Black), 10, 50);
+            e.Graphics.DrawString("Plats", new Font("arial", 17), new SolidBrush(Color.Black), 10, 90);
+            e.Graphics.DrawString("Föreställning", new Font("arial", 17), new SolidBrush(Color.Black), 10, 130);
+            e.Graphics.DrawString("Akter", new Font("arial", 17), new SolidBrush(Color.Black), 10, 170);
+        }
         private void listCustomers()
         {
             string sqlSearch = textBoxSearchCustomer.Text;
@@ -116,6 +129,11 @@ namespace cirkus
         }
         private void listTickets()
         {
+            int currentRow = dgCustomers.SelectedRows[0].Index;
+            if (currentRow != -1)
+            {
+
+        }
 
         }
         private void buttonAddCustomer_Click(object sender, EventArgs e)
@@ -130,10 +148,24 @@ namespace cirkus
             ReserveTicketForm rtf = new ReserveTicketForm();
             rtf.ShowDialog();
         }
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            //PrintDialog pdialog = new PrintDialog();
+            //pdialog.Document = printDocument1;
+            //pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(partOfForm());
+
+            //if (pdialog.ShowDialog() == DialogResult.OK)
+            //{
+            printDocument1.Print();
+            //}
+
+        }
+        private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            listTickets();
+        }
         #endregion
         #region Föreställningar
-
-
         private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
         {
             ShowForm showForm = new ShowForm();
@@ -167,7 +199,6 @@ namespace cirkus
             LoadShows();
             MessageBox.Show("Förestälningen är raderad!");
         }
-
         private void buttonAndraForestallning_Click(object sender, EventArgs e)
         {
             int selectedID;
@@ -184,6 +215,10 @@ namespace cirkus
 
             frm.ShowDialog();
         }
+        private void dgvAkter_SelectionChanged(object sender, EventArgs e)
+        {
+            //LoadAkter();
+        }
         public void LoadShows()
         {
             DataTable dt = new DataTable();
@@ -193,22 +228,195 @@ namespace cirkus
 
             try
             {
-
-
-
                 conn.Open();
                 sql = "select showid, date, name from show order by date DESC";
                 da = new NpgsqlDataAdapter(sql, conn);
                 da.Fill(dt);
                 dgvShowsList.DataSource = dt;
-                conn.Close();
+                //conn.Close();
                 dgvShowsList.Columns["showid"].Visible = false;
             }
-            catch
+            catch (NpgsqlException ex)
             {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            
+        }
+
+        public void LoadStatistics()
+        {
+            //Antal Vuxenbiljetter
+            int selectedIndex = dgvAkter.SelectedRows[0].Index;
+            actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
+
+           
+            conn.Open();
+            string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            textBoxAntalVuxenBiljetter.Clear();
+
+            while (dr.Read())
+            {
+                textBoxAntalVuxenBiljetter.Text = dr.GetValue(1).ToString();
             }
 
+            if (textBoxAntalVuxenBiljetter.Text == "")
+            {
+                textBoxAntalVuxenBiljetter.Text = "0";
+            }
+            conn.Close();
 
+            //Anttal ungdomsbiljetter
+            conn.Open();
+            string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'ungdom' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
+            NpgsqlDataReader drAU = cmdAU.ExecuteReader();
+
+            textBoxAntalUngdomsbiljetter.Clear();
+
+            while (drAU.Read())
+            {
+                textBoxAntalUngdomsbiljetter.Text = drAU.GetValue(1).ToString();
+            }
+
+            if (textBoxAntalUngdomsbiljetter.Text == "")
+            {
+                textBoxAntalUngdomsbiljetter.Text = "0";
+            }
+            conn.Close();
+
+            //Antal ungdomsbiljetter
+            conn.Open();
+            string sqlAB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'barn' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmdAB = new NpgsqlCommand(sqlAB, conn);
+            NpgsqlDataReader drAB = cmdAB.ExecuteReader();
+
+            textBoxAntalBarnbiljetter.Clear();
+
+            while (drAB.Read())
+            {
+                textBoxAntalBarnbiljetter.Text = drAB.GetValue(1).ToString();
+            }
+
+            if (textBoxAntalBarnbiljetter.Text == "")
+            {
+                textBoxAntalBarnbiljetter.Text = "0";
+            }
+            conn.Close();
+
+            //Totalt antal
+            int antalVuxen, antalUngdom, antalBarn;
+            string totaltSumma;
+
+            antalVuxen = Convert.ToInt32(textBoxAntalVuxenBiljetter.Text);
+            antalUngdom = Convert.ToInt32(textBoxAntalUngdomsbiljetter.Text);
+            antalBarn = Convert.ToInt32(textBoxAntalBarnbiljetter.Text);
+            totaltSumma = Convert.ToString(antalVuxen + antalUngdom + antalBarn);
+
+            textBoxTotaltAntal.Text = totaltSumma;
+
+            //Kronor vuxen
+            conn.Open();
+            string sqlKV = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmdKV = new NpgsqlCommand(sqlKV, conn);
+            NpgsqlDataReader drKV = cmdKV.ExecuteReader();
+
+            textBoxKronorVuxenbiljetter.Clear();
+
+            while (drKV.Read())
+            {
+                textBoxKronorVuxenbiljetter.Text = drKV.GetValue(0).ToString();
+            }
+
+            if (textBoxKronorVuxenbiljetter.Text == "")
+            {
+                textBoxKronorVuxenbiljetter.Text = "0";
+            }
+            conn.Close();
+
+            //Kronor ungdom
+            conn.Open();
+            string sqlKU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'ungdom' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmdKU = new NpgsqlCommand(sqlKU, conn);
+            NpgsqlDataReader drKU = cmdKU.ExecuteReader();
+
+            textBoxKronorUngdomsbiljetter.Clear();
+
+            while (drKU.Read())
+            {
+                textBoxKronorUngdomsbiljetter.Text = drKU.GetValue(0).ToString();
+            }
+
+            if (textBoxKronorUngdomsbiljetter.Text == "")
+            {
+                textBoxKronorUngdomsbiljetter.Text = "0";
+            }
+            conn.Close();
+
+            //Kronor ungdom
+            conn.Open();
+            string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'barn' group by price_group_seat.group, acts.actid";
+
+            NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
+            NpgsqlDataReader drKB = cmdKB.ExecuteReader();
+
+            textBoxKronorBarnbiljetter.Clear();
+
+            while (drKB.Read())
+            {
+                textBoxKronorBarnbiljetter.Text = drKB.GetValue(0).ToString();
+            }
+
+            if (textBoxKronorBarnbiljetter.Text == "")
+            {
+                textBoxKronorBarnbiljetter.Text = "0";
+            }
+            conn.Close();
+            
+            //Totalt antal
+            int kronorVuxen, kronorUngdom, kornorBarn;
+            string totaltKornor;
+
+            kronorVuxen = Convert.ToInt32(textBoxKronorVuxenbiljetter.Text);
+            kronorUngdom = Convert.ToInt32(textBoxKronorUngdomsbiljetter.Text);
+            kornorBarn = Convert.ToInt32(textBoxKronorBarnbiljetter.Text);
+            totaltKornor = Convert.ToString(antalVuxen + antalUngdom + antalBarn);
+
+            textBoxTotaltKronor.Text = totaltKornor;
+            
+        }
+
+        public void LoadAkter()
+        {
+            int selectedIndex = dgvShowsList.SelectedRows[0].Index;
+            showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
+            
+            string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";       
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+            dgvAkter.DataSource = dt;
+            conn.Close();
+
+           this.dgvAkter.Columns[1].Visible = false;
+        }
+        private void dgvShowsList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadAkter();
+            LoadStatistics();
         }
         #endregion
         #region Konto
@@ -230,12 +438,20 @@ namespace cirkus
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                dataGridViewStaff.DataSource = dt;
+                dgStaff.DataSource = dt;
 
-                DataGridViewColumn column = dataGridViewStaff.Columns[0];
-                DataGridViewColumn column1 = dataGridViewStaff.Columns[1];
-                DataGridViewColumn column2 = dataGridViewStaff.Columns[2];
-                this.dataGridViewStaff.Columns[0].Visible = false;
+                dgStaff.Columns[0].Visible = false;
+                dgStaff.Columns[1].Visible = true;
+                dgStaff.Columns[2].Visible = true;
+                dgStaff.Columns[3].Visible = true;
+
+                dgStaff.Columns[1].HeaderText = "Efternamn";
+                dgStaff.Columns[2].HeaderText = "Förnamn";
+                dgStaff.Columns[3].HeaderText = "Telefonnummer";               
+
+                DataGridViewColumn column = dgStaff.Columns[0];
+                DataGridViewColumn column1 = dgStaff.Columns[1];
+                DataGridViewColumn column2 = dgStaff.Columns[2];
 
                 column.Width = 60;
                 column1.Width = 60;
@@ -268,6 +484,30 @@ namespace cirkus
         }
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
+            //Kontrollerar längden på textboxarna
+            if (textBoxFornamn.TextLength>60 || textBoxEfternamn.TextLength>60)
+            {
+                MessageBox.Show("Förnamn och efternamn får max innehålla 60 tecken");
+                return;
+            }
+            if (textBoxTelefonnummer.TextLength>10)
+            {
+                MessageBox.Show("Telefonnummret får max innehålla 10 siffror");
+                return;
+            }
+            if (textBoxEpost.TextLength>60)
+            {
+                MessageBox.Show("Epostadressen får innehålla max 60 tecken");
+                return;
+            }
+            if (textBoxAnvandarnamn.TextLength>60 || textBoxLosenord.TextLength>60)
+            {
+                MessageBox.Show("Användarnamnet och lösenordet får max innehålla 60 tecken.");
+                return;
+            }
+            //Slut kontrollera längd på textboxar
+
+            //Kontrollerar siffror och bokstäver
             if (!EndastSiffror(textBoxTelefonnummer.Text))
             {
                 MessageBox.Show("Telefonnummret får bara innehålla siffror");
@@ -278,6 +518,9 @@ namespace cirkus
                 MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
                 return;
             }
+            //Slut kontrollerar siffror och bokstäver
+
+            //Kontrollerar tomma textboxar
             if (string.IsNullOrEmpty(textBoxFornamn.Text) || string.IsNullOrEmpty(textBoxEfternamn.Text)
                 || string.IsNullOrEmpty(textBoxTelefonnummer.Text) || string.IsNullOrEmpty(textBoxEpost.Text)
                 || string.IsNullOrEmpty(textBoxAnvandarnamn.Text) || string.IsNullOrEmpty(textBoxLosenord.Text)
@@ -286,6 +529,7 @@ namespace cirkus
                 MessageBox.Show("Ett eller flera fält är tomma. Fyll i alla fält");
                 return;
             }
+            //Slut konrtrollerar tomma textboxar
             try
             {
                 conn.Open();
@@ -313,6 +557,7 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 ListaPersonal();
+                tomFalt();
             }
             catch (NpgsqlException)
             {
@@ -336,6 +581,29 @@ namespace cirkus
         }
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
+            //Kontrollerar längden på textboxarna
+            if (textBoxFornamn.TextLength > 60 || textBoxEfternamn.TextLength > 60)
+            {
+                MessageBox.Show("Förnamn och efternamn får max innehålla 60 tecken");
+                return;
+            }
+            if (textBoxTelefonnummer.TextLength > 10)
+            {
+                MessageBox.Show("Telefonnummret får max innehålla 10 siffror");
+                return;
+            }
+            if (textBoxEpost.TextLength > 60)
+            {
+                MessageBox.Show("Epostadressen får innehålla max 60 tecken");
+                return;
+            }
+            if (textBoxAnvandarnamn.TextLength > 60 || textBoxLosenord.TextLength > 60)
+            {
+                MessageBox.Show("Användarnamnet och lösenordet får max innehålla 60 tecken.");
+                return;
+            }
+            //Slut kontrollera längden på textboxar
+            //Kontrollerar siffror och bokstäver
             if (!EndastSiffror(textBoxTelefonnummer.Text))
             {
                 MessageBox.Show("Telefonnummret får bara innehålla siffror");
@@ -346,15 +614,17 @@ namespace cirkus
                 MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
                 return;
             }
-            if (dataGridViewStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera konto")
+            //Slut kontrollerar siffror och bokstäver
+
+            if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera konto")
             {
-                int selectedIndex = dataGridViewStaff.SelectedRows[0].Index;
+                int selectedIndex = dgStaff.SelectedRows[0].Index;
 
-                staffid = int.Parse(dataGridViewStaff[0, selectedIndex].Value.ToString());
+                staffid = int.Parse(dgStaff[0, selectedIndex].Value.ToString());
 
-                btnTomFalten.Enabled = false;
+                //btnTomFalten.Enabled = false;
                 btnSkapaKonto.Enabled = false;
-                dataGridViewStaff.Enabled = false;
+                dgStaff.Enabled = false;
 
                 conn.Open();
                 NpgsqlCommand cmd = new NpgsqlCommand(@"select fname, lname, phonenumber, email, username, password, auth
@@ -376,7 +646,7 @@ namespace cirkus
                 textBoxAnvandarnamn.Enabled = false;
 
             }
-            else if (dataGridViewStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar")
+            else if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar")
             {
 
                 conn.Open();
@@ -407,7 +677,7 @@ namespace cirkus
 
                 conn.Close();
 
-                dataGridViewStaff.Enabled = true;
+                dgStaff.Enabled = true;
                 tomFalt();
                 ListaPersonal();
                 btnUpdateraKonto.Text = "Uppdatera konto";
@@ -417,10 +687,33 @@ namespace cirkus
             }
 
         }
-        
-        
         #endregion
 
+        private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadStatistics();
+        }
 
+        private void dgvShowsList_KeyDown(object sender, KeyEventArgs e)
+        {
+            LoadAkter();
+            LoadStatistics();
+        }
+
+        private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
+        {
+            LoadAkter();
+            LoadStatistics();
+        }
+
+        private void dgvAkter_KeyDown(object sender, KeyEventArgs e)
+        {
+            LoadStatistics();
+        }
+
+        private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
+        {
+            LoadStatistics();
+        }
     }
 }
