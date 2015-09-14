@@ -331,7 +331,7 @@ namespace cirkus
    
 
                 //dtSeats.Rows.RemoveAt(dgSeats.CurrentCell.RowIndex);
-                fs.RemoveAt(dgSeats.CurrentCell.RowIndex);
+                fs.RemoveAt(dgSeats.SelectedRows[0].Index);
 
                 dgAseats.DataSource = dtSelectedSeats;
                 this.dgAseats.Columns[4].DisplayIndex = 3;
