@@ -74,8 +74,9 @@ namespace cirkus
             listCustomers();
 
         }
-        public void tomFalt()
+        public void tomFaltochFarg()
         {
+            textBoxPersonnummer.Clear();
             textBoxFornamn.Clear();
             textBoxEfternamn.Clear();
             textBoxEpost.Clear();
@@ -83,6 +84,17 @@ namespace cirkus
             textBoxAnvandarnamn.Clear();
             textBoxLosenord.Clear();
             comboBoxBehorighetsniva.ResetText();
+
+            textBoxPersonnummer.BackColor=Color.White;
+            textBoxFornamn.BackColor = Color.White;
+            textBoxEfternamn.BackColor = Color.White;
+            textBoxEpost.BackColor = Color.White;
+            textBoxTelefonnummer.BackColor = Color.White;
+            textBoxAnvandarnamn.BackColor = Color.White;
+            textBoxLosenord.BackColor = Color.White;
+            comboBoxBehorighetsniva.BackColor = Color.White;
+
+
         }
 
         #endregion
@@ -426,9 +438,9 @@ namespace cirkus
         }
         private void btnTomFalten_Click(object sender, EventArgs e)
         {
-            tomFalt();
+            tomFaltochFarg();
         }
-        private void ListaPersonal()//Metod för att lista personalen i Datagriden....
+        private void ListaPersonal()//Metod för att lista personalen i Datagriden.
         {
             string sqlSearchStaff = textBoxSearchStaff.Text;
             string sql = "SELECT staffid, lname, fname, phonenumber  FROM staff WHERE LOWER(fname) LIKE LOWER('%" + sqlSearchStaff + "%') OR LOWER(lname) LIKE LOWER('%" + sqlSearchStaff + "%')";
@@ -452,10 +464,12 @@ namespace cirkus
                 DataGridViewColumn column = dgStaff.Columns[0];
                 DataGridViewColumn column1 = dgStaff.Columns[1];
                 DataGridViewColumn column2 = dgStaff.Columns[2];
+                DataGridViewColumn column3 = dgStaff.Columns[3];
 
                 column.Width = 60;
-                column1.Width = 60;
-                column2.Width = 80;
+                column1.Width = 100;
+                column2.Width = 100;
+                column3.Width = 100;
 
                 conn.Close();
 
@@ -484,58 +498,79 @@ namespace cirkus
         }
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
-            //Kontrollerar längden på textboxarna
-            if (textBoxFornamn.TextLength>60 || textBoxEfternamn.TextLength>60)
+            //Kontrollerar längden, siffror/bokstäver och tomma fält
+            if (textBoxPersonnummer.TextLength>10||textBoxPersonnummer.TextLength<10 ||string.IsNullOrWhiteSpace(textBoxPersonnummer.Text))
             {
-                MessageBox.Show("Förnamn och efternamn får max innehålla 60 tecken");
+                textBoxPersonnummer.BackColor = Color.Tomato;
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Tomato;
+                LblStatus.Text = "Ange personnummret, med 10 siffror";
                 return;
             }
-            if (textBoxTelefonnummer.TextLength>10)
+            if (textBoxFornamn.TextLength>60 || !BaraBokstäver(textBoxFornamn.Text)||string.IsNullOrWhiteSpace(textBoxFornamn.Text))
             {
-                MessageBox.Show("Telefonnummret får max innehålla 10 siffror");
+                textBoxFornamn.BackColor = Color.Tomato;
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Tomato;
+                LblStatus.Text = "Ange förnamn, utan siffror, max 60 bokstäver";
                 return;
             }
-            if (textBoxEpost.TextLength>60)
+            if (textBoxEfternamn.TextLength > 60 || !BaraBokstäver(textBoxEfternamn.Text)||string.IsNullOrWhiteSpace(textBoxEfternamn.Text))
             {
-                MessageBox.Show("Epostadressen får innehålla max 60 tecken");
+                textBoxEfternamn.BackColor = Color.Tomato;
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Tomato;
+                LblStatus.Text = "Ange förnamn, utan siffror, max 60 bokstäver.";
                 return;
             }
-            if (textBoxAnvandarnamn.TextLength>60 || textBoxLosenord.TextLength>60)
+            if (textBoxTelefonnummer.TextLength>10||!EndastSiffror(textBoxTelefonnummer.Text)||string.IsNullOrWhiteSpace(textBoxTelefonnummer.Text))
             {
-                MessageBox.Show("Användarnamnet och lösenordet får max innehålla 60 tecken.");
+                textBoxTelefonnummer.BackColor = Color.Tomato;
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Tomato;
+                LblStatus.Text = "Ange telefonnummer, max 10 siffror";
                 return;
             }
-            //Slut kontrollera längd på textboxar
-
-            //Kontrollerar siffror och bokstäver
-            if (!EndastSiffror(textBoxTelefonnummer.Text))
+            if (textBoxEpost.TextLength>60||string.IsNullOrWhiteSpace(textBoxEpost.Text))
             {
-                MessageBox.Show("Telefonnummret får bara innehålla siffror");
+                textBoxEpost.BackColor = Color.Tomato;
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Tomato;
+                LblStatus.Text = "Ange epost, max 60 tecken";
                 return;
             }
-            if (!BaraBokstäver(textBoxFornamn.Text) || !BaraBokstäver(textBoxEfternamn.Text))
+            if (textBoxAnvandarnamn.TextLength>60||string.IsNullOrWhiteSpace(textBoxAnvandarnamn.Text))
             {
-                MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
+                textBoxAnvandarnamn.BackColor = Color.Tomato;
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Tomato;
+                LblStatus.Text = "Ange epost, max 60 tecken";
                 return;
             }
-            //Slut kontrollerar siffror och bokstäver
-
-            //Kontrollerar tomma textboxar
-            if (string.IsNullOrEmpty(textBoxFornamn.Text) || string.IsNullOrEmpty(textBoxEfternamn.Text)
-                || string.IsNullOrEmpty(textBoxTelefonnummer.Text) || string.IsNullOrEmpty(textBoxEpost.Text)
-                || string.IsNullOrEmpty(textBoxAnvandarnamn.Text) || string.IsNullOrEmpty(textBoxLosenord.Text)
-                || string.IsNullOrEmpty(comboBoxBehorighetsniva.Text))
+            if (textBoxLosenord.TextLength > 60||string.IsNullOrWhiteSpace(textBoxLosenord.Text))
             {
-                MessageBox.Show("Ett eller flera fält är tomma. Fyll i alla fält");
+                textBoxLosenord.BackColor = Color.Tomato;
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Tomato;
+                LblStatus.Text = "Ange lösenord, max 60 tecken";
                 return;
             }
-            //Slut konrtrollerar tomma textboxar
+            if (string.IsNullOrEmpty(comboBoxBehorighetsniva.Text))
+            {
+                comboBoxBehorighetsniva.BackColor = Color.Tomato;
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Tomato;
+                LblStatus.Text = "Välj en behörighet";
+                return;
+            }
+            //Slut kontrollera längden, siffror/bokstäver och tomma fält
             try
             {
                 conn.Open();
-                string sql = "INSERT INTO staff (fname,lname,phonenumber,email,username,password,auth) VALUES(:fname, :lname, :phonenumber, :email, :username, :password, :auth)";
+                string sql = "INSERT INTO staff (ssn,fname,lname,phonenumber,email,username,password,auth) VALUES(:ssn, :fname, :lname, :phonenumber, :email, :username, :password, :auth)";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
+                cmd.Parameters.Add(new NpgsqlParameter("ssn", textBoxPersonnummer.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("fname", textBoxFornamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("lname", textBoxEfternamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("phonenumber", textBoxTelefonnummer.Text));
@@ -554,15 +589,21 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
 
                 }
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Green;
+                LblStatus.Text = "Användare tillagd";
+
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 ListaPersonal();
-                tomFalt();
+                tomFaltochFarg();
             }
             catch (NpgsqlException)
             {
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Tomato;
+                LblStatus.Text = "Användaren finns redan";
 
-                MessageBox.Show("Användarnamnet är upptaget");
                 conn.Close();
             }
 
@@ -581,66 +622,45 @@ namespace cirkus
         }
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
-            //Kontrollerar längden på textboxarna
-            if (textBoxFornamn.TextLength > 60 || textBoxEfternamn.TextLength > 60)
-            {
-                MessageBox.Show("Förnamn och efternamn får max innehålla 60 tecken");
-                return;
-            }
-            if (textBoxTelefonnummer.TextLength > 10)
-            {
-                MessageBox.Show("Telefonnummret får max innehålla 10 siffror");
-                return;
-            }
-            if (textBoxEpost.TextLength > 60)
-            {
-                MessageBox.Show("Epostadressen får innehålla max 60 tecken");
-                return;
-            }
-            if (textBoxAnvandarnamn.TextLength > 60 || textBoxLosenord.TextLength > 60)
-            {
-                MessageBox.Show("Användarnamnet och lösenordet får max innehålla 60 tecken.");
-                return;
-            }
-            //Slut kontrollera längden på textboxar
-            //Kontrollerar siffror och bokstäver
-            if (!EndastSiffror(textBoxTelefonnummer.Text))
-            {
-                MessageBox.Show("Telefonnummret får bara innehålla siffror");
-                return;
-            }
-            if (!BaraBokstäver(textBoxFornamn.Text) || !BaraBokstäver(textBoxEfternamn.Text))
-            {
-                MessageBox.Show("Förnamn & efternamn får endast innehålla bokstäver");
-                return;
-            }
-            //Slut kontrollerar siffror och bokstäver
+            btnRaderaKonto.Enabled = true;
+            btnTomFalten.Enabled = false;
 
-            if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera konto")
+            if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Uppdatera/ändra konto")
             {
                 int selectedIndex = dgStaff.SelectedRows[0].Index;
 
                 staffid = int.Parse(dgStaff[0, selectedIndex].Value.ToString());
 
-                //btnTomFalten.Enabled = false;
                 btnSkapaKonto.Enabled = false;
                 dgStaff.Enabled = false;
 
                 conn.Open();
-                NpgsqlCommand cmd = new NpgsqlCommand(@"select fname, lname, phonenumber, email, username, password, auth
+                NpgsqlCommand cmd = new NpgsqlCommand(@"select ssn, fname, lname, phonenumber, email, username, password, auth
                                                         from staff where staffid = '" + staffid + "'", conn);
                 NpgsqlDataReader read;
                 read = cmd.ExecuteReader();
                 read.Read();
 
-                textBoxFornamn.Text = read[0].ToString();
-                textBoxEfternamn.Text = read[1].ToString();
-                textBoxTelefonnummer.Text = read[2].ToString();
-                textBoxEpost.Text = read[3].ToString();
-                textBoxAnvandarnamn.Text = read[4].ToString();
-                textBoxLosenord.Text = read[5].ToString();
-                string auth = read[6].ToString();
-                comboBoxBehorighetsniva.SelectedIndex = Convert.ToInt16(auth);
+                textBoxPersonnummer.Text = read[0].ToString();
+                textBoxFornamn.Text = read[1].ToString();
+                textBoxEfternamn.Text = read[2].ToString();
+                textBoxTelefonnummer.Text = read[3].ToString();
+                textBoxEpost.Text = read[4].ToString();
+                textBoxAnvandarnamn.Text = read[5].ToString();
+                textBoxLosenord.Text = read[6].ToString();
+                int auth = int.Parse(read[7].ToString());
+
+                if (auth==0)
+                {
+                    comboBoxBehorighetsniva.SelectedText = "Biljettförsäljare";
+
+                }
+                else if (auth==1)
+                {
+                    comboBoxBehorighetsniva.SelectedText = "Administratör";
+
+                }
+
                 conn.Close();
                 btnUpdateraKonto.Text = "Spara ändringar";
                 textBoxAnvandarnamn.Enabled = false;
@@ -649,11 +669,79 @@ namespace cirkus
             else if (dgStaff.SelectedRows.Count > 0 && btnUpdateraKonto.Text == "Spara ändringar")
             {
 
+                //Kontrollerar längden, siffror/bokstäver och tomma fält
+                if (textBoxPersonnummer.TextLength > 10 || textBoxPersonnummer.TextLength < 10 || string.IsNullOrWhiteSpace(textBoxPersonnummer.Text))
+                {
+                    textBoxPersonnummer.BackColor = Color.Tomato;
+                    LblStatus.Visible = true;
+                    LblStatus.ForeColor = Color.Tomato;
+                    LblStatus.Text = "Ange personnummret, med 10 siffror";
+                    return;
+                }
+                if (textBoxFornamn.TextLength > 60 || !BaraBokstäver(textBoxFornamn.Text) || string.IsNullOrWhiteSpace(textBoxFornamn.Text))
+                {
+                    textBoxFornamn.BackColor = Color.Tomato;
+                    LblStatus.Visible = true;
+                    LblStatus.ForeColor = Color.Tomato;
+                    LblStatus.Text = "Ange förnamn, utan siffror, max 60 bokstäver";
+                    return;
+                }
+                if (textBoxEfternamn.TextLength > 60 || !BaraBokstäver(textBoxEfternamn.Text) || string.IsNullOrWhiteSpace(textBoxEfternamn.Text))
+                {
+                    textBoxEfternamn.BackColor = Color.Tomato;
+                    LblStatus.Visible = true;
+                    LblStatus.ForeColor = Color.Tomato;
+                    LblStatus.Text = "Ange förnamn, utan siffror, max 60 bokstäver.";
+                    return;
+                }
+                if (textBoxTelefonnummer.TextLength > 10 || !EndastSiffror(textBoxTelefonnummer.Text) || string.IsNullOrWhiteSpace(textBoxTelefonnummer.Text))
+                {
+                    textBoxTelefonnummer.BackColor = Color.Tomato;
+                    LblStatus.Visible = true;
+                    LblStatus.ForeColor = Color.Tomato;
+                    LblStatus.Text = "Ange telefonnummer, max 10 siffror";
+                    return;
+                }
+                if (textBoxEpost.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxEpost.Text))
+                {
+                    textBoxEpost.BackColor = Color.Tomato;
+                    LblStatus.Visible = true;
+                    LblStatus.ForeColor = Color.Tomato;
+                    LblStatus.Text = "Ange epost, max 60 tecken";
+                    return;
+                }
+                if (textBoxAnvandarnamn.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxAnvandarnamn.Text))
+                {
+                    textBoxAnvandarnamn.BackColor = Color.Tomato;
+                    LblStatus.Visible = true;
+                    LblStatus.ForeColor = Color.Tomato;
+                    LblStatus.Text = "Ange epost, max 60 tecken";
+                    return;
+                }
+                if (textBoxLosenord.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxLosenord.Text))
+                {
+                    textBoxLosenord.BackColor = Color.Tomato;
+                    LblStatus.Visible = true;
+                    LblStatus.ForeColor = Color.Tomato;
+                    LblStatus.Text = "Ange lösenord, max 60 tecken";
+                    return;
+                }
+                if (string.IsNullOrEmpty(comboBoxBehorighetsniva.Text))
+                {
+                    comboBoxBehorighetsniva.BackColor = Color.Tomato;
+                    LblStatus.Visible = true;
+                    LblStatus.ForeColor = Color.Tomato;
+                    LblStatus.Text = "Välj en behörighet";
+                    return;
+                }
+                //Slut kontrollera längden, siffror/bokstäver och tomma fält
+               
                 conn.Open();
 
-                NpgsqlCommand cmd = new NpgsqlCommand(@"update staff set fname = @fn, lname = @ln, phonenumber = @pn, email = @email, 
+                NpgsqlCommand cmd = new NpgsqlCommand(@"update staff set ssn = @ssn, fname = @fn, lname = @ln, phonenumber = @pn, email = @email, 
                                                         username = @un, password = @pass, auth = @auth where staffid =@id", conn);
 
+                cmd.Parameters.Add(new NpgsqlParameter("ssn", textBoxPersonnummer.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("fn", textBoxFornamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("ln", textBoxEfternamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("pn", textBoxTelefonnummer.Text));
@@ -661,31 +749,85 @@ namespace cirkus
                 cmd.Parameters.Add(new NpgsqlParameter("un", textBoxAnvandarnamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("pass", textBoxLosenord.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("id", staffid));
+
                 if (comboBoxBehorighetsniva.SelectedIndex == 0)
                 {
                     int auth = 0;
                     cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
                 }
-                if (comboBoxBehorighetsniva.SelectedIndex == 1)
+                else if (comboBoxBehorighetsniva.SelectedIndex == 1)
                 {
                     int auth = 1;
                     cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
-
                 }
 
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Green;
+                LblStatus.Text = "Användare updaterad";
+  
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
 
+                btnTomFalten.Enabled = true;
+                btnRaderaKonto.Enabled = false;
                 dgStaff.Enabled = true;
-                tomFalt();
                 ListaPersonal();
-                btnUpdateraKonto.Text = "Uppdatera konto";
+                btnUpdateraKonto.Text = "Uppdatera/ändra konto";
                 textBoxAnvandarnamn.Enabled = true;
                 btnSkapaKonto.Enabled = true;
+                tomFaltochFarg();
 
             }
 
+        }
+        private void btnRaderaKonto_Click(object sender, EventArgs e)
+        {
+            DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade användaren ?",
+                "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (Confirmation == DialogResult.Yes)
+            {
+                int SelectedStaff;
+
+                DataGridViewRow selectedrow = this.dgStaff.SelectedRows[0];
+                SelectedStaff = Convert.ToInt32(selectedrow.Cells["staffid"].Value);
+                string sql = "DELETE FROM staff WHERE staffid = '" + SelectedStaff + "'";
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                conn.Open();
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (NpgsqlException ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                    
+                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna användaren. Användaren har en eller flera aktiva föreställningar kopplade till kontot.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    conn.Close();
+                    return;
+                }
+
+                conn.Close();
+
+                textBoxAnvandarnamn.Enabled = true;
+                dgStaff.Enabled = true;
+                btnRaderaKonto.Enabled = false;
+                btnSkapaKonto.Enabled = true;
+                btnSkapaKonto.Text = "Skapa/Lägg till konto";
+                btnUpdateraKonto.Text = "Uppdatera/ändra konto";
+                LblStatus.Visible = true;
+                LblStatus.ForeColor = Color.Red;
+                LblStatus.Text = "Användare raderad";
+                ListaPersonal();
+                tomFaltochFarg();
+            }
+            if (Confirmation==DialogResult.No)
+            {
+                return;
+            }
         }
         #endregion
 
