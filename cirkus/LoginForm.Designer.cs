@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.button1 = new System.Windows.Forms.Button();
             this.textUsername = new System.Windows.Forms.TextBox();
             this.textPassword = new System.Windows.Forms.TextBox();
@@ -57,7 +56,6 @@
             this.textUsername.TabIndex = 1;
             this.textUsername.Text = "Användarnamn";
             this.textUsername.Click += new System.EventHandler(this.textUsername_Click);
-            
             // 
             // textPassword
             // 
@@ -69,11 +67,10 @@
             this.textPassword.Text = "lösen";
             this.textPassword.UseSystemPasswordChar = true;
             this.textPassword.Click += new System.EventHandler(this.textPassword_Click);
-         
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::cirkus.Properties.Resources.cirkus_kul_bus_300x211;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(294, 212);
@@ -86,7 +83,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(332, 418);
+            this.ClientSize = new System.Drawing.Size(315, 418);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textPassword);
             this.Controls.Add(this.textUsername);
