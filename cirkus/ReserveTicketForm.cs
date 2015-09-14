@@ -17,9 +17,12 @@ namespace cirkus
         int showid, actid, seatid,agegroup, customerid, total, checkedseats, priceid;      
         string show, act, bseats, selectedsection;
         bool newcust;
-        DataTable shows, acts, seats, section;
+        DataTable shows, acts, section;
+        DataTable seats = new DataTable();
+        DataTable chosenacts = new DataTable();
         DataTable selectedseats = new DataTable();
         BindingSource filterseats = new BindingSource();
+        BindingSource filterBseats = new BindingSource();
         NpgsqlCommand cmd;
 
         public ReserveTicketForm()
@@ -70,7 +73,7 @@ namespace cirkus
             dataGridViewActs.DataSource = acts;
             this.dataGridViewActs.Columns[0].Visible = false;
             dataGridViewActs.Columns[1].Width = 129;
-
+            dataGridViewActs.ClearSelection();
 
 
           
@@ -144,7 +147,7 @@ namespace cirkus
 
                 seatid = int.Parse(dgSeats[0, selectedIndexSeat].Value.ToString());
 
-                label11.Text = seatid.ToString();
+                //label11.Text = seatid.ToString();
             }
             catch
             {
@@ -157,19 +160,20 @@ namespace cirkus
             conn.Open();
             
 
-            string getSeatnr = @"select available_seats.available_seats_id as seatid, acts.actid, rownumber, section from seats inner join available_seats on seats.seatid = available_seats.seatid 
+            string getSeatnr = @"select available_seats.available_seats_id as seatid, acts.actid, section, rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
                                     inner join acts on available_seats.actid = acts.actid
                                     inner join show on acts.showid = show.showid
                                         left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                            where booked_seat_id is null and show.showid = '"+showid+"' order by rownumber ";
+                                            where booked_seat_id is null and show.showid = '" + showid+"' order by rownumber ";
 
 
 
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(getSeatnr, conn);
-            seats = new DataTable();
+            
 
             da.Fill(seats);
 
+            
             dataGridViewActs.ClearSelection();
             conn.Close();
         }
@@ -227,10 +231,13 @@ namespace cirkus
             txtfnamn.Enabled = false;
             txttel.Enabled = false;
             selectedseats.Columns.Add("seatid");
+            selectedseats.Columns.Add("actid");
             selectedseats.Columns.Add("section");
             selectedseats.Columns.Add("rownumber");
             selectedseats.Columns.Add("priceid");
-            dgBseats.DataSource = selectedseats;
+            //dgBseats.DataSource = selectedseats;
+            chosenacts.Columns.Add("actid");
+            chosenacts.Columns.Add("name");
             //panel1.Visible = false;
             //panel2.Visible = false;
             //panel3.Visible = false;
@@ -346,7 +353,7 @@ namespace cirkus
 
             seatid = int.Parse(dgSeats[0, selectedIndex].Value.ToString());
 
-            label11.Text = seatid.ToString();
+            //label11.Text = seatid.ToString();
         }
 
         private void btnAddSeats_Click(object sender, EventArgs e)
@@ -372,25 +379,26 @@ namespace cirkus
                 foreach (DataGridViewRow r in dgSeats.SelectedRows)
                 {
                     DataGridViewRow t = (DataGridViewRow)r.Clone();
-                    t.Cells[0].Value = r.Cells[2].Value;
+                    t.Cells[0].Value = r.Cells[0].Value;
                     t.Cells[1].Value = r.Cells[1].Value;
-                    t.Cells[2].Value = r.Cells[0].Value;
+                    t.Cells[2].Value = r.Cells[2].Value;
+                    t.Cells[3].Value = r.Cells[3].Value;
 
-                 
 
-                    selectedseats.Rows.Add(r.Cells[0].Value, r.Cells[1].Value, r.Cells[2].Value, priceid);
+
+                    selectedseats.Rows.Add(r.Cells[0].Value, r.Cells[1].Value, r.Cells[2].Value, r.Cells[3].Value, priceid);
                    
-                    this.dgBseats.Columns[0].Visible = false;
+                    //this.dgBseats.Columns[0].Visible = false;
 
-                    dgBseats.Columns[1].Width = 60;
-                    dgBseats.Columns[2].Width = 60;
-                    dgBseats.Columns[3].Width = 20;
                     
-                    DataRow[] rows = section.Select("seatid ='" + seatid + "'");
-                    foreach (DataRow rw in rows)
-                        rw.Delete();
+                    
+                    //DataRow[] rows = section.Select("seatid ='" + seatid + "'");
+                    //foreach (DataRow rw in rows)
+                        //rw.Delete();
                     checkedseats++;
-                    reload_datable();
+                    //reload_datable();
+                    
+                    //dgBseats.DataSource = selectedseats;
                 }
                 
             }
@@ -400,6 +408,59 @@ namespace cirkus
         private void btnRemSeats_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedIndex = dgActs.SelectedRows[0].Index;
+
+            actid = int.Parse(dgActs[0, selectedIndex].Value.ToString());
+
+            dgSeats.DataSource = seats;
+            filterseats.DataSource = seats;
+            filterseats.Filter = string.Format("actid = '{0}'", actid);
+
+            dgBseats.DataSource = selectedseats;
+            filterBseats.DataSource = selectedseats;
+            filterBseats.Filter = string.Format("actid = '{0}'", actid);
+
+            dgSeats.Columns[0].Visible = false;
+            dgSeats.Columns[1].Visible = false;
+            dgBseats.Columns[0].Visible = false;
+            dgBseats.Columns[1].Visible = false;
+            dgSeats.ClearSelection();
+            dgBseats.ClearSelection();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+           
+            foreach (DataGridViewRow r in dataGridViewActs.SelectedRows)
+            {
+                DataGridViewRow t = (DataGridViewRow)r.Clone();
+                t.Cells[0].Value = r.Cells[0].Value;
+                t.Cells[1].Value = r.Cells[1].Value;
+           
+
+
+
+                chosenacts.Rows.Add(r.Cells[0].Value, r.Cells[1].Value);
+
+                dgActs.DataSource = chosenacts;
+
+                dgActs.Columns[0].Visible = false;
+
+
+                //DataRow[] rows = section.Select("actid ='" + actid + "'");
+                //foreach (DataRow rw in rows)
+                //rw.Delete();
+                dataGridViewActs.Rows.Remove(dataGridViewActs.SelectedRows[0]);
+                dgActs.ClearSelection();
+                dataGridViewActs.ClearSelection();
+                //reload_datable();
+
+                
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -448,10 +509,8 @@ namespace cirkus
 
         private void dataGridViewActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            filterseats.DataSource = seats;
+    
 
-            filterseats.Filter = "actid = '"{0}"', actid;
-            
             create_summary();
 
         }
@@ -460,11 +519,6 @@ namespace cirkus
             conn.Close();
             //load_Seats();
         }
-
-
-
-
-
         private void checked_seats(object sender, ItemCheckEventArgs e)
         {
             CheckedListBox items = (CheckedListBox)sender;
@@ -488,18 +542,11 @@ namespace cirkus
 
 
         }
-
         private void added_child(object sender, EventArgs e)
         {
             total = Convert.ToInt16(numericChild.Value);
             
         }
-
-
-
-
-
-
 
         private void create_summary()
         {
@@ -544,7 +591,7 @@ namespace cirkus
 
                 seatid = int.Parse(dgSeats[0, selectedIndex].Value.ToString());
 
-                label11.Text = seatid.ToString();
+                //label11.Text = seatid.ToString();
 
             }
             catch
