@@ -384,21 +384,13 @@ namespace cirkus
                     t.Cells[2].Value = r.Cells[2].Value;
                     t.Cells[3].Value = r.Cells[3].Value;
 
+                    selectedseats.Rows.Add(r.Cells[0].Value, r.Cells[1].Value, r.Cells[2].Value, r.Cells[3].Value, priceid);         
 
+                    filterseats.RemoveAt(dgSeats.CurrentCell.RowIndex);
 
-                    selectedseats.Rows.Add(r.Cells[0].Value, r.Cells[1].Value, r.Cells[2].Value, r.Cells[3].Value, priceid);
-                   
-                    //this.dgBseats.Columns[0].Visible = false;
-
-                    
-                    
-                    //DataRow[] rows = section.Select("seatid ='" + seatid + "'");
-                    //foreach (DataRow rw in rows)
-                        //rw.Delete();
+                  
                     checkedseats++;
-                    //reload_datable();
-                    
-                    //dgBseats.DataSource = selectedseats;
+                
                 }
                 
             }
@@ -457,6 +449,7 @@ namespace cirkus
                 dataGridViewActs.Rows.Remove(dataGridViewActs.SelectedRows[0]);
                 dgActs.ClearSelection();
                 dataGridViewActs.ClearSelection();
+                
                 //reload_datable();
 
                 
@@ -637,23 +630,23 @@ namespace cirkus
                     conn.Close();
                     
                     conn.Open();
-                    sql = "insert into booked_seats(available_seats_id,priceid, bookingid) values(:sid, :pid, :bid)";
+                    sql = "insert into booked_seats(available_seats_id, bookingid, priceid ) values(:sid, :bid, :pid)";
                     cmd = new NpgsqlCommand(sql, conn);
-                    cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));
-                    cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+                    cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));                  
                     cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
+                    cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
 
                     cmd.ExecuteNonQuery();
                     conn.Close();
 
-                    MessageBox.Show("Bokning utförd");
+                    
 
                 }
 
 
+            MessageBox.Show("Bokning utförd");
 
-            
-        
+
 
         }
 
