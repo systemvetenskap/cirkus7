@@ -147,8 +147,7 @@ namespace cirkus
             dtSeats.Columns.Add("id");
 
             
-            dgAseats.Columns["section"].DisplayIndex = 3;
-            dgAseats.Columns["rownumber"].DisplayIndex = 4;
+            
           
 
         }
@@ -340,6 +339,7 @@ namespace cirkus
                 this.dgAseats.Columns[0].Visible = false;
                 this.dgAseats.Columns[1].Visible = false;
                 this.dgAseats.Columns[2].Visible = false;
+
             }
 
 
