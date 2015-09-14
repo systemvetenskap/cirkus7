@@ -635,9 +635,9 @@ namespace cirkus
 
 
                     cmd.ExecuteNonQuery();
-                    conn.Close();
+                   
 
-                    conn.Open();
+                    
                     cmd = new NpgsqlCommand("select currval('booking_bookingid_seq');", conn);
                     NpgsqlDataReader read;
                     read = cmd.ExecuteReader();
