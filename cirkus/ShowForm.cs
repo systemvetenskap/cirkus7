@@ -69,23 +69,46 @@ namespace cirkus
 
         private void buttonLaggTillAkt_Click(object sender, EventArgs e)
         {
+            int selectedIndex = dgActs.SelectedRows[0].Index;
             if (string.IsNullOrWhiteSpace(txtActname.Text))
             {
-                MessageBox.Show("Du måste ange akt i textboxen");
+                labelAngeAkt.Visible = true;
+                return;
             }
+            if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
+            {
+                labelAngeStaplatser.Visible = true;
+                return;
 
+            }
+            if (txtActname.Text == dgActs[2, selectedIndex].Value.ToString())
+            {
+
+                DialogResult addAct = MessageBox.Show("Vill du ändra den valda akten?",
+                "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (addAct == DialogResult.Yes)
+                {
+                    dtActs.Rows[selectedIndex][1] = txtActname.Text.ToString();
+                    dtActs.Rows[selectedIndex][2] = textBoxAntalFriplatser.Text.ToString();
+                    
+
+
+                }
+
+            }
             else
             {
-           
+                
                 DataRow row = dtActs.NewRow();
 
                 row[1] = txtActname.Text.ToString();
-                
+                row[2] = textBoxAntalFriplatser.Text.ToString();
                 dtActs.Rows.Add(row);
-                   
+
                 dgActs.DataSource = dtActs;
-               
+
                 this.dgActs.Columns[0].Visible = false;
+                this.dgActs.Columns[2].Visible = false;
                 dgActs.Columns[1].Width = 80;
                 dgActs.ClearSelection();
                 labelAngeAkt.Visible = false;
@@ -110,12 +133,13 @@ namespace cirkus
                         }
 
                     }
-           
+
 
                 }
 
                 //dgTest.DataSource = dtSeats;
-                
+                txtActname.Clear();
+                textBoxAntalFriplatser.Clear();
 
             }
 
@@ -143,6 +167,7 @@ namespace cirkus
             id.ColumnName = "id";
             dtActs.Columns.Add(id);
             dtActs.Columns.Add("name");
+            dtActs.Columns.Add("free_placement");
             dtSeats = new DataTable();
             dtSeats.Columns.Add("id");
 
@@ -240,10 +265,9 @@ namespace cirkus
 
                 conn.Open();
 
-                command = new NpgsqlCommand(@"Insert into show (name, seat_number, date, sale_start, sale_stop) Values (@name, @seat_number, @date, @sale_start, @sale_stop)", conn);
+                command = new NpgsqlCommand(@"Insert into show (name, date, sale_start, sale_stop) Values (@name, @date, @sale_start, @sale_stop)", conn);
                 command.Parameters.AddWithValue("@date", date);
-                command.Parameters.AddWithValue("@name", name);
-                command.Parameters.AddWithValue("@seat_number", seat_number);
+                command.Parameters.AddWithValue("@name", name);              
                 command.Parameters.AddWithValue("@sale_start", sale_start);
                 command.Parameters.AddWithValue("@sale_stop", sale_stop);
                 command.ExecuteNonQuery();
@@ -261,11 +285,13 @@ namespace cirkus
                 {
                     int id = int.Parse(r[0].ToString());
                     string an = r[1].ToString();
+                    int fp = int.Parse(r[2].ToString());
 
                     conn.Open();
-                    command = new NpgsqlCommand("insert into acts(name, showid) values(:nm, :shid)", conn);
+                    command = new NpgsqlCommand("insert into acts(name, showid, free_placement) values(:nm, :shid, :fp)", conn);
                     command.Parameters.Add(new NpgsqlParameter("nm", an));
                     command.Parameters.Add(new NpgsqlParameter("shid", addedshowid));
+                    command.Parameters.Add(new NpgsqlParameter("fp", fp));
                     command.ExecuteNonQuery();
                     
 
@@ -406,6 +432,16 @@ namespace cirkus
 
         }
 
+        private void Sittplatser_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtActname_Click(object sender, EventArgs e)
+        {
+            labelAngeAkt.Visible = false;
+        }
+
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int selectedIndex = dgActs.SelectedRows[0].Index;
@@ -413,10 +449,8 @@ namespace cirkus
             selected_actid = int.Parse(dgActs[0, selectedIndex].Value.ToString());
 
             selected_actname = dgActs[1, selectedIndex].Value.ToString();
-
-            
-
-
+            textBoxAntalFriplatser.Text = dgActs[2, selectedIndex].Value.ToString();
+            txtActname.Text = selected_actname;
 
 
 

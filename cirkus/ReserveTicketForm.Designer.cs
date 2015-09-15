@@ -33,8 +33,8 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.dataGridViewShows = new System.Windows.Forms.DataGridView();
             this.dataGridViewActs = new System.Windows.Forms.DataGridView();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioLoge = new System.Windows.Forms.RadioButton();
+            this.radioFri = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbAgegroup = new System.Windows.Forms.ComboBox();
             this.btnRemSeats = new System.Windows.Forms.Button();
@@ -95,6 +95,9 @@
             this.lblB = new System.Windows.Forms.Label();
             this.lblTotalError = new System.Windows.Forms.Label();
             this.lblNoShow = new System.Windows.Forms.Label();
+            this.lblFreeP = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dgFseats = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -110,6 +113,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgFseats)).BeginInit();
             this.SuspendLayout();
             // 
             // radioButton2
@@ -180,40 +184,44 @@
             this.dataGridViewActs.TabIndex = 19;
             this.dataGridViewActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewActs_CellClick);
             // 
-            // radioButton3
+            // radioLoge
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
-            this.radioButton3.Location = new System.Drawing.Point(9, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(71, 17);
-            this.radioButton3.TabIndex = 22;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Logeplats";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioLoge.AutoSize = true;
+            this.radioLoge.Checked = true;
+            this.radioLoge.Location = new System.Drawing.Point(12, 19);
+            this.radioLoge.Name = "radioLoge";
+            this.radioLoge.Size = new System.Drawing.Size(71, 17);
+            this.radioLoge.TabIndex = 22;
+            this.radioLoge.TabStop = true;
+            this.radioLoge.Text = "Logeplats";
+            this.radioLoge.UseVisualStyleBackColor = true;
+            this.radioLoge.CheckedChanged += new System.EventHandler(this.radioLoge_CheckedChanged);
             // 
-            // radioButton4
+            // radioFri
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(91, 19);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(82, 17);
-            this.radioButton4.TabIndex = 23;
-            this.radioButton4.Text = "Fri placering";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioFri.AutoSize = true;
+            this.radioFri.Location = new System.Drawing.Point(91, 19);
+            this.radioFri.Name = "radioFri";
+            this.radioFri.Size = new System.Drawing.Size(82, 17);
+            this.radioFri.TabIndex = 23;
+            this.radioFri.Text = "Fri placering";
+            this.radioFri.UseVisualStyleBackColor = true;
+            this.radioFri.CheckedChanged += new System.EventHandler(this.radioFri_CheckedChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.lblFreeP);
             this.groupBox1.Controls.Add(this.cbAgegroup);
             this.groupBox1.Controls.Add(this.btnRemSeats);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.textBoxSeats);
             this.groupBox1.Controls.Add(this.btnAddSeats);
-            this.groupBox1.Controls.Add(this.dgBseats);
             this.groupBox1.Controls.Add(this.dgSeats);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton3);
+            this.groupBox1.Controls.Add(this.radioLoge);
+            this.groupBox1.Controls.Add(this.dgBseats);
+            this.groupBox1.Controls.Add(this.radioFri);
             this.groupBox1.Location = new System.Drawing.Point(295, 21);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(324, 214);
@@ -307,7 +315,7 @@
             this.dgSeats.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgSeats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSeats.ColumnHeadersVisible = false;
-            this.dgSeats.Location = new System.Drawing.Point(6, 81);
+            this.dgSeats.Location = new System.Drawing.Point(9, 81);
             this.dgSeats.Name = "dgSeats";
             this.dgSeats.ReadOnly = true;
             this.dgSeats.RowHeadersVisible = false;
@@ -829,12 +837,48 @@
             this.lblNoShow.TabIndex = 52;
             this.lblNoShow.Text = "label3";
             // 
+            // lblFreeP
+            // 
+            this.lblFreeP.AutoSize = true;
+            this.lblFreeP.Location = new System.Drawing.Point(244, 183);
+            this.lblFreeP.Name = "lblFreeP";
+            this.lblFreeP.Size = new System.Drawing.Size(13, 13);
+            this.lblFreeP.TabIndex = 51;
+            this.lblFreeP.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(156, 183);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 13);
+            this.label3.TabIndex = 52;
+            this.label3.Text = "Antal fri placering:";
+            // 
+            // dgFseats
+            // 
+            this.dgFseats.AllowUserToAddRows = false;
+            this.dgFseats.AllowUserToDeleteRows = false;
+            this.dgFseats.AllowUserToResizeColumns = false;
+            this.dgFseats.AllowUserToResizeRows = false;
+            this.dgFseats.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgFseats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgFseats.ColumnHeadersVisible = false;
+            this.dgFseats.Location = new System.Drawing.Point(713, 369);
+            this.dgFseats.Name = "dgFseats";
+            this.dgFseats.ReadOnly = true;
+            this.dgFseats.RowHeadersVisible = false;
+            this.dgFseats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgFseats.Size = new System.Drawing.Size(161, 99);
+            this.dgFseats.TabIndex = 53;
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(729, 1174);
+            this.ClientSize = new System.Drawing.Size(1084, 1174);
+            this.Controls.Add(this.dgFseats);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.panel2);
@@ -876,6 +920,7 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgFseats)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -887,8 +932,8 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.DataGridView dataGridViewShows;
         private System.Windows.Forms.DataGridView dataGridViewActs;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioLoge;
+        private System.Windows.Forms.RadioButton radioFri;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -949,5 +994,8 @@
         private System.Windows.Forms.Label lblB;
         private System.Windows.Forms.Label lblTotalError;
         private System.Windows.Forms.Label lblNoShow;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblFreeP;
+        private System.Windows.Forms.DataGridView dgFseats;
     }
 }

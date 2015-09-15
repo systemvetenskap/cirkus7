@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using System.IO;
+
 namespace cirkus
 {
     public partial class ReserveTicketForm : Form
@@ -17,8 +18,8 @@ namespace cirkus
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int showid, actid, seatid,agegroup, customerid, total, checkedseats, priceid, freeSseats, freeLseats;      
         string show, act, bseats, selectedsection;
-        bool newcust;
-        DataTable shows, acts, section;
+        bool newcust, seatType;
+        DataTable shows, acts, section,dtfSeats;
         DataTable seats = new DataTable();
         DataTable chosenacts = new DataTable();
         DataTable selectedseats = new DataTable();
@@ -49,7 +50,7 @@ namespace cirkus
 
             conn.Close();
 
-
+            
 
             //loadActs();
 
@@ -158,6 +159,7 @@ namespace cirkus
         }
         private void load_Seats()
         {
+            conn.Close();
             conn.Open();
             
 
@@ -242,6 +244,9 @@ namespace cirkus
             //dgBseats.DataSource = selectedseats;
             chosenacts.Columns.Add("actid");
             chosenacts.Columns.Add("name");
+            dtfSeats = new DataTable();
+            dtfSeats.Columns.Add("actid");
+            dtfSeats.Columns.Add("priceid");
             panel1.Visible = false;
             panel2.Visible = false;
             panel3.Visible = false;
@@ -412,22 +417,39 @@ namespace cirkus
             }
             if (checkedseats < total)
             {
-                foreach (DataGridViewRow r in dgSeats.SelectedRows)
+                if(seatType == true)
                 {
-                    DataGridViewRow t = (DataGridViewRow)r.Clone();
-                    t.Cells[0].Value = r.Cells[0].Value;
-                    t.Cells[1].Value = r.Cells[1].Value;
-                    t.Cells[2].Value = r.Cells[2].Value;
-                    t.Cells[3].Value = r.Cells[3].Value;
+                    foreach (DataGridViewRow r in dgSeats.SelectedRows)
+                    {
+                        DataGridViewRow t = (DataGridViewRow)r.Clone();
+                        t.Cells[0].Value = r.Cells[0].Value;
+                        t.Cells[1].Value = r.Cells[1].Value;
+                        t.Cells[2].Value = r.Cells[2].Value;
+                        t.Cells[3].Value = r.Cells[3].Value;
 
-                    selectedseats.Rows.Add(r.Cells[0].Value, r.Cells[1].Value, r.Cells[2].Value, r.Cells[3].Value, priceid);         
+                        selectedseats.Rows.Add(r.Cells[0].Value, r.Cells[1].Value, r.Cells[2].Value, r.Cells[3].Value, priceid);
 
-                    filterseats.RemoveAt(dgSeats.CurrentCell.RowIndex);
+                        filterseats.RemoveAt(dgSeats.CurrentCell.RowIndex);
 
-                  
-                    checkedseats++;
-                
+
+                        checkedseats++;
+
+                      }
+
+
                 }
+                else if(seatType == false)
+                {
+                    
+
+
+                    dtfSeats.Rows.Add(actid, priceid);
+
+                    dgFseats.DataSource = dtfSeats;
+
+
+                }
+   
                 
             }
 
@@ -520,6 +542,17 @@ namespace cirkus
 
             txtBoxNrP.BackColor = Color.White;
             lblTotalError.Visible = false;
+        }
+
+        private void radioLoge_CheckedChanged(object sender, EventArgs e)
+        {
+            seatType = true;
+        }
+
+        private void radioFri_CheckedChanged(object sender, EventArgs e)
+        {
+            seatType = false;
+            
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -785,7 +818,7 @@ namespace cirkus
                     if (freeLseats < total && total > 0)
                     {
                         lblA.Visible = true;
-                        lblA.Text = "Antal personer överstiger antal lediga ståplatser";
+                        lblA.Text = "Antal personer överstiger antal lediga sittplatser";
                         lblA.ForeColor = Color.Tomato;                       
 
                     }

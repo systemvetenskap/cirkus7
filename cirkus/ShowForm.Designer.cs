@@ -56,21 +56,21 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Sittplatser = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAseats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.Sittplatser.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonLaggTillAkt
             // 
             this.buttonLaggTillAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLaggTillAkt.Location = new System.Drawing.Point(113, 36);
+            this.buttonLaggTillAkt.Location = new System.Drawing.Point(113, 79);
             this.buttonLaggTillAkt.Name = "buttonLaggTillAkt";
             this.buttonLaggTillAkt.Size = new System.Drawing.Size(54, 23);
             this.buttonLaggTillAkt.TabIndex = 0;
@@ -100,11 +100,11 @@
             // labelAkter
             // 
             this.labelAkter.AutoSize = true;
-            this.labelAkter.Location = new System.Drawing.Point(5, 17);
+            this.labelAkter.Location = new System.Drawing.Point(5, 10);
             this.labelAkter.Name = "labelAkter";
-            this.labelAkter.Size = new System.Drawing.Size(49, 13);
+            this.labelAkter.Size = new System.Drawing.Size(134, 13);
             this.labelAkter.TabIndex = 9;
-            this.labelAkter.Text = "Aktnamn";
+            this.labelAkter.Text = "Aktnamn(lägg till akt/akter)";
             this.labelAkter.Click += new System.EventHandler(this.labelAkter_Click);
             // 
             // labelDatum
@@ -119,7 +119,7 @@
             // labelAntalFriplatser
             // 
             this.labelAntalFriplatser.AutoSize = true;
-            this.labelAntalFriplatser.Location = new System.Drawing.Point(6, 147);
+            this.labelAntalFriplatser.Location = new System.Drawing.Point(5, 66);
             this.labelAntalFriplatser.Name = "labelAntalFriplatser";
             this.labelAntalFriplatser.Size = new System.Drawing.Size(79, 13);
             this.labelAntalFriplatser.TabIndex = 12;
@@ -137,16 +137,17 @@
             // 
             // txtActname
             // 
-            this.txtActname.Location = new System.Drawing.Point(6, 36);
+            this.txtActname.Location = new System.Drawing.Point(6, 29);
             this.txtActname.Name = "txtActname";
             this.txtActname.Size = new System.Drawing.Size(100, 20);
             this.txtActname.TabIndex = 21;
+            this.txtActname.Click += new System.EventHandler(this.txtActname_Click);
             // 
             // textBoxAntalFriplatser
             // 
-            this.textBoxAntalFriplatser.Location = new System.Drawing.Point(7, 163);
+            this.textBoxAntalFriplatser.Location = new System.Drawing.Point(6, 82);
             this.textBoxAntalFriplatser.Name = "textBoxAntalFriplatser";
-            this.textBoxAntalFriplatser.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAntalFriplatser.Size = new System.Drawing.Size(70, 20);
             this.textBoxAntalFriplatser.TabIndex = 24;
             this.textBoxAntalFriplatser.Click += new System.EventHandler(this.textBoxAntalFriplatser_Click);
             this.textBoxAntalFriplatser.TextChanged += new System.EventHandler(this.textBoxAntalFriplatser_TextChanged);
@@ -164,7 +165,7 @@
             // 
             // buttonSparaAndringar
             // 
-            this.buttonSparaAndringar.Location = new System.Drawing.Point(220, 464);
+            this.buttonSparaAndringar.Location = new System.Drawing.Point(212, 464);
             this.buttonSparaAndringar.Name = "buttonSparaAndringar";
             this.buttonSparaAndringar.Size = new System.Drawing.Size(115, 55);
             this.buttonSparaAndringar.TabIndex = 30;
@@ -175,7 +176,7 @@
             // buttonRaderaAkt
             // 
             this.buttonRaderaAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRaderaAkt.Location = new System.Drawing.Point(136, 166);
+            this.buttonRaderaAkt.Location = new System.Drawing.Point(136, 176);
             this.buttonRaderaAkt.Name = "buttonRaderaAkt";
             this.buttonRaderaAkt.Size = new System.Drawing.Size(31, 23);
             this.buttonRaderaAkt.TabIndex = 31;
@@ -230,7 +231,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 91);
+            this.label4.Location = new System.Drawing.Point(6, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 44;
@@ -253,7 +254,7 @@
             this.labelAngeAkt.AutoSize = true;
             this.labelAngeAkt.BackColor = System.Drawing.Color.White;
             this.labelAngeAkt.ForeColor = System.Drawing.Color.Red;
-            this.labelAngeAkt.Location = new System.Drawing.Point(5, 65);
+            this.labelAngeAkt.Location = new System.Drawing.Point(3, 52);
             this.labelAngeAkt.Name = "labelAngeAkt";
             this.labelAngeAkt.Size = new System.Drawing.Size(153, 13);
             this.labelAngeAkt.TabIndex = 46;
@@ -265,7 +266,7 @@
             this.labelAngeStaplatser.AutoSize = true;
             this.labelAngeStaplatser.BackColor = System.Drawing.Color.White;
             this.labelAngeStaplatser.ForeColor = System.Drawing.Color.Red;
-            this.labelAngeStaplatser.Location = new System.Drawing.Point(113, 166);
+            this.labelAngeStaplatser.Location = new System.Drawing.Point(6, 101);
             this.labelAngeStaplatser.Name = "labelAngeStaplatser";
             this.labelAngeStaplatser.Size = new System.Drawing.Size(156, 13);
             this.labelAngeStaplatser.TabIndex = 47;
@@ -323,13 +324,13 @@
             this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgActs.ColumnHeadersVisible = false;
-            this.dgActs.Location = new System.Drawing.Point(6, 107);
+            this.dgActs.Location = new System.Drawing.Point(6, 133);
             this.dgActs.Name = "dgActs";
             this.dgActs.ReadOnly = true;
             this.dgActs.RowHeadersVisible = false;
             this.dgActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgActs.Size = new System.Drawing.Size(124, 82);
+            this.dgActs.Size = new System.Drawing.Size(124, 62);
             this.dgActs.TabIndex = 51;
             this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellClick);
             // 
@@ -340,12 +341,9 @@
             this.groupBox1.Controls.Add(this.labelDatum);
             this.groupBox1.Controls.Add(this.dateTimePickerDatum);
             this.groupBox1.Controls.Add(this.dateTimePickerForsaljningstidFran);
-            this.groupBox1.Controls.Add(this.labelAngeStaplatser);
             this.groupBox1.Controls.Add(this.labelAngeBeskrivningen);
             this.groupBox1.Controls.Add(this.labelForsaljningstid);
             this.groupBox1.Controls.Add(this.dateTimePickerForsaljningstidTill);
-            this.groupBox1.Controls.Add(this.labelAntalFriplatser);
-            this.groupBox1.Controls.Add(this.textBoxAntalFriplatser);
             this.groupBox1.Location = new System.Drawing.Point(12, 36);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(272, 205);
@@ -368,38 +366,34 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtActname);
             this.groupBox2.Controls.Add(this.buttonLaggTillAkt);
-            this.groupBox2.Controls.Add(this.labelAkter);
             this.groupBox2.Controls.Add(this.labelAngeAkt);
+            this.groupBox2.Controls.Add(this.labelAngeStaplatser);
             this.groupBox2.Controls.Add(this.buttonRaderaAkt);
+            this.groupBox2.Controls.Add(this.labelAkter);
+            this.groupBox2.Controls.Add(this.textBoxAntalFriplatser);
+            this.groupBox2.Controls.Add(this.labelAntalFriplatser);
             this.groupBox2.Location = new System.Drawing.Point(306, 36);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(175, 205);
             this.groupBox2.TabIndex = 54;
             this.groupBox2.TabStop = false;
             // 
-            // groupBox3
+            // Sittplatser
             // 
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.dgAseats);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.dgSeats);
-            this.groupBox3.Controls.Add(this.buttonaddSeat);
-            this.groupBox3.Controls.Add(this.textBoxSeats);
-            this.groupBox3.Location = new System.Drawing.Point(12, 247);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(469, 211);
-            this.groupBox3.TabIndex = 55;
-            this.groupBox3.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(273, 161);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(188, 29);
-            this.button1.TabIndex = 51;
-            this.button1.Text = "Ta bort";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Sittplatser.Controls.Add(this.label3);
+            this.Sittplatser.Controls.Add(this.button1);
+            this.Sittplatser.Controls.Add(this.dgAseats);
+            this.Sittplatser.Controls.Add(this.label1);
+            this.Sittplatser.Controls.Add(this.dgSeats);
+            this.Sittplatser.Controls.Add(this.buttonaddSeat);
+            this.Sittplatser.Controls.Add(this.textBoxSeats);
+            this.Sittplatser.Location = new System.Drawing.Point(12, 247);
+            this.Sittplatser.Name = "Sittplatser";
+            this.Sittplatser.Size = new System.Drawing.Size(469, 211);
+            this.Sittplatser.TabIndex = 55;
+            this.Sittplatser.TabStop = false;
+            this.Sittplatser.Text = "Sittplatser";
+            this.Sittplatser.Enter += new System.EventHandler(this.Sittplatser_Enter);
             // 
             // label3
             // 
@@ -410,13 +404,22 @@
             this.label3.TabIndex = 52;
             this.label3.Text = "Sök:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(273, 161);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(188, 29);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "Ta bort";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(489, 541);
-            this.Controls.Add(this.groupBox3);
+            this.ClientSize = new System.Drawing.Size(515, 531);
+            this.Controls.Add(this.Sittplatser);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
@@ -432,8 +435,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.Sittplatser.ResumeLayout(false);
+            this.Sittplatser.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -469,7 +472,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox Sittplatser;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
     }
