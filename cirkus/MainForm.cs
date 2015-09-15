@@ -146,18 +146,14 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select show.name, acts.name, seats.section, seats.rownumber, price_group_seat.group, price_group_seat.price, booking.reserved_to from show inner join acts on show.showid = acts.showid inner
-join available_seats on acts.actid = available_seats.actid
-inner
-join seats on available_seats.seatid = seats.seatid
-inner
-join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-inner
-join price_group_seat on booked_seats.priceid = price_group_seat.priceid
-inner
-join booking on booked_seats.bookingid = booking.bookingid
-inner
-join customer on booking.customerid = customer.customerid WHERE customer.customerid = '"+ CustomerID + "'";
+                string sql = @"select show.name, acts.name, seats.section, seats.rownumber, price_group_seat.group, price_group_seat.price, booking.reserved_to from show 
+                                    inner join acts on show.showid = acts.showid 
+                                    inner join available_seats on acts.actid = available_seats.actid
+                                    inner join seats on available_seats.seatid = seats.seatid
+                                    inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                                    inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
+                                    inner join booking on booked_seats.bookingid = booking.bookingid
+                                    inner join customer on booking.customerid = customer.customerid WHERE customer.customerid = '"+ CustomerID + "'";
 
                 try
                 {
