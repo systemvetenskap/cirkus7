@@ -41,7 +41,7 @@
             // 
             // dtpTicketTo
             // 
-            this.dtpTicketTo.Location = new System.Drawing.Point(237, 106);
+            this.dtpTicketTo.Location = new System.Drawing.Point(315, 106);
             this.dtpTicketTo.Name = "dtpTicketTo";
             this.dtpTicketTo.Size = new System.Drawing.Size(164, 20);
             this.dtpTicketTo.TabIndex = 0;
@@ -63,7 +63,7 @@
             this.dgSelectedCustomerTicket.GridColor = System.Drawing.SystemColors.Window;
             this.dgSelectedCustomerTicket.Location = new System.Drawing.Point(24, 136);
             this.dgSelectedCustomerTicket.Name = "dgSelectedCustomerTicket";
-            this.dgSelectedCustomerTicket.Size = new System.Drawing.Size(249, 150);
+            this.dgSelectedCustomerTicket.Size = new System.Drawing.Size(455, 79);
             this.dgSelectedCustomerTicket.TabIndex = 7;
             // 
             // dtpTicketFrom
@@ -75,7 +75,7 @@
             // 
             // btnSpara
             // 
-            this.btnSpara.Location = new System.Drawing.Point(326, 263);
+            this.btnSpara.Location = new System.Drawing.Point(24, 232);
             this.btnSpara.Name = "btnSpara";
             this.btnSpara.Size = new System.Drawing.Size(75, 23);
             this.btnSpara.TabIndex = 9;
@@ -104,7 +104,7 @@
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(237, 91);
+            this.lblTo.Location = new System.Drawing.Point(318, 91);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(23, 13);
             this.lblTo.TabIndex = 12;
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 311);
+            this.ClientSize = new System.Drawing.Size(524, 279);
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.lblFrom);
             this.Controls.Add(this.lblAnge);

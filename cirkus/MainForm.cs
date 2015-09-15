@@ -935,9 +935,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                     row[5] = r.Cells[5].Value;
                     row[6] = r.Cells[6].Value;
 
-
-
-
                     dt.Rows.Add(row);
                     Ctf = new ChangeTicketForm(dt);
                     Ctf.ShowDialog();

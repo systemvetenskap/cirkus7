@@ -18,8 +18,6 @@ namespace cirkus
             dgSelectedCustomerTicket.DataSource = dt;
         }
 
-
-
         private void btnSpara_Click(object sender, EventArgs e)
         {
 
