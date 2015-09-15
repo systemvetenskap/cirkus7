@@ -803,10 +803,10 @@ namespace cirkus
                     conn.Close();
 
                     conn.Open();
-                    sql = @"select show.seat_number - count(booked_standing) as diff from show
-                    inner join acts on show.showid = acts.showid
-                    inner join booked_standing on acts.actid = booked_standing.actid
-                    where show.showid = '" + showid + "' group by show.seat_number";
+                    sql = @"select acts.free_placement - count(booked_standing) as diff  from acts
+                                inner join booked_standing on acts.actid = booked_standing.actid
+                                inner join show on acts.showid = show.showid
+                                where show.showid = '"+showid+"' group by acts.free_placement";
                     cmd = new NpgsqlCommand(sql, conn);
 
                     read = cmd.ExecuteReader();
