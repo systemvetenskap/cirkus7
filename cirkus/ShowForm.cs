@@ -413,13 +413,13 @@ namespace cirkus
             selected_actid = int.Parse(dgActs[0, selectedIndex].Value.ToString());
 
             selected_actname = dgActs[1, selectedIndex].Value.ToString();
-   
 
             
-  
 
 
-            
+
+
+
             dgSeats.DataSource = dtSeats;
 
             bs.DataSource = dtSelectedSeats;

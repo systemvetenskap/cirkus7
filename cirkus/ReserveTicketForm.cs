@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using System.IO;
 namespace cirkus
 {
     public partial class ReserveTicketForm : Form
     {
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-        int showid, actid, seatid,agegroup, customerid, total, checkedseats, priceid;      
+        int showid, actid, seatid,agegroup, customerid, total, checkedseats, priceid, freeSseats, freeLseats;      
         string show, act, bseats, selectedsection;
         bool newcust;
         DataTable shows, acts, section;
@@ -34,7 +35,7 @@ namespace cirkus
         public void loadShows()
         {
             string sql = "select show.showid, show.name, show.date from show";
-
+            
             conn.Open();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
             shows = new DataTable();
@@ -216,9 +217,12 @@ namespace cirkus
 
         private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
         {
+            dataGridViewShows.BackgroundColor = Color.WhiteSmoke;
+            lblNoShow.Visible = false;
             conn.Close();
             loadActs();
-            create_summary();
+            countSeats();
+            
 
         }
 
@@ -245,10 +249,34 @@ namespace cirkus
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            panel1.Visible = true;
-            panel2.Visible = false;
-            //loadSection();
-            load_Seats();
+
+            if (total > 0 && string.IsNullOrWhiteSpace(txtBoxNrP.Text) == false)
+            {
+                panel1.Visible = true;
+                panel2.Visible = false;
+               
+                load_Seats();
+
+            }
+            else {
+                lblTotalError.Visible = true;
+                lblTotalError.Text = "Vänligen ange antal personer";
+                lblTotalError.ForeColor = Color.Tomato;
+                txtBoxNrP.BackColor = Color.Tomato;
+                lblA.Text = "";
+                lblB.Text = "";
+       
+            }
+            if (dataGridViewShows.SelectedRows.Count == 0)
+            {
+                lblNoShow.Visible = true;
+                lblNoShow.Text = "Välj en föreställning";
+                lblNoShow.ForeColor = Color.Tomato;
+                dataGridViewShows.BackColor = Color.Tomato;
+               
+
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -364,6 +392,10 @@ namespace cirkus
         {
             switch (agegroup)
             {
+                case 0:
+                    MessageBox.Show("Välj åldersgrupp");
+                    return;
+                   
                 case 1:
                     priceid = 1;
                     
@@ -460,10 +492,34 @@ namespace cirkus
             }
         }
 
+        private void txtBoxNrP_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtBoxNrP.Text) == false)
+            {
+                total = Convert.ToInt16(txtBoxNrP.Text);
+                countSeats();
+            }
+            else
+            {
+                lblA.Text = "";
+                lblB.Text = "";
+            }
+            
+           
+ 
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
             panel2.Visible = true;
+        }
+
+        private void txtBoxNrP_Click(object sender, EventArgs e)
+        {
+
+            txtBoxNrP.BackColor = Color.White;
+            lblTotalError.Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -513,7 +569,7 @@ namespace cirkus
             if (cbAgegroup.Text == "Åldersgrupp")
             {
                 MessageBox.Show("Välj ålersgrupp för biljetten");
-
+                return;
             }
         }
 
@@ -554,8 +610,36 @@ namespace cirkus
         }
         private void added_child(object sender, EventArgs e)
         {
-            total = Convert.ToInt16(numericChild.Value);
+           
+            string sql = @"select count(available_seats.available_seats_id) from available_seats 
+                           inner join acts on available_seats.actid = acts.actid 
+                           inner join show on acts.showid = show.showid where show.showid = '"+showid+"'";
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
             
+            NpgsqlDataReader read;
+            read = cmd.ExecuteReader();
+
+            read.Read();
+            freeLseats = int.Parse(read[0].ToString());
+            conn.Close();
+
+            conn.Open();
+            sql = @"select show.seat_number - count(booked_standing) as diff from show
+                    inner join acts on show.showid = acts.showid
+                    inner join booked_standing on acts.actid = booked_standing.actid
+                    where show.showid = '" + showid +"' group by show.seat_number";
+            cmd = new NpgsqlCommand(sql, conn);
+
+            read = cmd.ExecuteReader();
+
+            read.Read();
+            freeSseats = int.Parse(read[0].ToString());
+            conn.Close();
+
+
+         
+
         }
 
         private void create_summary()
@@ -664,6 +748,77 @@ namespace cirkus
             MessageBox.Show("Bokning utförd");
 
 
+
+        }
+        private void countSeats()
+        {
+            if (dataGridViewShows.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    string sql = @"select count(available_seats.available_seats_id) from available_seats 
+                           inner join acts on available_seats.actid = acts.actid 
+                           inner join show on acts.showid = show.showid where show.showid = '" + showid + "'";
+                    conn.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+
+                    NpgsqlDataReader read;
+                    read = cmd.ExecuteReader();
+
+                    read.Read();
+                    freeLseats = int.Parse(read[0].ToString());
+                    conn.Close();
+
+                    conn.Open();
+                    sql = @"select show.seat_number - count(booked_standing) as diff from show
+                    inner join acts on show.showid = acts.showid
+                    inner join booked_standing on acts.actid = booked_standing.actid
+                    where show.showid = '" + showid + "' group by show.seat_number";
+                    cmd = new NpgsqlCommand(sql, conn);
+
+                    read = cmd.ExecuteReader();
+
+                    read.Read();
+                    freeSseats = int.Parse(read[0].ToString());
+                    conn.Close();
+                 
+                    if (freeLseats < total && total > 0)
+                    {
+                        lblA.Visible = true;
+                        lblA.Text = "Antal personer överstiger antal lediga ståplatser";
+                        lblA.ForeColor = Color.Tomato;                       
+
+                    }
+                    else if(freeLseats >= total && total > 0)
+                    {
+                        lblA.Visible = true;
+                        lblA.Text = "Lediga sittplatser";
+                        lblA.ForeColor = Color.Green;
+                    }
+
+                    if (freeSseats < total && total > 0 )
+                    {
+                        lblB.Visible = true;
+                        lblB.Text = "Antal personer överstiger antal lediga ståplatser";
+                        lblB.ForeColor = Color.Tomato;
+
+                    }
+                    else if(freeSseats >= total && total > 0)
+                    {
+                        lblB.Visible = true;
+                        lblB.Text = "Lediga ståplatser";
+                        lblB.ForeColor = Color.Green;
+                    }
+
+                }
+                catch 
+                {
+                    
+
+                }
+
+
+            }
 
         }
 

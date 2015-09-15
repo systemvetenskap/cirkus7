@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.numericChild = new System.Windows.Forms.NumericUpDown();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -47,6 +46,7 @@
             this.dgSeats = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtBoxNrP = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -91,7 +91,10 @@
             this.lblaseatid = new System.Windows.Forms.Label();
             this.lblcustid = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericChild)).BeginInit();
+            this.lblA = new System.Windows.Forms.Label();
+            this.lblB = new System.Windows.Forms.Label();
+            this.lblTotalError = new System.Windows.Forms.Label();
+            this.lblNoShow = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -108,14 +111,6 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // numericChild
-            // 
-            this.numericChild.Location = new System.Drawing.Point(40, 32);
-            this.numericChild.Name = "numericChild";
-            this.numericChild.Size = new System.Drawing.Size(51, 20);
-            this.numericChild.TabIndex = 2;
-            this.numericChild.ValueChanged += new System.EventHandler(this.added_child);
             // 
             // radioButton2
             // 
@@ -324,23 +319,36 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblNoShow);
             this.groupBox2.Controls.Add(this.dataGridViewShows);
             this.groupBox2.Location = new System.Drawing.Point(8, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(266, 195);
+            this.groupBox2.Size = new System.Drawing.Size(266, 186);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Föreställning";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.numericChild);
-            this.groupBox3.Location = new System.Drawing.Point(280, 145);
+            this.groupBox3.Controls.Add(this.lblTotalError);
+            this.groupBox3.Controls.Add(this.lblB);
+            this.groupBox3.Controls.Add(this.lblA);
+            this.groupBox3.Controls.Add(this.txtBoxNrP);
+            this.groupBox3.Location = new System.Drawing.Point(280, 92);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(136, 75);
+            this.groupBox3.Size = new System.Drawing.Size(263, 119);
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Antal personer";
+            this.groupBox3.Text = "Ange antal personer";
+            // 
+            // txtBoxNrP
+            // 
+            this.txtBoxNrP.Location = new System.Drawing.Point(6, 19);
+            this.txtBoxNrP.Name = "txtBoxNrP";
+            this.txtBoxNrP.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxNrP.TabIndex = 5;
+            this.txtBoxNrP.Click += new System.EventHandler(this.txtBoxNrP_Click);
+            this.txtBoxNrP.TextChanged += new System.EventHandler(this.txtBoxNrP_TextChanged);
             // 
             // groupBox4
             // 
@@ -604,15 +612,13 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(8, 267);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(697, 309);
+            this.panel1.Size = new System.Drawing.Size(648, 288);
             this.panel1.TabIndex = 40;
             // 
             // button3
@@ -637,17 +643,15 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.dgCustom);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.textBoxSearchCust);
             this.panel2.Controls.Add(this.groupBox6);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(8, 561);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(697, 309);
+            this.panel2.Size = new System.Drawing.Size(648, 294);
             this.panel2.TabIndex = 41;
             // 
             // label9
@@ -685,8 +689,7 @@
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.groupBox7);
             this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Location = new System.Drawing.Point(8, 861);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(697, 309);
             this.panel3.TabIndex = 42;
@@ -793,13 +796,48 @@
             this.label16.TabIndex = 50;
             this.label16.Text = "Customer id";
             // 
+            // lblA
+            // 
+            this.lblA.AutoSize = true;
+            this.lblA.Location = new System.Drawing.Point(8, 42);
+            this.lblA.Name = "lblA";
+            this.lblA.Size = new System.Drawing.Size(0, 13);
+            this.lblA.TabIndex = 6;
+            // 
+            // lblB
+            // 
+            this.lblB.AutoSize = true;
+            this.lblB.Location = new System.Drawing.Point(8, 57);
+            this.lblB.Name = "lblB";
+            this.lblB.Size = new System.Drawing.Size(0, 13);
+            this.lblB.TabIndex = 7;
+            // 
+            // lblTotalError
+            // 
+            this.lblTotalError.AutoSize = true;
+            this.lblTotalError.Location = new System.Drawing.Point(111, 22);
+            this.lblTotalError.Name = "lblTotalError";
+            this.lblTotalError.Size = new System.Drawing.Size(0, 13);
+            this.lblTotalError.TabIndex = 51;
+            // 
+            // lblNoShow
+            // 
+            this.lblNoShow.AutoSize = true;
+            this.lblNoShow.Location = new System.Drawing.Point(158, 16);
+            this.lblNoShow.Name = "lblNoShow";
+            this.lblNoShow.Size = new System.Drawing.Size(35, 13);
+            this.lblNoShow.TabIndex = 52;
+            this.lblNoShow.Text = "label3";
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(697, 309);
+            this.ClientSize = new System.Drawing.Size(729, 1174);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.label16);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblcustid);
             this.Controls.Add(this.lblaseatid);
@@ -815,7 +853,6 @@
             this.Name = "ReserveTicketForm";
             this.Text = "ReserveTicketForm";
             this.Load += new System.EventHandler(this.ReserveTicketForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericChild)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -823,7 +860,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgBseats)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
@@ -843,7 +882,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.NumericUpDown numericChild;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonCancel;
@@ -906,5 +944,10 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.DataGridView dgActs;
+        private System.Windows.Forms.TextBox txtBoxNrP;
+        private System.Windows.Forms.Label lblA;
+        private System.Windows.Forms.Label lblB;
+        private System.Windows.Forms.Label lblTotalError;
+        private System.Windows.Forms.Label lblNoShow;
     }
 }
