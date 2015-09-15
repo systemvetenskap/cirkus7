@@ -33,7 +33,7 @@
             this.dgTickets = new System.Windows.Forms.DataGridView();
             this.dgCustomers = new System.Windows.Forms.DataGridView();
             this.textBoxSearchCustomer = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnDeleteTicket = new System.Windows.Forms.Button();
             this.buttonEditTicket = new System.Windows.Forms.Button();
             this.buttonReserveTicket = new System.Windows.Forms.Button();
             this.buttonAddCustomer = new System.Windows.Forms.Button();
@@ -134,7 +134,7 @@
             this.tabTicket.Controls.Add(this.dgTickets);
             this.tabTicket.Controls.Add(this.dgCustomers);
             this.tabTicket.Controls.Add(this.textBoxSearchCustomer);
-            this.tabTicket.Controls.Add(this.button4);
+            this.tabTicket.Controls.Add(this.btnDeleteTicket);
             this.tabTicket.Controls.Add(this.buttonEditTicket);
             this.tabTicket.Controls.Add(this.buttonReserveTicket);
             this.tabTicket.Controls.Add(this.buttonAddCustomer);
@@ -194,14 +194,15 @@
             this.textBoxSearchCustomer.TabIndex = 13;
             this.textBoxSearchCustomer.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
             // 
-            // button4
+            // btnDeleteTicket
             // 
-            this.button4.Location = new System.Drawing.Point(754, 417);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(165, 23);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Radera biljett";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnDeleteTicket.Location = new System.Drawing.Point(754, 417);
+            this.btnDeleteTicket.Name = "btnDeleteTicket";
+            this.btnDeleteTicket.Size = new System.Drawing.Size(165, 23);
+            this.btnDeleteTicket.TabIndex = 11;
+            this.btnDeleteTicket.Text = "Radera biljett";
+            this.btnDeleteTicket.UseVisualStyleBackColor = true;
+            this.btnDeleteTicket.Click += new System.EventHandler(this.btnDeleteTicket_Click);
             // 
             // buttonEditTicket
             // 
@@ -987,7 +988,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonPrint;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnDeleteTicket;
         private System.Windows.Forms.Button buttonEditTicket;
         private System.Windows.Forms.Button buttonReserveTicket;
         private System.Windows.Forms.Button buttonAddCustomer;

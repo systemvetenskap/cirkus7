@@ -958,5 +958,10 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
 
         }
+
+        private void btnDeleteTicket_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
