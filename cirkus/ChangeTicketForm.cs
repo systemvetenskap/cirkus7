@@ -13,13 +13,13 @@ namespace cirkus
 {
     public partial class ChangeTicketForm : Form
     {
+        int bookingid;
 
        
         public ChangeTicketForm(DataTable dt)
         {
             InitializeComponent();
             dgSelectedCustomerTicket.DataSource = dt;
-
             lblTodaysDate.Text = "Dagens datum: " + DateTime.Now.ToShortDateString();
         }
 
@@ -29,12 +29,12 @@ namespace cirkus
             NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
 
             string toDate = dtpTicketTo.Text;
-            int bookingid = dgSelectedCustomerTicket.SelectedRows[0].Index;
 
-            string sql = "UPDATE booking SET reserved_to = toDate WHERE bookingid = '" + bookingid + "'";
+            string sql = "UPDATE booking SET reserved_to = @toDate WHERE bookingid = @bookingid";
             NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
-            cmd.Parameters.AddWithValue("reserved_to", toDate);
+            cmd.Parameters.AddWithValue("@toDate", toDate);
+            cmd.Parameters.AddWithValue("@bookingid", bookingid);
 
             conn.Open();
             cmd.ExecuteNonQuery();
@@ -50,6 +50,12 @@ namespace cirkus
             dtpTicketTo.Enabled = true;
             btnSave.Enabled = true;
             btnChangeTicket.Enabled = false;
+        }
+
+        private void dgSelectedTicket(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedindex = dgSelectedCustomerTicket.SelectedRows[0].Index;
+            bookingid = int.Parse(dgSelectedCustomerTicket[0, selectedindex].Value.ToString());
         }
     }
 }

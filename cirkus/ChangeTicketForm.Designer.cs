@@ -42,6 +42,7 @@
             // dtpTicketTo
             // 
             this.dtpTicketTo.Enabled = false;
+            this.dtpTicketTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpTicketTo.Location = new System.Drawing.Point(28, 110);
             this.dtpTicketTo.Name = "dtpTicketTo";
             this.dtpTicketTo.Size = new System.Drawing.Size(164, 20);
@@ -70,9 +71,11 @@
             this.dgSelectedCustomerTicket.MultiSelect = false;
             this.dgSelectedCustomerTicket.Name = "dgSelectedCustomerTicket";
             this.dgSelectedCustomerTicket.ReadOnly = true;
+            this.dgSelectedCustomerTicket.RowHeadersVisible = false;
             this.dgSelectedCustomerTicket.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgSelectedCustomerTicket.Size = new System.Drawing.Size(763, 88);
+            this.dgSelectedCustomerTicket.Size = new System.Drawing.Size(824, 88);
             this.dgSelectedCustomerTicket.TabIndex = 7;
+            this.dgSelectedCustomerTicket.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSelectedTicket);
             // 
             // btnSave
             // 
@@ -116,7 +119,7 @@
             // lblTodaysDate
             // 
             this.lblTodaysDate.AutoSize = true;
-            this.lblTodaysDate.Location = new System.Drawing.Point(636, 120);
+            this.lblTodaysDate.Location = new System.Drawing.Point(208, 110);
             this.lblTodaysDate.Name = "lblTodaysDate";
             this.lblTodaysDate.Size = new System.Drawing.Size(79, 13);
             this.lblTodaysDate.TabIndex = 14;
@@ -126,7 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 279);
+            this.ClientSize = new System.Drawing.Size(901, 279);
             this.Controls.Add(this.lblTodaysDate);
             this.Controls.Add(this.btnChangeTicket);
             this.Controls.Add(this.lblTo);
