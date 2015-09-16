@@ -507,12 +507,17 @@ namespace cirkus
         {
             try
             {
-                /*string sql = "SELECT actid FROM acts WHERE acts.showid = " + showid;
-                dt = new DataTable();
-                da = new NpgsqlDataAdapter(sql, conn);
-                da.Fill(dt);*/
 
-                //get acts through showid
+                if (cSeats.Rows.Count > 0)
+                {
+                    for (int i = cSeats.Rows.Count - 1; i >= 0; i--)
+                    {
+                        string value = selected_actid.ToString();
+                        DataRow dr = cSeats.Rows[i];
+                        if (dr["id"].ToString() == value)
+                            dr.Delete();
+                    }
+                }
                 string seatSection;
                 string seatNumber;
                 foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())

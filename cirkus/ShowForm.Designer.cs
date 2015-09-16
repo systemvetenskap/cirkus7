@@ -60,6 +60,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
+            this.lblS = new System.Windows.Forms.Label();
+            this.btnSaveMap = new System.Windows.Forms.Button();
             this.E8 = new System.Windows.Forms.CheckBox();
             this.E4 = new System.Windows.Forms.CheckBox();
             this.E6 = new System.Windows.Forms.CheckBox();
@@ -125,8 +127,6 @@
             this.A6 = new System.Windows.Forms.CheckBox();
             this.A5 = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnSaveMap = new System.Windows.Forms.Button();
-            this.lblS = new System.Windows.Forms.Label();
             this.lblActMap = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAseats)).BeginInit();
@@ -558,6 +558,25 @@
             this.gpSeatMap.Size = new System.Drawing.Size(312, 422);
             this.gpSeatMap.TabIndex = 57;
             this.gpSeatMap.TabStop = false;
+            // 
+            // lblS
+            // 
+            this.lblS.AutoSize = true;
+            this.lblS.Location = new System.Drawing.Point(137, -16);
+            this.lblS.Name = "lblS";
+            this.lblS.Size = new System.Drawing.Size(35, 13);
+            this.lblS.TabIndex = 66;
+            this.lblS.Text = "label5";
+            // 
+            // btnSaveMap
+            // 
+            this.btnSaveMap.Location = new System.Drawing.Point(38, 347);
+            this.btnSaveMap.Name = "btnSaveMap";
+            this.btnSaveMap.Size = new System.Drawing.Size(227, 29);
+            this.btnSaveMap.TabIndex = 53;
+            this.btnSaveMap.Text = "Spara Layout till vald akt";
+            this.btnSaveMap.UseVisualStyleBackColor = true;
+            this.btnSaveMap.Click += new System.EventHandler(this.btnSaveMap_Click);
             // 
             // E8
             // 
@@ -1271,25 +1290,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // btnSaveMap
-            // 
-            this.btnSaveMap.Location = new System.Drawing.Point(38, 347);
-            this.btnSaveMap.Name = "btnSaveMap";
-            this.btnSaveMap.Size = new System.Drawing.Size(227, 29);
-            this.btnSaveMap.TabIndex = 53;
-            this.btnSaveMap.Text = "Spara Layout till vald akt";
-            this.btnSaveMap.UseVisualStyleBackColor = true;
-            this.btnSaveMap.Click += new System.EventHandler(this.btnSaveMap_Click);
-            // 
-            // lblS
-            // 
-            this.lblS.AutoSize = true;
-            this.lblS.Location = new System.Drawing.Point(137, -16);
-            this.lblS.Name = "lblS";
-            this.lblS.Size = new System.Drawing.Size(35, 13);
-            this.lblS.TabIndex = 66;
-            this.lblS.Text = "label5";
-            // 
             // lblActMap
             // 
             this.lblActMap.AutoSize = true;
@@ -1305,7 +1305,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(850, 737);
+            this.ClientSize = new System.Drawing.Size(829, 537);
             this.Controls.Add(this.lblActMap);
             this.Controls.Add(this.gpSeatMap);
             this.Controls.Add(this.Sittplatser);
