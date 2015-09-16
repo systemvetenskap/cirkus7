@@ -729,6 +729,7 @@
             this.F5.Size = new System.Drawing.Size(15, 14);
             this.F5.TabIndex = 49;
             this.F5.UseVisualStyleBackColor = true;
+    
             // 
             // H8
             // 
