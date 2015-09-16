@@ -23,6 +23,7 @@ namespace cirkus
         NpgsqlDataAdapter da;
         public string name;
         int selected_actid;
+        int selectedIndex;
         string addedshowid,addedactid;
         string selected_actname;
 
@@ -69,7 +70,23 @@ namespace cirkus
 
         private void buttonLaggTillAkt_Click(object sender, EventArgs e)
         {
-            int selectedIndex = dgActs.SelectedRows[0].Index;
+
+            if (dgActs.SelectedRows.Count > 0)
+            {
+                selectedIndex = dgActs.SelectedRows[0].Index;
+                if (txtActname.Text == dgActs[2, selectedIndex].Value.ToString())
+                {
+                    DialogResult addAct = MessageBox.Show("Vill du ändra den valda akten?",
+                    "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (addAct == DialogResult.Yes)
+                    {
+                        dtActs.Rows[selectedIndex][1] = txtActname.Text.ToString();
+                        dtActs.Rows[selectedIndex][2] = textBoxAntalFriplatser.Text.ToString();
+
+                    }
+
+                }
+            }
             if (string.IsNullOrWhiteSpace(txtActname.Text))
             {
                 labelAngeAkt.Visible = true;
@@ -80,22 +97,7 @@ namespace cirkus
                 labelAngeStaplatser.Visible = true;
                 return;
 
-            }
-            if (txtActname.Text == dgActs[2, selectedIndex].Value.ToString())
-            {
-
-                DialogResult addAct = MessageBox.Show("Vill du ändra den valda akten?",
-                "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (addAct == DialogResult.Yes)
-                {
-                    dtActs.Rows[selectedIndex][1] = txtActname.Text.ToString();
-                    dtActs.Rows[selectedIndex][2] = textBoxAntalFriplatser.Text.ToString();
-                    
-
-
-                }
-
-            }
+            }            
             else
             {
                 
@@ -137,7 +139,7 @@ namespace cirkus
 
                 }
 
-                //dgTest.DataSource = dtSeats;
+                //dgTest1.DataSource = dtSeats;
                 txtActname.Clear();
                 textBoxAntalFriplatser.Clear();
 
@@ -306,7 +308,7 @@ namespace cirkus
                     {
                         if (int.Parse(rw[0].ToString()) == id)
                         {
-                            int seatid = int.Parse(rw[3].ToString());
+                            int seatid = int.Parse(rw[2].ToString());
                             conn.Open();
                             command = new NpgsqlCommand("insert into available_seats(actid, seatid) values (:aid, :sid)", conn);
                             command.Parameters.Add(new NpgsqlParameter("aid", addedactid));
@@ -346,13 +348,15 @@ namespace cirkus
                 t.Cells[0].Value = r.Cells[0].Value;
                 t.Cells[1].Value = r.Cells[1].Value;
                 t.Cells[2].Value = r.Cells[2].Value;
+                t.Cells[3].Value = r.Cells[3].Value;
 
                 row = dtSelectedSeats.NewRow();
                 row[0] = selected_actid;
                 row[1] = selected_actname;
-                row[2] = r.Cells[0].Value;
-                row[3] = r.Cells[1].Value;
-                row[4] = r.Cells[2].Value;
+                row[2] = r.Cells[1].Value;
+                row[3] = r.Cells[2].Value;
+                row[4] = r.Cells[3].Value;
+               
                 dtSelectedSeats.Rows.Add(row);
    
 
@@ -360,12 +364,12 @@ namespace cirkus
                 fs.RemoveAt(dgSeats.SelectedRows[0].Index);
 
                 dgAseats.DataSource = dtSelectedSeats;
-                this.dgAseats.Columns[4].DisplayIndex = 3;
-                this.dgAseats.Columns[3].DisplayIndex = 4;
+                //this.dgAseats.Columns[4].DisplayIndex = 3;
+                //this.dgAseats.Columns[3].DisplayIndex = 4;
                 this.dgAseats.Columns[0].Visible = false;
                 this.dgAseats.Columns[1].Visible = false;
                 this.dgAseats.Columns[2].Visible = false;
-
+                //dgTest2.DataSource = dtSelectedSeats;
             }
 
 

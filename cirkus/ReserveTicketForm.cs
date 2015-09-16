@@ -18,7 +18,8 @@ namespace cirkus
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int showid, actid, seatid,agegroup, customerid, total, checkedseats, priceid, freeSseats, freeLseats;      
         string show, act, bseats, selectedsection;
-        bool newcust, seatType;
+        bool newcust;
+        bool seatType = true; 
         DataTable shows, acts, section,dtfSeats;
         DataTable seats = new DataTable();
         DataTable chosenacts = new DataTable();
@@ -417,8 +418,7 @@ namespace cirkus
             }
             if (checkedseats < total)
             {
-                if(seatType == true)
-                {
+               
                     foreach (DataGridViewRow r in dgSeats.SelectedRows)
                     {
                         DataGridViewRow t = (DataGridViewRow)r.Clone();
@@ -437,18 +437,7 @@ namespace cirkus
                       }
 
 
-                }
-                else if(seatType == false)
-                {
-                    
-
-
-                    dtfSeats.Rows.Add(actid, priceid);
-
-                    dgFseats.DataSource = dtfSeats;
-
-
-                }
+               
    
                 
             }
@@ -802,7 +791,7 @@ namespace cirkus
                     freeLseats = int.Parse(read[0].ToString());
                     conn.Close();
 
-                    conn.Open();
+                    /*conn.Open();
                     sql = @"select acts.free_placement - count(booked_standing) as diff  from acts
                                 inner join booked_standing on acts.actid = booked_standing.actid
                                 inner join show on acts.showid = show.showid
@@ -812,7 +801,7 @@ namespace cirkus
                     read = cmd.ExecuteReader();
 
                     read.Read();
-                    freeSseats = int.Parse(read[0].ToString());
+                    freeSseats = int.Parse(read[0].ToString());*/
                     conn.Close();
                  
                     if (freeLseats < total && total > 0)
@@ -829,13 +818,13 @@ namespace cirkus
                         lblA.ForeColor = Color.Green;
                     }
 
-                    if (freeSseats < total && total > 0 )
+                    /*if (freeSseats < total && total > 0 )
                     {
                         lblB.Visible = true;
                         lblB.Text = "Antal personer överstiger antal lediga ståplatser";
                         lblB.ForeColor = Color.Tomato;
 
-                    }
+                    }*/
                     else if(freeSseats >= total && total > 0)
                     {
                         lblB.Visible = true;
