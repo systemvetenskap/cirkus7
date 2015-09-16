@@ -80,15 +80,15 @@
             this.textBoxSearchCust = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -98,6 +98,14 @@
             this.lblcustid = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.dgFseats = new System.Windows.Forms.DataGridView();
+            this.comboTicketnr = new System.Windows.Forms.ComboBox();
+            this.dgTestActs = new System.Windows.Forms.DataGridView();
+            this.lbltest = new System.Windows.Forms.Label();
+            this.lblTTest2 = new System.Windows.Forms.Label();
+            this.lbltest2 = new System.Windows.Forms.Label();
+            this.lblSeatid = new System.Windows.Forms.Label();
+            this.lblAct = new System.Windows.Forms.Label();
+            this.lblPris = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -114,6 +122,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgFseats)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTestActs)).BeginInit();
             this.SuspendLayout();
             // 
             // radioButton2
@@ -188,7 +197,7 @@
             // 
             this.radioLoge.AutoSize = true;
             this.radioLoge.Checked = true;
-            this.radioLoge.Location = new System.Drawing.Point(12, 19);
+            this.radioLoge.Location = new System.Drawing.Point(169, 19);
             this.radioLoge.Name = "radioLoge";
             this.radioLoge.Size = new System.Drawing.Size(71, 17);
             this.radioLoge.TabIndex = 22;
@@ -200,7 +209,7 @@
             // radioFri
             // 
             this.radioFri.AutoSize = true;
-            this.radioFri.Location = new System.Drawing.Point(91, 19);
+            this.radioFri.Location = new System.Drawing.Point(238, 19);
             this.radioFri.Name = "radioFri";
             this.radioFri.Size = new System.Drawing.Size(82, 17);
             this.radioFri.TabIndex = 23;
@@ -212,7 +221,6 @@
             // 
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lblFreeP);
-            this.groupBox1.Controls.Add(this.cbAgegroup);
             this.groupBox1.Controls.Add(this.btnRemSeats);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label10);
@@ -254,7 +262,7 @@
             "Barn",
             "Ungdom",
             "Vuxen"});
-            this.cbAgegroup.Location = new System.Drawing.Point(6, 185);
+            this.cbAgegroup.Location = new System.Drawing.Point(59, 19);
             this.cbAgegroup.Name = "cbAgegroup";
             this.cbAgegroup.Size = new System.Drawing.Size(79, 21);
             this.cbAgegroup.TabIndex = 50;
@@ -345,6 +353,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblTTest2);
             this.groupBox2.Controls.Add(this.lblNoShow);
             this.groupBox2.Controls.Add(this.dataGridViewShows);
             this.groupBox2.Location = new System.Drawing.Point(8, 25);
@@ -411,7 +420,11 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.lbltest2);
+            this.groupBox4.Controls.Add(this.lbltest);
+            this.groupBox4.Controls.Add(this.comboTicketnr);
             this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.cbAgegroup);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Controls.Add(this.button8);
             this.groupBox4.Controls.Add(this.button7);
@@ -674,12 +687,10 @@
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(33, 312);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(992, 755);
+            this.panel1.Size = new System.Drawing.Size(626, 278);
             this.panel1.TabIndex = 40;
             // 
             // button3
@@ -692,29 +703,17 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(515, 243);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 35);
-            this.button2.TabIndex = 43;
-            this.button2.Text = "Nästa";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.dgCustom);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.textBoxSearchCust);
             this.panel2.Controls.Add(this.groupBox6);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Location = new System.Drawing.Point(673, 596);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(992, 755);
+            this.panel2.Size = new System.Drawing.Size(625, 314);
             this.panel2.TabIndex = 41;
             // 
             // label9
@@ -726,36 +725,19 @@
             this.label9.TabIndex = 46;
             this.label9.Text = "Sök kund";
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(409, 249);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 35);
-            this.button4.TabIndex = 44;
-            this.button4.Text = "Tillbaka";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(515, 249);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 35);
-            this.button5.TabIndex = 45;
-            this.button5.Text = "Nästa";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.lblPris);
+            this.panel3.Controls.Add(this.lblAct);
+            this.panel3.Controls.Add(this.lblSeatid);
             this.panel3.Controls.Add(this.radioButton5);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.groupBox7);
             this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Location = new System.Drawing.Point(14, 596);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(992, 755);
+            this.panel3.Size = new System.Drawing.Size(645, 302);
             this.panel3.TabIndex = 42;
             // 
             // radioButton5
@@ -787,6 +769,35 @@
             this.button1.Text = "Slutför";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(409, 249);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(100, 35);
+            this.button4.TabIndex = 44;
+            this.button4.Text = "Tillbaka";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(515, 249);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(100, 35);
+            this.button5.TabIndex = 45;
+            this.button5.Text = "Nästa";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(515, 243);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 35);
+            this.button2.TabIndex = 43;
+            this.button2.Text = "Nästa";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label13
             // 
@@ -877,15 +888,89 @@
             this.dgFseats.Size = new System.Drawing.Size(161, 99);
             this.dgFseats.TabIndex = 53;
             // 
+            // comboTicketnr
+            // 
+            this.comboTicketnr.FormattingEnabled = true;
+            this.comboTicketnr.Location = new System.Drawing.Point(9, 19);
+            this.comboTicketnr.Name = "comboTicketnr";
+            this.comboTicketnr.Size = new System.Drawing.Size(35, 21);
+            this.comboTicketnr.TabIndex = 30;
+            this.comboTicketnr.SelectedIndexChanged += new System.EventHandler(this.comboTicketnr_SelectedIndexChanged);
+            // 
+            // dgTestActs
+            // 
+            this.dgTestActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTestActs.Location = new System.Drawing.Point(713, 92);
+            this.dgTestActs.Name = "dgTestActs";
+            this.dgTestActs.Size = new System.Drawing.Size(431, 150);
+            this.dgTestActs.TabIndex = 54;
+            // 
+            // lbltest
+            // 
+            this.lbltest.AutoSize = true;
+            this.lbltest.Location = new System.Drawing.Point(164, 19);
+            this.lbltest.Name = "lbltest";
+            this.lbltest.Size = new System.Drawing.Size(41, 13);
+            this.lbltest.TabIndex = 51;
+            this.lbltest.Text = "label11";
+            // 
+            // lblTTest2
+            // 
+            this.lblTTest2.AutoSize = true;
+            this.lblTTest2.Location = new System.Drawing.Point(206, 16);
+            this.lblTTest2.Name = "lblTTest2";
+            this.lblTTest2.Size = new System.Drawing.Size(41, 13);
+            this.lblTTest2.TabIndex = 53;
+            this.lblTTest2.Text = "label11";
+            // 
+            // lbltest2
+            // 
+            this.lbltest2.AutoSize = true;
+            this.lbltest2.Location = new System.Drawing.Point(200, 45);
+            this.lbltest2.Name = "lbltest2";
+            this.lbltest2.Size = new System.Drawing.Size(41, 13);
+            this.lbltest2.TabIndex = 52;
+            this.lbltest2.Text = "label11";
+            // 
+            // lblSeatid
+            // 
+            this.lblSeatid.AutoSize = true;
+            this.lblSeatid.Location = new System.Drawing.Point(380, 44);
+            this.lblSeatid.Name = "lblSeatid";
+            this.lblSeatid.Size = new System.Drawing.Size(41, 13);
+            this.lblSeatid.TabIndex = 48;
+            this.lblSeatid.Text = "label11";
+            // 
+            // lblAct
+            // 
+            this.lblAct.AutoSize = true;
+            this.lblAct.Location = new System.Drawing.Point(383, 84);
+            this.lblAct.Name = "lblAct";
+            this.lblAct.Size = new System.Drawing.Size(41, 13);
+            this.lblAct.TabIndex = 49;
+            this.lblAct.Text = "label17";
+            // 
+            // lblPris
+            // 
+            this.lblPris.AutoSize = true;
+            this.lblPris.Location = new System.Drawing.Point(386, 126);
+            this.lblPris.Name = "lblPris";
+            this.lblPris.Size = new System.Drawing.Size(41, 13);
+            this.lblPris.TabIndex = 50;
+            this.lblPris.Text = "label18";
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(992, 755);
+            this.ClientSize = new System.Drawing.Size(1310, 950);
+            this.Controls.Add(this.dgTestActs);
             this.Controls.Add(this.dgFseats);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblcustid);
             this.Controls.Add(this.lblaseatid);
             this.Controls.Add(this.lblactid);
@@ -924,6 +1009,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgFseats)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTestActs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1000,5 +1086,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblFreeP;
         private System.Windows.Forms.DataGridView dgFseats;
+        private System.Windows.Forms.ComboBox comboTicketnr;
+        private System.Windows.Forms.DataGridView dgTestActs;
+        private System.Windows.Forms.Label lbltest;
+        private System.Windows.Forms.Label lblTTest2;
+        private System.Windows.Forms.Label lbltest2;
+        private System.Windows.Forms.Label lblPris;
+        private System.Windows.Forms.Label lblAct;
+        private System.Windows.Forms.Label lblSeatid;
     }
 }
