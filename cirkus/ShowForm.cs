@@ -436,59 +436,74 @@ namespace cirkus
 
         private void btnSaveMap_Click(object sender, EventArgs e)
         {
-            try
+
+            if (dgActs.Rows.Count > 0)
             {
 
-                if (cSeats.Rows.Count > 0)
+                try
                 {
-                    for (int i = cSeats.Rows.Count - 1; i >= 0; i--)
+
+                    if (cSeats.Rows.Count > 0)
                     {
-                        string value = selected_actid.ToString();
-                        DataRow dr = cSeats.Rows[i];
-                        if (dr["id"].ToString() == value)
-                            dr.Delete();
+                        for (int i = cSeats.Rows.Count - 1; i >= 0; i--)
+                        {
+                            string value = selected_actid.ToString();
+                            DataRow dr = cSeats.Rows[i];
+                            if (dr["id"].ToString() == value)
+                                dr.Delete();
+                        }
+                    }
+                    string seatSection;
+                    string seatNumber;
+                    foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+                    {
+                        if (cb.Checked)
+                        {
+                            // Kollar först så att platsen finns!
+                            seatSection = cb.Name[0].ToString();
+                            seatNumber = cb.Name[1].ToString();
+
+                            NpgsqlCommand command;
+                            NpgsqlDataReader read;
+                            conn.Open();
+                            command = new NpgsqlCommand("SELECT seatid, section, rownumber FROM seats WHERE rownumber = @rwnr AND section = @section", conn);
+                            command.Parameters.Add(new NpgsqlParameter("@rwnr", seatNumber));
+                            command.Parameters.AddWithValue("@section", seatSection);
+
+                            read = command.ExecuteReader();
+                            read.Read();
+
+                            DataRow row;
+                            row = cSeats.NewRow();
+                            row[0] = selected_actid.ToString();
+                            row[1] = read[0].ToString();
+                            row[2] = read[1].ToString();
+                            row[3] = read[2].ToString();
+                            cSeats.Rows.Add(row);
+
+                            conn.Close();
+
+
+
+                        }
                     }
                 }
-                string seatSection;
-                string seatNumber;
-                foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+                catch (NpgsqlException ex)
                 {
-                    if (cb.Checked)
-                    {
-                        // Kollar först så att platsen finns!
-                        seatSection = cb.Name[0].ToString();
-                        seatNumber = cb.Name[1].ToString();
-
-                        NpgsqlCommand command;
-                        NpgsqlDataReader read;
-                        conn.Open();
-                        command = new NpgsqlCommand("SELECT seatid, section, rownumber FROM seats WHERE rownumber = @rwnr AND section = @section", conn);
-                        command.Parameters.Add(new NpgsqlParameter("@rwnr", seatNumber));
-                        command.Parameters.AddWithValue("@section", seatSection);
-
-                        read = command.ExecuteReader();
-                        read.Read();
-
-                        DataRow row;
-                        row = cSeats.NewRow();
-                        row[0] = selected_actid.ToString();
-                        row[1] = read[0].ToString();
-                        row[2] = read[1].ToString();
-                        row[3] = read[2].ToString();
-                        cSeats.Rows.Add(row);
-
-                        conn.Close();
-
-                        
-
-                    }
+                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.ToString());
                 }
+
+
             }
-            catch (NpgsqlException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-                MessageBox.Show(ex.ToString());
+
+
+
+
             }
+     
         }
 
         private void btnLoadMap_Click(object sender, EventArgs e)
@@ -496,11 +511,24 @@ namespace cirkus
 
 
     }
-                
 
+        private void check_Click(object sender, EventArgs e)
+        {
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                cb.Checked = true;
 
-            
-        
+            }
+        }
+
+        private void uncheck_Click(object sender, EventArgs e)
+        {
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                cb.Checked = false;
+
+            }
+        }
 
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -512,17 +540,9 @@ namespace cirkus
             textBoxAntalFriplatser.Text = dgActs[2, selectedIndex].Value.ToString();
             txtActname.Text = selected_actname;
 
-
             lblActMap.Text = selected_actname.ToString();
             
-
-
-           
-          
-
             seatmap();
-
-
 
 
         }
