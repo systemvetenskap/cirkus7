@@ -14,9 +14,10 @@ namespace cirkus
 {
     public partial class ShowForm : Form
     {
-        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");        
+        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         NpgsqlCommand command;
         DataRow row;
+        DataTable cSeats = new DataTable();
         DataTable dtActs, dtSelectedSeats, dt, dtSeats;
         BindingSource bs = new BindingSource();
         BindingSource fs = new BindingSource();
@@ -24,11 +25,11 @@ namespace cirkus
         public string name;
         int selected_actid;
         int selectedIndex;
-        string addedshowid,addedactid;
+        string addedshowid, addedactid;
         string selected_actname;
         private void seatmap(string showid, string actid)
         {
-            
+
             try
             {
                 /*string sql = "SELECT actid FROM acts WHERE acts.showid = " + showid;
@@ -50,7 +51,7 @@ namespace cirkus
                         NpgsqlCommand command;
                         NpgsqlDataReader read;
                         conn.Open();
-                        command = new NpgsqlCommand("SELECT seatid FROM seats WHERE rownumber = @rwnr AND section = @section", conn);   
+                        command = new NpgsqlCommand("SELECT seatid FROM seats WHERE rownumber = @rwnr AND section = @section", conn);
                         command.Parameters.Add(new NpgsqlParameter("@rwnr", seatNumber));
                         command.Parameters.AddWithValue("@section", seatSection);
 
@@ -80,7 +81,7 @@ namespace cirkus
         public ShowForm()
         {
             InitializeComponent();
-  
+
 
         }
 
@@ -100,7 +101,7 @@ namespace cirkus
             textBoxBeskrivning.Text = Name;
 
             conn.Open();
-          
+
             NpgsqlCommand cmd = new NpgsqlCommand("select a.actid, a.name , s.date, s.name, s.seat_number, s.showid, s.sale_start, s.sale_stop from show s inner join acts a on s.showid = a.showid where s.showid = '" + Name + "' group by a.actid, a.name , s.date, s.name, s.seat_number, s.showid, s.sale_start, s.sale_stop ", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
             Act newAct = new Act();
@@ -112,7 +113,7 @@ namespace cirkus
                 dateTimePickerDatum.Value = Convert.ToDateTime(dr.GetValue(2).ToString());
                 dateTimePickerForsaljningstidFran.Value = Convert.ToDateTime(dr.GetValue(6).ToString());
                 dateTimePickerForsaljningstidTill.Value = Convert.ToDateTime(dr.GetValue(7).ToString());
-              
+
             }
             conn.Close();
         }
@@ -147,10 +148,10 @@ namespace cirkus
                 labelAngeStaplatser.Visible = true;
                 return;
 
-            }            
+            }
             else
             {
-                
+
                 DataRow row = dtActs.NewRow();
 
                 row[1] = txtActname.Text.ToString();
@@ -199,13 +200,13 @@ namespace cirkus
 
         private void buttonRaderaAkt_Click(object sender, EventArgs e)
         {
-   
+
         }
 
         private void ShowForm_Load(object sender, EventArgs e)
         {
             DataColumn id = new DataColumn();
-            dtSelectedSeats = new DataTable();           
+            dtSelectedSeats = new DataTable();
             dtSelectedSeats.Columns.Add("id");
             dtSelectedSeats.Columns.Add("name");
             dtSelectedSeats.Columns.Add("seatid");
@@ -222,10 +223,14 @@ namespace cirkus
             dtActs.Columns.Add("free_placement");
             dtSeats = new DataTable();
             dtSeats.Columns.Add("id");
+            cSeats.Columns.Add("id");
+            cSeats.Columns.Add("seatid");
+            cSeats.Columns.Add("section");
+            cSeats.Columns.Add("rownumber");
 
-            
-            
-          
+
+
+
 
         }
 
@@ -273,7 +278,7 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
-        
+
 
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
@@ -294,7 +299,7 @@ namespace cirkus
                 allowAdd = false;
             }
 
-   
+
 
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
@@ -319,7 +324,7 @@ namespace cirkus
 
                 command = new NpgsqlCommand(@"Insert into show (name, date, sale_start, sale_stop) Values (@name, @date, @sale_start, @sale_stop)", conn);
                 command.Parameters.AddWithValue("@date", date);
-                command.Parameters.AddWithValue("@name", name);              
+                command.Parameters.AddWithValue("@name", name);
                 command.Parameters.AddWithValue("@sale_start", sale_start);
                 command.Parameters.AddWithValue("@sale_stop", sale_stop);
                 command.ExecuteNonQuery();
@@ -345,10 +350,10 @@ namespace cirkus
                     command.Parameters.Add(new NpgsqlParameter("shid", addedshowid));
                     command.Parameters.Add(new NpgsqlParameter("fp", fp));
                     command.ExecuteNonQuery();
-                    
 
-                    
-                    command = new NpgsqlCommand("select currval('acts_actid_seq');", conn);                   
+
+
+                    command = new NpgsqlCommand("select currval('acts_actid_seq');", conn);
                     read = command.ExecuteReader();
                     read.Read();
                     addedactid = read[0].ToString();
@@ -389,13 +394,13 @@ namespace cirkus
 
         private void buttonaddSeat_Click(object sender, EventArgs e)
         {
-          
+
 
 
             foreach (DataGridViewRow r in dgSeats.SelectedRows)
             {
                 DataGridViewRow t = (DataGridViewRow)r.Clone();
-                
+
 
                 t.Cells[0].Value = r.Cells[0].Value;
                 t.Cells[1].Value = r.Cells[1].Value;
@@ -408,9 +413,9 @@ namespace cirkus
                 row[2] = r.Cells[1].Value;
                 row[3] = r.Cells[2].Value;
                 row[4] = r.Cells[3].Value;
-               
+
                 dtSelectedSeats.Rows.Add(row);
-   
+
 
                 //dtSeats.Rows.RemoveAt(dgSeats.CurrentCell.RowIndex);
                 fs.RemoveAt(dgSeats.SelectedRows[0].Index);
@@ -472,19 +477,19 @@ namespace cirkus
                 fs.DataSource = dtSeats;
                 fs.Filter = string.Format("section = '{0}' and id ='{1}'", textBoxSeats.Text, selected_actid);
             }
-            
+
         }
 
         private void textBoxBeskrivning_Click(object sender, EventArgs e)
         {
-            
+
             textBoxBeskrivning.BackColor = Color.White;
             labelAngeBeskrivningen.Visible = false;
         }
 
         private void test_Click(object sender, EventArgs e)
         {
-         
+
 
         }
 
@@ -498,7 +503,98 @@ namespace cirkus
             labelAngeAkt.Visible = false;
         }
 
+        private void btnSaveMap_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                /*string sql = "SELECT actid FROM acts WHERE acts.showid = " + showid;
+                dt = new DataTable();
+                da = new NpgsqlDataAdapter(sql, conn);
+                da.Fill(dt);*/
 
+                //get acts through showid
+                string seatSection;
+                string seatNumber;
+                foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+                {
+                    if (cb.Checked)
+                    {
+                        // Kollar först så att platsen finns!
+                        seatSection = cb.Name[0].ToString();
+                        seatNumber = cb.Name[1].ToString();
+
+                        NpgsqlCommand command;
+                        NpgsqlDataReader read;
+                        conn.Open();
+                        command = new NpgsqlCommand("SELECT seatid, section, rownumber FROM seats WHERE rownumber = @rwnr AND section = @section", conn);
+                        command.Parameters.Add(new NpgsqlParameter("@rwnr", seatNumber));
+                        command.Parameters.AddWithValue("@section", seatSection);
+
+                        read = command.ExecuteReader();
+                        read.Read();
+
+                        DataRow row;
+                        row = cSeats.NewRow();
+                        row[0] = selected_actid.ToString();
+                        row[1] = read[0].ToString();
+                        row[2] = read[1].ToString();
+                        row[3] = read[2].ToString();
+                        cSeats.Rows.Add(row);
+
+                        conn.Close();
+
+                        dgTest.DataSource = cSeats;
+
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnLoadMap_Click(object sender, EventArgs e)
+        {
+            string sid = selected_actid.ToString();
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                cb.Checked = false;
+
+            }
+
+                foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                foreach (DataRow row in cSeats.Rows)
+                {
+                    string s = row[2].ToString() + row[3].ToString();
+                    lblS.Text = s;
+                    if (row[0].ToString() == sid)
+                    {
+                        if (cb.Name == s)
+                        {
+                            cb.Checked = true;
+
+                        }
+                
+                    }
+                    else
+                    {
+
+
+                    }
+
+            }
+
+        }
+
+    }
+                
+
+
+            
+        
 
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {

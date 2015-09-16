@@ -125,6 +125,10 @@
             this.A6 = new System.Windows.Forms.CheckBox();
             this.A5 = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSaveMap = new System.Windows.Forms.Button();
+            this.dgTest = new System.Windows.Forms.DataGridView();
+            this.btnLoadMap = new System.Windows.Forms.Button();
+            this.lblS = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgSeats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAseats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
@@ -133,6 +137,7 @@
             this.Sittplatser.SuspendLayout();
             this.gpSeatMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTest)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonLaggTillAkt
@@ -483,6 +488,9 @@
             // 
             // gpSeatMap
             // 
+            this.gpSeatMap.Controls.Add(this.lblS);
+            this.gpSeatMap.Controls.Add(this.btnLoadMap);
+            this.gpSeatMap.Controls.Add(this.btnSaveMap);
             this.gpSeatMap.Controls.Add(this.E8);
             this.gpSeatMap.Controls.Add(this.E4);
             this.gpSeatMap.Controls.Add(this.E6);
@@ -729,7 +737,6 @@
             this.F5.Size = new System.Drawing.Size(15, 14);
             this.F5.TabIndex = 49;
             this.F5.UseVisualStyleBackColor = true;
-    
             // 
             // H8
             // 
@@ -1267,12 +1274,50 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnSaveMap
+            // 
+            this.btnSaveMap.Location = new System.Drawing.Point(38, 347);
+            this.btnSaveMap.Name = "btnSaveMap";
+            this.btnSaveMap.Size = new System.Drawing.Size(227, 29);
+            this.btnSaveMap.TabIndex = 53;
+            this.btnSaveMap.Text = "Spara Layout till vald akt";
+            this.btnSaveMap.UseVisualStyleBackColor = true;
+            this.btnSaveMap.Click += new System.EventHandler(this.btnSaveMap_Click);
+            // 
+            // dgTest
+            // 
+            this.dgTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTest.Location = new System.Drawing.Point(406, 513);
+            this.dgTest.Name = "dgTest";
+            this.dgTest.Size = new System.Drawing.Size(401, 166);
+            this.dgTest.TabIndex = 58;
+            // 
+            // btnLoadMap
+            // 
+            this.btnLoadMap.Location = new System.Drawing.Point(38, 382);
+            this.btnLoadMap.Name = "btnLoadMap";
+            this.btnLoadMap.Size = new System.Drawing.Size(227, 29);
+            this.btnLoadMap.TabIndex = 65;
+            this.btnLoadMap.Text = "Ladda layout";
+            this.btnLoadMap.UseVisualStyleBackColor = true;
+            this.btnLoadMap.Click += new System.EventHandler(this.btnLoadMap_Click);
+            // 
+            // lblS
+            // 
+            this.lblS.AutoSize = true;
+            this.lblS.Location = new System.Drawing.Point(18, 322);
+            this.lblS.Name = "lblS";
+            this.lblS.Size = new System.Drawing.Size(35, 13);
+            this.lblS.TabIndex = 66;
+            this.lblS.Text = "label5";
+            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(850, 531);
+            this.ClientSize = new System.Drawing.Size(850, 737);
+            this.Controls.Add(this.dgTest);
             this.Controls.Add(this.gpSeatMap);
             this.Controls.Add(this.Sittplatser);
             this.Controls.Add(this.groupBox2);
@@ -1295,6 +1340,7 @@
             this.gpSeatMap.ResumeLayout(false);
             this.gpSeatMap.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1399,5 +1445,9 @@
         private System.Windows.Forms.CheckBox A6;
         private System.Windows.Forms.CheckBox A5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnSaveMap;
+        private System.Windows.Forms.DataGridView dgTest;
+        private System.Windows.Forms.Button btnLoadMap;
+        private System.Windows.Forms.Label lblS;
     }
 }
