@@ -86,7 +86,7 @@ namespace cirkus
             textBoxLosenord.Clear();
             comboBoxBehorighetsniva.ResetText();
 
-            textBoxPersonnummer.BackColor=Color.White;
+            textBoxPersonnummer.BackColor = Color.White;
             textBoxFornamn.BackColor = Color.White;
             textBoxEfternamn.BackColor = Color.White;
             textBoxEpost.BackColor = Color.White;
@@ -157,7 +157,7 @@ join price_group_seat on booked_seats.priceid = price_group_seat.priceid
 inner
 join booking on booked_seats.bookingid = booking.bookingid
 inner
-join customer on booking.customerid = customer.customerid WHERE customer.customerid = '"+ CustomerID + "'";
+join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + CustomerID + "'";
 
                 try
                 {
@@ -286,7 +286,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             {
                 conn.Close();
             }
-            
+
         }
 
         public void LoadStatistics()
@@ -439,7 +439,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
                 textBoxTotaltKronor.Text = totaltKornor;
             }
-            
+
         }
 
         public void LoadAkter()
@@ -465,7 +465,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         {
             LoadAkter();
             LoadStatistics();
-            
+
         }
         #endregion
         #region Konto
@@ -496,7 +496,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
                 dgStaff.Columns[1].HeaderText = "Efternamn";
                 dgStaff.Columns[2].HeaderText = "Förnamn";
-                dgStaff.Columns[3].HeaderText = "Telefonnummer";               
+                dgStaff.Columns[3].HeaderText = "Telefonnummer";
 
                 DataGridViewColumn column = dgStaff.Columns[0];
                 DataGridViewColumn column1 = dgStaff.Columns[1];
@@ -643,7 +643,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
                 conn.Close();
             }
-        
+
         }
         public bool BaraBokstäver(string namn)//Metod för att kontrollera om det bara är bokstäver
         {
@@ -687,12 +687,12 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 textBoxLosenord.Text = read[6].ToString();
                 int auth = int.Parse(read[7].ToString());
 
-                if (auth==0)
+                if (auth == 0)
                 {
                     comboBoxBehorighetsniva.SelectedText = "Biljettförsäljare";
 
                 }
-                else if (auth==1)
+                else if (auth == 1)
                 {
                     comboBoxBehorighetsniva.SelectedText = "Administratör";
 
@@ -772,7 +772,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                     return;
                 }
                 //Slut kontrollera längden, siffror/bokstäver och tomma fält
-               
+
                 conn.Open();
 
                 NpgsqlCommand cmd = new NpgsqlCommand(@"update staff set ssn = @ssn, fname = @fn, lname = @ln, phonenumber = @pn, email = @email, 
@@ -801,7 +801,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 LblStatus.Visible = true;
                 LblStatus.ForeColor = Color.Green;
                 LblStatus.Text = "Användare updaterad";
-  
+
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
@@ -841,8 +841,8 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 {
 
                     MessageBox.Show(ex.Message);
-                    
-                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna användaren. Användaren har en eller flera aktiva föreställningar kopplade till kontot.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna användaren. Användaren har en eller flera aktiva föreställningar kopplade till kontot.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return;
                 }
@@ -861,7 +861,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 ListaPersonal();
                 tomFaltochFarg();
             }
-            if (Confirmation==DialogResult.No)
+            if (Confirmation == DialogResult.No)
             {
                 return;
             }
@@ -901,7 +901,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
 
             ChangeTicketForm Ctf;
-            if (SelectedTicket != -1 && SelectedCustomer !=-1)
+            if (SelectedTicket != -1 && SelectedCustomer != -1)
 
 
             {
@@ -926,7 +926,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                     dt.Columns.Add("Biljettyp");
                     dt.Columns.Add("Pris");
                     dt.Columns.Add("Reserverad till");
-                    
+
 
                     DataRow row;
                     row = dt.NewRow();
@@ -965,7 +965,36 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
         private void btnDeleteTicket_Click(object sender, EventArgs e)
         {
+            DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade biljetten ?",
+                "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            if (Confirmation == DialogResult.Yes)
+            {
+                int SelectedTicket;
+
+                DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
+                SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
+                string sql = "DELETE FROM booking WHERE bookingid = '" + SelectedTicket + "'";
+
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                conn.Open();
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (NpgsqlException ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+
+                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna biljetten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    conn.Close();
+                    return;
+                }
+                conn.Close();
+            }
+            listTickets();
         }
     }
 }
