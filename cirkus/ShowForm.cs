@@ -27,56 +27,40 @@ namespace cirkus
         int selectedIndex;
         string addedshowid, addedactid;
         string selected_actname;
-        private void seatmap(string showid, string actid)
+        private void seatmap()
         {
-
-            try
+            string sid = selected_actid.ToString();
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
-                /*string sql = "SELECT actid FROM acts WHERE acts.showid = " + showid;
-                dt = new DataTable();
-                da = new NpgsqlDataAdapter(sql, conn);
-                da.Fill(dt);*/
+                cb.Checked = false;
 
-                //get acts through showid
-                string seatSection;
-                string seatNumber;
-                foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            }
+
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                foreach (DataRow row in cSeats.Rows)
                 {
-                    if (cb.Checked)
+                    string s = row[2].ToString() + row[3].ToString();
+                    lblS.Text = s;
+                    if (row[0].ToString() == sid)
                     {
-                        // Kollar först så att platsen finns!
-                        seatSection = cb.Name[0].ToString();
-                        seatNumber = cb.Name[1].ToString();
+                        if (cb.Name == s)
+                        {
+                            cb.Checked = true;
 
-                        NpgsqlCommand command;
-                        NpgsqlDataReader read;
-                        conn.Open();
-                        command = new NpgsqlCommand("SELECT seatid FROM seats WHERE rownumber = @rwnr AND section = @section", conn);
-                        command.Parameters.Add(new NpgsqlParameter("@rwnr", seatNumber));
-                        command.Parameters.AddWithValue("@section", seatSection);
-
-                        read = command.ExecuteReader();
-                        read.Read();
-                        int seatid = int.Parse(read[0].ToString());
-                        conn.Close();
-
-                        conn.Open();
-                        command = new NpgsqlCommand("insert into available_seats(actid, seatid) values (:aid, :sid)", conn);
-                        command.Parameters.Add(new NpgsqlParameter("aid", actid));
-                        command.Parameters.Add(new NpgsqlParameter("sid", seatid));
-                        command.ExecuteNonQuery();
-                        conn.Close();
+                        }
 
                     }
+                    else
+                    {
+
+
+                    }
+
                 }
-            }
-            catch (NpgsqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-                MessageBox.Show(ex.ToString());
+
             }
 
-            conn.Close();
         }
         public ShowForm()
         {
@@ -359,7 +343,7 @@ namespace cirkus
                     addedactid = read[0].ToString();
                     conn.Close();
 
-                    //seatmap(addedshowid, addedactid);
+                    
 
                     foreach (DataRow rw in cSeats.Rows)
                     {
@@ -392,47 +376,7 @@ namespace cirkus
             }
         }
 
-        private void buttonaddSeat_Click(object sender, EventArgs e)
-        {
 
-
-
-            foreach (DataGridViewRow r in dgSeats.SelectedRows)
-            {
-                DataGridViewRow t = (DataGridViewRow)r.Clone();
-
-
-                t.Cells[0].Value = r.Cells[0].Value;
-                t.Cells[1].Value = r.Cells[1].Value;
-                t.Cells[2].Value = r.Cells[2].Value;
-                t.Cells[3].Value = r.Cells[3].Value;
-
-                row = dtSelectedSeats.NewRow();
-                row[0] = selected_actid;
-                row[1] = selected_actname;
-                row[2] = r.Cells[1].Value;
-                row[3] = r.Cells[2].Value;
-                row[4] = r.Cells[3].Value;
-
-                dtSelectedSeats.Rows.Add(row);
-
-
-                //dtSeats.Rows.RemoveAt(dgSeats.CurrentCell.RowIndex);
-                fs.RemoveAt(dgSeats.SelectedRows[0].Index);
-
-                dgAseats.DataSource = dtSelectedSeats;
-                //this.dgAseats.Columns[4].DisplayIndex = 3;
-                //this.dgAseats.Columns[3].DisplayIndex = 4;
-                this.dgAseats.Columns[0].Visible = false;
-                this.dgAseats.Columns[1].Visible = false;
-                this.dgAseats.Columns[2].Visible = false;
-                //dgTest2.DataSource = dtSelectedSeats;
-            }
-
-
-
-
-        }
 
         private void labelAntalFriplatser_Click(object sender, EventArgs e)
         {
@@ -465,20 +409,7 @@ namespace cirkus
 
         }
 
-        private void textBoxSeats_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textBoxSeats.Text))
-            {
-                fs.DataSource = dtSeats;
-                fs.Filter = string.Format("id = '{0}'", selected_actid);
-            }
-            else
-            {
-                fs.DataSource = dtSeats;
-                fs.Filter = string.Format("section = '{0}' and id ='{1}'", textBoxSeats.Text, selected_actid);
-            }
 
-        }
 
         private void textBoxBeskrivning_Click(object sender, EventArgs e)
         {
@@ -583,20 +514,13 @@ namespace cirkus
 
 
             lblActMap.Text = selected_actname.ToString();
-            dgSeats.DataSource = dtSeats;
-
-            bs.DataSource = dtSelectedSeats;
-
-            bs.Filter = string.Format("id = '{0}'", selected_actid);
-
-            fs.DataSource = dtSeats;
-            fs.Filter = string.Format("id = '{0}'", selected_actid);
-
             
-            this.dgSeats.Columns[0].Visible = false;
-            this.dgSeats.Columns[1].Visible = false;
 
-            loadMap();
+
+           
+          
+
+            seatmap();
 
 
 
@@ -618,41 +542,7 @@ namespace cirkus
         {
 
         }
-        private void loadMap()
-        {
-            string sid = selected_actid.ToString();
-            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            {
-                cb.Checked = false;
-
-            }
-
-            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            {
-                foreach (DataRow row in cSeats.Rows)
-                {
-                    string s = row[2].ToString() + row[3].ToString();
-                    lblS.Text = s;
-                    if (row[0].ToString() == sid)
-                    {
-                        if (cb.Name == s)
-                        {
-                            cb.Checked = true;
-
-                        }
-
-                    }
-                    else
-                    {
-
-
-                    }
-
-                }
-
-            }
-
-        }
+        
 
     }
 }
