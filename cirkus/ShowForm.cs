@@ -26,7 +26,62 @@ namespace cirkus
         int selectedIndex;
         string addedshowid,addedactid;
         string selected_actname;
+        private void seatmap(string showid)
+        {
+            conn.Open();
+            try
+            {
+                string sql = "SELECT actid FROM acts WHERE acts.showid = " + showid;
+                dt = new DataTable();
+                da = new NpgsqlDataAdapter(sql, conn);
+                da.Fill(dt);
 
+                //get acts through showid
+                string seatSection;
+                string seatNumber;
+                foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+                {
+                    if (cb.Checked)
+                    {
+                        // Kollar först så att platsen finns!
+                        seatSection = cb.Name[0].ToString();
+                        seatNumber = cb.Name[1].ToString();
+
+                        NpgsqlCommand command;
+                        //command = new NpgsqlCommand("SELECT count(*) FROM seats WHERE rownumber = @seatNumber AND section = @seatSection", conn);
+                        command = new NpgsqlCommand("SELECT seatid FROM seats WHERE rownumber = @seatNumber AND section = @seatSection", conn);
+                        /*command.Parameters.AddWithValue("@section", seatSection);
+                        command.Parameters.AddWithValue("@rownumber", seatNumber);
+                        int seatExists = (int)command.ExecuteScalar(); */
+                        MessageBox.Show(command.ExecuteNonQuery().ToString());
+                        /*if(seatExists == 0)
+                        {
+                            command = new NpgsqlCommand("INSERT INTO seats (section, rownumber) VALUES(@section, @rownumber)", conn);
+                            command.Parameters.AddWithValue("@section", seatSection);
+                            command.Parameters.AddWithValue("@rownumber", seatNumber);
+                            command.ExecuteNonQuery();
+                        }*/
+
+                        //for (int i=0; i<dt.Rows.Count; i++)
+                        foreach (DataRow act in dt.Rows)
+                        {
+                            // Lägg till i available seats.
+                            //string actid = dt.Rows[0][0];
+                            string actid = act[0].ToString();
+                            command = new NpgsqlCommand("INSERT INTO available_seats (actid, seatid) VALUES @actid, @seatid");
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
+            }
+
+            conn.Close();
+        }
         public ShowForm()
         {
             InitializeComponent();
