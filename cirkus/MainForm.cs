@@ -867,6 +867,22 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
         }
         #endregion
+        public bool UpandDownArrow(Keys keyData)//Metod för när man trycker på upp och ned pilarna
+        {
+            if (keyData == Keys.Up)
+            {
+                return true;
+            }
+
+            else if (keyData == Keys.Down)
+            {
+                return true;
+            }
+            else
+            {
+                return UpandDownArrow(keyData);
+            }
+        }
 
         private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -966,15 +982,17 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         private void btnDeleteTicket_Click(object sender, EventArgs e)
         {
             DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade biljetten ?",
-                "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (Confirmation == DialogResult.Yes)
             {
                 int SelectedTicket;
-
                 DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
                 SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
+
                 string sql = "DELETE FROM booking WHERE bookingid = '" + SelectedTicket + "'";
+
+                //string sql2 "DELETE FROM booking WHERE some_column = some_value";
 
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
                 conn.Open();
@@ -996,5 +1014,13 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
             listTickets();
         }
+        private void dgCustomers_SelectionChanged(object sender, EventArgs e)
+        {
+            if (UpandDownArrow(Keys.Up)||UpandDownArrow(Keys.Down)==true)
+            {
+                //listTickets();
+            }
+        }
+
     }
 }

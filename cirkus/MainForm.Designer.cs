@@ -161,6 +161,7 @@
             this.dgTickets.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTickets.Location = new System.Drawing.Point(250, 75);
+            this.dgTickets.MultiSelect = false;
             this.dgTickets.Name = "dgTickets";
             this.dgTickets.ReadOnly = true;
             this.dgTickets.RowHeadersVisible = false;
@@ -178,6 +179,7 @@
             this.dgCustomers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCustomers.Location = new System.Drawing.Point(12, 75);
+            this.dgCustomers.MultiSelect = false;
             this.dgCustomers.Name = "dgCustomers";
             this.dgCustomers.ReadOnly = true;
             this.dgCustomers.RowHeadersVisible = false;
@@ -185,6 +187,7 @@
             this.dgCustomers.Size = new System.Drawing.Size(200, 368);
             this.dgCustomers.TabIndex = 14;
             this.dgCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellClick);
+            this.dgCustomers.SelectionChanged += new System.EventHandler(this.dgCustomers_SelectionChanged);
             // 
             // textBoxSearchCustomer
             // 
