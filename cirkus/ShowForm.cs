@@ -359,13 +359,13 @@ namespace cirkus
                     addedactid = read[0].ToString();
                     conn.Close();
 
-                    seatmap(addedshowid, addedactid);
+                    //seatmap(addedshowid, addedactid);
 
-                    /*foreach (DataRow rw in dtSelectedSeats.Rows)
+                    foreach (DataRow rw in cSeats.Rows)
                     {
                         if (int.Parse(rw[0].ToString()) == id)
                         {
-                            int seatid = int.Parse(rw[2].ToString());
+                            int seatid = int.Parse(rw[1].ToString());
                             conn.Open();
                             command = new NpgsqlCommand("insert into available_seats(actid, seatid) values (:aid, :sid)", conn);
                             command.Parameters.Add(new NpgsqlParameter("aid", addedactid));
@@ -377,7 +377,7 @@ namespace cirkus
 
                         }
 
-                    }*/
+                    }
 
 
                     MessageBox.Show("Föreställning skapad");
@@ -543,7 +543,7 @@ namespace cirkus
 
                         conn.Close();
 
-                        dgTest.DataSource = cSeats;
+                        
 
                     }
                 }
@@ -557,37 +557,7 @@ namespace cirkus
 
         private void btnLoadMap_Click(object sender, EventArgs e)
         {
-            string sid = selected_actid.ToString();
-            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            {
-                cb.Checked = false;
 
-            }
-
-                foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            {
-                foreach (DataRow row in cSeats.Rows)
-                {
-                    string s = row[2].ToString() + row[3].ToString();
-                    lblS.Text = s;
-                    if (row[0].ToString() == sid)
-                    {
-                        if (cb.Name == s)
-                        {
-                            cb.Checked = true;
-
-                        }
-                
-                    }
-                    else
-                    {
-
-
-                    }
-
-            }
-
-        }
 
     }
                 
@@ -607,7 +577,7 @@ namespace cirkus
             txtActname.Text = selected_actname;
 
 
-
+            lblActMap.Text = selected_actname.ToString();
             dgSeats.DataSource = dtSeats;
 
             bs.DataSource = dtSelectedSeats;
@@ -621,7 +591,7 @@ namespace cirkus
             this.dgSeats.Columns[0].Visible = false;
             this.dgSeats.Columns[1].Visible = false;
 
-
+            loadMap();
 
 
 
@@ -641,6 +611,41 @@ namespace cirkus
 
         private void labelAkter_Click(object sender, EventArgs e)
         {
+
+        }
+        private void loadMap()
+        {
+            string sid = selected_actid.ToString();
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                cb.Checked = false;
+
+            }
+
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                foreach (DataRow row in cSeats.Rows)
+                {
+                    string s = row[2].ToString() + row[3].ToString();
+                    lblS.Text = s;
+                    if (row[0].ToString() == sid)
+                    {
+                        if (cb.Name == s)
+                        {
+                            cb.Checked = true;
+
+                        }
+
+                    }
+                    else
+                    {
+
+
+                    }
+
+                }
+
+            }
 
         }
 
