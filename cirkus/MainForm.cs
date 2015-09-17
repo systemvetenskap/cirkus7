@@ -1014,7 +1014,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         }
         private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            listTickets();
+            listTickets(); //Merge
         }
     }
 }
