@@ -71,7 +71,7 @@ namespace cirkus
 
             showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
 
-            lblshowid.Text = showid.ToString();
+            //lblshowid.Text = showid.ToString();
             
             string sql = "select acts.actid, acts.name from acts where showid = '" + showid + "'";
 
@@ -87,8 +87,8 @@ namespace cirkus
                         object id2 = comboTicketnr.SelectedItem.ToString();
                         string a = comboTicketnr.SelectedItem.ToString();
                         string b = rows[0].ToString();
-                        lbltest.Text = a;
-                        lbltest2.Text = ticketid.ToString();
+                        //lbltest.Text = a;
+                        //lbltest2.Text = ticketid.ToString();
 
                         if (a != b)
                         {
@@ -177,7 +177,7 @@ namespace cirkus
 
             //dataGridViewActs.CurrentCell.Selected = false;
 
-            dgTest.DataSource = acts;
+            //dgTest.DataSource = acts;
 
 
 
@@ -197,7 +197,7 @@ namespace cirkus
                 actid = int.Parse(dataGridViewActs[1, selectedIndex].Value.ToString());
                 //string sql = @"select section, rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
                 //            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "' order by section, rownumber";
-                lbltest.Text = actid.ToString();
+                //lbltest.Text = actid.ToString();
                 string sqlSearch = textBoxSeats.Text;
                 string sql3 = @"select available_seats.available_seats_id as seatid, seats.section, seats.rownumber from seats 
                                 inner join available_seats on seats.seatid = available_seats.seatid
@@ -229,7 +229,7 @@ namespace cirkus
                 //dgSeats.CurrentCell.Selected = false;
                 conn.Close();
 
-                dgTest.DataSource = section;
+                //dgTest.DataSource = section;
 
                 //load_Seats();
 
@@ -275,7 +275,7 @@ namespace cirkus
             da.Fill(cSeats);
 
             //dgSeats.DataSource = seats;
-            dgTest.DataSource = seats;
+            //dgTest.DataSource = seats;
             dataGridViewActs.ClearSelection();
             conn.Close();
         }
@@ -544,7 +544,7 @@ namespace cirkus
 
                     filterseats.RemoveAt(dgSeats.CurrentCell.RowIndex);
 
-                    dgTest.DataSource = selectedseats;
+                    //dgTest.DataSource = selectedseats;
                     dgBseats.DataSource = selectedseats;
                         
 
@@ -586,7 +586,7 @@ namespace cirkus
             dgSeats.ClearSelection();
             dgBseats.ClearSelection();*/
 
-            dgTest.DataSource = cSeats;
+            //dgTest.DataSource = cSeats;
             string sid = actid.ToString();
 
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
@@ -799,7 +799,7 @@ namespace cirkus
         {
             int cboIndex = comboTicketnr.SelectedIndex;
             ticketid = int.Parse(this.comboTicketnr.Items[cboIndex].ToString());
-            lbltest.Text = ticketid.ToString();
+            //lbltest.Text = ticketid.ToString();
             loadActs();
             countSeats();
         }
@@ -832,7 +832,7 @@ namespace cirkus
 
             customerid = int.Parse(dgCustom[2, selectedIndex].Value.ToString());
 
-            lblcustid.Text = customerid.ToString();
+            //lblcustid.Text = customerid.ToString();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -1019,7 +1019,7 @@ namespace cirkus
                         rw[3] = row[5];
                         tickets.Rows.Add(rw);
 
-                        dgTest.DataSource = tickets;
+                        //dgTest.DataSource = tickets;
                     }
 
                 }
