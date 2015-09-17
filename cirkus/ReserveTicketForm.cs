@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using System.IO;
+using System.Net;
+using System.Web;
+using System.Net.Mail;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace cirkus
 {
@@ -17,7 +22,7 @@ namespace cirkus
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int showid, actid, fillMode ,seatid,agegroup, customerid, total, checkedseats, priceid, freeSseats, freeLseats, tickets, ticketid;      
-        string show, act, bseats, selectedsection;
+        string show, act, bseats, selectedsection, customeremail, customerfname, customerlname, pdf, bokningid;
         bool newcust;
         bool seatType = true; 
         DataTable shows,section,dtfSeats;
@@ -427,6 +432,12 @@ namespace cirkus
                 string ln = txtenamn.Text;
                 string pn = txttel.Text;
                 string em = txtepost.Text;
+                if (IsValidEmail(em) == false)
+                {
+                    MessageBox.Show("Ange giltig mail");
+
+                    return;
+                }
                 conn.Open();
                 
                 cmd = new NpgsqlCommand("insert into customer(fname, lname, phonenumber, email) values(:fn, :ln, :pn, :em)", conn);
@@ -1221,6 +1232,110 @@ namespace cirkus
             }
 
         }
+        public void SendMail()
+        {
+            //BiljetterPDF();
+
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("select customerid, email, fname, lname from customer where customerid = '" + customerid + "';", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+
+
+
+            dr.Read();
+            customeremail = dr[1].ToString();
+            customerfname = dr[2].ToString();
+            customerlname = dr[3].ToString();
+
+            conn.Close();
+
+            string confirm_mail_text = "Hej " + customerfname + " " + customerlname + "\n\nDet här är en bekräftelse på att du har köp biljetten/biljetter för kommande förestälningen \n\n\nOm du har några frågor kring ditt köp, vänligen kontakta oss via e-post: kulbusstest@gmail.com eller via telefon 000 000";
+
+
+            object value = customeremail;
+            if (value == DBNull.Value)
+            {
+                MessageBox.Show("Inget mail skickat");
+            }
+            else
+            {
+                System.Net.Mail.Attachment attachment;
+                MailMessage mail = new MailMessage("kulbusstest@gmail.com", customeremail, "Cirkus Kull&Buss - Bokningsbekräftelse", confirm_mail_text); // (from, to, subject, body.text)
+                attachment = new System.Net.Mail.Attachment("C:\\Users\\Matija\\Source\\Repos\\cirkus73\\cirkus\\bin\\Debug\\Ticets\\Bookning" + bokningid + ".pdf");
+
+                mail = new MailMessage("kulbusstest@gmail.com", customeremail, "Cirkus Kull&Buss - Bokningsbekräftelse", confirm_mail_text); // (from, to, subject, body.text)
+
+
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                client.Port = 587;
+                client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
+                client.EnableSsl = true;
+
+                MessageBox.Show("Mail skickad");
+
+                string show_date, aldersgrupp, akt_name, sektion, plats_nummer;
+
+                conn.Open();
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(@"select booked_seats.booked_seat_id, show.date, show.name, acts.name, seats.section, seats.rownumber, price_group_seat.group, price_group_seat.price, booking.reserved_to from show
+            inner join acts on show.showid = acts.showid
+            inner join available_seats on acts.actid = available_seats.actid
+            inner join seats on available_seats.seatid = seats.seatid
+            inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
+            inner join booking on booked_seats.bookingid = booking.bookingid
+            inner join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + customerid + "' and show.showid = '" + showid + "'", conn);
+
+                DataTable bdt = new DataTable();
+
+                da.Fill(bdt);
+
+                conn.Close();
+
+
+
+                foreach (DataRow r in bdt.Rows)
+                {
+                    bokningid = r[0].ToString();
+                    show_date = r[1].ToString();
+                    aldersgrupp = r[6].ToString();
+                    akt_name = r[3].ToString();
+                    sektion = r[4].ToString();
+                    plats_nummer = r[5].ToString();
+                    pdf = @"G:\A-Informatik\Biljettsystem" + bokningid + ".pdf"; //skapar unikt namn till pdf fil
+
+                    FileStream fs = new FileStream(pdf, FileMode.Create, FileAccess.Write, FileShare.None);
+                    Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
+                    PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                    doc.Open();
+                    doc.Add(new Paragraph("Föreställning: " + show + "\nDatum: " + show_date + " \nÅldersgrupp: " + aldersgrupp + "\nBiljett för " + akt_name + "\nSektion: " + sektion + "\nPlats nummer: " + plats_nummer + "\n\nBokningsid: " + bokningid));
+                    doc.Close();
+                    //System.Net.Mail.Attachment attachment;
+                    attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem" + bokningid + ".pdf");
+
+                    mail.Attachments.Add(attachment);
+
+
+
+                }
+            }
+
+
+
+        }
+        public bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
     }
 }
