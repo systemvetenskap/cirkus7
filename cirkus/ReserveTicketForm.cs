@@ -1030,67 +1030,98 @@ namespace cirkus
                         rw[3] = row[5];
                         tickets.Rows.Add(rw);
 
-                        //dgTest.DataSource = tickets;
+                        dgTEST.DataSource = tickets;
                     }
 
                 }
 
             }
-            foreach (DataRow rw in tickets.Rows)
+
+            for (int i = 0; i <= ticketid; i++)
             {
+                foreach (DataRow rw in tickets.Rows)
+                {
+
+
+                    string actid = rw[3].ToString();
+                    string seatid = rw[1].ToString();
+                    string priceid = rw[2].ToString();
+
+                    lblSeatid.Text = seatid;
+                    lblAct.Text = actid;
+                    lblPris.Text = priceid;
+                    conn.Open();
+                    sql = "insert into booking(customerid,showid) values(:cid,:shid)";
+                    cmd = new NpgsqlCommand(sql, conn);
+                    cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
+                    cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+
+
+                    cmd.ExecuteNonQuery();
+
+                    cmd = new NpgsqlCommand("select currval('booking_bookingid_seq');", conn);
+                    NpgsqlDataReader read;
+                    read = cmd.ExecuteReader();
+
+                    read.Read();
+                    int addedbookingid = int.Parse(read[0].ToString());
+                    conn.Close();
+
               
+                    foreach (DataRow dr in tickets.Rows)
+                    {
+                      
+                        string id = dr[0].ToString();
+                        actid = dr[3].ToString();
+                        seatid = dr[1].ToString();
+                        priceid = dr[2].ToString();
+                        string tickid = i.ToString();
+                        if(id == tickid)
+                        {
+                            conn.Open();
+                            sql = "insert into booked_seats(available_seats_id, bookingid, priceid ) values(:sid, :bid, :pid)";
+                            cmd = new NpgsqlCommand(sql, conn);
+                            cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));
+                            cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
+                            cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+                            cmd.ExecuteNonQuery();
 
-                string actid = rw[3].ToString();
-                string seatid = rw[1].ToString();
-                string priceid = rw[2].ToString();
+                            cmd = new NpgsqlCommand("select currval('booked_seats_booked_seat_id_seq');", conn);
 
-                lblSeatid.Text = seatid;
-                lblAct.Text = actid;
-                lblPris.Text = priceid;
-                conn.Open();
-                sql = "insert into booking(customerid,showid) values(:cid,:shid)";
-                cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
-                cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+                            read = cmd.ExecuteReader();
+
+                            read.Read();
+                            int addedbookedseat = int.Parse(read[0].ToString());
+                            conn.Close();
+                            conn.Open();
+                            sql = "insert into ticket(bookingid, booked_seat_id ) values(:bid, :boid)";
+                            cmd = new NpgsqlCommand(sql, conn);
+                            cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
+                            cmd.Parameters.Add(new NpgsqlParameter("boid", addedbookedseat));
+                            
+
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
 
 
-                cmd.ExecuteNonQuery();
 
-                cmd = new NpgsqlCommand("select currval('booking_bookingid_seq');", conn);
-                NpgsqlDataReader read;
-                read = cmd.ExecuteReader();
 
-                read.Read();
-                int addedbookingid = int.Parse(read[0].ToString());
-                conn.Close();
+                        }
 
-                conn.Open();
-                sql = "insert into booked_seats(available_seats_id, bookingid, priceid ) values(:sid, :bid, :pid)";
-                cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));
-                cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
-                cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
-                cmd.ExecuteNonQuery();
 
-                cmd = new NpgsqlCommand("select currval('booked_seats_booked_seat_id_seq');", conn);
 
-                read = cmd.ExecuteReader();
+                    }
+                    
 
-                read.Read();
-                int addedbookedseat = int.Parse(read[0].ToString());
-                conn.Close();
 
-                conn.Open();
-                sql = "insert into ticket(bookingid, booked_seat_id, actid ) values(:bid, :boid, :pid)";
-                cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
-                cmd.Parameters.Add(new NpgsqlParameter("boid", addedbookedseat));
-                cmd.Parameters.Add(new NpgsqlParameter("pid", actid));
+                    
 
-                cmd.ExecuteNonQuery();
-                conn.Close(); 
+
+                }
+
 
             }
+
                  
 
 
