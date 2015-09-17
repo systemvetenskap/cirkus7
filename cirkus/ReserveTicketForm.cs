@@ -328,7 +328,7 @@ namespace cirkus
             int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
 
             showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
-            load_Seats();
+            //load_Seats();
             conn.Close();
             
             
@@ -361,10 +361,14 @@ namespace cirkus
             dtfSeats.Columns.Add("priceid");
             panel1.Visible = false;
             panel2.Visible = false;
-            panel3.Visible = false;            
+            panel3.Visible = false;
+            cSeats.Columns.Add("ticketid");
             cSeats.Columns.Add("seatid");
             cSeats.Columns.Add("section");
             cSeats.Columns.Add("rownumber");
+            cSeats.Columns.Add("priceid");
+         
+
         }
 
 
@@ -596,15 +600,27 @@ namespace cirkus
             {
                 foreach (DataRow row in cSeats.Rows)
                 {
-                    string s = row[1].ToString() + row[2].ToString();
+                    string s = row[2].ToString() + row[3].ToString();
+                    int aid = int.Parse(row[5].ToString());
                     lblS.Text = s;
-                    if (row[3].ToString() == sid)
+                    if (row[5].ToString() == sid)
                     {
                         if (cb.Name == s)
                         {
                             cb.Enabled = true;
                             cb.Checked = false;
                             cb.BackColor = Color.Green;
+                            
+                            object value = row[0];
+                 
+                            if (value != DBNull.Value && aid == actid)
+                            {
+                                cb.Enabled = false;
+                                cb.Checked = true;
+                                cb.BackColor = Color.Purple;
+                               
+
+                            }
 
                         }
 
@@ -621,12 +637,13 @@ namespace cirkus
             }
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
-                if(cb.Enabled == false)
+                if(cb.Enabled == false && cb.Checked == false)
                 {
                     cb.Checked = false;
                     cb.BackColor = Color.Gray;
 
                 }
+                
 
             }
         }
@@ -725,8 +742,56 @@ namespace cirkus
         {
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
-                cb.Name
+                string seatSection = cb.Name[0].ToString();
+                string seatNumber = cb.Name[1].ToString();
+                if (cb.Checked == true)
+                {
+                    foreach (DataRow row in cSeats.Rows)
+                    {
+                        string section = row[2].ToString();
+                        string rwnr = row[3].ToString();
+                        int aid = int.Parse(row[5].ToString());
+                        object value = row[0];
+                        if (section == seatSection && seatNumber == rwnr && aid == actid && value == DBNull.Value)
+                        {
+                            row[0] = ticketid;
+                            row[4] = priceid;
 
+                        }
+
+                    }
+
+
+                }
+
+            }
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                string seatSection = cb.Name[0].ToString();
+                string seatNumber = cb.Name[1].ToString();
+                if (cb.Checked == false)
+                {
+
+                    foreach (DataRow row in cSeats.Rows)
+                    {
+                        string tid = row[0].ToString();
+                        string section = row[2].ToString();
+                        string rwnr = row[3].ToString();
+                        string pid = row[4].ToString();
+                        int aid = int.Parse(row[5].ToString());
+                                          
+                        if (tid == ticketid.ToString() && pid == priceid.ToString() && aid == actid && section == seatSection && seatNumber == rwnr)
+                        {
+                            row[0] = null;
+                            row[4] = null;
+
+                        }
+
+                    }
+
+
+                }
+         
             }
         }
 
@@ -922,81 +987,168 @@ namespace cirkus
             }
        
 
-           
-
-
         }
         private void createBooking()
         {
             string sql;
             int custid = customerid;
             int shid = showid;
-            
-            
+            DataTable tickets = new DataTable();
+            tickets.Columns.Add("ticketid");
+            tickets.Columns.Add("seatid");
+            tickets.Columns.Add("priceid");
+            tickets.Columns.Add("actid");
 
-                foreach (DataRow row in selectedseats.Rows)
+
+            for (int i = 0; i <= ticketid; i++)
+            {
+
+                foreach (DataRow row in cSeats.Rows)
                 {
-                    int seatid = int.Parse(row[1].ToString());
-                    string actid = row[2].ToString();
-                    int priceid = int.Parse(row[5].ToString());
-                    lblSeatid.Text = row[1].ToString();
-                    lblAct.Text = row[2].ToString();
-                    lblPris.Text = row[1].ToString();
-
-                    /*conn.Open();
-                    sql = "insert into booking(customerid,showid) values(:cid,:shid)";
-                    cmd = new NpgsqlCommand(sql, conn);
-                    cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
-                    cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
 
 
-                    cmd.ExecuteNonQuery();
-                   
+                    if (row[0].ToString() == i.ToString())
+                    {
 
-                    
-                    cmd = new NpgsqlCommand("select currval('booking_bookingid_seq');", conn);
-                    NpgsqlDataReader read;
-                    read = cmd.ExecuteReader();
 
-                    read.Read();
-                    int addedbookingid = int.Parse(read[0].ToString());
-                    conn.Close();
-                   
-                    conn.Open();
-                    sql = "insert into booked_seats(available_seats_id, bookingid, priceid ) values(:sid, :bid, :pid)";
-                    cmd = new NpgsqlCommand(sql, conn);
-                    cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));                  
-                    cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
-                    cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
 
-                    cmd.ExecuteNonQuery();
-                    
+                        DataRow rw = tickets.NewRow();
+                        rw[0] = row[0];
+                        rw[1] = row[1];
+                        rw[2] = row[4];
+                        rw[3] = row[5];
+                        tickets.Rows.Add(rw);
 
-                    cmd = new NpgsqlCommand("select currval('booked_seats_booked_seat_id_seq');", conn);
-                    
-                    read = cmd.ExecuteReader();
+                        dgTest.DataSource = tickets;
+                    }
 
-                    read.Read();
-                    int addedbookedseat = int.Parse(read[0].ToString());
-                    conn.Close();
-
-                    conn.Open();
-                    sql = "insert into ticket(bookingid, booked_seat_id, actid ) values(:bid, :boid, :pid)";
-                    cmd = new NpgsqlCommand(sql, conn);
-                    cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
-                    cmd.Parameters.Add(new NpgsqlParameter("boid", addedbookedseat));
-                    cmd.Parameters.Add(new NpgsqlParameter("pid",actid));
-
-                    cmd.ExecuteNonQuery();
-                    conn.Close();*/
+                }
 
             }
+            foreach (DataRow rw in tickets.Rows)
+            {
+              
+
+                string actid = rw[3].ToString();
+                string seatid = rw[1].ToString();
+                string priceid = rw[2].ToString();
+
+                lblSeatid.Text = seatid;
+                lblAct.Text = actid;
+                lblPris.Text = priceid;
+                conn.Open();
+                sql = "insert into booking(customerid,showid) values(:cid,:shid)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
+                cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
 
 
-            MessageBox.Show("Bokning utförd");
+                cmd.ExecuteNonQuery();
+
+                cmd = new NpgsqlCommand("select currval('booking_bookingid_seq');", conn);
+                NpgsqlDataReader read;
+                read = cmd.ExecuteReader();
+
+                read.Read();
+                int addedbookingid = int.Parse(read[0].ToString());
+                conn.Close();
+
+                conn.Open();
+                sql = "insert into booked_seats(available_seats_id, bookingid, priceid ) values(:sid, :bid, :pid)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));
+                cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
+                cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+                cmd.ExecuteNonQuery();
+
+                cmd = new NpgsqlCommand("select currval('booked_seats_booked_seat_id_seq');", conn);
+
+                read = cmd.ExecuteReader();
+
+                read.Read();
+                int addedbookedseat = int.Parse(read[0].ToString());
+                conn.Close();
+
+                conn.Open();
+                sql = "insert into ticket(bookingid, booked_seat_id, actid ) values(:bid, :boid, :pid)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
+                cmd.Parameters.Add(new NpgsqlParameter("boid", addedbookedseat));
+                cmd.Parameters.Add(new NpgsqlParameter("pid", actid));
+
+                cmd.ExecuteNonQuery();
+                conn.Close(); 
+
+            }
+                 
 
 
 
+             
+
+                 
+            /*int seatid = int.Parse(row[1].ToString());
+            string actid = row[2].ToString();
+            int priceid = int.Parse(row[5].ToString());
+            lblSeatid.Text = row[1].ToString();
+            lblAct.Text = row[2].ToString();
+            lblPris.Text = row[1].ToString();
+
+            /*conn.Open();
+            sql = "insert into booking(customerid,showid) values(:cid,:shid)";
+            cmd = new NpgsqlCommand(sql, conn);
+            cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
+            cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+
+
+            cmd.ExecuteNonQuery();
+
+
+
+            cmd = new NpgsqlCommand("select currval('booking_bookingid_seq');", conn);
+            NpgsqlDataReader read;
+            read = cmd.ExecuteReader();
+
+            read.Read();
+            int addedbookingid = int.Parse(read[0].ToString());
+            conn.Close();
+
+            conn.Open();
+            sql = "insert into booked_seats(available_seats_id, bookingid, priceid ) values(:sid, :bid, :pid)";
+            cmd = new NpgsqlCommand(sql, conn);
+            cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));                  
+            cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
+            cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+
+            cmd.ExecuteNonQuery();
+
+
+            cmd = new NpgsqlCommand("select currval('booked_seats_booked_seat_id_seq');", conn);
+
+            read = cmd.ExecuteReader();
+
+            read.Read();
+            int addedbookedseat = int.Parse(read[0].ToString());
+            conn.Close();
+
+            conn.Open();
+            sql = "insert into ticket(bookingid, booked_seat_id, actid ) values(:bid, :boid, :pid)";
+            cmd = new NpgsqlCommand(sql, conn);
+            cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
+            cmd.Parameters.Add(new NpgsqlParameter("boid", addedbookedseat));
+            cmd.Parameters.Add(new NpgsqlParameter("pid",actid));
+
+            cmd.ExecuteNonQuery();
+            conn.Close();*/
+
+
+
+
+                MessageBox.Show("Bokning utförd");
+
+
+
+            
         }
         private void countSeats()
         {

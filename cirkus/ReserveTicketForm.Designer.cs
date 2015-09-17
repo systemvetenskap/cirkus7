@@ -83,29 +83,6 @@
             this.dgCustom = new System.Windows.Forms.DataGridView();
             this.textBoxSearchCust = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.lblPris = new System.Windows.Forms.Label();
-            this.lblAct = new System.Windows.Forms.Label();
-            this.lblSeatid = new System.Windows.Forms.Label();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.lblshowid = new System.Windows.Forms.Label();
-            this.lblactid = new System.Windows.Forms.Label();
-            this.lblaseatid = new System.Windows.Forms.Label();
-            this.lblcustid = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dgFseats = new System.Windows.Forms.DataGridView();
-            this.dgTest = new System.Windows.Forms.DataGridView();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
             this.uncheck = new System.Windows.Forms.Button();
             this.check = new System.Windows.Forms.Button();
@@ -177,6 +154,29 @@
             this.A6 = new System.Windows.Forms.CheckBox();
             this.A5 = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblPris = new System.Windows.Forms.Label();
+            this.lblAct = new System.Windows.Forms.Label();
+            this.lblSeatid = new System.Windows.Forms.Label();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblshowid = new System.Windows.Forms.Label();
+            this.lblactid = new System.Windows.Forms.Label();
+            this.lblaseatid = new System.Windows.Forms.Label();
+            this.lblcustid = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.dgFseats = new System.Windows.Forms.DataGridView();
+            this.dgTest = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -190,12 +190,12 @@
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).BeginInit();
             this.panel1.SuspendLayout();
+            this.gpSeatMap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgFseats)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTest)).BeginInit();
-            this.gpSeatMap.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // radioButton2
@@ -801,236 +801,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(626, 468);
             this.panel1.TabIndex = 40;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(32, 333);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 35);
-            this.button3.TabIndex = 43;
-            this.button3.Text = "Tillbaka";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(136, 333);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 35);
-            this.button2.TabIndex = 43;
-            this.button2.Text = "Nästa";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.dgCustom);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.textBoxSearchCust);
-            this.panel2.Controls.Add(this.groupBox6);
-            this.panel2.Location = new System.Drawing.Point(673, 739);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(625, 171);
-            this.panel2.TabIndex = 41;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 28);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(53, 13);
-            this.label9.TabIndex = 46;
-            this.label9.Text = "Sök kund";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(409, 249);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 35);
-            this.button4.TabIndex = 44;
-            this.button4.Text = "Tillbaka";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(515, 249);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 35);
-            this.button5.TabIndex = 45;
-            this.button5.Text = "Nästa";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.lblPris);
-            this.panel3.Controls.Add(this.lblAct);
-            this.panel3.Controls.Add(this.lblSeatid);
-            this.panel3.Controls.Add(this.radioButton5);
-            this.panel3.Controls.Add(this.button6);
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.groupBox7);
-            this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Location = new System.Drawing.Point(14, 739);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(645, 159);
-            this.panel3.TabIndex = 42;
-            // 
-            // lblPris
-            // 
-            this.lblPris.AutoSize = true;
-            this.lblPris.Location = new System.Drawing.Point(386, 126);
-            this.lblPris.Name = "lblPris";
-            this.lblPris.Size = new System.Drawing.Size(41, 13);
-            this.lblPris.TabIndex = 50;
-            this.lblPris.Text = "label18";
-            // 
-            // lblAct
-            // 
-            this.lblAct.AutoSize = true;
-            this.lblAct.Location = new System.Drawing.Point(383, 84);
-            this.lblAct.Name = "lblAct";
-            this.lblAct.Size = new System.Drawing.Size(41, 13);
-            this.lblAct.TabIndex = 49;
-            this.lblAct.Text = "label17";
-            // 
-            // lblSeatid
-            // 
-            this.lblSeatid.AutoSize = true;
-            this.lblSeatid.Location = new System.Drawing.Point(380, 44);
-            this.lblSeatid.Name = "lblSeatid";
-            this.lblSeatid.Size = new System.Drawing.Size(41, 13);
-            this.lblSeatid.TabIndex = 48;
-            this.lblSeatid.Text = "label11";
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(31, 196);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(80, 17);
-            this.radioButton5.TabIndex = 47;
-            this.radioButton5.Text = "Reserverad";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(401, 231);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 35);
-            this.button6.TabIndex = 46;
-            this.button6.Text = "Tillbaka";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(507, 231);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 35);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Slutför";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(983, 32);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(42, 13);
-            this.label13.TabIndex = 43;
-            this.label13.Text = "Showid";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(984, 59);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(31, 13);
-            this.label14.TabIndex = 44;
-            this.label14.Text = "Actid";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(984, 87);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(89, 13);
-            this.label15.TabIndex = 45;
-            this.label15.Text = "available_seat_id";
-            // 
-            // lblshowid
-            // 
-            this.lblshowid.AutoSize = true;
-            this.lblshowid.Location = new System.Drawing.Point(1062, 32);
-            this.lblshowid.Name = "lblshowid";
-            this.lblshowid.Size = new System.Drawing.Size(41, 13);
-            this.lblshowid.TabIndex = 46;
-            this.lblshowid.Text = "label16";
-            // 
-            // lblactid
-            // 
-            this.lblactid.AutoSize = true;
-            this.lblactid.Location = new System.Drawing.Point(1062, 59);
-            this.lblactid.Name = "lblactid";
-            this.lblactid.Size = new System.Drawing.Size(41, 13);
-            this.lblactid.TabIndex = 47;
-            this.lblactid.Text = "label16";
-            // 
-            // lblaseatid
-            // 
-            this.lblaseatid.AutoSize = true;
-            this.lblaseatid.Location = new System.Drawing.Point(1079, 87);
-            this.lblaseatid.Name = "lblaseatid";
-            this.lblaseatid.Size = new System.Drawing.Size(41, 13);
-            this.lblaseatid.TabIndex = 48;
-            this.lblaseatid.Text = "label16";
-            // 
-            // lblcustid
-            // 
-            this.lblcustid.AutoSize = true;
-            this.lblcustid.Location = new System.Drawing.Point(1079, 114);
-            this.lblcustid.Name = "lblcustid";
-            this.lblcustid.Size = new System.Drawing.Size(37, 13);
-            this.lblcustid.TabIndex = 49;
-            this.lblcustid.Text = "lblcust";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(984, 116);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(62, 13);
-            this.label16.TabIndex = 50;
-            this.label16.Text = "Customer id";
-            // 
-            // dgFseats
-            // 
-            this.dgFseats.AllowUserToAddRows = false;
-            this.dgFseats.AllowUserToDeleteRows = false;
-            this.dgFseats.AllowUserToResizeColumns = false;
-            this.dgFseats.AllowUserToResizeRows = false;
-            this.dgFseats.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgFseats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgFseats.ColumnHeadersVisible = false;
-            this.dgFseats.Location = new System.Drawing.Point(713, 369);
-            this.dgFseats.Name = "dgFseats";
-            this.dgFseats.ReadOnly = true;
-            this.dgFseats.RowHeadersVisible = false;
-            this.dgFseats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgFseats.Size = new System.Drawing.Size(161, 99);
-            this.dgFseats.TabIndex = 53;
-            // 
-            // dgTest
-            // 
-            this.dgTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTest.Location = new System.Drawing.Point(713, 92);
-            this.dgTest.Name = "dgTest";
-            this.dgTest.Size = new System.Drawing.Size(431, 150);
-            this.dgTest.TabIndex = 54;
             // 
             // gpSeatMap
             // 
@@ -1868,12 +1638,242 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(32, 333);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 35);
+            this.button3.TabIndex = 43;
+            this.button3.Text = "Tillbaka";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(136, 333);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 35);
+            this.button2.TabIndex = 43;
+            this.button2.Text = "Nästa";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.dgCustom);
+            this.panel2.Controls.Add(this.button5);
+            this.panel2.Controls.Add(this.textBoxSearchCust);
+            this.panel2.Controls.Add(this.groupBox6);
+            this.panel2.Location = new System.Drawing.Point(673, 521);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(625, 296);
+            this.panel2.TabIndex = 41;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 28);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 46;
+            this.label9.Text = "Sök kund";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(409, 249);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(100, 35);
+            this.button4.TabIndex = 44;
+            this.button4.Text = "Tillbaka";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(515, 249);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(100, 35);
+            this.button5.TabIndex = 45;
+            this.button5.Text = "Nästa";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.lblPris);
+            this.panel3.Controls.Add(this.lblAct);
+            this.panel3.Controls.Add(this.lblSeatid);
+            this.panel3.Controls.Add(this.radioButton5);
+            this.panel3.Controls.Add(this.button6);
+            this.panel3.Controls.Add(this.button1);
+            this.panel3.Controls.Add(this.groupBox7);
+            this.panel3.Controls.Add(this.radioButton2);
+            this.panel3.Location = new System.Drawing.Point(596, 12);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(645, 257);
+            this.panel3.TabIndex = 42;
+            // 
+            // lblPris
+            // 
+            this.lblPris.AutoSize = true;
+            this.lblPris.Location = new System.Drawing.Point(386, 126);
+            this.lblPris.Name = "lblPris";
+            this.lblPris.Size = new System.Drawing.Size(41, 13);
+            this.lblPris.TabIndex = 50;
+            this.lblPris.Text = "label18";
+            // 
+            // lblAct
+            // 
+            this.lblAct.AutoSize = true;
+            this.lblAct.Location = new System.Drawing.Point(383, 84);
+            this.lblAct.Name = "lblAct";
+            this.lblAct.Size = new System.Drawing.Size(41, 13);
+            this.lblAct.TabIndex = 49;
+            this.lblAct.Text = "label17";
+            // 
+            // lblSeatid
+            // 
+            this.lblSeatid.AutoSize = true;
+            this.lblSeatid.Location = new System.Drawing.Point(380, 44);
+            this.lblSeatid.Name = "lblSeatid";
+            this.lblSeatid.Size = new System.Drawing.Size(41, 13);
+            this.lblSeatid.TabIndex = 48;
+            this.lblSeatid.Text = "label11";
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(31, 196);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(80, 17);
+            this.radioButton5.TabIndex = 47;
+            this.radioButton5.Text = "Reserverad";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(395, 222);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 35);
+            this.button6.TabIndex = 46;
+            this.button6.Text = "Tillbaka";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(507, 222);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 35);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Slutför";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(983, 32);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(42, 13);
+            this.label13.TabIndex = 43;
+            this.label13.Text = "Showid";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(984, 59);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(31, 13);
+            this.label14.TabIndex = 44;
+            this.label14.Text = "Actid";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(984, 87);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(89, 13);
+            this.label15.TabIndex = 45;
+            this.label15.Text = "available_seat_id";
+            // 
+            // lblshowid
+            // 
+            this.lblshowid.AutoSize = true;
+            this.lblshowid.Location = new System.Drawing.Point(1062, 32);
+            this.lblshowid.Name = "lblshowid";
+            this.lblshowid.Size = new System.Drawing.Size(41, 13);
+            this.lblshowid.TabIndex = 46;
+            this.lblshowid.Text = "label16";
+            // 
+            // lblactid
+            // 
+            this.lblactid.AutoSize = true;
+            this.lblactid.Location = new System.Drawing.Point(1062, 59);
+            this.lblactid.Name = "lblactid";
+            this.lblactid.Size = new System.Drawing.Size(41, 13);
+            this.lblactid.TabIndex = 47;
+            this.lblactid.Text = "label16";
+            // 
+            // lblaseatid
+            // 
+            this.lblaseatid.AutoSize = true;
+            this.lblaseatid.Location = new System.Drawing.Point(1079, 87);
+            this.lblaseatid.Name = "lblaseatid";
+            this.lblaseatid.Size = new System.Drawing.Size(41, 13);
+            this.lblaseatid.TabIndex = 48;
+            this.lblaseatid.Text = "label16";
+            // 
+            // lblcustid
+            // 
+            this.lblcustid.AutoSize = true;
+            this.lblcustid.Location = new System.Drawing.Point(1079, 114);
+            this.lblcustid.Name = "lblcustid";
+            this.lblcustid.Size = new System.Drawing.Size(37, 13);
+            this.lblcustid.TabIndex = 49;
+            this.lblcustid.Text = "lblcust";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(984, 116);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(62, 13);
+            this.label16.TabIndex = 50;
+            this.label16.Text = "Customer id";
+            // 
+            // dgFseats
+            // 
+            this.dgFseats.AllowUserToAddRows = false;
+            this.dgFseats.AllowUserToDeleteRows = false;
+            this.dgFseats.AllowUserToResizeColumns = false;
+            this.dgFseats.AllowUserToResizeRows = false;
+            this.dgFseats.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgFseats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgFseats.ColumnHeadersVisible = false;
+            this.dgFseats.Location = new System.Drawing.Point(713, 369);
+            this.dgFseats.Name = "dgFseats";
+            this.dgFseats.ReadOnly = true;
+            this.dgFseats.RowHeadersVisible = false;
+            this.dgFseats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgFseats.Size = new System.Drawing.Size(161, 99);
+            this.dgFseats.TabIndex = 53;
+            // 
+            // dgTest
+            // 
+            this.dgTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTest.Location = new System.Drawing.Point(710, 823);
+            this.dgTest.Name = "dgTest";
+            this.dgTest.Size = new System.Drawing.Size(431, 150);
+            this.dgTest.TabIndex = 54;
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1310, 950);
+            this.ClientSize = new System.Drawing.Size(1310, 985);
             this.Controls.Add(this.dgTest);
             this.Controls.Add(this.dgFseats);
             this.Controls.Add(this.groupBox1);
@@ -1914,15 +1914,15 @@
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.gpSeatMap.ResumeLayout(false);
+            this.gpSeatMap.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgFseats)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTest)).EndInit();
-            this.gpSeatMap.ResumeLayout(false);
-            this.gpSeatMap.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
