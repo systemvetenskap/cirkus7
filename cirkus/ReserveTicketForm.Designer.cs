@@ -55,8 +55,6 @@
             this.lblA = new System.Windows.Forms.Label();
             this.txtBoxNrP = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.lbltest2 = new System.Windows.Forms.Label();
-            this.lbltest = new System.Windows.Forms.Label();
             this.comboTicketnr = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -165,6 +163,8 @@
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -242,7 +242,7 @@
             this.dataGridViewActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewActs.ColumnHeadersVisible = false;
-            this.dataGridViewActs.Location = new System.Drawing.Point(6, 81);
+            this.dataGridViewActs.Location = new System.Drawing.Point(5, 132);
             this.dataGridViewActs.Name = "dataGridViewActs";
             this.dataGridViewActs.ReadOnly = true;
             this.dataGridViewActs.RowHeadersVisible = false;
@@ -404,7 +404,7 @@
             "Barn",
             "Ungdom",
             "Vuxen"});
-            this.cbAgegroup.Location = new System.Drawing.Point(59, 19);
+            this.cbAgegroup.Location = new System.Drawing.Point(58, 72);
             this.cbAgegroup.Name = "cbAgegroup";
             this.cbAgegroup.Size = new System.Drawing.Size(79, 21);
             this.cbAgegroup.TabIndex = 50;
@@ -489,8 +489,8 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.lbltest2);
-            this.groupBox4.Controls.Add(this.lbltest);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.comboTicketnr);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.cbAgegroup);
@@ -501,42 +501,24 @@
             this.groupBox4.Controls.Add(this.dataGridViewActs);
             this.groupBox4.Location = new System.Drawing.Point(14, 21);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(264, 214);
+            this.groupBox4.Size = new System.Drawing.Size(264, 305);
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Akter";
             // 
-            // lbltest2
-            // 
-            this.lbltest2.AutoSize = true;
-            this.lbltest2.Location = new System.Drawing.Point(200, 45);
-            this.lbltest2.Name = "lbltest2";
-            this.lbltest2.Size = new System.Drawing.Size(41, 13);
-            this.lbltest2.TabIndex = 52;
-            this.lbltest2.Text = "label11";
-            // 
-            // lbltest
-            // 
-            this.lbltest.AutoSize = true;
-            this.lbltest.Location = new System.Drawing.Point(164, 19);
-            this.lbltest.Name = "lbltest";
-            this.lbltest.Size = new System.Drawing.Size(41, 13);
-            this.lbltest.TabIndex = 51;
-            this.lbltest.Text = "label11";
-            // 
             // comboTicketnr
             // 
             this.comboTicketnr.FormattingEnabled = true;
-            this.comboTicketnr.Location = new System.Drawing.Point(9, 19);
+            this.comboTicketnr.Location = new System.Drawing.Point(9, 72);
             this.comboTicketnr.Name = "comboTicketnr";
-            this.comboTicketnr.Size = new System.Drawing.Size(35, 21);
+            this.comboTicketnr.Size = new System.Drawing.Size(43, 21);
             this.comboTicketnr.TabIndex = 30;
             this.comboTicketnr.SelectedIndexChanged += new System.EventHandler(this.comboTicketnr_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(147, 58);
+            this.label2.Location = new System.Drawing.Point(147, 115);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 29;
@@ -545,7 +527,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 59);
+            this.label1.Location = new System.Drawing.Point(6, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 28;
@@ -553,7 +535,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(147, 186);
+            this.button8.Location = new System.Drawing.Point(146, 237);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(95, 23);
             this.button8.TabIndex = 27;
@@ -562,7 +544,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(6, 186);
+            this.button7.Location = new System.Drawing.Point(5, 237);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(95, 23);
             this.button7.TabIndex = 26;
@@ -579,7 +561,7 @@
             this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgActs.ColumnHeadersVisible = false;
-            this.dgActs.Location = new System.Drawing.Point(147, 81);
+            this.dgActs.Location = new System.Drawing.Point(146, 132);
             this.dgActs.Name = "dgActs";
             this.dgActs.ReadOnly = true;
             this.dgActs.RowHeadersVisible = false;
@@ -1738,6 +1720,24 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 53);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 13);
+            this.label11.TabIndex = 51;
+            this.label11.Text = "BiljettNr";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(58, 53);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.TabIndex = 52;
+            this.label13.Text = "Biljetttyp";
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1848,9 +1848,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblFreeP;
         private System.Windows.Forms.ComboBox comboTicketnr;
-        private System.Windows.Forms.Label lbltest;
         private System.Windows.Forms.Label lblTTest2;
-        private System.Windows.Forms.Label lbltest2;
         private System.Windows.Forms.Label lblPris;
         private System.Windows.Forms.Label lblAct;
         private System.Windows.Forms.Label lblSeatid;
@@ -1923,5 +1921,7 @@
         private System.Windows.Forms.CheckBox A6;
         private System.Windows.Forms.CheckBox A5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label11;
     }
 }
