@@ -25,6 +25,7 @@ namespace cirkus
         DataTable chosenacts = new DataTable();
         DataTable selectedseats = new DataTable();
         DataTable acts = new DataTable();
+        DataTable cSeats = new DataTable();
         DataRow row;
         BindingSource filterseats = new BindingSource();
         BindingSource filterBseats = new BindingSource();
@@ -176,7 +177,7 @@ namespace cirkus
 
             //dataGridViewActs.CurrentCell.Selected = false;
 
-            dgTestActs.DataSource = acts;
+            dgTest.DataSource = acts;
 
 
 
@@ -228,7 +229,7 @@ namespace cirkus
                 //dgSeats.CurrentCell.Selected = false;
                 conn.Close();
 
-                dgTestActs.DataSource = section;
+                dgTest.DataSource = section;
 
                 //load_Seats();
 
@@ -260,7 +261,7 @@ namespace cirkus
             conn.Open();
             
 
-            string getSeatnr = @"select available_seats.available_seats_id as seatid, acts.actid, section, rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
+            string getSeatnr = @"select acts.actid, available_seats.available_seats_id as seatid, section, rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
                                     inner join acts on available_seats.actid = acts.actid
                                     inner join show on acts.showid = show.showid
                                         left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
@@ -271,10 +272,10 @@ namespace cirkus
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(getSeatnr, conn);
             
 
-            da.Fill(seats);
+            da.Fill(cSeats);
 
             //dgSeats.DataSource = seats;
-            dgTestActs.DataSource = seats;
+            dgTest.DataSource = seats;
             dataGridViewActs.ClearSelection();
             conn.Close();
         }
@@ -360,8 +361,12 @@ namespace cirkus
             dtfSeats.Columns.Add("priceid");
             panel1.Visible = false;
             panel2.Visible = false;
-            panel3.Visible = false;
+            panel3.Visible = false;            
+            cSeats.Columns.Add("seatid");
+            cSeats.Columns.Add("section");
+            cSeats.Columns.Add("rownumber");
         }
+
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -376,7 +381,7 @@ namespace cirkus
                     comboTicketnr.Items.Add(i);
                 }
                 comboTicketnr.Text = "1";
-                
+                load_Seats();
 
             }
             else {
@@ -535,7 +540,7 @@ namespace cirkus
 
                     filterseats.RemoveAt(dgSeats.CurrentCell.RowIndex);
 
-                    dgTestActs.DataSource = selectedseats;
+                    dgTest.DataSource = selectedseats;
                     dgBseats.DataSource = selectedseats;
                         
 
@@ -561,8 +566,7 @@ namespace cirkus
             actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
 
             dgSeats.DataSource = seats;
-            filterseats.DataSource = seats;
-            filterseats.Filter = string.Format("actid = '{0}'", actid);
+            /*filterseats.Filter = string.Format("actid = '{0}'", actid);
             filterBseats.DataSource = selectedseats;
             filterBseats.Filter = string.Format("actid = '{0}'", actid);
             dgSeats.Columns[0].Visible = false;
@@ -577,6 +581,54 @@ namespace cirkus
         
             dgSeats.ClearSelection();
             dgBseats.ClearSelection();*/
+
+            dgTest.DataSource = cSeats;
+            string sid = actid.ToString();
+
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                cb.Checked = true;
+                cb.Enabled = false;
+
+            }
+
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                foreach (DataRow row in cSeats.Rows)
+                {
+                    string s = row[1].ToString() + row[2].ToString();
+                    lblS.Text = s;
+                    if (row[3].ToString() == sid)
+                    {
+                        if (cb.Name == s)
+                        {
+                            cb.Enabled = true;
+                            cb.Checked = false;
+                            cb.BackColor = Color.Green;
+
+                        }
+
+
+                    }
+                    else
+                    {
+
+
+                    }
+
+                }
+
+            }
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                if(cb.Enabled == false)
+                {
+                    cb.Checked = false;
+                    cb.BackColor = Color.Gray;
+
+                }
+
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -667,6 +719,15 @@ namespace cirkus
 
             txtBoxNrP.BackColor = Color.White;
             lblTotalError.Visible = false;
+        }
+
+        private void btnSaveTicket_Click(object sender, EventArgs e)
+        {
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                cb.Name
+
+            }
         }
 
         private void comboTicketnr_SelectedIndexChanged(object sender, EventArgs e)
