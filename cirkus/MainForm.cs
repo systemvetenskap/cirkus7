@@ -123,6 +123,8 @@ namespace cirkus
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
+                conn.Close();
+
                 dgCustomers.DataSource = dt;
                 dgCustomers.Columns[0].HeaderText = "Efternamn";
                 dgCustomers.Columns[1].HeaderText = "Förnamn";
@@ -867,50 +869,38 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
         }
         #endregion
-        public bool UpandDownArrow(Keys keyData)//Metod för när man trycker på upp och ned pilarna
-        {
-            if (keyData == Keys.Up)
-            {
-                return true;
-            }
-
-            else if (keyData == Keys.Down)
-            {
-                return true;
-            }
-            else
-            {
-                return UpandDownArrow(keyData);
-            }
-        }
 
         private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             LoadStatistics();
         }
-
-        private void dgvShowsList_KeyDown(object sender, KeyEventArgs e)
-        {
-            LoadAkter();
-            LoadStatistics();
-        }
-
         private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
         {
-            LoadAkter();
-            LoadStatistics();
+            if (e.KeyCode == Keys.Up)
+            {
+                LoadAkter();
+                LoadStatistics();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                LoadAkter();
+                LoadStatistics();
+            }
         }
-
-        private void dgvAkter_KeyDown(object sender, KeyEventArgs e)
-        {
-            LoadStatistics();
-        }
-
         private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
         {
-            LoadStatistics();
-        }
 
+            if (e.KeyCode == Keys.Up)
+            {
+                
+                LoadStatistics();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+               
+                LoadStatistics();
+            }
+        }
         private void buttonEditTicket_Click(object sender, EventArgs e)
         {
             int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
@@ -978,7 +968,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
 
         }
-
         private void btnDeleteTicket_Click(object sender, EventArgs e)
         {
             DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade biljetten ?",
@@ -991,8 +980,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
 
                 string sql = "DELETE FROM booking WHERE bookingid = '" + SelectedTicket + "'";
-
-                //string sql2 "DELETE FROM booking WHERE some_column = some_value";
 
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
                 conn.Open();
@@ -1014,13 +1001,20 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
             listTickets();
         }
-        private void dgCustomers_SelectionChanged(object sender, EventArgs e)
+        private void dgCustomers_KeyUp(object sender, KeyEventArgs e)
         {
-            if (UpandDownArrow(Keys.Up)||UpandDownArrow(Keys.Down)==true)
+            if (e.KeyCode == Keys.Up)
             {
-                //listTickets();
+                listTickets();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                listTickets();
             }
         }
-
+        private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            listTickets(); //Merge
+        }
     }
 }
