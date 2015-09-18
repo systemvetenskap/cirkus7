@@ -1105,12 +1105,13 @@ namespace cirkus
 
 
 
-
+                
 
 
             }
 
             MessageBox.Show("Bokning utförd");
+            SendMail();
 
         }               
         private void countSeats()
@@ -1219,14 +1220,9 @@ namespace cirkus
 
 
 
-                SmtpClient client = new SmtpClient("smtp.gmail.com");
-                client.Port = 587;
-                client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
-                client.EnableSsl = true;
+       
 
-                MessageBox.Show("Mail skickad");
-
-                string show_date, aldersgrupp, sektion, plats_nummer;
+                string show_date, aldersgrupp;
 
                 conn.Open();
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(@"select booking.bookingid,booking.customerid from booking where booking.showid = '"+showid+"' and booking.customerid = '"+customerid+"'", conn);
@@ -1234,44 +1230,55 @@ namespace cirkus
                 DataTable dtBid = new DataTable();
 
                 da.Fill(dtBid);
+                conn.Close();
                 foreach(DataRow row in dtBid.Rows)
                 {
                     int bid = int.Parse(row[0].ToString());
-
-                    cmd = new NpgsqlCommand(@"select acts.name from ticket
+                    conn.Open();
+                    da = new NpgsqlDataAdapter(@"select acts.name,seats.section, seats.rownumber from ticket
                                                             inner join booked_seats on ticket.booked_seat_id = booked_seats.booked_seat_id
                                                             inner join available_seats on booked_seats.available_seats_id = available_seats.available_seats_id
                                                             inner join acts on available_seats.actid = acts.actid
-                                                            where ticket.bookingid = '"+bid+"'", conn);
+                                                            inner join seats on available_seats.seatid = seats.seatid                
+                                                            where ticket.bookingid = '" + bid+"'", conn);
+
+                    DataTable acts = new DataTable();
+
+                    da.Fill(acts);
+                    conn.Close();
+                    foreach (DataRow r in acts.Rows)
+                    {
+                        actname +=" "+r[0].ToString()+": "+r[1].ToString()+r[2].ToString();
+
+                    }
                     conn.Open();
-                    NpgsqlDataReader read;
+                    cmd = new NpgsqlCommand(@"select sum(price_group_seat.price), price_group_seat.group from price_group_seat
+                                                inner join booked_seats on price_group_seat.priceid = booked_seats.priceid
+                                                inner join booking on booked_seats.bookingid = booking.bookingid
+                                                where booking.bookingid = '" +bid+ "'group by price_group_seat.group", conn);
+                    NpgsqlDataReader read = cmd.ExecuteReader();
+                    read.Read();
+                    string pris = read[0].ToString();
+                    aldersgrupp = read[1].ToString();
+                    conn.Close();
+                    conn.Open();
+                    cmd = new NpgsqlCommand("select show.date from show inner join booking on show.showid = booking.showid where booking.bookingid = '"+bid+"'", conn);
                     read = cmd.ExecuteReader();
                     read.Read();
-                
-                    string s = read[0].ToString();
+                    show_date = read[0].ToString();
                     conn.Close();
-                    actname += s;
 
-
-
-                }
-
-                conn.Close();
-
-               
-                    bokningid = r[0].ToString();
-                    show_date = r[1].ToString();
-                    aldersgrupp = r[6].ToString();
-                    akt_name = r[3].ToString();
-                    sektion = r[4].ToString();
-                    plats_nummer = r[5].ToString();
+                    bokningid = bid.ToString();
+                   
+                   
+                  
                     pdf = @"G:\A-Informatik\Biljettsystem" + bokningid + ".pdf"; //skapar unikt namn till pdf fil
 
                     FileStream fs = new FileStream(pdf, FileMode.Create, FileAccess.Write, FileShare.None);
                     Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
                     PdfWriter writer = PdfWriter.GetInstance(doc, fs);
                     doc.Open();
-                    doc.Add(new Paragraph("BiljettNr:"+bokningid +"\nFöreställning: " + show + "\nDatum: " + show_date + " \nÅldersgrupp: " + aldersgrupp + "\nBiljett för " + actname + "\nSektion: " + sektion + "\nPlats nummer: " + plats_nummer + "\n\nBokningsid: " + bokningid));
+                    doc.Add(new Paragraph("BiljettNr:" + bokningid + "\nFöreställning: " + show + "\nDatum: " + show_date + " \nÅldersgrupp: " + aldersgrupp + "\nBiljett för " + actname +"\nPris:" + pris));
                     doc.Close();
                     //System.Net.Mail.Attachment attachment;
                     attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem" + bokningid + ".pdf");
@@ -1279,8 +1286,21 @@ namespace cirkus
                     mail.Attachments.Add(attachment);
 
 
+                    SmtpClient client = new SmtpClient("smtp.gmail.com");
+                    client.Port = 587;
+                    client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
+                    client.EnableSsl = true;
 
-                
+                    MessageBox.Show("Mail skickad");
+
+
+                }
+
+                conn.Close();
+
+               
+ 
+
             }
 
 
