@@ -1115,7 +1115,7 @@ namespace cirkus
 
             }
             progressBar1.Value = 50;
-            MessageBox.Show("Bokning utförd");
+        
             SendMail();
 
         }               
@@ -1283,19 +1283,19 @@ namespace cirkus
                    
                    
                   
-                    pdf = @"G:\A-Informatik\Biljettsystem" + bokningid + ".pdf"; //skapar unikt namn till pdf fil
+                    pdf = @"G:\A-Informatik\Biljettsystem\biljett" + bokningid + ".pdf"; //skapar unikt namn till pdf fil
 
-                    FileStream fs = new FileStream(pdf, FileMode.Create, FileAccess.Write, FileShare.None);
+                    FileStream fs = new FileStream(pdf, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
                     Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
                     PdfWriter writer = PdfWriter.GetInstance(doc, fs);
                     doc.Open();
                     doc.Add(new Paragraph("BiljettNr:" + bokningid + "\nFöreställning: " + show + "\nDatum: " + show_date + " \nÅldersgrupp: " + aldersgrupp + "\nBiljett för " + actname +"\nPris:" + pris));
                     doc.Close();
                     //System.Net.Mail.Attachment attachment;
-                    attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem" + bokningid + ".pdf");
+                    attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem\\biljett" + bokningid + ".pdf");
                     progressBar1.Value = 85;
                     mail.Attachments.Add(attachment);
-
+                  
 
                     actname = "";
 
@@ -1303,15 +1303,15 @@ namespace cirkus
 
 
                 }
-                client.Send(mail);
-                MessageBox.Show("Mail skickad");
+                
+                
                 conn.Close();
 
                 progressBar1.Value = 100;
 
-
+                client.Send(mail);
             }
-
+           
 
 
         }
