@@ -1214,13 +1214,16 @@ namespace cirkus
             {
                 System.Net.Mail.Attachment attachment;
                 MailMessage mail = new MailMessage("kulbusstest@gmail.com", customeremail, "Cirkus Kull&Buss - Bokningsbekräftelse", confirm_mail_text); // (from, to, subject, body.text)
-                //attachment = new System.Net.Mail.Attachment("C:\\Users\\Matija\\Source\\Repos\\cirkus73\\cirkus\\bin\\Debug\\Ticets\\Bookning" + bokningid + ".pdf");
+                //attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem\\" + bokningid + ".pdf");
 
                 mail = new MailMessage("kulbusstest@gmail.com", customeremail, "Cirkus Kull&Buss - Bokningsbekräftelse", confirm_mail_text); // (from, to, subject, body.text)
 
 
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                client.Port = 587;
+                client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
+                client.EnableSsl = true;
 
-       
 
                 string show_date, aldersgrupp;
 
@@ -1240,7 +1243,7 @@ namespace cirkus
                                                             inner join available_seats on booked_seats.available_seats_id = available_seats.available_seats_id
                                                             inner join acts on available_seats.actid = acts.actid
                                                             inner join seats on available_seats.seatid = seats.seatid                
-                                                            where ticket.bookingid = '" + bid+"'", conn);
+                                                            where ticket.bookingid = '" + bid+ "' order by acts.actid", conn);
 
                     DataTable acts = new DataTable();
 
@@ -1286,16 +1289,14 @@ namespace cirkus
                     mail.Attachments.Add(attachment);
 
 
-                    SmtpClient client = new SmtpClient("smtp.gmail.com");
-                    client.Port = 587;
-                    client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
-                    client.EnableSsl = true;
+                    actname = "";
 
-                    MessageBox.Show("Mail skickad");
+                
 
 
                 }
-
+                client.Send(mail);
+                MessageBox.Show("Mail skickad");
                 conn.Close();
 
                
