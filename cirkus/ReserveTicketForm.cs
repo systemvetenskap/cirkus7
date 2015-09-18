@@ -37,6 +37,7 @@ namespace cirkus
         BindingSource filterActs = new BindingSource();
         BindingSource filterSacts = new BindingSource();
         NpgsqlCommand cmd;
+        MailMessage mail;
 
         public ReserveTicketForm()
         {
@@ -1193,20 +1194,24 @@ namespace cirkus
         public void SendMail()
         {
             //BiljetterPDF();
-            
+
+
+            System.Net.Mail.Attachment attachment;
+            SmtpClient client = new SmtpClient("smtp.gmail.com");
+            client.Port = 587;
+            client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
+            client.EnableSsl = true;
+
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("select customerid, email, fname, lname from customer where customerid = '" + customerid + "';", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
-
-
-            progressBar1.Value = 55;
             dr.Read();
             customeremail = dr[1].ToString();
             customerfname = dr[2].ToString();
             customerlname = dr[3].ToString();
 
             conn.Close();
-
+            progressBar1.Value = 55;
             string confirm_mail_text = "Hej " + customerfname + " " + customerlname + "\n\nDet här är en bekräftelse på att du har köp biljetten/biljetter för kommande förestälningen \n\n\nOm du har några frågor kring ditt köp, vänligen kontakta oss via e-post: kulbusstest@gmail.com eller via telefon 000 000";
 
 
@@ -1218,17 +1223,14 @@ namespace cirkus
             else
             {
                 progressBar1.Value = 60;
-                System.Net.Mail.Attachment attachment;
-                MailMessage mail = new MailMessage("kulbusstest@gmail.com", customeremail, "Cirkus Kull&Buss - Bokningsbekräftelse", confirm_mail_text); // (from, to, subject, body.text)
-                //attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem\\" + bokningid + ".pdf");
+                
 
+                //attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem\\" + bokningid + ".pdf");
                 mail = new MailMessage("kulbusstest@gmail.com", customeremail, "Cirkus Kull&Buss - Bokningsbekräftelse", confirm_mail_text); // (from, to, subject, body.text)
 
 
-                SmtpClient client = new SmtpClient("smtp.gmail.com");
-                client.Port = 587;
-                client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
-                client.EnableSsl = true;
+
+               
 
 
                 string show_date, aldersgrupp;
@@ -1305,14 +1307,14 @@ namespace cirkus
                 }
                 
                 
-                conn.Close();
+                //conn.Close();
 
                 progressBar1.Value = 100;
 
-                client.Send(mail);
+                
             }
-           
 
+            //client.Send(mail);
 
         }
         public bool IsValidEmail(string email)
