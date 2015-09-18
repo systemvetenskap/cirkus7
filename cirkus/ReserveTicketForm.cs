@@ -851,6 +851,8 @@ namespace cirkus
         {
             createBooking();
 
+            SendMail();
+
         }
 
         private void cbAgegroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -1010,7 +1012,7 @@ namespace cirkus
             tickets.Columns.Add("seatid");
             tickets.Columns.Add("priceid");
             tickets.Columns.Add("actid");
-
+            progressBar1.Value = 10;
 
             for (int i = 0; i <= ticketid; i++)
             {
@@ -1031,6 +1033,7 @@ namespace cirkus
                         rw[3] = row[5];
                         tickets.Rows.Add(rw);
 
+                        progressBar1.Value = 20;
                         dgTEST.DataSource = tickets;
                     }
 
@@ -1060,11 +1063,11 @@ namespace cirkus
                 int addedbookingid = int.Parse(read[0].ToString());
                 conn.Close();
 
-
+                progressBar1.Value = 30;
                 foreach (DataRow dr in tickets.Rows)
                 {
-                 
-                        string id = dr[0].ToString();                    
+                    progressBar1.Value = 35;
+                    string id = dr[0].ToString();                    
                         string actid = dr[3].ToString();
                         string seatid = dr[1].ToString();
                         string priceid = dr[2].ToString();
@@ -1083,6 +1086,7 @@ namespace cirkus
                             cmd = new NpgsqlCommand("select currval('booked_seats_booked_seat_id_seq');", conn);
 
                             read = cmd.ExecuteReader();
+                            progressBar1.Value = 40;
 
                             read.Read();
                             int addedbookedseat = int.Parse(read[0].ToString());
@@ -1098,6 +1102,7 @@ namespace cirkus
                             conn.Close();
 
 
+
                         }
 
 
@@ -1109,7 +1114,7 @@ namespace cirkus
 
 
             }
-
+            progressBar1.Value = 50;
             MessageBox.Show("Bokning utförd");
             SendMail();
 
@@ -1194,7 +1199,7 @@ namespace cirkus
             NpgsqlDataReader dr = cmd.ExecuteReader();
 
 
-
+            progressBar1.Value = 55;
             dr.Read();
             customeremail = dr[1].ToString();
             customerfname = dr[2].ToString();
@@ -1212,6 +1217,7 @@ namespace cirkus
             }
             else
             {
+                progressBar1.Value = 60;
                 System.Net.Mail.Attachment attachment;
                 MailMessage mail = new MailMessage("kulbusstest@gmail.com", customeremail, "Cirkus Kull&Buss - Bokningsbekräftelse", confirm_mail_text); // (from, to, subject, body.text)
                 //attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem\\" + bokningid + ".pdf");
@@ -1234,7 +1240,8 @@ namespace cirkus
 
                 da.Fill(dtBid);
                 conn.Close();
-                foreach(DataRow row in dtBid.Rows)
+                progressBar1.Value = 70;
+                foreach (DataRow row in dtBid.Rows)
                 {
                     int bid = int.Parse(row[0].ToString());
                     conn.Open();
@@ -1246,7 +1253,7 @@ namespace cirkus
                                                             where ticket.bookingid = '" + bid+ "' order by acts.actid", conn);
 
                     DataTable acts = new DataTable();
-
+                    progressBar1.Value = 75;
                     da.Fill(acts);
                     conn.Close();
                     foreach (DataRow r in acts.Rows)
@@ -1264,6 +1271,7 @@ namespace cirkus
                     string pris = read[0].ToString();
                     aldersgrupp = read[1].ToString();
                     conn.Close();
+                    progressBar1.Value = 80;
                     conn.Open();
                     cmd = new NpgsqlCommand("select show.date from show inner join booking on show.showid = booking.showid where booking.bookingid = '"+bid+"'", conn);
                     read = cmd.ExecuteReader();
@@ -1285,7 +1293,7 @@ namespace cirkus
                     doc.Close();
                     //System.Net.Mail.Attachment attachment;
                     attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem" + bokningid + ".pdf");
-
+                    progressBar1.Value = 85;
                     mail.Attachments.Add(attachment);
 
 
@@ -1299,8 +1307,8 @@ namespace cirkus
                 MessageBox.Show("Mail skickad");
                 conn.Close();
 
-               
- 
+                progressBar1.Value = 100;
+
 
             }
 
@@ -1318,6 +1326,12 @@ namespace cirkus
             {
                 return false;
             }
+        }
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+       
+
+
         }
 
 

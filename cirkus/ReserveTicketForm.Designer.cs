@@ -168,6 +168,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dgTEST = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -1673,6 +1674,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.progressBar1);
             this.panel3.Controls.Add(this.lblPris);
             this.panel3.Controls.Add(this.lblAct);
             this.panel3.Controls.Add(this.lblSeatid);
@@ -1754,6 +1756,13 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(395, 173);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(212, 23);
+            this.progressBar1.TabIndex = 51;
             // 
             // ReserveTicketForm
             // 
@@ -1945,5 +1954,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridView dgTEST;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
