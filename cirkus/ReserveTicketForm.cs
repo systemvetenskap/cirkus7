@@ -11,6 +11,7 @@ using Npgsql;
 using System.IO;
 using System.Net;
 using System.Web;
+using System.Net.Mime;
 using System.Net.Mail;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -1193,15 +1194,10 @@ namespace cirkus
         }
         public void SendMail()
         {
-            //BiljetterPDF();
+            
 
-
-            System.Net.Mail.Attachment attachment;
-            SmtpClient client = new SmtpClient("smtp.gmail.com");
-            client.Port = 587;
-            client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
-            client.EnableSsl = true;
-
+        
+       
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("select customerid, email, fname, lname from customer where customerid = '" + customerid + "';", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
@@ -1223,26 +1219,24 @@ namespace cirkus
             else
             {
                 progressBar1.Value = 60;
-                
-
-                //attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem\\" + bokningid + ".pdf");
+              
+              
                 mail = new MailMessage("kulbusstest@gmail.com", customeremail, "Cirkus Kull&Buss - Bokningsbekräftelse", confirm_mail_text); // (from, to, subject, body.text)
 
-
-
-               
-
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                client.Port = 587;
+                client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
+                client.EnableSsl = true;
 
                 string show_date, aldersgrupp;
-
                 conn.Open();
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(@"select booking.bookingid,booking.customerid from booking where booking.showid = '"+showid+"' and booking.customerid = '"+customerid+"'", conn);
-
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(@"select distinct booking.bookingid,booking.customerid from booking where booking.showid = '"+showid+"' and booking.customerid = '"+customerid+"'", conn);
                 DataTable dtBid = new DataTable();
 
                 da.Fill(dtBid);
                 conn.Close();
                 progressBar1.Value = 70;
+                dgTEST.DataSource = dtBid;
                 foreach (DataRow row in dtBid.Rows)
                 {
                     int bid = int.Parse(row[0].ToString());
@@ -1267,7 +1261,7 @@ namespace cirkus
                     cmd = new NpgsqlCommand(@"select sum(price_group_seat.price), price_group_seat.group from price_group_seat
                                                 inner join booked_seats on price_group_seat.priceid = booked_seats.priceid
                                                 inner join booking on booked_seats.bookingid = booking.bookingid
-                                                where booking.bookingid = '" +bid+ "'group by price_group_seat.group", conn);
+                                                where booking.bookingid = '"+bid+"'group by price_group_seat.group", conn);
                     NpgsqlDataReader read = cmd.ExecuteReader();
                     read.Read();
                     string pris = read[0].ToString();
@@ -1282,39 +1276,30 @@ namespace cirkus
                     conn.Close();
 
                     bokningid = bid.ToString();
-                   
-                   
-                  
-                    pdf = @"G:\A-Informatik\Biljettsystem\biljett" + bokningid + ".pdf"; //skapar unikt namn till pdf fil
-
-                    FileStream fs = new FileStream(pdf, FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+        
+                    MemoryStream ms = new MemoryStream();
                     Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
-                    PdfWriter writer = PdfWriter.GetInstance(doc, fs);
+                    PdfWriter writer = PdfWriter.GetInstance(doc, ms);
+
                     doc.Open();
                     doc.Add(new Paragraph("BiljettNr:" + bokningid + "\nFöreställning: " + show + "\nDatum: " + show_date + " \nÅldersgrupp: " + aldersgrupp + "\nBiljett för " + actname +"\nPris:" + pris));
+                    
+                    writer.CloseStream = false;
                     doc.Close();
-                    //System.Net.Mail.Attachment attachment;
-                    attachment = new System.Net.Mail.Attachment("G:\\A-Informatik\\Biljettsystem\\biljett" + bokningid + ".pdf");
-                    progressBar1.Value = 85;
-                    mail.Attachments.Add(attachment);
-                  
+                    ms.Position = 0;
+            
+                    mail.Attachments.Add(new Attachment(ms, "Biljett"+bokningid+".pdf"));
 
                     actname = "";
-
-                
-
+      
+                    progressBar1.Value = 85;
 
                 }
                 
-                
-                //conn.Close();
-
                 progressBar1.Value = 100;
-
-                
+                client.Send(mail);
+                 
             }
-
-            //client.Send(mail);
 
         }
         public bool IsValidEmail(string email)
