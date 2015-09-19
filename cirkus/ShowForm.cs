@@ -362,10 +362,10 @@ namespace cirkus
                     }
 
 
-                    MessageBox.Show("Föreställning skapad");
+                    
                 }
 
-
+                MessageBox.Show("Föreställning skapad");
 
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();

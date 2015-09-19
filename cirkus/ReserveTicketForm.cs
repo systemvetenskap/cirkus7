@@ -335,6 +335,7 @@ namespace cirkus
             int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
 
             showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
+            show = dataGridViewShows[1, selectedIndex].Value.ToString();
             //load_Seats();
             conn.Close();
 
@@ -851,6 +852,7 @@ namespace cirkus
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            button1.Enabled = false;
             createBooking();
 
             SendMail();
@@ -1026,8 +1028,6 @@ namespace cirkus
                     if (row[0].ToString() == i.ToString())
                     {
 
-
-
                         DataRow rw = tickets.NewRow();
                         rw[0] = row[0];
                         rw[1] = row[1];
@@ -1103,22 +1103,15 @@ namespace cirkus
                             cmd.ExecuteNonQuery();
                             conn.Close();
 
-
-
                         }
 
-
                 }
-
-
-
-                
 
 
             }
             progressBar1.Value = 50;
         
-            SendMail();
+            //SendMail();
 
         }               
         private void countSeats()
@@ -1298,9 +1291,10 @@ namespace cirkus
                 
                 progressBar1.Value = 100;
                 client.Send(mail);
-                 
-            }
+                this.Close();
 
+            }
+          
         }
         public bool IsValidEmail(string email)
         {
