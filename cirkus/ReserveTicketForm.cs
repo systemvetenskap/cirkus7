@@ -773,14 +773,14 @@ namespace cirkus
                     else if (num >= 5 && num <= 8 && cb.Checked == false && cb.Name == s && best == true)
                     {
                         cb.BackColor = Color.Green;
-
+              
                     }
 
                 }
 
             }
             //Kolla platser som är grönmarkerade, föreslå platser bredvid varandra efter rangordning av sektioner A - bäst, H-sämst
-            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            /*foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
                 string s = sections[count].ToString();
 
@@ -796,7 +796,9 @@ namespace cirkus
                     
                 }
 
-            }
+            }*/
+
+ 
         }
 
         private void txtBoxNrP_Click(object sender, EventArgs e)
