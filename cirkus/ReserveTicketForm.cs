@@ -22,8 +22,9 @@ namespace cirkus
     {
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-        int showid, actid, fillMode, seatid, agegroup, customerid, total, checkedseats, priceid, freeSseats, freeLseats,tickets, nrotickets, ticketid;
-        string show, act, customeremail, customerfname, customerlname, pdf, bokningid,actname;
+        int showid, actid, fillMode, seatid, agegroup, customerid, total, checkedseats, priceid, freeSseats, freeLseats,tickets, nrotickets, ticketid, count;
+        string show, act, customeremail, customerfname, customerlname, pdf, bokningid,actname, suggSeats;
+        string sections = "ABCDEFGH";
         bool newcust;
         bool seatType = true;
         DataTable shows, section, dtfSeats;
@@ -600,7 +601,7 @@ namespace cirkus
             dgSeats.ClearSelection();
             dgBseats.ClearSelection();*/
 
-            //dgTest.DataSource = cSeats;
+            dgTEST.DataSource = cSeats;
             string sid = actid.ToString();
 
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
@@ -623,7 +624,7 @@ namespace cirkus
                         {
                             cb.Enabled = true;
                             cb.Checked = false;
-                            cb.BackColor = Color.Green;
+                            //cb.BackColor = Color.Green;
 
                             object value = row[0];
 
@@ -631,7 +632,7 @@ namespace cirkus
                             {
                                 cb.Enabled = false;
                                 cb.Checked = true;
-                                cb.BackColor = Color.Purple;
+                                //cb.BackColor = Color.Purple;
 
 
                             }
@@ -654,7 +655,7 @@ namespace cirkus
                 if (cb.Enabled == false && cb.Checked == false)
                 {
                     cb.Checked = false;
-                    cb.BackColor = Color.Gray;
+                    //cb.BackColor = Color.Gray;
 
                 }
 
@@ -743,6 +744,59 @@ namespace cirkus
         {
             panel1.Visible = false;
             panel2.Visible = true;
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            bool best = true;
+            //Markera de bästa platserna med grönt, bäst = alla sektioner 1-4, sämre = alla sektioner 5-8
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+
+                foreach (DataRow row in cSeats.Rows)
+                {
+
+                    string s = row[2].ToString() + row[3].ToString();
+                    int aid = int.Parse(row[5].ToString());
+
+
+
+                    int num = int.Parse(row[3].ToString());
+
+                    if (num >= 1 && num <= 4 && cb.Checked == false && cb.Name == s)
+                    {
+                        cb.BackColor = Color.Green;
+                        best = false;
+
+
+                    }
+                    else if (num >= 5 && num <= 8 && cb.Checked == false && cb.Name == s && best == true)
+                    {
+                        cb.BackColor = Color.Green;
+
+                    }
+
+                }
+
+            }
+            //Kolla platser som är grönmarkerade, föreslå platser bredvid varandra efter rangordning av sektioner A - bäst, H-sämst
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                string s = sections[count].ToString();
+
+                if(cb.BackColor == Color.Green && cb.Name[0].ToString() == s)
+                {
+                    
+                    label14.Text = count.ToString();
+
+                }
+                else
+                {
+                    
+                    
+                }
+
+            }
         }
 
         private void txtBoxNrP_Click(object sender, EventArgs e)

@@ -160,6 +160,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblPris = new System.Windows.Forms.Label();
             this.lblAct = new System.Windows.Forms.Label();
             this.lblSeatid = new System.Windows.Forms.Label();
@@ -168,7 +169,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dgTEST = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -786,6 +789,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.gpSeatMap);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.groupBox4);
@@ -1688,6 +1694,13 @@
             this.panel3.Size = new System.Drawing.Size(622, 257);
             this.panel3.TabIndex = 42;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(395, 173);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(212, 23);
+            this.progressBar1.TabIndex = 51;
+            // 
             // lblPris
             // 
             this.lblPris.AutoSize = true;
@@ -1748,7 +1761,7 @@
             // dgTEST
             // 
             this.dgTEST.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTEST.Location = new System.Drawing.Point(549, 61);
+            this.dgTEST.Location = new System.Drawing.Point(590, 59);
             this.dgTEST.Name = "dgTEST";
             this.dgTEST.Size = new System.Drawing.Size(470, 150);
             this.dgTEST.TabIndex = 43;
@@ -1757,12 +1770,33 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // progressBar1
+            // button9
             // 
-            this.progressBar1.Location = new System.Drawing.Point(395, 173);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(212, 23);
-            this.progressBar1.TabIndex = 51;
+            this.button9.Location = new System.Drawing.Point(655, 128);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 59;
+            this.button9.Text = "Föreslå";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(661, 174);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 60;
+            this.label14.Text = "label14";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(661, 207);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 13);
+            this.label15.TabIndex = 61;
+            this.label15.Text = "label15";
             // 
             // ReserveTicketForm
             // 
@@ -1801,6 +1835,7 @@
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.gpSeatMap.ResumeLayout(false);
             this.gpSeatMap.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -1955,5 +1990,8 @@
         private System.Windows.Forms.DataGridView dgTEST;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
     }
 }
