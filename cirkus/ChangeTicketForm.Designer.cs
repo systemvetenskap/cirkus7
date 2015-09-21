@@ -36,6 +36,7 @@
             this.lblTo = new System.Windows.Forms.Label();
             this.btnChangeTicket = new System.Windows.Forms.Button();
             this.lblTodaysDate = new System.Windows.Forms.Label();
+            this.checkBoxPaidTicket = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgSelectedCustomerTicket)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +81,7 @@
             // btnSave
             // 
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(168, 244);
+            this.btnSave.Location = new System.Drawing.Point(148, 244);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(106, 23);
             this.btnSave.TabIndex = 9;
@@ -125,11 +126,23 @@
             this.lblTodaysDate.TabIndex = 14;
             this.lblTodaysDate.Text = "Dagens datum:";
             // 
+            // checkBoxPaidTicket
+            // 
+            this.checkBoxPaidTicket.AutoSize = true;
+            this.checkBoxPaidTicket.Enabled = false;
+            this.checkBoxPaidTicket.Location = new System.Drawing.Point(284, 250);
+            this.checkBoxPaidTicket.Name = "checkBoxPaidTicket";
+            this.checkBoxPaidTicket.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxPaidTicket.TabIndex = 15;
+            this.checkBoxPaidTicket.Text = "Biljetten är betald";
+            this.checkBoxPaidTicket.UseVisualStyleBackColor = true;
+            // 
             // ChangeTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(901, 279);
+            this.Controls.Add(this.checkBoxPaidTicket);
             this.Controls.Add(this.lblTodaysDate);
             this.Controls.Add(this.btnChangeTicket);
             this.Controls.Add(this.lblTo);
@@ -156,5 +169,6 @@
         private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.Button btnChangeTicket;
         private System.Windows.Forms.Label lblTodaysDate;
+        private System.Windows.Forms.CheckBox checkBoxPaidTicket;
     }
 }
