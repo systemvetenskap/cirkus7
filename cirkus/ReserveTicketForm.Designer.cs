@@ -173,6 +173,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dateReservedto = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
+            this.cbDf = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -1669,6 +1670,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cbDf);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.dgCustom);
@@ -1813,6 +1815,17 @@
             this.label16.Size = new System.Drawing.Size(16, 13);
             this.label16.TabIndex = 53;
             this.label16.Text = "till";
+            // 
+            // cbDf
+            // 
+            this.cbDf.AutoSize = true;
+            this.cbDf.Location = new System.Drawing.Point(445, 51);
+            this.cbDf.Name = "cbDf";
+            this.cbDf.Size = new System.Drawing.Size(101, 17);
+            this.cbDf.TabIndex = 47;
+            this.cbDf.Text = "Direktförsäljning";
+            this.cbDf.UseVisualStyleBackColor = true;
+            this.cbDf.CheckedChanged += new System.EventHandler(this.cbDf_CheckedChanged);
             // 
             // ReserveTicketForm
             // 
@@ -2008,5 +2021,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dateReservedto;
+        private System.Windows.Forms.CheckBox cbDf;
     }
 }
