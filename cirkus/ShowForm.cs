@@ -244,8 +244,8 @@ namespace cirkus
 
                 name = textBoxBeskrivning.Text;
                 date = dateTimePickerDatum.Text;
-                sale_start = dateTimePickerForsaljningstidFran.Text;
-                sale_stop = dateTimePickerForsaljningstidTill.Text;
+                sale_start = dateTimePickerForsaljningstidFran.Value.ToString("yyyy-MM-dd");
+                sale_stop = dateTimePickerForsaljningstidTill.Value.ToString("yyyy-MM-dd");
 
                 int seat_number = Convert.ToInt16(textBoxAntalFriplatser.Text);
 
@@ -299,8 +299,8 @@ namespace cirkus
 
                 name = textBoxBeskrivning.Text;
                 date = dateTimePickerDatum.Text;
-                sale_start = dateTimePickerForsaljningstidFran.Text;
-                sale_stop = dateTimePickerForsaljningstidTill.Text;
+                sale_start = dateTimePickerForsaljningstidFran.Value.ToString("yyyy-MM-dd");
+                sale_stop = dateTimePickerForsaljningstidTill.Value.ToString("yyyy-MM-dd");
 
                 int seat_number = Convert.ToInt16(textBoxAntalFriplatser.Text);
 
@@ -312,9 +312,7 @@ namespace cirkus
                 command.Parameters.AddWithValue("@sale_start", sale_start);
                 command.Parameters.AddWithValue("@sale_stop", sale_stop);
                 command.ExecuteNonQuery();
-                conn.Close();
-
-                conn.Open();
+            
                 command = new NpgsqlCommand("select currval('show_showid_seq');", conn);
                 NpgsqlDataReader read;
                 read = command.ExecuteReader();
@@ -364,10 +362,10 @@ namespace cirkus
                     }
 
 
-                    MessageBox.Show("Föreställning skapad");
+                    
                 }
 
-
+                MessageBox.Show("Föreställning skapad");
 
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
@@ -529,6 +527,13 @@ namespace cirkus
 
             }
         }
+
+        private void dateTimePickerForsaljningstidFran_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {

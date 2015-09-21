@@ -31,17 +31,19 @@
             this.dtpTicketTo = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dgSelectedCustomerTicket = new System.Windows.Forms.DataGridView();
-            this.dtpTicketFrom = new System.Windows.Forms.DateTimePicker();
-            this.btnSpara = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.lblAnge = new System.Windows.Forms.Label();
-            this.lblFrom = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
+            this.btnChangeTicket = new System.Windows.Forms.Button();
+            this.lblTodaysDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgSelectedCustomerTicket)).BeginInit();
             this.SuspendLayout();
             // 
             // dtpTicketTo
             // 
-            this.dtpTicketTo.Location = new System.Drawing.Point(237, 106);
+            this.dtpTicketTo.Enabled = false;
+            this.dtpTicketTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTicketTo.Location = new System.Drawing.Point(28, 110);
             this.dtpTicketTo.Name = "dtpTicketTo";
             this.dtpTicketTo.Size = new System.Drawing.Size(164, 20);
             this.dtpTicketTo.TabIndex = 0;
@@ -50,76 +52,89 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 21);
+            this.label3.Location = new System.Drawing.Point(28, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(106, 20);
+            this.label3.Size = new System.Drawing.Size(200, 20);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Ändra biljett";
+            this.label3.Text = "Ändra biljett reservation";
             // 
             // dgSelectedCustomerTicket
             // 
+            this.dgSelectedCustomerTicket.AllowUserToAddRows = false;
+            this.dgSelectedCustomerTicket.AllowUserToDeleteRows = false;
+            this.dgSelectedCustomerTicket.AllowUserToResizeColumns = false;
+            this.dgSelectedCustomerTicket.AllowUserToResizeRows = false;
             this.dgSelectedCustomerTicket.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgSelectedCustomerTicket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSelectedCustomerTicket.GridColor = System.Drawing.SystemColors.Window;
-            this.dgSelectedCustomerTicket.Location = new System.Drawing.Point(24, 136);
+            this.dgSelectedCustomerTicket.Location = new System.Drawing.Point(28, 136);
+            this.dgSelectedCustomerTicket.MultiSelect = false;
             this.dgSelectedCustomerTicket.Name = "dgSelectedCustomerTicket";
-            this.dgSelectedCustomerTicket.Size = new System.Drawing.Size(249, 150);
+            this.dgSelectedCustomerTicket.ReadOnly = true;
+            this.dgSelectedCustomerTicket.RowHeadersVisible = false;
+            this.dgSelectedCustomerTicket.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgSelectedCustomerTicket.Size = new System.Drawing.Size(824, 88);
             this.dgSelectedCustomerTicket.TabIndex = 7;
+            this.dgSelectedCustomerTicket.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSelectedTicket);
             // 
-            // dtpTicketFrom
+            // btnSave
             // 
-            this.dtpTicketFrom.Location = new System.Drawing.Point(24, 106);
-            this.dtpTicketFrom.Name = "dtpTicketFrom";
-            this.dtpTicketFrom.Size = new System.Drawing.Size(164, 20);
-            this.dtpTicketFrom.TabIndex = 8;
-            // 
-            // btnSpara
-            // 
-            this.btnSpara.Location = new System.Drawing.Point(326, 263);
-            this.btnSpara.Name = "btnSpara";
-            this.btnSpara.Size = new System.Drawing.Size(75, 23);
-            this.btnSpara.TabIndex = 9;
-            this.btnSpara.Text = "Spara";
-            this.btnSpara.UseVisualStyleBackColor = true;
-            this.btnSpara.Click += new System.EventHandler(this.btnSpara_Click);
+            this.btnSave.Enabled = false;
+            this.btnSave.Location = new System.Drawing.Point(168, 244);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(106, 23);
+            this.btnSave.TabIndex = 9;
+            this.btnSave.Text = "Spara ändringar";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSpara_Click);
             // 
             // lblAnge
             // 
             this.lblAnge.AutoSize = true;
-            this.lblAnge.Location = new System.Drawing.Point(24, 66);
+            this.lblAnge.Location = new System.Drawing.Point(28, 66);
             this.lblAnge.Name = "lblAnge";
             this.lblAnge.Size = new System.Drawing.Size(226, 13);
             this.lblAnge.TabIndex = 10;
             this.lblAnge.Text = "Ange hur länge biljetten ska kunna reserveras:";
             // 
-            // lblFrom
-            // 
-            this.lblFrom.AutoSize = true;
-            this.lblFrom.Location = new System.Drawing.Point(24, 91);
-            this.lblFrom.Name = "lblFrom";
-            this.lblFrom.Size = new System.Drawing.Size(31, 13);
-            this.lblFrom.TabIndex = 11;
-            this.lblFrom.Text = "Från:";
-            // 
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(237, 91);
+            this.lblTo.Location = new System.Drawing.Point(28, 95);
             this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(23, 13);
+            this.lblTo.Size = new System.Drawing.Size(67, 13);
             this.lblTo.TabIndex = 12;
-            this.lblTo.Text = "Till:";
+            this.lblTo.Text = "Till och med:";
+            // 
+            // btnChangeTicket
+            // 
+            this.btnChangeTicket.Location = new System.Drawing.Point(28, 244);
+            this.btnChangeTicket.Name = "btnChangeTicket";
+            this.btnChangeTicket.Size = new System.Drawing.Size(106, 23);
+            this.btnChangeTicket.TabIndex = 13;
+            this.btnChangeTicket.Text = "Ändra biljett";
+            this.btnChangeTicket.UseVisualStyleBackColor = true;
+            this.btnChangeTicket.Click += new System.EventHandler(this.btnChangeTicket_Click);
+            // 
+            // lblTodaysDate
+            // 
+            this.lblTodaysDate.AutoSize = true;
+            this.lblTodaysDate.Location = new System.Drawing.Point(208, 110);
+            this.lblTodaysDate.Name = "lblTodaysDate";
+            this.lblTodaysDate.Size = new System.Drawing.Size(79, 13);
+            this.lblTodaysDate.TabIndex = 14;
+            this.lblTodaysDate.Text = "Dagens datum:";
             // 
             // ChangeTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 311);
+            this.ClientSize = new System.Drawing.Size(901, 279);
+            this.Controls.Add(this.lblTodaysDate);
+            this.Controls.Add(this.btnChangeTicket);
             this.Controls.Add(this.lblTo);
-            this.Controls.Add(this.lblFrom);
             this.Controls.Add(this.lblAnge);
-            this.Controls.Add(this.btnSpara);
-            this.Controls.Add(this.dtpTicketFrom);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgSelectedCustomerTicket);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpTicketTo);
@@ -136,10 +151,10 @@
         private System.Windows.Forms.DateTimePicker dtpTicketTo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgSelectedCustomerTicket;
-        private System.Windows.Forms.DateTimePicker dtpTicketFrom;
-        private System.Windows.Forms.Button btnSpara;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblAnge;
-        private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblTo;
+        private System.Windows.Forms.Button btnChangeTicket;
+        private System.Windows.Forms.Label lblTodaysDate;
     }
 }

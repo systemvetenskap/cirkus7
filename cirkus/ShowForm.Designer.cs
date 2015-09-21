@@ -248,11 +248,14 @@
             // 
             // dateTimePickerForsaljningstidFran
             // 
-            this.dateTimePickerForsaljningstidFran.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerForsaljningstidFran.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerForsaljningstidFran.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerForsaljningstidFran.Location = new System.Drawing.Point(7, 169);
             this.dateTimePickerForsaljningstidFran.Name = "dateTimePickerForsaljningstidFran";
-            this.dateTimePickerForsaljningstidFran.Size = new System.Drawing.Size(78, 20);
+            this.dateTimePickerForsaljningstidFran.Size = new System.Drawing.Size(82, 20);
             this.dateTimePickerForsaljningstidFran.TabIndex = 32;
+            this.dateTimePickerForsaljningstidFran.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
+            this.dateTimePickerForsaljningstidFran.ValueChanged += new System.EventHandler(this.dateTimePickerForsaljningstidFran_ValueChanged);
             // 
             // dateTimePickerForsaljningstidTill
             // 

@@ -86,7 +86,7 @@ namespace cirkus
             textBoxLosenord.Clear();
             comboBoxBehorighetsniva.ResetText();
 
-            textBoxPersonnummer.BackColor=Color.White;
+            textBoxPersonnummer.BackColor = Color.White;
             textBoxFornamn.BackColor = Color.White;
             textBoxEfternamn.BackColor = Color.White;
             textBoxEpost.BackColor = Color.White;
@@ -123,6 +123,8 @@ namespace cirkus
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
+                conn.Close();
+
                 dgCustomers.DataSource = dt;
                 dgCustomers.Columns[0].HeaderText = "Efternamn";
                 dgCustomers.Columns[1].HeaderText = "Förnamn";
@@ -146,14 +148,18 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select show.name, acts.name, seats.section, seats.rownumber, price_group_seat.group, price_group_seat.price, booking.reserved_to from show 
-                                    inner join acts on show.showid = acts.showid 
-                                    inner join available_seats on acts.actid = available_seats.actid
-                                    inner join seats on available_seats.seatid = seats.seatid
-                                    inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                    inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
-                                    inner join booking on booked_seats.bookingid = booking.bookingid
-                                    inner join customer on booking.customerid = customer.customerid WHERE customer.customerid = '"+ CustomerID + "'";
+                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, price_group_seat.group, price_group_seat.price, booking.reserved_to from show inner join acts on show.showid = acts.showid inner
+join available_seats on acts.actid = available_seats.actid
+inner
+join seats on available_seats.seatid = seats.seatid
+inner
+join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+inner
+join price_group_seat on booked_seats.priceid = price_group_seat.priceid
+inner
+join booking on booked_seats.bookingid = booking.bookingid
+inner
+join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + CustomerID + "'";
 
                 try
                 {
@@ -683,12 +689,12 @@ namespace cirkus
                 textBoxLosenord.Text = read[6].ToString();
                 int auth = int.Parse(read[7].ToString());
 
-                if (auth==0)
+                if (auth == 0)
                 {
                     comboBoxBehorighetsniva.SelectedText = "Biljettförsäljare";
 
                 }
-                else if (auth==1)
+                else if (auth == 1)
                 {
                     comboBoxBehorighetsniva.SelectedText = "Administratör";
 
@@ -838,7 +844,7 @@ namespace cirkus
 
                     MessageBox.Show(ex.Message);
                     
-                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna användaren. Användaren har en eller flera aktiva föreställningar kopplade till kontot.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna användaren. Användaren har en eller flera aktiva föreställningar kopplade till kontot.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return;
                 }
@@ -857,7 +863,7 @@ namespace cirkus
                 ListaPersonal();
                 tomFaltochFarg();
             }
-            if (Confirmation==DialogResult.No)
+            if (Confirmation == DialogResult.No)
             {
                 return;
             }
@@ -868,36 +874,40 @@ namespace cirkus
         {
             LoadStatistics();
         }
-
-        private void dgvShowsList_KeyDown(object sender, KeyEventArgs e)
-        {
-            LoadAkter();
-            LoadStatistics();
-        }
-
         private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
         {
-            LoadAkter();
-            LoadStatistics();
+            if (e.KeyCode == Keys.Up)
+            {
+                LoadAkter();
+                LoadStatistics();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                LoadAkter();
+                LoadStatistics();
+            }
         }
-
-        private void dgvAkter_KeyDown(object sender, KeyEventArgs e)
-        {
-            LoadStatistics();
-        }
-
         private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
         {
-            LoadStatistics();
-        }
 
+            if (e.KeyCode == Keys.Up)
+            {
+                
+                LoadStatistics();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+               
+                LoadStatistics();
+            }
+        }
         private void buttonEditTicket_Click(object sender, EventArgs e)
         {
             int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
             int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
 
             ChangeTicketForm Ctf;
-            if (SelectedTicket != -1 && SelectedCustomer !=-1)
+            if (SelectedTicket != -1 && SelectedCustomer != -1)
 
 
             {
@@ -911,8 +921,10 @@ namespace cirkus
                     t.Cells[4].Value = r.Cells[4].Value;
                     t.Cells[5].Value = r.Cells[5].Value;
                     t.Cells[6].Value = r.Cells[6].Value;
+                    t.Cells[7].Value = r.Cells[7].Value;
 
                     DataTable dt = new DataTable();
+                    dt.Columns.Add("Boknings ID");
                     dt.Columns.Add("Föreställning");
                     dt.Columns.Add("Akt");
                     dt.Columns.Add("Sektion");
@@ -920,6 +932,7 @@ namespace cirkus
                     dt.Columns.Add("Biljettyp");
                     dt.Columns.Add("Pris");
                     dt.Columns.Add("Reserverad till");
+
 
                     DataRow row;
                     row = dt.NewRow();
@@ -930,9 +943,7 @@ namespace cirkus
                     row[4] = r.Cells[4].Value;
                     row[5] = r.Cells[5].Value;
                     row[6] = r.Cells[6].Value;
-
-
-
+                    row[7] = r.Cells[7].Value;
 
                     dt.Rows.Add(row);
                     Ctf = new ChangeTicketForm(dt);
@@ -956,6 +967,54 @@ namespace cirkus
                 }
             }
 
+        }
+        private void btnDeleteTicket_Click(object sender, EventArgs e)
+        {
+            DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade biljetten ?",
+            "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (Confirmation == DialogResult.Yes)
+            {
+                int SelectedTicket;
+                DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
+                SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
+
+                string sql = "DELETE FROM booking WHERE bookingid = '" + SelectedTicket + "'";
+
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                conn.Open();
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (NpgsqlException ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+
+                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna biljetten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    conn.Close();
+                    return;
+                }
+                conn.Close();
+            }
+            listTickets();
+        }
+        private void dgCustomers_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                listTickets();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                listTickets();
+            }
+        }
+        private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            listTickets(); //Merge
         }
     }
 }
