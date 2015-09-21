@@ -55,6 +55,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabShow = new System.Windows.Forms.TabPage();
+            this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             this.dgvAkter = new System.Windows.Forms.DataGridView();
             this.dgvShowsList = new System.Windows.Forms.DataGridView();
             this.textBoxKronorVuxenbiljetter = new System.Windows.Forms.TextBox();
@@ -108,7 +109,7 @@
             this.printDocumentStatistic = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
+            this.checkBoxAllaAkter = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
@@ -411,6 +412,7 @@
             // 
             // tabShow
             // 
+            this.tabShow.Controls.Add(this.checkBoxAllaAkter);
             this.tabShow.Controls.Add(this.printPreviewControl1);
             this.tabShow.Controls.Add(this.dgvAkter);
             this.tabShow.Controls.Add(this.dgvShowsList);
@@ -441,6 +443,13 @@
             this.tabShow.TabIndex = 1;
             this.tabShow.Text = "Föreställning";
             this.tabShow.UseVisualStyleBackColor = true;
+            // 
+            // printPreviewControl1
+            // 
+            this.printPreviewControl1.Location = new System.Drawing.Point(303, 252);
+            this.printPreviewControl1.Name = "printPreviewControl1";
+            this.printPreviewControl1.Size = new System.Drawing.Size(229, 149);
+            this.printPreviewControl1.TabIndex = 24;
             // 
             // dgvAkter
             // 
@@ -963,12 +972,16 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // printPreviewControl1
+            // checkBoxAllaAkter
             // 
-            this.printPreviewControl1.Location = new System.Drawing.Point(303, 252);
-            this.printPreviewControl1.Name = "printPreviewControl1";
-            this.printPreviewControl1.Size = new System.Drawing.Size(229, 149);
-            this.printPreviewControl1.TabIndex = 24;
+            this.checkBoxAllaAkter.AutoSize = true;
+            this.checkBoxAllaAkter.Location = new System.Drawing.Point(414, 33);
+            this.checkBoxAllaAkter.Name = "checkBoxAllaAkter";
+            this.checkBoxAllaAkter.Size = new System.Drawing.Size(70, 17);
+            this.checkBoxAllaAkter.TabIndex = 25;
+            this.checkBoxAllaAkter.Text = "Alla akter";
+            this.checkBoxAllaAkter.UseVisualStyleBackColor = true;
+            this.checkBoxAllaAkter.CheckedChanged += new System.EventHandler(this.checkBoxAllaAkter_CheckedChanged);
             // 
             // MainForm
             // 
@@ -1082,5 +1095,6 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.CheckBox checkBoxAllaAkter;
     }
 }
