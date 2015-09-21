@@ -606,7 +606,7 @@ namespace cirkus
             dgSeats.ClearSelection();
             dgBseats.ClearSelection();*/
 
-            dgTEST.DataSource = cSeats;
+            //dgTEST.DataSource = cSeats;
             string sid = actid.ToString();
 
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
@@ -1102,7 +1102,7 @@ namespace cirkus
                         tickets.Rows.Add(rw);
 
                         progressBar1.Value = 20;
-                        dgTEST.DataSource = tickets;
+                        //dgTEST.DataSource = tickets;
                     }
 
                 }
@@ -1312,7 +1312,7 @@ namespace cirkus
                 da.Fill(dtBid);
                 conn.Close();
                 progressBar1.Value = 70;
-                dgTEST.DataSource = dtBid;
+                //dgTEST.DataSource = dtBid;
                 foreach (DataRow row in dtBid.Rows)
                 {
                     int bid = int.Parse(row[0].ToString());

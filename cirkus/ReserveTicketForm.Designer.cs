@@ -170,7 +170,6 @@
             this.radioRes = new System.Windows.Forms.RadioButton();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dgTEST = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.dateReservedto = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
@@ -191,7 +190,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTEST)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -800,7 +798,7 @@
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(33, 275);
+            this.panel1.Location = new System.Drawing.Point(14, 224);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(890, 401);
             this.panel1.TabIndex = 40;
@@ -1793,14 +1791,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // dgTEST
-            // 
-            this.dgTEST.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTEST.Location = new System.Drawing.Point(590, 59);
-            this.dgTEST.Name = "dgTEST";
-            this.dgTEST.Size = new System.Drawing.Size(470, 150);
-            this.dgTEST.TabIndex = 43;
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -1830,7 +1820,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1310, 973);
-            this.Controls.Add(this.dgTEST);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -1869,7 +1858,6 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTEST)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
@@ -2013,7 +2001,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView dgTEST;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button9;
