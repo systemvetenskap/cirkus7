@@ -948,6 +948,12 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         }
         private void buttonEditTicket_Click(object sender, EventArgs e)
         {
+            if (dgTickets.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Välj en biljett först");
+                return;
+            }
+
             int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
             int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
 
