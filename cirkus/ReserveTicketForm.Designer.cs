@@ -163,6 +163,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.dateReservedto = new System.Windows.Forms.DateTimePicker();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblPris = new System.Windows.Forms.Label();
             this.lblAct = new System.Windows.Forms.Label();
@@ -171,8 +173,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dateReservedto = new System.Windows.Forms.DateTimePicker();
-            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -1726,6 +1726,25 @@
             this.panel3.Size = new System.Drawing.Size(622, 257);
             this.panel3.TabIndex = 42;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(112, 198);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(16, 13);
+            this.label16.TabIndex = 53;
+            this.label16.Text = "till";
+            // 
+            // dateReservedto
+            // 
+            this.dateReservedto.CustomFormat = "yyyy-MM-dd";
+            this.dateReservedto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateReservedto.Location = new System.Drawing.Point(134, 196);
+            this.dateReservedto.Name = "dateReservedto";
+            this.dateReservedto.Size = new System.Drawing.Size(88, 20);
+            this.dateReservedto.TabIndex = 52;
+            this.dateReservedto.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
+            // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(395, 173);
@@ -1794,25 +1813,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // dateReservedto
-            // 
-            this.dateReservedto.CustomFormat = "yyyy-MM-dd";
-            this.dateReservedto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateReservedto.Location = new System.Drawing.Point(134, 196);
-            this.dateReservedto.Name = "dateReservedto";
-            this.dateReservedto.Size = new System.Drawing.Size(88, 20);
-            this.dateReservedto.TabIndex = 52;
-            this.dateReservedto.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(112, 198);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(16, 13);
-            this.label16.TabIndex = 53;
-            this.label16.Text = "till";
             // 
             // ReserveTicketForm
             // 
