@@ -34,6 +34,7 @@ namespace cirkus
         DataTable acts = new DataTable();
         DataTable cSeats = new DataTable();
         DataRow row;
+        DateTime showdate;
         BindingSource filterseats = new BindingSource();
         BindingSource filterBseats = new BindingSource();
         BindingSource filterActs = new BindingSource();
@@ -56,6 +57,7 @@ namespace cirkus
             shows = new DataTable();
             da.Fill(shows);
 
+            
             dataGridViewShows.DataSource = shows;
 
             this.dataGridViewShows.Columns[0].Visible = false;
@@ -78,6 +80,7 @@ namespace cirkus
             filterSacts.Filter = string.Format("ticketid = '{0}'", comboTicketnr.SelectedItem.ToString());
 
             showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
+            showdate = Convert.ToDateTime(dataGridViewShows[2, selectedIndex].Value.ToString());
 
             //lblshowid.Text = showid.ToString();
 
@@ -422,14 +425,16 @@ namespace cirkus
         {
 
             panel2.Visible = true;
-
+          
 
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            dateReservedto.Value = showdate;
+            dateReservedto.Value = dateReservedto.Value.Subtract(TimeSpan.FromDays(7));
+            
             if (newcust == true)
             {
                 string fn = txtfnamn.Text;
@@ -1105,10 +1110,11 @@ namespace cirkus
 
 
                 conn.Open();
-                sql = "insert into booking(customerid,showid) values(:cid,:shid)";
+                sql = "insert into booking(customerid,showid, reserved_to) values(:cid,:shid, :rto)";
                 cmd = new NpgsqlCommand(sql, conn);
                 cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                 cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+                cmd.Parameters.Add(new NpgsqlParameter("rto", dateReservedto.Value.ToString("yyyy-MM-dd")));
 
 
                 cmd.ExecuteNonQuery();

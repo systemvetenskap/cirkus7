@@ -533,7 +533,10 @@ namespace cirkus
 
         }
 
+        private void labelAngeStaplatser_Click(object sender, EventArgs e)
+        {
 
+        }
 
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {

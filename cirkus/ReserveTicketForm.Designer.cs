@@ -84,6 +84,9 @@
             this.dgCustom = new System.Windows.Forms.DataGridView();
             this.textBoxSearchCust = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
             this.lblActMap = new System.Windows.Forms.Label();
             this.lblS = new System.Windows.Forms.Label();
@@ -169,9 +172,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.dgTEST = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.button9 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.dateReservedto = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -800,6 +802,34 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(890, 401);
             this.panel1.TabIndex = 40;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(661, 207);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(41, 13);
+            this.label15.TabIndex = 61;
+            this.label15.Text = "label15";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(661, 174);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 60;
+            this.label14.Text = "label14";
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(655, 128);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 59;
+            this.button9.Text = "Föreslå";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // gpSeatMap
             // 
@@ -1680,6 +1710,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Controls.Add(this.dateReservedto);
             this.panel3.Controls.Add(this.progressBar1);
             this.panel3.Controls.Add(this.lblPris);
             this.panel3.Controls.Add(this.lblAct);
@@ -1770,33 +1802,24 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // button9
+            // dateReservedto
             // 
-            this.button9.Location = new System.Drawing.Point(655, 128);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 59;
-            this.button9.Text = "Föreslå";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.dateReservedto.CustomFormat = "yyyy-MM-dd";
+            this.dateReservedto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateReservedto.Location = new System.Drawing.Point(134, 196);
+            this.dateReservedto.Name = "dateReservedto";
+            this.dateReservedto.Size = new System.Drawing.Size(88, 20);
+            this.dateReservedto.TabIndex = 52;
+            this.dateReservedto.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
             // 
-            // label14
+            // label16
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(661, 174);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
-            this.label14.TabIndex = 60;
-            this.label14.Text = "label14";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(661, 207);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 13);
-            this.label15.TabIndex = 61;
-            this.label15.Text = "label15";
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(112, 198);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(16, 13);
+            this.label16.TabIndex = 53;
+            this.label16.Text = "till";
             // 
             // ReserveTicketForm
             // 
@@ -1993,5 +2016,7 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DateTimePicker dateReservedto;
     }
 }
