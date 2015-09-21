@@ -212,7 +212,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 }
                 catch (NpgsqlException ex)
                 {
-
                     MessageBox.Show(ex.Message);
                 }
                 finally
@@ -304,7 +303,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         private void dgvAkter_SelectionChanged(object sender, EventArgs e)
         {
             //LoadAkter();
-            LoadStatistics();
         }
         public void LoadShows()
         {
@@ -335,7 +333,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
         public void LoadStatistics()
         {
-            //if (dgvShowsList.RowCount != 0 || checkBoxAllaAkter.Checked)
             if (checkBoxAllaAkter.Checked == true)
             {
                 //Vuxenbiljetter
@@ -446,8 +443,12 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
             else if (checkBoxAllaAkter.Checked == false && dgvAkter.Rows != null)
             {
-                if (dgvAkter.Rows.Count > 0)
-                {
+                //if (dgvAkter.RowCount != 0)
+                //{
+                //    //Antal Vuxenbiljetter
+                //    int selectedIndex = dgvAkter.SelectedRows[0].Index;
+                //    actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
+                
                 int selectedIndex = dgvAkter.SelectedRows[0].Index;
                 actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
                 
@@ -554,7 +555,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                     totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
 
                     textBoxTotaltKronor.Text = totaltKornor;
-                }
+                
 
                 
             }
