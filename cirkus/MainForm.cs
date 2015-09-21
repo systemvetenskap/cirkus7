@@ -396,7 +396,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
                 //Barn
                 conn.Open();
-                string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'ungdom'  group by acts.showid, price_group_seat.group";
+                string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'barn'  group by acts.showid, price_group_seat.group";
 
                 NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
                 NpgsqlDataReader drKB = cmdKB.ExecuteReader();
@@ -446,7 +446,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
             else if (checkBoxAllaAkter.Checked == false && dgvAkter.Rows != null)
             {
-                if (dgvAkter.RowCount != 0)
+                if (dgvAkter.Rows.Count > 0)
                 {
                 int selectedIndex = dgvAkter.SelectedRows[0].Index;
                 actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
