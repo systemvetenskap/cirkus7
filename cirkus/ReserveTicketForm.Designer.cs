@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioPaid = new System.Windows.Forms.RadioButton();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.dataGridViewShows = new System.Windows.Forms.DataGridView();
@@ -167,7 +167,7 @@
             this.lblPris = new System.Windows.Forms.Label();
             this.lblAct = new System.Windows.Forms.Label();
             this.lblSeatid = new System.Windows.Forms.Label();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioRes = new System.Windows.Forms.RadioButton();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dgTEST = new System.Windows.Forms.DataGridView();
@@ -195,15 +195,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // radioButton2
+            // radioPaid
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(31, 173);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(91, 17);
-            this.radioButton2.TabIndex = 12;
-            this.radioButton2.Text = "Bokad/Betald";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioPaid.AutoSize = true;
+            this.radioPaid.Checked = true;
+            this.radioPaid.Location = new System.Drawing.Point(31, 173);
+            this.radioPaid.Name = "radioPaid";
+            this.radioPaid.Size = new System.Drawing.Size(91, 17);
+            this.radioPaid.TabIndex = 12;
+            this.radioPaid.TabStop = true;
+            this.radioPaid.Text = "Bokad/Betald";
+            this.radioPaid.UseVisualStyleBackColor = true;
             // 
             // buttonAdd
             // 
@@ -1716,11 +1718,11 @@
             this.panel3.Controls.Add(this.lblPris);
             this.panel3.Controls.Add(this.lblAct);
             this.panel3.Controls.Add(this.lblSeatid);
-            this.panel3.Controls.Add(this.radioButton5);
+            this.panel3.Controls.Add(this.radioRes);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.groupBox7);
-            this.panel3.Controls.Add(this.radioButton2);
+            this.panel3.Controls.Add(this.radioPaid);
             this.panel3.Location = new System.Drawing.Point(613, 692);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(622, 257);
@@ -1760,15 +1762,16 @@
             this.lblSeatid.TabIndex = 48;
             this.lblSeatid.Text = "label11";
             // 
-            // radioButton5
+            // radioRes
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(31, 196);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(80, 17);
-            this.radioButton5.TabIndex = 47;
-            this.radioButton5.Text = "Reserverad";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioRes.AutoSize = true;
+            this.radioRes.Location = new System.Drawing.Point(31, 196);
+            this.radioRes.Name = "radioRes";
+            this.radioRes.Size = new System.Drawing.Size(80, 17);
+            this.radioRes.TabIndex = 47;
+            this.radioRes.Text = "Reserverad";
+            this.radioRes.UseVisualStyleBackColor = true;
+            this.radioRes.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // button6
             // 
@@ -1873,7 +1876,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioPaid;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.DataGridView dataGridViewShows;
@@ -1913,7 +1916,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioRes;
         private System.Windows.Forms.Button btnAddSeats;
         private System.Windows.Forms.DataGridView dgBseats;
         private System.Windows.Forms.DataGridView dgSeats;

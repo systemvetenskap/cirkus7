@@ -745,6 +745,11 @@ namespace cirkus
 
         }
 
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
@@ -1109,12 +1114,28 @@ namespace cirkus
                 string tid = i.ToString();
 
 
-                conn.Open();
-                sql = "insert into booking(customerid,showid, reserved_to) values(:cid,:shid, :rto)";
-                cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
-                cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
-                cmd.Parameters.Add(new NpgsqlParameter("rto", dateReservedto.Value.ToString("yyyy-MM-dd")));
+           
+                if (radioRes.Checked == true)
+                {
+                    conn.Open();
+                    sql = "insert into booking(customerid,showid, reserved_to) values(:cid,:shid, :rto)";
+                    cmd = new NpgsqlCommand(sql, conn);
+                    cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
+                    cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+                    cmd.Parameters.Add(new NpgsqlParameter("rto", dateReservedto.Value.ToString("yyyy-MM-dd")));
+
+                }
+                else if (radioPaid.Checked == true)
+                {
+                    conn.Open();
+                    sql = "insert into booking(customerid,showid, paid) values(:cid,:shid, :rto)";
+                    cmd = new NpgsqlCommand(sql, conn);
+                    cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
+                    cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+                    cmd.Parameters.Add(new NpgsqlParameter("rto", true));
+                  
+                }
+                
 
 
                 cmd.ExecuteNonQuery();

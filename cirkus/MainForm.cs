@@ -231,6 +231,11 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         private void buttonReserveTicket_Click(object sender, EventArgs e)
         {
             conn.Close();
+            conn.Open();
+            string sql = "delete from booking where reserved_to = now()::date";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
             ReserveTicketForm rtf = new ReserveTicketForm();
             rtf.ShowDialog();
         }
