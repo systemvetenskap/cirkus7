@@ -446,10 +446,12 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
             else if (checkBoxAllaAkter.Checked == false && dgvAkter.Rows != null)
             {
-
-                //if (dgvAkter.RowCount != 0)
-                //{
-                    conn.Open();
+                if (dgvAkter.RowCount != 0)
+                {
+                int selectedIndex = dgvAkter.SelectedRows[0].Index;
+                actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
+                
+                conn.Open();
                     string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '"+ actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
 
 
@@ -552,7 +554,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                     totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
 
                     textBoxTotaltKronor.Text = totaltKornor;
-                //}
+                }
 
                 
             }
@@ -675,7 +677,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             {
                 int selectedIndex = dgvShowsList.SelectedRows[0].Index;
                 showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
-                actid = int.Parse(dgvAkter[0, selectedIndex].Value.ToString());
 
                 show_name = dgvShowsList[2, selectedIndex].Value.ToString();
 
