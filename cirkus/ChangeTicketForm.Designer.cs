@@ -136,6 +136,7 @@
             this.checkBoxPaidTicket.TabIndex = 15;
             this.checkBoxPaidTicket.Text = "Biljetten är betald";
             this.checkBoxPaidTicket.UseVisualStyleBackColor = true;
+            this.checkBoxPaidTicket.CheckedChanged += new System.EventHandler(this.checkBoxPaidTicket_CheckedChanged);
             // 
             // ChangeTicketForm
             // 

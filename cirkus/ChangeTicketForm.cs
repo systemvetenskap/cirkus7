@@ -26,13 +26,12 @@ namespace cirkus
 
         private void btnSpara_Click(object sender, EventArgs e)
         {
-            if (!checkBoxPaidTicket.Checked)
+            if (checkBoxPaidTicket.Checked==false)
             {
                 NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
 
                 string toDate = dtpTicketTo.Text;
-
-                string sql = "UPDATE booking SET reserved_to = @toDate WHERE bookingid = @bookingid";
+                string sql = "UPDATE booking SET reserved_to = @toDate WHERE bookingid = @bookingid AND paid = false";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
                 cmd.Parameters.AddWithValue("@toDate", toDate);
@@ -43,20 +42,22 @@ namespace cirkus
                 conn.Close();
                 this.Close();
             }
-            else if (checkBoxPaidTicket.Checked)
+            else if (checkBoxPaidTicket.Checked==true)
             {
                 NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-                string paidTicket = checkBoxPaidTicket.Text;
 
-                string sql = "DELETE reserved_to FROM booking WHERE bookingid = @bookingid";
-                string sql2 = "UPDATE booking SET paid = true WHERE bookingid = @bookingid";
+                string sql = "UPDATE booking SET reserved_to = null WHERE bookingid = @bookingid ";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
+                string sql2 = "UPDATE booking SET paid = true WHERE bookingid = @bookingid";
+                NpgsqlCommand cmd2 = new NpgsqlCommand(sql2, conn);
+
                 //cmd.Parameters.RemoveAt("@reserved_to");
-                cmd.Parameters.AddWithValue("@paid", true);
+                cmd2.Parameters.AddWithValue("@paid", true);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
                 conn.Close();
 
                 this.Close();
@@ -78,5 +79,16 @@ namespace cirkus
             bookingid = int.Parse(dgSelectedCustomerTicket[0, selectedindex].Value.ToString());
         }
 
+        private void checkBoxPaidTicket_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxPaidTicket.Checked==true)
+            {
+                dtpTicketTo.Enabled = false;
+            }
+            else
+            {
+                dtpTicketTo.Enabled = true;
+            }
+        }
     }
 }
