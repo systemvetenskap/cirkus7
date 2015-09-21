@@ -84,8 +84,6 @@
             this.dgCustom = new System.Windows.Forms.DataGridView();
             this.textBoxSearchCust = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
             this.lblActMap = new System.Windows.Forms.Label();
@@ -792,8 +790,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.gpSeatMap);
             this.panel1.Controls.Add(this.button3);
@@ -804,27 +800,9 @@
             this.panel1.Size = new System.Drawing.Size(890, 401);
             this.panel1.TabIndex = 40;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(661, 207);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 13);
-            this.label15.TabIndex = 61;
-            this.label15.Text = "label15";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(661, 174);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
-            this.label14.TabIndex = 60;
-            this.label14.Text = "label14";
-            // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(655, 128);
+            this.button9.Location = new System.Drawing.Point(300, 374);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 59;
@@ -1863,7 +1841,6 @@
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.gpSeatMap.ResumeLayout(false);
             this.gpSeatMap.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -2017,8 +1994,6 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dateReservedto;
         private System.Windows.Forms.CheckBox cbDf;
