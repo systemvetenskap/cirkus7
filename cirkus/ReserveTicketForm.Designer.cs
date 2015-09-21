@@ -171,8 +171,8 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.dateReservedto = new System.Windows.Forms.DateTimePicker();
-            this.label16 = new System.Windows.Forms.Label();
+            //this.dateReservedto = new System.Windows.Forms.DateTimePicker();
+            //this.label16 = new System.Windows.Forms.Label();
             this.cbDf = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
