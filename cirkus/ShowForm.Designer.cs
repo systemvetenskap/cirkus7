@@ -122,6 +122,7 @@
             this.A6 = new System.Windows.Forms.CheckBox();
             this.A5 = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblActRemove = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -131,12 +132,12 @@
             // 
             // buttonLaggTillAkt
             // 
-            this.buttonLaggTillAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLaggTillAkt.Location = new System.Drawing.Point(113, 100);
+            this.buttonLaggTillAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLaggTillAkt.Location = new System.Drawing.Point(152, 27);
             this.buttonLaggTillAkt.Name = "buttonLaggTillAkt";
-            this.buttonLaggTillAkt.Size = new System.Drawing.Size(54, 23);
+            this.buttonLaggTillAkt.Size = new System.Drawing.Size(87, 23);
             this.buttonLaggTillAkt.TabIndex = 0;
-            this.buttonLaggTillAkt.Text = "+";
+            this.buttonLaggTillAkt.Text = "Lägg till";
             this.buttonLaggTillAkt.UseVisualStyleBackColor = true;
             this.buttonLaggTillAkt.Click += new System.EventHandler(this.buttonLaggTillAkt_Click);
             // 
@@ -162,11 +163,11 @@
             // labelAkter
             // 
             this.labelAkter.AutoSize = true;
-            this.labelAkter.Location = new System.Drawing.Point(3, 16);
+            this.labelAkter.Location = new System.Drawing.Point(15, 14);
             this.labelAkter.Name = "labelAkter";
-            this.labelAkter.Size = new System.Drawing.Size(134, 13);
+            this.labelAkter.Size = new System.Drawing.Size(49, 13);
             this.labelAkter.TabIndex = 9;
-            this.labelAkter.Text = "Aktnamn(lägg till akt/akter)";
+            this.labelAkter.Text = "Aktnamn";
             this.labelAkter.Click += new System.EventHandler(this.labelAkter_Click);
             // 
             // labelDatum
@@ -181,11 +182,11 @@
             // labelAntalFriplatser
             // 
             this.labelAntalFriplatser.AutoSize = true;
-            this.labelAntalFriplatser.Location = new System.Drawing.Point(6, 87);
+            this.labelAntalFriplatser.Location = new System.Drawing.Point(15, 74);
             this.labelAntalFriplatser.Name = "labelAntalFriplatser";
-            this.labelAntalFriplatser.Size = new System.Drawing.Size(79, 13);
+            this.labelAntalFriplatser.Size = new System.Drawing.Size(124, 13);
             this.labelAntalFriplatser.TabIndex = 12;
-            this.labelAntalFriplatser.Text = "Antal ståplatser";
+            this.labelAntalFriplatser.Text = "Antal ståplatser för akten";
             this.labelAntalFriplatser.Click += new System.EventHandler(this.labelAntalFriplatser_Click);
             // 
             // labelForsaljningstid
@@ -199,17 +200,17 @@
             // 
             // txtActname
             // 
-            this.txtActname.Location = new System.Drawing.Point(6, 29);
+            this.txtActname.Location = new System.Drawing.Point(15, 29);
             this.txtActname.Name = "txtActname";
-            this.txtActname.Size = new System.Drawing.Size(100, 20);
+            this.txtActname.Size = new System.Drawing.Size(124, 20);
             this.txtActname.TabIndex = 21;
             this.txtActname.Click += new System.EventHandler(this.txtActname_Click);
             // 
             // textBoxAntalFriplatser
             // 
-            this.textBoxAntalFriplatser.Location = new System.Drawing.Point(6, 103);
+            this.textBoxAntalFriplatser.Location = new System.Drawing.Point(15, 89);
             this.textBoxAntalFriplatser.Name = "textBoxAntalFriplatser";
-            this.textBoxAntalFriplatser.Size = new System.Drawing.Size(70, 20);
+            this.textBoxAntalFriplatser.Size = new System.Drawing.Size(124, 20);
             this.textBoxAntalFriplatser.TabIndex = 24;
             this.textBoxAntalFriplatser.Click += new System.EventHandler(this.textBoxAntalFriplatser_Click);
             this.textBoxAntalFriplatser.TextChanged += new System.EventHandler(this.textBoxAntalFriplatser_TextChanged);
@@ -237,12 +238,12 @@
             // 
             // buttonRaderaAkt
             // 
-            this.buttonRaderaAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRaderaAkt.Location = new System.Drawing.Point(136, 219);
+            this.buttonRaderaAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRaderaAkt.Location = new System.Drawing.Point(152, 170);
             this.buttonRaderaAkt.Name = "buttonRaderaAkt";
-            this.buttonRaderaAkt.Size = new System.Drawing.Size(31, 23);
+            this.buttonRaderaAkt.Size = new System.Drawing.Size(87, 23);
             this.buttonRaderaAkt.TabIndex = 31;
-            this.buttonRaderaAkt.Text = "-";
+            this.buttonRaderaAkt.Text = "Ta bort";
             this.buttonRaderaAkt.UseVisualStyleBackColor = true;
             this.buttonRaderaAkt.Click += new System.EventHandler(this.buttonRaderaAkt_Click);
             // 
@@ -276,7 +277,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 153);
+            this.label4.Location = new System.Drawing.Point(15, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 44;
@@ -287,7 +288,7 @@
             this.labelAngeBeskrivningen.AutoSize = true;
             this.labelAngeBeskrivningen.BackColor = System.Drawing.Color.White;
             this.labelAngeBeskrivningen.ForeColor = System.Drawing.Color.Red;
-            this.labelAngeBeskrivningen.Location = new System.Drawing.Point(115, 36);
+            this.labelAngeBeskrivningen.Location = new System.Drawing.Point(7, 51);
             this.labelAngeBeskrivningen.Name = "labelAngeBeskrivningen";
             this.labelAngeBeskrivningen.Size = new System.Drawing.Size(151, 13);
             this.labelAngeBeskrivningen.TabIndex = 45;
@@ -299,7 +300,7 @@
             this.labelAngeAkt.AutoSize = true;
             this.labelAngeAkt.BackColor = System.Drawing.Color.White;
             this.labelAngeAkt.ForeColor = System.Drawing.Color.Red;
-            this.labelAngeAkt.Location = new System.Drawing.Point(3, 52);
+            this.labelAngeAkt.Location = new System.Drawing.Point(15, 51);
             this.labelAngeAkt.Name = "labelAngeAkt";
             this.labelAngeAkt.Size = new System.Drawing.Size(153, 13);
             this.labelAngeAkt.TabIndex = 46;
@@ -311,7 +312,7 @@
             this.labelAngeStaplatser.AutoSize = true;
             this.labelAngeStaplatser.BackColor = System.Drawing.Color.White;
             this.labelAngeStaplatser.ForeColor = System.Drawing.Color.Red;
-            this.labelAngeStaplatser.Location = new System.Drawing.Point(6, 126);
+            this.labelAngeStaplatser.Location = new System.Drawing.Point(15, 111);
             this.labelAngeStaplatser.Name = "labelAngeStaplatser";
             this.labelAngeStaplatser.Size = new System.Drawing.Size(156, 13);
             this.labelAngeStaplatser.TabIndex = 47;
@@ -327,7 +328,7 @@
             this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgActs.ColumnHeadersVisible = false;
-            this.dgActs.Location = new System.Drawing.Point(6, 169);
+            this.dgActs.Location = new System.Drawing.Point(15, 169);
             this.dgActs.Name = "dgActs";
             this.dgActs.ReadOnly = true;
             this.dgActs.RowHeadersVisible = false;
@@ -349,7 +350,7 @@
             this.groupBox1.Controls.Add(this.dateTimePickerForsaljningstidTill);
             this.groupBox1.Location = new System.Drawing.Point(12, 36);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(272, 248);
+            this.groupBox1.Size = new System.Drawing.Size(216, 216);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             // 
@@ -365,6 +366,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblActRemove);
             this.groupBox2.Controls.Add(this.dgActs);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtActname);
@@ -375,9 +377,9 @@
             this.groupBox2.Controls.Add(this.labelAkter);
             this.groupBox2.Controls.Add(this.textBoxAntalFriplatser);
             this.groupBox2.Controls.Add(this.labelAntalFriplatser);
-            this.groupBox2.Location = new System.Drawing.Point(306, 36);
+            this.groupBox2.Location = new System.Drawing.Point(234, 36);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(175, 248);
+            this.groupBox2.Size = new System.Drawing.Size(245, 296);
             this.groupBox2.TabIndex = 54;
             this.groupBox2.TabStop = false;
             // 
@@ -461,21 +463,21 @@
             // 
             // uncheck
             // 
-            this.uncheck.Location = new System.Drawing.Point(166, 368);
+            this.uncheck.Location = new System.Drawing.Point(174, 368);
             this.uncheck.Name = "uncheck";
-            this.uncheck.Size = new System.Drawing.Size(97, 23);
+            this.uncheck.Size = new System.Drawing.Size(127, 23);
             this.uncheck.TabIndex = 68;
-            this.uncheck.Text = "Avmarkera";
+            this.uncheck.Text = "Avmarkera alla platser";
             this.uncheck.UseVisualStyleBackColor = true;
             this.uncheck.Click += new System.EventHandler(this.uncheck_Click);
             // 
             // check
             // 
-            this.check.Location = new System.Drawing.Point(56, 368);
+            this.check.Location = new System.Drawing.Point(14, 368);
             this.check.Name = "check";
-            this.check.Size = new System.Drawing.Size(88, 23);
+            this.check.Size = new System.Drawing.Size(127, 23);
             this.check.TabIndex = 67;
-            this.check.Text = "Markera";
+            this.check.Text = "Markera alla platser";
             this.check.UseVisualStyleBackColor = true;
             this.check.Click += new System.EventHandler(this.check_Click);
             // 
@@ -1219,6 +1221,18 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // lblActRemove
+            // 
+            this.lblActRemove.AutoSize = true;
+            this.lblActRemove.BackColor = System.Drawing.Color.White;
+            this.lblActRemove.ForeColor = System.Drawing.Color.Red;
+            this.lblActRemove.Location = new System.Drawing.Point(15, 244);
+            this.lblActRemove.Name = "lblActRemove";
+            this.lblActRemove.Size = new System.Drawing.Size(128, 13);
+            this.lblActRemove.TabIndex = 52;
+            this.lblActRemove.Text = "Välj en akt att ta bort först";
+            this.lblActRemove.Visible = false;
+            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1343,5 +1357,6 @@
         private System.Windows.Forms.Label lblActMap;
         private System.Windows.Forms.Button check;
         private System.Windows.Forms.Button uncheck;
+        private System.Windows.Forms.Label lblActRemove;
     }
 }

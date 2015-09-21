@@ -184,7 +184,31 @@ namespace cirkus
 
         private void buttonRaderaAkt_Click(object sender, EventArgs e)
         {
+            DataRow row = dtActs.NewRow();
 
+            row[1] = txtActname.Text.ToString();
+            row[2] = textBoxAntalFriplatser.Text.ToString();
+
+            if (dgActs.SelectedRows.Count>0)
+            {
+                dtActs.Rows.RemoveAt(dgActs.SelectedRows[0].Index);
+
+                dgActs.DataSource = dtActs;
+
+                this.dgActs.Columns[0].Visible = false;
+                this.dgActs.Columns[2].Visible = false;
+                dgActs.Columns[1].Width = 80;
+
+                txtActname.Clear();
+                textBoxAntalFriplatser.Clear();
+                lblActRemove.Visible = false;
+            }
+
+            else
+            {
+                lblActRemove.Visible = true;
+                return;
+            }
         }
 
         private void ShowForm_Load(object sender, EventArgs e)
@@ -277,7 +301,6 @@ namespace cirkus
             bool allowAdd = true;
             if (string.IsNullOrWhiteSpace(textBoxBeskrivning.Text))
             {
-                //MessageBox.Show("Du måste ange beskrivning");
                 textBoxBeskrivning.BackColor = Color.Tomato;
                 labelAngeBeskrivningen.Visible = true;
                 allowAdd = false;
