@@ -84,8 +84,6 @@
             this.dgCustom = new System.Windows.Forms.DataGridView();
             this.textBoxSearchCust = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
             this.lblActMap = new System.Windows.Forms.Label();
@@ -173,6 +171,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dateReservedto = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cbDf = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -791,8 +792,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.gpSeatMap);
             this.panel1.Controls.Add(this.button3);
@@ -803,27 +802,9 @@
             this.panel1.Size = new System.Drawing.Size(890, 401);
             this.panel1.TabIndex = 40;
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(661, 207);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 13);
-            this.label15.TabIndex = 61;
-            this.label15.Text = "label15";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(661, 174);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
-            this.label14.TabIndex = 60;
-            this.label14.Text = "label14";
-            // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(655, 128);
+            this.button9.Location = new System.Drawing.Point(300, 374);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 59;
@@ -1669,6 +1650,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cbDf);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.dgCustom);
@@ -1814,6 +1796,36 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // dateReservedto
+            // 
+            this.dateReservedto.CustomFormat = "yyyy-MM-dd";
+            this.dateReservedto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateReservedto.Location = new System.Drawing.Point(134, 196);
+            this.dateReservedto.Name = "dateReservedto";
+            this.dateReservedto.Size = new System.Drawing.Size(88, 20);
+            this.dateReservedto.TabIndex = 52;
+            this.dateReservedto.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(112, 198);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(16, 13);
+            this.label16.TabIndex = 53;
+            this.label16.Text = "till";
+            // 
+            // cbDf
+            // 
+            this.cbDf.AutoSize = true;
+            this.cbDf.Location = new System.Drawing.Point(445, 51);
+            this.cbDf.Name = "cbDf";
+            this.cbDf.Size = new System.Drawing.Size(101, 17);
+            this.cbDf.TabIndex = 47;
+            this.cbDf.Text = "Direktförsäljning";
+            this.cbDf.UseVisualStyleBackColor = true;
+            this.cbDf.CheckedChanged += new System.EventHandler(this.cbDf_CheckedChanged);
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1850,7 +1862,6 @@
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.gpSeatMap.ResumeLayout(false);
             this.gpSeatMap.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -2004,9 +2015,8 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dateReservedto;
+        private System.Windows.Forms.CheckBox cbDf;
     }
 }

@@ -470,7 +470,7 @@ namespace cirkus
 
 
             }
-            if (newcust == false)
+            if (newcust == false || cbDf.Checked == true)
             {
                 panel3.Visible = true;
                 //panel2.Visible = false;
@@ -495,6 +495,7 @@ namespace cirkus
 
 
                 }
+                cbDf.Enabled = false;
                 newcust = true;
                 txtenamn.Enabled = true;
                 txtepost.Enabled = true;
@@ -514,6 +515,7 @@ namespace cirkus
                 txtepost.Enabled = false;
                 txtfnamn.Enabled = false;
                 txttel.Enabled = false;
+                cbDf.Enabled = true;
 
             }
         }
@@ -750,6 +752,32 @@ namespace cirkus
 
         }
 
+        private void cbDf_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbDf.Checked == true)
+            {
+                radioPaid.Enabled = false;
+                radioRes.Enabled = false;
+                dateReservedto.Enabled = false;
+                this.dgCustom.DataSource = null;
+                radioPaid.Checked = true;
+                checkBox2.Enabled = false;
+
+
+            }
+            else if(cbDf.Checked == false)
+            {
+                radioPaid.Enabled = true;
+                radioRes.Enabled = true;
+                dateReservedto.Enabled = true;
+                listCustomers();
+
+                checkBox2.Enabled = true;
+
+            }
+            
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
@@ -920,8 +948,11 @@ namespace cirkus
         {
             button1.Enabled = false;
             createBooking();
-
-            SendMail();
+            if(cbDf.Checked == false)
+            {
+                SendMail();
+            }
+            
 
         }
 
@@ -1114,7 +1145,7 @@ namespace cirkus
                 string tid = i.ToString();
 
 
-           
+
                 if (radioRes.Checked == true)
                 {
                     conn.Open();
@@ -1125,7 +1156,7 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("rto", dateReservedto.Value.ToString("yyyy-MM-dd")));
 
                 }
-                else if (radioPaid.Checked == true)
+                else if (radioPaid.Checked == true && cbDf.Checked == false)
                 {
                     conn.Open();
                     sql = "insert into booking(customerid,showid, paid) values(:cid,:shid, :rto)";
@@ -1133,7 +1164,15 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
-                  
+
+                }
+                else if (cbDf.Checked == true && radioPaid.Checked == true)
+                {
+                    conn.Open();
+                    sql = "insert into booking(showid, paid) values(:shid, :rto)";
+                    cmd = new NpgsqlCommand(sql, conn);  
+                    cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+                    cmd.Parameters.Add(new NpgsqlParameter("rto", true));
                 }
                 
 
