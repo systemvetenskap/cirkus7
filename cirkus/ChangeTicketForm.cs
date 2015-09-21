@@ -43,6 +43,8 @@ namespace cirkus
             btnChangeTicket.Enabled = true;
             btnSave.Enabled = false;
             dtpTicketTo.Enabled = false;
+            this.Close();
+            
         }
 
         private void btnChangeTicket_Click(object sender, EventArgs e)
