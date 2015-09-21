@@ -157,6 +157,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbDf = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -164,16 +165,10 @@
             this.label16 = new System.Windows.Forms.Label();
             this.dateReservedto = new System.Windows.Forms.DateTimePicker();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.lblPris = new System.Windows.Forms.Label();
-            this.lblAct = new System.Windows.Forms.Label();
-            this.lblSeatid = new System.Windows.Forms.Label();
             this.radioRes = new System.Windows.Forms.RadioButton();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            //this.dateReservedto = new System.Windows.Forms.DateTimePicker();
-            //this.label16 = new System.Windows.Forms.Label();
-            this.cbDf = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -301,7 +296,7 @@
             this.groupBox1.Controls.Add(this.radioLoge);
             this.groupBox1.Controls.Add(this.dgBseats);
             this.groupBox1.Controls.Add(this.radioFri);
-            this.groupBox1.Location = new System.Drawing.Point(869, 41);
+            this.groupBox1.Location = new System.Drawing.Point(691, 503);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(324, 214);
             this.groupBox1.TabIndex = 25;
@@ -792,19 +787,22 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.gpSeatMap);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(14, 224);
+            this.panel1.Controls.Add(this.gpSeatMap);
+            this.panel1.Controls.Add(this.button9);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(890, 401);
+            this.panel1.Size = new System.Drawing.Size(920, 401);
             this.panel1.TabIndex = 40;
+            this.panel1.Visible = false;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(300, 374);
+            this.button9.Location = new System.Drawing.Point(300, 382);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 59;
@@ -1650,17 +1648,31 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.cbDf);
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.dgCustom);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.textBoxSearchCust);
             this.panel2.Controls.Add(this.groupBox6);
-            this.panel2.Location = new System.Drawing.Point(10, 695);
+            this.panel2.Controls.Add(this.cbDf);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(569, 278);
+            this.panel2.Size = new System.Drawing.Size(920, 401);
             this.panel2.TabIndex = 41;
+            this.panel2.Visible = false;
+            // 
+            // cbDf
+            // 
+            this.cbDf.AutoSize = true;
+            this.cbDf.Location = new System.Drawing.Point(445, 51);
+            this.cbDf.Name = "cbDf";
+            this.cbDf.Size = new System.Drawing.Size(101, 17);
+            this.cbDf.TabIndex = 47;
+            this.cbDf.Text = "Direktförsäljning";
+            this.cbDf.UseVisualStyleBackColor = true;
+            this.cbDf.CheckedChanged += new System.EventHandler(this.cbDf_CheckedChanged);
             // 
             // label9
             // 
@@ -1692,21 +1704,21 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.dateReservedto);
             this.panel3.Controls.Add(this.progressBar1);
-            this.panel3.Controls.Add(this.lblPris);
-            this.panel3.Controls.Add(this.lblAct);
-            this.panel3.Controls.Add(this.lblSeatid);
             this.panel3.Controls.Add(this.radioRes);
             this.panel3.Controls.Add(this.button6);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.groupBox7);
             this.panel3.Controls.Add(this.radioPaid);
-            this.panel3.Location = new System.Drawing.Point(613, 692);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(622, 257);
+            this.panel3.Size = new System.Drawing.Size(920, 401);
             this.panel3.TabIndex = 42;
+            this.panel3.Visible = false;
             // 
             // label16
             // 
@@ -1733,33 +1745,6 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(212, 23);
             this.progressBar1.TabIndex = 51;
-            // 
-            // lblPris
-            // 
-            this.lblPris.AutoSize = true;
-            this.lblPris.Location = new System.Drawing.Point(386, 126);
-            this.lblPris.Name = "lblPris";
-            this.lblPris.Size = new System.Drawing.Size(41, 13);
-            this.lblPris.TabIndex = 50;
-            this.lblPris.Text = "label18";
-            // 
-            // lblAct
-            // 
-            this.lblAct.AutoSize = true;
-            this.lblAct.Location = new System.Drawing.Point(383, 84);
-            this.lblAct.Name = "lblAct";
-            this.lblAct.Size = new System.Drawing.Size(41, 13);
-            this.lblAct.TabIndex = 49;
-            this.lblAct.Text = "label17";
-            // 
-            // lblSeatid
-            // 
-            this.lblSeatid.AutoSize = true;
-            this.lblSeatid.Location = new System.Drawing.Point(380, 44);
-            this.lblSeatid.Name = "lblSeatid";
-            this.lblSeatid.Size = new System.Drawing.Size(41, 13);
-            this.lblSeatid.TabIndex = 48;
-            this.lblSeatid.Text = "label11";
             // 
             // radioRes
             // 
@@ -1796,46 +1781,13 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // dateReservedto
-            // 
-            this.dateReservedto.CustomFormat = "yyyy-MM-dd";
-            this.dateReservedto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateReservedto.Location = new System.Drawing.Point(134, 196);
-            this.dateReservedto.Name = "dateReservedto";
-            this.dateReservedto.Size = new System.Drawing.Size(88, 20);
-            this.dateReservedto.TabIndex = 52;
-            this.dateReservedto.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(112, 198);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(16, 13);
-            this.label16.TabIndex = 53;
-            this.label16.Text = "till";
-            // 
-            // cbDf
-            // 
-            this.cbDf.AutoSize = true;
-            this.cbDf.Location = new System.Drawing.Point(445, 51);
-            this.cbDf.Name = "cbDf";
-            this.cbDf.Size = new System.Drawing.Size(101, 17);
-            this.cbDf.TabIndex = 47;
-            this.cbDf.Text = "Direktförsäljning";
-            this.cbDf.UseVisualStyleBackColor = true;
-            this.cbDf.CheckedChanged += new System.EventHandler(this.cbDf_CheckedChanged);
-            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1310, 973);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.panel3);
+            this.ClientSize = new System.Drawing.Size(920, 401);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonCancel);
@@ -1938,9 +1890,6 @@
         private System.Windows.Forms.Label lblFreeP;
         private System.Windows.Forms.ComboBox comboTicketnr;
         private System.Windows.Forms.Label lblTTest2;
-        private System.Windows.Forms.Label lblPris;
-        private System.Windows.Forms.Label lblAct;
-        private System.Windows.Forms.Label lblSeatid;
         private System.Windows.Forms.GroupBox gpSeatMap;
         private System.Windows.Forms.Label lblActMap;
         private System.Windows.Forms.Label lblS;

@@ -1265,9 +1265,9 @@ namespace cirkus
                     read = cmd.ExecuteReader();
 
                     read.Read();
-                    freeSseats = int.Parse(read[0].ToString());*/
-                    conn.Close();
-                 
+                    freeSseats = int.Parse(read[0].ToString());
+                    conn.Close();*/
+
                     if (freeLseats < total && total > 0)
                     {
                         lblA.Visible = true;
