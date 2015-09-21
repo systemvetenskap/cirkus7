@@ -947,7 +947,7 @@
             // 
             // printDocumentStatistic
             // 
-            this.printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            this.printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentStatistic_PrintPage);
             // 
             // printDialog1
             // 

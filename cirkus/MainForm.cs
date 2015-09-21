@@ -107,7 +107,7 @@ namespace cirkus
         {
             listCustomers();
         }
-        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        private void printDocumentStatistic_PrintPage(object sender, PrintPageEventArgs e)
         {
             System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 18);
             System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
@@ -230,6 +230,11 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         }
         private void buttonReserveTicket_Click(object sender, EventArgs e)
         {
+            conn.Close();
+            conn.Open();
+            string sql = "delete from booking where reserved_to = now()::date";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
             conn.Close();
             ReserveTicketForm rtf = new ReserveTicketForm();
             rtf.ShowDialog();
@@ -1070,20 +1075,20 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
         private void buttonSkrivUtForestallning_Click(object sender, EventArgs e)
         {
-            // Printing 
-            PrintDialog pd = new PrintDialog();
-            pd.Document = printDocumentStatistic;
-            if (pd.ShowDialog() == DialogResult.OK)
-            {
-                printDocumentStatistic.Print();
-            }
+            //// Printing 
+            //PrintDialog pd = new PrintDialog();
+            //pd.Document = printDocumentStatistic;
+            //if (pd.ShowDialog() == DialogResult.OK)
+            //{
+            //    printDocumentStatistic.Print();
+            //}
 
 
-            //// Kolla dokumentet innan man skrivar ut
-            // printPreviewDialog1.Document = printDocumentStatistic;
-            // printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
-            // printPreviewDialog1.Show();
-            // printPreviewControl1.Document = printDocumentStatistic;
+            // Kolla dokumentet innan man skrivar ut
+            printPreviewDialog1.Document = printDocumentStatistic;
+            printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
+            printPreviewDialog1.Show();
+            printPreviewControl1.Document = printDocumentStatistic;
         }
     }
 }

@@ -318,6 +318,7 @@
             this.labelAngeStaplatser.TabIndex = 47;
             this.labelAngeStaplatser.Text = "Du måste ange antal ståplatser ";
             this.labelAngeStaplatser.Visible = false;
+            this.labelAngeStaplatser.Click += new System.EventHandler(this.labelAngeStaplatser_Click);
             // 
             // dgActs
             // 
