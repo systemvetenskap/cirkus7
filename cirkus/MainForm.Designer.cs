@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
             this.dgTickets = new System.Windows.Forms.DataGridView();
@@ -104,7 +105,10 @@
             this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDocumentStatistic = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
@@ -407,6 +411,7 @@
             // 
             // tabShow
             // 
+            this.tabShow.Controls.Add(this.printPreviewControl1);
             this.tabShow.Controls.Add(this.dgvAkter);
             this.tabShow.Controls.Add(this.dgvShowsList);
             this.tabShow.Controls.Add(this.textBoxKronorVuxenbiljetter);
@@ -542,6 +547,7 @@
             this.buttonSkrivUtForestallning.TabIndex = 14;
             this.buttonSkrivUtForestallning.Text = "Skriva ut";
             this.buttonSkrivUtForestallning.UseVisualStyleBackColor = true;
+            this.buttonSkrivUtForestallning.Click += new System.EventHandler(this.buttonSkrivUtForestallning_Click);
             // 
             // buttonRaderaForestallning
             // 
@@ -939,9 +945,30 @@
             this.labelStaffName.Text = "Namn";
             this.labelStaffName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // printDocument1
+            // printDocumentStatistic
             // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            this.printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printPreviewControl1
+            // 
+            this.printPreviewControl1.Location = new System.Drawing.Point(303, 252);
+            this.printPreviewControl1.Name = "printPreviewControl1";
+            this.printPreviewControl1.Size = new System.Drawing.Size(229, 149);
+            this.printPreviewControl1.TabIndex = 24;
             // 
             // MainForm
             // 
@@ -1038,7 +1065,7 @@
         private System.Windows.Forms.TextBox textBoxSearchCustomer;
         private System.Windows.Forms.DataGridView dgStaff;
         private System.Windows.Forms.TextBox textBoxSearchStaff;
-        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Drawing.Printing.PrintDocument printDocumentStatistic;
         private System.Windows.Forms.DataGridView dgTickets;
         private System.Windows.Forms.TextBox textBoxPrintPrice;
         private System.Windows.Forms.TextBox textBoxPrintAct;
@@ -1052,5 +1079,8 @@
         private System.Windows.Forms.TextBox textBoxPersonnummer;
         private System.Windows.Forms.Label LblStatus;
         private System.Windows.Forms.Button btnRaderaKonto;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }

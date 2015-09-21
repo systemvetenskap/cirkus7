@@ -22,6 +22,9 @@ namespace cirkus
         private string staffUserId;
         private string staffFname;
         private string staffLname;
+        private string show_name;
+        private string show_date;
+        private string akt_name;
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         private string sql = "";
         public DataTable dt = new DataTable();
@@ -106,11 +109,49 @@ namespace cirkus
         }
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-            e.Graphics.DrawString("Biljett", new Font("arial", 17), new SolidBrush(Color.Black), 10, 10);
-            e.Graphics.DrawString("Kundens namn", new Font("arial", 17), new SolidBrush(Color.Black), 10, 50);
-            e.Graphics.DrawString("Plats", new Font("arial", 17), new SolidBrush(Color.Black), 10, 90);
-            e.Graphics.DrawString("Föreställning", new Font("arial", 17), new SolidBrush(Color.Black), 10, 130);
-            e.Graphics.DrawString("Akter", new Font("arial", 17), new SolidBrush(Color.Black), 10, 170);
+            System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 18);
+            System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
+            System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+
+            string AV, AU, AB, KV, KU, KB, TA, TK;
+
+            AV = textBoxAntalVuxenBiljetter.Text;
+            AU = textBoxAntalUngdomsbiljetter.Text;
+            AB = textBoxAntalBarnbiljetter.Text;
+            KV = textBoxKronorVuxenbiljetter.Text;
+            KU = textBoxKronorUngdomsbiljetter.Text;
+            KB = textBoxKronorBarnbiljetter.Text;
+            TA = textBoxTotaltAntal.Text;
+            TK = textBoxTotaltKronor.Text;
+
+            //(Längd, Höjd)
+            e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 50));
+            e.Graphics.DrawString("Datum:", drawFont, drawBrush, new PointF(35, 100));
+            e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 150));
+            e.Graphics.DrawString(show_name, drawFontBold, drawBrush, new PointF(300, 50));
+            e.Graphics.DrawString(show_date, drawFontBold, drawBrush, new PointF(300, 100));
+            e.Graphics.DrawString(akt_name, drawFontBold, drawBrush, new PointF(300, 150));
+
+            e.Graphics.DrawString("Antal", drawFontBold, drawBrush, new PointF(300, 250));
+            e.Graphics.DrawString("Kronor", drawFontBold, drawBrush, new PointF(450, 250));
+
+            e.Graphics.DrawString("Vuxenbiljetter:", drawFont, drawBrush, new PointF(35, 300));
+            e.Graphics.DrawString("Ungdomsbiljetter:", drawFont, drawBrush, new PointF(35, 350));
+            e.Graphics.DrawString("Barnbiljetter:", drawFont, drawBrush, new PointF(35, 400));
+            e.Graphics.DrawString("Totallt:", drawFontBoldAndUnderline, drawBrush, new PointF(35, 480));
+
+            e.Graphics.DrawString(AV, drawFont, drawBrush, new PointF(300, 300));
+            e.Graphics.DrawString(KV, drawFont, drawBrush, new PointF(450, 300));
+
+            e.Graphics.DrawString(AU, drawFont, drawBrush, new PointF(300, 350));
+            e.Graphics.DrawString(KU, drawFont, drawBrush, new PointF(450, 350));
+
+            e.Graphics.DrawString(AB, drawFont, drawBrush, new PointF(300, 400));
+            e.Graphics.DrawString(KB, drawFont, drawBrush, new PointF(450, 400));
+
+            e.Graphics.DrawString(TA, drawFontBoldAndUnderline, drawBrush, new PointF(300, 480));
+            e.Graphics.DrawString(TK, drawFontBoldAndUnderline, drawBrush, new PointF(450, 480));
         }
         private void listCustomers()
         {
@@ -201,7 +242,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
             //if (pdialog.ShowDialog() == DialogResult.OK)
             //{
-            printDocument1.Print();
+            printDocumentStatistic.Print();
             //}
 
         }
@@ -298,7 +339,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 //Antal Vuxenbiljetter
                 int selectedIndex = dgvAkter.SelectedRows[0].Index;
                 actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
-
+                akt_name = (dgvAkter[0, selectedIndex].Value.ToString());
 
                 conn.Open();
                 string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
@@ -450,6 +491,10 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             {
                 int selectedIndex = dgvShowsList.SelectedRows[0].Index;
                 showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
+
+                show_name = dgvShowsList[2, selectedIndex].Value.ToString();
+
+                show_date = dgvShowsList[1, selectedIndex].Value.ToString();
 
                 string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
 
@@ -1015,6 +1060,24 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             listTickets(); //Merge
+        }
+
+        private void buttonSkrivUtForestallning_Click(object sender, EventArgs e)
+        {
+            // Printing 
+            PrintDialog pd = new PrintDialog();
+            pd.Document = printDocumentStatistic;
+            if (pd.ShowDialog() == DialogResult.OK)
+            {
+                printDocumentStatistic.Print();
+            }
+
+
+            //// Kolla dokumentet innan man skrivar ut
+            // printPreviewDialog1.Document = printDocumentStatistic;
+            // printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
+            // printPreviewDialog1.Show();
+            // printPreviewControl1.Document = printDocumentStatistic;
         }
     }
 }
