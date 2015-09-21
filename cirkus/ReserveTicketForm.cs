@@ -49,7 +49,7 @@ namespace cirkus
         }
         public void loadShows()
         {
-            string sql = "select show.showid, show.name, show.date from show";
+            string sql = "select show.showid, show.name, show.date from show where sale_start >= now()::date and now()::date <= sale_stop";
 
             conn.Open();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);

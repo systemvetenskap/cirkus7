@@ -244,8 +244,8 @@ namespace cirkus
 
                 name = textBoxBeskrivning.Text;
                 date = dateTimePickerDatum.Text;
-                sale_start = dateTimePickerForsaljningstidFran.Text;
-                sale_stop = dateTimePickerForsaljningstidTill.Text;
+                sale_start = dateTimePickerForsaljningstidFran.Value.ToString("yyyy-MM-dd");
+                sale_stop = dateTimePickerForsaljningstidTill.Value.ToString("yyyy-MM-dd");
 
                 int seat_number = Convert.ToInt16(textBoxAntalFriplatser.Text);
 
@@ -299,8 +299,8 @@ namespace cirkus
 
                 name = textBoxBeskrivning.Text;
                 date = dateTimePickerDatum.Text;
-                sale_start = dateTimePickerForsaljningstidFran.Text;
-                sale_stop = dateTimePickerForsaljningstidTill.Text;
+                sale_start = dateTimePickerForsaljningstidFran.Value.ToString("yyyy-MM-dd");
+                sale_stop = dateTimePickerForsaljningstidTill.Value.ToString("yyyy-MM-dd");
 
                 int seat_number = Convert.ToInt16(textBoxAntalFriplatser.Text);
 
@@ -527,6 +527,13 @@ namespace cirkus
 
             }
         }
+
+        private void dateTimePickerForsaljningstidFran_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
