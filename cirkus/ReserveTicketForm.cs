@@ -689,7 +689,7 @@ namespace cirkus
                     priceid = 3;
                     break;
                 case 3:
-                    priceid = 4;
+                    priceid = 5;
                     break;
             }
             foreach (DataGridViewRow r in dataGridViewActs.SelectedRows)
