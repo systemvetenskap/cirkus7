@@ -110,6 +110,8 @@
             this.printDocumentStatistic = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.textBoxSearchTicket = new System.Windows.Forms.TextBox();
+            this.lblSearchTicket = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
@@ -135,6 +137,8 @@
             // 
             // tabTicket
             // 
+            this.tabTicket.Controls.Add(this.textBoxSearchTicket);
+            this.tabTicket.Controls.Add(this.lblSearchTicket);
             this.tabTicket.Controls.Add(this.lblPrint);
             this.tabTicket.Controls.Add(this.textBoxPrintPrice);
             this.tabTicket.Controls.Add(this.dgTickets);
@@ -982,6 +986,23 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // textBoxSearchTicket
+            // 
+            this.textBoxSearchTicket.Location = new System.Drawing.Point(411, 49);
+            this.textBoxSearchTicket.Name = "textBoxSearchTicket";
+            this.textBoxSearchTicket.Size = new System.Drawing.Size(156, 20);
+            this.textBoxSearchTicket.TabIndex = 21;
+            this.textBoxSearchTicket.TextChanged += new System.EventHandler(this.textBoxSearchTicket_TextChanged);
+            // 
+            // lblSearchTicket
+            // 
+            this.lblSearchTicket.AutoSize = true;
+            this.lblSearchTicket.Location = new System.Drawing.Point(379, 52);
+            this.lblSearchTicket.Name = "lblSearchTicket";
+            this.lblSearchTicket.Size = new System.Drawing.Size(26, 13);
+            this.lblSearchTicket.TabIndex = 20;
+            this.lblSearchTicket.Text = "Sök";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1093,5 +1114,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxSearchTicket;
+        private System.Windows.Forms.Label lblSearchTicket;
     }
 }

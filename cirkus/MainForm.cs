@@ -87,6 +87,32 @@ namespace cirkus
         {
             listCustomers();
         }
+        private void textBoxSearchTicket_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxSearchTicket.Text))
+            {
+                dgTickets.DataSource = null;
+                listTickets();
+            }
+            else
+            {
+                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, 
+                            price_group_seat.group, price_group_seat.price, booking.reserved_to
+                            from show inner join acts on show.showid = acts.showid
+                            inner join available_seats on acts.actid = available_seats.actid
+                            inner join seats on available_seats.seatid = seats.seatid
+                            inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
+                            inner join booking on booked_seats.bookingid = booking.bookingid
+                            inner join customer on booking.customerid = customer.customerid WHERE booking.bookingid = '" + textBoxSearchTicket.Text + "'";
+
+                NpgsqlDataAdapter cmd = new NpgsqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                cmd.Fill(dt);
+                dgTickets.DataSource = dt;
+            }
+
+        }
         private void printDocumentStatistic_PrintPage(object sender, PrintPageEventArgs e)
         {
             System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 18);
