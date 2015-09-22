@@ -88,13 +88,16 @@ namespace cirkus
         {
             listCustomers();
         }
-        private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void EmptyTextboxesTab1()
         {
             textBoxPrintShow.Clear();
             textBoxPrintBookingid.Clear();
             textBoxPrintPrice.Clear();
             textBoxPrintAct.Clear();
             textBoxPrintAge.Clear();
+        }
+        private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
             btnDeleteTicket.Text = "Radera vald biljett";
 
             int selectedindex = dgTickets.SelectedRows[0].Index;
@@ -126,6 +129,11 @@ namespace cirkus
             dgTicketActs.ClearSelection();
 
         }
+        private void dgTicketActs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnDeleteTicket.Text = "Radera vald akt";
+            dgTickets.ClearSelection();
+        }
         private void textBoxSearchTicket_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxSearchTicket.Text))
@@ -150,6 +158,11 @@ namespace cirkus
                 dgTickets.DataSource = dt;
             }
 
+        }
+        private void textBoxSearchTicket_Click(object sender, EventArgs e)
+        {
+            dgTicketActs.DataSource = null;
+            dgTickets.DataSource = null;
         }
         private void printDocumentStatistic_PrintPage(object sender, PrintPageEventArgs e)
         {
@@ -347,6 +360,7 @@ namespace cirkus
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgTicketActs.DataSource = null;
+            EmptyTextboxesTab1();
             listTickets();
         }
         private void buttonEditTicket_Click(object sender, EventArgs e)
@@ -1444,22 +1458,5 @@ namespace cirkus
             comboBoxBehorighetsniva.BackColor = Color.White;
         }
         #endregion
-
-        private void dgTicketActs_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnDeleteTicket.Text = "Radera vald akt";
-            dgTickets.ClearSelection();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxSearchTicket_Click(object sender, EventArgs e)
-        {
-            dgTicketActs.DataSource = null;
-            dgTickets.DataSource = null;
-        }
     }
 }
