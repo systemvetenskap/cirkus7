@@ -31,6 +31,7 @@ namespace cirkus
         private NpgsqlDataAdapter da;
         private List<show> allShowsList;
         private int CustomerID;
+        DataTable dtActs = new DataTable();
         #endregion
         #region Main
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -89,6 +90,11 @@ namespace cirkus
         }
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            textBoxPrintShow.Clear();
+            textBoxPrintSeat.Clear();
+            textBoxPrintPrice.Clear();
+            textBoxPrintAct.Clear();
+            textBoxPrintAge.Clear();
             btnDeleteTicket.Text = "Radera vald biljett";
 
             int selectedindex = dgTickets.SelectedRows[0].Index;
@@ -101,11 +107,20 @@ namespace cirkus
                         where booked_seats.bookingid = '" + bookingid + "'order by acts.actid";
 
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-            DataTable dt = new DataTable();
+            dtActs = new DataTable();
 
-            da.Fill(dt);
+            da.Fill(dtActs);
 
-            dgTicketActs.DataSource = dt;
+            dgTicketActs.DataSource = dtActs;
+            textBoxPrintShow.Text = dgTickets[1, selectedindex].Value.ToString();
+            textBoxPrintPrice.Text = dgTickets[4, selectedindex].Value.ToString();
+            textBoxPrintAge.Text = dgTickets[3, selectedindex].Value.ToString();
+            foreach(DataRow r in dtActs.Rows)
+            {
+                textBoxPrintAct.Text +=" " +r[1].ToString();
+                textBoxPrintSeat.Text += " " + r[2].ToString() + r[3].ToString();
+
+            }
 
             dgTicketActs.ClearSelection();
 
