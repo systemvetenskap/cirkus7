@@ -40,15 +40,17 @@ namespace cirkus
             switch (curTab)
             {
                 default:
-                    //Sälja biljetter tabben.
+                    //Biljettförsäljning
                     listCustomers();
                     break;
                 case 1:
+                    //Föreställning
                     LoadShows();
                     LoadAkter();
                     LoadStatistics();
                     break;
                 case 2:
+                    //Konto
                     ListaPersonal();
                     break;
             }
@@ -76,28 +78,6 @@ namespace cirkus
         private void MainForm_Load(object sender, EventArgs e)
         {
             listCustomers();
-
-        }
-        public void tomFaltochFarg()
-        {
-            textBoxPersonnummer.Clear();
-            textBoxFornamn.Clear();
-            textBoxEfternamn.Clear();
-            textBoxEpost.Clear();
-            textBoxTelefonnummer.Clear();
-            textBoxAnvandarnamn.Clear();
-            textBoxLosenord.Clear();
-            comboBoxBehorighetsniva.ResetText();
-
-            textBoxPersonnummer.BackColor = Color.White;
-            textBoxFornamn.BackColor = Color.White;
-            textBoxEfternamn.BackColor = Color.White;
-            textBoxEpost.BackColor = Color.White;
-            textBoxTelefonnummer.BackColor = Color.White;
-            textBoxAnvandarnamn.BackColor = Color.White;
-            textBoxLosenord.BackColor = Color.White;
-            comboBoxBehorighetsniva.BackColor = Color.White;
-
 
         }
 
@@ -254,6 +234,127 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         {
             listTickets();
         }
+        private void buttonEditTicket_Click(object sender, EventArgs e)
+        {
+            if (dgTickets.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Välj en biljett först");
+                return;
+            }
+
+            int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
+            int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
+
+            ChangeTicketForm Ctf;
+            if (SelectedTicket != -1 && SelectedCustomer != -1)
+
+
+            {
+                foreach (DataGridViewRow r in dgTickets.SelectedRows)
+                {
+                    DataGridViewRow t = (DataGridViewRow)r.Clone();
+                    t.Cells[0].Value = r.Cells[0].Value;
+                    t.Cells[1].Value = r.Cells[1].Value;
+                    t.Cells[2].Value = r.Cells[2].Value;
+                    t.Cells[3].Value = r.Cells[3].Value;
+                    t.Cells[4].Value = r.Cells[4].Value;
+                    t.Cells[5].Value = r.Cells[5].Value;
+                    t.Cells[6].Value = r.Cells[6].Value;
+                    t.Cells[7].Value = r.Cells[7].Value;
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Boknings ID");
+                    dt.Columns.Add("Föreställning");
+                    dt.Columns.Add("Akt");
+                    dt.Columns.Add("Sektion");
+                    dt.Columns.Add("Platsnummer");
+                    dt.Columns.Add("Biljettyp");
+                    dt.Columns.Add("Pris");
+                    dt.Columns.Add("Reserverad till");
+
+
+                    DataRow row;
+                    row = dt.NewRow();
+                    row[0] = r.Cells[0].Value;
+                    row[1] = r.Cells[1].Value;
+                    row[2] = r.Cells[2].Value;
+                    row[3] = r.Cells[3].Value;
+                    row[4] = r.Cells[4].Value;
+                    row[5] = r.Cells[5].Value;
+                    row[6] = r.Cells[6].Value;
+                    row[7] = r.Cells[7].Value;
+
+                    dt.Rows.Add(row);
+                    Ctf = new ChangeTicketForm(dt);
+                    Ctf.ShowDialog();
+
+
+                }
+                try
+                {
+                    //Ctf = new ChangeTicketForm(dt);
+                    //Ctf.ShowDialog();
+                }
+                catch (NpgsqlException ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+        }
+        private void btnDeleteTicket_Click(object sender, EventArgs e)
+        {
+            DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade biljetten ?",
+            "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (Confirmation == DialogResult.Yes)
+            {
+                int SelectedTicket;
+                DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
+                SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
+
+                string sql = "DELETE FROM booking WHERE bookingid = '" + SelectedTicket + "'";
+
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                conn.Open();
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (NpgsqlException ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+
+                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna biljetten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    conn.Close();
+                    return;
+                }
+                conn.Close();
+            }
+            listTickets();
+        }
+        private void dgCustomers_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                listTickets();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                listTickets();
+            }
+        }
+        private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            listTickets();
+        }
         #endregion
         #region Föreställningar
         private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
@@ -305,9 +406,9 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
             frm.ShowDialog();
         }
-        private void dgvAkter_SelectionChanged(object sender, EventArgs e)
+        private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //LoadAkter();
+            LoadStatistics();
         }
         public void LoadShows()
         {
@@ -335,7 +436,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
             
         }
-
         public void LoadStatistics()
         {
             if (checkBoxAllaAkter.Checked == true)
@@ -681,7 +781,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             //textBoxTotaltKronor.Text = totaltKornor;
 
         }
-
         public void LoadAkter()
         {
             if (dgvShowsList.RowCount != 0)
@@ -711,6 +810,55 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             LoadStatistics();
             
         }
+        private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                LoadAkter();
+                LoadStatistics();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                LoadAkter();
+                LoadStatistics();
+            }
+        }
+        private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Up)
+            {
+
+                LoadStatistics();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+
+                LoadStatistics();
+            }
+        }
+        private void buttonSkrivUtForestallning_Click(object sender, EventArgs e)
+        {
+            //// Printing 
+            //PrintDialog pd = new PrintDialog();
+            //pd.Document = printDocumentStatistic;
+            //if (pd.ShowDialog() == DialogResult.OK)
+            //{
+            //    printDocumentStatistic.Print();
+            //}
+
+
+            // Kolla dokumentet innan man skrivar ut
+            printPreviewControl1.Visible = true;
+            printPreviewDialog1.Document = printDocumentStatistic;
+            printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
+            printPreviewDialog1.Show();
+            printPreviewControl1.Document = printDocumentStatistic;
+        }
+        private void checkBoxAllaAkter_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadStatistics();
+        }
         #endregion
         #region Konto
         private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
@@ -721,7 +869,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         {
             tomFaltochFarg();
         }
-        private void ListaPersonal()//Metod för att lista personalen i Datagriden.
+        private void ListaPersonal()
         {
             string sqlSearchStaff = textBoxSearchStaff.Text;
             string sql = "SELECT staffid, lname, fname, phonenumber  FROM staff WHERE LOWER(fname) LIKE LOWER('%" + sqlSearchStaff + "%') OR LOWER(lname) LIKE LOWER('%" + sqlSearchStaff + "%')";
@@ -765,7 +913,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
 
         }
-        public bool EndastSiffror(string värde) //Metod för att kontrollera om det bara är siffror
+        public bool EndastSiffror(string värde)
         {
             bool barasiffror = true;
             foreach (char siffra in värde)
@@ -889,7 +1037,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
         
         }
-        public bool BaraBokstäver(string namn)//Metod för att kontrollera om det bara är bokstäver
+        public bool BaraBokstäver(string namn)
         {
             bool okej = true;
             foreach (char bokstav in namn)
@@ -1019,8 +1167,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                
                 conn.Open();
 
-                NpgsqlCommand cmd = new NpgsqlCommand(@"update staff set ssn = @ssn, fname = @fn, lname = @ln, phonenumber = @pn, email = @email, 
-                                                        username = @un, password = @pass, auth = @auth where staffid =@id", conn);
+                NpgsqlCommand cmd = new NpgsqlCommand(@"update staff set ssn = @ssn, fname = @fn, lname = @ln, phonenumber = @pn, email = @email,                                                         username = @un, password = @pass, auth = @auth where staffid =@id", conn);
 
                 cmd.Parameters.Add(new NpgsqlParameter("ssn", textBoxPersonnummer.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("fn", textBoxFornamn.Text));
@@ -1047,7 +1194,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 LblStatus.Text = "Användare updaterad";
   
                 cmd.ExecuteNonQuery();
-
                 conn.Close();
 
                 btnTomFalten.Enabled = true;
@@ -1058,7 +1204,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 textBoxAnvandarnamn.Enabled = true;
                 btnSkapaKonto.Enabled = true;
                 tomFaltochFarg();
-
             }
 
         }
@@ -1110,183 +1255,27 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 return;
             }
         }
+        public void tomFaltochFarg()
+        {
+            textBoxPersonnummer.Clear();
+            textBoxFornamn.Clear();
+            textBoxEfternamn.Clear();
+            textBoxEpost.Clear();
+            textBoxTelefonnummer.Clear();
+            textBoxAnvandarnamn.Clear();
+            textBoxLosenord.Clear();
+            comboBoxBehorighetsniva.ResetText();
+
+            textBoxPersonnummer.BackColor = Color.White;
+            textBoxFornamn.BackColor = Color.White;
+            textBoxEfternamn.BackColor = Color.White;
+            textBoxEpost.BackColor = Color.White;
+            textBoxTelefonnummer.BackColor = Color.White;
+            textBoxAnvandarnamn.BackColor = Color.White;
+            textBoxLosenord.BackColor = Color.White;
+            comboBoxBehorighetsniva.BackColor = Color.White;
+        }
         #endregion
 
-        private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            LoadStatistics();
-        }
-        private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Up)
-            {
-                LoadAkter();
-                LoadStatistics();
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-                LoadAkter();
-                LoadStatistics();
-            }
-        }
-        private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Up)
-            {
-                
-                LoadStatistics();
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-               
-                LoadStatistics();
-            }
-        }
-        private void buttonEditTicket_Click(object sender, EventArgs e)
-        {
-            if (dgTickets.SelectedRows.Count <= 0)
-            {
-                MessageBox.Show("Välj en biljett först");
-                return;
-            }
-
-            int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
-            int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
-
-            ChangeTicketForm Ctf;
-            if (SelectedTicket != -1 && SelectedCustomer != -1)
-
-
-            {
-                foreach (DataGridViewRow r in dgTickets.SelectedRows)
-                {
-                    DataGridViewRow t = (DataGridViewRow)r.Clone();
-                    t.Cells[0].Value = r.Cells[0].Value;
-                    t.Cells[1].Value = r.Cells[1].Value;
-                    t.Cells[2].Value = r.Cells[2].Value;
-                    t.Cells[3].Value = r.Cells[3].Value;
-                    t.Cells[4].Value = r.Cells[4].Value;
-                    t.Cells[5].Value = r.Cells[5].Value;
-                    t.Cells[6].Value = r.Cells[6].Value;
-                    t.Cells[7].Value = r.Cells[7].Value;
-
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add("Boknings ID");
-                    dt.Columns.Add("Föreställning");
-                    dt.Columns.Add("Akt");
-                    dt.Columns.Add("Sektion");
-                    dt.Columns.Add("Platsnummer");
-                    dt.Columns.Add("Biljettyp");
-                    dt.Columns.Add("Pris");
-                    dt.Columns.Add("Reserverad till");
-
-
-                    DataRow row;
-                    row = dt.NewRow();
-                    row[0] = r.Cells[0].Value;
-                    row[1] = r.Cells[1].Value;
-                    row[2] = r.Cells[2].Value;
-                    row[3] = r.Cells[3].Value;
-                    row[4] = r.Cells[4].Value;
-                    row[5] = r.Cells[5].Value;
-                    row[6] = r.Cells[6].Value;
-                    row[7] = r.Cells[7].Value;
-
-                    dt.Rows.Add(row);
-                    Ctf = new ChangeTicketForm(dt);
-                    Ctf.ShowDialog();
-
-
-                }
-                try
-                {
-                    //Ctf = new ChangeTicketForm(dt);
-                    //Ctf.ShowDialog();
-                }
-                catch (NpgsqlException ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-
-        }
-        private void btnDeleteTicket_Click(object sender, EventArgs e)
-        {
-            DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade biljetten ?",
-            "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (Confirmation == DialogResult.Yes)
-            {
-                int SelectedTicket;
-                DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
-                SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
-
-                string sql = "DELETE FROM booking WHERE bookingid = '" + SelectedTicket + "'";
-
-                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-                conn.Open();
-
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (NpgsqlException ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-
-                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna biljetten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conn.Close();
-                    return;
-                }
-                conn.Close();
-            }
-            listTickets();
-        }
-        private void dgCustomers_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Up)
-            {
-                listTickets();
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-                listTickets();
-            }
-        }
-        private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            listTickets(); //Merge
-        }
-
-        private void buttonSkrivUtForestallning_Click(object sender, EventArgs e)
-        {
-            //// Printing 
-            //PrintDialog pd = new PrintDialog();
-            //pd.Document = printDocumentStatistic;
-            //if (pd.ShowDialog() == DialogResult.OK)
-            //{
-            //    printDocumentStatistic.Print();
-            //}
-
-
-            // Kolla dokumentet innan man skrivar ut
-            printPreviewControl1.Visible = true;
-            printPreviewDialog1.Document = printDocumentStatistic;
-            printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
-            printPreviewDialog1.Show();
-            printPreviewControl1.Document = printDocumentStatistic;
-        }
-
-        private void checkBoxAllaAkter_CheckedChanged(object sender, EventArgs e)
-        {
-            LoadStatistics();
-        }
     }
 }

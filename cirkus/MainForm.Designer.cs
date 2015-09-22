@@ -55,8 +55,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabShow = new System.Windows.Forms.TabPage();
-            this.checkBoxAllaAkter = new System.Windows.Forms.CheckBox();
             this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
+            this.checkBoxAllaAkter = new System.Windows.Forms.CheckBox();
             this.dgvAkter = new System.Windows.Forms.DataGridView();
             this.dgvShowsList = new System.Windows.Forms.DataGridView();
             this.textBoxKronorVuxenbiljetter = new System.Windows.Forms.TextBox();
@@ -313,11 +313,11 @@
             // buttonPrint
             // 
             this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrint.Location = new System.Drawing.Point(145, 404);
+            this.buttonPrint.Location = new System.Drawing.Point(128, 404);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(75, 23);
+            this.buttonPrint.Size = new System.Drawing.Size(92, 23);
             this.buttonPrint.TabIndex = 8;
-            this.buttonPrint.Text = "Skriv ut";
+            this.buttonPrint.Text = "Skriv ut biljett";
             this.buttonPrint.UseVisualStyleBackColor = true;
             this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
@@ -444,6 +444,14 @@
             this.tabShow.Text = "Föreställning";
             this.tabShow.UseVisualStyleBackColor = true;
             // 
+            // printPreviewControl1
+            // 
+            this.printPreviewControl1.Location = new System.Drawing.Point(311, 258);
+            this.printPreviewControl1.Name = "printPreviewControl1";
+            this.printPreviewControl1.Size = new System.Drawing.Size(336, 172);
+            this.printPreviewControl1.TabIndex = 24;
+            this.printPreviewControl1.Visible = false;
+            // 
             // checkBoxAllaAkter
             // 
             this.checkBoxAllaAkter.AutoSize = true;
@@ -454,14 +462,6 @@
             this.checkBoxAllaAkter.Text = "Alla akter";
             this.checkBoxAllaAkter.UseVisualStyleBackColor = true;
             this.checkBoxAllaAkter.CheckedChanged += new System.EventHandler(this.checkBoxAllaAkter_CheckedChanged);
-            // 
-            // printPreviewControl1
-            // 
-            this.printPreviewControl1.Location = new System.Drawing.Point(311, 258);
-            this.printPreviewControl1.Name = "printPreviewControl1";
-            this.printPreviewControl1.Size = new System.Drawing.Size(336, 172);
-            this.printPreviewControl1.TabIndex = 24;
-            this.printPreviewControl1.Visible = false;
             // 
             // dgvAkter
             // 
@@ -481,7 +481,6 @@
             this.dgvAkter.Size = new System.Drawing.Size(193, 107);
             this.dgvAkter.TabIndex = 23;
             this.dgvAkter.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAkter_CellClick);
-            this.dgvAkter.SelectionChanged += new System.EventHandler(this.dgvAkter_SelectionChanged);
             this.dgvAkter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAkter_KeyUp);
             // 
             // dgvShowsList
@@ -566,7 +565,7 @@
             this.buttonSkrivUtForestallning.Name = "buttonSkrivUtForestallning";
             this.buttonSkrivUtForestallning.Size = new System.Drawing.Size(75, 23);
             this.buttonSkrivUtForestallning.TabIndex = 14;
-            this.buttonSkrivUtForestallning.Text = "Skriva ut";
+            this.buttonSkrivUtForestallning.Text = "Skriv ut";
             this.buttonSkrivUtForestallning.UseVisualStyleBackColor = true;
             this.buttonSkrivUtForestallning.Click += new System.EventHandler(this.buttonSkrivUtForestallning_Click);
             // 
