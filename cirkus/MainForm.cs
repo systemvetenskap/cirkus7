@@ -201,11 +201,14 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
 
         }
+        private void listOldTickets()
+        {
+
+        }
         private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
             AddCustomerForm custForm = new AddCustomerForm(staffUserId);
             custForm.ShowDialog();
-
         }
         private void buttonReserveTicket_Click(object sender, EventArgs e)
         {
@@ -220,6 +223,11 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         }
         private void buttonPrint_Click(object sender, EventArgs e)
         {
+            if (dgTickets.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Välj en biljett först");
+                return;
+            }
             //PrintDialog pdialog = new PrintDialog();
             //pdialog.Document = printDocument1;
             //pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(partOfForm());
@@ -314,6 +322,12 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
             if (Confirmation == DialogResult.Yes)
             {
+                if (dgTickets.SelectedRows.Count <= 0)
+                {
+                    MessageBox.Show("Välj en biljett först");
+                    return;
+                }
+
                 int SelectedTicket;
                 DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
                 SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
@@ -354,6 +368,17 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             listTickets();
+        }
+        private void checkBoxOlderTickets_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxOlderTickets.Checked==true)
+            {
+                listOldTickets();
+            }
+            else if (checkBoxOlderTickets.Checked==false)
+            {
+                listTickets();
+            }
         }
         #endregion
         #region Föreställningar
