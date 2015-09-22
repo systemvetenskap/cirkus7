@@ -119,15 +119,12 @@ namespace cirkus
             }
             else
             {
-                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, 
-                            price_group_seat.group, price_group_seat.price, booking.reserved_to
-                            from show inner join acts on show.showid = acts.showid
-                            inner join available_seats on acts.actid = available_seats.actid
-                            inner join seats on available_seats.seatid = seats.seatid
-                            inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
-                            inner join booking on booked_seats.bookingid = booking.bookingid
-                            inner join customer on booking.customerid = customer.customerid WHERE booking.bookingid = '" + textBoxSearchTicket.Text + "'";
+                string sql = @"select distinct booking.bookingid, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
+                            inner join customer on booking.customerid = customer.customerid
+                            inner join booked_seats on booking.bookingid = booked_seats.bookingid 
+                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
+                            inner join show on booking.showid = show.showid 
+                            where booking.bookingid = '"+textBoxSearchTicket.Text+ "' group by booking.bookingid, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
 
                 NpgsqlDataAdapter cmd = new NpgsqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
@@ -456,8 +453,8 @@ namespace cirkus
                     DataGridViewRow selectedActs = this.dgTicketActs.SelectedRows[0];
                     int selectedAct = Convert.ToInt32(selectedActs.Cells[0].Value);
 
-                    string sql = "DELETE FROM booked_seats WHERE booked_seat_id = selectedAct '" + selectedAct + "'";
-
+                    string sql = "DELETE FROM booked_seats WHERE booked_seat_id = '" + selectedAct + "'";
+                    dgTicketActs.Rows.Remove(selectedActs);
                     NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
                     conn.Open();
 

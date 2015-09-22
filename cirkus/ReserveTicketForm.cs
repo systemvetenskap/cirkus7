@@ -1343,7 +1343,7 @@ namespace cirkus
                 client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
                 client.EnableSsl = true;
 
-                string show_date, aldersgrupp;
+                string show_date;
                 conn.Open();
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(@"select distinct booking.bookingid,booking.customerid from booking where booking.showid = '"+showid+"' and booking.customerid = '"+customerid+"'", conn);
                 DataTable dtBid = new DataTable();
@@ -1378,9 +1378,14 @@ namespace cirkus
                                                 inner join booking on booked_seats.bookingid = booking.bookingid
                                                 where booking.bookingid = '"+bid+"'group by price_group_seat.group", conn);
                     NpgsqlDataReader read = cmd.ExecuteReader();
-                    read.Read();
-                    string pris = read[0].ToString();
-                    aldersgrupp = read[1].ToString();
+                    string pris ="";
+                    string aldersgrupp = "";
+                    while (read.Read())
+                    {
+                        pris = read[0].ToString();
+                        aldersgrupp = read[1].ToString();
+                    }
+                   
                     conn.Close();
                     progressBar1.Value = 80;
                     conn.Open();
