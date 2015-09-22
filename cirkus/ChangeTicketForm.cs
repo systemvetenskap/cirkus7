@@ -40,6 +40,8 @@ namespace cirkus
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
+                var frm = Application.OpenForms.OfType<MainForm>().Single();
+                frm.listTickets();
                 this.Close();
             }
             else if (checkBoxPaidTicket.Checked==true)
@@ -57,6 +59,9 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 cmd2.ExecuteNonQuery();
                 conn.Close();
+
+                var frm = Application.OpenForms.OfType<MainForm>().Single();
+                frm.listTickets();
 
                 this.Close();
             }
