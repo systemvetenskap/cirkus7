@@ -91,7 +91,7 @@ namespace cirkus
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxPrintShow.Clear();
-            textBoxPrintSeat.Clear();
+            
             textBoxPrintPrice.Clear();
             textBoxPrintAct.Clear();
             textBoxPrintAge.Clear();
@@ -117,8 +117,8 @@ namespace cirkus
             textBoxPrintAge.Text = dgTickets[3, selectedindex].Value.ToString();
             foreach(DataRow r in dtActs.Rows)
             {
-                textBoxPrintAct.Text +=" " +r[1].ToString();
-                textBoxPrintSeat.Text += " " + r[2].ToString() + r[3].ToString();
+                textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+", "; 
+                 
 
             }
 
@@ -1447,5 +1447,9 @@ namespace cirkus
             dgTickets.ClearSelection();
         }
 
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
