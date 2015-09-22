@@ -89,10 +89,12 @@ namespace cirkus
         }
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            btnDeleteTicket.Text = "Radera vald biljett";
+
             int selectedindex = dgTickets.SelectedRows[0].Index;
             int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
 
-            string sql = @"select acts.name, seats.section, seats.rownumber from acts
+            string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber from acts
                         inner join available_seats on acts.actid = available_seats.actid
                         inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
                         inner join seats on available_seats.seatid = seats.seatid
@@ -104,6 +106,8 @@ namespace cirkus
             da.Fill(dt);
 
             dgTicketActs.DataSource = dt;
+
+            dgTicketActs.ClearSelection();
 
         }
         private void textBoxSearchTicket_TextChanged(object sender, EventArgs e)
@@ -214,12 +218,12 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select distinct booking.bookingid, show.name, booking.paid, sum(price_group_seat.price), booking.reserved_to from booking
+                string sql = @"select distinct booking.bookingid, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
                             inner join customer on booking.customerid = customer.customerid
                             inner join booked_seats on booking.bookingid = booked_seats.bookingid 
                             inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
                             inner join show on booking.showid = show.showid 
-                            where customer.customerid = '" + CustomerID + "'group by booking.bookingid, show.name, booking.paid, booking.reserved_to";
+                            where customer.customerid = '" + CustomerID + "'group by booking.bookingid, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
                 try
                 {
                     conn.Open();
@@ -232,8 +236,9 @@ namespace cirkus
                     dgTickets.Columns[0].HeaderText = "Boknings ID";
                     dgTickets.Columns[1].HeaderText = "Föreställning";
                     dgTickets.Columns[2].HeaderText = "Betald";
-                    dgTickets.Columns[3].HeaderText = "Pris";
-                    dgTickets.Columns[4].HeaderText = "Reserverad till";
+                    dgTickets.Columns[3].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[4].HeaderText = "Pris";
+                    dgTickets.Columns[5].HeaderText = "Reserverad till";
                 }
                 catch (NpgsqlException ex)
                 {
@@ -352,11 +357,13 @@ namespace cirkus
                     t.Cells[2].Value = r.Cells[2].Value;
                     t.Cells[3].Value = r.Cells[3].Value;
                     t.Cells[4].Value = r.Cells[4].Value;
+                    t.Cells[5].Value = r.Cells[5].Value;
 
                     DataTable dt = new DataTable();
                     dt.Columns.Add("Boknings ID");
                     dt.Columns.Add("Föreställning");
                     dt.Columns.Add("Betald");
+                    dt.Columns.Add("Åldersgrupp");
                     dt.Columns.Add("Pris");
                     dt.Columns.Add("Reserverad till");
 
@@ -367,6 +374,7 @@ namespace cirkus
                     row[2] = r.Cells[2].Value;
                     row[3] = r.Cells[3].Value;
                     row[4] = r.Cells[4].Value;
+                    row[5] = r.Cells[5].Value;
 
                     dt.Rows.Add(row);
                     Ctf = new ChangeTicketForm(dt);
@@ -393,42 +401,84 @@ namespace cirkus
         }
         private void btnDeleteTicket_Click(object sender, EventArgs e)
         {
-            DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade biljetten ?",
-            "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (Confirmation == DialogResult.Yes)
+            if (btnDeleteTicket.Text=="Radera vald biljett")
             {
-                if (dgTickets.SelectedRows.Count <= 0)
+                DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade biljetten ?",
+                "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (Confirmation == DialogResult.Yes)
                 {
-                    MessageBox.Show("Välj en biljett först");
-                    return;
-                }
+                    if (dgTickets.SelectedRows.Count <= 0)
+                    {
+                        MessageBox.Show("Välj en biljett först");
+                        return;
+                    }
 
-                int SelectedTicket;
-                DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
-                SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
+                    int SelectedTicket;
+                    DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
+                    SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
 
-                string sql = "DELETE FROM booking WHERE bookingid = '" + SelectedTicket + "'";
+                    string sql = "DELETE FROM booking WHERE bookingid = '" + SelectedTicket + "'";
 
-                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-                conn.Open();
+                    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                    conn.Open();
 
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (NpgsqlException ex)
-                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (NpgsqlException ex)
+                    {
 
-                    MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message);
 
-                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna biljetten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna biljetten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return;
+                    }
                     conn.Close();
-                    return;
                 }
-                conn.Close();
+                listTickets();
             }
-            listTickets();
+            else if (btnDeleteTicket.Text=="Radera vald akt")
+            {
+                DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade akten ?",
+                "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (Confirmation == DialogResult.Yes)
+                {
+                    if (dgTicketActs.SelectedRows.Count <= 0)
+                    {
+                        MessageBox.Show("Välj en akt först");
+                        return;
+                    }
+
+                    DataGridViewRow selectedActs = this.dgTicketActs.SelectedRows[0];
+                    int selectedAct = Convert.ToInt32(selectedActs.Cells[0].Value);
+
+                    string sql = "DELETE FROM booked_seats WHERE booked_seat_id = selectedAct '" + selectedAct + "'";
+
+                    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                    conn.Open();
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (NpgsqlException ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+
+                        DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna akten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return;
+                    }
+                    conn.Close();
+                }
+                listTickets();
+            }
+
         }
         private void dgCustomers_KeyUp(object sender, KeyEventArgs e)
         {
@@ -1378,5 +1428,12 @@ namespace cirkus
             comboBoxBehorighetsniva.BackColor = Color.White;
         }
         #endregion
+
+        private void dgTicketActs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnDeleteTicket.Text = "Radera vald akt";
+            dgTickets.ClearSelection();
+        }
+
     }
 }

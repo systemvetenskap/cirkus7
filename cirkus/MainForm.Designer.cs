@@ -1028,6 +1028,7 @@
             this.dgTicketActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgTicketActs.Size = new System.Drawing.Size(494, 83);
             this.dgTicketActs.TabIndex = 22;
+            this.dgTicketActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTicketActs_CellClick);
             // 
             // label10
             // 
