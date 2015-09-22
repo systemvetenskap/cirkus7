@@ -91,7 +91,7 @@ namespace cirkus
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxPrintShow.Clear();
-            
+            textBoxPrintBookingid.Clear();
             textBoxPrintPrice.Clear();
             textBoxPrintAct.Clear();
             textBoxPrintAge.Clear();
@@ -112,6 +112,7 @@ namespace cirkus
             da.Fill(dtActs);
 
             dgTicketActs.DataSource = dtActs;
+            textBoxPrintBookingid.Text = dgTickets[0, selectedindex].Value.ToString();
             textBoxPrintShow.Text = dgTickets[1, selectedindex].Value.ToString();
             textBoxPrintPrice.Text = dgTickets[4, selectedindex].Value.ToString();
             textBoxPrintAge.Text = dgTickets[3, selectedindex].Value.ToString();

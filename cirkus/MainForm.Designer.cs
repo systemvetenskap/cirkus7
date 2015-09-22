@@ -112,6 +112,8 @@
             this.printDocumentStatistic = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.textBoxPrintBookingid = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketActs)).BeginInit();
@@ -138,6 +140,8 @@
             // 
             // tabTicket
             // 
+            this.tabTicket.Controls.Add(this.textBoxPrintBookingid);
+            this.tabTicket.Controls.Add(this.label5);
             this.tabTicket.Controls.Add(this.label10);
             this.tabTicket.Controls.Add(this.dgTicketActs);
             this.tabTicket.Controls.Add(this.textBoxSearchTicket);
@@ -261,7 +265,7 @@
             // textBoxPrintAct
             // 
             this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAct.Location = new System.Drawing.Point(769, 145);
+            this.textBoxPrintAct.Location = new System.Drawing.Point(769, 185);
             this.textBoxPrintAct.Name = "textBoxPrintAct";
             this.textBoxPrintAct.ReadOnly = true;
             this.textBoxPrintAct.Size = new System.Drawing.Size(126, 20);
@@ -291,7 +295,7 @@
             // textBoxPrintShow
             // 
             this.textBoxPrintShow.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintShow.Location = new System.Drawing.Point(769, 75);
+            this.textBoxPrintShow.Location = new System.Drawing.Point(769, 132);
             this.textBoxPrintShow.Name = "textBoxPrintShow";
             this.textBoxPrintShow.ReadOnly = true;
             this.textBoxPrintShow.Size = new System.Drawing.Size(126, 20);
@@ -308,7 +312,7 @@
             // textBoxPrintAge
             // 
             this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAge.Location = new System.Drawing.Point(769, 226);
+            this.textBoxPrintAge.Location = new System.Drawing.Point(769, 239);
             this.textBoxPrintAge.Name = "textBoxPrintAge";
             this.textBoxPrintAge.ReadOnly = true;
             this.textBoxPrintAge.Size = new System.Drawing.Size(126, 20);
@@ -369,7 +373,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(769, 127);
+            this.label7.Location = new System.Drawing.Point(769, 167);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(63, 16);
             this.label7.TabIndex = 11;
@@ -390,7 +394,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(769, 57);
+            this.label6.Location = new System.Drawing.Point(769, 114);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 16);
             this.label6.TabIndex = 10;
@@ -411,7 +415,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(766, 208);
+            this.label4.Location = new System.Drawing.Point(766, 221);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 16);
             this.label4.TabIndex = 8;
@@ -1019,6 +1023,25 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // textBoxPrintBookingid
+            // 
+            this.textBoxPrintBookingid.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintBookingid.Location = new System.Drawing.Point(769, 75);
+            this.textBoxPrintBookingid.Name = "textBoxPrintBookingid";
+            this.textBoxPrintBookingid.ReadOnly = true;
+            this.textBoxPrintBookingid.Size = new System.Drawing.Size(126, 20);
+            this.textBoxPrintBookingid.TabIndex = 25;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(769, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 16);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "BokningsNr:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1133,5 +1156,7 @@
         private System.Windows.Forms.Label lblSearchTicket;
         private System.Windows.Forms.DataGridView dgTicketActs;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxPrintBookingid;
+        private System.Windows.Forms.Label label5;
     }
 }
