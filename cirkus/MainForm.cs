@@ -87,6 +87,25 @@ namespace cirkus
         {
             listCustomers();
         }
+        private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedindex = dgTickets.SelectedRows[0].Index;
+            int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
+
+            string sql = @"select acts.name, seats.section, seats.rownumber from acts
+                        inner join available_seats on acts.actid = available_seats.actid
+                        inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                        inner join seats on available_seats.seatid = seats.seatid
+                        where booked_seats.bookingid = '" + bookingid + "'order by acts.actid";
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+
+            da.Fill(dt);
+
+            dgTicketActs.DataSource = dt;
+
+        }
         private void textBoxSearchTicket_TextChanged(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxSearchTicket.Text))
@@ -195,15 +214,12 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, 
-                            price_group_seat.group, price_group_seat.price, booking.reserved_to 
-                            from show inner join acts on show.showid = acts.showid 
-                            inner join available_seats on acts.actid = available_seats.actid
-                            inner join seats on available_seats.seatid = seats.seatid
-                            inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
-                            inner join booking on booked_seats.bookingid = booking.bookingid
-                            inner join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + CustomerID + "'AND show.date >= now()::date";
+                string sql = @"select distinct booking.bookingid, show.name, booking.paid, sum(price_group_seat.price), booking.reserved_to from booking
+                            inner join customer on booking.customerid = customer.customerid
+                            inner join booked_seats on booking.bookingid = booked_seats.bookingid 
+                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
+                            inner join show on booking.showid = show.showid 
+                            where customer.customerid = '" + CustomerID + "'group by booking.bookingid, show.name, booking.paid, booking.reserved_to";
                 try
                 {
                     conn.Open();
@@ -215,22 +231,9 @@ namespace cirkus
                     dgTickets.DataSource = dt;
                     dgTickets.Columns[0].HeaderText = "Boknings ID";
                     dgTickets.Columns[1].HeaderText = "Föreställning";
-                    dgTickets.Columns[2].HeaderText = "Akt";
-                    dgTickets.Columns[3].HeaderText = "Sektion";
-                    dgTickets.Columns[4].HeaderText = "Sittplats";
-                    dgTickets.Columns[5].HeaderText = "Åldersgrupp";
-                    dgTickets.Columns[6].HeaderText = "Pris";
-                    dgTickets.Columns[7].HeaderText = "Reserverad till";
-
-                    dgTickets.Columns[0].Width = 95;
-                    dgTickets.Columns[1].Width = 95;
-                    dgTickets.Columns[2].Width = 85;
-                    dgTickets.Columns[3].Width = 45;
-                    dgTickets.Columns[4].Width = 45;
-                    dgTickets.Columns[5].Width = 95;
-                    dgTickets.Columns[6].Width = 65;
-                    dgTickets.Columns[7].Width = 100;
-
+                    dgTickets.Columns[2].HeaderText = "Betald";
+                    dgTickets.Columns[3].HeaderText = "Pris";
+                    dgTickets.Columns[4].HeaderText = "Reserverad till";
                 }
                 catch (NpgsqlException ex)
                 {
@@ -275,15 +278,6 @@ namespace cirkus
                     dgTickets.Columns[5].HeaderText = "Åldersgrupp";
                     dgTickets.Columns[6].HeaderText = "Pris";
                     dgTickets.Columns[7].HeaderText = "Reserverad till";
-
-                    dgTickets.Columns[0].Width = 95;
-                    dgTickets.Columns[1].Width = 95;
-                    dgTickets.Columns[2].Width = 85;
-                    dgTickets.Columns[3].Width = 45;
-                    dgTickets.Columns[4].Width = 45;
-                    dgTickets.Columns[5].Width = 95;
-                    dgTickets.Columns[6].Width = 65;
-                    dgTickets.Columns[7].Width = 100;
 
                 }
                 catch (NpgsqlException ex)
@@ -358,20 +352,13 @@ namespace cirkus
                     t.Cells[2].Value = r.Cells[2].Value;
                     t.Cells[3].Value = r.Cells[3].Value;
                     t.Cells[4].Value = r.Cells[4].Value;
-                    t.Cells[5].Value = r.Cells[5].Value;
-                    t.Cells[6].Value = r.Cells[6].Value;
-                    t.Cells[7].Value = r.Cells[7].Value;
 
                     DataTable dt = new DataTable();
                     dt.Columns.Add("Boknings ID");
                     dt.Columns.Add("Föreställning");
-                    dt.Columns.Add("Akt");
-                    dt.Columns.Add("Sektion");
-                    dt.Columns.Add("Platsnummer");
-                    dt.Columns.Add("Biljettyp");
+                    dt.Columns.Add("Betald");
                     dt.Columns.Add("Pris");
                     dt.Columns.Add("Reserverad till");
-
 
                     DataRow row;
                     row = dt.NewRow();
@@ -380,9 +367,6 @@ namespace cirkus
                     row[2] = r.Cells[2].Value;
                     row[3] = r.Cells[3].Value;
                     row[4] = r.Cells[4].Value;
-                    row[5] = r.Cells[5].Value;
-                    row[6] = r.Cells[6].Value;
-                    row[7] = r.Cells[7].Value;
 
                     dt.Rows.Add(row);
                     Ctf = new ChangeTicketForm(dt);
@@ -459,6 +443,7 @@ namespace cirkus
         }
         private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            dgTicketActs.DataSource = null;
             listTickets();
         }
         private void checkBoxOlderTickets_CheckedChanged(object sender, EventArgs e)

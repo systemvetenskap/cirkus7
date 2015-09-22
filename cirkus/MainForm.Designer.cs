@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
+            this.textBoxSearchTicket = new System.Windows.Forms.TextBox();
+            this.lblSearchTicket = new System.Windows.Forms.Label();
             this.lblPrint = new System.Windows.Forms.Label();
             this.textBoxPrintPrice = new System.Windows.Forms.TextBox();
             this.dgTickets = new System.Windows.Forms.DataGridView();
@@ -110,8 +112,8 @@
             this.printDocumentStatistic = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.textBoxSearchTicket = new System.Windows.Forms.TextBox();
-            this.lblSearchTicket = new System.Windows.Forms.Label();
+            this.dgTicketActs = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
@@ -121,6 +123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).BeginInit();
             this.tabAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgStaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTicketActs)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -137,6 +140,8 @@
             // 
             // tabTicket
             // 
+            this.tabTicket.Controls.Add(this.label10);
+            this.tabTicket.Controls.Add(this.dgTicketActs);
             this.tabTicket.Controls.Add(this.textBoxSearchTicket);
             this.tabTicket.Controls.Add(this.lblSearchTicket);
             this.tabTicket.Controls.Add(this.lblPrint);
@@ -170,6 +175,23 @@
             this.tabTicket.Text = "Biljettförsäljning";
             this.tabTicket.UseVisualStyleBackColor = true;
             // 
+            // textBoxSearchTicket
+            // 
+            this.textBoxSearchTicket.Location = new System.Drawing.Point(383, 49);
+            this.textBoxSearchTicket.Name = "textBoxSearchTicket";
+            this.textBoxSearchTicket.Size = new System.Drawing.Size(156, 20);
+            this.textBoxSearchTicket.TabIndex = 21;
+            this.textBoxSearchTicket.TextChanged += new System.EventHandler(this.textBoxSearchTicket_TextChanged);
+            // 
+            // lblSearchTicket
+            // 
+            this.lblSearchTicket.AutoSize = true;
+            this.lblSearchTicket.Location = new System.Drawing.Point(351, 52);
+            this.lblSearchTicket.Name = "lblSearchTicket";
+            this.lblSearchTicket.Size = new System.Drawing.Size(26, 13);
+            this.lblSearchTicket.TabIndex = 20;
+            this.lblSearchTicket.Text = "Sök";
+            // 
             // lblPrint
             // 
             this.lblPrint.AutoSize = true;
@@ -195,6 +217,7 @@
             this.dgTickets.AllowUserToDeleteRows = false;
             this.dgTickets.AllowUserToResizeColumns = false;
             this.dgTickets.AllowUserToResizeRows = false;
+            this.dgTickets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgTickets.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgTickets.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -204,8 +227,9 @@
             this.dgTickets.ReadOnly = true;
             this.dgTickets.RowHeadersVisible = false;
             this.dgTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTickets.Size = new System.Drawing.Size(535, 269);
+            this.dgTickets.Size = new System.Drawing.Size(494, 158);
             this.dgTickets.TabIndex = 15;
+            this.dgTickets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTickets_CellClick);
             // 
             // textBoxPrintAct
             // 
@@ -986,22 +1010,34 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // textBoxSearchTicket
+            // dgTicketActs
             // 
-            this.textBoxSearchTicket.Location = new System.Drawing.Point(411, 49);
-            this.textBoxSearchTicket.Name = "textBoxSearchTicket";
-            this.textBoxSearchTicket.Size = new System.Drawing.Size(156, 20);
-            this.textBoxSearchTicket.TabIndex = 21;
-            this.textBoxSearchTicket.TextChanged += new System.EventHandler(this.textBoxSearchTicket_TextChanged);
+            this.dgTicketActs.AllowUserToAddRows = false;
+            this.dgTicketActs.AllowUserToDeleteRows = false;
+            this.dgTicketActs.AllowUserToResizeColumns = false;
+            this.dgTicketActs.AllowUserToResizeRows = false;
+            this.dgTicketActs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgTicketActs.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgTicketActs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgTicketActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTicketActs.Location = new System.Drawing.Point(214, 239);
+            this.dgTicketActs.MultiSelect = false;
+            this.dgTicketActs.Name = "dgTicketActs";
+            this.dgTicketActs.ReadOnly = true;
+            this.dgTicketActs.RowHeadersVisible = false;
+            this.dgTicketActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgTicketActs.Size = new System.Drawing.Size(494, 83);
+            this.dgTicketActs.TabIndex = 22;
             // 
-            // lblSearchTicket
+            // label10
             // 
-            this.lblSearchTicket.AutoSize = true;
-            this.lblSearchTicket.Location = new System.Drawing.Point(379, 52);
-            this.lblSearchTicket.Name = "lblSearchTicket";
-            this.lblSearchTicket.Size = new System.Drawing.Size(26, 13);
-            this.lblSearchTicket.TabIndex = 20;
-            this.lblSearchTicket.Text = "Sök";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(542, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 20);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "Akter";
             // 
             // MainForm
             // 
@@ -1026,6 +1062,7 @@
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTicketActs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1116,5 +1153,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxSearchTicket;
         private System.Windows.Forms.Label lblSearchTicket;
+        private System.Windows.Forms.DataGridView dgTicketActs;
+        private System.Windows.Forms.Label label10;
     }
 }

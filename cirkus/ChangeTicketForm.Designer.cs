@@ -65,6 +65,7 @@
             this.dgSelectedCustomerTicket.AllowUserToDeleteRows = false;
             this.dgSelectedCustomerTicket.AllowUserToResizeColumns = false;
             this.dgSelectedCustomerTicket.AllowUserToResizeRows = false;
+            this.dgSelectedCustomerTicket.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgSelectedCustomerTicket.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgSelectedCustomerTicket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSelectedCustomerTicket.GridColor = System.Drawing.SystemColors.Window;
