@@ -51,8 +51,6 @@ namespace cirkus
 
                 string sql2 = "UPDATE booking SET paid = true WHERE bookingid = @bookingid";
                 NpgsqlCommand cmd2 = new NpgsqlCommand(sql2, conn);
-
-                //cmd.Parameters.RemoveAt("@reserved_to");
                 cmd2.Parameters.AddWithValue("@paid", true);
 
                 conn.Open();

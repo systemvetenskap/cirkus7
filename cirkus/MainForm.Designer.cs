@@ -601,7 +601,7 @@
             this.btnRaderaKonto.Enabled = false;
             this.btnRaderaKonto.Location = new System.Drawing.Point(51, 358);
             this.btnRaderaKonto.Name = "btnRaderaKonto";
-            this.btnRaderaKonto.Size = new System.Drawing.Size(130, 31);
+            this.btnRaderaKonto.Size = new System.Drawing.Size(126, 35);
             this.btnRaderaKonto.TabIndex = 58;
             this.btnRaderaKonto.Text = "Radera konto";
             this.btnRaderaKonto.UseVisualStyleBackColor = true;
@@ -705,7 +705,7 @@
             // 
             this.btnTomFalten.Location = new System.Drawing.Point(748, 358);
             this.btnTomFalten.Name = "btnTomFalten";
-            this.btnTomFalten.Size = new System.Drawing.Size(130, 31);
+            this.btnTomFalten.Size = new System.Drawing.Size(126, 35);
             this.btnTomFalten.TabIndex = 32;
             this.btnTomFalten.Text = "Töm fälten";
             this.btnTomFalten.UseVisualStyleBackColor = true;
@@ -715,7 +715,7 @@
             // 
             this.btnUpdateraKonto.Location = new System.Drawing.Point(245, 358);
             this.btnUpdateraKonto.Name = "btnUpdateraKonto";
-            this.btnUpdateraKonto.Size = new System.Drawing.Size(130, 31);
+            this.btnUpdateraKonto.Size = new System.Drawing.Size(126, 35);
             this.btnUpdateraKonto.TabIndex = 31;
             this.btnUpdateraKonto.Text = "Uppdatera/ändra konto";
             this.btnUpdateraKonto.UseVisualStyleBackColor = true;
@@ -734,7 +734,7 @@
             // 
             this.btnSkapaKonto.Location = new System.Drawing.Point(507, 358);
             this.btnSkapaKonto.Name = "btnSkapaKonto";
-            this.btnSkapaKonto.Size = new System.Drawing.Size(130, 31);
+            this.btnSkapaKonto.Size = new System.Drawing.Size(126, 35);
             this.btnSkapaKonto.TabIndex = 29;
             this.btnSkapaKonto.Text = "Skapa/Lägg till konto";
             this.btnSkapaKonto.UseVisualStyleBackColor = true;
