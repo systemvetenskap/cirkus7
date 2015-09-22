@@ -31,14 +31,26 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
+            this.lblPrint = new System.Windows.Forms.Label();
+            this.textBoxPrintPrice = new System.Windows.Forms.TextBox();
             this.dgTickets = new System.Windows.Forms.DataGridView();
+            this.textBoxPrintAct = new System.Windows.Forms.TextBox();
             this.dgCustomers = new System.Windows.Forms.DataGridView();
+            this.textBoxPrintShow = new System.Windows.Forms.TextBox();
             this.textBoxSearchCustomer = new System.Windows.Forms.TextBox();
+            this.textBoxPrintAge = new System.Windows.Forms.TextBox();
+            this.textBoxPrintSeat = new System.Windows.Forms.TextBox();
             this.btnDeleteTicket = new System.Windows.Forms.Button();
+            this.buttonPrint = new System.Windows.Forms.Button();
             this.buttonEditTicket = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.buttonReserveTicket = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.buttonAddCustomer = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.checkBoxOlderTickets = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -98,18 +110,6 @@
             this.printDocumentStatistic = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.buttonPrint = new System.Windows.Forms.Button();
-            this.textBoxPrintSeat = new System.Windows.Forms.TextBox();
-            this.textBoxPrintAge = new System.Windows.Forms.TextBox();
-            this.textBoxPrintShow = new System.Windows.Forms.TextBox();
-            this.textBoxPrintAct = new System.Windows.Forms.TextBox();
-            this.textBoxPrintPrice = new System.Windows.Forms.TextBox();
-            this.lblPrint = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
@@ -166,6 +166,25 @@
             this.tabTicket.Text = "Biljettförsäljning";
             this.tabTicket.UseVisualStyleBackColor = true;
             // 
+            // lblPrint
+            // 
+            this.lblPrint.AutoSize = true;
+            this.lblPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrint.Location = new System.Drawing.Point(769, 13);
+            this.lblPrint.Name = "lblPrint";
+            this.lblPrint.Size = new System.Drawing.Size(68, 20);
+            this.lblPrint.TabIndex = 19;
+            this.lblPrint.Text = "Utskrift";
+            // 
+            // textBoxPrintPrice
+            // 
+            this.textBoxPrintPrice.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintPrice.Location = new System.Drawing.Point(769, 324);
+            this.textBoxPrintPrice.Name = "textBoxPrintPrice";
+            this.textBoxPrintPrice.ReadOnly = true;
+            this.textBoxPrintPrice.Size = new System.Drawing.Size(126, 20);
+            this.textBoxPrintPrice.TabIndex = 18;
+            // 
             // dgTickets
             // 
             this.dgTickets.AllowUserToAddRows = false;
@@ -175,14 +194,23 @@
             this.dgTickets.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgTickets.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTickets.Location = new System.Drawing.Point(228, 75);
+            this.dgTickets.Location = new System.Drawing.Point(214, 75);
             this.dgTickets.MultiSelect = false;
             this.dgTickets.Name = "dgTickets";
             this.dgTickets.ReadOnly = true;
             this.dgTickets.RowHeadersVisible = false;
             this.dgTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTickets.Size = new System.Drawing.Size(481, 276);
+            this.dgTickets.Size = new System.Drawing.Size(535, 269);
             this.dgTickets.TabIndex = 15;
+            // 
+            // textBoxPrintAct
+            // 
+            this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintAct.Location = new System.Drawing.Point(769, 264);
+            this.textBoxPrintAct.Name = "textBoxPrintAct";
+            this.textBoxPrintAct.ReadOnly = true;
+            this.textBoxPrintAct.Size = new System.Drawing.Size(126, 20);
+            this.textBoxPrintAct.TabIndex = 17;
             // 
             // dgCustomers
             // 
@@ -199,23 +227,50 @@
             this.dgCustomers.ReadOnly = true;
             this.dgCustomers.RowHeadersVisible = false;
             this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomers.Size = new System.Drawing.Size(200, 368);
+            this.dgCustomers.Size = new System.Drawing.Size(188, 368);
             this.dgCustomers.TabIndex = 14;
             this.dgCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellClick);
             this.dgCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellContentClick);
             this.dgCustomers.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgCustomers_KeyUp);
             // 
+            // textBoxPrintShow
+            // 
+            this.textBoxPrintShow.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintShow.Location = new System.Drawing.Point(769, 204);
+            this.textBoxPrintShow.Name = "textBoxPrintShow";
+            this.textBoxPrintShow.ReadOnly = true;
+            this.textBoxPrintShow.Size = new System.Drawing.Size(126, 20);
+            this.textBoxPrintShow.TabIndex = 16;
+            // 
             // textBoxSearchCustomer
             // 
             this.textBoxSearchCustomer.Location = new System.Drawing.Point(40, 49);
             this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
-            this.textBoxSearchCustomer.Size = new System.Drawing.Size(168, 20);
+            this.textBoxSearchCustomer.Size = new System.Drawing.Size(156, 20);
             this.textBoxSearchCustomer.TabIndex = 13;
             this.textBoxSearchCustomer.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
             // 
+            // textBoxPrintAge
+            // 
+            this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintAge.Location = new System.Drawing.Point(769, 84);
+            this.textBoxPrintAge.Name = "textBoxPrintAge";
+            this.textBoxPrintAge.ReadOnly = true;
+            this.textBoxPrintAge.Size = new System.Drawing.Size(126, 20);
+            this.textBoxPrintAge.TabIndex = 15;
+            // 
+            // textBoxPrintSeat
+            // 
+            this.textBoxPrintSeat.BackColor = System.Drawing.SystemColors.Window;
+            this.textBoxPrintSeat.Location = new System.Drawing.Point(769, 144);
+            this.textBoxPrintSeat.Name = "textBoxPrintSeat";
+            this.textBoxPrintSeat.ReadOnly = true;
+            this.textBoxPrintSeat.Size = new System.Drawing.Size(126, 20);
+            this.textBoxPrintSeat.TabIndex = 14;
+            // 
             // btnDeleteTicket
             // 
-            this.btnDeleteTicket.Location = new System.Drawing.Point(405, 362);
+            this.btnDeleteTicket.Location = new System.Drawing.Point(346, 357);
             this.btnDeleteTicket.Name = "btnDeleteTicket";
             this.btnDeleteTicket.Size = new System.Drawing.Size(126, 35);
             this.btnDeleteTicket.TabIndex = 11;
@@ -223,9 +278,20 @@
             this.btnDeleteTicket.UseVisualStyleBackColor = true;
             this.btnDeleteTicket.Click += new System.EventHandler(this.btnDeleteTicket_Click);
             // 
+            // buttonPrint
+            // 
+            this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrint.Location = new System.Drawing.Point(769, 357);
+            this.buttonPrint.Name = "buttonPrint";
+            this.buttonPrint.Size = new System.Drawing.Size(126, 35);
+            this.buttonPrint.TabIndex = 8;
+            this.buttonPrint.Text = "Skriv ut vald biljett";
+            this.buttonPrint.UseVisualStyleBackColor = true;
+            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
+            // 
             // buttonEditTicket
             // 
-            this.buttonEditTicket.Location = new System.Drawing.Point(228, 362);
+            this.buttonEditTicket.Location = new System.Drawing.Point(214, 357);
             this.buttonEditTicket.Name = "buttonEditTicket";
             this.buttonEditTicket.Size = new System.Drawing.Size(126, 35);
             this.buttonEditTicket.TabIndex = 10;
@@ -233,9 +299,19 @@
             this.buttonEditTicket.UseVisualStyleBackColor = true;
             this.buttonEditTicket.Click += new System.EventHandler(this.buttonEditTicket_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(769, 306);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 16);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Pris:";
+            // 
             // buttonReserveTicket
             // 
-            this.buttonReserveTicket.Location = new System.Drawing.Point(583, 362);
+            this.buttonReserveTicket.Location = new System.Drawing.Point(562, 357);
             this.buttonReserveTicket.Name = "buttonReserveTicket";
             this.buttonReserveTicket.Size = new System.Drawing.Size(126, 35);
             this.buttonReserveTicket.TabIndex = 9;
@@ -243,15 +319,45 @@
             this.buttonReserveTicket.UseVisualStyleBackColor = true;
             this.buttonReserveTicket.Click += new System.EventHandler(this.buttonReserveTicket_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(769, 246);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 16);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Akt:";
+            // 
             // buttonAddCustomer
             // 
-            this.buttonAddCustomer.Location = new System.Drawing.Point(228, 408);
+            this.buttonAddCustomer.Location = new System.Drawing.Point(214, 408);
             this.buttonAddCustomer.Name = "buttonAddCustomer";
             this.buttonAddCustomer.Size = new System.Drawing.Size(126, 35);
             this.buttonAddCustomer.TabIndex = 8;
             this.buttonAddCustomer.Text = "Lägg till ny kund";
             this.buttonAddCustomer.UseVisualStyleBackColor = true;
             this.buttonAddCustomer.Click += new System.EventHandler(this.buttonAddCustomer_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(769, 186);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 16);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Föreställning:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(769, 126);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Plats:";
             // 
             // checkBoxOlderTickets
             // 
@@ -263,6 +369,16 @@
             this.checkBoxOlderTickets.Text = "Visa äldre biljetter";
             this.checkBoxOlderTickets.UseVisualStyleBackColor = true;
             this.checkBoxOlderTickets.CheckedChanged += new System.EventHandler(this.checkBoxOlderTickets_CheckedChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(769, 66);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 16);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Åldersgrupp:";
             // 
             // label3
             // 
@@ -865,122 +981,6 @@
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(748, 66);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Åldersgrupp:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(748, 126);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 16);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Plats:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(748, 186);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 16);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Föreställning:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(748, 246);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 16);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Akt:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(748, 306);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 16);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Pris:";
-            // 
-            // buttonPrint
-            // 
-            this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrint.Location = new System.Drawing.Point(748, 362);
-            this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(126, 35);
-            this.buttonPrint.TabIndex = 8;
-            this.buttonPrint.Text = "Skriv ut vald biljett";
-            this.buttonPrint.UseVisualStyleBackColor = true;
-            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
-            // 
-            // textBoxPrintSeat
-            // 
-            this.textBoxPrintSeat.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintSeat.Location = new System.Drawing.Point(748, 144);
-            this.textBoxPrintSeat.Name = "textBoxPrintSeat";
-            this.textBoxPrintSeat.ReadOnly = true;
-            this.textBoxPrintSeat.Size = new System.Drawing.Size(126, 20);
-            this.textBoxPrintSeat.TabIndex = 14;
-            // 
-            // textBoxPrintAge
-            // 
-            this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAge.Location = new System.Drawing.Point(748, 84);
-            this.textBoxPrintAge.Name = "textBoxPrintAge";
-            this.textBoxPrintAge.ReadOnly = true;
-            this.textBoxPrintAge.Size = new System.Drawing.Size(126, 20);
-            this.textBoxPrintAge.TabIndex = 15;
-            // 
-            // textBoxPrintShow
-            // 
-            this.textBoxPrintShow.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintShow.Location = new System.Drawing.Point(748, 204);
-            this.textBoxPrintShow.Name = "textBoxPrintShow";
-            this.textBoxPrintShow.ReadOnly = true;
-            this.textBoxPrintShow.Size = new System.Drawing.Size(126, 20);
-            this.textBoxPrintShow.TabIndex = 16;
-            // 
-            // textBoxPrintAct
-            // 
-            this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAct.Location = new System.Drawing.Point(748, 264);
-            this.textBoxPrintAct.Name = "textBoxPrintAct";
-            this.textBoxPrintAct.ReadOnly = true;
-            this.textBoxPrintAct.Size = new System.Drawing.Size(126, 20);
-            this.textBoxPrintAct.TabIndex = 17;
-            // 
-            // textBoxPrintPrice
-            // 
-            this.textBoxPrintPrice.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintPrice.Location = new System.Drawing.Point(748, 324);
-            this.textBoxPrintPrice.Name = "textBoxPrintPrice";
-            this.textBoxPrintPrice.ReadOnly = true;
-            this.textBoxPrintPrice.Size = new System.Drawing.Size(126, 20);
-            this.textBoxPrintPrice.TabIndex = 18;
-            // 
-            // lblPrint
-            // 
-            this.lblPrint.AutoSize = true;
-            this.lblPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint.Location = new System.Drawing.Point(748, 13);
-            this.lblPrint.Name = "lblPrint";
-            this.lblPrint.Size = new System.Drawing.Size(68, 20);
-            this.lblPrint.TabIndex = 19;
-            this.lblPrint.Text = "Utskrift";
             // 
             // MainForm
             // 
