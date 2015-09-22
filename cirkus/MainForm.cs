@@ -189,6 +189,26 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dgTickets.DataSource = dt;
+
+                    dgTickets.DataSource = dt;
+                    dgTickets.Columns[0].HeaderText = "Boknings ID";
+                    dgTickets.Columns[1].HeaderText = "Föreställning";
+                    dgTickets.Columns[2].HeaderText = "Akt";
+                    dgTickets.Columns[3].HeaderText = "Sektion";
+                    dgTickets.Columns[4].HeaderText = "Sittplats";
+                    dgTickets.Columns[5].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[6].HeaderText = "Pris";
+                    dgTickets.Columns[7].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[0].Width = 95;
+                    dgTickets.Columns[1].Width = 95;
+                    dgTickets.Columns[2].Width = 85;
+                    dgTickets.Columns[3].Width = 45;
+                    dgTickets.Columns[4].Width = 45;
+                    dgTickets.Columns[5].Width = 95;
+                    dgTickets.Columns[6].Width = 65;
+                    dgTickets.Columns[7].Width = 100;
+
                 }
                 catch (NpgsqlException ex)
                 {
