@@ -130,10 +130,12 @@ namespace cirkus
             if (string.IsNullOrEmpty(textBoxSearchTicket.Text))
             {
                 dgTickets.DataSource = null;
+                dgTicketActs.DataSource = null;
                 listTickets();
             }
             else
             {
+                dgTicketActs.DataSource = null;
                 string sql = @"select distinct booking.bookingid, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
                             inner join customer on booking.customerid = customer.customerid
                             inner join booked_seats on booking.bookingid = booked_seats.bookingid 
@@ -343,6 +345,7 @@ namespace cirkus
         }
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dgTicketActs.DataSource = null;
             listTickets();
         }
         private void buttonEditTicket_Click(object sender, EventArgs e)
@@ -1450,6 +1453,12 @@ namespace cirkus
         private void label7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxSearchTicket_Click(object sender, EventArgs e)
+        {
+            dgTicketActs.DataSource = null;
+            dgTickets.DataSource = null;
         }
     }
 }

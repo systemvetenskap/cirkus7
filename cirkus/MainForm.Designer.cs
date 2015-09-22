@@ -207,6 +207,7 @@
             this.textBoxSearchTicket.Name = "textBoxSearchTicket";
             this.textBoxSearchTicket.Size = new System.Drawing.Size(156, 20);
             this.textBoxSearchTicket.TabIndex = 21;
+            this.textBoxSearchTicket.Click += new System.EventHandler(this.textBoxSearchTicket_Click);
             this.textBoxSearchTicket.TextChanged += new System.EventHandler(this.textBoxSearchTicket_TextChanged);
             // 
             // lblSearchTicket
