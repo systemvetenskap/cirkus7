@@ -351,16 +351,16 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 textBoxAntalVuxenBiljetter.Clear();
                 textBoxKronorVuxenbiljetter.Clear();
 
-                dr.Read();
+                /*dr.Read();
 
                 textBoxAntalVuxenBiljetter.Text = dr[1].ToString();
-                textBoxKronorVuxenbiljetter.Text = dr[0].ToString();
+                textBoxKronorVuxenbiljetter.Text = dr[0].ToString();*/
 
-                /*while (dr.Read())
+                while (dr.Read())
                 {
                     textBoxAntalVuxenBiljetter.Text = dr.GetValue(1).ToString();
                     textBoxKronorVuxenbiljetter.Text = dr.GetValue(0).ToString();
-                }*/
+                }
 
                 if (textBoxAntalVuxenBiljetter.Text == "")
                 {
