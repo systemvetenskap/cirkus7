@@ -163,25 +163,21 @@ namespace cirkus
                 conn.Close();
             }
         }
-        private void listTickets()
+        public void listTickets()
         {
             int currentRow = dgCustomers.SelectedRows[0].Index;
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, price_group_seat.group, price_group_seat.price, booking.reserved_to from show inner join acts on show.showid = acts.showid inner
-join available_seats on acts.actid = available_seats.actid
-inner
-join seats on available_seats.seatid = seats.seatid
-inner
-join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-inner
-join price_group_seat on booked_seats.priceid = price_group_seat.priceid
-inner
-join booking on booked_seats.bookingid = booking.bookingid
-inner
-join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + CustomerID + "'";
-
+                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, 
+                            price_group_seat.group, price_group_seat.price, booking.reserved_to 
+                            from show inner join acts on show.showid = acts.showid 
+                            inner join available_seats on acts.actid = available_seats.actid
+                            inner join seats on available_seats.seatid = seats.seatid
+                            inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
+                            inner join booking on booked_seats.bookingid = booking.bookingid
+                            inner join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + CustomerID + "'AND show.date >= now()::date";
                 try
                 {
                     conn.Open();
@@ -189,6 +185,80 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dgTickets.DataSource = dt;
+
+                    dgTickets.DataSource = dt;
+                    dgTickets.Columns[0].HeaderText = "Boknings ID";
+                    dgTickets.Columns[1].HeaderText = "Föreställning";
+                    dgTickets.Columns[2].HeaderText = "Akt";
+                    dgTickets.Columns[3].HeaderText = "Sektion";
+                    dgTickets.Columns[4].HeaderText = "Sittplats";
+                    dgTickets.Columns[5].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[6].HeaderText = "Pris";
+                    dgTickets.Columns[7].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[0].Width = 95;
+                    dgTickets.Columns[1].Width = 95;
+                    dgTickets.Columns[2].Width = 85;
+                    dgTickets.Columns[3].Width = 45;
+                    dgTickets.Columns[4].Width = 45;
+                    dgTickets.Columns[5].Width = 95;
+                    dgTickets.Columns[6].Width = 65;
+                    dgTickets.Columns[7].Width = 100;
+
+                }
+                catch (NpgsqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+        }
+        public void listOldTickets()
+        {
+            int currentRow = dgCustomers.SelectedRows[0].Index;
+            string CustomerID = dgCustomers[2, currentRow].Value.ToString();
+            if (currentRow != -1)
+            {
+                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, 
+                            price_group_seat.group, price_group_seat.price, booking.reserved_to 
+                            from show inner join acts on show.showid = acts.showid 
+                            inner join available_seats on acts.actid = available_seats.actid
+                            inner join seats on available_seats.seatid = seats.seatid
+                            inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
+                            inner join booking on booked_seats.bookingid = booking.bookingid
+                            inner join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + CustomerID + "'AND show.date < now()::date";
+                try
+                {
+                    conn.Open();
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgTickets.DataSource = dt;
+
+                    dgTickets.DataSource = dt;
+                    dgTickets.Columns[0].HeaderText = "Boknings ID";
+                    dgTickets.Columns[1].HeaderText = "Föreställning";
+                    dgTickets.Columns[2].HeaderText = "Akt";
+                    dgTickets.Columns[3].HeaderText = "Sektion";
+                    dgTickets.Columns[4].HeaderText = "Sittplats";
+                    dgTickets.Columns[5].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[6].HeaderText = "Pris";
+                    dgTickets.Columns[7].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[0].Width = 95;
+                    dgTickets.Columns[1].Width = 95;
+                    dgTickets.Columns[2].Width = 85;
+                    dgTickets.Columns[3].Width = 45;
+                    dgTickets.Columns[4].Width = 45;
+                    dgTickets.Columns[5].Width = 95;
+                    dgTickets.Columns[6].Width = 65;
+                    dgTickets.Columns[7].Width = 100;
+
                 }
                 catch (NpgsqlException ex)
                 {
@@ -205,7 +275,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         {
             AddCustomerForm custForm = new AddCustomerForm(staffUserId);
             custForm.ShowDialog();
-
         }
         private void buttonReserveTicket_Click(object sender, EventArgs e)
         {
@@ -220,6 +289,11 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         }
         private void buttonPrint_Click(object sender, EventArgs e)
         {
+            if (dgTickets.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Välj en biljett först");
+                return;
+            }
             //PrintDialog pdialog = new PrintDialog();
             //pdialog.Document = printDocument1;
             //pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(partOfForm());
@@ -314,6 +388,12 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
             if (Confirmation == DialogResult.Yes)
             {
+                if (dgTickets.SelectedRows.Count <= 0)
+                {
+                    MessageBox.Show("Välj en biljett först");
+                    return;
+                }
+
                 int SelectedTicket;
                 DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
                 SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
@@ -354,6 +434,17 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             listTickets();
+        }
+        private void checkBoxOlderTickets_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxOlderTickets.Checked==true)
+            {
+                listOldTickets();
+            }
+            else if (checkBoxOlderTickets.Checked==false)
+            {
+                listTickets();
+            }
         }
         #endregion
         #region Föreställningar
@@ -1276,6 +1367,5 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             comboBoxBehorighetsniva.BackColor = Color.White;
         }
         #endregion
-
     }
 }
