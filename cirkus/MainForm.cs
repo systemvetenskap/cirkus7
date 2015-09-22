@@ -1367,6 +1367,5 @@ namespace cirkus
             comboBoxBehorighetsniva.BackColor = Color.White;
         }
         #endregion
-
     }
 }
