@@ -373,11 +373,12 @@ namespace cirkus
             System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
             System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
-            Rectangle r = new Rectangle(20, 40, 770, 350);
+            Rectangle r = new Rectangle(20, 40, 785, 350);
 
             string aldersgrupp, bokningsnummer, forestallning, akt, pris, date;
 
-            date = DateTime.Today.ToString();
+            var dateAndTime = DateTime.Now;
+            date = dateAndTime.ToString("dd/MM/yyyy");
 
             aldersgrupp = textBoxPrintAge.Text;
             bokningsnummer = textBoxPrintBookingid.Text;
@@ -388,19 +389,19 @@ namespace cirkus
             e.Graphics.DrawRectangle(Pens.Black, r);
 
             e.Graphics.DrawString("Utskrift", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
-            e.Graphics.DrawString(date, drawFontBoldAndUnderline, drawBrush, new PointF(500, 50));
+            e.Graphics.DrawString(date, drawFontBold, drawBrush, new PointF(650, 50));
        
-            e.Graphics.DrawString("Bokningsnummer:", drawFont, drawBrush, new PointF(35, 200));
-            e.Graphics.DrawString("Åldersgrupp:", drawFont, drawBrush, new PointF(35, 150));
-            e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 250));
+            e.Graphics.DrawString("Bokningsnummer:", drawFont, drawBrush, new PointF(35, 150));
+            e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 200));
+            e.Graphics.DrawString("Åldersgrupp:", drawFont, drawBrush, new PointF(35, 250));
             e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 300));
             e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, 350));
-            e.Graphics.DrawString("---------------------------------------- Riv här -----------------------------------------------", drawFontBold, drawBrush, new PointF(01, 400));
+            e.Graphics.DrawString("---------------------------------------- Riv här -----------------------------------------------", drawFont, drawBrush, new PointF(00, 400));
 
 
-            e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 200));
-            e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 150));
-            e.Graphics.DrawString(forestallning, drawFontBold, drawBrush, new PointF(300, 250));
+            e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 150));
+            e.Graphics.DrawString(forestallning, drawFontBold, drawBrush, new PointF(300, 200));
+            e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 250));
             e.Graphics.DrawString(akt, drawFontBold, drawBrush, new PointF(300, 300));
             e.Graphics.DrawString(pris, drawFontBold, drawBrush, new PointF(300, 350));
 
