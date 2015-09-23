@@ -140,6 +140,11 @@ namespace cirkus
 
                 row[1] = txtActname.Text.ToString();
                 row[2] = textBoxAntalFriplatser.Text.ToString();
+                row[3] = timeStart.Text;
+                row[4] = timeEnd.Text; 
+
+                lblTest.Text = timeStart.Text;
+
                 dtActs.Rows.Add(row);
 
                 dgActs.DataSource = dtActs;
@@ -229,12 +234,15 @@ namespace cirkus
             dtActs.Columns.Add(id);
             dtActs.Columns.Add("name");
             dtActs.Columns.Add("free_placement");
+            dtActs.Columns.Add("start_time");
+            dtActs.Columns.Add("end_time");
             dtSeats = new DataTable();
             dtSeats.Columns.Add("id");
             cSeats.Columns.Add("id");
             cSeats.Columns.Add("seatid");
             cSeats.Columns.Add("section");
             cSeats.Columns.Add("rownumber");
+            
 
 
 
@@ -348,12 +356,16 @@ namespace cirkus
                     int id = int.Parse(r[0].ToString());
                     string an = r[1].ToString();
                     int fp = int.Parse(r[2].ToString());
+                    string st = r[3].ToString();
+                    string et = r[4].ToString();
 
                     conn.Open();
-                    command = new NpgsqlCommand("insert into acts(name, showid, free_placement) values(:nm, :shid, :fp)", conn);
+                    command = new NpgsqlCommand("insert into acts(name, showid, free_placement, start_time, end_time) values(:nm, :shid, :fp, :st, :et)", conn);
                     command.Parameters.Add(new NpgsqlParameter("nm", an));
                     command.Parameters.Add(new NpgsqlParameter("shid", addedshowid));
                     command.Parameters.Add(new NpgsqlParameter("fp", fp));
+                    command.Parameters.Add(new NpgsqlParameter("st", st));
+                    command.Parameters.Add(new NpgsqlParameter("et", et));
                     command.ExecuteNonQuery();
 
 

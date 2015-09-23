@@ -98,6 +98,11 @@ namespace cirkus
         }
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            textBoxPrintShow.Clear();
+            textBoxPrintBookingid.Clear();
+            textBoxPrintPrice.Clear();
+            textBoxPrintAct.Clear();
+            textBoxPrintAge.Clear();
             btnDeleteTicket.Text = "Radera vald biljett";
 
             int selectedindex = dgTickets.SelectedRows[0].Index;
