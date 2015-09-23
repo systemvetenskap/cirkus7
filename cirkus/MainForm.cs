@@ -246,12 +246,12 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
+                string sql = @"select distinct booking.bookingid, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
                             inner join customer on booking.customerid = customer.customerid
                             inner join booked_seats on booking.bookingid = booked_seats.bookingid 
                             inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
                             inner join show on booking.showid = show.showid 
-                            where customer.customerid = '" + CustomerID + "'group by booking.bookingid, show.name, show.date, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
+                            where customer.customerid = '" + CustomerID + "'group by booking.bookingid, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
                 try
                 {
                     conn.Open();
@@ -262,15 +262,11 @@ namespace cirkus
 
                     dgTickets.DataSource = dt;
                     dgTickets.Columns[0].HeaderText = "Boknings ID";
-                    dgTickets.Columns[1].HeaderText = "Datum";
-                    dgTickets.Columns[2].HeaderText = "Föreställning";
-                    dgTickets.Columns[3].HeaderText = "Betald";
-                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
-                    dgTickets.Columns[5].HeaderText = "Pris";
-                    dgTickets.Columns[6].HeaderText = "Reserverad till";
-
-                    dgTickets.Columns[2].Width = 100;
-
+                    dgTickets.Columns[1].HeaderText = "Föreställning";
+                    dgTickets.Columns[2].HeaderText = "Betald";
+                    dgTickets.Columns[3].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[4].HeaderText = "Pris";
+                    dgTickets.Columns[5].HeaderText = "Reserverad till";
                 }
                 catch (NpgsqlException ex)
                 {
@@ -289,7 +285,7 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select booking.bookingid, show.date, show.name, acts.name, seats.section, seats.rownumber, 
+                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, 
                             price_group_seat.group, price_group_seat.price, booking.reserved_to 
                             from show inner join acts on show.showid = acts.showid 
                             inner join available_seats on acts.actid = available_seats.actid
@@ -308,12 +304,13 @@ namespace cirkus
 
                     dgTickets.DataSource = dt;
                     dgTickets.Columns[0].HeaderText = "Boknings ID";
-                    dgTickets.Columns[1].HeaderText = "Datum";
-                    dgTickets.Columns[2].HeaderText = "Föreställning";
-                    dgTickets.Columns[3].HeaderText = "Betald";
-                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
-                    dgTickets.Columns[5].HeaderText = "Pris";
-                    dgTickets.Columns[6].HeaderText = "Reserverad till";
+                    dgTickets.Columns[1].HeaderText = "Föreställning";
+                    dgTickets.Columns[2].HeaderText = "Akt";
+                    dgTickets.Columns[3].HeaderText = "Sektion";
+                    dgTickets.Columns[4].HeaderText = "Sittplats";
+                    dgTickets.Columns[5].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[6].HeaderText = "Pris";
+                    dgTickets.Columns[7].HeaderText = "Reserverad till";
 
                 }
                 catch (NpgsqlException ex)
@@ -376,8 +373,7 @@ namespace cirkus
             System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
             System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
-
-            Rectangle r = new Rectangle(20, 40, 785, 350);
+            Rectangle r = new Rectangle(20, 40, 770, 350);
 
             string aldersgrupp, bokningsnummer, forestallning, akt, pris, date;
 
@@ -388,16 +384,19 @@ namespace cirkus
             forestallning = textBoxPrintShow.Text;
             akt = textBoxPrintAct.Text;
             pris = textBoxPrintPrice.Text;
-            
-            e.Graphics.DrawString("Utskrift", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
-            e.Graphics.DrawString(date, drawFontBoldAndUnderline, drawBrush, new PointF(500, 50));
 
             e.Graphics.DrawRectangle(Pens.Black, r);
+
+            e.Graphics.DrawString("Utskrift", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
+            e.Graphics.DrawString(date, drawFontBoldAndUnderline, drawBrush, new PointF(500, 50));
+       
             e.Graphics.DrawString("Bokningsnummer:", drawFont, drawBrush, new PointF(35, 200));
             e.Graphics.DrawString("Åldersgrupp:", drawFont, drawBrush, new PointF(35, 150));
             e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 250));
             e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 300));
             e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, 350));
+            e.Graphics.DrawString("---------------------------------------- Riv här -----------------------------------------------", drawFontBold, drawBrush, new PointF(01, 400));
+
 
             e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 200));
             e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 150));
