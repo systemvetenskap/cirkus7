@@ -108,7 +108,7 @@ namespace cirkus
             int selectedindex = dgTickets.SelectedRows[0].Index;
             int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
 
-            string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber from acts
+            string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time from acts
                         inner join available_seats on acts.actid = available_seats.actid
                         inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
                         inner join seats on available_seats.seatid = seats.seatid
@@ -116,10 +116,20 @@ namespace cirkus
 
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
             dtActs = new DataTable();
-
             da.Fill(dtActs);
 
             dgTicketActs.DataSource = dtActs;
+
+            dgTicketActs.Columns[0].HeaderText = "Boknings ID";
+            dgTicketActs.Columns[1].HeaderText = "Akt";
+            dgTicketActs.Columns[2].HeaderText = "Sektion";
+            dgTicketActs.Columns[3].HeaderText = "Sittplats";
+            dgTicketActs.Columns[4].HeaderText = "Starttid";
+            dgTicketActs.Columns[5].HeaderText = "Sluttid";
+
+            dgTicketActs.Columns[0].Width = 90;
+
+
             textBoxPrintBookingid.Text = dgTickets[0, selectedindex].Value.ToString();
             textBoxPrintShow.Text = dgTickets[1, selectedindex].Value.ToString();
             textBoxPrintPrice.Text = dgTickets[4, selectedindex].Value.ToString();
@@ -1514,8 +1524,6 @@ namespace cirkus
             textBoxLosenord.BackColor = Color.White;
             comboBoxBehorighetsniva.BackColor = Color.White;
         }
-        #endregion
-
-        
+        #endregion      
     }
 }
