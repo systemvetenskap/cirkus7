@@ -240,7 +240,7 @@ namespace cirkus
             e.Graphics.DrawString(TA, drawFontBoldAndUnderline, drawBrush, new PointF(300, 480));
             e.Graphics.DrawString(TK, drawFontBoldAndUnderline, drawBrush, new PointF(450, 480));
         }
-        private void listCustomers()
+        public void listCustomers()
         {
             string sqlSearch = textBoxSearchCustomer.Text;
             string sql = "SELECT lname, fname, customerid FROM customer WHERE LOWER(lname) LIKE LOWER('%" + sqlSearch + "%') OR LOWER(fname) LIKE LOWER('%" + sqlSearch + "%');";
