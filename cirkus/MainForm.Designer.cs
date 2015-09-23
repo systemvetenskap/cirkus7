@@ -114,6 +114,8 @@
             this.printDocumentStatistic = new System.Drawing.Printing.PrintDocument();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocumentBiljett = new System.Drawing.Printing.PrintDocument();
+            this.printDialog2 = new System.Windows.Forms.PrintDialog();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketActs)).BeginInit();
@@ -1041,6 +1043,14 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // printDocumentBiljett
+            // 
+            this.printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentBiljett_PrintPage);
+            // 
+            // printDialog2
+            // 
+            this.printDialog2.UseEXDialog = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1158,5 +1168,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxPrintBookingid;
         private System.Windows.Forms.Label label5;
+        private System.Drawing.Printing.PrintDocument printDocumentBiljett;
+        private System.Windows.Forms.PrintDialog printDialog2;
     }
 }

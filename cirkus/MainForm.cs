@@ -347,14 +347,59 @@ namespace cirkus
                 MessageBox.Show("Välj en biljett först");
                 return;
             }
-            //PrintDialog pdialog = new PrintDialog();
-            //pdialog.Document = printDocument1;
-            //pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(partOfForm());
+            else
+            {
+                ////// Printing 
+                //PrintDialog pd = new PrintDialog();
+                //pd.Document = printDocumentStatistic;
+                //if (pd.ShowDialog() == DialogResult.OK)
+                //{
+                //    printDocumentStatistic.Print();
+                //}
 
-            //if (pdialog.ShowDialog() == DialogResult.OK)
-            //{
-            printDocumentStatistic.Print();
-            //}
+
+                // Kolla dokumentet innan man skrivar ut
+                printPreviewControl1.Visible = true;
+                printPreviewDialog1.Document = printDocumentBiljett;
+                printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
+                printPreviewDialog1.Show();
+                printPreviewControl1.Document = printDocumentBiljett;
+            }
+
+        }
+        private void printDocumentBiljett_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 18);
+            System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
+            System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+
+            string aldersgrupp, bokningsnummer, forestallning, akt, pris, date;
+
+            date = DateTime.Today.ToString();
+
+            aldersgrupp = textBoxPrintAge.Text;
+            bokningsnummer = textBoxPrintBookingid.Text;
+            forestallning = textBoxPrintShow.Text;
+            akt = textBoxPrintAct.Text;
+            pris = textBoxPrintPrice.Text;
+            
+            e.Graphics.DrawString("Utskrift", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
+            e.Graphics.DrawString(date, drawFontBoldAndUnderline, drawBrush, new PointF(500, 50));
+
+
+
+            e.Graphics.DrawString("Bokningsnummer:", drawFont, drawBrush, new PointF(35, 200));
+            e.Graphics.DrawString("Åldersgrupp:", drawFont, drawBrush, new PointF(35, 150));
+            e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 250));
+            e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 300));
+            e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, 350));
+
+            e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 200));
+            e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 150));
+            e.Graphics.DrawString(forestallning, drawFontBold, drawBrush, new PointF(300, 250));
+            e.Graphics.DrawString(akt, drawFontBold, drawBrush, new PointF(300, 300));
+            e.Graphics.DrawString(pris, drawFontBold, drawBrush, new PointF(300, 350));
 
         }
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1458,5 +1503,7 @@ namespace cirkus
             comboBoxBehorighetsniva.BackColor = Color.White;
         }
         #endregion
+
+        
     }
 }
