@@ -328,6 +328,7 @@
             this.textBoxSearchCustomer.Name = "textBoxSearchCustomer";
             this.textBoxSearchCustomer.Size = new System.Drawing.Size(156, 20);
             this.textBoxSearchCustomer.TabIndex = 13;
+            this.textBoxSearchCustomer.Click += new System.EventHandler(this.textBoxSearchCustomer_Click);
             this.textBoxSearchCustomer.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
             // 
             // textBoxPrintAge

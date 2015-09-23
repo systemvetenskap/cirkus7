@@ -158,25 +158,34 @@ namespace cirkus
             else
             {
                 dgTicketActs.DataSource = null;
-                string sql = @"select distinct booking.bookingid, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
                             inner join customer on booking.customerid = customer.customerid
                             inner join booked_seats on booking.bookingid = booked_seats.bookingid 
                             inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
                             inner join show on booking.showid = show.showid 
-                            where booking.bookingid = '"+textBoxSearchTicket.Text+ "' group by booking.bookingid, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
+                            where booking.bookingid = '"+textBoxSearchTicket.Text+ "' group by booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
 
                 string sql2 = @"select customer.fname, customer.lname, customer.customerid from customer
                                     inner join booking on customer.customerid = booking.customerid
                                     where booking.bookingid = '" + textBoxSearchTicket.Text + "'";
                 NpgsqlDataAdapter cmd = new NpgsqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
+             
                 cmd.Fill(dt);
+
                 cmd = new NpgsqlDataAdapter(sql2, conn);
                 DataTable dt2 = new DataTable();
                 cmd.Fill(dt2);
                 dgCustomers.DataSource = dt2;
 
                 dgTickets.DataSource = dt;
+                dgTickets.Columns[0].HeaderText = "Boknings ID";
+                dgTickets.Columns[1].HeaderText = "Datum";
+                dgTickets.Columns[2].HeaderText = "Föreställning";
+                dgTickets.Columns[3].HeaderText = "Betald";
+                dgTickets.Columns[4].HeaderText = "Åldersgrupp";
+                dgTickets.Columns[5].HeaderText = "Pris";
+                dgTickets.Columns[6].HeaderText = "Reserverad till";
             }
 
         }
@@ -447,9 +456,12 @@ namespace cirkus
 
             int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
             int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
-
+            int currentRow = dgTickets.SelectedRows[0].Index;
+            bool check = Convert.ToBoolean(dgTickets[3, currentRow].Value);
             ChangeTicketForm Ctf;
-            if (SelectedTicket != -1 && SelectedCustomer != -1)
+            
+
+            if (SelectedTicket != -1 && SelectedCustomer != -1 && check == false)
 
 
             {
@@ -465,6 +477,7 @@ namespace cirkus
 
                     DataTable dt = new DataTable();
                     dt.Columns.Add("Boknings ID");
+                    dt.Columns.Add("Datum");
                     dt.Columns.Add("Föreställning");
                     dt.Columns.Add("Betald");
                     dt.Columns.Add("Åldersgrupp");
@@ -500,6 +513,10 @@ namespace cirkus
                 {
                     conn.Close();
                 }
+            }
+            else
+            {
+                DialogResult Warning = MessageBox.Show("Denna biljett går inte att ändra.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -632,6 +649,12 @@ namespace cirkus
             {
                 listTickets();
             }
+        }
+        private void textBoxSearchCustomer_Click(object sender, EventArgs e)
+        {
+            textBoxSearchTicket.Clear();
+            dgTickets.DataSource = null;
+            dgTicketActs.DataSource = null;
         }
         #endregion
         #region Föreställningar
@@ -1553,6 +1576,8 @@ namespace cirkus
             textBoxLosenord.BackColor = Color.White;
             comboBoxBehorighetsniva.BackColor = Color.White;
         }
-        #endregion      
+        #endregion
+
+
     }
 }
