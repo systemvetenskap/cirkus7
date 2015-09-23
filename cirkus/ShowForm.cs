@@ -177,7 +177,9 @@ namespace cirkus
                         }
                     }
                 }
-                lblStatus.Visible = false;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Green;
+                lblStatus.Text = "Akten är tillagd i föreställningen";
                 txtActname.BackColor = Color.White;
                 textBoxAntalFriplatser.BackColor = Color.White;
                 txtActname.Clear();
@@ -495,6 +497,7 @@ namespace cirkus
                             lblLayout.Visible = true;
                             lblLayout.ForeColor = Color.Green;
                             lblLayout.Text = "Layout för vald akt sparad";
+                            lblStatus.Visible = false;
                         }
                     }
                 }

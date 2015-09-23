@@ -343,7 +343,7 @@
             // 
             // btnSaveMap
             // 
-            this.btnSaveMap.Location = new System.Drawing.Point(56, 364);
+            this.btnSaveMap.Location = new System.Drawing.Point(14, 364);
             this.btnSaveMap.Name = "btnSaveMap";
             this.btnSaveMap.Size = new System.Drawing.Size(207, 29);
             this.btnSaveMap.TabIndex = 53;
@@ -1243,7 +1243,7 @@
             // 
             this.lblLayout.AutoSize = true;
             this.lblLayout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLayout.Location = new System.Drawing.Point(126, 398);
+            this.lblLayout.Location = new System.Drawing.Point(14, 398);
             this.lblLayout.Name = "lblLayout";
             this.lblLayout.Size = new System.Drawing.Size(41, 13);
             this.lblLayout.TabIndex = 62;
