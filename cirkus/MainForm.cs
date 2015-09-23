@@ -1166,7 +1166,19 @@ namespace cirkus
         {
             ListaPersonal();
         }
-        public void emptyTextboxesAndColor()
+        public void ResetColor()
+        {
+
+            textBoxPersonnummer.BackColor = Color.White;
+            textBoxFornamn.BackColor = Color.White;
+            textBoxEfternamn.BackColor = Color.White;
+            textBoxEpost.BackColor = Color.White;
+            textBoxTelefonnummer.BackColor = Color.White;
+            textBoxAnvandarnamn.BackColor = Color.White;
+            textBoxLosenord.BackColor = Color.White;
+            comboBoxBehorighetsniva.BackColor = Color.White;
+        }
+        public void ResetColorandText()
         {
             textBoxPersonnummer.Clear();
             textBoxFornamn.Clear();
@@ -1188,7 +1200,8 @@ namespace cirkus
         }
         private void btnTomFalten_Click(object sender, EventArgs e)
         {
-            emptyTextboxesAndColor();
+            ResetColorandText();
+            LblStatus.Visible = false;
         }
         private void ListaPersonal()
         {
@@ -1248,7 +1261,7 @@ namespace cirkus
         }
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
-            emptyTextboxesAndColor();
+            ResetColor();
 
             //Kontrollerar längden, siffror/bokstäver och tomma fält
             if (textBoxPersonnummer.TextLength > 10 || textBoxPersonnummer.TextLength < 10 || string.IsNullOrWhiteSpace(textBoxPersonnummer.Text))
@@ -1348,7 +1361,7 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 ListaPersonal();
-                emptyTextboxesAndColor();
+                ResetColorandText();
             }
             catch (NpgsqlException)
             {
@@ -1374,7 +1387,8 @@ namespace cirkus
         }
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
-            emptyTextboxesAndColor();
+            ResetColor();
+            LblStatus.Visible = false;
             btnRaderaKonto.Enabled = true;
             btnTomFalten.Enabled = false;
 
@@ -1527,7 +1541,7 @@ namespace cirkus
                 btnUpdateraKonto.Text = "Uppdatera/ändra konto";
                 textBoxAnvandarnamn.Enabled = true;
                 btnSkapaKonto.Enabled = true;
-                emptyTextboxesAndColor();
+                ResetColorandText();
             }
 
         }
@@ -1571,8 +1585,9 @@ namespace cirkus
                 LblStatus.Visible = true;
                 LblStatus.ForeColor = Color.Red;
                 LblStatus.Text = "Användare raderad";
+                btnTomFalten.Visible = true;
                 ListaPersonal();
-                emptyTextboxesAndColor();
+                ResetColorandText();
             }
             if (Confirmation == DialogResult.No)
             {
