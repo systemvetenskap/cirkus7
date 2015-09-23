@@ -342,7 +342,7 @@
             // 
             // btnSaveMap
             // 
-            this.btnSaveMap.Location = new System.Drawing.Point(53, 364);
+            this.btnSaveMap.Location = new System.Drawing.Point(56, 364);
             this.btnSaveMap.Name = "btnSaveMap";
             this.btnSaveMap.Size = new System.Drawing.Size(207, 29);
             this.btnSaveMap.TabIndex = 53;
