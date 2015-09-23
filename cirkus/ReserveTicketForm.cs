@@ -467,6 +467,8 @@ namespace cirkus
                 conn.Close();
                 panel3.Visible = true;
                 //panel2.Visible = false;
+                string path = "C:\\plats\\";
+                FileStream fs = new FileStream(path, FileMode.Create);
 
 
             }

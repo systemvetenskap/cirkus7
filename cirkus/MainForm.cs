@@ -565,6 +565,8 @@ namespace cirkus
                     NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
                     conn.Open();
 
+            
+
                     try
                     {
                         cmd.ExecuteNonQuery();
@@ -578,7 +580,27 @@ namespace cirkus
                         conn.Close();
                         return;
                     }
+
                     conn.Close();
+                    conn.Open();
+                    string sql2 = @"select booking.bookingid from booking
+                                    left join booked_seats on booking.bookingid = booked_seats.bookingid
+                                    where booked_seats.booked_seat_id is null";
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql2, conn);
+                    DataTable dat = new DataTable();
+                    da.Fill(dat);
+                    conn.Close();
+                   
+                    foreach(DataRow rw in dat.Rows)
+                    {
+                        conn.Open();
+                        string sql3 = "delete from booking where bookingid = '"+rw[0]+ "'";
+                        cmd = new NpgsqlCommand(sql3, conn);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+
+                    }
+
                 }
                 listTickets();
             }
