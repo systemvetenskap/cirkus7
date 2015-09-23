@@ -222,7 +222,7 @@
             this.dgTicketActs.ReadOnly = true;
             this.dgTicketActs.RowHeadersVisible = false;
             this.dgTicketActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTicketActs.Size = new System.Drawing.Size(494, 83);
+            this.dgTicketActs.Size = new System.Drawing.Size(516, 83);
             this.dgTicketActs.TabIndex = 22;
             this.dgTicketActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTicketActs_CellClick);
             // 
@@ -273,13 +273,13 @@
             this.dgTickets.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgTickets.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTickets.Location = new System.Drawing.Point(214, 75);
+            this.dgTickets.Location = new System.Drawing.Point(217, 75);
             this.dgTickets.MultiSelect = false;
             this.dgTickets.Name = "dgTickets";
             this.dgTickets.ReadOnly = true;
             this.dgTickets.RowHeadersVisible = false;
             this.dgTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTickets.Size = new System.Drawing.Size(494, 158);
+            this.dgTickets.Size = new System.Drawing.Size(516, 158);
             this.dgTickets.TabIndex = 15;
             this.dgTickets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTickets_CellClick);
             // 

@@ -378,6 +378,7 @@ namespace cirkus
             System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
             System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
+            Rectangle r = new Rectangle(20, 40, 770, 350);
 
             string aldersgrupp, bokningsnummer, forestallning, akt, pris, date;
 
@@ -388,17 +389,19 @@ namespace cirkus
             forestallning = textBoxPrintShow.Text;
             akt = textBoxPrintAct.Text;
             pris = textBoxPrintPrice.Text;
-            
+
+            e.Graphics.DrawRectangle(Pens.Black, r);
+
             e.Graphics.DrawString("Utskrift", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
             e.Graphics.DrawString(date, drawFontBoldAndUnderline, drawBrush, new PointF(500, 50));
-
-
-
+       
             e.Graphics.DrawString("Bokningsnummer:", drawFont, drawBrush, new PointF(35, 200));
             e.Graphics.DrawString("Åldersgrupp:", drawFont, drawBrush, new PointF(35, 150));
             e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 250));
             e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 300));
             e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, 350));
+            e.Graphics.DrawString("---------------------------------------- Riv här -----------------------------------------------", drawFontBold, drawBrush, new PointF(01, 400));
+
 
             e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 200));
             e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 150));
