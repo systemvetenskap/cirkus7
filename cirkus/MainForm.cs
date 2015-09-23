@@ -98,12 +98,13 @@ namespace cirkus
         }
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            EmptyTextboxesTab1();
             btnDeleteTicket.Text = "Radera vald biljett";
 
             int selectedindex = dgTickets.SelectedRows[0].Index;
             int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
 
-            string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber from acts
+            string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time from acts
                         inner join available_seats on acts.actid = available_seats.actid
                         inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
                         inner join seats on available_seats.seatid = seats.seatid
@@ -111,14 +112,24 @@ namespace cirkus
 
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
             dtActs = new DataTable();
-
             da.Fill(dtActs);
 
             dgTicketActs.DataSource = dtActs;
+
+            dgTicketActs.Columns[0].HeaderText = "Boknings ID";
+            dgTicketActs.Columns[1].HeaderText = "Akt";
+            dgTicketActs.Columns[2].HeaderText = "Sektion";
+            dgTicketActs.Columns[3].HeaderText = "Sittplats";
+            dgTicketActs.Columns[4].HeaderText = "Starttid";
+            dgTicketActs.Columns[5].HeaderText = "Sluttid";
+
+            dgTicketActs.Columns[0].Width = 90;
+
+
             textBoxPrintBookingid.Text = dgTickets[0, selectedindex].Value.ToString();
-            textBoxPrintShow.Text = dgTickets[1, selectedindex].Value.ToString();
-            textBoxPrintPrice.Text = dgTickets[4, selectedindex].Value.ToString();
-            textBoxPrintAge.Text = dgTickets[3, selectedindex].Value.ToString();
+            textBoxPrintShow.Text = dgTickets[2, selectedindex].Value.ToString();
+            textBoxPrintPrice.Text = dgTickets[5, selectedindex].Value.ToString();
+            textBoxPrintAge.Text = dgTickets[4, selectedindex].Value.ToString();
             foreach(DataRow r in dtActs.Rows)
             {
                 textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+", "; 
@@ -246,12 +257,12 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select distinct booking.bookingid, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
                             inner join customer on booking.customerid = customer.customerid
                             inner join booked_seats on booking.bookingid = booked_seats.bookingid 
                             inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
                             inner join show on booking.showid = show.showid 
-                            where customer.customerid = '" + CustomerID + "'group by booking.bookingid, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
+                            where customer.customerid = '" + CustomerID + "'group by booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
                 try
                 {
                     conn.Open();
@@ -262,11 +273,14 @@ namespace cirkus
 
                     dgTickets.DataSource = dt;
                     dgTickets.Columns[0].HeaderText = "Boknings ID";
-                    dgTickets.Columns[1].HeaderText = "Föreställning";
-                    dgTickets.Columns[2].HeaderText = "Betald";
-                    dgTickets.Columns[3].HeaderText = "Åldersgrupp";
-                    dgTickets.Columns[4].HeaderText = "Pris";
-                    dgTickets.Columns[5].HeaderText = "Reserverad till";
+                    dgTickets.Columns[1].HeaderText = "Datum";
+                    dgTickets.Columns[2].HeaderText = "Föreställning";
+                    dgTickets.Columns[3].HeaderText = "Betald";
+                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[5].HeaderText = "Pris";
+                    dgTickets.Columns[6].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[2].Width = 100;
                 }
                 catch (NpgsqlException ex)
                 {
@@ -285,7 +299,7 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, 
+                string sql = @"select booking.bookingid, show.date, show.name, acts.name, seats.section, seats.rownumber, 
                             price_group_seat.group, price_group_seat.price, booking.reserved_to 
                             from show inner join acts on show.showid = acts.showid 
                             inner join available_seats on acts.actid = available_seats.actid
@@ -304,13 +318,14 @@ namespace cirkus
 
                     dgTickets.DataSource = dt;
                     dgTickets.Columns[0].HeaderText = "Boknings ID";
-                    dgTickets.Columns[1].HeaderText = "Föreställning";
-                    dgTickets.Columns[2].HeaderText = "Akt";
-                    dgTickets.Columns[3].HeaderText = "Sektion";
-                    dgTickets.Columns[4].HeaderText = "Sittplats";
-                    dgTickets.Columns[5].HeaderText = "Åldersgrupp";
-                    dgTickets.Columns[6].HeaderText = "Pris";
-                    dgTickets.Columns[7].HeaderText = "Reserverad till";
+                    dgTickets.Columns[1].HeaderText = "Datum";
+                    dgTickets.Columns[2].HeaderText = "Föreställning";
+                    dgTickets.Columns[3].HeaderText = "Betald";
+                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[5].HeaderText = "Pris";
+                    dgTickets.Columns[6].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[2].Width = 100;
 
                 }
                 catch (NpgsqlException ex)
@@ -1506,8 +1521,6 @@ namespace cirkus
             textBoxLosenord.BackColor = Color.White;
             comboBoxBehorighetsniva.BackColor = Color.White;
         }
-        #endregion
-
-        
+        #endregion      
     }
 }

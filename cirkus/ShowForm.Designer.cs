@@ -51,6 +51,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblActRemove = new System.Windows.Forms.Label();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
             this.uncheck = new System.Windows.Forms.Button();
             this.check = new System.Windows.Forms.Button();
@@ -122,7 +123,10 @@
             this.A6 = new System.Windows.Forms.CheckBox();
             this.A5 = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblActRemove = new System.Windows.Forms.Label();
+            this.timeEnd = new System.Windows.Forms.DateTimePicker();
+            this.timeStart = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -239,7 +243,7 @@
             // buttonRaderaAkt
             // 
             this.buttonRaderaAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRaderaAkt.Location = new System.Drawing.Point(152, 170);
+            this.buttonRaderaAkt.Location = new System.Drawing.Point(152, 187);
             this.buttonRaderaAkt.Name = "buttonRaderaAkt";
             this.buttonRaderaAkt.Size = new System.Drawing.Size(87, 23);
             this.buttonRaderaAkt.TabIndex = 31;
@@ -277,7 +281,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 154);
+            this.label4.Location = new System.Drawing.Point(15, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 44;
@@ -329,7 +333,7 @@
             this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgActs.ColumnHeadersVisible = false;
-            this.dgActs.Location = new System.Drawing.Point(15, 169);
+            this.dgActs.Location = new System.Drawing.Point(15, 186);
             this.dgActs.Name = "dgActs";
             this.dgActs.ReadOnly = true;
             this.dgActs.RowHeadersVisible = false;
@@ -367,6 +371,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.timeStart);
+            this.groupBox2.Controls.Add(this.timeEnd);
             this.groupBox2.Controls.Add(this.lblActRemove);
             this.groupBox2.Controls.Add(this.dgActs);
             this.groupBox2.Controls.Add(this.label4);
@@ -383,6 +391,18 @@
             this.groupBox2.Size = new System.Drawing.Size(245, 296);
             this.groupBox2.TabIndex = 54;
             this.groupBox2.TabStop = false;
+            // 
+            // lblActRemove
+            // 
+            this.lblActRemove.AutoSize = true;
+            this.lblActRemove.BackColor = System.Drawing.Color.White;
+            this.lblActRemove.ForeColor = System.Drawing.Color.Red;
+            this.lblActRemove.Location = new System.Drawing.Point(15, 261);
+            this.lblActRemove.Name = "lblActRemove";
+            this.lblActRemove.Size = new System.Drawing.Size(128, 13);
+            this.lblActRemove.TabIndex = 52;
+            this.lblActRemove.Text = "Välj en akt att ta bort först";
+            this.lblActRemove.Visible = false;
             // 
             // gpSeatMap
             // 
@@ -1222,17 +1242,43 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // lblActRemove
+            // timeEnd
             // 
-            this.lblActRemove.AutoSize = true;
-            this.lblActRemove.BackColor = System.Drawing.Color.White;
-            this.lblActRemove.ForeColor = System.Drawing.Color.Red;
-            this.lblActRemove.Location = new System.Drawing.Point(15, 244);
-            this.lblActRemove.Name = "lblActRemove";
-            this.lblActRemove.Size = new System.Drawing.Size(128, 13);
-            this.lblActRemove.TabIndex = 52;
-            this.lblActRemove.Text = "Välj en akt att ta bort först";
-            this.lblActRemove.Visible = false;
+            this.timeEnd.CustomFormat = "HH:mm";
+            this.timeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timeEnd.Location = new System.Drawing.Point(162, 132);
+            this.timeEnd.Name = "timeEnd";
+            this.timeEnd.ShowUpDown = true;
+            this.timeEnd.Size = new System.Drawing.Size(67, 20);
+            this.timeEnd.TabIndex = 53;
+            // 
+            // timeStart
+            // 
+            this.timeStart.CustomFormat = "HH:mm";
+            this.timeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timeStart.Location = new System.Drawing.Point(49, 132);
+            this.timeStart.Name = "timeStart";
+            this.timeStart.ShowUpDown = true;
+            this.timeStart.Size = new System.Drawing.Size(68, 20);
+            this.timeStart.TabIndex = 54;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 136);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "Från:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(133, 136);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.TabIndex = 56;
+            this.label3.Text = "Till:";
             // 
             // ShowForm
             // 
@@ -1359,5 +1405,9 @@
         private System.Windows.Forms.Button check;
         private System.Windows.Forms.Button uncheck;
         private System.Windows.Forms.Label lblActRemove;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker timeStart;
+        private System.Windows.Forms.DateTimePicker timeEnd;
     }
 }

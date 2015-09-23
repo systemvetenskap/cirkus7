@@ -200,7 +200,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(214, 241);
+            this.label10.Location = new System.Drawing.Point(214, 231);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(142, 16);
             this.label10.TabIndex = 23;
@@ -216,13 +216,13 @@
             this.dgTicketActs.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgTicketActs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgTicketActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTicketActs.Location = new System.Drawing.Point(214, 260);
+            this.dgTicketActs.Location = new System.Drawing.Point(214, 250);
             this.dgTicketActs.MultiSelect = false;
             this.dgTicketActs.Name = "dgTicketActs";
             this.dgTicketActs.ReadOnly = true;
             this.dgTicketActs.RowHeadersVisible = false;
             this.dgTicketActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTicketActs.Size = new System.Drawing.Size(516, 83);
+            this.dgTicketActs.Size = new System.Drawing.Size(516, 101);
             this.dgTicketActs.TabIndex = 22;
             this.dgTicketActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTicketActs_CellClick);
             // 
@@ -279,7 +279,7 @@
             this.dgTickets.ReadOnly = true;
             this.dgTickets.RowHeadersVisible = false;
             this.dgTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTickets.Size = new System.Drawing.Size(516, 158);
+            this.dgTickets.Size = new System.Drawing.Size(516, 143);
             this.dgTickets.TabIndex = 15;
             this.dgTickets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTickets_CellClick);
             // 
