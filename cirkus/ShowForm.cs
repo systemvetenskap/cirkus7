@@ -143,7 +143,7 @@ namespace cirkus
                 row[3] = timeStart.Text;
                 row[4] = timeEnd.Text; 
 
-                lblTest.Text = timeStart.Text;
+
 
                 dtActs.Rows.Add(row);
 
