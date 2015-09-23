@@ -251,12 +251,12 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select distinct booking.bookingid, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
                             inner join customer on booking.customerid = customer.customerid
                             inner join booked_seats on booking.bookingid = booked_seats.bookingid 
                             inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
                             inner join show on booking.showid = show.showid 
-                            where customer.customerid = '" + CustomerID + "'group by booking.bookingid, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
+                            where customer.customerid = '" + CustomerID + "'group by booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
                 try
                 {
                     conn.Open();
@@ -267,11 +267,14 @@ namespace cirkus
 
                     dgTickets.DataSource = dt;
                     dgTickets.Columns[0].HeaderText = "Boknings ID";
-                    dgTickets.Columns[1].HeaderText = "Föreställning";
-                    dgTickets.Columns[2].HeaderText = "Betald";
-                    dgTickets.Columns[3].HeaderText = "Åldersgrupp";
-                    dgTickets.Columns[4].HeaderText = "Pris";
-                    dgTickets.Columns[5].HeaderText = "Reserverad till";
+                    dgTickets.Columns[1].HeaderText = "Datum";
+                    dgTickets.Columns[2].HeaderText = "Föreställning";
+                    dgTickets.Columns[3].HeaderText = "Betald";
+                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[5].HeaderText = "Pris";
+                    dgTickets.Columns[6].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[2].Width = 100;
                 }
                 catch (NpgsqlException ex)
                 {
@@ -290,7 +293,7 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, 
+                string sql = @"select booking.bookingid, show.date, show.name, acts.name, seats.section, seats.rownumber, 
                             price_group_seat.group, price_group_seat.price, booking.reserved_to 
                             from show inner join acts on show.showid = acts.showid 
                             inner join available_seats on acts.actid = available_seats.actid
@@ -309,13 +312,14 @@ namespace cirkus
 
                     dgTickets.DataSource = dt;
                     dgTickets.Columns[0].HeaderText = "Boknings ID";
-                    dgTickets.Columns[1].HeaderText = "Föreställning";
-                    dgTickets.Columns[2].HeaderText = "Akt";
-                    dgTickets.Columns[3].HeaderText = "Sektion";
-                    dgTickets.Columns[4].HeaderText = "Sittplats";
-                    dgTickets.Columns[5].HeaderText = "Åldersgrupp";
-                    dgTickets.Columns[6].HeaderText = "Pris";
-                    dgTickets.Columns[7].HeaderText = "Reserverad till";
+                    dgTickets.Columns[1].HeaderText = "Datum";
+                    dgTickets.Columns[2].HeaderText = "Föreställning";
+                    dgTickets.Columns[3].HeaderText = "Betald";
+                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[5].HeaderText = "Pris";
+                    dgTickets.Columns[6].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[2].Width = 100;
 
                 }
                 catch (NpgsqlException ex)
