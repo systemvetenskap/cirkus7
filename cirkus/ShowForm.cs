@@ -495,8 +495,8 @@ namespace cirkus
 
                             conn.Close();
 
-                            lblStatus.Visible = true;
-                            lblStatus.ForeColor = Color.Green;
+                            lblLayout.Visible = true;
+                            lblLayout.ForeColor = Color.Green;
                             lblStatus.Text = "Plats sparad";
                         }
                     }

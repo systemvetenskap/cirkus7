@@ -124,6 +124,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblLayout = new System.Windows.Forms.Label();
             this.gpSeatMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
@@ -225,6 +226,7 @@
             // 
             // gpSeatMap
             // 
+            this.gpSeatMap.Controls.Add(this.lblLayout);
             this.gpSeatMap.Controls.Add(this.uncheck);
             this.gpSeatMap.Controls.Add(this.check);
             this.gpSeatMap.Controls.Add(this.lblActMap);
@@ -1203,6 +1205,7 @@
             this.lblStatus.Size = new System.Drawing.Size(35, 13);
             this.lblStatus.TabIndex = 61;
             this.lblStatus.Text = "label1";
+            this.lblStatus.Visible = false;
             // 
             // groupBox1
             // 
@@ -1234,6 +1237,16 @@
             this.groupBox1.TabIndex = 62;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // lblLayout
+            // 
+            this.lblLayout.AutoSize = true;
+            this.lblLayout.Location = new System.Drawing.Point(126, 398);
+            this.lblLayout.Name = "lblLayout";
+            this.lblLayout.Size = new System.Drawing.Size(35, 13);
+            this.lblLayout.TabIndex = 62;
+            this.lblLayout.Text = "label1";
+            this.lblLayout.Visible = false;
             // 
             // ShowForm
             // 
@@ -1355,5 +1368,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblLayout;
     }
 }
