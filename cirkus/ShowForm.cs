@@ -392,10 +392,6 @@ namespace cirkus
                 }
 
                 MessageBox.Show("Föreställning skapad");
-                lblStatus.Visible = true;
-                lblStatus.ForeColor = Color.Tomato;
-                lblStatus.Text = "Föreställningen har skapats";
-
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
                 frm.LoadShows();
