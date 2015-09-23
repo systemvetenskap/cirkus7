@@ -147,7 +147,6 @@
             this.labelBeskrivning.Size = new System.Drawing.Size(62, 13);
             this.labelBeskrivning.TabIndex = 4;
             this.labelBeskrivning.Text = "Beskrivning";
-            this.labelBeskrivning.Click += new System.EventHandler(this.labelBeskrivning_Click);
             // 
             // labelDatum
             // 
@@ -1070,7 +1069,6 @@
             this.labelAntalFriplatser.Size = new System.Drawing.Size(124, 13);
             this.labelAntalFriplatser.TabIndex = 12;
             this.labelAntalFriplatser.Text = "Antal ståplatser för akten";
-            this.labelAntalFriplatser.Click += new System.EventHandler(this.labelAntalFriplatser_Click);
             // 
             // textBoxAntalFriplatser
             // 
@@ -1090,7 +1088,6 @@
             this.labelAkter.Size = new System.Drawing.Size(49, 13);
             this.labelAkter.TabIndex = 9;
             this.labelAkter.Text = "Aktnamn";
-            this.labelAkter.Click += new System.EventHandler(this.labelAkter_Click);
             // 
             // buttonRaderaAkt
             // 
