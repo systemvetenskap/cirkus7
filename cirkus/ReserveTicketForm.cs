@@ -1401,9 +1401,23 @@ namespace cirkus
                     Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
                     PdfWriter writer = PdfWriter.GetInstance(doc, ms);
 
+                    //doc.Open();
+                    //doc.Add(new Paragraph("BiljettNr:" + bokningid + "\nFöreställning: " + show + "\nDatum: " + show_date + " \nÅldersgrupp: " + aldersgrupp + "\nBiljett för " + actname +"\nPris:" + pris));
+
+                    //writer.CloseStream = false;
+                    //doc.Close();
+
+                    //Drawing
                     doc.Open();
-                    doc.Add(new Paragraph("BiljettNr:" + bokningid + "\nFöreställning: " + show + "\nDatum: " + show_date + " \nÅldersgrupp: " + aldersgrupp + "\nBiljett för " + actname +"\nPris:" + pris));
-                    
+                    doc.Add(new Paragraph("BiljettNr:" + bokningid));
+                    doc.Add(new Paragraph("Föreställning:" + show));
+                    doc.Add(new Paragraph("Åldersgrupp:" + aldersgrupp));
+                    doc.Add(new Paragraph("Biljett för " + actname));
+                    doc.Add(new Paragraph("Pris:" + pris));
+                    doc.Add(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
+
+
+
                     writer.CloseStream = false;
                     doc.Close();
                     ms.Position = 0;
