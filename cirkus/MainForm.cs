@@ -151,6 +151,8 @@ namespace cirkus
             {
                 dgTickets.DataSource = null;
                 dgTicketActs.DataSource = null;
+                dgCustomers.DataSource = null;
+                listCustomers();
                 listTickets();
             }
             else
@@ -163,9 +165,17 @@ namespace cirkus
                             inner join show on booking.showid = show.showid 
                             where booking.bookingid = '"+textBoxSearchTicket.Text+ "' group by booking.bookingid, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
 
+                string sql2 = @"select customer.fname, customer.lname, customer.customerid from customer
+                                    inner join booking on customer.customerid = booking.customerid
+                                    where booking.bookingid = '" + textBoxSearchTicket.Text + "'";
                 NpgsqlDataAdapter cmd = new NpgsqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                 cmd.Fill(dt);
+                cmd = new NpgsqlDataAdapter(sql2, conn);
+                DataTable dt2 = new DataTable();
+                cmd.Fill(dt2);
+                dgCustomers.DataSource = dt2;
+
                 dgTickets.DataSource = dt;
             }
 

@@ -124,12 +124,12 @@ namespace cirkus
             }
             if (string.IsNullOrWhiteSpace(txtActname.Text))
             {
-                labelAngeAkt.Visible = true;
+                
                 return;
             }
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
-                labelAngeStaplatser.Visible = true;
+                
                 return;
 
             }
@@ -153,7 +153,7 @@ namespace cirkus
                 this.dgActs.Columns[2].Visible = false;
                 dgActs.Columns[1].Width = 80;
                 dgActs.ClearSelection();
-                labelAngeAkt.Visible = false;
+                
 
                 DataRow lastRow = dtActs.Rows[dgActs.Rows.Count - 1];
                 selected_actid = int.Parse(lastRow[0].ToString());
@@ -206,12 +206,12 @@ namespace cirkus
 
                 txtActname.Clear();
                 textBoxAntalFriplatser.Clear();
-                lblActRemove.Visible = false;
+                
             }
 
             else
             {
-                lblActRemove.Visible = true;
+                
                 return;
             }
         }
@@ -257,7 +257,7 @@ namespace cirkus
             {
                 //MessageBox.Show("Du måste ange beskrivning");
                 textBoxBeskrivning.BackColor = Color.Tomato;
-                labelAngeBeskrivningen.Visible = true;
+                
                 allowAdd = false;
             }
 
@@ -266,7 +266,7 @@ namespace cirkus
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
                 textBoxAntalFriplatser.BackColor = Color.Tomato;
-                labelAngeStaplatser.Visible = true;
+                
                 allowAdd = false;
             }
 
@@ -310,7 +310,7 @@ namespace cirkus
             if (string.IsNullOrWhiteSpace(textBoxBeskrivning.Text))
             {
                 textBoxBeskrivning.BackColor = Color.Tomato;
-                labelAngeBeskrivningen.Visible = true;
+               
                 allowAdd = false;
             }
 
@@ -319,7 +319,7 @@ namespace cirkus
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
                 textBoxAntalFriplatser.BackColor = Color.Tomato;
-                labelAngeStaplatser.Visible = true;
+                
                 allowAdd = false;
             }
 
@@ -448,7 +448,7 @@ namespace cirkus
         {
 
             textBoxBeskrivning.BackColor = Color.White;
-            labelAngeBeskrivningen.Visible = false;
+           
         }
 
         private void test_Click(object sender, EventArgs e)
@@ -464,7 +464,7 @@ namespace cirkus
 
         private void txtActname_Click(object sender, EventArgs e)
         {
-            labelAngeAkt.Visible = false;
+            
         }
 
         private void btnSaveMap_Click(object sender, EventArgs e)
@@ -598,7 +598,7 @@ namespace cirkus
         private void textBoxAntalFriplatser_Click(object sender, EventArgs e)
         {
             textBoxAntalFriplatser.BackColor = Color.White;
-            labelAngeStaplatser.Visible = false;
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
