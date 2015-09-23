@@ -374,6 +374,8 @@ namespace cirkus
             System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
 
+            Rectangle r = new Rectangle(20, 40, 785, 350);
+
             string aldersgrupp, bokningsnummer, forestallning, akt, pris, date;
 
             date = DateTime.Today.ToString();
@@ -387,8 +389,7 @@ namespace cirkus
             e.Graphics.DrawString("Utskrift", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
             e.Graphics.DrawString(date, drawFontBoldAndUnderline, drawBrush, new PointF(500, 50));
 
-
-
+            e.Graphics.DrawRectangle(Pens.Black, r);
             e.Graphics.DrawString("Bokningsnummer:", drawFont, drawBrush, new PointF(35, 200));
             e.Graphics.DrawString("Åldersgrupp:", drawFont, drawBrush, new PointF(35, 150));
             e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 250));

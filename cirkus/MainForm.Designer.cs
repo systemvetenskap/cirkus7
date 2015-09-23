@@ -273,7 +273,7 @@
             this.dgTickets.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgTickets.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTickets.Location = new System.Drawing.Point(214, 75);
+            this.dgTickets.Location = new System.Drawing.Point(217, 75);
             this.dgTickets.MultiSelect = false;
             this.dgTickets.Name = "dgTickets";
             this.dgTickets.ReadOnly = true;
