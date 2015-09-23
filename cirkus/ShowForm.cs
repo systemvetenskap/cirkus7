@@ -573,6 +573,11 @@ namespace cirkus
 
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int selectedIndex = dgActs.SelectedRows[0].Index;
