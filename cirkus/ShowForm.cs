@@ -124,26 +124,29 @@ namespace cirkus
             }
             if (string.IsNullOrWhiteSpace(txtActname.Text))
             {
-                
+                txtActname.BackColor = Color.Tomato;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Skriv ett namn för akten";
                 return;
             }
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
-                
+                textBoxAntalFriplatser.BackColor = Color.Tomato;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Skriv in antal ståplatser för akten";
                 return;
 
             }
             else
             {
-
                 DataRow row = dtActs.NewRow();
 
                 row[1] = txtActname.Text.ToString();
                 row[2] = textBoxAntalFriplatser.Text.ToString();
                 row[3] = timeStart.Text;
                 row[4] = timeEnd.Text; 
-
-
 
                 dtActs.Rows.Add(row);
 
@@ -154,7 +157,6 @@ namespace cirkus
                 dgActs.Columns[1].Width = 80;
                 dgActs.ClearSelection();
                 
-
                 DataRow lastRow = dtActs.Rows[dgActs.Rows.Count - 1];
                 selected_actid = int.Parse(lastRow[0].ToString());
 
@@ -173,16 +175,12 @@ namespace cirkus
                         {
                             dr[0] = selected_actid;
                         }
-
                     }
-
-
                 }
-
-                //dgTest1.DataSource = dtSeats;
+                txtActname.BackColor = Color.White;
+                textBoxAntalFriplatser.BackColor = Color.White;
                 txtActname.Clear();
                 textBoxAntalFriplatser.Clear();
-
             }
 
         }
@@ -211,7 +209,9 @@ namespace cirkus
 
             else
             {
-                
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Välj en akt att ta bort först";
                 return;
             }
         }
@@ -242,12 +242,6 @@ namespace cirkus
             cSeats.Columns.Add("seatid");
             cSeats.Columns.Add("section");
             cSeats.Columns.Add("rownumber");
-            
-
-
-
-
-
         }
 
         private void buttonSparaAndringar_Click(object sender, EventArgs e)
@@ -261,10 +255,11 @@ namespace cirkus
                 allowAdd = false;
             }
 
-
-
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Ange antal ståplatser";
                 textBoxAntalFriplatser.BackColor = Color.Tomato;
                 
                 allowAdd = false;
@@ -294,13 +289,14 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
-
-
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
                 frm.LoadShows();
 
                 MessageBox.Show("Ändringarna har sparats!");
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Green;
+                lblStatus.Text = "Ändringarna har sparats";
             }
         }
 
@@ -310,16 +306,17 @@ namespace cirkus
             if (string.IsNullOrWhiteSpace(textBoxBeskrivning.Text))
             {
                 textBoxBeskrivning.BackColor = Color.Tomato;
-               
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Ange ett namn för föreställningen";
                 allowAdd = false;
             }
-
-
-
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
                 textBoxAntalFriplatser.BackColor = Color.Tomato;
-                
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Ange antal ståplatser för föreställningen";
                 allowAdd = false;
             }
 
@@ -389,31 +386,20 @@ namespace cirkus
                             command.Parameters.Add(new NpgsqlParameter("sid", seatid));
                             command.ExecuteNonQuery();
                             conn.Close();
-
-                            
-
                         }
-
-                    }
-
-
-                    
+                    }                   
                 }
 
                 MessageBox.Show("Föreställning skapad");
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Föreställningen har skapats";
 
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
                 frm.LoadShows();
                 frm.LoadAkter();
             }
-        }
-
-
-
-        private void labelAntalFriplatser_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBoxAntalFriplatser_KeyPress(object sender, KeyPressEventArgs e)
@@ -436,13 +422,6 @@ namespace cirkus
         {
 
         }
-
-        private void labelBeskrivning_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         private void textBoxBeskrivning_Click(object sender, EventArgs e)
         {
@@ -516,8 +495,9 @@ namespace cirkus
 
                             conn.Close();
 
-
-
+                            lblStatus.Visible = true;
+                            lblStatus.ForeColor = Color.Green;
+                            lblStatus.Text = "Plats sparad";
                         }
                     }
                 }
@@ -543,7 +523,7 @@ namespace cirkus
         {
 
 
-    }
+        }
 
         private void check_Click(object sender, EventArgs e)
         {
@@ -591,26 +571,12 @@ namespace cirkus
             lblActMap.Text = selected_actname.ToString();
             
             seatmap();
-
-
         }
 
         private void textBoxAntalFriplatser_Click(object sender, EventArgs e)
         {
             textBoxAntalFriplatser.BackColor = Color.White;
             
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelAkter_Click(object sender, EventArgs e)
-        {
-
-        }
-        
-
+        }       
     }
 }
