@@ -1595,7 +1595,5 @@ namespace cirkus
             }
         }
         #endregion
-
-
     }
 }
