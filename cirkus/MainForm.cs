@@ -427,21 +427,25 @@ namespace cirkus
             e.Graphics.DrawRectangle(Pens.Black, r);
 
             e.Graphics.DrawString("Biljett Cirkus Kull & Buss", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
-            e.Graphics.DrawString(date, drawFontBold, drawBrush, new PointF(650, 50));
+            //e.Graphics.DrawString(date, drawFontBold, drawBrush, new PointF(650, 50));
        
             e.Graphics.DrawString("Bokningsnummer:", drawFont, drawBrush, new PointF(35, 150));
-            e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 200));
-            e.Graphics.DrawString("Åldersgrupp:", drawFont, drawBrush, new PointF(35, 250));
-            e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 300));
-            e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, 350));
+            e.Graphics.DrawString("Datum:", drawFont, drawBrush, new PointF(35, 200));
+            e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 250));
+            e.Graphics.DrawString("Åldersgrupp:", drawFont, drawBrush, new PointF(35, 300));
+            e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 350));
+            e.Graphics.DrawString("Tider:", drawFont, drawBrush, new PointF(35, 400));
+            e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, 450));
             e.Graphics.DrawString("---------------------------------------- Riv här -----------------------------------------------", drawFont, drawBrush, new PointF(00, 400));
 
 
             e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 150));
+            e.Graphics.DrawString(, drawFontBold, drawBrush, new PointF(35, 150));
             e.Graphics.DrawString(forestallning, drawFontBold, drawBrush, new PointF(300, 200));
             e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 250));
-            e.Graphics.DrawString( , drawFontBold, drawBrush, new PointF(300, 300));
-            e.Graphics.DrawString(pris, drawFontBold, drawBrush, new PointF(300, 350));
+            e.Graphics.DrawString(akt, drawFontBold, drawBrush, new PointF(300, 300));
+            e.Graphics.DrawString(akttider, drawFontBold, drawBrush, new PointF(300, 350));
+            e.Graphics.DrawString(pris, drawFontBold, drawBrush, new PointF(300, 400));
 
         }
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
