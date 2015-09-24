@@ -783,16 +783,18 @@ namespace cirkus
             this.dgActs.Columns[3].ReadOnly = false;
             this.dgActs.Columns[0].Visible = false;
             this.dgActs.Columns[1].Visible = false;
+            
        
 
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            foreach(DataGridView r in dgActs.Rows)
+            foreach(DataGridViewRow r in dgActs.Rows)
             {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
-                chk.Value = !(chk.Value == null ? false : (bool)chk.Value);
+                    r.Cells[3].Value = false; 
+                    if(Convert.ToBoolean(r.Cells[3].Value) == false)
+                    r.Cells[3].Value = true;
 
             }
         }
