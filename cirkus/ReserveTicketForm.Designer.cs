@@ -1607,6 +1607,7 @@
             this.dgTickets.AllowUserToDeleteRows = false;
             this.dgTickets.AllowUserToResizeColumns = false;
             this.dgTickets.AllowUserToResizeRows = false;
+            this.dgTickets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgTickets.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTickets.ColumnHeadersVisible = false;
