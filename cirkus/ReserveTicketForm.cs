@@ -790,13 +790,12 @@ namespace cirkus
 
         private void button8_Click(object sender, EventArgs e)
         {
-            foreach(DataGridViewRow r in dgActs.Rows)
+            foreach (DataGridViewRow r in dgActs.Rows)
             {
-                    r.Cells[3].Value = false; 
-                    if(Convert.ToBoolean(r.Cells[3].Value) == false)
+                r.Cells[3].Value = false;
+                if (Convert.ToBoolean(r.Cells[3].Value) == false)
                     r.Cells[3].Value = true;
-
-            //}
+            }
         }
 
         private void cbDf_CheckedChanged(object sender, EventArgs e)

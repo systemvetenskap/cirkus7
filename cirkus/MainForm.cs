@@ -390,20 +390,20 @@ namespace cirkus
             else
             {
                 ////// Printing 
-                //PrintDialog pd = new PrintDialog();
-                //pd.Document = printDocumentBiljett;
-                //if (pd.ShowDialog() == DialogResult.OK)
-                //{
-                //    printDocumentBiljett.Print();
-                //}
+                PrintDialog pd = new PrintDialog();
+                pd.Document = printDocumentBiljett;
+                if (pd.ShowDialog() == DialogResult.OK)
+                {
+                    printDocumentBiljett.Print();
+                }
 
 
                 // Kolla dokumentet innan man skrivar ut
-                printPreviewControl1.Visible = true;
-                printPreviewDialog1.Document = printDocumentBiljett;
-                printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
-                printPreviewDialog1.Show();
-                printPreviewControl1.Document = printDocumentBiljett;
+                //printPreviewControl1.Visible = true;
+                //printPreviewDialog1.Document = printDocumentBiljett;
+                //printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
+                //printPreviewDialog1.Show();
+                //printPreviewControl1.Document = printDocumentBiljett;
 
             }
 
