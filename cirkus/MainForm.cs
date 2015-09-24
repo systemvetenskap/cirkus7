@@ -129,9 +129,13 @@ namespace cirkus
 
 
             textBoxPrintBookingid.Text = dgTickets[0, selectedindex].Value.ToString();
+            txtPrintDatum.Text = DateTime.Parse(dgTickets[1, selectedindex].Value.ToString()).ToShortDateString();
             textBoxPrintShow.Text = dgTickets[2, selectedindex].Value.ToString();
-            textBoxPrintPrice.Text = dgTickets[5, selectedindex].Value.ToString();
             textBoxPrintAge.Text = dgTickets[4, selectedindex].Value.ToString();
+            textBoxPrintPrice.Text = dgTickets[5, selectedindex].Value.ToString();
+          
+            
+        
             foreach(DataRow r in dtActs.Rows)
             {
                 textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+", "; 
@@ -412,7 +416,7 @@ namespace cirkus
             SolidBrush drawBrush = new SolidBrush(Color.Black);
             Rectangle r = new Rectangle(20, 40, 785, 350);
 
-            string aldersgrupp, bokningsnummer, forestallning, akt, pris, date, tider;
+            string aldersgrupp, bokningsnummer, forestallning, akt, pris, date, tider, datum;
 
             var dateAndTime = DateTime.Now;
             date = dateAndTime.ToString("dd/MM/yyyy");
@@ -423,6 +427,7 @@ namespace cirkus
             akt = textBoxPrintAct.Text;
             pris = textBoxPrintPrice.Text;
             tider = akttider;
+            datum = txtPrintDatum.Text;
 
             e.Graphics.DrawRectangle(Pens.Black, r);
 
@@ -440,7 +445,7 @@ namespace cirkus
 
 
             e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 150));
-            e.Graphics.DrawString(, drawFontBold, drawBrush, new PointF(35, 150));
+            e.Graphics.DrawString(datum, drawFontBold, drawBrush, new PointF(35, 150));
             e.Graphics.DrawString(forestallning, drawFontBold, drawBrush, new PointF(300, 200));
             e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 250));
             e.Graphics.DrawString(akt, drawFontBold, drawBrush, new PointF(300, 300));
