@@ -789,12 +789,12 @@ namespace cirkus
 
         private void button8_Click(object sender, EventArgs e)
         {
-            foreach(DataGridView r in dgActs.Rows)
-            {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
-                chk.Value = !(chk.Value == null ? false : (bool)chk.Value);
+            //foreach(DataGridView r in dgActs.Rows)
+            //{
+            //    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+            //    chk.Value = !(chk.Value == null ? false : (bool)chk.Value);
 
-            }
+            //}
         }
 
         private void cbDf_CheckedChanged(object sender, EventArgs e)
