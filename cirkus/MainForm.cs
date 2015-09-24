@@ -391,10 +391,10 @@ namespace cirkus
             {
                 ////// Printing 
                 //PrintDialog pd = new PrintDialog();
-                //pd.Document = printDocumentStatistic;
+                //pd.Document = printDocumentBiljett;
                 //if (pd.ShowDialog() == DialogResult.OK)
                 //{
-                //    printDocumentStatistic.Print();
+                //    printDocumentBiljett.Print();
                 //}
 
 
@@ -423,7 +423,7 @@ namespace cirkus
 
             int regtangelP = point + 50;
 
-            Rectangle r = new Rectangle(20, 40, 785, regtangelP);
+            Rectangle r = new Rectangle(20, 40, 750, regtangelP);
 
             string aldersgrupp, bokningsnummer, forestallning, akt, pris, date, tider, datum;
             
@@ -447,7 +447,7 @@ namespace cirkus
             e.Graphics.DrawString("Akt/plats:", drawFont, drawBrush, new PointF(35, 350));
             e.Graphics.DrawString("Tider:", drawFont, drawBrush, new PointF(35, 400));
             e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, point));
-            e.Graphics.DrawString("---------------------------------------- Riv här -----------------------------------------------", drawFont, drawBrush, new PointF(00, point + 130));
+            e.Graphics.DrawString("---------------------------------------- Klipp här -----------------------------------------------", drawFont, drawBrush, new PointF(00, point + 130));
 
 
             e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 150));

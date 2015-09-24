@@ -783,8 +783,8 @@ namespace cirkus
             this.dgActs.Columns[3].ReadOnly = false;
             this.dgActs.Columns[0].Visible = false;
             this.dgActs.Columns[1].Visible = false;
-            
        
+
 
         }
 
@@ -796,7 +796,7 @@ namespace cirkus
                     if(Convert.ToBoolean(r.Cells[3].Value) == false)
                     r.Cells[3].Value = true;
 
-            }
+            //}
         }
 
         private void cbDf_CheckedChanged(object sender, EventArgs e)
