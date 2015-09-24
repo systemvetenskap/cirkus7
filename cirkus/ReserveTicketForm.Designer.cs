@@ -234,7 +234,7 @@
             this.dataGridViewActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridViewActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewActs.ColumnHeadersVisible = false;
-            this.dataGridViewActs.Location = new System.Drawing.Point(447, 228);
+            this.dataGridViewActs.Location = new System.Drawing.Point(14, 275);
             this.dataGridViewActs.Name = "dataGridViewActs";
             this.dataGridViewActs.ReadOnly = true;
             this.dataGridViewActs.RowHeadersVisible = false;
@@ -314,10 +314,13 @@
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.dgTickets);
+            this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.cbAgegroup);
-            this.groupBox4.Location = new System.Drawing.Point(6, 28);
+            this.groupBox4.Controls.Add(this.dgActs);
+            this.groupBox4.Controls.Add(this.button8);
+            this.groupBox4.Location = new System.Drawing.Point(4, 9);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(162, 254);
+            this.groupBox4.Size = new System.Drawing.Size(410, 248);
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Akter";
@@ -381,7 +384,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(197, 75);
+            this.label2.Location = new System.Drawing.Point(198, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 29;
@@ -390,7 +393,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(448, 212);
+            this.label1.Location = new System.Drawing.Point(15, 258);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 28;
@@ -398,16 +401,17 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(200, 205);
+            this.button8.Location = new System.Drawing.Point(201, 177);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(116, 23);
             this.button8.TabIndex = 27;
             this.button8.Text = "Välja alla akter";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(447, 333);
+            this.button7.Location = new System.Drawing.Point(14, 379);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(95, 23);
             this.button7.TabIndex = 26;
@@ -423,7 +427,7 @@
             this.dgActs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgActs.Location = new System.Drawing.Point(200, 91);
+            this.dgActs.Location = new System.Drawing.Point(201, 63);
             this.dgActs.Name = "dgActs";
             this.dgActs.RowHeadersVisible = false;
             this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -625,11 +629,8 @@
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.gpSeatMap);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.dgActs);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.dataGridViewActs);
             this.panel1.Controls.Add(this.button7);
@@ -641,7 +642,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(668, 373);
+            this.button2.Location = new System.Drawing.Point(422, 373);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 35);
             this.button2.TabIndex = 43;
@@ -719,7 +720,7 @@
             this.gpSeatMap.Controls.Add(this.A6);
             this.gpSeatMap.Controls.Add(this.A5);
             this.gpSeatMap.Controls.Add(this.pictureBox1);
-            this.gpSeatMap.Location = new System.Drawing.Point(557, 9);
+            this.gpSeatMap.Location = new System.Drawing.Point(420, 9);
             this.gpSeatMap.Name = "gpSeatMap";
             this.gpSeatMap.Size = new System.Drawing.Size(312, 355);
             this.gpSeatMap.TabIndex = 58;
@@ -1467,7 +1468,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(573, 382);
+            this.button9.Location = new System.Drawing.Point(294, 305);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 59;
@@ -1477,7 +1478,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(780, 370);
+            this.button3.Location = new System.Drawing.Point(632, 373);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 35);
             this.button3.TabIndex = 43;
