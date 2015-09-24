@@ -96,7 +96,7 @@ namespace cirkus
             textBoxPrintPrice.Clear();
             textBoxPrintAct.Clear();
             textBoxPrintAge.Clear();
-            akttider = " ";
+            akttider = "";
         }
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -139,7 +139,7 @@ namespace cirkus
             foreach(DataRow r in dtActs.Rows)
             {
                 textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+", "; 
-                akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + " ";
+                akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + "/n ";
 
             }
 
