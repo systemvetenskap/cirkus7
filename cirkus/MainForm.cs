@@ -25,7 +25,7 @@ namespace cirkus
         private string show_name;
         private string show_date;
         private string akt_name;
-        private string akttider = " ";
+        private string akttider = "";
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         private string sql = "";
         public DataTable dt = new DataTable();
