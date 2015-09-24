@@ -124,22 +124,30 @@ namespace cirkus
             }
             if (string.IsNullOrWhiteSpace(txtActname.Text))
             {
-                labelAngeAkt.Visible = true;
+                txtActname.BackColor = Color.Tomato;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Skriv ett namn för akten";
                 return;
             }
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
-                labelAngeStaplatser.Visible = true;
+                textBoxAntalFriplatser.BackColor = Color.Tomato;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Skriv in antal ståplatser för akten";
                 return;
 
             }
             else
             {
-
                 DataRow row = dtActs.NewRow();
 
                 row[1] = txtActname.Text.ToString();
                 row[2] = textBoxAntalFriplatser.Text.ToString();
+                row[3] = timeStart.Text;
+                row[4] = timeEnd.Text; 
+
                 dtActs.Rows.Add(row);
 
                 dgActs.DataSource = dtActs;
@@ -148,8 +156,7 @@ namespace cirkus
                 this.dgActs.Columns[2].Visible = false;
                 dgActs.Columns[1].Width = 80;
                 dgActs.ClearSelection();
-                labelAngeAkt.Visible = false;
-
+                
                 DataRow lastRow = dtActs.Rows[dgActs.Rows.Count - 1];
                 selected_actid = int.Parse(lastRow[0].ToString());
 
@@ -168,23 +175,48 @@ namespace cirkus
                         {
                             dr[0] = selected_actid;
                         }
-
                     }
-
-
                 }
-
-                //dgTest1.DataSource = dtSeats;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Green;
+                lblStatus.Text = "Akten är tillagd i föreställningen";
+                txtActname.BackColor = Color.White;
+                textBoxAntalFriplatser.BackColor = Color.White;
                 txtActname.Clear();
                 textBoxAntalFriplatser.Clear();
-
             }
 
         }
 
         private void buttonRaderaAkt_Click(object sender, EventArgs e)
         {
+            DataRow row = dtActs.NewRow();
 
+            row[1] = txtActname.Text.ToString();
+            row[2] = textBoxAntalFriplatser.Text.ToString();
+
+            if (dgActs.SelectedRows.Count>0)
+            {
+                dtActs.Rows.RemoveAt(dgActs.SelectedRows[0].Index);
+
+                dgActs.DataSource = dtActs;
+
+                this.dgActs.Columns[0].Visible = false;
+                this.dgActs.Columns[2].Visible = false;
+                dgActs.Columns[1].Width = 80;
+
+                txtActname.Clear();
+                textBoxAntalFriplatser.Clear();
+                
+            }
+
+            else
+            {
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Välj en akt att ta bort först";
+                return;
+            }
         }
 
         private void ShowForm_Load(object sender, EventArgs e)
@@ -205,17 +237,14 @@ namespace cirkus
             dtActs.Columns.Add(id);
             dtActs.Columns.Add("name");
             dtActs.Columns.Add("free_placement");
+            dtActs.Columns.Add("start_time");
+            dtActs.Columns.Add("end_time");
             dtSeats = new DataTable();
             dtSeats.Columns.Add("id");
             cSeats.Columns.Add("id");
             cSeats.Columns.Add("seatid");
             cSeats.Columns.Add("section");
             cSeats.Columns.Add("rownumber");
-
-
-
-
-
         }
 
         private void buttonSparaAndringar_Click(object sender, EventArgs e)
@@ -225,16 +254,17 @@ namespace cirkus
             {
                 //MessageBox.Show("Du måste ange beskrivning");
                 textBoxBeskrivning.BackColor = Color.Tomato;
-                labelAngeBeskrivningen.Visible = true;
+                
                 allowAdd = false;
             }
 
-
-
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Ange antal ståplatser";
                 textBoxAntalFriplatser.BackColor = Color.Tomato;
-                labelAngeStaplatser.Visible = true;
+                
                 allowAdd = false;
             }
 
@@ -262,13 +292,14 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
-
-
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
                 frm.LoadShows();
 
                 MessageBox.Show("Ändringarna har sparats!");
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Green;
+                lblStatus.Text = "Ändringarna har sparats";
             }
         }
 
@@ -277,18 +308,18 @@ namespace cirkus
             bool allowAdd = true;
             if (string.IsNullOrWhiteSpace(textBoxBeskrivning.Text))
             {
-                //MessageBox.Show("Du måste ange beskrivning");
                 textBoxBeskrivning.BackColor = Color.Tomato;
-                labelAngeBeskrivningen.Visible = true;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Ange ett namn för föreställningen";
                 allowAdd = false;
             }
-
-
-
             if (string.IsNullOrWhiteSpace(textBoxAntalFriplatser.Text))
             {
                 textBoxAntalFriplatser.BackColor = Color.Tomato;
-                labelAngeStaplatser.Visible = true;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Ange antal ståplatser för föreställningen";
                 allowAdd = false;
             }
 
@@ -325,12 +356,16 @@ namespace cirkus
                     int id = int.Parse(r[0].ToString());
                     string an = r[1].ToString();
                     int fp = int.Parse(r[2].ToString());
+                    string st = r[3].ToString();
+                    string et = r[4].ToString();
 
                     conn.Open();
-                    command = new NpgsqlCommand("insert into acts(name, showid, free_placement) values(:nm, :shid, :fp)", conn);
+                    command = new NpgsqlCommand("insert into acts(name, showid, free_placement, start_time, end_time) values(:nm, :shid, :fp, :st, :et)", conn);
                     command.Parameters.Add(new NpgsqlParameter("nm", an));
                     command.Parameters.Add(new NpgsqlParameter("shid", addedshowid));
                     command.Parameters.Add(new NpgsqlParameter("fp", fp));
+                    command.Parameters.Add(new NpgsqlParameter("st", st));
+                    command.Parameters.Add(new NpgsqlParameter("et", et));
                     command.ExecuteNonQuery();
 
 
@@ -354,31 +389,16 @@ namespace cirkus
                             command.Parameters.Add(new NpgsqlParameter("sid", seatid));
                             command.ExecuteNonQuery();
                             conn.Close();
-
-                            
-
                         }
-
-                    }
-
-
-                    
+                    }                   
                 }
 
                 MessageBox.Show("Föreställning skapad");
-
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
                 frm.LoadShows();
                 frm.LoadAkter();
             }
-        }
-
-
-
-        private void labelAntalFriplatser_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void textBoxAntalFriplatser_KeyPress(object sender, KeyPressEventArgs e)
@@ -402,18 +422,11 @@ namespace cirkus
 
         }
 
-        private void labelBeskrivning_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
         private void textBoxBeskrivning_Click(object sender, EventArgs e)
         {
 
             textBoxBeskrivning.BackColor = Color.White;
-            labelAngeBeskrivningen.Visible = false;
+           
         }
 
         private void test_Click(object sender, EventArgs e)
@@ -429,7 +442,7 @@ namespace cirkus
 
         private void txtActname_Click(object sender, EventArgs e)
         {
-            labelAngeAkt.Visible = false;
+            
         }
 
         private void btnSaveMap_Click(object sender, EventArgs e)
@@ -481,8 +494,10 @@ namespace cirkus
 
                             conn.Close();
 
-
-
+                            lblLayout.Visible = true;
+                            lblLayout.ForeColor = Color.Green;
+                            lblLayout.Text = "Layout för vald akt sparad";
+                            lblStatus.Visible = false;
                         }
                     }
                 }
@@ -508,7 +523,7 @@ namespace cirkus
         {
 
 
-    }
+        }
 
         private void check_Click(object sender, EventArgs e)
         {
@@ -533,7 +548,15 @@ namespace cirkus
 
         }
 
+        private void labelAngeStaplatser_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
 
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -548,26 +571,12 @@ namespace cirkus
             lblActMap.Text = selected_actname.ToString();
             
             seatmap();
-
-
         }
 
         private void textBoxAntalFriplatser_Click(object sender, EventArgs e)
         {
             textBoxAntalFriplatser.BackColor = Color.White;
-            labelAngeStaplatser.Visible = false;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelAkter_Click(object sender, EventArgs e)
-        {
-
-        }
-        
-
+            
+        }       
     }
 }

@@ -22,12 +22,17 @@ namespace cirkus
         private string staffUserId;
         private string staffFname;
         private string staffLname;
+        private string show_name;
+        private string show_date;
+        private string akt_name;
+        private string akttider = "";
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         private string sql = "";
         public DataTable dt = new DataTable();
         private NpgsqlDataAdapter da;
         private List<show> allShowsList;
         private int CustomerID;
+        DataTable dtActs = new DataTable();
         #endregion
         #region Main
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -37,15 +42,17 @@ namespace cirkus
             switch (curTab)
             {
                 default:
-                    //Sälja biljetter tabben.
+                    //Biljettförsäljning
                     listCustomers();
                     break;
                 case 1:
+                    //Föreställning
                     LoadShows();
                     LoadAkter();
                     LoadStatistics();
                     break;
                 case 2:
+                    //Konto
                     ListaPersonal();
                     break;
             }
@@ -75,28 +82,6 @@ namespace cirkus
             listCustomers();
 
         }
-        public void tomFaltochFarg()
-        {
-            textBoxPersonnummer.Clear();
-            textBoxFornamn.Clear();
-            textBoxEfternamn.Clear();
-            textBoxEpost.Clear();
-            textBoxTelefonnummer.Clear();
-            textBoxAnvandarnamn.Clear();
-            textBoxLosenord.Clear();
-            comboBoxBehorighetsniva.ResetText();
-
-            textBoxPersonnummer.BackColor = Color.White;
-            textBoxFornamn.BackColor = Color.White;
-            textBoxEfternamn.BackColor = Color.White;
-            textBoxEpost.BackColor = Color.White;
-            textBoxTelefonnummer.BackColor = Color.White;
-            textBoxAnvandarnamn.BackColor = Color.White;
-            textBoxLosenord.BackColor = Color.White;
-            comboBoxBehorighetsniva.BackColor = Color.White;
-
-
-        }
 
         #endregion
         #region Biljettförsäljning
@@ -104,15 +89,164 @@ namespace cirkus
         {
             listCustomers();
         }
-        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        private void EmptyTextboxesTab1()
         {
-            e.Graphics.DrawString("Biljett", new Font("arial", 17), new SolidBrush(Color.Black), 10, 10);
-            e.Graphics.DrawString("Kundens namn", new Font("arial", 17), new SolidBrush(Color.Black), 10, 50);
-            e.Graphics.DrawString("Plats", new Font("arial", 17), new SolidBrush(Color.Black), 10, 90);
-            e.Graphics.DrawString("Föreställning", new Font("arial", 17), new SolidBrush(Color.Black), 10, 130);
-            e.Graphics.DrawString("Akter", new Font("arial", 17), new SolidBrush(Color.Black), 10, 170);
+            textBoxPrintShow.Clear();
+            textBoxPrintBookingid.Clear();
+            textBoxPrintPrice.Clear();
+            textBoxPrintAct.Clear();
+            textBoxPrintAge.Clear();
+            akttider = "";
         }
-        private void listCustomers()
+        private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EmptyTextboxesTab1();
+            btnDeleteTicket.Text = "Radera vald biljett";
+
+            int selectedindex = dgTickets.SelectedRows[0].Index;
+            int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
+
+            string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time from acts
+                        inner join available_seats on acts.actid = available_seats.actid
+                        inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                        inner join seats on available_seats.seatid = seats.seatid
+                        where booked_seats.bookingid = '" + bookingid + "'order by acts.actid";
+
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+            dtActs = new DataTable();
+            da.Fill(dtActs);
+
+            dgTicketActs.DataSource = dtActs;
+
+            dgTicketActs.Columns[0].HeaderText = "Boknings ID";
+            dgTicketActs.Columns[1].HeaderText = "Akt";
+            dgTicketActs.Columns[2].HeaderText = "Sektion";
+            dgTicketActs.Columns[3].HeaderText = "Sittplats";
+            dgTicketActs.Columns[4].HeaderText = "Starttid";
+            dgTicketActs.Columns[5].HeaderText = "Sluttid";
+
+            dgTicketActs.Columns[0].Width = 90;
+
+
+            textBoxPrintBookingid.Text = dgTickets[0, selectedindex].Value.ToString();
+            txtPrintDatum.Text = DateTime.Parse(dgTickets[1, selectedindex].Value.ToString()).ToShortDateString();
+            textBoxPrintShow.Text = dgTickets[2, selectedindex].Value.ToString();
+            textBoxPrintAge.Text = dgTickets[4, selectedindex].Value.ToString();
+            textBoxPrintPrice.Text = dgTickets[5, selectedindex].Value.ToString();
+          
+            
+        
+            foreach(DataRow r in dtActs.Rows)
+            {
+                textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+", "; 
+                akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + "\n";
+
+            }
+
+            dgTicketActs.ClearSelection();
+
+        }
+        private void dgTicketActs_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnDeleteTicket.Text = "Radera vald akt";
+            dgTickets.ClearSelection();
+        }
+        private void textBoxSearchTicket_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxSearchTicket.Text))
+            {
+                dgTickets.DataSource = null;
+                dgTicketActs.DataSource = null;
+                dgCustomers.DataSource = null;
+                listCustomers();
+                listTickets();
+            }
+            else
+            {
+                dgTicketActs.DataSource = null;
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
+                            inner join customer on booking.customerid = customer.customerid
+                            inner join booked_seats on booking.bookingid = booked_seats.bookingid 
+                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
+                            inner join show on booking.showid = show.showid 
+                            where booking.bookingid = '"+textBoxSearchTicket.Text+ "' group by booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
+
+                string sql2 = @"select customer.fname, customer.lname, customer.customerid from customer
+                                    inner join booking on customer.customerid = booking.customerid
+                                    where booking.bookingid = '" + textBoxSearchTicket.Text + "'";
+                NpgsqlDataAdapter cmd = new NpgsqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+             
+                cmd.Fill(dt);
+
+                cmd = new NpgsqlDataAdapter(sql2, conn);
+                DataTable dt2 = new DataTable();
+                cmd.Fill(dt2);
+                dgCustomers.DataSource = dt2;
+
+                dgTickets.DataSource = dt;
+                dgTickets.Columns[0].HeaderText = "Boknings ID";
+                dgTickets.Columns[1].HeaderText = "Datum";
+                dgTickets.Columns[2].HeaderText = "Föreställning";
+                dgTickets.Columns[3].HeaderText = "Betald";
+                dgTickets.Columns[4].HeaderText = "Åldersgrupp";
+                dgTickets.Columns[5].HeaderText = "Pris";
+                dgTickets.Columns[6].HeaderText = "Reserverad till";
+            }
+
+        }
+        private void textBoxSearchTicket_Click(object sender, EventArgs e)
+        {
+            dgTicketActs.DataSource = null;
+            dgTickets.DataSource = null;
+        }
+        private void printDocumentStatistic_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 18);
+            System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
+            System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+
+            string AV, AU, AB, KV, KU, KB, TA, TK;
+
+            AV = textBoxAntalVuxenBiljetter.Text;
+            AU = textBoxAntalUngdomsbiljetter.Text;
+            AB = textBoxAntalBarnbiljetter.Text;
+            KV = textBoxKronorVuxenbiljetter.Text;
+            KU = textBoxKronorUngdomsbiljetter.Text;
+            KB = textBoxKronorBarnbiljetter.Text;
+            TA = textBoxTotaltAntal.Text;
+            TK = textBoxTotaltKronor.Text;
+
+            //(Längd, Höjd)
+            e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 50));
+            e.Graphics.DrawString("Datum:", drawFont, drawBrush, new PointF(35, 100));
+            e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 150));
+            e.Graphics.DrawString(show_name, drawFontBold, drawBrush, new PointF(300, 50));
+            e.Graphics.DrawString(show_date, drawFontBold, drawBrush, new PointF(300, 100));
+            e.Graphics.DrawString(akt_name, drawFontBold, drawBrush, new PointF(300, 150));
+
+            e.Graphics.DrawString("Antal", drawFontBold, drawBrush, new PointF(300, 250));
+            e.Graphics.DrawString("Kronor", drawFontBold, drawBrush, new PointF(450, 250));
+
+            e.Graphics.DrawString("Vuxenbiljetter:", drawFont, drawBrush, new PointF(35, 300));
+            e.Graphics.DrawString("Ungdomsbiljetter:", drawFont, drawBrush, new PointF(35, 350));
+            e.Graphics.DrawString("Barnbiljetter:", drawFont, drawBrush, new PointF(35, 400));
+            e.Graphics.DrawString("Totallt:", drawFontBoldAndUnderline, drawBrush, new PointF(35, 480));
+
+            e.Graphics.DrawString(AV, drawFont, drawBrush, new PointF(300, 300));
+            e.Graphics.DrawString(KV, drawFont, drawBrush, new PointF(450, 300));
+
+            e.Graphics.DrawString(AU, drawFont, drawBrush, new PointF(300, 350));
+            e.Graphics.DrawString(KU, drawFont, drawBrush, new PointF(450, 350));
+
+            e.Graphics.DrawString(AB, drawFont, drawBrush, new PointF(300, 400));
+            e.Graphics.DrawString(KB, drawFont, drawBrush, new PointF(450, 400));
+
+            e.Graphics.DrawString(TA, drawFontBoldAndUnderline, drawBrush, new PointF(300, 480));
+            e.Graphics.DrawString(TK, drawFontBoldAndUnderline, drawBrush, new PointF(450, 480));
+        }
+        public void listCustomers()
         {
             string sqlSearch = textBoxSearchCustomer.Text;
             string sql = "SELECT lname, fname, customerid FROM customer WHERE LOWER(lname) LIKE LOWER('%" + sqlSearch + "%') OR LOWER(fname) LIKE LOWER('%" + sqlSearch + "%');";
@@ -142,25 +276,18 @@ namespace cirkus
                 conn.Close();
             }
         }
-        private void listTickets()
+        public void listTickets()
         {
             int currentRow = dgCustomers.SelectedRows[0].Index;
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select booking.bookingid, show.name, acts.name, seats.section, seats.rownumber, price_group_seat.group, price_group_seat.price, booking.reserved_to from show inner join acts on show.showid = acts.showid inner
-join available_seats on acts.actid = available_seats.actid
-inner
-join seats on available_seats.seatid = seats.seatid
-inner
-join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-inner
-join price_group_seat on booked_seats.priceid = price_group_seat.priceid
-inner
-join booking on booked_seats.bookingid = booking.bookingid
-inner
-join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + CustomerID + "'";
-
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
+                            inner join customer on booking.customerid = customer.customerid
+                            inner join booked_seats on booking.bookingid = booked_seats.bookingid 
+                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
+                            inner join show on booking.showid = show.showid 
+                            where customer.customerid = '" + CustomerID + "'AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
                 try
                 {
                     conn.Open();
@@ -168,10 +295,66 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dgTickets.DataSource = dt;
+
+                    dgTickets.DataSource = dt;
+                    dgTickets.Columns[0].HeaderText = "Boknings ID";
+                    dgTickets.Columns[1].HeaderText = "Datum";
+                    dgTickets.Columns[2].HeaderText = "Föreställning";
+                    dgTickets.Columns[3].HeaderText = "Betald";
+                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[5].HeaderText = "Pris";
+                    dgTickets.Columns[6].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[2].Width = 100;
                 }
                 catch (NpgsqlException ex)
                 {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
 
+        }
+        public void listOldTickets()
+        {
+            int currentRow = dgCustomers.SelectedRows[0].Index;
+            string CustomerID = dgCustomers[2, currentRow].Value.ToString();
+            if (currentRow != -1)
+            {
+                string sql = @"select booking.bookingid, show.date, show.name, acts.name, seats.section, seats.rownumber, 
+                            price_group_seat.group, price_group_seat.price, booking.reserved_to 
+                            from show inner join acts on show.showid = acts.showid 
+                            inner join available_seats on acts.actid = available_seats.actid
+                            inner join seats on available_seats.seatid = seats.seatid
+                            inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
+                            inner join booking on booked_seats.bookingid = booking.bookingid
+                            inner join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + CustomerID + "'AND show.date < now()::date";
+                try
+                {
+                    conn.Open();
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgTickets.DataSource = dt;
+
+                    dgTickets.DataSource = dt;
+                    dgTickets.Columns[0].HeaderText = "Boknings ID";
+                    dgTickets.Columns[1].HeaderText = "Datum";
+                    dgTickets.Columns[2].HeaderText = "Föreställning";
+                    dgTickets.Columns[3].HeaderText = "Betald";
+                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[5].HeaderText = "Pris";
+                    dgTickets.Columns[6].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[2].Width = 100;
+
+                }
+                catch (NpgsqlException ex)
+                {
                     MessageBox.Show(ex.Message);
                 }
                 finally
@@ -185,29 +368,325 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         {
             AddCustomerForm custForm = new AddCustomerForm(staffUserId);
             custForm.ShowDialog();
-
         }
         private void buttonReserveTicket_Click(object sender, EventArgs e)
         {
+            conn.Close();
+            conn.Open();
+            string sql = "delete from booking where reserved_to = now()::date";
+            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
             conn.Close();
             ReserveTicketForm rtf = new ReserveTicketForm();
             rtf.ShowDialog();
         }
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            //PrintDialog pdialog = new PrintDialog();
-            //pdialog.Document = printDocument1;
-            //pd.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(partOfForm());
+            if (dgTickets.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Välj en biljett först");
+                return;
+            }
+            else
+            {
+                //////// Printing 
+                //PrintDialog pd = new PrintDialog();
+                //pd.Document = printDocumentBiljett;
+                //if (pd.ShowDialog() == DialogResult.OK)
+                //{
+                //    printDocumentBiljett.Print();
+                //}
 
-            //if (pdialog.ShowDialog() == DialogResult.OK)
-            //{
-            printDocument1.Print();
-            //}
+
+                // Kolla dokumentet innan man skrivar ut
+                printPreviewControl1.Visible = true;
+                printPreviewDialog1.Document = printDocumentBiljett;
+                printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
+                printPreviewDialog1.Show();
+                printPreviewControl1.Document = printDocumentBiljett;
+
+            }
+
+        }
+        private void printDocumentBiljett_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 18);
+            System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
+            System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
+            SolidBrush drawBrush = new SolidBrush(Color.Black);
+
+            int point = 350;
+            foreach (DataGridViewRow ro in dgTicketActs.Rows)
+            {
+                point += 40;
+            }
+
+            int regtangelP = point + 60;
+
+            ////BACKGROUND IMAGE
+            System.Drawing.Image i2 = System.Drawing.Image.FromFile("C:\\Users\\Matija\\Source\\Repos\\cirkus73\\cirkus\\Images\\backgroundClown.jpg");
+            Point p2 = new Point(100, 100);
+            // Create rectangle for displaying image, subtracting 200 (100 for left,100 for right margins).
+            Rectangle destRect = new Rectangle(20, 40, 750, regtangelP);
+
+
+            // Create coordinates of rectangle for source image.
+            int x = 0;
+            int y = 0;
+            int width = i2.Width;
+            int height = i2.Height;
+            GraphicsUnit units = GraphicsUnit.Pixel;
+            
+            string aldersgrupp, bokningsnummer, forestallning, akt, pris, date, tider, datum;
+            
+            aldersgrupp = textBoxPrintAge.Text;
+            bokningsnummer = textBoxPrintBookingid.Text;
+            forestallning = textBoxPrintShow.Text;
+            akt = textBoxPrintAct.Text;
+            pris = textBoxPrintPrice.Text;
+            tider = akttider;
+            datum = txtPrintDatum.Text;
+
+            //e.Graphics.DrawRectangle(Pens.Black, r);
+            e.Graphics.DrawImage(i2, destRect, x, y, width, height, units); // Draw background.
+
+            e.Graphics.DrawString("Biljett Cirkus Kul & Buss", drawFontBoldAndUnderline, drawBrush, new PointF(44, 110));
+            
+
+            e.Graphics.DrawString("BokningsID:", drawFontBold, drawBrush, new PointF(45, 150));
+            e.Graphics.DrawString("Datum:", drawFontBold, drawBrush, new PointF(45, 190));
+            e.Graphics.DrawString("Namn:", drawFontBold, drawBrush, new PointF(45, 230));
+            e.Graphics.DrawString("Åldersgrupp:", drawFontBold, drawBrush, new PointF(45, 270));
+            e.Graphics.DrawString("Akt/plats:", drawFontBold, drawBrush, new PointF(45, 310));
+            e.Graphics.DrawString("Tider:", drawFontBold, drawBrush, new PointF(45, 350));
+            e.Graphics.DrawString("Pris:", drawFontBold, drawBrush, new PointF(45, point));
+            e.Graphics.DrawString("---------------------------------------- Klipp här -----------------------------------------------", drawFont, drawBrush, new PointF(00, point + 110));
+
+
+            e.Graphics.DrawString(bokningsnummer, drawFont, drawBrush, new PointF(250, 150));
+            e.Graphics.DrawString(datum, drawFont, drawBrush, new PointF(250, 190));
+            e.Graphics.DrawString(forestallning, drawFont, drawBrush, new PointF(250, 230));
+            e.Graphics.DrawString(aldersgrupp, drawFont, drawBrush, new PointF(250, 270));
+            e.Graphics.DrawString(akt, drawFont, drawBrush, new PointF(250, 310));
+            e.Graphics.DrawString(akttider, drawFont, drawBrush, new PointF(250, 350));
+            e.Graphics.DrawString(pris + " kronor", drawFont, drawBrush, new PointF(250, point));
 
         }
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            dgTicketActs.DataSource = null;
+            EmptyTextboxesTab1();
             listTickets();
+        }
+        private void buttonEditTicket_Click(object sender, EventArgs e)
+        {
+            if (dgTickets.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Välj en biljett först");
+                return;
+            }
+
+            int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
+            int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
+            int currentRow = dgTickets.SelectedRows[0].Index;
+            bool check = Convert.ToBoolean(dgTickets[3, currentRow].Value);
+            ChangeTicketForm Ctf;
+            
+
+            if (SelectedTicket != -1 && SelectedCustomer != -1 && check == false)
+
+
+            {
+                foreach (DataGridViewRow r in dgTickets.SelectedRows)
+                {
+                    DataGridViewRow t = (DataGridViewRow)r.Clone();
+                    t.Cells[0].Value = r.Cells[0].Value;
+                    t.Cells[1].Value = r.Cells[1].Value;
+                    t.Cells[2].Value = r.Cells[2].Value;
+                    t.Cells[3].Value = r.Cells[3].Value;
+                    t.Cells[4].Value = r.Cells[4].Value;
+                    t.Cells[5].Value = r.Cells[5].Value;
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Boknings ID");
+                    dt.Columns.Add("Datum");
+                    dt.Columns.Add("Föreställning");
+                    dt.Columns.Add("Betald");
+                    dt.Columns.Add("Åldersgrupp");
+                    dt.Columns.Add("Pris");
+                    dt.Columns.Add("Reserverad till");
+
+                    DataRow row;
+                    row = dt.NewRow();
+                    row[0] = r.Cells[0].Value;
+                    row[1] = r.Cells[1].Value;
+                    row[2] = r.Cells[2].Value;
+                    row[3] = r.Cells[3].Value;
+                    row[4] = r.Cells[4].Value;
+                    row[5] = r.Cells[5].Value;
+
+                    dt.Rows.Add(row);
+                    Ctf = new ChangeTicketForm(dt);
+                    Ctf.ShowDialog();
+
+
+                }
+                try
+                {
+                    //Ctf = new ChangeTicketForm(dt);
+                    //Ctf.ShowDialog();
+                }
+                catch (NpgsqlException ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            else
+            {
+                DialogResult Warning = MessageBox.Show("Denna biljett går inte att ändra.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+        private void btnDeleteTicket_Click(object sender, EventArgs e)
+        {
+            if (btnDeleteTicket.Text=="Radera vald biljett")
+            {
+                DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade biljetten ?",
+                "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (Confirmation == DialogResult.Yes)
+                {
+                    if (dgTickets.SelectedRows.Count <= 0)
+                    {
+                        MessageBox.Show("Välj en biljett först");
+                        return;
+                    }
+
+                    int SelectedTicket;
+                    DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
+                    SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
+
+                    string sql = "DELETE FROM booking WHERE bookingid = '" + SelectedTicket + "'";
+
+                    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                    conn.Open();
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (NpgsqlException ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+
+                        DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna biljetten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return;
+                    }
+                    conn.Close();
+                }
+                listTickets();
+            }
+            else if (btnDeleteTicket.Text=="Radera vald akt")
+            {
+                DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade akten ?",
+                "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (Confirmation == DialogResult.Yes)
+                {
+                    if (dgTicketActs.SelectedRows.Count <= 0)
+                    {
+                        MessageBox.Show("Välj en akt först");
+                        return;
+                    }
+
+                    DataGridViewRow selectedActs = this.dgTicketActs.SelectedRows[0];
+                    int selectedAct = Convert.ToInt32(selectedActs.Cells[0].Value);
+
+                    string sql = "DELETE FROM booked_seats WHERE booked_seat_id = '" + selectedAct + "'";
+                    dgTicketActs.Rows.Remove(selectedActs);
+                    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                    conn.Open();
+
+            
+
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (NpgsqlException ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+
+                        DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna akten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        conn.Close();
+                        return;
+                    }
+
+                    conn.Close();
+                    conn.Open();
+                    string sql2 = @"select booking.bookingid from booking
+                                    left join booked_seats on booking.bookingid = booked_seats.bookingid
+                                    where booked_seats.booked_seat_id is null";
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql2, conn);
+                    DataTable dat = new DataTable();
+                    da.Fill(dat);
+                    conn.Close();
+                   
+                    foreach(DataRow rw in dat.Rows)
+                    {
+                        conn.Open();
+                        string sql3 = "delete from booking where bookingid = '"+rw[0]+ "'";
+                        cmd = new NpgsqlCommand(sql3, conn);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+
+                    }
+
+                }
+                listTickets();
+            }
+
+        }
+        private void dgCustomers_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                listTickets();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                listTickets();
+            }
+        }
+        private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgTicketActs.DataSource = null;
+            listTickets();
+        }
+        private void checkBoxOlderTickets_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxOlderTickets.Checked==true)
+            {
+                listOldTickets();
+            }
+            else if (checkBoxOlderTickets.Checked==false)
+            {
+                listTickets();
+            }
+        }
+        private void textBoxSearchCustomer_Click(object sender, EventArgs e)
+        {
+            textBoxSearchTicket.Clear();
+            dgTickets.DataSource = null;
+            dgTicketActs.DataSource = null;
         }
         #endregion
         #region Föreställningar
@@ -246,23 +725,25 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         }
         private void buttonAndraForestallning_Click(object sender, EventArgs e)
         {
-            int selectedID;
-            DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
-            selectedID = Convert.ToInt32(row.Cells["showid"].Value);
+
+            
+            //int selectedID;
+            //DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
+            //selectedID = Convert.ToInt32(row.Cells["showid"].Value);
 
 
-            string nySelectedID = selectedID.ToString();
+            //string nySelectedID = selectedID.ToString();
 
-            ShowForm frm = new ShowForm();
-            frm.SetID(nySelectedID);
+            //ShowForm frm = new ShowForm();
+            //frm.SetID(nySelectedID);
 
-            frm.ButtonVisibleLaggTillForestallning();
+            //frm.ButtonVisibleLaggTillForestallning();
 
-            frm.ShowDialog();
+            //frm.ShowDialog();
         }
-        private void dgvAkter_SelectionChanged(object sender, EventArgs e)
+        private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //LoadAkter();
+            LoadStatistics();
         }
         public void LoadShows()
         {
@@ -290,72 +771,95 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
             
         }
-
         public void LoadStatistics()
         {
-            if (dgvAkter.RowCount != 0)
+            if (checkBoxAllaAkter.Checked == true)
             {
-                //Antal Vuxenbiljetter
-                int selectedIndex = dgvAkter.SelectedRows[0].Index;
-                actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
-
-
+                //Vuxenbiljetter
                 conn.Open();
-                string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
+                string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'vuxen'  group by acts.showid, price_group_seat.group";
+
 
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
                 NpgsqlDataReader dr = cmd.ExecuteReader();
 
                 textBoxAntalVuxenBiljetter.Clear();
+                textBoxKronorVuxenbiljetter.Clear();
+
+                /*dr.Read();
+
+                textBoxAntalVuxenBiljetter.Text = dr[1].ToString();
+                textBoxKronorVuxenbiljetter.Text = dr[0].ToString();*/
 
                 while (dr.Read())
                 {
                     textBoxAntalVuxenBiljetter.Text = dr.GetValue(1).ToString();
+                    textBoxKronorVuxenbiljetter.Text = dr.GetValue(0).ToString();
                 }
 
                 if (textBoxAntalVuxenBiljetter.Text == "")
                 {
                     textBoxAntalVuxenBiljetter.Text = "0";
                 }
+
+                if (textBoxKronorVuxenbiljetter.Text == "")
+                {
+                    textBoxKronorVuxenbiljetter.Text = "0";
+                }
                 conn.Close();
 
-                //Anttal ungdomsbiljetter
+                //Ungdomsbiljetter
                 conn.Open();
-                string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'ungdom' group by price_group_seat.group, acts.actid";
+                string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'ungdom'  group by acts.showid, price_group_seat.group";
 
                 NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
                 NpgsqlDataReader drAU = cmdAU.ExecuteReader();
 
                 textBoxAntalUngdomsbiljetter.Clear();
+                textBoxKronorUngdomsbiljetter.Clear();
 
                 while (drAU.Read())
                 {
                     textBoxAntalUngdomsbiljetter.Text = drAU.GetValue(1).ToString();
+                    textBoxKronorUngdomsbiljetter.Text = drAU.GetValue(0).ToString();
                 }
 
                 if (textBoxAntalUngdomsbiljetter.Text == "")
                 {
                     textBoxAntalUngdomsbiljetter.Text = "0";
                 }
+
+                if (textBoxKronorUngdomsbiljetter.Text == "")
+                {
+                    textBoxKronorUngdomsbiljetter.Text = "0";
+                }
                 conn.Close();
 
-                //Antal ungdomsbiljetter
-                conn.Open();
-                string sqlAB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'barn' group by price_group_seat.group, acts.actid";
 
-                NpgsqlCommand cmdAB = new NpgsqlCommand(sqlAB, conn);
-                NpgsqlDataReader drAB = cmdAB.ExecuteReader();
+                //Barn
+                conn.Open();
+                string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'barn'  group by acts.showid, price_group_seat.group";
+
+                NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
+                NpgsqlDataReader drKB = cmdKB.ExecuteReader();
 
                 textBoxAntalBarnbiljetter.Clear();
+                textBoxKronorBarnbiljetter.Clear();
 
-                while (drAB.Read())
+                while (drKB.Read())
                 {
-                    textBoxAntalBarnbiljetter.Text = drAB.GetValue(1).ToString();
+                    textBoxAntalBarnbiljetter.Text = drKB.GetValue(1).ToString();
+                    textBoxKronorBarnbiljetter.Text = drKB.GetValue(0).ToString();
                 }
 
                 if (textBoxAntalBarnbiljetter.Text == "")
                 {
                     textBoxAntalBarnbiljetter.Text = "0";
+                }
+
+                if (textBoxKronorBarnbiljetter.Text == "")
+                {
+                    textBoxKronorBarnbiljetter.Text = "0";
                 }
                 conn.Close();
 
@@ -370,66 +874,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
                 textBoxTotaltAntal.Text = totaltSumma;
 
-                //Kronor vuxen
-                conn.Open();
-                string sqlKV = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
-
-                NpgsqlCommand cmdKV = new NpgsqlCommand(sqlKV, conn);
-                NpgsqlDataReader drKV = cmdKV.ExecuteReader();
-
-                textBoxKronorVuxenbiljetter.Clear();
-
-                while (drKV.Read())
-                {
-                    textBoxKronorVuxenbiljetter.Text = drKV.GetValue(0).ToString();
-                }
-
-                if (textBoxKronorVuxenbiljetter.Text == "")
-                {
-                    textBoxKronorVuxenbiljetter.Text = "0";
-                }
-                conn.Close();
-
-                //Kronor ungdom
-                conn.Open();
-                string sqlKU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'ungdom' group by price_group_seat.group, acts.actid";
-
-                NpgsqlCommand cmdKU = new NpgsqlCommand(sqlKU, conn);
-                NpgsqlDataReader drKU = cmdKU.ExecuteReader();
-
-                textBoxKronorUngdomsbiljetter.Clear();
-
-                while (drKU.Read())
-                {
-                    textBoxKronorUngdomsbiljetter.Text = drKU.GetValue(0).ToString();
-                }
-
-                if (textBoxKronorUngdomsbiljetter.Text == "")
-                {
-                    textBoxKronorUngdomsbiljetter.Text = "0";
-                }
-                conn.Close();
-
-                //Kronor ungdom
-                conn.Open();
-                string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'barn' group by price_group_seat.group, acts.actid";
-
-                NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
-                NpgsqlDataReader drKB = cmdKB.ExecuteReader();
-
-                textBoxKronorBarnbiljetter.Clear();
-
-                while (drKB.Read())
-                {
-                    textBoxKronorBarnbiljetter.Text = drKB.GetValue(0).ToString();
-                }
-
-                if (textBoxKronorBarnbiljetter.Text == "")
-                {
-                    textBoxKronorBarnbiljetter.Text = "0";
-                }
-                conn.Close();
-
                 //Totalt kronor
                 int kronorVuxen, kronorUngdom, kronorBarn;
                 string totaltKornor;
@@ -441,15 +885,247 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
 
                 textBoxTotaltKronor.Text = totaltKornor;
             }
-            
-        }
 
+            else if (checkBoxAllaAkter.Checked == false && dgvAkter.Rows != null)
+            {
+                //if (dgvAkter.RowCount != 0)
+                //{
+                //    //Antal Vuxenbiljetter
+                //    int selectedIndex = dgvAkter.SelectedRows[0].Index;
+                //    actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
+                
+                int selectedIndex = dgvAkter.SelectedRows[0].Index;
+                actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
+                
+                conn.Open();
+                    string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '"+ actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
+
+
+                    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                    NpgsqlDataReader dr = cmd.ExecuteReader();
+
+                    textBoxAntalVuxenBiljetter.Clear();
+                    textBoxKronorVuxenbiljetter.Clear();
+
+                    while (dr.Read())
+                    {
+                        textBoxAntalVuxenBiljetter.Text = dr.GetValue(1).ToString();
+                        textBoxKronorVuxenbiljetter.Text = dr.GetValue(0).ToString();
+                    }
+
+                    if (textBoxAntalVuxenBiljetter.Text == "")
+                    {
+                        textBoxAntalVuxenBiljetter.Text = "0";
+                    }
+
+                    if (textBoxKronorVuxenbiljetter.Text == "")
+                    {
+                        textBoxKronorVuxenbiljetter.Text = "0";
+                    }
+                    conn.Close();
+
+                    //Ungdomsbiljetter
+                    conn.Open();
+                    string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '"+ actid +"' and price_group_seat.group = 'ungdom' group by price_group_seat.group, acts.actid";
+
+                    NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
+                    NpgsqlDataReader drAU = cmdAU.ExecuteReader();
+
+                    textBoxAntalUngdomsbiljetter.Clear();
+                    textBoxKronorUngdomsbiljetter.Clear();
+
+                    while (drAU.Read())
+                    {
+                        textBoxAntalUngdomsbiljetter.Text = drAU.GetValue(1).ToString();
+                        textBoxKronorUngdomsbiljetter.Text = drAU.GetValue(0).ToString();
+                    }
+
+                    if (textBoxAntalUngdomsbiljetter.Text == "")
+                    {
+                        textBoxAntalUngdomsbiljetter.Text = "0";
+                    }
+
+                    if (textBoxKronorUngdomsbiljetter.Text == "")
+                    {
+                        textBoxKronorUngdomsbiljetter.Text = "0";
+                    }
+                    conn.Close();
+
+
+                    //Barn
+                    conn.Open();
+                    string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'barn' group by price_group_seat.group, acts.actid";
+
+                    NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
+                    NpgsqlDataReader drKB = cmdKB.ExecuteReader();
+
+                    textBoxAntalBarnbiljetter.Clear();
+                    textBoxKronorBarnbiljetter.Clear();
+
+                    while (drKB.Read())
+                    {
+                        textBoxAntalBarnbiljetter.Text = drKB.GetValue(1).ToString();
+                        textBoxKronorBarnbiljetter.Text = drKB.GetValue(0).ToString();
+                    }
+
+                    if (textBoxAntalBarnbiljetter.Text == "")
+                    {
+                        textBoxAntalBarnbiljetter.Text = "0";
+                    }
+
+                    if (textBoxKronorBarnbiljetter.Text == "")
+                    {
+                        textBoxKronorBarnbiljetter.Text = "0";
+                    }
+                    conn.Close();
+
+                    //Totalt antal
+                    int antalVuxen, antalUngdom, antalBarn;
+                    string totaltSumma;
+
+                    antalVuxen = Convert.ToInt32(textBoxAntalVuxenBiljetter.Text);
+                    antalUngdom = Convert.ToInt32(textBoxAntalUngdomsbiljetter.Text);
+                    antalBarn = Convert.ToInt32(textBoxAntalBarnbiljetter.Text);
+                    totaltSumma = Convert.ToString(antalVuxen + antalUngdom + antalBarn);
+
+                    textBoxTotaltAntal.Text = totaltSumma;
+
+                    //Totalt kronor
+                    int kronorVuxen, kronorUngdom, kronorBarn;
+                    string totaltKornor;
+
+                    kronorVuxen = Convert.ToInt32(textBoxKronorVuxenbiljetter.Text);
+                    kronorUngdom = Convert.ToInt32(textBoxKronorUngdomsbiljetter.Text);
+                    kronorBarn = Convert.ToInt32(textBoxKronorBarnbiljetter.Text);
+                    totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
+
+                    textBoxTotaltKronor.Text = totaltKornor;
+                
+
+                
+            }
+
+            //if (dgvShowsList.RowCount != 0)
+            //{
+            //    //Vuxenbiljetter
+            //   // int selectedIndex = dgvAkter.SelectedRows[0].Index;
+
+            //    conn.Open();
+            //    string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'vuxen'  group by acts.showid, price_group_seat.group";
+
+
+            //    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+            //    NpgsqlDataReader dr = cmd.ExecuteReader();
+
+            //    textBoxAntalVuxenBiljetter.Clear();
+            //    textBoxKronorVuxenbiljetter.Clear();
+
+            //    while (dr.Read())
+            //    {
+            //        textBoxAntalVuxenBiljetter.Text = dr.GetValue(1).ToString();
+            //        textBoxKronorVuxenbiljetter.Text = dr.GetValue(0).ToString();
+            //    }
+
+            //    if (textBoxAntalVuxenBiljetter.Text == "")
+            //    {
+            //        textBoxAntalVuxenBiljetter.Text = "0";
+            //    }
+
+            //    if (textBoxKronorVuxenbiljetter.Text == "")
+            //    {
+            //        textBoxKronorVuxenbiljetter.Text = "0";
+            //    }
+            //    conn.Close();
+
+            //    //Ungdomsbiljetter
+            //    conn.Open();
+            //    string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'ungdom'  group by acts.showid, price_group_seat.group";
+
+            //    NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
+            //    NpgsqlDataReader drAU = cmdAU.ExecuteReader();
+
+            //    textBoxAntalUngdomsbiljetter.Clear();
+            //    textBoxKronorUngdomsbiljetter.Clear();
+
+            //    while (drAU.Read())
+            //    {
+            //        textBoxAntalUngdomsbiljetter.Text = drAU.GetValue(1).ToString();
+            //        textBoxKronorUngdomsbiljetter.Text = drAU.GetValue(0).ToString();
+            //    }
+
+            //    if (textBoxAntalUngdomsbiljetter.Text == "")
+            //    {
+            //        textBoxAntalUngdomsbiljetter.Text = "0";
+            //    }
+
+            //    if (textBoxKronorUngdomsbiljetter.Text == "")
+            //    {
+            //        textBoxKronorUngdomsbiljetter.Text = "0";
+            //    }
+            //    conn.Close();
+
+
+            //    //Barn
+            //    conn.Open();
+            //    string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'ungdom'  group by acts.showid, price_group_seat.group";
+
+            //    NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
+            //    NpgsqlDataReader drKB = cmdKB.ExecuteReader();
+
+            //    textBoxAntalBarnbiljetter.Clear();
+            //    textBoxKronorBarnbiljetter.Clear();
+
+            //    while (drKB.Read())
+            //    {
+            //        textBoxAntalBarnbiljetter.Text = drKB.GetValue(1).ToString();
+            //        textBoxKronorBarnbiljetter.Text = drKB.GetValue(0).ToString();
+            //    }
+
+            //    if (textBoxAntalBarnbiljetter.Text == "")
+            //    {
+            //        textBoxAntalBarnbiljetter.Text = "0";
+            //    }
+
+            //    if (textBoxKronorBarnbiljetter.Text == "")
+            //    {
+            //        textBoxKronorBarnbiljetter.Text = "0";
+            //    }
+            //    conn.Close();
+            //}
+
+            ////Totalt antal
+            //int antalVuxen, antalUngdom, antalBarn;
+            //string totaltSumma;
+
+            //antalVuxen = Convert.ToInt32(textBoxAntalVuxenBiljetter.Text);
+            //antalUngdom = Convert.ToInt32(textBoxAntalUngdomsbiljetter.Text);
+            //antalBarn = Convert.ToInt32(textBoxAntalBarnbiljetter.Text);
+            //totaltSumma = Convert.ToString(antalVuxen + antalUngdom + antalBarn);
+
+            //textBoxTotaltAntal.Text = totaltSumma;
+
+            ////Totalt kronor
+            //int kronorVuxen, kronorUngdom, kronorBarn;
+            //string totaltKornor;
+
+            //kronorVuxen = Convert.ToInt32(textBoxKronorVuxenbiljetter.Text);
+            //kronorUngdom = Convert.ToInt32(textBoxKronorUngdomsbiljetter.Text);
+            //kronorBarn = Convert.ToInt32(textBoxKronorBarnbiljetter.Text);
+            //totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
+
+            //textBoxTotaltKronor.Text = totaltKornor;
+
+        }
         public void LoadAkter()
         {
             if (dgvShowsList.RowCount != 0)
             {
                 int selectedIndex = dgvShowsList.SelectedRows[0].Index;
                 showid = int.Parse(dgvShowsList[0, selectedIndex].Value.ToString());
+
+                show_name = dgvShowsList[2, selectedIndex].Value.ToString();
+
+                show_date = dgvShowsList[1, selectedIndex].Value.ToString();
 
                 string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
 
@@ -469,17 +1145,99 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             LoadStatistics();
             
         }
+        private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up)
+            {
+                LoadAkter();
+                LoadStatistics();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                LoadAkter();
+                LoadStatistics();
+            }
+        }
+        private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Up)
+            {
+
+                LoadStatistics();
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+
+                LoadStatistics();
+            }
+        }
+        private void buttonSkrivUtForestallning_Click(object sender, EventArgs e)
+        {
+            //// Printing 
+            //PrintDialog pd = new PrintDialog();
+            //pd.Document = printDocumentStatistic;
+            //if (pd.ShowDialog() == DialogResult.OK)
+            //{
+            //    printDocumentStatistic.Print();
+            //}
+
+
+            // Kolla dokumentet innan man skrivar ut
+            printPreviewControl1.Visible = true;
+            printPreviewDialog1.Document = printDocumentStatistic;
+            printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
+            printPreviewDialog1.Show();
+            printPreviewControl1.Document = printDocumentStatistic;
+        }
+        private void checkBoxAllaAkter_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadStatistics();
+        }
         #endregion
         #region Konto
         private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
         {
             ListaPersonal();
         }
+        public void ResetColor()
+        {
+
+            textBoxPersonnummer.BackColor = Color.White;
+            textBoxFornamn.BackColor = Color.White;
+            textBoxEfternamn.BackColor = Color.White;
+            textBoxEpost.BackColor = Color.White;
+            textBoxTelefonnummer.BackColor = Color.White;
+            textBoxAnvandarnamn.BackColor = Color.White;
+            textBoxLosenord.BackColor = Color.White;
+            comboBoxBehorighetsniva.BackColor = Color.White;
+        }
+        public void ResetColorandText()
+        {
+            textBoxPersonnummer.Clear();
+            textBoxFornamn.Clear();
+            textBoxEfternamn.Clear();
+            textBoxEpost.Clear();
+            textBoxTelefonnummer.Clear();
+            textBoxAnvandarnamn.Clear();
+            textBoxLosenord.Clear();
+            comboBoxBehorighetsniva.ResetText();
+
+            textBoxPersonnummer.BackColor = Color.White;
+            textBoxFornamn.BackColor = Color.White;
+            textBoxEfternamn.BackColor = Color.White;
+            textBoxEpost.BackColor = Color.White;
+            textBoxTelefonnummer.BackColor = Color.White;
+            textBoxAnvandarnamn.BackColor = Color.White;
+            textBoxLosenord.BackColor = Color.White;
+            comboBoxBehorighetsniva.BackColor = Color.White;
+        }
         private void btnTomFalten_Click(object sender, EventArgs e)
         {
-            tomFaltochFarg();
+            ResetColorandText();
+            LblStatus.Visible = false;
         }
-        private void ListaPersonal()//Metod för att lista personalen i Datagriden.
+        private void ListaPersonal()
         {
             string sqlSearchStaff = textBoxSearchStaff.Text;
             string sql = "SELECT staffid, lname, fname, phonenumber  FROM staff WHERE LOWER(fname) LIKE LOWER('%" + sqlSearchStaff + "%') OR LOWER(lname) LIKE LOWER('%" + sqlSearchStaff + "%')";
@@ -523,7 +1281,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
 
         }
-        public bool EndastSiffror(string värde) //Metod för att kontrollera om det bara är siffror
+        public bool EndastSiffror(string värde)
         {
             bool barasiffror = true;
             foreach (char siffra in värde)
@@ -537,6 +1295,8 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         }
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
+            ResetColor();
+
             //Kontrollerar längden, siffror/bokstäver och tomma fält
             if (textBoxPersonnummer.TextLength > 10 || textBoxPersonnummer.TextLength < 10 || string.IsNullOrWhiteSpace(textBoxPersonnummer.Text))
             {
@@ -635,7 +1395,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 ListaPersonal();
-                tomFaltochFarg();
+                ResetColorandText();
             }
             catch (NpgsqlException)
             {
@@ -647,7 +1407,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
         
         }
-        public bool BaraBokstäver(string namn)//Metod för att kontrollera om det bara är bokstäver
+        public bool BaraBokstäver(string namn)
         {
             bool okej = true;
             foreach (char bokstav in namn)
@@ -661,6 +1421,8 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
         }
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
+            ResetColor();
+            LblStatus.Visible = false;
             btnRaderaKonto.Enabled = true;
             btnTomFalten.Enabled = false;
 
@@ -777,8 +1539,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                
                 conn.Open();
 
-                NpgsqlCommand cmd = new NpgsqlCommand(@"update staff set ssn = @ssn, fname = @fn, lname = @ln, phonenumber = @pn, email = @email, 
-                                                        username = @un, password = @pass, auth = @auth where staffid =@id", conn);
+                NpgsqlCommand cmd = new NpgsqlCommand(@"update staff set ssn = @ssn, fname = @fn, lname = @ln, phonenumber = @pn, email = @email,                                                         username = @un, password = @pass, auth = @auth where staffid =@id", conn);
 
                 cmd.Parameters.Add(new NpgsqlParameter("ssn", textBoxPersonnummer.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("fn", textBoxFornamn.Text));
@@ -805,7 +1566,6 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 LblStatus.Text = "Användare updaterad";
   
                 cmd.ExecuteNonQuery();
-
                 conn.Close();
 
                 btnTomFalten.Enabled = true;
@@ -815,8 +1575,7 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 btnUpdateraKonto.Text = "Uppdatera/ändra konto";
                 textBoxAnvandarnamn.Enabled = true;
                 btnSkapaKonto.Enabled = true;
-                tomFaltochFarg();
-
+                ResetColorandText();
             }
 
         }
@@ -860,8 +1619,9 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
                 LblStatus.Visible = true;
                 LblStatus.ForeColor = Color.Red;
                 LblStatus.Text = "Användare raderad";
+                btnTomFalten.Visible = true;
                 ListaPersonal();
-                tomFaltochFarg();
+                ResetColorandText();
             }
             if (Confirmation == DialogResult.No)
             {
@@ -869,152 +1629,5 @@ join customer on booking.customerid = customer.customerid WHERE customer.custome
             }
         }
         #endregion
-
-        private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            LoadStatistics();
-        }
-        private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Up)
-            {
-                LoadAkter();
-                LoadStatistics();
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-                LoadAkter();
-                LoadStatistics();
-            }
-        }
-        private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Up)
-            {
-                
-                LoadStatistics();
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-               
-                LoadStatistics();
-            }
-        }
-        private void buttonEditTicket_Click(object sender, EventArgs e)
-        {
-            int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
-            int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
-
-            ChangeTicketForm Ctf;
-            if (SelectedTicket != -1 && SelectedCustomer != -1)
-
-
-            {
-                foreach (DataGridViewRow r in dgTickets.SelectedRows)
-                {
-                    DataGridViewRow t = (DataGridViewRow)r.Clone();
-                    t.Cells[0].Value = r.Cells[0].Value;
-                    t.Cells[1].Value = r.Cells[1].Value;
-                    t.Cells[2].Value = r.Cells[2].Value;
-                    t.Cells[3].Value = r.Cells[3].Value;
-                    t.Cells[4].Value = r.Cells[4].Value;
-                    t.Cells[5].Value = r.Cells[5].Value;
-                    t.Cells[6].Value = r.Cells[6].Value;
-                    t.Cells[7].Value = r.Cells[7].Value;
-
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add("Boknings ID");
-                    dt.Columns.Add("Föreställning");
-                    dt.Columns.Add("Akt");
-                    dt.Columns.Add("Sektion");
-                    dt.Columns.Add("Platsnummer");
-                    dt.Columns.Add("Biljettyp");
-                    dt.Columns.Add("Pris");
-                    dt.Columns.Add("Reserverad till");
-
-
-                    DataRow row;
-                    row = dt.NewRow();
-                    row[0] = r.Cells[0].Value;
-                    row[1] = r.Cells[1].Value;
-                    row[2] = r.Cells[2].Value;
-                    row[3] = r.Cells[3].Value;
-                    row[4] = r.Cells[4].Value;
-                    row[5] = r.Cells[5].Value;
-                    row[6] = r.Cells[6].Value;
-                    row[7] = r.Cells[7].Value;
-
-                    dt.Rows.Add(row);
-                    Ctf = new ChangeTicketForm(dt);
-                    Ctf.ShowDialog();
-
-
-                }
-                try
-                {
-                    //Ctf = new ChangeTicketForm(dt);
-                    //Ctf.ShowDialog();
-                }
-                catch (NpgsqlException ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-
-        }
-        private void btnDeleteTicket_Click(object sender, EventArgs e)
-        {
-            DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade biljetten ?",
-            "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (Confirmation == DialogResult.Yes)
-            {
-                int SelectedTicket;
-                DataGridViewRow selectedTicket = this.dgTickets.SelectedRows[0];
-                SelectedTicket = Convert.ToInt32(selectedTicket.Cells["bookingid"].Value);
-
-                string sql = "DELETE FROM booking WHERE bookingid = '" + SelectedTicket + "'";
-
-                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-                conn.Open();
-
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (NpgsqlException ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-
-                    DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna biljetten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    conn.Close();
-                    return;
-                }
-                conn.Close();
-            }
-            listTickets();
-        }
-        private void dgCustomers_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Up)
-            {
-                listTickets();
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-                listTickets();
-            }
-        }
-        private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            listTickets(); //Merge
-        }
     }
 }

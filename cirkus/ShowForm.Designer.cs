@@ -28,29 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonLaggTillAkt = new System.Windows.Forms.Button();
             this.textBoxBeskrivning = new System.Windows.Forms.TextBox();
             this.labelBeskrivning = new System.Windows.Forms.Label();
-            this.labelAkter = new System.Windows.Forms.Label();
             this.labelDatum = new System.Windows.Forms.Label();
-            this.labelAntalFriplatser = new System.Windows.Forms.Label();
             this.labelForsaljningstid = new System.Windows.Forms.Label();
-            this.txtActname = new System.Windows.Forms.TextBox();
-            this.textBoxAntalFriplatser = new System.Windows.Forms.TextBox();
             this.buttonLaggTIllForestallning = new System.Windows.Forms.Button();
             this.buttonSparaAndringar = new System.Windows.Forms.Button();
-            this.buttonRaderaAkt = new System.Windows.Forms.Button();
             this.dateTimePickerForsaljningstidFran = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerForsaljningstidTill = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerDatum = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelAngeBeskrivningen = new System.Windows.Forms.Label();
-            this.labelAngeAkt = new System.Windows.Forms.Label();
-            this.labelAngeStaplatser = new System.Windows.Forms.Label();
-            this.dgActs = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
             this.uncheck = new System.Windows.Forms.Button();
             this.check = new System.Windows.Forms.Button();
@@ -122,29 +109,33 @@
             this.A6 = new System.Windows.Forms.CheckBox();
             this.A5 = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.labelAntalFriplatser = new System.Windows.Forms.Label();
+            this.textBoxAntalFriplatser = new System.Windows.Forms.TextBox();
+            this.labelAkter = new System.Windows.Forms.Label();
+            this.buttonRaderaAkt = new System.Windows.Forms.Button();
+            this.buttonLaggTillAkt = new System.Windows.Forms.Button();
+            this.txtActname = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgActs = new System.Windows.Forms.DataGridView();
+            this.timeEnd = new System.Windows.Forms.DateTimePicker();
+            this.timeStart = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblLayout = new System.Windows.Forms.Label();
             this.gpSeatMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // buttonLaggTillAkt
-            // 
-            this.buttonLaggTillAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLaggTillAkt.Location = new System.Drawing.Point(113, 100);
-            this.buttonLaggTillAkt.Name = "buttonLaggTillAkt";
-            this.buttonLaggTillAkt.Size = new System.Drawing.Size(54, 23);
-            this.buttonLaggTillAkt.TabIndex = 0;
-            this.buttonLaggTillAkt.Text = "+";
-            this.buttonLaggTillAkt.UseVisualStyleBackColor = true;
-            this.buttonLaggTillAkt.Click += new System.EventHandler(this.buttonLaggTillAkt_Click);
             // 
             // textBoxBeskrivning
             // 
-            this.textBoxBeskrivning.Location = new System.Drawing.Point(9, 29);
+            this.textBoxBeskrivning.Location = new System.Drawing.Point(6, 54);
             this.textBoxBeskrivning.Name = "textBoxBeskrivning";
-            this.textBoxBeskrivning.Size = new System.Drawing.Size(100, 20);
+            this.textBoxBeskrivning.Size = new System.Drawing.Size(137, 20);
             this.textBoxBeskrivning.TabIndex = 1;
             this.textBoxBeskrivning.Click += new System.EventHandler(this.textBoxBeskrivning_Click);
             this.textBoxBeskrivning.TextChanged += new System.EventHandler(this.textBoxBeskrivning_TextChanged);
@@ -152,74 +143,35 @@
             // labelBeskrivning
             // 
             this.labelBeskrivning.AutoSize = true;
-            this.labelBeskrivning.Location = new System.Drawing.Point(7, 16);
+            this.labelBeskrivning.Location = new System.Drawing.Point(6, 41);
             this.labelBeskrivning.Name = "labelBeskrivning";
             this.labelBeskrivning.Size = new System.Drawing.Size(62, 13);
             this.labelBeskrivning.TabIndex = 4;
             this.labelBeskrivning.Text = "Beskrivning";
-            this.labelBeskrivning.Click += new System.EventHandler(this.labelBeskrivning_Click);
-            // 
-            // labelAkter
-            // 
-            this.labelAkter.AutoSize = true;
-            this.labelAkter.Location = new System.Drawing.Point(3, 16);
-            this.labelAkter.Name = "labelAkter";
-            this.labelAkter.Size = new System.Drawing.Size(134, 13);
-            this.labelAkter.TabIndex = 9;
-            this.labelAkter.Text = "Aktnamn(lägg till akt/akter)";
-            this.labelAkter.Click += new System.EventHandler(this.labelAkter_Click);
             // 
             // labelDatum
             // 
             this.labelDatum.AutoSize = true;
-            this.labelDatum.Location = new System.Drawing.Point(7, 84);
+            this.labelDatum.Location = new System.Drawing.Point(157, 38);
             this.labelDatum.Name = "labelDatum";
             this.labelDatum.Size = new System.Drawing.Size(38, 13);
             this.labelDatum.TabIndex = 11;
             this.labelDatum.Text = "Datum";
             // 
-            // labelAntalFriplatser
-            // 
-            this.labelAntalFriplatser.AutoSize = true;
-            this.labelAntalFriplatser.Location = new System.Drawing.Point(6, 87);
-            this.labelAntalFriplatser.Name = "labelAntalFriplatser";
-            this.labelAntalFriplatser.Size = new System.Drawing.Size(79, 13);
-            this.labelAntalFriplatser.TabIndex = 12;
-            this.labelAntalFriplatser.Text = "Antal ståplatser";
-            this.labelAntalFriplatser.Click += new System.EventHandler(this.labelAntalFriplatser_Click);
-            // 
             // labelForsaljningstid
             // 
             this.labelForsaljningstid.AutoSize = true;
-            this.labelForsaljningstid.Location = new System.Drawing.Point(6, 153);
+            this.labelForsaljningstid.Location = new System.Drawing.Point(6, 81);
             this.labelForsaljningstid.Name = "labelForsaljningstid";
-            this.labelForsaljningstid.Size = new System.Drawing.Size(108, 13);
+            this.labelForsaljningstid.Size = new System.Drawing.Size(76, 13);
             this.labelForsaljningstid.TabIndex = 14;
-            this.labelForsaljningstid.Text = "Försäljningstid från/till";
-            // 
-            // txtActname
-            // 
-            this.txtActname.Location = new System.Drawing.Point(6, 29);
-            this.txtActname.Name = "txtActname";
-            this.txtActname.Size = new System.Drawing.Size(100, 20);
-            this.txtActname.TabIndex = 21;
-            this.txtActname.Click += new System.EventHandler(this.txtActname_Click);
-            // 
-            // textBoxAntalFriplatser
-            // 
-            this.textBoxAntalFriplatser.Location = new System.Drawing.Point(6, 103);
-            this.textBoxAntalFriplatser.Name = "textBoxAntalFriplatser";
-            this.textBoxAntalFriplatser.Size = new System.Drawing.Size(70, 20);
-            this.textBoxAntalFriplatser.TabIndex = 24;
-            this.textBoxAntalFriplatser.Click += new System.EventHandler(this.textBoxAntalFriplatser_Click);
-            this.textBoxAntalFriplatser.TextChanged += new System.EventHandler(this.textBoxAntalFriplatser_TextChanged);
-            this.textBoxAntalFriplatser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAntalFriplatser_KeyPress);
+            this.labelForsaljningstid.Text = "Försäljningstid ";
             // 
             // buttonLaggTIllForestallning
             // 
-            this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(18, 372);
+            this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(18, 389);
             this.buttonLaggTIllForestallning.Name = "buttonLaggTIllForestallning";
-            this.buttonLaggTIllForestallning.Size = new System.Drawing.Size(184, 55);
+            this.buttonLaggTIllForestallning.Size = new System.Drawing.Size(156, 31);
             this.buttonLaggTIllForestallning.TabIndex = 29;
             this.buttonLaggTIllForestallning.Text = "Skapa föreställning";
             this.buttonLaggTIllForestallning.UseVisualStyleBackColor = true;
@@ -227,32 +179,21 @@
             // 
             // buttonSparaAndringar
             // 
-            this.buttonSparaAndringar.Location = new System.Drawing.Point(219, 372);
+            this.buttonSparaAndringar.Location = new System.Drawing.Point(231, 388);
             this.buttonSparaAndringar.Name = "buttonSparaAndringar";
-            this.buttonSparaAndringar.Size = new System.Drawing.Size(184, 55);
+            this.buttonSparaAndringar.Size = new System.Drawing.Size(141, 31);
             this.buttonSparaAndringar.TabIndex = 30;
             this.buttonSparaAndringar.Text = "Spara ändringar";
             this.buttonSparaAndringar.UseVisualStyleBackColor = true;
             this.buttonSparaAndringar.Click += new System.EventHandler(this.buttonSparaAndringar_Click);
             // 
-            // buttonRaderaAkt
-            // 
-            this.buttonRaderaAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRaderaAkt.Location = new System.Drawing.Point(136, 219);
-            this.buttonRaderaAkt.Name = "buttonRaderaAkt";
-            this.buttonRaderaAkt.Size = new System.Drawing.Size(31, 23);
-            this.buttonRaderaAkt.TabIndex = 31;
-            this.buttonRaderaAkt.Text = "-";
-            this.buttonRaderaAkt.UseVisualStyleBackColor = true;
-            this.buttonRaderaAkt.Click += new System.EventHandler(this.buttonRaderaAkt_Click);
-            // 
             // dateTimePickerForsaljningstidFran
             // 
             this.dateTimePickerForsaljningstidFran.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerForsaljningstidFran.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerForsaljningstidFran.Location = new System.Drawing.Point(7, 169);
+            this.dateTimePickerForsaljningstidFran.Location = new System.Drawing.Point(9, 97);
             this.dateTimePickerForsaljningstidFran.Name = "dateTimePickerForsaljningstidFran";
-            this.dateTimePickerForsaljningstidFran.Size = new System.Drawing.Size(82, 20);
+            this.dateTimePickerForsaljningstidFran.Size = new System.Drawing.Size(79, 20);
             this.dateTimePickerForsaljningstidFran.TabIndex = 32;
             this.dateTimePickerForsaljningstidFran.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
             this.dateTimePickerForsaljningstidFran.ValueChanged += new System.EventHandler(this.dateTimePickerForsaljningstidFran_ValueChanged);
@@ -260,7 +201,7 @@
             // dateTimePickerForsaljningstidTill
             // 
             this.dateTimePickerForsaljningstidTill.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerForsaljningstidTill.Location = new System.Drawing.Point(95, 169);
+            this.dateTimePickerForsaljningstidTill.Location = new System.Drawing.Point(123, 97);
             this.dateTimePickerForsaljningstidTill.Name = "dateTimePickerForsaljningstidTill";
             this.dateTimePickerForsaljningstidTill.Size = new System.Drawing.Size(79, 20);
             this.dateTimePickerForsaljningstidTill.TabIndex = 33;
@@ -268,121 +209,24 @@
             // dateTimePickerDatum
             // 
             this.dateTimePickerDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDatum.Location = new System.Drawing.Point(6, 100);
+            this.dateTimePickerDatum.Location = new System.Drawing.Point(157, 54);
             this.dateTimePickerDatum.Name = "dateTimePickerDatum";
             this.dateTimePickerDatum.Size = new System.Drawing.Size(99, 20);
             this.dateTimePickerDatum.TabIndex = 34;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 153);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 13);
-            this.label4.TabIndex = 44;
-            this.label4.Text = "Tillagda akter";
-            // 
-            // labelAngeBeskrivningen
-            // 
-            this.labelAngeBeskrivningen.AutoSize = true;
-            this.labelAngeBeskrivningen.BackColor = System.Drawing.Color.White;
-            this.labelAngeBeskrivningen.ForeColor = System.Drawing.Color.Red;
-            this.labelAngeBeskrivningen.Location = new System.Drawing.Point(115, 36);
-            this.labelAngeBeskrivningen.Name = "labelAngeBeskrivningen";
-            this.labelAngeBeskrivningen.Size = new System.Drawing.Size(151, 13);
-            this.labelAngeBeskrivningen.TabIndex = 45;
-            this.labelAngeBeskrivningen.Text = "Du måste ange en beskrivning";
-            this.labelAngeBeskrivningen.Visible = false;
-            // 
-            // labelAngeAkt
-            // 
-            this.labelAngeAkt.AutoSize = true;
-            this.labelAngeAkt.BackColor = System.Drawing.Color.White;
-            this.labelAngeAkt.ForeColor = System.Drawing.Color.Red;
-            this.labelAngeAkt.Location = new System.Drawing.Point(3, 52);
-            this.labelAngeAkt.Name = "labelAngeAkt";
-            this.labelAngeAkt.Size = new System.Drawing.Size(153, 13);
-            this.labelAngeAkt.TabIndex = 46;
-            this.labelAngeAkt.Text = "Du måste lägga till minst en akt";
-            this.labelAngeAkt.Visible = false;
-            // 
-            // labelAngeStaplatser
-            // 
-            this.labelAngeStaplatser.AutoSize = true;
-            this.labelAngeStaplatser.BackColor = System.Drawing.Color.White;
-            this.labelAngeStaplatser.ForeColor = System.Drawing.Color.Red;
-            this.labelAngeStaplatser.Location = new System.Drawing.Point(6, 126);
-            this.labelAngeStaplatser.Name = "labelAngeStaplatser";
-            this.labelAngeStaplatser.Size = new System.Drawing.Size(156, 13);
-            this.labelAngeStaplatser.TabIndex = 47;
-            this.labelAngeStaplatser.Text = "Du måste ange antal ståplatser ";
-            this.labelAngeStaplatser.Visible = false;
-            // 
-            // dgActs
-            // 
-            this.dgActs.AllowUserToAddRows = false;
-            this.dgActs.AllowUserToDeleteRows = false;
-            this.dgActs.AllowUserToResizeColumns = false;
-            this.dgActs.AllowUserToResizeRows = false;
-            this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgActs.ColumnHeadersVisible = false;
-            this.dgActs.Location = new System.Drawing.Point(6, 169);
-            this.dgActs.Name = "dgActs";
-            this.dgActs.ReadOnly = true;
-            this.dgActs.RowHeadersVisible = false;
-            this.dgActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgActs.Size = new System.Drawing.Size(124, 73);
-            this.dgActs.TabIndex = 51;
-            this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.textBoxBeskrivning);
-            this.groupBox1.Controls.Add(this.labelBeskrivning);
-            this.groupBox1.Controls.Add(this.labelDatum);
-            this.groupBox1.Controls.Add(this.dateTimePickerDatum);
-            this.groupBox1.Controls.Add(this.dateTimePickerForsaljningstidFran);
-            this.groupBox1.Controls.Add(this.labelAngeBeskrivningen);
-            this.groupBox1.Controls.Add(this.labelForsaljningstid);
-            this.groupBox1.Controls.Add(this.dateTimePickerForsaljningstidTill);
-            this.groupBox1.Location = new System.Drawing.Point(12, 36);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(272, 248);
-            this.groupBox1.TabIndex = 52;
-            this.groupBox1.TabStop = false;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 9);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(164, 20);
+            this.label2.Size = new System.Drawing.Size(98, 16);
             this.label2.TabIndex = 53;
-            this.label2.Text = "Skapa föreställning";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dgActs);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtActname);
-            this.groupBox2.Controls.Add(this.buttonLaggTillAkt);
-            this.groupBox2.Controls.Add(this.labelAngeAkt);
-            this.groupBox2.Controls.Add(this.labelAngeStaplatser);
-            this.groupBox2.Controls.Add(this.buttonRaderaAkt);
-            this.groupBox2.Controls.Add(this.labelAkter);
-            this.groupBox2.Controls.Add(this.textBoxAntalFriplatser);
-            this.groupBox2.Controls.Add(this.labelAntalFriplatser);
-            this.groupBox2.Location = new System.Drawing.Point(306, 36);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(175, 248);
-            this.groupBox2.TabIndex = 54;
-            this.groupBox2.TabStop = false;
+            this.label2.Text = "Föreställning";
             // 
             // gpSeatMap
             // 
+            this.gpSeatMap.Controls.Add(this.lblLayout);
             this.gpSeatMap.Controls.Add(this.uncheck);
             this.gpSeatMap.Controls.Add(this.check);
             this.gpSeatMap.Controls.Add(this.lblActMap);
@@ -453,29 +297,29 @@
             this.gpSeatMap.Controls.Add(this.A6);
             this.gpSeatMap.Controls.Add(this.A5);
             this.gpSeatMap.Controls.Add(this.pictureBox1);
-            this.gpSeatMap.Location = new System.Drawing.Point(501, 36);
+            this.gpSeatMap.Location = new System.Drawing.Point(401, 12);
             this.gpSeatMap.Name = "gpSeatMap";
-            this.gpSeatMap.Size = new System.Drawing.Size(312, 397);
+            this.gpSeatMap.Size = new System.Drawing.Size(322, 414);
             this.gpSeatMap.TabIndex = 57;
             this.gpSeatMap.TabStop = false;
             // 
             // uncheck
             // 
-            this.uncheck.Location = new System.Drawing.Point(166, 368);
+            this.uncheck.Location = new System.Drawing.Point(174, 327);
             this.uncheck.Name = "uncheck";
-            this.uncheck.Size = new System.Drawing.Size(97, 23);
+            this.uncheck.Size = new System.Drawing.Size(141, 31);
             this.uncheck.TabIndex = 68;
-            this.uncheck.Text = "Avmarkera";
+            this.uncheck.Text = "Avmarkera alla platser";
             this.uncheck.UseVisualStyleBackColor = true;
             this.uncheck.Click += new System.EventHandler(this.uncheck_Click);
             // 
             // check
             // 
-            this.check.Location = new System.Drawing.Point(56, 368);
+            this.check.Location = new System.Drawing.Point(14, 327);
             this.check.Name = "check";
-            this.check.Size = new System.Drawing.Size(88, 23);
+            this.check.Size = new System.Drawing.Size(141, 31);
             this.check.TabIndex = 67;
-            this.check.Text = "Markera";
+            this.check.Text = "Markera alla platser";
             this.check.UseVisualStyleBackColor = true;
             this.check.Click += new System.EventHandler(this.check_Click);
             // 
@@ -499,11 +343,11 @@
             // 
             // btnSaveMap
             // 
-            this.btnSaveMap.Location = new System.Drawing.Point(56, 324);
+            this.btnSaveMap.Location = new System.Drawing.Point(14, 364);
             this.btnSaveMap.Name = "btnSaveMap";
             this.btnSaveMap.Size = new System.Drawing.Size(207, 29);
             this.btnSaveMap.TabIndex = 53;
-            this.btnSaveMap.Text = "Spara Layout till vald akt";
+            this.btnSaveMap.Text = "Spara layout till vald akt";
             this.btnSaveMap.UseVisualStyleBackColor = true;
             this.btnSaveMap.Click += new System.EventHandler(this.btnSaveMap_Click);
             // 
@@ -1219,59 +1063,227 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // labelAntalFriplatser
+            // 
+            this.labelAntalFriplatser.AutoSize = true;
+            this.labelAntalFriplatser.Location = new System.Drawing.Point(6, 184);
+            this.labelAntalFriplatser.Name = "labelAntalFriplatser";
+            this.labelAntalFriplatser.Size = new System.Drawing.Size(124, 13);
+            this.labelAntalFriplatser.TabIndex = 12;
+            this.labelAntalFriplatser.Text = "Antal ståplatser för akten";
+            // 
+            // textBoxAntalFriplatser
+            // 
+            this.textBoxAntalFriplatser.Location = new System.Drawing.Point(6, 199);
+            this.textBoxAntalFriplatser.Name = "textBoxAntalFriplatser";
+            this.textBoxAntalFriplatser.Size = new System.Drawing.Size(124, 20);
+            this.textBoxAntalFriplatser.TabIndex = 24;
+            this.textBoxAntalFriplatser.Click += new System.EventHandler(this.textBoxAntalFriplatser_Click);
+            this.textBoxAntalFriplatser.TextChanged += new System.EventHandler(this.textBoxAntalFriplatser_TextChanged);
+            this.textBoxAntalFriplatser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAntalFriplatser_KeyPress);
+            // 
+            // labelAkter
+            // 
+            this.labelAkter.AutoSize = true;
+            this.labelAkter.Location = new System.Drawing.Point(6, 145);
+            this.labelAkter.Name = "labelAkter";
+            this.labelAkter.Size = new System.Drawing.Size(49, 13);
+            this.labelAkter.TabIndex = 9;
+            this.labelAkter.Text = "Aktnamn";
+            // 
+            // buttonRaderaAkt
+            // 
+            this.buttonRaderaAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRaderaAkt.Location = new System.Drawing.Point(157, 304);
+            this.buttonRaderaAkt.Name = "buttonRaderaAkt";
+            this.buttonRaderaAkt.Size = new System.Drawing.Size(115, 31);
+            this.buttonRaderaAkt.TabIndex = 31;
+            this.buttonRaderaAkt.Text = "Ta bort akt >>";
+            this.buttonRaderaAkt.UseVisualStyleBackColor = true;
+            this.buttonRaderaAkt.Click += new System.EventHandler(this.buttonRaderaAkt_Click);
+            // 
+            // buttonLaggTillAkt
+            // 
+            this.buttonLaggTillAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLaggTillAkt.Location = new System.Drawing.Point(157, 242);
+            this.buttonLaggTillAkt.Name = "buttonLaggTillAkt";
+            this.buttonLaggTillAkt.Size = new System.Drawing.Size(115, 31);
+            this.buttonLaggTillAkt.TabIndex = 0;
+            this.buttonLaggTillAkt.Text = "<< Lägg till akt";
+            this.buttonLaggTillAkt.UseVisualStyleBackColor = true;
+            this.buttonLaggTillAkt.Click += new System.EventHandler(this.buttonLaggTillAkt_Click);
+            // 
+            // txtActname
+            // 
+            this.txtActname.Location = new System.Drawing.Point(6, 161);
+            this.txtActname.Name = "txtActname";
+            this.txtActname.Size = new System.Drawing.Size(137, 20);
+            this.txtActname.TabIndex = 21;
+            this.txtActname.Click += new System.EventHandler(this.txtActname_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 225);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 13);
+            this.label4.TabIndex = 44;
+            this.label4.Text = "Föreställningens akter";
+            // 
+            // dgActs
+            // 
+            this.dgActs.AllowUserToAddRows = false;
+            this.dgActs.AllowUserToDeleteRows = false;
+            this.dgActs.AllowUserToResizeColumns = false;
+            this.dgActs.AllowUserToResizeRows = false;
+            this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgActs.ColumnHeadersVisible = false;
+            this.dgActs.Location = new System.Drawing.Point(6, 241);
+            this.dgActs.Name = "dgActs";
+            this.dgActs.ReadOnly = true;
+            this.dgActs.RowHeadersVisible = false;
+            this.dgActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgActs.Size = new System.Drawing.Size(141, 98);
+            this.dgActs.TabIndex = 51;
+            this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellClick);
+            // 
+            // timeEnd
+            // 
+            this.timeEnd.CustomFormat = "HH:mm";
+            this.timeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timeEnd.Location = new System.Drawing.Point(247, 161);
+            this.timeEnd.Name = "timeEnd";
+            this.timeEnd.ShowUpDown = true;
+            this.timeEnd.Size = new System.Drawing.Size(67, 20);
+            this.timeEnd.TabIndex = 53;
+            // 
+            // timeStart
+            // 
+            this.timeStart.CustomFormat = "HH:mm";
+            this.timeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.timeStart.Location = new System.Drawing.Point(150, 161);
+            this.timeStart.Name = "timeStart";
+            this.timeStart.ShowUpDown = true;
+            this.timeStart.Size = new System.Drawing.Size(68, 20);
+            this.timeStart.TabIndex = 54;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(218, 164);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(23, 13);
+            this.label3.TabIndex = 56;
+            this.label3.Text = "Till:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 124);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 16);
+            this.label5.TabIndex = 58;
+            this.label5.Text = "Akter";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(94, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(23, 13);
+            this.label6.TabIndex = 60;
+            this.label6.Text = "Till:";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(9, 352);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(41, 13);
+            this.lblStatus.TabIndex = 61;
+            this.lblStatus.Text = "label1";
+            this.lblStatus.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.labelBeskrivning);
+            this.groupBox1.Controls.Add(this.lblStatus);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.textBoxAntalFriplatser);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.buttonRaderaAkt);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.labelAntalFriplatser);
+            this.groupBox1.Controls.Add(this.textBoxBeskrivning);
+            this.groupBox1.Controls.Add(this.labelAkter);
+            this.groupBox1.Controls.Add(this.buttonLaggTillAkt);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtActname);
+            this.groupBox1.Controls.Add(this.labelDatum);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.dgActs);
+            this.groupBox1.Controls.Add(this.dateTimePickerDatum);
+            this.groupBox1.Controls.Add(this.dateTimePickerForsaljningstidTill);
+            this.groupBox1.Controls.Add(this.dateTimePickerForsaljningstidFran);
+            this.groupBox1.Controls.Add(this.timeEnd);
+            this.groupBox1.Controls.Add(this.timeStart);
+            this.groupBox1.Controls.Add(this.labelForsaljningstid);
+            this.groupBox1.Location = new System.Drawing.Point(18, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(354, 371);
+            this.groupBox1.TabIndex = 62;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // lblLayout
+            // 
+            this.lblLayout.AutoSize = true;
+            this.lblLayout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLayout.Location = new System.Drawing.Point(14, 398);
+            this.lblLayout.Name = "lblLayout";
+            this.lblLayout.Size = new System.Drawing.Size(41, 13);
+            this.lblLayout.TabIndex = 62;
+            this.lblLayout.Text = "label1";
+            this.lblLayout.Visible = false;
+            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(829, 445);
-            this.Controls.Add(this.gpSeatMap);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(740, 432);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gpSeatMap);
             this.Controls.Add(this.buttonSparaAndringar);
             this.Controls.Add(this.buttonLaggTIllForestallning);
             this.Name = "ShowForm";
-            this.Text = "Forestallning";
+            this.Text = "Skapa föreställning";
             this.Load += new System.EventHandler(this.ShowForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.gpSeatMap.ResumeLayout(false);
             this.gpSeatMap.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonLaggTillAkt;
         private System.Windows.Forms.TextBox textBoxBeskrivning;
         private System.Windows.Forms.Label labelBeskrivning;
-        private System.Windows.Forms.Label labelAkter;
         private System.Windows.Forms.Label labelDatum;
-        private System.Windows.Forms.Label labelAntalFriplatser;
         private System.Windows.Forms.Label labelForsaljningstid;
-        private System.Windows.Forms.TextBox txtActname;
-        private System.Windows.Forms.TextBox textBoxAntalFriplatser;
         private System.Windows.Forms.Button buttonLaggTIllForestallning;
         private System.Windows.Forms.Button buttonSparaAndringar;
-        private System.Windows.Forms.Button buttonRaderaAkt;
         private System.Windows.Forms.DateTimePicker dateTimePickerForsaljningstidFran;
         private System.Windows.Forms.DateTimePicker dateTimePickerForsaljningstidTill;
         private System.Windows.Forms.DateTimePicker dateTimePickerDatum;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label labelAngeBeskrivningen;
-        private System.Windows.Forms.Label labelAngeAkt;
-        private System.Windows.Forms.Label labelAngeStaplatser;
-        private System.Windows.Forms.DataGridView dgActs;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox gpSeatMap;
         private System.Windows.Forms.CheckBox E8;
         private System.Windows.Forms.CheckBox E4;
@@ -1343,5 +1355,21 @@
         private System.Windows.Forms.Label lblActMap;
         private System.Windows.Forms.Button check;
         private System.Windows.Forms.Button uncheck;
+        private System.Windows.Forms.Label labelAntalFriplatser;
+        private System.Windows.Forms.TextBox textBoxAntalFriplatser;
+        private System.Windows.Forms.Label labelAkter;
+        private System.Windows.Forms.Button buttonRaderaAkt;
+        private System.Windows.Forms.Button buttonLaggTillAkt;
+        private System.Windows.Forms.TextBox txtActname;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgActs;
+        private System.Windows.Forms.DateTimePicker timeEnd;
+        private System.Windows.Forms.DateTimePicker timeStart;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblLayout;
     }
 }

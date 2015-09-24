@@ -27,13 +27,15 @@ namespace cirkus
         string sections = "ABCDEFGH";
         bool newcust;
         bool seatType = true;
-        DataTable shows, section, dtfSeats;
+        DataTable shows, section, dtfSeats,dtPersons;
         DataTable seats = new DataTable();
         DataTable chosenacts = new DataTable();
         DataTable selectedseats = new DataTable();
         DataTable acts = new DataTable();
         DataTable cSeats = new DataTable();
+        
         DataRow row;
+        DateTime showdate;
         BindingSource filterseats = new BindingSource();
         BindingSource filterBseats = new BindingSource();
         BindingSource filterActs = new BindingSource();
@@ -56,15 +58,17 @@ namespace cirkus
             shows = new DataTable();
             da.Fill(shows);
 
+            
             dataGridViewShows.DataSource = shows;
 
+
+            dataGridViewShows.Columns[1].HeaderText = "Namn";
+            dataGridViewShows.Columns[2].HeaderText = "Datum";
+
             this.dataGridViewShows.Columns[0].Visible = false;
-            dataGridViewShows.Columns[1].Width = 149;
-            dataGridViewShows.Columns[2].Width = 90;
+
 
             conn.Close();
-
-
 
             //loadActs();
 
@@ -72,18 +76,24 @@ namespace cirkus
         private void loadActs()
         {
             filterActs.DataSource = acts;
-            filterActs.Filter = string.Format("ticketid = '{0}'", comboTicketnr.SelectedItem.ToString());
+            filterActs.Filter = string.Format("ticketid = '{0}'", dgTickets.SelectedRows[0].Index.ToString());
             int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
-            filterSacts.DataSource = chosenacts;
-            filterSacts.Filter = string.Format("ticketid = '{0}'", comboTicketnr.SelectedItem.ToString());
+            int selectedIndex2 = dgTickets.SelectedRows[0].Index;
+            //filterSacts.DataSource = chosenacts;
+            //filterSacts.Filter = string.Format("ticketid = '{0}'", comboTicketnr.SelectedItem.ToString());
 
             showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
+            showdate = Convert.ToDateTime(dataGridViewShows[2, selectedIndex].Value.ToString());
 
             //lblshowid.Text = showid.ToString();
 
             string sql = "select acts.actid, acts.name from acts where showid = '" + showid + "'";
 
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+
+            //da.Fill(acts);
+            
+            dgActs.DataSource = acts;
             if (acts.Rows.Count > 0)
             {
                 for (int row = 0; row < acts.Rows.Count; row++)
@@ -92,11 +102,10 @@ namespace cirkus
                     if (rows.RowState != DataRowState.Deleted)
                     {
                         object id = rows[0];
-                        object id2 = comboTicketnr.SelectedItem.ToString();
-                        string a = comboTicketnr.SelectedItem.ToString();
+                        object id2 = dgTickets[0, selectedIndex2].Value.ToString();
+                        string a = dgTickets[0, selectedIndex2].Value.ToString();
                         string b = rows[0].ToString();
-                        //lbltest.Text = a;
-                        //lbltest2.Text = ticketid.ToString();
+                  
 
                         if (a != b)
                         {
@@ -127,6 +136,7 @@ namespace cirkus
 
                     conn.Open();
                     da.Fill(acts);
+                    
                     conn.Close();
                     for (int rw = 0; rw < acts.Rows.Count; rw++)
                     {
@@ -134,11 +144,12 @@ namespace cirkus
                         if (drw.RowState != DataRowState.Deleted)
                         {
                             object value3 = drw[0];
-                            object value4 = comboTicketnr.SelectedItem.ToString();
+                            object value4 = dgTickets[0, selectedIndex2].Value.ToString();
 
                             if (value3 == DBNull.Value)
                             {
-                                drw[0] = int.Parse(comboTicketnr.SelectedItem.ToString());
+                                drw[0] = int.Parse(dgTickets[0, selectedIndex2].Value.ToString());
+                             
 
                             }
                         }
@@ -158,11 +169,12 @@ namespace cirkus
                         if (drw.RowState != DataRowState.Deleted)
                         {
                             object value3 = drw[0];
-                            object value4 = comboTicketnr.SelectedItem.ToString();
+                            object value4 = dgTickets[0, selectedIndex2].Value.ToString();
 
                             if (value3 == DBNull.Value)
                             {
-                                drw[0] = int.Parse(comboTicketnr.SelectedItem.ToString());
+                                drw[0] = int.Parse(dgTickets[0, selectedIndex2].Value.ToString());
+                                //acts.Columns.Add(new DataColumn("Vald akter", typeof(bool)));
 
                             }
                         }
@@ -175,11 +187,11 @@ namespace cirkus
 
 
 
-            dataGridViewActs.DataSource = acts;
-            this.dataGridViewActs.Columns[0].Visible = false;
-            this.dataGridViewActs.Columns[1].Visible = false;
-            dataGridViewActs.Columns[1].Width = 129;
-            dataGridViewActs.ClearSelection();
+            //dataGridViewActs.DataSource = acts;
+            //this.dataGridViewActs.Columns[0].Visible = false;
+            //this.dataGridViewActs.Columns[1].Visible = false;
+            //dataGridViewActs.Columns[1].Width = 129;
+            //dataGridViewActs.ClearSelection();
 
 
 
@@ -206,20 +218,11 @@ namespace cirkus
                 //string sql = @"select section, rownumber from seats inner join available_seats on seats.seatid = available_seats.seatid 
                 //            inner join acts on available_seats.actid = acts.actid where acts.actid = '" + actid + "' order by section, rownumber";
                 //lbltest.Text = actid.ToString();
-                string sqlSearch = textBoxSeats.Text;
-                string sql3 = @"select available_seats.available_seats_id as seatid, seats.section, seats.rownumber from seats 
-                                inner join available_seats on seats.seatid = available_seats.seatid
-                                left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                inner join acts on available_seats.actid = acts.actid  
-                                where acts.actid = '" + actid + "' and LOWER(section)LIKE LOWER('%" + sqlSearch + "%') and booked_seats.booked_seat_id is null  order by section, rownumber";
+                
+             
 
 
-                conn.Open();
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql3, conn);
-
-                section = new DataTable();
-
-                da.Fill(section);
+               
 
                 //comboBoxSection.DataSource = dt;
                 //comboBoxSection.DisplayMember = "section";
@@ -230,12 +233,12 @@ namespace cirkus
 
                 //comboBoxSection.SelectedIndex = 0;
 
-                dgSeats.DataSource = section;
+               
                 //this.dgSeats.Columns[0].Visible = false;
                 //dgSeats.Columns[1].Width = 60;
                 //dgSeats.Columns[2].Width = 60;
                 //dgSeats.CurrentCell.Selected = false;
-                conn.Close();
+               
 
                 //dgTest.DataSource = section;
 
@@ -251,9 +254,7 @@ namespace cirkus
 
             try
             {
-                int selectedIndexSeat = dgSeats.SelectedRows[0].Index;
-
-                seatid = int.Parse(dgSeats[0, selectedIndexSeat].Value.ToString());
+                
 
                 //label11.Text = seatid.ToString();
             }
@@ -332,14 +333,29 @@ namespace cirkus
         private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
         {
             dataGridViewShows.BackgroundColor = Color.WhiteSmoke;
-            lblNoShow.Visible = false;
+            lblStatus1.Visible = false;
             int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
 
             showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
             show = dataGridViewShows[1, selectedIndex].Value.ToString();
             //load_Seats();
             conn.Close();
-
+            conn.Open();
+            string sql = @"Select acts.name, acts.start_time, acts.end_time, count(available_seats.available_seats_id) from acts 
+                            inner join show on acts.showid = show.showid
+                            inner join available_seats on available_seats.actid = acts.actid
+                            where show.showid = '"+showid+"' group by acts.actid,acts.name, acts.start_time, acts.end_time";
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            
+            da.Fill(dt);
+            dgShowActs.DataSource = dt;
+            dgShowActs.Columns[0].HeaderText = "Namn";
+            dgShowActs.Columns[1].HeaderText = "Starttid";
+            dgShowActs.Columns[2].HeaderText = "Sluttid";
+            dgShowActs.Columns[3].HeaderText = "Lediga platser";
+            dgShowActs.ClearSelection();
+            conn.Close();
 
 
         }
@@ -353,8 +369,16 @@ namespace cirkus
             txtfnamn.Enabled = false;
             txttel.Enabled = false;
             acts.Columns.Add("ticketid");
+            acts.Columns.Add("actid");
+            acts.Columns.Add("name");
+            acts.Columns.Add("Vald akter", typeof(bool)).SetOrdinal(3);
+            acts.Columns.Add("agegroup");
+            
 
-            selectedseats.Columns.Add("seatid");
+
+
+
+        selectedseats.Columns.Add("seatid");
             selectedseats.Columns.Add("actid");
             selectedseats.Columns.Add("section");
             selectedseats.Columns.Add("rownumber");
@@ -376,6 +400,10 @@ namespace cirkus
             cSeats.Columns.Add("section");
             cSeats.Columns.Add("rownumber");
             cSeats.Columns.Add("priceid");
+            lblStatus1.Visible = false;
+            
+            
+           
 
 
         }
@@ -384,34 +412,51 @@ namespace cirkus
         private void buttonAdd_Click(object sender, EventArgs e)
         {
 
-            if (total > 0 && string.IsNullOrWhiteSpace(txtBoxNrP.Text) == false)
+            if (total > 0 && string.IsNullOrWhiteSpace(txtBoxNrP.Text) == false && EndastSiffror(txtBoxNrP.Text) == true)
             {
                 panel1.Visible = true;
                 panel2.Visible = false;
-                nrotickets = Convert.ToInt16(txtBoxNrP.Text);
-                for (int i = 1; i <= nrotickets; i++)
+                nrotickets = Convert.ToInt32(txtBoxNrP.Text);
+                dtPersons = new DataTable();
+                dtPersons.Columns.Add("id");
+                dtPersons.Columns.Add("Person/Biljett");
+                dtPersons.Columns.Add("agegroup");
+                DataRow dr;
+                for (int i = 0; i < nrotickets; i++)
                 {
-                    comboTicketnr.Items.Add(i);
+                    dr = dtPersons.NewRow();
+                    int z = i + 1;
+                    dr[0] = i;
+                    dr[1] = "Person" + z.ToString();
+                    dr[2] = 3;
+                    dtPersons.Rows.Add(dr);
+
+                    
+                    
                 }
-                comboTicketnr.Text = "1";
+                dgTickets.DataSource = dtPersons;
+                //comboTicketnr.Text = "2";
                 load_Seats();
 
             }
-            else {
-                lblTotalError.Visible = true;
-                lblTotalError.Text = "Vänligen ange antal personer";
-                lblTotalError.ForeColor = Color.Tomato;
-                txtBoxNrP.BackColor = Color.Tomato;
-                lblA.Text = "";
-                lblB.Text = "";
+            else if (dataGridViewShows.SelectedRows.Count == 0)
+            {
+                lblStatus1.Visible = true;
+                lblStatus1.Text = "Välj en föreställning";
+                lblStatus1.ForeColor = Color.Tomato;
+                dataGridViewShows.BackColor = Color.Tomato;
+
+         
+             
 
             }
-            if (dataGridViewShows.SelectedRows.Count == 0)
+            else if (string.IsNullOrWhiteSpace(txtBoxNrP.Text) == true || EndastSiffror(txtBoxNrP.Text) == false)
             {
-                lblNoShow.Visible = true;
-                lblNoShow.Text = "Välj en föreställning";
-                lblNoShow.ForeColor = Color.Tomato;
-                dataGridViewShows.BackColor = Color.Tomato;
+
+                lblStatus1.Visible = true;
+                lblStatus1.Text = "Vänligen ange antal personer med siffor";
+                lblStatus1.ForeColor = Color.Tomato;
+                txtBoxNrP.BackColor = Color.Tomato;
 
 
             }
@@ -422,14 +467,16 @@ namespace cirkus
         {
 
             panel2.Visible = true;
-
+          
 
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            dateReservedto.Value = showdate;
+            dateReservedto.Value = dateReservedto.Value.Subtract(TimeSpan.FromDays(7));
+            
             if (newcust == true)
             {
                 string fn = txtfnamn.Text;
@@ -462,10 +509,12 @@ namespace cirkus
                 conn.Close();
                 panel3.Visible = true;
                 //panel2.Visible = false;
+                string path = "C:\\plats\\";
+                FileStream fs = new FileStream(path, FileMode.Create);
 
 
             }
-            if (newcust == false)
+            if (newcust == false || cbDf.Checked == true)
             {
                 panel3.Visible = true;
                 //panel2.Visible = false;
@@ -490,6 +539,7 @@ namespace cirkus
 
 
                 }
+                cbDf.Enabled = false;
                 newcust = true;
                 txtenamn.Enabled = true;
                 txtepost.Enabled = true;
@@ -509,6 +559,7 @@ namespace cirkus
                 txtepost.Enabled = false;
                 txtfnamn.Enabled = false;
                 txttel.Enabled = false;
+                cbDf.Enabled = true;
 
             }
         }
@@ -526,52 +577,12 @@ namespace cirkus
 
         private void selected_seat(object sender, DataGridViewCellEventArgs e)
         {
-            int selectedIndex = dgSeats.SelectedRows[0].Index;
-
-            seatid = int.Parse(dgSeats[0, selectedIndex].Value.ToString());
+           
 
             //label11.Text = seatid.ToString();
         }
 
-        private void btnAddSeats_Click(object sender, EventArgs e)
-        {
 
-            if (checkedseats < total)
-            {
-
-                foreach (DataGridViewRow r in dgSeats.SelectedRows)
-                {
-                    DataGridViewRow t = (DataGridViewRow)r.Clone();
-                    t.Cells[0].Value = r.Cells[0].Value;
-                    t.Cells[1].Value = r.Cells[1].Value;
-                    t.Cells[2].Value = r.Cells[2].Value;
-                    t.Cells[3].Value = r.Cells[3].Value;
-
-
-                    row = selectedseats.NewRow();
-                    row[0] = r.Cells[0].Value;
-                    row[1] = r.Cells[1].Value;
-                    row[2] = r.Cells[2].Value;
-                    row[3] = r.Cells[3].Value;
-                    row[4] = ticketid;
-                    row[5] = priceid;
-                    selectedseats.Rows.Add(row);
-
-                    filterseats.RemoveAt(dgSeats.CurrentCell.RowIndex);
-
-                    //dgTest.DataSource = selectedseats;
-                    dgBseats.DataSource = selectedseats;
-
-
-                }
-
-
-
-
-
-            }
-
-        }
 
         private void btnRemSeats_Click(object sender, EventArgs e)
         {
@@ -580,164 +591,313 @@ namespace cirkus
 
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int selectedIndex = dgActs.SelectedRows[0].Index;
 
-            actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
+            if (cbAgegroup.Text == "Åldersgrupp" || cbAgegroup.SelectedIndex == -1)
+            {
+                lblStatusAge.Visible = true;
+                lblStatusAge.Text = "Vänligen välj åldersgrupp";
+                lblStatusAge.ForeColor = Color.Tomato;
+                return;
 
-            dgSeats.DataSource = seats;
-            /*filterseats.Filter = string.Format("actid = '{0}'", actid);
-            filterBseats.DataSource = selectedseats;
-            filterBseats.Filter = string.Format("actid = '{0}'", actid);
-            dgSeats.Columns[0].Visible = false;
-            dgSeats.Columns[1].Visible = false;
-            ///dgBseats.Columns[1].Visible = false;
-            /*dgSeats.DataSource = seats;
+            }
+            else
+            {
+                gpSeatMap.Enabled = true;
+                
+            }
+         
+                
+        //    int selectedIndex = dgActs.SelectedRows[0].Index;
+
+        //    actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
+
+
+        //    /*filterseats.Filter = string.Format("actid = '{0}'", actid);
+        //    filterBseats.DataSource = selectedseats;
+        //    filterBseats.Filter = string.Format("actid = '{0}'", actid);
+        //    dgSeats.Columns[0].Visible = false;
+        //    dgSeats.Columns[1].Visible = false;
+        //    /dgBseats.Columns[1].Visible = false;
+        //    /*dgSeats.DataSource = seats;
            
 
-            dgBseats.DataSource = selectedseats;
+        //    dgBseats.DataSource = selectedseats;
           
 
         
-            dgSeats.ClearSelection();
-            dgBseats.ClearSelection();*/
+        //    dgSeats.ClearSelection();
+        //    dgBseats.ClearSelection();*/
 
-            dgTEST.DataSource = cSeats;
-            string sid = actid.ToString();
+        //    dgTEST.DataSource = cSeats;
+        //    string sid = actid.ToString();
 
-            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            {
-                cb.Checked = true;
-                cb.Enabled = false;
+        //    foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+        //    {
+        //        cb.Checked = true;
+        //        cb.Enabled = false;
 
-            }
+        //    }
 
-            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            {
-                foreach (DataRow row in cSeats.Rows)
-                {
-                    string s = row[2].ToString() + row[3].ToString();
-                    int aid = int.Parse(row[5].ToString());
-                    lblS.Text = s;
-                    if (row[5].ToString() == sid)
-                    {
-                        if (cb.Name == s)
-                        {
-                            cb.Enabled = true;
-                            cb.Checked = false;
-                            //cb.BackColor = Color.Green;
+        //    foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+        //    {
+        //        foreach (DataRow row in cSeats.Rows)
+        //        {
+        //            string s = row[2].ToString() + row[3].ToString();
+        //            int aid = int.Parse(row[5].ToString());
+        //            lblS.Text = s;
+        //            if (row[5].ToString() == sid)
+        //            {
+        //                if (cb.Name == s)
+        //                {
+        //                    cb.Enabled = true;
+        //                    cb.Checked = false;
+        //                    cb.BackColor = Color.Green;
 
-                            object value = row[0];
+        //                    object value = row[0];
 
-                            if (value != DBNull.Value && aid == actid)
-                            {
-                                cb.Enabled = false;
-                                cb.Checked = true;
-                                //cb.BackColor = Color.Purple;
-
-
-                            }
-
-                        }
+        //                    if (value != DBNull.Value && aid == actid)
+        //                    {
+        //                        cb.Enabled = false;
+        //                        cb.Checked = true;
+        //                        cb.BackColor = Color.Purple;
 
 
-                    }
-                    else
-                    {
+        //                    }
+
+        //                }
 
 
-                    }
-
-                }
-
-            }
-            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            {
-                if (cb.Enabled == false && cb.Checked == false)
-                {
-                    cb.Checked = false;
-                    //cb.BackColor = Color.Gray;
-
-                }
+        //            }
+        //            else
+        //            {
 
 
-            }
-        }
+        //            }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            switch (agegroup)
-            {
-                case 0:
-                    MessageBox.Show("Välj åldersgrupp");
-                    return;
+        //        }
 
-                case 1:
-                    priceid = 1;
+        //    }
+        //    foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+        //    {
+        //        if (cb.Enabled == false && cb.Checked == false)
+        //        {
+        //            cb.Checked = false;
+        //            cb.BackColor = Color.Gray;
 
-
+        //        }
 
 
-                    break;
-                case 2:
-                    priceid = 3;
-                    break;
-                case 3:
-                    priceid = 4;
-                    break;
-            }
-            foreach (DataGridViewRow r in dataGridViewActs.SelectedRows)
-            {
-                DataGridViewRow t = (DataGridViewRow)r.Clone();
-                t.Cells[0].Value = r.Cells[0].Value;
-                t.Cells[1].Value = r.Cells[1].Value;
-                t.Cells[2].Value = r.Cells[2].Value;
+        //    }
+        //}
 
-                row = chosenacts.NewRow();
-                row[0] = r.Cells[0].Value;
-                row[1] = r.Cells[1].Value;
-                row[2] = r.Cells[2].Value;
-                row[3] = priceid;
-                chosenacts.Rows.Add(row);
+        //private void button7_Click(object sender, EventArgs e)
+        //{
+        //    switch (agegroup)
+        //    {
+        //        case 0:
+        //            MessageBox.Show("Välj åldersgrupp");
+        //            return;
+
+        //        case 1:
+        //            priceid = 1;
 
 
 
 
+        //            break;
+        //        case 2:
+        //            priceid = 3;
+        //            break;
+        //        case 3:
+        //            priceid = 5;
+        //            break;
+        //    }
+        //    foreach (DataGridViewRow r in dataGridViewActs.SelectedRows)
+        //    {
+        //        DataGridViewRow t = (DataGridViewRow)r.Clone();
+        //        t.Cells[0].Value = r.Cells[0].Value;
+        //        t.Cells[1].Value = r.Cells[1].Value;
+        //        t.Cells[2].Value = r.Cells[2].Value;
 
-                dgActs.DataSource = chosenacts;
-                filterActs.RemoveAt(dataGridViewActs.SelectedRows[0].Index);
-                dgActs.Columns[0].Visible = false;
-                dgActs.Columns[1].Visible = false;
+        //        row = chosenacts.NewRow();
+        //        row[0] = r.Cells[0].Value;
+        //        row[1] = r.Cells[1].Value;
+        //        row[2] = r.Cells[2].Value;
+        //        row[3] = priceid;
+        //        chosenacts.Rows.Add(row);
 
 
-                //DataRow[] rows = section.Select("actid ='" + actid + "'");
-                //foreach (DataRow rw in rows)
-                //rw.Delete();
-                //dataGridViewActs.Rows.Remove(dataGridViewActs.SelectedRows[0]);
-                dgActs.ClearSelection();
-                dataGridViewActs.ClearSelection();
-                //dgSeats.DataSource = seats;
-                //reload_datable();
-                //dgTestActs.DataSource = chosenacts;
-                //load_Seats();
 
-            }
+
+
+        //        dgActs.DataSource = chosenacts;
+        //        filterActs.RemoveAt(dataGridViewActs.SelectedRows[0].Index);
+        //        dgActs.Columns[0].Visible = false;
+        //        dgActs.Columns[1].Visible = false;
+
+
+        //        DataRow[] rows = section.Select("actid ='" + actid + "'");
+        //        foreach (DataRow rw in rows)
+        //            rw.Delete();
+        //        dataGridViewActs.Rows.Remove(dataGridViewActs.SelectedRows[0]);
+        //        dgActs.ClearSelection();
+        //        dataGridViewActs.ClearSelection();
+        //        dgSeats.DataSource = seats;
+        //        reload_datable();
+        //        dgTestActs.DataSource = chosenacts;
+        //        load_Seats();
+
+            //}
         }
 
         private void txtBoxNrP_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtBoxNrP.Text) == false)
+            if (EndastSiffror(txtBoxNrP.Text) == true && string.IsNullOrWhiteSpace(txtBoxNrP.Text) == false)
             {
-                total = Convert.ToInt16(txtBoxNrP.Text);
-                countSeats();
+                total = Convert.ToInt32(txtBoxNrP.Text);
+                //countSeats();
+                foreach(DataGridViewRow r in dgShowActs.Rows)
+                {
+
+                    int check = Convert.ToInt32(r.Cells[3].Value);
+                    if(check < total)
+                    {
+
+                        r.DefaultCellStyle.BackColor = Color.Tomato;
+                    }
+                    else
+                    {
+                        r.DefaultCellStyle.BackColor = Color.LawnGreen;
+
+                    }
+
+                }
             }
             else
             {
-                lblA.Text = "";
-                lblB.Text = "";
+                
             }
 
 
 
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //conn.Open();
+            //NpgsqlDataAdapter da = new NpgsqlDataAdapter("select acts.actid, acts.name from acts inner join show on acts.showid = show.showid where show.showid = '"+showid+"'", conn);
+            //da.Fill(acts);
+            //conn.Close();
+            cbAgegroup.SelectedIndex = -1;
+            int dgIndex = dgTickets.SelectedRows[0].Index;
+            ticketid = int.Parse(dgTickets[0, dgIndex].Value.ToString());
+            loadActs();
+            this.dgActs.Columns[0].ReadOnly = true;
+            this.dgActs.Columns[1].ReadOnly = true;
+            this.dgActs.Columns[2].ReadOnly = true;
+            this.dgActs.Columns[3].ReadOnly = true;
+            this.dgActs.Columns[0].Visible = false;
+            this.dgActs.Columns[1].Visible = false;
+            int age = int.Parse(dgTickets[2, dgIndex].Value.ToString());
+            if(age == 0)
+            {
+                cbAgegroup.SelectedIndex = 0;
+            }
+            else if(age == 1)
+            {
+                cbAgegroup.SelectedIndex = 1;
+
+            } 
+            else if(age == 2)
+            {
+                cbAgegroup.SelectedIndex = 2;
+            }
+            else if(age == 3)
+            {
+
+                cbAgegroup.SelectedIndex = -1;
+                cbAgegroup.Text = "Åldersgrupp";
+            }
+         
+            
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if(cbAgegroup.SelectedIndex != -1)
+            {
+                foreach (DataGridViewRow r in dgActs.Rows)
+                {
+                    r.Cells[3].Value = false;
+                    if (Convert.ToBoolean(r.Cells[3].Value) == false)
+                        r.Cells[3].Value = true;
+                }
+            }
+            else
+            {
+                
+                lblStatusAge.Visible = true;
+                lblStatusAge.Text = "Vänligen välj åldersgrupp";
+                lblStatusAge.ForeColor = Color.Tomato;
+                return;
+            }
+  
+        }
+
+        private void dgTickets_SelectionChanged(object sender, EventArgs e)
+        {
+            //int dgIndex = dgTickets.SelectedRows[0].Index;
+            //int age = int.Parse(dgTickets[2, dgIndex].Value.ToString());
+            //if(age < 3)
+            //{
+            //    cbAgegroup.SelectedIndex = age;
+            //}
+            //else if( age == 3)
+            //{
+                
+
+
+            //}
+            
+            
+       
+        }
+
+        private void dgTickets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cbDf_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cbDf.Checked == true)
+            {
+                radioPaid.Enabled = false;
+                radioRes.Enabled = false;
+                dateReservedto.Enabled = false;
+                this.dgCustom.DataSource = null;
+                radioPaid.Checked = true;
+                checkBox2.Enabled = false;
+
+
+            }
+            else if(cbDf.Checked == false)
+            {
+                radioPaid.Enabled = true;
+                radioRes.Enabled = true;
+                dateReservedto.Enabled = true;
+                listCustomers();
+
+                checkBox2.Enabled = true;
+
+            }
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -805,7 +965,8 @@ namespace cirkus
         {
 
             txtBoxNrP.BackColor = Color.White;
-            lblTotalError.Visible = false;
+            lblStatus1.Visible = false;
+            
         }
 
         private void btnSaveTicket_Click(object sender, EventArgs e)
@@ -869,10 +1030,10 @@ namespace cirkus
         {
             int cboIndex = comboTicketnr.SelectedIndex;
             ticketid = int.Parse(this.comboTicketnr.Items[cboIndex].ToString());
-            //lbltest.Text = ticketid.ToString();
+          
             
             loadActs();
-            countSeats();
+            
         }
 
         private void radioLoge_CheckedChanged(object sender, EventArgs e)
@@ -910,8 +1071,11 @@ namespace cirkus
         {
             button1.Enabled = false;
             createBooking();
-
-            SendMail();
+            if(cbDf.Checked == false)
+            {
+                SendMail();
+            }
+            
 
         }
 
@@ -919,24 +1083,51 @@ namespace cirkus
         {
             if (cbAgegroup.Text == "Barn")
             {
-                agegroup = 1;
-
+                agegroup = 0;
+                this.dgActs.Columns[3].ReadOnly = false;
+                lblStatusAge.Visible = false;
             }
+
             if (cbAgegroup.Text == "Ungdom")
             {
-                agegroup = 2;
-
+                agegroup = 1;
+                this.dgActs.Columns[3].ReadOnly = false;
+                lblStatusAge.Visible = false;
             }
             if (cbAgegroup.Text == "Vuxen")
             {
 
-                agegroup = 3;
-
+                agegroup = 2;
+                this.dgActs.Columns[3].ReadOnly = false;
+                lblStatusAge.Visible = false;
             }
             if (cbAgegroup.Text == "Åldersgrupp")
             {
+                agegroup = 4;
                 MessageBox.Show("Välj ålersgrupp för biljetten");
+                this.dgActs.Columns[3].ReadOnly = true;
                 return;
+            }
+            foreach (DataRow r in acts.Rows)
+            {
+                int id = Convert.ToInt16(r[0]);
+                if (ticketid == id)
+                {
+                    r[4] = agegroup;
+
+                }
+
+
+            }
+            foreach (DataRow r in dtPersons.Rows)
+            {
+                int id = Convert.ToInt16(r[0]);
+                if (ticketid == id)
+                {
+                    r[2] = agegroup;
+
+                }
+
             }
         }
 
@@ -1036,32 +1227,7 @@ namespace cirkus
             dataGridViewShows.CurrentCell.Selected = false;
 
         }
-        private void reload_datable()
-        {
-            dgSeats.DataSource = null;
-            dgSeats.DataSource = section;
-            this.dgSeats.Columns[0].Visible = false;
-            dgSeats.Columns[1].Width = 60;
-            dgSeats.Columns[2].Width = 60;
-            //this.dgSeats.CurrentCell = this.dgSeats[1, 0];
 
-            try
-            {
-
-                int selectedIndex = dgSeats.SelectedRows[0].Index;
-
-                seatid = int.Parse(dgSeats[0, selectedIndex].Value.ToString());
-
-                //label11.Text = seatid.ToString();
-
-            }
-            catch
-            {
-
-            }
-
-
-        }
         private void createBooking()
         {
             string sql;
@@ -1092,7 +1258,7 @@ namespace cirkus
                         tickets.Rows.Add(rw);
 
                         progressBar1.Value = 20;
-                        dgTEST.DataSource = tickets;
+                        //dgTEST.DataSource = tickets;
                     }
 
                 }
@@ -1104,11 +1270,36 @@ namespace cirkus
                 string tid = i.ToString();
 
 
-                conn.Open();
-                sql = "insert into booking(customerid,showid) values(:cid,:shid)";
-                cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
-                cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+
+                if (radioRes.Checked == true)
+                {
+                    conn.Open();
+                    sql = "insert into booking(customerid,showid, reserved_to) values(:cid,:shid, :rto)";
+                    cmd = new NpgsqlCommand(sql, conn);
+                    cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
+                    cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+                    cmd.Parameters.Add(new NpgsqlParameter("rto", dateReservedto.Value.ToString("yyyy-MM-dd")));
+
+                }
+                else if (radioPaid.Checked == true && cbDf.Checked == false)
+                {
+                    conn.Open();
+                    sql = "insert into booking(customerid,showid, paid) values(:cid,:shid, :rto)";
+                    cmd = new NpgsqlCommand(sql, conn);
+                    cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
+                    cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+                    cmd.Parameters.Add(new NpgsqlParameter("rto", true));
+
+                }
+                else if (cbDf.Checked == true && radioPaid.Checked == true)
+                {
+                    conn.Open();
+                    sql = "insert into booking(showid, paid) values(:shid, :rto)";
+                    cmd = new NpgsqlCommand(sql, conn);  
+                    cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
+                    cmd.Parameters.Add(new NpgsqlParameter("rto", true));
+                }
+                
 
 
                 cmd.ExecuteNonQuery();
@@ -1170,82 +1361,9 @@ namespace cirkus
             //SendMail();
 
         }               
-        private void countSeats()
-        {
-            if (dataGridViewShows.SelectedRows.Count > 0)
-            {
-                try
-                {
-                    string sql = @"select count(available_seats.available_seats_id) from available_seats 
-                           inner join acts on available_seats.actid = acts.actid 
-                           inner join show on acts.showid = show.showid where show.showid = '" + showid + "'";
-                    conn.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
-                    NpgsqlDataReader read;
-                    read = cmd.ExecuteReader();
-
-                    read.Read();
-                    freeLseats = int.Parse(read[0].ToString());
-                    conn.Close();
-
-                    /*conn.Open();
-                    sql = @"select acts.free_placement - count(booked_standing) as diff  from acts
-                                inner join booked_standing on acts.actid = booked_standing.actid
-                                inner join show on acts.showid = show.showid
-                                where show.showid = '"+showid+"' group by acts.free_placement";
-                    cmd = new NpgsqlCommand(sql, conn);
-
-                    read = cmd.ExecuteReader();
-
-                    read.Read();
-                    freeSseats = int.Parse(read[0].ToString());*/
-                    conn.Close();
-                 
-                    if (freeLseats < total && total > 0)
-                    {
-                        lblA.Visible = true;
-                        lblA.Text = "Antal personer överstiger antal lediga sittplatser";
-                        lblA.ForeColor = Color.Tomato;                       
-
-                    }
-                    else if(freeLseats >= total && total > 0)
-                    {
-                        lblA.Visible = true;
-                        lblA.Text = "Lediga sittplatser";
-                        lblA.ForeColor = Color.Green;
-                    }
-
-                    /*if (freeSseats < total && total > 0 )
-                    {
-                        lblB.Visible = true;
-                        lblB.Text = "Antal personer överstiger antal lediga ståplatser";
-                        lblB.ForeColor = Color.Tomato;
-
-                    }*/
-                    else if(freeSseats >= total && total > 0)
-                    {
-                        lblB.Visible = true;
-                        lblB.Text = "Lediga ståplatser";
-                        lblB.ForeColor = Color.Green;
-                    }
-
-                }
-                catch 
-                {
-                    
-
-                }
-
-
-            }
-
-        }
         public void SendMail()
         {
-            
-
-        
        
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("select customerid, email, fname, lname from customer where customerid = '" + customerid + "';", conn);
@@ -1277,7 +1395,7 @@ namespace cirkus
                 client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
                 client.EnableSsl = true;
 
-                string show_date, aldersgrupp;
+                string show_date;
                 conn.Open();
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(@"select distinct booking.bookingid,booking.customerid from booking where booking.showid = '"+showid+"' and booking.customerid = '"+customerid+"'", conn);
                 DataTable dtBid = new DataTable();
@@ -1285,7 +1403,7 @@ namespace cirkus
                 da.Fill(dtBid);
                 conn.Close();
                 progressBar1.Value = 70;
-                dgTEST.DataSource = dtBid;
+                //dgTEST.DataSource = dtBid;
                 foreach (DataRow row in dtBid.Rows)
                 {
                     int bid = int.Parse(row[0].ToString());
@@ -1312,9 +1430,14 @@ namespace cirkus
                                                 inner join booking on booked_seats.bookingid = booking.bookingid
                                                 where booking.bookingid = '"+bid+"'group by price_group_seat.group", conn);
                     NpgsqlDataReader read = cmd.ExecuteReader();
-                    read.Read();
-                    string pris = read[0].ToString();
-                    aldersgrupp = read[1].ToString();
+                    string pris ="";
+                    string aldersgrupp = "";
+                    while (read.Read())
+                    {
+                        pris = read[0].ToString();
+                        aldersgrupp = read[1].ToString();
+                    }
+                   
                     conn.Close();
                     progressBar1.Value = 80;
                     conn.Open();
@@ -1330,9 +1453,23 @@ namespace cirkus
                     Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
                     PdfWriter writer = PdfWriter.GetInstance(doc, ms);
 
+                    //doc.Open();
+                    //doc.Add(new Paragraph("BiljettNr:" + bokningid + "\nFöreställning: " + show + "\nDatum: " + show_date + " \nÅldersgrupp: " + aldersgrupp + "\nBiljett för " + actname +"\nPris:" + pris));
+
+                    //writer.CloseStream = false;
+                    //doc.Close();
+
+                    //Drawing
                     doc.Open();
-                    doc.Add(new Paragraph("BiljettNr:" + bokningid + "\nFöreställning: " + show + "\nDatum: " + show_date + " \nÅldersgrupp: " + aldersgrupp + "\nBiljett för " + actname +"\nPris:" + pris));
-                    
+                    doc.Add(new Paragraph("BiljettNr:" + bokningid));
+                    doc.Add(new Paragraph("Föreställning:" + show));
+                    doc.Add(new Paragraph("Åldersgrupp:" + aldersgrupp));
+                    doc.Add(new Paragraph("Biljett för " + actname));
+                    doc.Add(new Paragraph("Pris:" + pris));
+                    doc.Add(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
+
+
+
                     writer.CloseStream = false;
                     doc.Close();
                     ms.Position = 0;
@@ -1370,7 +1507,18 @@ namespace cirkus
 
 
         }
-
+        public bool EndastSiffror(string värde)
+        {
+            bool barasiffror = true;
+            foreach (char siffra in värde)
+            {
+                if (!char.IsDigit(siffra))
+                {
+                    barasiffror = false;
+                }
+            }
+            return barasiffror;
+        }
 
     }
 }
