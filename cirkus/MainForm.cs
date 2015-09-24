@@ -440,7 +440,7 @@ namespace cirkus
             e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 150));
             e.Graphics.DrawString(forestallning, drawFontBold, drawBrush, new PointF(300, 200));
             e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 250));
-            e.Graphics.DrawString( , drawFontBold, drawBrush, new PointF(300, 300));
+            e.Graphics.DrawString( akttider, drawFontBold, drawBrush, new PointF(300, 300));
             e.Graphics.DrawString(pris, drawFontBold, drawBrush, new PointF(300, 350));
 
         }
