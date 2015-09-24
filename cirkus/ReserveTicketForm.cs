@@ -387,6 +387,9 @@ namespace cirkus
             cSeats.Columns.Add("rownumber");
             cSeats.Columns.Add("priceid");
             lblStatus1.Visible = false;
+            
+            
+           
 
 
         }
@@ -400,13 +403,17 @@ namespace cirkus
                 panel1.Visible = true;
                 panel2.Visible = false;
                 nrotickets = Convert.ToInt32(txtBoxNrP.Text);
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Person/Biljett");
                 for (int i = 1; i <= nrotickets; i++)
                 {
                     comboTicketnr.Items.Add(i);
-                    dgTickets.Rows.Add("Biljett " + i.ToString());
-                    dgTickets.Columns[0].Name = "Person/Biljett";
+                    dt.Rows.Add("Person " + i.ToString());
+
+                    
                     
                 }
+                dgTickets.DataSource = dt;
                 comboTicketnr.Text = "1";
                 load_Seats();
 
