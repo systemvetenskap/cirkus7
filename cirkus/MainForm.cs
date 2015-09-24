@@ -389,21 +389,21 @@ namespace cirkus
             }
             else
             {
-                ////// Printing 
-                PrintDialog pd = new PrintDialog();
-                pd.Document = printDocumentBiljett;
-                if (pd.ShowDialog() == DialogResult.OK)
-                {
-                    printDocumentBiljett.Print();
-                }
+                //////// Printing 
+                //PrintDialog pd = new PrintDialog();
+                //pd.Document = printDocumentBiljett;
+                //if (pd.ShowDialog() == DialogResult.OK)
+                //{
+                //    printDocumentBiljett.Print();
+                //}
 
 
                 // Kolla dokumentet innan man skrivar ut
-                //printPreviewControl1.Visible = true;
-                //printPreviewDialog1.Document = printDocumentBiljett;
-                //printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
-                //printPreviewDialog1.Show();
-                //printPreviewControl1.Document = printDocumentBiljett;
+                printPreviewControl1.Visible = true;
+                printPreviewDialog1.Document = printDocumentBiljett;
+                printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
+                printPreviewDialog1.Show();
+                printPreviewControl1.Document = printDocumentBiljett;
 
             }
 
@@ -415,16 +415,28 @@ namespace cirkus
             System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
 
-            int point = 400;
+            int point = 350;
             foreach (DataGridViewRow ro in dgTicketActs.Rows)
             {
-                point += 50;
+                point += 40;
             }
 
-            int regtangelP = point + 50;
+            int regtangelP = point + 60;
 
-            Rectangle r = new Rectangle(20, 40, 750, regtangelP);
+            ////BACKGROUND IMAGE
+            System.Drawing.Image i2 = System.Drawing.Image.FromFile("C:\\Users\\Matija\\Source\\Repos\\cirkus73\\cirkus\\Images\\backgroundClown.jpg");
+            Point p2 = new Point(100, 100);
+            // Create rectangle for displaying image, subtracting 200 (100 for left,100 for right margins).
+            Rectangle destRect = new Rectangle(20, 40, 750, regtangelP);
 
+
+            // Create coordinates of rectangle for source image.
+            int x = 0;
+            int y = 0;
+            int width = i2.Width;
+            int height = i2.Height;
+            GraphicsUnit units = GraphicsUnit.Pixel;
+            
             string aldersgrupp, bokningsnummer, forestallning, akt, pris, date, tider, datum;
             
             aldersgrupp = textBoxPrintAge.Text;
@@ -435,28 +447,29 @@ namespace cirkus
             tider = akttider;
             datum = txtPrintDatum.Text;
 
-            e.Graphics.DrawRectangle(Pens.Black, r);
+            //e.Graphics.DrawRectangle(Pens.Black, r);
+            e.Graphics.DrawImage(i2, destRect, x, y, width, height, units); // Draw background.
 
-            e.Graphics.DrawString("Biljett Cirkus Kull & Buss", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
-            //e.Graphics.DrawString(date, drawFontBold, drawBrush, new PointF(650, 50));
+            e.Graphics.DrawString("Biljett Cirkus Kul & Buss", drawFontBoldAndUnderline, drawBrush, new PointF(44, 110));
+            
 
-            e.Graphics.DrawString("Bokningsnummer:", drawFont, drawBrush, new PointF(35, 150));
-            e.Graphics.DrawString("Datum:", drawFont, drawBrush, new PointF(35, 200));
-            e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 250));
-            e.Graphics.DrawString("Åldersgrupp:", drawFont, drawBrush, new PointF(35, 300));
-            e.Graphics.DrawString("Akt/plats:", drawFont, drawBrush, new PointF(35, 350));
-            e.Graphics.DrawString("Tider:", drawFont, drawBrush, new PointF(35, 400));
-            e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, point));
-            e.Graphics.DrawString("---------------------------------------- Klipp här -----------------------------------------------", drawFont, drawBrush, new PointF(00, point + 130));
+            e.Graphics.DrawString("BokningsID:", drawFontBold, drawBrush, new PointF(45, 150));
+            e.Graphics.DrawString("Datum:", drawFontBold, drawBrush, new PointF(45, 190));
+            e.Graphics.DrawString("Namn:", drawFontBold, drawBrush, new PointF(45, 230));
+            e.Graphics.DrawString("Åldersgrupp:", drawFontBold, drawBrush, new PointF(45, 270));
+            e.Graphics.DrawString("Akt/plats:", drawFontBold, drawBrush, new PointF(45, 310));
+            e.Graphics.DrawString("Tider:", drawFontBold, drawBrush, new PointF(45, 350));
+            e.Graphics.DrawString("Pris:", drawFontBold, drawBrush, new PointF(45, point));
+            e.Graphics.DrawString("---------------------------------------- Klipp här -----------------------------------------------", drawFont, drawBrush, new PointF(00, point + 110));
 
 
-            e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 150));
-            e.Graphics.DrawString(datum, drawFontBold, drawBrush, new PointF(300, 200));
-            e.Graphics.DrawString(forestallning, drawFontBold, drawBrush, new PointF(300, 250));
-            e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 300));
-            e.Graphics.DrawString(akt, drawFontBold, drawBrush, new PointF(300, 350));
-            e.Graphics.DrawString(akttider, drawFontBold, drawBrush, new PointF(300, 400));
-            e.Graphics.DrawString(pris + " kronor", drawFontBold, drawBrush, new PointF(300, point));
+            e.Graphics.DrawString(bokningsnummer, drawFont, drawBrush, new PointF(250, 150));
+            e.Graphics.DrawString(datum, drawFont, drawBrush, new PointF(250, 190));
+            e.Graphics.DrawString(forestallning, drawFont, drawBrush, new PointF(250, 230));
+            e.Graphics.DrawString(aldersgrupp, drawFont, drawBrush, new PointF(250, 270));
+            e.Graphics.DrawString(akt, drawFont, drawBrush, new PointF(250, 310));
+            e.Graphics.DrawString(akttider, drawFont, drawBrush, new PointF(250, 350));
+            e.Graphics.DrawString(pris + " kronor", drawFont, drawBrush, new PointF(250, point));
 
         }
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
