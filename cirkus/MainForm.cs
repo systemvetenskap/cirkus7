@@ -410,7 +410,7 @@ namespace cirkus
             System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
             System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
-            Rectangle r = new Rectangle(20, 40, 785, 350);
+            Rectangle r = new Rectangle(20, 40, 785, 480);
 
             string aldersgrupp, bokningsnummer, forestallning, akt, pris, date, tider;
 
@@ -436,16 +436,16 @@ namespace cirkus
             e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 350));
             e.Graphics.DrawString("Tider:", drawFont, drawBrush, new PointF(35, 400));
             e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, 450));
-            e.Graphics.DrawString("---------------------------------------- Riv här -----------------------------------------------", drawFont, drawBrush, new PointF(00, 400));
+            e.Graphics.DrawString("---------------------------------------- Riv här -----------------------------------------------", drawFont, drawBrush, new PointF(00, 530));
 
 
             e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 150));
-            e.Graphics.DrawString(, drawFontBold, drawBrush, new PointF(35, 150));
-            e.Graphics.DrawString(forestallning, drawFontBold, drawBrush, new PointF(300, 200));
-            e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 250));
-            e.Graphics.DrawString(akt, drawFontBold, drawBrush, new PointF(300, 300));
-            e.Graphics.DrawString(akttider, drawFontBold, drawBrush, new PointF(300, 350));
-            e.Graphics.DrawString(pris, drawFontBold, drawBrush, new PointF(300, 400));
+            e.Graphics.DrawString("sa", drawFontBold, drawBrush, new PointF(300, 200));
+            e.Graphics.DrawString(forestallning, drawFontBold, drawBrush, new PointF(300, 250));
+            e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 300));
+            e.Graphics.DrawString(akt, drawFontBold, drawBrush, new PointF(300, 350));
+            e.Graphics.DrawString(akttider, drawFontBold, drawBrush, new PointF(300, 400));
+            e.Graphics.DrawString(pris + " kronor", drawFontBold, drawBrush, new PointF(300, 450));
 
         }
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
