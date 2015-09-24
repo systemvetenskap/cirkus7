@@ -414,13 +414,19 @@ namespace cirkus
             System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
             System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
-            Rectangle r = new Rectangle(20, 40, 785, 480);
+
+            int point = 400;
+            foreach (DataGridViewRow ro in dgTicketActs.Rows)
+            {
+                point += 50;
+            }
+
+            int regtangelP = point + 50;
+
+            Rectangle r = new Rectangle(20, 40, 785, regtangelP);
 
             string aldersgrupp, bokningsnummer, forestallning, akt, pris, date, tider, datum;
-
-            var dateAndTime = DateTime.Now;
-            date = dateAndTime.ToString("dd/MM/yyyy");
-
+            
             aldersgrupp = textBoxPrintAge.Text;
             bokningsnummer = textBoxPrintBookingid.Text;
             forestallning = textBoxPrintShow.Text;
@@ -433,15 +439,15 @@ namespace cirkus
 
             e.Graphics.DrawString("Biljett Cirkus Kull & Buss", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
             //e.Graphics.DrawString(date, drawFontBold, drawBrush, new PointF(650, 50));
-       
+
             e.Graphics.DrawString("Bokningsnummer:", drawFont, drawBrush, new PointF(35, 150));
             e.Graphics.DrawString("Datum:", drawFont, drawBrush, new PointF(35, 200));
             e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 250));
             e.Graphics.DrawString("Åldersgrupp:", drawFont, drawBrush, new PointF(35, 300));
             e.Graphics.DrawString("Akt/plats:", drawFont, drawBrush, new PointF(35, 350));
             e.Graphics.DrawString("Tider:", drawFont, drawBrush, new PointF(35, 400));
-            e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, 450));
-            e.Graphics.DrawString("---------------------------------------- Riv här -----------------------------------------------", drawFont, drawBrush, new PointF(00, 530));
+            e.Graphics.DrawString("Pris:", drawFont, drawBrush, new PointF(35, point));
+            e.Graphics.DrawString("---------------------------------------- Riv här -----------------------------------------------", drawFont, drawBrush, new PointF(00, point + 130));
 
 
             e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 150));
@@ -450,7 +456,7 @@ namespace cirkus
             e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 300));
             e.Graphics.DrawString(akt, drawFontBold, drawBrush, new PointF(300, 350));
             e.Graphics.DrawString(akttider, drawFontBold, drawBrush, new PointF(300, 400));
-            e.Graphics.DrawString(pris + " kronor", drawFontBold, drawBrush, new PointF(300, 450));
+            e.Graphics.DrawString(pris + " kronor", drawFontBold, drawBrush, new PointF(300, point));
 
         }
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
