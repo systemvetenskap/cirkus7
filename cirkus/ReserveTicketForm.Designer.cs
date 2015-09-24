@@ -41,6 +41,8 @@
             this.txtBoxNrP = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dgTickets = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.comboTicketnr = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -154,13 +156,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            this.dgTickets = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgShowActs)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -171,7 +172,6 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
             this.SuspendLayout();
             // 
             // radioPaid
@@ -251,9 +251,9 @@
             "Barn",
             "Ungdom",
             "Vuxen"});
-            this.cbAgegroup.Location = new System.Drawing.Point(360, 47);
+            this.cbAgegroup.Location = new System.Drawing.Point(6, 207);
             this.cbAgegroup.Name = "cbAgegroup";
-            this.cbAgegroup.Size = new System.Drawing.Size(79, 21);
+            this.cbAgegroup.Size = new System.Drawing.Size(128, 21);
             this.cbAgegroup.TabIndex = 50;
             this.cbAgegroup.Text = "Åldersgrupp";
             this.cbAgegroup.SelectedIndexChanged += new System.EventHandler(this.cbAgegroup_SelectedIndexChanged);
@@ -311,11 +311,13 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.dgTickets);
-            this.groupBox4.Location = new System.Drawing.Point(14, 21);
+            this.groupBox4.Controls.Add(this.cbAgegroup);
+            this.groupBox4.Location = new System.Drawing.Point(6, 28);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(264, 305);
+            this.groupBox4.Size = new System.Drawing.Size(162, 254);
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Akter";
@@ -323,16 +325,45 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(360, 28);
+            this.label13.Location = new System.Drawing.Point(6, 188);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.Size = new System.Drawing.Size(134, 13);
             this.label13.TabIndex = 52;
-            this.label13.Text = "Biljetttyp";
+            this.label13.Text = "Åldergrupp för vald person:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 47);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(127, 13);
+            this.label10.TabIndex = 61;
+            this.label10.Text = "Välj akter för vald person:";
+            // 
+            // dgTickets
+            // 
+            this.dgTickets.AllowUserToAddRows = false;
+            this.dgTickets.AllowUserToDeleteRows = false;
+            this.dgTickets.AllowUserToResizeColumns = false;
+            this.dgTickets.AllowUserToResizeRows = false;
+            this.dgTickets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgTickets.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTickets.ColumnHeadersVisible = false;
+            this.dgTickets.Location = new System.Drawing.Point(6, 63);
+            this.dgTickets.Name = "dgTickets";
+            this.dgTickets.ReadOnly = true;
+            this.dgTickets.RowHeadersVisible = false;
+            this.dgTickets.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgTickets.Size = new System.Drawing.Size(128, 108);
+            this.dgTickets.TabIndex = 60;
+            this.dgTickets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTickets_CellClick);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(311, 28);
+            this.label11.Location = new System.Drawing.Point(1049, 115);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 13);
             this.label11.TabIndex = 51;
@@ -341,7 +372,7 @@
             // comboTicketnr
             // 
             this.comboTicketnr.FormattingEnabled = true;
-            this.comboTicketnr.Location = new System.Drawing.Point(311, 47);
+            this.comboTicketnr.Location = new System.Drawing.Point(1049, 134);
             this.comboTicketnr.Name = "comboTicketnr";
             this.comboTicketnr.Size = new System.Drawing.Size(43, 21);
             this.comboTicketnr.TabIndex = 30;
@@ -350,7 +381,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(444, 44);
+            this.label2.Location = new System.Drawing.Point(197, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 29;
@@ -367,11 +398,11 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(443, 166);
+            this.button8.Location = new System.Drawing.Point(200, 205);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(95, 23);
+            this.button8.Size = new System.Drawing.Size(116, 23);
             this.button8.TabIndex = 27;
-            this.button8.Text = "Ta bort";
+            this.button8.Text = "Välja alla akter";
             this.button8.UseVisualStyleBackColor = true;
             // 
             // button7
@@ -382,7 +413,6 @@
             this.button7.TabIndex = 26;
             this.button7.Text = "Välj";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // dgActs
             // 
@@ -390,16 +420,14 @@
             this.dgActs.AllowUserToDeleteRows = false;
             this.dgActs.AllowUserToResizeColumns = false;
             this.dgActs.AllowUserToResizeRows = false;
+            this.dgActs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgActs.ColumnHeadersVisible = false;
-            this.dgActs.Location = new System.Drawing.Point(443, 61);
+            this.dgActs.Location = new System.Drawing.Point(200, 91);
             this.dgActs.Name = "dgActs";
-            this.dgActs.ReadOnly = true;
             this.dgActs.RowHeadersVisible = false;
-            this.dgActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgActs.Size = new System.Drawing.Size(95, 99);
+            this.dgActs.Size = new System.Drawing.Size(173, 108);
             this.dgActs.TabIndex = 25;
             this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellClick);
             // 
@@ -594,12 +622,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.groupBox4);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.comboTicketnr);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.cbAgegroup);
             this.panel1.Controls.Add(this.gpSeatMap);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.button9);
@@ -1443,7 +1467,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(300, 382);
+            this.button9.Location = new System.Drawing.Point(573, 382);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 59;
@@ -1601,34 +1625,6 @@
             this.label3.TabIndex = 54;
             this.label3.Text = "Antal personer:";
             // 
-            // dgTickets
-            // 
-            this.dgTickets.AllowUserToAddRows = false;
-            this.dgTickets.AllowUserToDeleteRows = false;
-            this.dgTickets.AllowUserToResizeColumns = false;
-            this.dgTickets.AllowUserToResizeRows = false;
-            this.dgTickets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgTickets.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTickets.ColumnHeadersVisible = false;
-            this.dgTickets.Location = new System.Drawing.Point(6, 63);
-            this.dgTickets.Name = "dgTickets";
-            this.dgTickets.ReadOnly = true;
-            this.dgTickets.RowHeadersVisible = false;
-            this.dgTickets.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTickets.Size = new System.Drawing.Size(174, 108);
-            this.dgTickets.TabIndex = 60;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 47);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(127, 13);
-            this.label10.TabIndex = 61;
-            this.label10.Text = "Välj akter för vald person:";
-            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1639,7 +1635,9 @@
             this.Controls.Add(this.txtBoxNrP);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblStatus1);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.comboTicketnr);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonCancel);
@@ -1653,6 +1651,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgShowActs)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -1669,7 +1668,6 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
