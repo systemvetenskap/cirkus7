@@ -69,8 +69,6 @@ namespace cirkus
 
             conn.Close();
 
-
-
             //loadActs();
 
         }
@@ -1213,9 +1211,6 @@ namespace cirkus
 
         public void SendMail()
         {
-            
-
-        
        
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("select customerid, email, fname, lname from customer where customerid = '" + customerid + "';", conn);

@@ -105,7 +105,7 @@ namespace cirkus
 
             int selectedindex = dgTickets.SelectedRows[0].Index;
             int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
-            
+
             string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time from acts
                         inner join available_seats on acts.actid = available_seats.actid
                         inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
@@ -134,7 +134,7 @@ namespace cirkus
             textBoxPrintAge.Text = dgTickets[4, selectedindex].Value.ToString();
             foreach(DataRow r in dtActs.Rows)
             {
-                textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+", ";
+                textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+", "; 
                 akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + " ";
 
             }
@@ -400,6 +400,7 @@ namespace cirkus
                 printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
                 printPreviewDialog1.Show();
                 printPreviewControl1.Document = printDocumentBiljett;
+
             }
 
         }
@@ -425,7 +426,7 @@ namespace cirkus
 
             e.Graphics.DrawRectangle(Pens.Black, r);
 
-            e.Graphics.DrawString("Utskrift", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
+            e.Graphics.DrawString("Biljett Cirkus Kull & Buss", drawFontBoldAndUnderline, drawBrush, new PointF(35, 50));
             e.Graphics.DrawString(date, drawFontBold, drawBrush, new PointF(650, 50));
        
             e.Graphics.DrawString("Bokningsnummer:", drawFont, drawBrush, new PointF(35, 150));
@@ -439,7 +440,7 @@ namespace cirkus
             e.Graphics.DrawString(bokningsnummer, drawFontBold, drawBrush, new PointF(300, 150));
             e.Graphics.DrawString(forestallning, drawFontBold, drawBrush, new PointF(300, 200));
             e.Graphics.DrawString(aldersgrupp, drawFontBold, drawBrush, new PointF(300, 250));
-            e.Graphics.DrawString(akt, drawFontBold, drawBrush, new PointF(300, 300));
+            e.Graphics.DrawString( , drawFontBold, drawBrush, new PointF(300, 300));
             e.Graphics.DrawString(pris, drawFontBold, drawBrush, new PointF(300, 350));
 
         }
@@ -696,19 +697,21 @@ namespace cirkus
         }
         private void buttonAndraForestallning_Click(object sender, EventArgs e)
         {
-            int selectedID;
-            DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
-            selectedID = Convert.ToInt32(row.Cells["showid"].Value);
+
+            
+            //int selectedID;
+            //DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
+            //selectedID = Convert.ToInt32(row.Cells["showid"].Value);
 
 
-            string nySelectedID = selectedID.ToString();
+            //string nySelectedID = selectedID.ToString();
 
-            ShowForm frm = new ShowForm();
-            frm.SetID(nySelectedID);
+            //ShowForm frm = new ShowForm();
+            //frm.SetID(nySelectedID);
 
-            frm.ButtonVisibleLaggTillForestallning();
+            //frm.ButtonVisibleLaggTillForestallning();
 
-            frm.ShowDialog();
+            //frm.ShowDialog();
         }
         private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
         {
