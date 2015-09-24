@@ -25,6 +25,7 @@ namespace cirkus
         private string show_name;
         private string show_date;
         private string akt_name;
+        private string akttider = " ";
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         private string sql = "";
         public DataTable dt = new DataTable();
@@ -95,6 +96,7 @@ namespace cirkus
             textBoxPrintPrice.Clear();
             textBoxPrintAct.Clear();
             textBoxPrintAge.Clear();
+            akttider = " ";
         }
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -103,7 +105,7 @@ namespace cirkus
 
             int selectedindex = dgTickets.SelectedRows[0].Index;
             int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
-
+            
             string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time from acts
                         inner join available_seats on acts.actid = available_seats.actid
                         inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
@@ -132,8 +134,8 @@ namespace cirkus
             textBoxPrintAge.Text = dgTickets[4, selectedindex].Value.ToString();
             foreach(DataRow r in dtActs.Rows)
             {
-                textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+", "; 
-                 
+                textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+", ";
+                akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + " ";
 
             }
 
@@ -409,7 +411,7 @@ namespace cirkus
             SolidBrush drawBrush = new SolidBrush(Color.Black);
             Rectangle r = new Rectangle(20, 40, 785, 350);
 
-            string aldersgrupp, bokningsnummer, forestallning, akt, pris, date;
+            string aldersgrupp, bokningsnummer, forestallning, akt, pris, date, tider;
 
             var dateAndTime = DateTime.Now;
             date = dateAndTime.ToString("dd/MM/yyyy");
@@ -419,6 +421,7 @@ namespace cirkus
             forestallning = textBoxPrintShow.Text;
             akt = textBoxPrintAct.Text;
             pris = textBoxPrintPrice.Text;
+            tider = akttider;
 
             e.Graphics.DrawRectangle(Pens.Black, r);
 
