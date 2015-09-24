@@ -27,12 +27,13 @@ namespace cirkus
         string sections = "ABCDEFGH";
         bool newcust;
         bool seatType = true;
-        DataTable shows, section, dtfSeats;
+        DataTable shows, section, dtfSeats,dtPersons;
         DataTable seats = new DataTable();
         DataTable chosenacts = new DataTable();
         DataTable selectedseats = new DataTable();
         DataTable acts = new DataTable();
         DataTable cSeats = new DataTable();
+        
         DataRow row;
         DateTime showdate;
         BindingSource filterseats = new BindingSource();
@@ -371,6 +372,7 @@ namespace cirkus
             acts.Columns.Add("actid");
             acts.Columns.Add("name");
             acts.Columns.Add("Vald akter", typeof(bool)).SetOrdinal(3);
+            acts.Columns.Add("agegroup");
             
 
 
@@ -415,23 +417,25 @@ namespace cirkus
                 panel1.Visible = true;
                 panel2.Visible = false;
                 nrotickets = Convert.ToInt32(txtBoxNrP.Text);
-                DataTable dt = new DataTable();
-                dt.Columns.Add("id");
-                dt.Columns.Add("Person/Biljett");
+                dtPersons = new DataTable();
+                dtPersons.Columns.Add("id");
+                dtPersons.Columns.Add("Person/Biljett");
+                dtPersons.Columns.Add("agegroup");
                 DataRow dr;
                 for (int i = 0; i < nrotickets; i++)
                 {
-                    dr = dt.NewRow();
+                    dr = dtPersons.NewRow();
                     int z = i + 1;
                     dr[0] = i;
                     dr[1] = "Person" + z.ToString();
-                    dt.Rows.Add(dr);
+                    dr[2] = 3;
+                    dtPersons.Rows.Add(dr);
 
                     
                     
                 }
-                dgTickets.DataSource = dt;
-                comboTicketnr.Text = "2";
+                dgTickets.DataSource = dtPersons;
+                //comboTicketnr.Text = "2";
                 load_Seats();
 
             }
@@ -587,6 +591,22 @@ namespace cirkus
 
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            if (cbAgegroup.Text == "Åldersgrupp" || cbAgegroup.SelectedIndex == -1)
+            {
+                lblStatusAge.Visible = true;
+                lblStatusAge.Text = "Vänligen välj åldersgrupp";
+                lblStatusAge.ForeColor = Color.Tomato;
+                return;
+
+            }
+            else
+            {
+                gpSeatMap.Enabled = true;
+                
+            }
+         
+                
         //    int selectedIndex = dgActs.SelectedRows[0].Index;
 
         //    actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
@@ -773,29 +793,85 @@ namespace cirkus
             //NpgsqlDataAdapter da = new NpgsqlDataAdapter("select acts.actid, acts.name from acts inner join show on acts.showid = show.showid where show.showid = '"+showid+"'", conn);
             //da.Fill(acts);
             //conn.Close();
-
+            cbAgegroup.SelectedIndex = -1;
             int dgIndex = dgTickets.SelectedRows[0].Index;
             ticketid = int.Parse(dgTickets[0, dgIndex].Value.ToString());
             loadActs();
             this.dgActs.Columns[0].ReadOnly = true;
             this.dgActs.Columns[1].ReadOnly = true;
             this.dgActs.Columns[2].ReadOnly = true;
-            this.dgActs.Columns[3].ReadOnly = false;
+            this.dgActs.Columns[3].ReadOnly = true;
             this.dgActs.Columns[0].Visible = false;
             this.dgActs.Columns[1].Visible = false;
-       
+            int age = int.Parse(dgTickets[2, dgIndex].Value.ToString());
+            if(age == 0)
+            {
+                cbAgegroup.SelectedIndex = 0;
+            }
+            else if(age == 1)
+            {
+                cbAgegroup.SelectedIndex = 1;
 
+            } 
+            else if(age == 2)
+            {
+                cbAgegroup.SelectedIndex = 2;
+            }
+            else if(age == 3)
+            {
+
+                cbAgegroup.SelectedIndex = -1;
+                cbAgegroup.Text = "Åldersgrupp";
+            }
+         
+            
 
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow r in dgActs.Rows)
+            if(cbAgegroup.SelectedIndex != -1)
             {
-                r.Cells[3].Value = false;
-                if (Convert.ToBoolean(r.Cells[3].Value) == false)
-                    r.Cells[3].Value = true;
+                foreach (DataGridViewRow r in dgActs.Rows)
+                {
+                    r.Cells[3].Value = false;
+                    if (Convert.ToBoolean(r.Cells[3].Value) == false)
+                        r.Cells[3].Value = true;
+                }
             }
+            else
+            {
+                
+                lblStatusAge.Visible = true;
+                lblStatusAge.Text = "Vänligen välj åldersgrupp";
+                lblStatusAge.ForeColor = Color.Tomato;
+                return;
+            }
+  
+        }
+
+        private void dgTickets_SelectionChanged(object sender, EventArgs e)
+        {
+            //int dgIndex = dgTickets.SelectedRows[0].Index;
+            //int age = int.Parse(dgTickets[2, dgIndex].Value.ToString());
+            //if(age < 3)
+            //{
+            //    cbAgegroup.SelectedIndex = age;
+            //}
+            //else if( age == 3)
+            //{
+                
+
+
+            //}
+            
+            
+       
+        }
+
+        private void dgTickets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
         private void cbDf_CheckedChanged(object sender, EventArgs e)
@@ -1007,24 +1083,51 @@ namespace cirkus
         {
             if (cbAgegroup.Text == "Barn")
             {
-                agegroup = 1;
-
+                agegroup = 0;
+                this.dgActs.Columns[3].ReadOnly = false;
+                lblStatusAge.Visible = false;
             }
+
             if (cbAgegroup.Text == "Ungdom")
             {
-                agegroup = 2;
-
+                agegroup = 1;
+                this.dgActs.Columns[3].ReadOnly = false;
+                lblStatusAge.Visible = false;
             }
             if (cbAgegroup.Text == "Vuxen")
             {
 
-                agegroup = 3;
-
+                agegroup = 2;
+                this.dgActs.Columns[3].ReadOnly = false;
+                lblStatusAge.Visible = false;
             }
             if (cbAgegroup.Text == "Åldersgrupp")
             {
+                agegroup = 4;
                 MessageBox.Show("Välj ålersgrupp för biljetten");
+                this.dgActs.Columns[3].ReadOnly = true;
                 return;
+            }
+            foreach (DataRow r in acts.Rows)
+            {
+                int id = Convert.ToInt16(r[0]);
+                if (ticketid == id)
+                {
+                    r[4] = agegroup;
+
+                }
+
+
+            }
+            foreach (DataRow r in dtPersons.Rows)
+            {
+                int id = Convert.ToInt16(r[0]);
+                if (ticketid == id)
+                {
+                    r[2] = agegroup;
+
+                }
+
             }
         }
 
