@@ -972,55 +972,63 @@ namespace cirkus
             {
                 string seatSection = cb.Name[0].ToString();
                 string seatNumber = cb.Name[1].ToString();
-                if (cb.Checked == true)
+                if (cb.Checked == true && cb.BackColor == Color.Green)
                 {
-                    foreach (DataRow row in cSeats.Rows)
-                    {
-                        string section = row[2].ToString();
-                        string rwnr = row[3].ToString();
-                        int aid = int.Parse(row[5].ToString());
-                        object value = row[0];
-                        if (section == seatSection && seatNumber == rwnr && aid == actid && value == DBNull.Value)
-                        {
-                            row[0] = ticketid;
-                            row[4] = priceid;
+                    DataRow row = cSeats.NewRow();
+                    row[0] = ticketid;
+                    row[1] = actid;
+                    row[2] = seatSection;
+                    row[3] = seatNumber;
+                    row[4] = agegroup;
+                    cSeats.Rows.Add(row);
+                    //foreach (DataRow row in cSeats.Rows)
+                    //{
+                    //    string section = row[2].ToString();
+                    //    string rwnr = row[3].ToString();
+                    //    int aid = int.Parse(row[5].ToString());
+                    //    object value = row[0];
+                    //    if (section == seatSection && seatNumber == rwnr && aid == actid && value == DBNull.Value)
+                    //    {
+                    //        row[0] = ticketid;
+                    //        row[4] = priceid;
 
-                        }
+                    //    }
 
-                    }
+                    //}
 
 
                 }
 
             }
-            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            {
-                string seatSection = cb.Name[0].ToString();
-                string seatNumber = cb.Name[1].ToString();
-                if (cb.Checked == false)
-                {
+            dgTEST.DataSource = cSeats;
+            //foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            ////{
+            ////    string seatSection = cb.Name[0].ToString();
+            ////    string seatNumber = cb.Name[1].ToString();
+            ////    if (cb.Checked == false)
+            ////    {
 
-                    foreach (DataRow row in cSeats.Rows)
-                    {
-                        string tid = row[0].ToString();
-                        string section = row[2].ToString();
-                        string rwnr = row[3].ToString();
-                        string pid = row[4].ToString();
-                        int aid = int.Parse(row[5].ToString());
+            ////        foreach (DataRow row in cSeats.Rows)
+            ////        {
+            ////            string tid = row[0].ToString();
+            ////            string section = row[2].ToString();
+            ////            string rwnr = row[3].ToString();
+            ////            string pid = row[4].ToString();
+            ////            int aid = int.Parse(row[5].ToString());
 
-                        if (tid == ticketid.ToString() && pid == priceid.ToString() && aid == actid && section == seatSection && seatNumber == rwnr)
-                        {
-                            row[0] = null;
-                            row[4] = null;
+            ////            if (tid == ticketid.ToString() && pid == priceid.ToString() && aid == actid && section == seatSection && seatNumber == rwnr)
+            ////            {
+            ////                row[0] = null;
+            ////                row[4] = null;
 
-                        }
+            ////            }
 
-                    }
+            ////        }
 
 
-                }
+            ////    }
 
-            }
+            //}
         }
 
         private void comboTicketnr_SelectedIndexChanged(object sender, EventArgs e)
@@ -1101,7 +1109,7 @@ namespace cirkus
             if (cbAgegroup.Text == "Åldersgrupp")
             {
                 agegroup = 4;
-                MessageBox.Show("Välj ålersgrupp för biljetten");
+                MessageBox.Show("Välj åldersgrupp för biljetten");
                 this.dgActs.Columns[3].ReadOnly = true;
                 return;
             }
