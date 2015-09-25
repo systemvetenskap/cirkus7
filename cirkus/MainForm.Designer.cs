@@ -97,7 +97,7 @@
             this.dgStaff = new System.Windows.Forms.DataGridView();
             this.textBoxSearchStaff = new System.Windows.Forms.TextBox();
             this.comboBoxBehorighetsniva = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblKonto = new System.Windows.Forms.Label();
             this.btnTomFalten = new System.Windows.Forms.Button();
             this.btnUpdateraKonto = new System.Windows.Forms.Button();
             this.lblFornamn = new System.Windows.Forms.Label();
@@ -408,7 +408,7 @@
             // 
             // buttonReserveTicket
             // 
-            this.buttonReserveTicket.Location = new System.Drawing.Point(562, 357);
+            this.buttonReserveTicket.Location = new System.Drawing.Point(607, 357);
             this.buttonReserveTicket.Name = "buttonReserveTicket";
             this.buttonReserveTicket.Size = new System.Drawing.Size(126, 35);
             this.buttonReserveTicket.TabIndex = 9;
@@ -449,7 +449,7 @@
             // checkBoxOlderTickets
             // 
             this.checkBoxOlderTickets.AutoSize = true;
-            this.checkBoxOlderTickets.Location = new System.Drawing.Point(600, 52);
+            this.checkBoxOlderTickets.Location = new System.Drawing.Point(625, 56);
             this.checkBoxOlderTickets.Name = "checkBoxOlderTickets";
             this.checkBoxOlderTickets.Size = new System.Drawing.Size(108, 17);
             this.checkBoxOlderTickets.TabIndex = 7;
@@ -810,7 +810,7 @@
             this.tabAccount.Controls.Add(this.dgStaff);
             this.tabAccount.Controls.Add(this.textBoxSearchStaff);
             this.tabAccount.Controls.Add(this.comboBoxBehorighetsniva);
-            this.tabAccount.Controls.Add(this.label9);
+            this.tabAccount.Controls.Add(this.lblKonto);
             this.tabAccount.Controls.Add(this.btnTomFalten);
             this.tabAccount.Controls.Add(this.btnUpdateraKonto);
             this.tabAccount.Controls.Add(this.lblFornamn);
@@ -928,15 +928,15 @@
             this.comboBoxBehorighetsniva.Size = new System.Drawing.Size(152, 21);
             this.comboBoxBehorighetsniva.TabIndex = 28;
             // 
-            // label9
+            // lblKonto
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(51, 27);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 16);
-            this.label9.TabIndex = 30;
-            this.label9.Text = "Konto";
+            this.lblKonto.AutoSize = true;
+            this.lblKonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKonto.Location = new System.Drawing.Point(51, 27);
+            this.lblKonto.Name = "lblKonto";
+            this.lblKonto.Size = new System.Drawing.Size(47, 16);
+            this.lblKonto.TabIndex = 30;
+            this.lblKonto.Text = "Konto";
             // 
             // btnTomFalten
             // 
@@ -1175,7 +1175,7 @@
         private System.Windows.Forms.TextBox textBoxTotaltAntal;
         private System.Windows.Forms.TextBox textBoxTotaltKronor;
         private System.Windows.Forms.ComboBox comboBoxBehorighetsniva;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblKonto;
         private System.Windows.Forms.Button btnTomFalten;
         private System.Windows.Forms.Button btnUpdateraKonto;
         private System.Windows.Forms.Label lblFornamn;
