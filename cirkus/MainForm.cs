@@ -1629,5 +1629,45 @@ namespace cirkus
             }
         }
         #endregion
+
+        private void textBoxKronorUngdomsbiljetter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAntalBarnbiljetter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxKronorBarnbiljetter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxTotaltAntal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAntalVuxenBiljetter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxTotaltKronor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxKronorVuxenbiljetter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxAntalUngdomsbiljetter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
