@@ -553,6 +553,10 @@ namespace cirkus
 
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int selectedIndex = dgActs.SelectedRows[0].Index;
+
+            actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
+            bool chck = Convert.ToBoolean(dgActs[3, selectedIndex].Value.ToString());
 
             if (cbAgegroup.Text == "Åldersgrupp" || cbAgegroup.SelectedIndex == -1)
             {
@@ -562,17 +566,19 @@ namespace cirkus
                 return;
 
             }
-            else
+            else if(chck == true)
             {
-                gpSeatMap.Enabled = true;
+                clearSeatMap();
                 loadSeatMap();
-
             }
+            else if(chck == false)
+            {
+                clearSeatMap();
+            }
+            
 
 
-            int selectedIndex = dgActs.SelectedRows[0].Index;
-
-            actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
+       
 
 
             /*filterseats.Filter = string.Format("actid = '{0}'", actid);
@@ -808,7 +814,9 @@ namespace cirkus
 
 
                 }
+                clearSeatMap();
                 checkLocked();
+
 
             }
             else
@@ -839,6 +847,7 @@ namespace cirkus
 
 
                 }
+                clearSeatMap();
                 checkLocked();
             }
         }
@@ -1517,12 +1526,14 @@ namespace cirkus
                 {
                     cbAgegroup.Enabled = false;
                     gpSeatMap.Enabled = true;
+                    loadSeatMap();
 
                 }
                 else if (id == ticketid && nr == 0)
                 {
                     cbAgegroup.Enabled = true;
                     gpSeatMap.Enabled = false;
+                    clearSeatMap();
 
                 }
             }
@@ -1539,6 +1550,7 @@ namespace cirkus
             {
                 cb.Checked = true;
                 cb.Enabled = false;
+                cb.BackColor = Color.WhiteSmoke;
 
             }
 
@@ -1556,7 +1568,7 @@ namespace cirkus
                             cb.Enabled = true;
                             cb.Checked = false;
                             cb.BackColor = Color.Green;
-                            MessageBox.Show("green");
+                            
                             //object value = row[0];
 
                             //if (value != DBNull.Value && row[1].ToString() == actid.ToString())
@@ -1581,6 +1593,16 @@ namespace cirkus
                 }
 
 
+            }
+
+        }
+        public void clearSeatMap()
+        {
+            foreach(CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                cb.BackColor = Color.WhiteSmoke;
+                cb.Checked = true;
+                cb.Enabled = false;
             }
 
         }
