@@ -1288,6 +1288,18 @@ namespace cirkus
             }
             return barasiffror;
         }
+        public bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
             ResetColor();
@@ -1325,12 +1337,12 @@ namespace cirkus
                 LblStatus.Text = "Ange telefonnummer, max 10 siffror";
                 return;
             }
-            if (textBoxEpost.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxEpost.Text))
+            if (textBoxEpost.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxEpost.Text) || !IsValidEmail(textBoxEpost.Text))
             {
                 textBoxEpost.BackColor = Color.Tomato;
                 LblStatus.Visible = true;
                 LblStatus.ForeColor = Color.Tomato;
-                LblStatus.Text = "Ange epost, max 60 tecken";
+                LblStatus.Text = "Ange en giltig epost, max 60 tecken";
                 return;
             }
             if (textBoxAnvandarnamn.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxAnvandarnamn.Text))
@@ -1498,7 +1510,7 @@ namespace cirkus
                     LblStatus.Text = "Ange telefonnummer, max 10 siffror";
                     return;
                 }
-                if (textBoxEpost.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxEpost.Text))
+                if (textBoxEpost.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxEpost.Text)||!IsValidEmail(textBoxEpost.Text))
                 {
                     textBoxEpost.BackColor = Color.Tomato;
                     LblStatus.Visible = true;
