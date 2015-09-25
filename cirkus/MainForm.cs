@@ -424,7 +424,7 @@ namespace cirkus
             int regtangelP = point + 60;
 
             ////BACKGROUND IMAGE
-            System.Drawing.Image i2 = System.Drawing.Image.FromFile("C:\\Users\\Matija\\Source\\Repos\\cirkus73\\cirkus\\Images\\backgroundClown.jpg");
+            System.Drawing.Image i2 = cirkus.Properties.Resources.backgroundClown;
             Point p2 = new Point(100, 100);
             // Create rectangle for displaying image, subtracting 200 (100 for left,100 for right margins).
             Rectangle destRect = new Rectangle(20, 40, 750, regtangelP);
@@ -450,7 +450,7 @@ namespace cirkus
             //e.Graphics.DrawRectangle(Pens.Black, r);
             e.Graphics.DrawImage(i2, destRect, x, y, width, height, units); // Draw background.
 
-            e.Graphics.DrawString("Biljett Cirkus Kul & Buss", drawFontBoldAndUnderline, drawBrush, new PointF(44, 110));
+            e.Graphics.DrawString("Biljett Cirkus Kul & Bus", drawFontBoldAndUnderline, drawBrush, new PointF(44, 110));
             
 
             e.Graphics.DrawString("BokningsID:", drawFontBold, drawBrush, new PointF(45, 150));
