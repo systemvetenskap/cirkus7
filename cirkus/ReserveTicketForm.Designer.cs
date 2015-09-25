@@ -403,8 +403,7 @@
             this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgActs.Size = new System.Drawing.Size(157, 108);
             this.dgActs.TabIndex = 25;
-            this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTickets_CellClick);
-            this.dgActs.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellContentClick);
+            this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellClick);
             this.dgActs.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellValueChanged);
             this.dgActs.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgActs_CurrentCellDirtyStateChanged);
             this.dgActs.SelectionChanged += new System.EventHandler(this.dgActs_SelectionChanged);
