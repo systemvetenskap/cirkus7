@@ -1515,7 +1515,7 @@ namespace cirkus
                     textBoxEpost.BackColor = Color.Tomato;
                     LblStatus.Visible = true;
                     LblStatus.ForeColor = Color.Tomato;
-                    LblStatus.Text = "Ange epost, max 60 tecken";
+                    LblStatus.Text = "Ange en giltig epost, max 60 tecken";
                     return;
                 }
                 if (textBoxAnvandarnamn.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxAnvandarnamn.Text))
