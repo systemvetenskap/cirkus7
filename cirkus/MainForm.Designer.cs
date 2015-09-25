@@ -61,6 +61,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabShow = new System.Windows.Forms.TabPage();
+            this.btnPreview = new System.Windows.Forms.Button();
+            this.lblStatistics = new System.Windows.Forms.Label();
+            this.lblActs = new System.Windows.Forms.Label();
+            this.lblShows = new System.Windows.Forms.Label();
             this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             this.checkBoxAllaAkter = new System.Windows.Forms.CheckBox();
             this.dgvAkter = new System.Windows.Forms.DataGridView();
@@ -116,10 +120,6 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printDocumentBiljett = new System.Drawing.Printing.PrintDocument();
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
-            this.lblShows = new System.Windows.Forms.Label();
-            this.lblActs = new System.Windows.Forms.Label();
-            this.lblStatistics = new System.Windows.Forms.Label();
-            this.btnPreview = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketActs)).BeginInit();
@@ -532,6 +532,46 @@
             this.tabShow.Text = "Föreställning";
             this.tabShow.UseVisualStyleBackColor = true;
             // 
+            // btnPreview
+            // 
+            this.btnPreview.Location = new System.Drawing.Point(656, 407);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(126, 35);
+            this.btnPreview.TabIndex = 29;
+            this.btnPreview.Text = "Förhandsgranska utskrift";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            // 
+            // lblStatistics
+            // 
+            this.lblStatistics.AutoSize = true;
+            this.lblStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatistics.Location = new System.Drawing.Point(525, 35);
+            this.lblStatistics.Name = "lblStatistics";
+            this.lblStatistics.Size = new System.Drawing.Size(63, 16);
+            this.lblStatistics.TabIndex = 28;
+            this.lblStatistics.Text = "Statistik";
+            // 
+            // lblActs
+            // 
+            this.lblActs.AutoSize = true;
+            this.lblActs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActs.Location = new System.Drawing.Point(305, 35);
+            this.lblActs.Name = "lblActs";
+            this.lblActs.Size = new System.Drawing.Size(44, 16);
+            this.lblActs.TabIndex = 27;
+            this.lblActs.Text = "Akter";
+            // 
+            // lblShows
+            // 
+            this.lblShows.AutoSize = true;
+            this.lblShows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShows.Location = new System.Drawing.Point(23, 35);
+            this.lblShows.Name = "lblShows";
+            this.lblShows.Size = new System.Drawing.Size(112, 16);
+            this.lblShows.TabIndex = 26;
+            this.lblShows.Text = "Föreställningar";
+            // 
             // printPreviewControl1
             // 
             this.printPreviewControl1.Location = new System.Drawing.Point(441, 288);
@@ -658,7 +698,7 @@
             // 
             // buttonSkrivUtForestallning
             // 
-            this.buttonSkrivUtForestallning.Location = new System.Drawing.Point(788, 415);
+            this.buttonSkrivUtForestallning.Location = new System.Drawing.Point(788, 407);
             this.buttonSkrivUtForestallning.Name = "buttonSkrivUtForestallning";
             this.buttonSkrivUtForestallning.Size = new System.Drawing.Size(126, 35);
             this.buttonSkrivUtForestallning.TabIndex = 14;
@@ -672,7 +712,7 @@
             this.buttonRaderaForestallning.Name = "buttonRaderaForestallning";
             this.buttonRaderaForestallning.Size = new System.Drawing.Size(126, 35);
             this.buttonRaderaForestallning.TabIndex = 13;
-            this.buttonRaderaForestallning.Text = "Radera";
+            this.buttonRaderaForestallning.Text = "Radera föreställning";
             this.buttonRaderaForestallning.UseVisualStyleBackColor = true;
             this.buttonRaderaForestallning.Click += new System.EventHandler(this.buttonRaderaForestallning_Click);
             // 
@@ -755,7 +795,7 @@
             this.buttonSkapaForestalnning.Name = "buttonSkapaForestalnning";
             this.buttonSkapaForestalnning.Size = new System.Drawing.Size(126, 35);
             this.buttonSkapaForestalnning.TabIndex = 4;
-            this.buttonSkapaForestalnning.Text = "Skapa ny";
+            this.buttonSkapaForestalnning.Text = "Skapa ny föreställning";
             this.buttonSkapaForestalnning.UseVisualStyleBackColor = true;
             this.buttonSkapaForestalnning.Click += new System.EventHandler(this.buttonSkapaForestalnning_Click_1);
             // 
@@ -1070,46 +1110,6 @@
             // printDialog2
             // 
             this.printDialog2.UseEXDialog = true;
-            // 
-            // lblShows
-            // 
-            this.lblShows.AutoSize = true;
-            this.lblShows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShows.Location = new System.Drawing.Point(23, 35);
-            this.lblShows.Name = "lblShows";
-            this.lblShows.Size = new System.Drawing.Size(112, 16);
-            this.lblShows.TabIndex = 26;
-            this.lblShows.Text = "Föreställningar";
-            // 
-            // lblActs
-            // 
-            this.lblActs.AutoSize = true;
-            this.lblActs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActs.Location = new System.Drawing.Point(305, 35);
-            this.lblActs.Name = "lblActs";
-            this.lblActs.Size = new System.Drawing.Size(44, 16);
-            this.lblActs.TabIndex = 27;
-            this.lblActs.Text = "Akter";
-            // 
-            // lblStatistics
-            // 
-            this.lblStatistics.AutoSize = true;
-            this.lblStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatistics.Location = new System.Drawing.Point(525, 35);
-            this.lblStatistics.Name = "lblStatistics";
-            this.lblStatistics.Size = new System.Drawing.Size(63, 16);
-            this.lblStatistics.TabIndex = 28;
-            this.lblStatistics.Text = "Statistik";
-            // 
-            // btnPreview
-            // 
-            this.btnPreview.Location = new System.Drawing.Point(656, 415);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(126, 35);
-            this.btnPreview.TabIndex = 29;
-            this.btnPreview.Text = "Förhandsgranska utskrift";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // MainForm
             // 
