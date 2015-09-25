@@ -830,7 +830,7 @@
             this.tabAccount.Name = "tabAccount";
             this.tabAccount.Size = new System.Drawing.Size(925, 456);
             this.tabAccount.TabIndex = 2;
-            this.tabAccount.Text = "Konto";
+            this.tabAccount.Text = "Kontohantering";
             this.tabAccount.UseVisualStyleBackColor = true;
             // 
             // btnRaderaKonto
@@ -934,9 +934,9 @@
             this.lblKonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKonto.Location = new System.Drawing.Point(51, 27);
             this.lblKonto.Name = "lblKonto";
-            this.lblKonto.Size = new System.Drawing.Size(47, 16);
+            this.lblKonto.Size = new System.Drawing.Size(111, 16);
             this.lblKonto.TabIndex = 30;
-            this.lblKonto.Text = "Konto";
+            this.lblKonto.Text = "Kontohantering";
             // 
             // btnTomFalten
             // 
