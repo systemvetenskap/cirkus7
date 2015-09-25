@@ -40,6 +40,7 @@
             this.lblStatus1 = new System.Windows.Forms.Label();
             this.txtBoxNrP = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lblStatusAge = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dgTickets = new System.Windows.Forms.DataGridView();
@@ -157,7 +158,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label3 = new System.Windows.Forms.Label();
-            this.lblStatusAge = new System.Windows.Forms.Label();
+            this.dgTEST = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -174,6 +175,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTEST)).BeginInit();
             this.SuspendLayout();
             // 
             // radioPaid
@@ -328,6 +330,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Akter";
             // 
+            // lblStatusAge
+            // 
+            this.lblStatusAge.AutoSize = true;
+            this.lblStatusAge.Location = new System.Drawing.Point(7, 235);
+            this.lblStatusAge.Name = "lblStatusAge";
+            this.lblStatusAge.Size = new System.Drawing.Size(66, 13);
+            this.lblStatusAge.TabIndex = 62;
+            this.lblStatusAge.Text = "lblStatusAge";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -393,10 +404,13 @@
             this.dgActs.Size = new System.Drawing.Size(157, 108);
             this.dgActs.TabIndex = 25;
             this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellClick);
+            this.dgActs.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellValueChanged);
+            this.dgActs.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgActs_CurrentCellDirtyStateChanged);
+            this.dgActs.SelectionChanged += new System.EventHandler(this.dgActs_SelectionChanged);
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(181, 179);
+            this.button8.Location = new System.Drawing.Point(247, 19);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(100, 35);
             this.button8.TabIndex = 27;
@@ -1644,14 +1658,13 @@
             this.label3.TabIndex = 54;
             this.label3.Text = "Antal personer:";
             // 
-            // lblStatusAge
+            // dgTEST
             // 
-            this.lblStatusAge.AutoSize = true;
-            this.lblStatusAge.Location = new System.Drawing.Point(7, 235);
-            this.lblStatusAge.Name = "lblStatusAge";
-            this.lblStatusAge.Size = new System.Drawing.Size(66, 13);
-            this.lblStatusAge.TabIndex = 62;
-            this.lblStatusAge.Text = "lblStatusAge";
+            this.dgTEST.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTEST.Location = new System.Drawing.Point(915, 351);
+            this.dgTEST.Name = "dgTEST";
+            this.dgTEST.Size = new System.Drawing.Size(329, 150);
+            this.dgTEST.TabIndex = 55;
             // 
             // ReserveTicketForm
             // 
@@ -1659,6 +1672,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1715, 1023);
+            this.Controls.Add(this.dgTEST);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBoxNrP);
             this.Controls.Add(this.panel2);
@@ -1696,6 +1710,7 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTEST)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1831,5 +1846,6 @@
         private System.Windows.Forms.DataGridView dgTickets;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lblStatusAge;
+        private System.Windows.Forms.DataGridView dgTEST;
     }
 }
