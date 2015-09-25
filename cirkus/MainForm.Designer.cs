@@ -567,7 +567,7 @@
             this.dgvAkter.ReadOnly = true;
             this.dgvAkter.RowHeadersVisible = false;
             this.dgvAkter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAkter.Size = new System.Drawing.Size(193, 181);
+            this.dgvAkter.Size = new System.Drawing.Size(193, 195);
             this.dgvAkter.TabIndex = 23;
             this.dgvAkter.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAkter_CellClick);
             this.dgvAkter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAkter_KeyUp);
@@ -582,7 +582,7 @@
             this.dgvShowsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvShowsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShowsList.ColumnHeadersVisible = false;
-            this.dgvShowsList.Location = new System.Drawing.Point(26, 53);
+            this.dgvShowsList.Location = new System.Drawing.Point(23, 53);
             this.dgvShowsList.MultiSelect = false;
             this.dgvShowsList.Name = "dgvShowsList";
             this.dgvShowsList.ReadOnly = true;
@@ -595,7 +595,7 @@
             // 
             // textBoxKronorVuxenbiljetter
             // 
-            this.textBoxKronorVuxenbiljetter.Location = new System.Drawing.Point(740, 91);
+            this.textBoxKronorVuxenbiljetter.Location = new System.Drawing.Point(740, 85);
             this.textBoxKronorVuxenbiljetter.Name = "textBoxKronorVuxenbiljetter";
             this.textBoxKronorVuxenbiljetter.ReadOnly = true;
             this.textBoxKronorVuxenbiljetter.Size = new System.Drawing.Size(106, 20);
@@ -604,7 +604,7 @@
             // 
             // textBoxAntalUngdomsbiljetter
             // 
-            this.textBoxAntalUngdomsbiljetter.Location = new System.Drawing.Point(627, 125);
+            this.textBoxAntalUngdomsbiljetter.Location = new System.Drawing.Point(627, 123);
             this.textBoxAntalUngdomsbiljetter.Name = "textBoxAntalUngdomsbiljetter";
             this.textBoxAntalUngdomsbiljetter.ReadOnly = true;
             this.textBoxAntalUngdomsbiljetter.Size = new System.Drawing.Size(106, 20);
@@ -613,7 +613,7 @@
             // 
             // textBoxKronorUngdomsbiljetter
             // 
-            this.textBoxKronorUngdomsbiljetter.Location = new System.Drawing.Point(740, 125);
+            this.textBoxKronorUngdomsbiljetter.Location = new System.Drawing.Point(740, 123);
             this.textBoxKronorUngdomsbiljetter.Name = "textBoxKronorUngdomsbiljetter";
             this.textBoxKronorUngdomsbiljetter.ReadOnly = true;
             this.textBoxKronorUngdomsbiljetter.Size = new System.Drawing.Size(106, 20);
@@ -622,7 +622,7 @@
             // 
             // textBoxAntalBarnbiljetter
             // 
-            this.textBoxAntalBarnbiljetter.Location = new System.Drawing.Point(627, 159);
+            this.textBoxAntalBarnbiljetter.Location = new System.Drawing.Point(627, 161);
             this.textBoxAntalBarnbiljetter.Name = "textBoxAntalBarnbiljetter";
             this.textBoxAntalBarnbiljetter.ReadOnly = true;
             this.textBoxAntalBarnbiljetter.Size = new System.Drawing.Size(106, 20);
@@ -631,7 +631,7 @@
             // 
             // textBoxKronorBarnbiljetter
             // 
-            this.textBoxKronorBarnbiljetter.Location = new System.Drawing.Point(740, 159);
+            this.textBoxKronorBarnbiljetter.Location = new System.Drawing.Point(740, 161);
             this.textBoxKronorBarnbiljetter.Name = "textBoxKronorBarnbiljetter";
             this.textBoxKronorBarnbiljetter.ReadOnly = true;
             this.textBoxKronorBarnbiljetter.Size = new System.Drawing.Size(106, 20);
@@ -640,7 +640,7 @@
             // 
             // textBoxTotaltAntal
             // 
-            this.textBoxTotaltAntal.Location = new System.Drawing.Point(627, 221);
+            this.textBoxTotaltAntal.Location = new System.Drawing.Point(627, 228);
             this.textBoxTotaltAntal.Name = "textBoxTotaltAntal";
             this.textBoxTotaltAntal.ReadOnly = true;
             this.textBoxTotaltAntal.Size = new System.Drawing.Size(106, 20);
@@ -649,7 +649,7 @@
             // 
             // textBoxTotaltKronor
             // 
-            this.textBoxTotaltKronor.Location = new System.Drawing.Point(740, 221);
+            this.textBoxTotaltKronor.Location = new System.Drawing.Point(740, 228);
             this.textBoxTotaltKronor.Name = "textBoxTotaltKronor";
             this.textBoxTotaltKronor.ReadOnly = true;
             this.textBoxTotaltKronor.Size = new System.Drawing.Size(106, 20);
@@ -668,7 +668,7 @@
             // 
             // buttonRaderaForestallning
             // 
-            this.buttonRaderaForestallning.Location = new System.Drawing.Point(160, 407);
+            this.buttonRaderaForestallning.Location = new System.Drawing.Point(157, 407);
             this.buttonRaderaForestallning.Name = "buttonRaderaForestallning";
             this.buttonRaderaForestallning.Size = new System.Drawing.Size(126, 35);
             this.buttonRaderaForestallning.TabIndex = 13;
@@ -689,7 +689,7 @@
             // labelKronor
             // 
             this.labelKronor.AutoSize = true;
-            this.labelKronor.Location = new System.Drawing.Point(737, 75);
+            this.labelKronor.Location = new System.Drawing.Point(737, 69);
             this.labelKronor.Name = "labelKronor";
             this.labelKronor.Size = new System.Drawing.Size(38, 13);
             this.labelKronor.TabIndex = 11;
@@ -698,7 +698,7 @@
             // labelAntal
             // 
             this.labelAntal.AutoSize = true;
-            this.labelAntal.Location = new System.Drawing.Point(624, 75);
+            this.labelAntal.Location = new System.Drawing.Point(624, 69);
             this.labelAntal.Name = "labelAntal";
             this.labelAntal.Size = new System.Drawing.Size(31, 13);
             this.labelAntal.TabIndex = 10;
@@ -707,7 +707,7 @@
             // labelTotalt
             // 
             this.labelTotalt.AutoSize = true;
-            this.labelTotalt.Location = new System.Drawing.Point(525, 221);
+            this.labelTotalt.Location = new System.Drawing.Point(525, 228);
             this.labelTotalt.Name = "labelTotalt";
             this.labelTotalt.Size = new System.Drawing.Size(34, 13);
             this.labelTotalt.TabIndex = 9;
@@ -716,7 +716,7 @@
             // labelBarnbiljetter
             // 
             this.labelBarnbiljetter.AutoSize = true;
-            this.labelBarnbiljetter.Location = new System.Drawing.Point(525, 166);
+            this.labelBarnbiljetter.Location = new System.Drawing.Point(525, 168);
             this.labelBarnbiljetter.Name = "labelBarnbiljetter";
             this.labelBarnbiljetter.Size = new System.Drawing.Size(62, 13);
             this.labelBarnbiljetter.TabIndex = 8;
@@ -725,7 +725,7 @@
             // labelUngdomsbiljetter
             // 
             this.labelUngdomsbiljetter.AutoSize = true;
-            this.labelUngdomsbiljetter.Location = new System.Drawing.Point(525, 132);
+            this.labelUngdomsbiljetter.Location = new System.Drawing.Point(525, 130);
             this.labelUngdomsbiljetter.Name = "labelUngdomsbiljetter";
             this.labelUngdomsbiljetter.Size = new System.Drawing.Size(85, 13);
             this.labelUngdomsbiljetter.TabIndex = 7;
@@ -734,7 +734,7 @@
             // labelVuxenbiljetter
             // 
             this.labelVuxenbiljetter.AutoSize = true;
-            this.labelVuxenbiljetter.Location = new System.Drawing.Point(525, 98);
+            this.labelVuxenbiljetter.Location = new System.Drawing.Point(525, 92);
             this.labelVuxenbiljetter.Name = "labelVuxenbiljetter";
             this.labelVuxenbiljetter.Size = new System.Drawing.Size(70, 13);
             this.labelVuxenbiljetter.TabIndex = 6;
@@ -742,7 +742,7 @@
             // 
             // textBoxAntalVuxenBiljetter
             // 
-            this.textBoxAntalVuxenBiljetter.Location = new System.Drawing.Point(627, 91);
+            this.textBoxAntalVuxenBiljetter.Location = new System.Drawing.Point(627, 85);
             this.textBoxAntalVuxenBiljetter.Name = "textBoxAntalVuxenBiljetter";
             this.textBoxAntalVuxenBiljetter.ReadOnly = true;
             this.textBoxAntalVuxenBiljetter.Size = new System.Drawing.Size(106, 20);
@@ -751,7 +751,7 @@
             // 
             // buttonSkapaForestalnning
             // 
-            this.buttonSkapaForestalnning.Location = new System.Drawing.Point(26, 407);
+            this.buttonSkapaForestalnning.Location = new System.Drawing.Point(23, 407);
             this.buttonSkapaForestalnning.Name = "buttonSkapaForestalnning";
             this.buttonSkapaForestalnning.Size = new System.Drawing.Size(126, 35);
             this.buttonSkapaForestalnning.TabIndex = 4;
@@ -1075,7 +1075,7 @@
             // 
             this.lblShows.AutoSize = true;
             this.lblShows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShows.Location = new System.Drawing.Point(23, 32);
+            this.lblShows.Location = new System.Drawing.Point(23, 35);
             this.lblShows.Name = "lblShows";
             this.lblShows.Size = new System.Drawing.Size(112, 16);
             this.lblShows.TabIndex = 26;
@@ -1085,7 +1085,7 @@
             // 
             this.lblActs.AutoSize = true;
             this.lblActs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActs.Location = new System.Drawing.Point(302, 32);
+            this.lblActs.Location = new System.Drawing.Point(305, 35);
             this.lblActs.Name = "lblActs";
             this.lblActs.Size = new System.Drawing.Size(44, 16);
             this.lblActs.TabIndex = 27;
@@ -1095,7 +1095,7 @@
             // 
             this.lblStatistics.AutoSize = true;
             this.lblStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatistics.Location = new System.Drawing.Point(525, 32);
+            this.lblStatistics.Location = new System.Drawing.Point(525, 35);
             this.lblStatistics.Name = "lblStatistics";
             this.lblStatistics.Size = new System.Drawing.Size(63, 16);
             this.lblStatistics.TabIndex = 28;
