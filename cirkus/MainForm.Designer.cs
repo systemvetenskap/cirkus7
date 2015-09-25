@@ -91,7 +91,7 @@
             this.btnRaderaKonto = new System.Windows.Forms.Button();
             this.lblPersonnummer = new System.Windows.Forms.Label();
             this.textBoxPersonnummer = new System.Windows.Forms.TextBox();
-            this.LblStatus = new System.Windows.Forms.Label();
+            this.LblStatusKonto = new System.Windows.Forms.Label();
             this.lblBehorighetsniva = new System.Windows.Forms.Label();
             this.lblLosenord = new System.Windows.Forms.Label();
             this.dgStaff = new System.Windows.Forms.DataGridView();
@@ -804,7 +804,7 @@
             this.tabAccount.Controls.Add(this.btnRaderaKonto);
             this.tabAccount.Controls.Add(this.lblPersonnummer);
             this.tabAccount.Controls.Add(this.textBoxPersonnummer);
-            this.tabAccount.Controls.Add(this.LblStatus);
+            this.tabAccount.Controls.Add(this.LblStatusKonto);
             this.tabAccount.Controls.Add(this.lblBehorighetsniva);
             this.tabAccount.Controls.Add(this.lblLosenord);
             this.tabAccount.Controls.Add(this.dgStaff);
@@ -860,16 +860,16 @@
             this.textBoxPersonnummer.Size = new System.Drawing.Size(152, 20);
             this.textBoxPersonnummer.TabIndex = 56;
             // 
-            // LblStatus
+            // LblStatusKonto
             // 
-            this.LblStatus.AutoSize = true;
-            this.LblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblStatus.Location = new System.Drawing.Point(459, 339);
-            this.LblStatus.Name = "LblStatus";
-            this.LblStatus.Size = new System.Drawing.Size(48, 13);
-            this.LblStatus.TabIndex = 49;
-            this.LblStatus.Text = "label12";
-            this.LblStatus.Visible = false;
+            this.LblStatusKonto.AutoSize = true;
+            this.LblStatusKonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblStatusKonto.Location = new System.Drawing.Point(459, 339);
+            this.LblStatusKonto.Name = "LblStatusKonto";
+            this.LblStatusKonto.Size = new System.Drawing.Size(48, 13);
+            this.LblStatusKonto.TabIndex = 49;
+            this.LblStatusKonto.Text = "label12";
+            this.LblStatusKonto.Visible = false;
             // 
             // lblBehorighetsniva
             // 
@@ -1204,7 +1204,7 @@
         private System.Windows.Forms.DataGridView dgvAkter;
         private System.Windows.Forms.Label lblPersonnummer;
         private System.Windows.Forms.TextBox textBoxPersonnummer;
-        private System.Windows.Forms.Label LblStatus;
+        private System.Windows.Forms.Label LblStatusKonto;
         private System.Windows.Forms.Button btnRaderaKonto;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
