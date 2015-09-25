@@ -94,6 +94,7 @@ namespace cirkus
             //da.Fill(acts);
             
             dgActs.DataSource = acts;
+            dgTEST.DataSource = acts;
             if (acts.Rows.Count > 0)
             {
                 for (int row = 0; row < acts.Rows.Count; row++)
@@ -149,6 +150,7 @@ namespace cirkus
                             if (value3 == DBNull.Value)
                             {
                                 drw[0] = int.Parse(dgTickets[0, selectedIndex2].Value.ToString());
+                                drw[3] = false;
                              
 
                             }
@@ -174,7 +176,7 @@ namespace cirkus
                             if (value3 == DBNull.Value)
                             {
                                 drw[0] = int.Parse(dgTickets[0, selectedIndex2].Value.ToString());
-                                //acts.Columns.Add(new DataColumn("Vald akter", typeof(bool)));
+                                drw[3] = false;
 
                             }
                         }
@@ -421,6 +423,7 @@ namespace cirkus
                 dtPersons.Columns.Add("id");
                 dtPersons.Columns.Add("Person/Biljett");
                 dtPersons.Columns.Add("agegroup");
+                dtPersons.Columns.Add("nrOfacts");
                 DataRow dr;
                 for (int i = 0; i < nrotickets; i++)
                 {
@@ -429,6 +432,7 @@ namespace cirkus
                     dr[0] = i;
                     dr[1] = "Person" + z.ToString();
                     dr[2] = 3;
+                    dr[3] = 0;
                     dtPersons.Rows.Add(dr);
 
                     
@@ -796,6 +800,7 @@ namespace cirkus
             cbAgegroup.SelectedIndex = -1;
             int dgIndex = dgTickets.SelectedRows[0].Index;
             ticketid = int.Parse(dgTickets[0, dgIndex].Value.ToString());
+            //bool lckd = Convert.ToBoolean(dgTickets[3, dgIndex].Value.ToString());
             loadActs();
             this.dgActs.Columns[0].ReadOnly = true;
             this.dgActs.Columns[1].ReadOnly = true;
@@ -803,6 +808,7 @@ namespace cirkus
             this.dgActs.Columns[3].ReadOnly = true;
             this.dgActs.Columns[0].Visible = false;
             this.dgActs.Columns[1].Visible = false;
+            checkLocked();
             int age = int.Parse(dgTickets[2, dgIndex].Value.ToString());
             if(age == 0)
             {
@@ -823,6 +829,7 @@ namespace cirkus
                 cbAgegroup.SelectedIndex = -1;
                 cbAgegroup.Text = "Åldersgrupp";
             }
+
          
             
 
@@ -852,21 +859,90 @@ namespace cirkus
 
         private void dgTickets_SelectionChanged(object sender, EventArgs e)
         {
-            //int dgIndex = dgTickets.SelectedRows[0].Index;
-            //int age = int.Parse(dgTickets[2, dgIndex].Value.ToString());
-            //if(age < 3)
-            //{
-            //    cbAgegroup.SelectedIndex = age;
-            //}
-            //else if( age == 3)
-            //{
+
+
+
+
+        }
+
+        private void dgActs_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dgActs_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = 0;
+            if (((e.ColumnIndex) == 3) && ((bool)dgActs.Rows[e.RowIndex].Cells[3].Value))
+            {
+                //MessageBox.Show(dgActs.Rows[e.RowIndex].Cells[3].Value.ToString());
+
+                foreach (DataGridViewRow row in dgActs.Rows)
+                {
+                    bool check = Convert.ToBoolean(row.Cells[3].Value);
+                    if (check == true)
+                    {
+                        i++;
+                    }
+
+                }
+                foreach (DataRow r in dtPersons.Rows)
+                {
+                    int id = int.Parse(r[0].ToString());
+                    if (id == ticketid)
+                    {
+                        r[3] = i;
+                    }
+
+
+                }
+                checkLocked();
+
+            }
+            else
+            {
+                int ix = 0;
+                   // MessageBox.Show(dgActs.Rows[e.RowIndex].Cells[3].Value.ToString());
+
+                    foreach (DataGridViewRow row in dgActs.Rows)
+                    {
+                        bool check = Convert.ToBoolean(row.Cells[3].Value);
+                        if (check == false)
+                        {
+                        ix = 1;
+                        }
+
+                    }
+
+
                 
+                foreach (DataRow r in dtPersons.Rows)
+                {
+                    int nr = int.Parse(r[3].ToString());
+                    int id = int.Parse(r[0].ToString());
+                    if (id == ticketid)
+                    {
+                        r[3] = nr - ix;
+                    }
 
 
-            //}
+                }
+                checkLocked();
+            }
+        }
+
+        private void dgActs_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if(dgActs.IsCurrentCellDirty)
+            {
+                dgActs.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
             
-            
-       
+        }
+
+        private void dgActs_SelectionChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void dgTickets_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -1518,6 +1594,23 @@ namespace cirkus
                 }
             }
             return barasiffror;
+        }
+        public void checkLocked()
+        {
+            foreach(DataRow r in dtPersons.Rows)
+            {
+                int id = int.Parse(r[0].ToString());
+                int nr = int.Parse(r[3].ToString());
+                if(id == ticketid && nr > 0)
+                {
+                    cbAgegroup.Enabled = false;
+                }
+                else if(id == ticketid && nr == 0)
+                {
+                    cbAgegroup.Enabled = true;
+
+                }
+            }
         }
 
     }
