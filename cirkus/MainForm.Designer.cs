@@ -119,6 +119,7 @@
             this.lblShows = new System.Windows.Forms.Label();
             this.lblActs = new System.Windows.Forms.Label();
             this.lblStatistics = new System.Windows.Forms.Label();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketActs)).BeginInit();
@@ -497,6 +498,7 @@
             // 
             // tabShow
             // 
+            this.tabShow.Controls.Add(this.btnPreview);
             this.tabShow.Controls.Add(this.lblStatistics);
             this.tabShow.Controls.Add(this.lblActs);
             this.tabShow.Controls.Add(this.lblShows);
@@ -532,7 +534,7 @@
             // 
             // printPreviewControl1
             // 
-            this.printPreviewControl1.Location = new System.Drawing.Point(49, 77);
+            this.printPreviewControl1.Location = new System.Drawing.Point(441, 288);
             this.printPreviewControl1.Name = "printPreviewControl1";
             this.printPreviewControl1.Size = new System.Drawing.Size(209, 164);
             this.printPreviewControl1.TabIndex = 24;
@@ -1099,6 +1101,16 @@
             this.lblStatistics.TabIndex = 28;
             this.lblStatistics.Text = "Statistik";
             // 
+            // btnPreview
+            // 
+            this.btnPreview.Location = new System.Drawing.Point(656, 415);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(126, 35);
+            this.btnPreview.TabIndex = 29;
+            this.btnPreview.Text = "Förhandsgranska utskrift";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1221,5 +1233,6 @@
         private System.Windows.Forms.Label lblActs;
         private System.Windows.Forms.Label lblShows;
         private System.Windows.Forms.Label lblStatistics;
+        private System.Windows.Forms.Button btnPreview;
     }
 }

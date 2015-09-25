@@ -1184,11 +1184,6 @@ namespace cirkus
 
 
             // Kolla dokumentet innan man skrivar ut
-            printPreviewControl1.Visible = true;
-            printPreviewDialog1.Document = printDocumentStatistic;
-            printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
-            printPreviewDialog1.Show();
-            printPreviewControl1.Document = printDocumentStatistic;
         }
         private void checkBoxAllaAkter_CheckedChanged(object sender, EventArgs e)
         {
@@ -1668,6 +1663,15 @@ namespace cirkus
         private void textBoxAntalUngdomsbiljetter_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            printPreviewControl1.Visible = true;
+            printPreviewDialog1.Document = printDocumentStatistic;
+            printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
+            printPreviewDialog1.Show();
+            printPreviewControl1.Document = printDocumentStatistic;
         }
     }
 }
