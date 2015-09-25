@@ -1667,7 +1667,6 @@ namespace cirkus
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            printPreviewControl1.Visible = true;
             printPreviewDialog1.Document = printDocumentStatistic;
             printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
             printPreviewDialog1.Show();
