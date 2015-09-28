@@ -163,6 +163,7 @@
             this.labelcSeats = new System.Windows.Forms.Label();
             this.lblcSeats = new System.Windows.Forms.Label();
             this.labelcurrentActs = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -1960,5 +1961,6 @@
         private System.Windows.Forms.Label lblcurrentActs;
         private System.Windows.Forms.Label labelcurrentActs;
         private System.Windows.Forms.Label lblcSeats;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

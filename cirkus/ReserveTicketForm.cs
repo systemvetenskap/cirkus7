@@ -46,11 +46,14 @@ namespace cirkus
         BindingSource filterSacts = new BindingSource();
         NpgsqlCommand cmd;
         MailMessage mail;
+     
 
         public ReserveTicketForm()
         {
             InitializeComponent();
             loadShows();
+            backgroundWorker1 = new BackgroundWorker();
+            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
 
         }
         public void loadShows()
@@ -367,6 +370,8 @@ namespace cirkus
             cSeats.Columns.Add("seatid");
             lblStatus1.Visible = false;
 
+            
+
 
 
 
@@ -403,6 +408,7 @@ namespace cirkus
                 }
                 dgTickets.DataSource = dtPersons;
                 //comboTicketnr.Text = "2";
+                dgTickets.ClearSelection();
                 load_Seats();
 
             }
@@ -1199,62 +1205,77 @@ namespace cirkus
             createBooking();
             if (cbDf.Checked == false)
             {
-                SendMail();
+               
+                backgroundWorker1.RunWorkerAsync();
+                this.Close();
+                //SendMail();
             }
-
+            this.Close();
 
         }
 
         private void cbAgegroup_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbAgegroup.Text == "Barn")
+            if(dgActs.Rows.Count > 0)
             {
-                agegroup = 0;
-                this.dgActs.Columns[3].ReadOnly = false;
-                lblStatusAge.Visible = false;
-            }
-
-            if (cbAgegroup.Text == "Ungdom")
-            {
-                agegroup = 1;
-                this.dgActs.Columns[3].ReadOnly = false;
-                lblStatusAge.Visible = false;
-            }
-            if (cbAgegroup.Text == "Vuxen")
-            {
-
-                agegroup = 2;
-                this.dgActs.Columns[3].ReadOnly = false;
-                lblStatusAge.Visible = false;
-            }
-            if (cbAgegroup.Text == "Åldersgrupp")
-            {
-                agegroup = 4;
-                MessageBox.Show("Välj åldersgrupp för biljetten");
-                this.dgActs.Columns[3].ReadOnly = true;
-                return;
-            }
-            foreach (DataRow r in acts.Rows)
-            {
-                int id = Convert.ToInt16(r[0]);
-                if (ticketid == id)
+                if (cbAgegroup.Text == "Barn")
                 {
-                    r[4] = agegroup;
+                    agegroup = 0;
+                    this.dgActs.Columns[3].ReadOnly = false;
+                    lblStatusAge.Visible = false;
+                }
+
+                if (cbAgegroup.Text == "Ungdom")
+                {
+                    agegroup = 1;
+                    this.dgActs.Columns[3].ReadOnly = false;
+                    lblStatusAge.Visible = false;
+                }
+                if (cbAgegroup.Text == "Vuxen")
+                {
+
+                    agegroup = 2;
+                    this.dgActs.Columns[3].ReadOnly = false;
+                    lblStatusAge.Visible = false;
+                }
+                if (cbAgegroup.Text == "Åldersgrupp")
+                {
+                    agegroup = 4;
+                    MessageBox.Show("Välj åldersgrupp för biljetten");
+                    this.dgActs.Columns[3].ReadOnly = true;
+                    return;
+                }
+                foreach (DataRow r in acts.Rows)
+                {
+                    int id = Convert.ToInt16(r[0]);
+                    if (ticketid == id)
+                    {
+                        r[4] = agegroup;
+
+                    }
+
+
+                }
+                foreach (DataRow r in dtPersons.Rows)
+                {
+                    int id = Convert.ToInt16(r[0]);
+                    if (ticketid == id)
+                    {
+                        r[2] = agegroup;
+
+                    }
 
                 }
 
-
             }
-            foreach (DataRow r in dtPersons.Rows)
+            else
             {
-                int id = Convert.ToInt16(r[0]);
-                if (ticketid == id)
-                {
-                    r[2] = agegroup;
-
-                }
+                lblStatusAge.Visible = true;
+                lblStatusAge.Text = "Välj en person för att kunna ange ålder";
+                lblStatusAge.ForeColor = Color.Tomato;
 
             }
+
         }
 
         private void dataGridViewActs_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1359,38 +1380,17 @@ namespace cirkus
             string sql;
             int custid = customerid;
             int shid = showid;
+            int ix = 0;
+            int numberOfacts = 0;
+            string  priceid = "";
             DataTable tickets = new DataTable();
             tickets.Columns.Add("ticketid");
             tickets.Columns.Add("seatid");
             tickets.Columns.Add("priceid");
             tickets.Columns.Add("actid");
-            progressBar1.Value = 10;
+            progressBar1.Value = ix;
 
-            //for (int i = 0; i <= ticketid; i++)
-            //{
-
-            //    foreach (DataRow row in cSeats.Rows)
-            //    {
-
-
-            //        if (row[0].ToString() == i.ToString())
-            //        {
-
-            //            DataRow rw = tickets.NewRow();
-            //            rw[0] = row[0];
-            //            rw[1] = row[1];
-            //            rw[2] = row[4];
-            //            rw[3] = row[5];
-            //            tickets.Rows.Add(rw);
-
-            //            progressBar1.Value = 20;
-            //            //dgTEST.DataSource = tickets;
-            //        }
-
-            //    }
-
-            //}
-
+            
             for (int i = 0; i < nrotickets; i++)
             {
                 string tid = i.ToString();
@@ -1405,6 +1405,7 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", dateReservedto.Value.ToString("yyyy-MM-dd")));
+                    ix++;
 
                 }
                 else if (radioPaid.Checked == true && cbDf.Checked == false)
@@ -1415,7 +1416,7 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
-
+                    ix++;
                 }
                 else if (cbDf.Checked == true && radioPaid.Checked == true)
                 {
@@ -1424,7 +1425,9 @@ namespace cirkus
                     cmd = new NpgsqlCommand(sql, conn);
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
+                    ix++;
                 }
+                
 
 
 
@@ -1438,33 +1441,73 @@ namespace cirkus
                 int addedbookingid = int.Parse(read[0].ToString());
                 conn.Close();
 
-                progressBar1.Value = 30;
+                ix++;
                 foreach (DataRow dr in cSeats.Rows)
                 {
-                    progressBar1.Value = 35;
+                    ix++;
                     string id = dr[0].ToString();
                     string actid = dr[1].ToString();
                     string section = dr[2].ToString();
                     string rownr = dr[3].ToString();
-                    
-                    //string priceid = dr[4].ToString();
-                    string seatid = dr[5].ToString();
+                    foreach(DataRow r in dtPersons.Rows)
+                    {
+                        if(r[0].ToString() == tid)
+                        {
+                            numberOfacts = int.Parse(r[3].ToString());
+                        }
 
+                    }
+                    if(numberOfacts == dgShowActs.Rows.Count)
+                    {
+                        if (agegroup == 0)
+                        {
+                            priceid = "2";
+
+                        }
+                        if(agegroup == 1)
+                        {
+                            priceid = "4";
+                        }    
+                        if(agegroup == 2)
+                        {
+                            priceid = "6";
+                        }
+                    }
+                    else
+                    {
+                        if (agegroup == 0)
+                        {
+                            priceid = "1";
+
+                        }
+                        if (agegroup == 1)
+                        {
+                            priceid = "3";
+                        }
+                        if (agegroup == 2)
+                        {
+                            priceid = "5";
+                        }
+
+                    }
+                   
+                    string seatid = dr[5].ToString();
+                    ix++;
 
                     if (id == tid)
                     {
                         conn.Open();
-                        sql = "insert into booked_seats(available_seats_id, bookingid) values(:sid, :bid)";
+                        sql = "insert into booked_seats(available_seats_id, bookingid, priceid) values(:sid, :bid, :pid)";
                         cmd = new NpgsqlCommand(sql, conn);
                         cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));
                         cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
-                        //cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+                        cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
                         cmd.ExecuteNonQuery();
 
                         cmd = new NpgsqlCommand("select currval('booked_seats_booked_seat_id_seq');", conn);
 
                         read = cmd.ExecuteReader();
-                        progressBar1.Value = 40;
+                        ix++;
 
                         read.Read();
                         int addedbookedseat = int.Parse(read[0].ToString());
@@ -1483,10 +1526,10 @@ namespace cirkus
 
                 }
 
-
+                ix++;
             }
-            progressBar1.Value = 50;
-
+            progressBar1.Value = 100;
+            
             
             
 
@@ -1495,231 +1538,7 @@ namespace cirkus
         public void SendMail()
         {
 
-            conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("select customerid, email, fname, lname from customer where customerid = '" + customerid + "';", conn);
-            NpgsqlDataReader dr = cmd.ExecuteReader();
-            dr.Read();
-            customeremail = dr[1].ToString();
-            customerfname = dr[2].ToString();
-            customerlname = dr[3].ToString();
-
-            conn.Close();
-            progressBar1.Value = 55;
-            string confirm_mail_text = "Hej " + customerfname + " " + customerlname + "\n\nDet här är en bekräftelse på att du har köp biljetten/biljetter för kommande förestälningen \n\n\nOm du har några frågor kring ditt köp, vänligen kontakta oss via e-post: kulbusstest@gmail.com eller via telefon 000 000";
-
-
-            object value = customeremail;
-            if (value == DBNull.Value)
-            {
-                MessageBox.Show("Inget mail skickat");
-            }
-            else
-            {
-                progressBar1.Value = 60;
-
-
-                mail = new MailMessage("kulbusstest@gmail.com", customeremail, "Cirkus Kull&Buss - Bokningsbekräftelse", confirm_mail_text); // (from, to, subject, body.text)
-
-                SmtpClient client = new SmtpClient("smtp.gmail.com");
-                client.Port = 587;
-                client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
-                client.EnableSsl = true;
-
-                string show_date;
-                conn.Open();
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(@"select distinct booking.bookingid,booking.customerid from booking where booking.showid = '" + showid + "' and booking.customerid = '" + customerid + "'", conn);
-                DataTable dtBid = new DataTable();
-
-                da.Fill(dtBid);
-                conn.Close();
-                progressBar1.Value = 70;
-                //dgTEST.DataSource = dtBid;
-                foreach (DataRow row in dtBid.Rows)
-                {
-                    int bid = int.Parse(row[0].ToString());
-                    conn.Open();
-                    da = new NpgsqlDataAdapter(@"select acts.name,seats.section, seats.rownumber from ticket
-                                                            inner join booked_seats on ticket.booked_seat_id = booked_seats.booked_seat_id
-                                                            inner join available_seats on booked_seats.available_seats_id = available_seats.available_seats_id
-                                                            inner join acts on available_seats.actid = acts.actid
-                                                            inner join seats on available_seats.seatid = seats.seatid                
-                                                            where ticket.bookingid = '" + bid + "' order by acts.actid", conn);
-
-                    DataTable acts = new DataTable();
-                    progressBar1.Value = 75;
-                    da.Fill(acts);
-                    conn.Close();
-                    foreach (DataRow r in acts.Rows)
-                    {
-                        actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
-
-                    }
-                    conn.Open();
-                    cmd = new NpgsqlCommand(@"select sum(price_group_seat.price), price_group_seat.group from price_group_seat
-                                                inner join booked_seats on price_group_seat.priceid = booked_seats.priceid
-                                                inner join booking on booked_seats.bookingid = booking.bookingid
-                                                where booking.bookingid = '" + bid + "'group by price_group_seat.group", conn);
-                    NpgsqlDataReader read = cmd.ExecuteReader();
-                    string pris = "";
-                    string aldersgrupp = "";
-
-                    int pointImage = 600;
-                    int imageHeight = 210;
-                    int prisPoint = 650; 
-                    foreach (DataGridViewRow ro in dgTickets.Rows)
-                    {
-                        pointImage -= 20;
-                        imageHeight += 20;
-                        prisPoint -= 20;
-                    }
-                    
-
-                    foreach (DataRow r in acts.Rows)
-                    {
-                        actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
-
-                    }
-
-                    while (read.Read())
-                    {
-                        pris = read[0].ToString();
-                        aldersgrupp = read[1].ToString();
-                    }
-
-                    conn.Close();
-                    progressBar1.Value = 80;
-                    conn.Open();
-                    cmd = new NpgsqlCommand("select show.date from show inner join booking on show.showid = booking.showid where booking.bookingid = '" + bid + "'", conn);
-                    read = cmd.ExecuteReader();
-                    read.Read();
-                    show_date = read[0].ToString();
-                    conn.Close();
-
-                    bokningid = bid.ToString();
-
-                    //MemoryStream ms = new MemoryStream();
-                    //Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
-                    //PdfWriter writer = PdfWriter.GetInstance(doc, ms);
-
-                    //Drawing
-                    //doc.Open();
-                    //doc.Add(new Paragraph("BiljettNr:" + bokningid));
-                    //doc.Add(new Paragraph("Föreställning:" + show));
-                    //doc.Add(new Paragraph("Åldersgrupp:" + aldersgrupp));
-                    //doc.Add(new Paragraph("Biljett för " + actname));
-                    //doc.Add(new Paragraph("Pris:" + pris));
-                    //doc.Add(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
-
-                    #region PDF
-
-                    MemoryStream ms = new MemoryStream();
-                    Document doc = new Document();
-                    PdfWriter writer = PdfWriter.GetInstance(doc, ms);
-
-                    doc.Open();
-                    ////Drawing
-
-                    //Rectangle
-                    PdfContentByte contentunder = writer.DirectContentUnder;
-                    contentunder.SetColorStroke(BaseColor.BLACK);
-                    contentunder.Rectangle(30, pointImage, 540, imageHeight);
-                    contentunder.Stroke();
-
-                    //Text
-                    BaseFont f_cn = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
-                    PdfContentByte cb = writer.DirectContent;
-
-                    cb.BeginText();
-
-                    cb.SetFontAndSize(FontFactory.GetFont(FontFactory.TIMES_BOLD).BaseFont, 18);
-                    cb.SetTextMatrix(60, 770); // Left, Top
-                    cb.ShowText("Biljett Cirkus Kul & Bus");
-
-                    cb.SetFontAndSize(FontFactory.GetFont(FontFactory.TIMES_BOLD).BaseFont, 12);
-                    cb.SetTextMatrix(60, 750);
-                    cb.ShowText("BokningsID:");
-
-                    cb.SetTextMatrix(60, 730);
-                    cb.ShowText("Datum:");
-
-                    cb.SetTextMatrix(60, 710);
-                    cb.ShowText("Namn:");
-
-                    cb.SetTextMatrix(60, 690);
-                    cb.ShowText("Åldersgrupp:");
-
-                    cb.SetTextMatrix(60, 670);
-                    cb.ShowText("Akt/plats:");
-
-                    cb.SetTextMatrix(60, 650);
-                    cb.ShowText("Tider:");
-
-                    cb.SetTextMatrix(60, prisPoint);
-                    cb.ShowText("Pris:");
-
-                    cb.SetTextMatrix(0, 550);
-                    cb.ShowText("-------------------------------------------------------------- Klipp här ------------------------------------------------------------------------------------------------------------------------- ");
-
-
-
-                    cb.SetFontAndSize(FontFactory.GetFont(FontFactory.TIMES).BaseFont, 12);
-                    cb.SetTextMatrix(160, 750);
-                    cb.ShowText(bokningid);
-
-                    cb.SetTextMatrix(160, 730);
-                    cb.ShowText(show_date);
-
-                    cb.SetTextMatrix(160, 710);
-                    cb.ShowText(show);
-
-                    cb.SetTextMatrix(160, 690);
-                    cb.ShowText(aldersgrupp);
-
-                    cb.SetTextMatrix(160, 670);
-                    cb.ShowText(actname);
-
-                    cb.SetTextMatrix(160, 650);
-                    cb.ShowText("Tider:");
-
-                    cb.SetTextMatrix(160, prisPoint);
-                    cb.ShowText(pris);
-
-                    cb.EndText();
-
-                    //image 
-
-                    string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-
-                    iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance(wanted_path +"\\Resources\\backgroundClown.jpg");
-
-                                    //width height
-                    PNG.ScaleAbsolute(540f, imageHeight);
-
-                    PNG.SetAbsolutePosition(30, pointImage);
-                    doc.Add(PNG);
-                    writer.CloseStream = false;
-                    doc.Close();
-                    #endregion
-
-                    
-                    ms.Position = 0;
-
-                    mail.Attachments.Add(new Attachment(ms, "Biljett" + bokningid + ".pdf"));
-
-                    actname = "";
-
-                    //progressBar1.Value = 85;
-                 
-                   
-
-                }
-
-                progressBar1.Value = 100;
-                MessageBox.Show("Här är vi nu");
-                client.Send(mail);
-                this.Close();
-
-            }
+            
 
         }
         public bool IsValidEmail(string email)
@@ -1734,12 +1553,7 @@ namespace cirkus
                 return false;
             }
         }
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
 
-
-
-        }
         public bool EndastSiffror(string värde)
         {
             bool barasiffror = true;
@@ -1941,6 +1755,247 @@ namespace cirkus
                 dt.Rows.Remove(row);
 
             return dt;
+        }
+        void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            MessageBox.Show("Test");
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("select customerid, email, fname, lname from customer where customerid = '" + customerid + "';", conn);
+            NpgsqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+            customeremail = dr[1].ToString();
+            customerfname = dr[2].ToString();
+            customerlname = dr[3].ToString();
+
+            conn.Close();
+           
+            string confirm_mail_text = "Hej " + customerfname + " " + customerlname + "\n\nDet här är en bekräftelse på att du har köp biljetten/biljetter för kommande förestälningen \n\n\nOm du har några frågor kring ditt köp, vänligen kontakta oss via e-post: kulbusstest@gmail.com eller via telefon 000 000";
+
+
+            object value = customeremail;
+            if (value == DBNull.Value)
+            {
+                MessageBox.Show("Inget mail skickat");
+            }
+            else
+            {
+              
+
+
+                mail = new MailMessage("kulbusstest@gmail.com", customeremail, "Cirkus Kull&Buss - Bokningsbekräftelse", confirm_mail_text); // (from, to, subject, body.text)
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                client.Port = 587;
+                client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
+                client.EnableSsl = true;
+
+                string show_date;
+                conn.Open();
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(@"select distinct booking.bookingid,booking.customerid from booking where booking.showid = '" + showid + "' and booking.customerid = '" + customerid + "'", conn);
+                DataTable dtBid = new DataTable();
+
+                da.Fill(dtBid);
+                conn.Close();
+              
+                //dgTEST.DataSource = dtBid;
+                foreach (DataRow row in dtBid.Rows)
+                {
+                    int bid = int.Parse(row[0].ToString());
+                    conn.Open();
+                    da = new NpgsqlDataAdapter(@"select acts.name,seats.section, seats.rownumber from ticket
+                                                            inner join booked_seats on ticket.booked_seat_id = booked_seats.booked_seat_id
+                                                            inner join available_seats on booked_seats.available_seats_id = available_seats.available_seats_id
+                                                            inner join acts on available_seats.actid = acts.actid
+                                                            inner join seats on available_seats.seatid = seats.seatid                
+                                                            where ticket.bookingid = '" + bid + "' order by acts.actid", conn);
+
+                    DataTable acts = new DataTable();
+                    
+                    da.Fill(acts);
+                    conn.Close();
+                    foreach (DataRow r in acts.Rows)
+                    {
+                        actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
+
+                    }
+                    conn.Open();
+                    cmd = new NpgsqlCommand(@"select sum(price_group_seat.price), price_group_seat.group from price_group_seat
+                                                inner join booked_seats on price_group_seat.priceid = booked_seats.priceid
+                                                inner join booking on booked_seats.bookingid = booking.bookingid
+                                                where booking.bookingid = '" + bid + "'group by price_group_seat.group", conn);
+                    NpgsqlDataReader read = cmd.ExecuteReader();
+                    string pris = "";
+                    string aldersgrupp = "";
+
+                    int pointImage = 600;
+                    int imageHeight = 210;
+                    int prisPoint = 650;
+                    foreach (DataGridViewRow ro in dgTickets.Rows)
+                    {
+                        pointImage -= 20;
+                        imageHeight += 20;
+                        prisPoint -= 20;
+                    }
+
+
+                    foreach (DataRow r in acts.Rows)
+                    {
+                        actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
+
+                    }
+
+                    while (read.Read())
+                    {
+                        pris = read[0].ToString();
+                        aldersgrupp = read[1].ToString();
+                    }
+
+                    conn.Close();
+                    
+                    conn.Open();
+                    cmd = new NpgsqlCommand("select show.date from show inner join booking on show.showid = booking.showid where booking.bookingid = '" + bid + "'", conn);
+                    read = cmd.ExecuteReader();
+                    read.Read();
+                    show_date = read[0].ToString();
+                    conn.Close();
+
+                    bokningid = bid.ToString();
+
+                    //MemoryStream ms = new MemoryStream();
+                    //Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
+                    //PdfWriter writer = PdfWriter.GetInstance(doc, ms);
+
+                    //Drawing
+                    //doc.Open();
+                    //doc.Add(new Paragraph("BiljettNr:" + bokningid));
+                    //doc.Add(new Paragraph("Föreställning:" + show));
+                    //doc.Add(new Paragraph("Åldersgrupp:" + aldersgrupp));
+                    //doc.Add(new Paragraph("Biljett för " + actname));
+                    //doc.Add(new Paragraph("Pris:" + pris));
+                    //doc.Add(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
+
+                    #region PDF
+
+                    MemoryStream ms = new MemoryStream();
+                    Document doc = new Document();
+                    PdfWriter writer = PdfWriter.GetInstance(doc, ms);
+
+                    doc.Open();
+                    ////Drawing
+
+                    //Rectangle
+                    PdfContentByte contentunder = writer.DirectContentUnder;
+                    contentunder.SetColorStroke(BaseColor.BLACK);
+                    contentunder.Rectangle(30, pointImage, 540, imageHeight);
+                    contentunder.Stroke();
+
+                    //Text
+                    BaseFont f_cn = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+                    PdfContentByte cb = writer.DirectContent;
+
+                    cb.BeginText();
+
+                    cb.SetFontAndSize(FontFactory.GetFont(FontFactory.TIMES_BOLD).BaseFont, 18);
+                    cb.SetTextMatrix(60, 770); // Left, Top
+                    cb.ShowText("Biljett Cirkus Kul & Bus");
+
+                    cb.SetFontAndSize(FontFactory.GetFont(FontFactory.TIMES_BOLD).BaseFont, 12);
+                    cb.SetTextMatrix(60, 750);
+                    cb.ShowText("BokningsID:");
+
+                    cb.SetTextMatrix(60, 730);
+                    cb.ShowText("Datum:");
+
+                    cb.SetTextMatrix(60, 710);
+                    cb.ShowText("Namn:");
+
+                    cb.SetTextMatrix(60, 690);
+                    cb.ShowText("Åldersgrupp:");
+
+                    cb.SetTextMatrix(60, 670);
+                    cb.ShowText("Akt/plats:");
+
+                    cb.SetTextMatrix(60, 650);
+                    cb.ShowText("Tider:");
+
+                    cb.SetTextMatrix(60, prisPoint);
+                    cb.ShowText("Pris:");
+
+                    cb.SetTextMatrix(0, 550);
+                    cb.ShowText("-------------------------------------------------------------- Klipp här ------------------------------------------------------------------------------------------------------------------------- ");
+
+
+
+                    cb.SetFontAndSize(FontFactory.GetFont(FontFactory.TIMES).BaseFont, 12);
+                    cb.SetTextMatrix(160, 750);
+                    cb.ShowText(bokningid);
+
+                    cb.SetTextMatrix(160, 730);
+                    cb.ShowText(show_date);
+
+                    cb.SetTextMatrix(160, 710);
+                    cb.ShowText(show);
+
+                    cb.SetTextMatrix(160, 690);
+                    cb.ShowText(aldersgrupp);
+
+                    cb.SetTextMatrix(160, 670);
+                    cb.ShowText(actname);
+
+                    cb.SetTextMatrix(160, 650);
+                    cb.ShowText("Tider:");
+
+                    cb.SetTextMatrix(160, prisPoint);
+                    cb.ShowText(pris);
+
+                    cb.EndText();
+
+                    //image 
+
+                    string path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+
+                    iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance(path + "\\Resources\\backgroundClown.jpg");
+
+                    //width height
+                    PNG.ScaleAbsolute(540f, imageHeight);
+
+                    PNG.SetAbsolutePosition(30, pointImage);
+                    doc.Add(PNG);
+                    writer.CloseStream = false;
+                    doc.Close();
+                    #endregion
+
+
+                    ms.Position = 0;
+
+                    mail.Attachments.Add(new Attachment(ms, "Biljett" + bokningid + ".pdf"));
+
+                    actname = "";
+
+                   
+
+
+
+                }
+
+                
+                MessageBox.Show("Här är vi nu");
+                client.Send(mail);
+                
+
+            }
+
+        }
+        public void backrgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if(e.Error != null)
+            {
+                MessageBox.Show("Error");
+            }
+            else
+            {
+                MessageBox.Show("Klart");
+            }
         }
     }
 }
