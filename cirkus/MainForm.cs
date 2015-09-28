@@ -426,6 +426,7 @@ namespace cirkus
             ////BACKGROUND IMAGE
             System.Drawing.Image i2 = cirkus.Properties.Resources.backgroundClown;
             Point p2 = new Point(100, 100);
+
             // Create rectangle for displaying image, subtracting 200 (100 for left,100 for right margins).
             Rectangle destRect = new Rectangle(20, 40, 750, regtangelP);
 

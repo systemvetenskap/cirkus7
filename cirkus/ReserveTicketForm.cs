@@ -1003,19 +1003,19 @@ namespace cirkus
             if(fullShowS == false)
             {
 
-                foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                string seatSection = cb.Name[0].ToString();
+                string seatNumber = cb.Name[1].ToString();
+                if (cb.Checked == true && cb.BackColor == Color.Green)
                 {
-                    string seatSection = cb.Name[0].ToString();
-                    string seatNumber = cb.Name[1].ToString();
-                    if (cb.Checked == true && cb.BackColor == Color.Green)
-                    {
-                        DataRow row = cSeats.NewRow();
-                        row[0] = ticketid;
-                        row[1] = actid;
-                        row[2] = seatSection;
-                        row[3] = seatNumber;
-                        row[4] = agegroup;
-                        cSeats.Rows.Add(row);
+                    DataRow row = cSeats.NewRow();
+                    row[0] = ticketid;
+                    row[1] = actid;
+                    row[2] = seatSection;
+                    row[3] = seatNumber;
+                    row[4] = agegroup;
+                    cSeats.Rows.Add(row);
 
 
 
@@ -1065,7 +1065,7 @@ namespace cirkus
                 }
 
 
-            }
+                }
             else if(fullShowS == true)
             {
                 foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
@@ -1090,8 +1090,8 @@ namespace cirkus
                             {
                         
                                 row[5] = read[0];
-                                
-                            }
+
+            }
                             conn.Close();
                             
                             row[0] = ticketid;
@@ -1527,6 +1527,24 @@ namespace cirkus
                     NpgsqlDataReader read = cmd.ExecuteReader();
                     string pris = "";
                     string aldersgrupp = "";
+
+                    int pointImage = 600;
+                    int imageHeight = 210;
+                    int prisPoint = 650; 
+                    foreach (DataGridViewRow ro in dgTickets.Rows)
+                    {
+                        pointImage -= 20;
+                        imageHeight += 20;
+                        prisPoint -= 20;
+                    }
+                    
+
+                    foreach (DataRow r in acts.Rows)
+                    {
+                        actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
+
+                    }
+
                     while (read.Read())
                     {
                         pris = read[0].ToString();
@@ -1544,29 +1562,108 @@ namespace cirkus
 
                     bokningid = bid.ToString();
 
-                    MemoryStream ms = new MemoryStream();
-                    Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
-                    PdfWriter writer = PdfWriter.GetInstance(doc, ms);
-
-                    //doc.Open();
-                    //doc.Add(new Paragraph("BiljettNr:" + bokningid + "\nFöreställning: " + show + "\nDatum: " + show_date + " \nÅldersgrupp: " + aldersgrupp + "\nBiljett för " + actname +"\nPris:" + pris));
-
-                    //writer.CloseStream = false;
-                    //doc.Close();
+                    //MemoryStream ms = new MemoryStream();
+                    //Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
+                    //PdfWriter writer = PdfWriter.GetInstance(doc, ms);
 
                     //Drawing
+                    //doc.Open();
+                    //doc.Add(new Paragraph("BiljettNr:" + bokningid));
+                    //doc.Add(new Paragraph("Föreställning:" + show));
+                    //doc.Add(new Paragraph("Åldersgrupp:" + aldersgrupp));
+                    //doc.Add(new Paragraph("Biljett för " + actname));
+                    //doc.Add(new Paragraph("Pris:" + pris));
+                    //doc.Add(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
+
+                    #region PDF
+
+                    MemoryStream ms = new MemoryStream();
+                    Document doc = new Document();
+                    PdfWriter writer = PdfWriter.GetInstance(doc, ms);
+
                     doc.Open();
-                    doc.Add(new Paragraph("BiljettNr:" + bokningid));
-                    doc.Add(new Paragraph("Föreställning:" + show));
-                    doc.Add(new Paragraph("Åldersgrupp:" + aldersgrupp));
-                    doc.Add(new Paragraph("Biljett för " + actname));
-                    doc.Add(new Paragraph("Pris:" + pris));
-                    doc.Add(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
+                    ////Drawing
+
+                    //Rectangle
+                    PdfContentByte contentunder = writer.DirectContentUnder;
+                    contentunder.SetColorStroke(BaseColor.BLACK);
+                    contentunder.Rectangle(30, pointImage, 540, imageHeight);
+                    contentunder.Stroke();
+
+                    //Text
+                    BaseFont f_cn = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
+                    PdfContentByte cb = writer.DirectContent;
+
+                    cb.BeginText();
+
+                    cb.SetFontAndSize(FontFactory.GetFont(FontFactory.TIMES_BOLD).BaseFont, 18);
+                    cb.SetTextMatrix(60, 770); // Left, Top
+                    cb.ShowText("Biljett Cirkus Kul & Bus");
+
+                    cb.SetFontAndSize(FontFactory.GetFont(FontFactory.TIMES_BOLD).BaseFont, 12);
+                    cb.SetTextMatrix(60, 750);
+                    cb.ShowText("BokningsID:");
+
+                    cb.SetTextMatrix(60, 730);
+                    cb.ShowText("Datum:");
+
+                    cb.SetTextMatrix(60, 710);
+                    cb.ShowText("Namn:");
+
+                    cb.SetTextMatrix(60, 690);
+                    cb.ShowText("Åldersgrupp:");
+
+                    cb.SetTextMatrix(60, 670);
+                    cb.ShowText("Akt/plats:");
+
+                    cb.SetTextMatrix(60, 650);
+                    cb.ShowText("Tider:");
+
+                    cb.SetTextMatrix(60, prisPoint);
+                    cb.ShowText("Pris:");
+
+                    cb.SetTextMatrix(0, 550);
+                    cb.ShowText("-------------------------------------------------------------- Klipp här ------------------------------------------------------------------------------------------------------------------------- ");
 
 
 
+                    cb.SetFontAndSize(FontFactory.GetFont(FontFactory.TIMES).BaseFont, 12);
+                    cb.SetTextMatrix(160, 750);
+                    cb.ShowText(bokningid);
+
+                    cb.SetTextMatrix(160, 730);
+                    cb.ShowText(show_date);
+
+                    cb.SetTextMatrix(160, 710);
+                    cb.ShowText(show);
+
+                    cb.SetTextMatrix(160, 690);
+                    cb.ShowText(aldersgrupp);
+
+                    cb.SetTextMatrix(160, 670);
+                    cb.ShowText(actname);
+
+                    cb.SetTextMatrix(160, 650);
+                    cb.ShowText("Tider:");
+
+                    cb.SetTextMatrix(160, prisPoint);
+                    cb.ShowText(pris);
+
+                    cb.EndText();
+
+                    //image 
+                    iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance("C:\\Users\\Matija\\Source\\Repos\\cirkus73\\cirkus\\Images\\backgroundClown.jpg");
+
+                                    //width height
+                    PNG.ScaleAbsolute(540f, imageHeight);
+
+                    PNG.SetAbsolutePosition(30, pointImage);
+                    doc.Add(PNG);
                     writer.CloseStream = false;
                     doc.Close();
+                    #endregion
+
+                    
                     ms.Position = 0;
 
                     mail.Attachments.Add(new Attachment(ms, "Biljett" + bokningid + ".pdf"));
@@ -1644,7 +1741,7 @@ namespace cirkus
 
             actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
             
-            
+
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
                 cb.Checked = true;
@@ -1654,21 +1751,21 @@ namespace cirkus
             }
             if(fullShowS == false)
             {
-                foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                foreach (DataRow row in currentActs.Rows)
                 {
-                    foreach (DataRow row in currentActs.Rows)
+                    string s = row[1].ToString() + row[2].ToString();
+              
+                    if (row[3].ToString() == actid.ToString())
                     {
-                        string s = row[1].ToString() + row[2].ToString();
-
-                        if (row[3].ToString() == actid.ToString())
+                        
+                        if (cb.Name == s)
                         {
-
-                            if (cb.Name == s)
-                            {
-                                cb.Enabled = true;
-                                cb.Checked = false;
-                                cb.BackColor = Color.Green;
-
+                            cb.Enabled = true;
+                            cb.Checked = false;
+                            cb.BackColor = Color.Green;
+                            
                             }
 
 
@@ -1713,7 +1810,7 @@ namespace cirkus
                 }
 
 
-            }
+                        }
             else if(fullShowS == true)
             {
                 foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
@@ -1722,7 +1819,7 @@ namespace cirkus
                     {
                         string s = row[1].ToString() + row[2].ToString();
 
-                      
+
 
                             if (cb.Name == s)
                             {
@@ -1730,12 +1827,12 @@ namespace cirkus
                                 cb.Checked = false;
                                 cb.BackColor = Color.Green;
 
-                            }
+                    }
 
 
                         
-                        else
-                        {
+                    else
+                    {
 
 
                         }
@@ -1766,10 +1863,10 @@ namespace cirkus
                             cb.Enabled = true;
                             cb.BackColor = Color.Green;
 
-                        }
-
-
                     }
+
+
+                }
 
                 }
 
