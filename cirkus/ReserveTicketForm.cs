@@ -306,10 +306,11 @@ namespace cirkus
             //load_Seats();
             conn.Close();
             conn.Open();
-            string sql = @"Select acts.actid, acts.name, acts.start_time, acts.end_time, count(available_seats.available_seats_id) from acts 
-                            inner join show on acts.showid = show.showid
-                            inner join available_seats on available_seats.actid = acts.actid
-                            where show.showid = '" + showid + "' group by acts.actid,acts.name, acts.start_time, acts.end_time";
+            string sql = @"select acts.actid,acts.name, acts.start_time, acts.end_time,count(available_seats.available_seats_id)  - count(booked_seats.booked_seat_id) as antal from available_seats
+                        left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                        inner join acts on available_seats.actid = acts.actid
+                        inner join show on acts.showid = show.showid
+                        where show.showid = '"+showid+"' group by acts.actid, acts.name,acts.name, acts.start_time, acts.end_time";
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
             showacts = new DataTable();
 
