@@ -73,7 +73,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblSeatStatus = new System.Windows.Forms.Label();
             this.lblActMap = new System.Windows.Forms.Label();
             this.lblS = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
@@ -159,6 +159,10 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.dgTEST = new System.Windows.Forms.DataGridView();
+            this.lblcurrentActs = new System.Windows.Forms.Label();
+            this.labelcSeats = new System.Windows.Forms.Label();
+            this.lblcSeats = new System.Windows.Forms.Label();
+            this.labelcurrentActs = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -670,7 +674,7 @@
             // 
             // gpSeatMap
             // 
-            this.gpSeatMap.Controls.Add(this.label12);
+            this.gpSeatMap.Controls.Add(this.lblSeatStatus);
             this.gpSeatMap.Controls.Add(this.lblActMap);
             this.gpSeatMap.Controls.Add(this.lblS);
             this.gpSeatMap.Controls.Add(this.button9);
@@ -747,16 +751,16 @@
             this.gpSeatMap.TabIndex = 58;
             this.gpSeatMap.TabStop = false;
             // 
-            // label12
+            // lblSeatStatus
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(96, 366);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 13);
-            this.label12.TabIndex = 60;
-            this.label12.Text = "lblBookedSeat";
-            this.label12.Visible = false;
+            this.lblSeatStatus.AutoSize = true;
+            this.lblSeatStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeatStatus.Location = new System.Drawing.Point(96, 366);
+            this.lblSeatStatus.Name = "lblSeatStatus";
+            this.lblSeatStatus.Size = new System.Drawing.Size(89, 13);
+            this.lblSeatStatus.TabIndex = 60;
+            this.lblSeatStatus.Text = "lblBookedSeat";
+            this.lblSeatStatus.Visible = false;
             // 
             // lblActMap
             // 
@@ -806,6 +810,7 @@
             this.E8.Size = new System.Drawing.Size(15, 14);
             this.E8.TabIndex = 64;
             this.E8.UseVisualStyleBackColor = true;
+            this.E8.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // E4
             // 
@@ -817,6 +822,7 @@
             this.E4.Size = new System.Drawing.Size(15, 14);
             this.E4.TabIndex = 63;
             this.E4.UseVisualStyleBackColor = true;
+            this.E4.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // E6
             // 
@@ -828,6 +834,7 @@
             this.E6.Size = new System.Drawing.Size(15, 14);
             this.E6.TabIndex = 62;
             this.E6.UseVisualStyleBackColor = true;
+            this.E6.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // E2
             // 
@@ -839,6 +846,7 @@
             this.E2.Size = new System.Drawing.Size(15, 14);
             this.E2.TabIndex = 61;
             this.E2.UseVisualStyleBackColor = true;
+            this.E2.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // E7
             // 
@@ -850,6 +858,7 @@
             this.E7.Size = new System.Drawing.Size(15, 14);
             this.E7.TabIndex = 60;
             this.E7.UseVisualStyleBackColor = true;
+            this.E7.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // E3
             // 
@@ -861,6 +870,7 @@
             this.E3.Size = new System.Drawing.Size(15, 14);
             this.E3.TabIndex = 59;
             this.E3.UseVisualStyleBackColor = true;
+            this.E3.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // E5
             // 
@@ -872,6 +882,7 @@
             this.E5.Size = new System.Drawing.Size(15, 14);
             this.E5.TabIndex = 58;
             this.E5.UseVisualStyleBackColor = true;
+            this.E5.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // E1
             // 
@@ -883,6 +894,7 @@
             this.E1.Size = new System.Drawing.Size(15, 14);
             this.E1.TabIndex = 57;
             this.E1.UseVisualStyleBackColor = true;
+            this.E1.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // F4
             // 
@@ -894,6 +906,7 @@
             this.F4.Size = new System.Drawing.Size(15, 14);
             this.F4.TabIndex = 56;
             this.F4.UseVisualStyleBackColor = true;
+            this.F4.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // F8
             // 
@@ -905,6 +918,7 @@
             this.F8.Size = new System.Drawing.Size(15, 14);
             this.F8.TabIndex = 55;
             this.F8.UseVisualStyleBackColor = true;
+            this.F8.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // F2
             // 
@@ -916,6 +930,7 @@
             this.F2.Size = new System.Drawing.Size(15, 14);
             this.F2.TabIndex = 54;
             this.F2.UseVisualStyleBackColor = true;
+            this.F2.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // F6
             // 
@@ -927,6 +942,7 @@
             this.F6.Size = new System.Drawing.Size(15, 14);
             this.F6.TabIndex = 53;
             this.F6.UseVisualStyleBackColor = true;
+            this.F6.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // F3
             // 
@@ -938,6 +954,7 @@
             this.F3.Size = new System.Drawing.Size(15, 14);
             this.F3.TabIndex = 52;
             this.F3.UseVisualStyleBackColor = true;
+            this.F3.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // F7
             // 
@@ -949,6 +966,7 @@
             this.F7.Size = new System.Drawing.Size(15, 14);
             this.F7.TabIndex = 51;
             this.F7.UseVisualStyleBackColor = true;
+            this.F7.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // F1
             // 
@@ -960,6 +978,7 @@
             this.F1.Size = new System.Drawing.Size(15, 14);
             this.F1.TabIndex = 50;
             this.F1.UseVisualStyleBackColor = true;
+            this.F1.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // F5
             // 
@@ -971,6 +990,7 @@
             this.F5.Size = new System.Drawing.Size(15, 14);
             this.F5.TabIndex = 49;
             this.F5.UseVisualStyleBackColor = true;
+            this.F5.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // H8
             // 
@@ -982,6 +1002,7 @@
             this.H8.Size = new System.Drawing.Size(15, 14);
             this.H8.TabIndex = 48;
             this.H8.UseVisualStyleBackColor = true;
+            this.H8.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // H7
             // 
@@ -993,6 +1014,7 @@
             this.H7.Size = new System.Drawing.Size(15, 14);
             this.H7.TabIndex = 47;
             this.H7.UseVisualStyleBackColor = true;
+            this.H7.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // H6
             // 
@@ -1004,6 +1026,7 @@
             this.H6.Size = new System.Drawing.Size(15, 14);
             this.H6.TabIndex = 46;
             this.H6.UseVisualStyleBackColor = true;
+            this.H6.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // H5
             // 
@@ -1015,6 +1038,7 @@
             this.H5.Size = new System.Drawing.Size(15, 14);
             this.H5.TabIndex = 45;
             this.H5.UseVisualStyleBackColor = true;
+            this.H5.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // H4
             // 
@@ -1026,6 +1050,7 @@
             this.H4.Size = new System.Drawing.Size(15, 14);
             this.H4.TabIndex = 44;
             this.H4.UseVisualStyleBackColor = true;
+            this.H4.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // H3
             // 
@@ -1037,6 +1062,7 @@
             this.H3.Size = new System.Drawing.Size(15, 14);
             this.H3.TabIndex = 43;
             this.H3.UseVisualStyleBackColor = true;
+            this.H3.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // H2
             // 
@@ -1048,6 +1074,7 @@
             this.H2.Size = new System.Drawing.Size(15, 14);
             this.H2.TabIndex = 42;
             this.H2.UseVisualStyleBackColor = true;
+            this.H2.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // H1
             // 
@@ -1058,6 +1085,7 @@
             this.H1.Name = "H1";
             this.H1.Size = new System.Drawing.Size(15, 14);
             this.H1.TabIndex = 41;
+            this.H1.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // G8
             // 
@@ -1069,6 +1097,7 @@
             this.G8.Size = new System.Drawing.Size(15, 14);
             this.G8.TabIndex = 40;
             this.G8.UseVisualStyleBackColor = true;
+            this.G8.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // G7
             // 
@@ -1080,6 +1109,7 @@
             this.G7.Size = new System.Drawing.Size(15, 14);
             this.G7.TabIndex = 39;
             this.G7.UseVisualStyleBackColor = true;
+            this.G7.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // G6
             // 
@@ -1091,6 +1121,7 @@
             this.G6.Size = new System.Drawing.Size(15, 14);
             this.G6.TabIndex = 38;
             this.G6.UseVisualStyleBackColor = true;
+            this.G6.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // G5
             // 
@@ -1102,6 +1133,7 @@
             this.G5.Size = new System.Drawing.Size(15, 14);
             this.G5.TabIndex = 37;
             this.G5.UseVisualStyleBackColor = true;
+            this.G5.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // G4
             // 
@@ -1113,6 +1145,7 @@
             this.G4.Size = new System.Drawing.Size(15, 14);
             this.G4.TabIndex = 36;
             this.G4.UseVisualStyleBackColor = true;
+            this.G4.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // G3
             // 
@@ -1124,6 +1157,7 @@
             this.G3.Size = new System.Drawing.Size(15, 14);
             this.G3.TabIndex = 35;
             this.G3.UseVisualStyleBackColor = true;
+            this.G3.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // G2
             // 
@@ -1135,6 +1169,7 @@
             this.G2.Size = new System.Drawing.Size(15, 14);
             this.G2.TabIndex = 34;
             this.G2.UseVisualStyleBackColor = true;
+            this.G2.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // G1
             // 
@@ -1146,6 +1181,7 @@
             this.G1.Size = new System.Drawing.Size(15, 14);
             this.G1.TabIndex = 33;
             this.G1.UseVisualStyleBackColor = true;
+            this.G1.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // D4
             // 
@@ -1157,6 +1193,7 @@
             this.D4.Size = new System.Drawing.Size(15, 14);
             this.D4.TabIndex = 32;
             this.D4.UseVisualStyleBackColor = true;
+            this.D4.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // D8
             // 
@@ -1168,6 +1205,7 @@
             this.D8.Size = new System.Drawing.Size(15, 14);
             this.D8.TabIndex = 31;
             this.D8.UseVisualStyleBackColor = true;
+            this.D8.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // D2
             // 
@@ -1179,6 +1217,7 @@
             this.D2.Size = new System.Drawing.Size(15, 14);
             this.D2.TabIndex = 30;
             this.D2.UseVisualStyleBackColor = true;
+            this.D2.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // D6
             // 
@@ -1190,6 +1229,7 @@
             this.D6.Size = new System.Drawing.Size(15, 14);
             this.D6.TabIndex = 29;
             this.D6.UseVisualStyleBackColor = true;
+            this.D6.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // D3
             // 
@@ -1201,6 +1241,7 @@
             this.D3.Size = new System.Drawing.Size(15, 14);
             this.D3.TabIndex = 28;
             this.D3.UseVisualStyleBackColor = true;
+            this.D3.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // D7
             // 
@@ -1212,6 +1253,7 @@
             this.D7.Size = new System.Drawing.Size(15, 14);
             this.D7.TabIndex = 27;
             this.D7.UseVisualStyleBackColor = true;
+            this.D7.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // D1
             // 
@@ -1223,6 +1265,7 @@
             this.D1.Size = new System.Drawing.Size(15, 14);
             this.D1.TabIndex = 26;
             this.D1.UseVisualStyleBackColor = true;
+            this.D1.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // D5
             // 
@@ -1234,6 +1277,7 @@
             this.D5.Size = new System.Drawing.Size(15, 14);
             this.D5.TabIndex = 25;
             this.D5.UseVisualStyleBackColor = true;
+            this.D5.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // C6
             // 
@@ -1245,6 +1289,7 @@
             this.C6.Size = new System.Drawing.Size(15, 14);
             this.C6.TabIndex = 24;
             this.C6.UseVisualStyleBackColor = true;
+            this.C6.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // C2
             // 
@@ -1256,6 +1301,7 @@
             this.C2.Size = new System.Drawing.Size(15, 14);
             this.C2.TabIndex = 23;
             this.C2.UseVisualStyleBackColor = true;
+            this.C2.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // C8
             // 
@@ -1267,6 +1313,7 @@
             this.C8.Size = new System.Drawing.Size(15, 14);
             this.C8.TabIndex = 22;
             this.C8.UseVisualStyleBackColor = true;
+            this.C8.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // C4
             // 
@@ -1278,6 +1325,7 @@
             this.C4.Size = new System.Drawing.Size(15, 14);
             this.C4.TabIndex = 21;
             this.C4.UseVisualStyleBackColor = true;
+            this.C4.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // C5
             // 
@@ -1289,6 +1337,7 @@
             this.C5.Size = new System.Drawing.Size(15, 14);
             this.C5.TabIndex = 20;
             this.C5.UseVisualStyleBackColor = true;
+            this.C5.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // C1
             // 
@@ -1300,6 +1349,7 @@
             this.C1.Size = new System.Drawing.Size(15, 14);
             this.C1.TabIndex = 19;
             this.C1.UseVisualStyleBackColor = true;
+            this.C1.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // C7
             // 
@@ -1311,6 +1361,7 @@
             this.C7.Size = new System.Drawing.Size(15, 14);
             this.C7.TabIndex = 18;
             this.C7.UseVisualStyleBackColor = true;
+            this.C7.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // C3
             // 
@@ -1322,6 +1373,7 @@
             this.C3.Size = new System.Drawing.Size(15, 14);
             this.C3.TabIndex = 17;
             this.C3.UseVisualStyleBackColor = true;
+            this.C3.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // B4
             // 
@@ -1333,6 +1385,7 @@
             this.B4.Size = new System.Drawing.Size(15, 14);
             this.B4.TabIndex = 16;
             this.B4.UseVisualStyleBackColor = true;
+            this.B4.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // B3
             // 
@@ -1344,6 +1397,7 @@
             this.B3.Size = new System.Drawing.Size(15, 14);
             this.B3.TabIndex = 15;
             this.B3.UseVisualStyleBackColor = true;
+            this.B3.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // B2
             // 
@@ -1355,6 +1409,7 @@
             this.B2.Size = new System.Drawing.Size(15, 14);
             this.B2.TabIndex = 14;
             this.B2.UseVisualStyleBackColor = true;
+            this.B2.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // B1
             // 
@@ -1366,6 +1421,7 @@
             this.B1.Size = new System.Drawing.Size(15, 14);
             this.B1.TabIndex = 13;
             this.B1.UseVisualStyleBackColor = true;
+            this.B1.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // B8
             // 
@@ -1377,6 +1433,7 @@
             this.B8.Size = new System.Drawing.Size(15, 14);
             this.B8.TabIndex = 12;
             this.B8.UseVisualStyleBackColor = true;
+            this.B8.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // B7
             // 
@@ -1388,6 +1445,7 @@
             this.B7.Size = new System.Drawing.Size(15, 14);
             this.B7.TabIndex = 11;
             this.B7.UseVisualStyleBackColor = true;
+            this.B7.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // B6
             // 
@@ -1399,6 +1457,7 @@
             this.B6.Size = new System.Drawing.Size(15, 14);
             this.B6.TabIndex = 10;
             this.B6.UseVisualStyleBackColor = true;
+            this.B6.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // B5
             // 
@@ -1410,6 +1469,7 @@
             this.B5.Size = new System.Drawing.Size(15, 14);
             this.B5.TabIndex = 9;
             this.B5.UseVisualStyleBackColor = true;
+            this.B5.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // A4
             // 
@@ -1421,6 +1481,7 @@
             this.A4.Size = new System.Drawing.Size(15, 14);
             this.A4.TabIndex = 8;
             this.A4.UseVisualStyleBackColor = true;
+            this.A4.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // A3
             // 
@@ -1432,6 +1493,7 @@
             this.A3.Size = new System.Drawing.Size(15, 14);
             this.A3.TabIndex = 7;
             this.A3.UseVisualStyleBackColor = true;
+            this.A3.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // A2
             // 
@@ -1443,6 +1505,7 @@
             this.A2.Size = new System.Drawing.Size(15, 14);
             this.A2.TabIndex = 6;
             this.A2.UseVisualStyleBackColor = true;
+            this.A2.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // A1
             // 
@@ -1454,6 +1517,7 @@
             this.A1.Size = new System.Drawing.Size(15, 14);
             this.A1.TabIndex = 5;
             this.A1.UseVisualStyleBackColor = true;
+            this.A1.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // A8
             // 
@@ -1465,6 +1529,7 @@
             this.A8.Size = new System.Drawing.Size(15, 14);
             this.A8.TabIndex = 4;
             this.A8.UseVisualStyleBackColor = true;
+            this.A8.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // A7
             // 
@@ -1476,6 +1541,7 @@
             this.A7.Size = new System.Drawing.Size(15, 14);
             this.A7.TabIndex = 3;
             this.A7.UseVisualStyleBackColor = true;
+            this.A7.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // A6
             // 
@@ -1487,6 +1553,7 @@
             this.A6.Size = new System.Drawing.Size(15, 14);
             this.A6.TabIndex = 2;
             this.A6.UseVisualStyleBackColor = true;
+            this.A6.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // A5
             // 
@@ -1498,6 +1565,7 @@
             this.A5.Size = new System.Drawing.Size(15, 14);
             this.A5.TabIndex = 1;
             this.A5.UseVisualStyleBackColor = true;
+            this.A5.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // pictureBox1
             // 
@@ -1507,6 +1575,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(300, 300);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
             // button3
             // 
@@ -1663,8 +1732,44 @@
             this.dgTEST.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTEST.Location = new System.Drawing.Point(915, 351);
             this.dgTEST.Name = "dgTEST";
-            this.dgTEST.Size = new System.Drawing.Size(329, 150);
+            this.dgTEST.Size = new System.Drawing.Size(697, 150);
             this.dgTEST.TabIndex = 55;
+            // 
+            // lblcurrentActs
+            // 
+            this.lblcurrentActs.AutoSize = true;
+            this.lblcurrentActs.Location = new System.Drawing.Point(912, 523);
+            this.lblcurrentActs.Name = "lblcurrentActs";
+            this.lblcurrentActs.Size = new System.Drawing.Size(73, 13);
+            this.lblcurrentActs.TabIndex = 56;
+            this.lblcurrentActs.Text = "currentActs 1;";
+            // 
+            // labelcSeats
+            // 
+            this.labelcSeats.AutoSize = true;
+            this.labelcSeats.Location = new System.Drawing.Point(912, 558);
+            this.labelcSeats.Name = "labelcSeats";
+            this.labelcSeats.Size = new System.Drawing.Size(52, 13);
+            this.labelcSeats.TabIndex = 57;
+            this.labelcSeats.Text = "cSeats 1;";
+            // 
+            // lblcSeats
+            // 
+            this.lblcSeats.AutoSize = true;
+            this.lblcSeats.Location = new System.Drawing.Point(991, 523);
+            this.lblcSeats.Name = "lblcSeats";
+            this.lblcSeats.Size = new System.Drawing.Size(41, 13);
+            this.lblcSeats.TabIndex = 58;
+            this.lblcSeats.Text = "label14";
+            // 
+            // labelcurrentActs
+            // 
+            this.labelcurrentActs.AutoSize = true;
+            this.labelcurrentActs.Location = new System.Drawing.Point(994, 558);
+            this.labelcurrentActs.Name = "labelcurrentActs";
+            this.labelcurrentActs.Size = new System.Drawing.Size(41, 13);
+            this.labelcurrentActs.TabIndex = 59;
+            this.labelcurrentActs.Text = "label14";
             // 
             // ReserveTicketForm
             // 
@@ -1672,6 +1777,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1715, 1023);
+            this.Controls.Add(this.labelcurrentActs);
+            this.Controls.Add(this.lblcSeats);
+            this.Controls.Add(this.labelcSeats);
+            this.Controls.Add(this.lblcurrentActs);
             this.Controls.Add(this.dgTEST);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBoxNrP);
@@ -1844,8 +1953,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dgTickets;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblSeatStatus;
         private System.Windows.Forms.Label lblStatusAge;
         private System.Windows.Forms.DataGridView dgTEST;
+        private System.Windows.Forms.Label labelcSeats;
+        private System.Windows.Forms.Label lblcurrentActs;
+        private System.Windows.Forms.Label labelcurrentActs;
+        private System.Windows.Forms.Label lblcSeats;
     }
 }
