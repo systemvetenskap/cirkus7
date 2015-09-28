@@ -38,77 +38,29 @@
             this.dateTimePickerForsaljningstidTill = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerDatum = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.gpSeatMap = new System.Windows.Forms.GroupBox();
+            this.groupBoxSeatMap = new System.Windows.Forms.GroupBox();
+            this.pictureBoxSeatMap = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericUpDownX = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownY = new System.Windows.Forms.NumericUpDown();
+            this.buttonAddSection = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.numericUpDownRow = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxSection = new System.Windows.Forms.TextBox();
+            this.numericUpDownColumn = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttonRemoveSection = new System.Windows.Forms.Button();
+            this.listBoxSections = new System.Windows.Forms.ListBox();
+            this.comboBoxMapShape = new System.Windows.Forms.ComboBox();
+            this.lblLayout = new System.Windows.Forms.Label();
             this.uncheck = new System.Windows.Forms.Button();
             this.check = new System.Windows.Forms.Button();
             this.lblActMap = new System.Windows.Forms.Label();
             this.lblS = new System.Windows.Forms.Label();
             this.btnSaveMap = new System.Windows.Forms.Button();
-            this.E8 = new System.Windows.Forms.CheckBox();
-            this.E4 = new System.Windows.Forms.CheckBox();
-            this.E6 = new System.Windows.Forms.CheckBox();
-            this.E2 = new System.Windows.Forms.CheckBox();
-            this.E7 = new System.Windows.Forms.CheckBox();
-            this.E3 = new System.Windows.Forms.CheckBox();
-            this.E5 = new System.Windows.Forms.CheckBox();
-            this.E1 = new System.Windows.Forms.CheckBox();
-            this.F4 = new System.Windows.Forms.CheckBox();
-            this.F8 = new System.Windows.Forms.CheckBox();
-            this.F2 = new System.Windows.Forms.CheckBox();
-            this.F6 = new System.Windows.Forms.CheckBox();
-            this.F3 = new System.Windows.Forms.CheckBox();
-            this.F7 = new System.Windows.Forms.CheckBox();
-            this.F1 = new System.Windows.Forms.CheckBox();
-            this.F5 = new System.Windows.Forms.CheckBox();
-            this.H8 = new System.Windows.Forms.CheckBox();
-            this.H7 = new System.Windows.Forms.CheckBox();
-            this.H6 = new System.Windows.Forms.CheckBox();
-            this.H5 = new System.Windows.Forms.CheckBox();
-            this.H4 = new System.Windows.Forms.CheckBox();
-            this.H3 = new System.Windows.Forms.CheckBox();
-            this.H2 = new System.Windows.Forms.CheckBox();
-            this.H1 = new System.Windows.Forms.CheckBox();
-            this.G8 = new System.Windows.Forms.CheckBox();
-            this.G7 = new System.Windows.Forms.CheckBox();
-            this.G6 = new System.Windows.Forms.CheckBox();
-            this.G5 = new System.Windows.Forms.CheckBox();
-            this.G4 = new System.Windows.Forms.CheckBox();
-            this.G3 = new System.Windows.Forms.CheckBox();
-            this.G2 = new System.Windows.Forms.CheckBox();
-            this.G1 = new System.Windows.Forms.CheckBox();
-            this.D4 = new System.Windows.Forms.CheckBox();
-            this.D8 = new System.Windows.Forms.CheckBox();
-            this.D2 = new System.Windows.Forms.CheckBox();
-            this.D6 = new System.Windows.Forms.CheckBox();
-            this.D3 = new System.Windows.Forms.CheckBox();
-            this.D7 = new System.Windows.Forms.CheckBox();
-            this.D1 = new System.Windows.Forms.CheckBox();
-            this.D5 = new System.Windows.Forms.CheckBox();
-            this.C6 = new System.Windows.Forms.CheckBox();
-            this.C2 = new System.Windows.Forms.CheckBox();
-            this.C8 = new System.Windows.Forms.CheckBox();
-            this.C4 = new System.Windows.Forms.CheckBox();
-            this.C5 = new System.Windows.Forms.CheckBox();
-            this.C1 = new System.Windows.Forms.CheckBox();
-            this.C7 = new System.Windows.Forms.CheckBox();
-            this.C3 = new System.Windows.Forms.CheckBox();
-            this.B4 = new System.Windows.Forms.CheckBox();
-            this.B3 = new System.Windows.Forms.CheckBox();
-            this.B2 = new System.Windows.Forms.CheckBox();
-            this.B1 = new System.Windows.Forms.CheckBox();
-            this.B8 = new System.Windows.Forms.CheckBox();
-            this.B7 = new System.Windows.Forms.CheckBox();
-            this.B6 = new System.Windows.Forms.CheckBox();
-            this.B5 = new System.Windows.Forms.CheckBox();
-            this.A4 = new System.Windows.Forms.CheckBox();
-            this.A3 = new System.Windows.Forms.CheckBox();
-            this.A2 = new System.Windows.Forms.CheckBox();
-            this.A1 = new System.Windows.Forms.CheckBox();
-            this.A8 = new System.Windows.Forms.CheckBox();
-            this.A7 = new System.Windows.Forms.CheckBox();
-            this.A6 = new System.Windows.Forms.CheckBox();
-            this.A5 = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelAntalFriplatser = new System.Windows.Forms.Label();
             this.textBoxAntalFriplatser = new System.Windows.Forms.TextBox();
             this.labelAkter = new System.Windows.Forms.Label();
@@ -124,9 +76,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblLayout = new System.Windows.Forms.Label();
-            this.gpSeatMap.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBoxSeatMap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSeatMap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColumn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -196,7 +151,6 @@
             this.dateTimePickerForsaljningstidFran.Size = new System.Drawing.Size(79, 20);
             this.dateTimePickerForsaljningstidFran.TabIndex = 32;
             this.dateTimePickerForsaljningstidFran.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
-            this.dateTimePickerForsaljningstidFran.ValueChanged += new System.EventHandler(this.dateTimePickerForsaljningstidFran_ValueChanged);
             // 
             // dateTimePickerForsaljningstidTill
             // 
@@ -224,84 +178,198 @@
             this.label2.TabIndex = 53;
             this.label2.Text = "Föreställning";
             // 
-            // gpSeatMap
+            // groupBoxSeatMap
             // 
-            this.gpSeatMap.Controls.Add(this.lblLayout);
-            this.gpSeatMap.Controls.Add(this.uncheck);
-            this.gpSeatMap.Controls.Add(this.check);
-            this.gpSeatMap.Controls.Add(this.lblActMap);
-            this.gpSeatMap.Controls.Add(this.lblS);
-            this.gpSeatMap.Controls.Add(this.btnSaveMap);
-            this.gpSeatMap.Controls.Add(this.E8);
-            this.gpSeatMap.Controls.Add(this.E4);
-            this.gpSeatMap.Controls.Add(this.E6);
-            this.gpSeatMap.Controls.Add(this.E2);
-            this.gpSeatMap.Controls.Add(this.E7);
-            this.gpSeatMap.Controls.Add(this.E3);
-            this.gpSeatMap.Controls.Add(this.E5);
-            this.gpSeatMap.Controls.Add(this.E1);
-            this.gpSeatMap.Controls.Add(this.F4);
-            this.gpSeatMap.Controls.Add(this.F8);
-            this.gpSeatMap.Controls.Add(this.F2);
-            this.gpSeatMap.Controls.Add(this.F6);
-            this.gpSeatMap.Controls.Add(this.F3);
-            this.gpSeatMap.Controls.Add(this.F7);
-            this.gpSeatMap.Controls.Add(this.F1);
-            this.gpSeatMap.Controls.Add(this.F5);
-            this.gpSeatMap.Controls.Add(this.H8);
-            this.gpSeatMap.Controls.Add(this.H7);
-            this.gpSeatMap.Controls.Add(this.H6);
-            this.gpSeatMap.Controls.Add(this.H5);
-            this.gpSeatMap.Controls.Add(this.H4);
-            this.gpSeatMap.Controls.Add(this.H3);
-            this.gpSeatMap.Controls.Add(this.H2);
-            this.gpSeatMap.Controls.Add(this.H1);
-            this.gpSeatMap.Controls.Add(this.G8);
-            this.gpSeatMap.Controls.Add(this.G7);
-            this.gpSeatMap.Controls.Add(this.G6);
-            this.gpSeatMap.Controls.Add(this.G5);
-            this.gpSeatMap.Controls.Add(this.G4);
-            this.gpSeatMap.Controls.Add(this.G3);
-            this.gpSeatMap.Controls.Add(this.G2);
-            this.gpSeatMap.Controls.Add(this.G1);
-            this.gpSeatMap.Controls.Add(this.D4);
-            this.gpSeatMap.Controls.Add(this.D8);
-            this.gpSeatMap.Controls.Add(this.D2);
-            this.gpSeatMap.Controls.Add(this.D6);
-            this.gpSeatMap.Controls.Add(this.D3);
-            this.gpSeatMap.Controls.Add(this.D7);
-            this.gpSeatMap.Controls.Add(this.D1);
-            this.gpSeatMap.Controls.Add(this.D5);
-            this.gpSeatMap.Controls.Add(this.C6);
-            this.gpSeatMap.Controls.Add(this.C2);
-            this.gpSeatMap.Controls.Add(this.C8);
-            this.gpSeatMap.Controls.Add(this.C4);
-            this.gpSeatMap.Controls.Add(this.C5);
-            this.gpSeatMap.Controls.Add(this.C1);
-            this.gpSeatMap.Controls.Add(this.C7);
-            this.gpSeatMap.Controls.Add(this.C3);
-            this.gpSeatMap.Controls.Add(this.B4);
-            this.gpSeatMap.Controls.Add(this.B3);
-            this.gpSeatMap.Controls.Add(this.B2);
-            this.gpSeatMap.Controls.Add(this.B1);
-            this.gpSeatMap.Controls.Add(this.B8);
-            this.gpSeatMap.Controls.Add(this.B7);
-            this.gpSeatMap.Controls.Add(this.B6);
-            this.gpSeatMap.Controls.Add(this.B5);
-            this.gpSeatMap.Controls.Add(this.A4);
-            this.gpSeatMap.Controls.Add(this.A3);
-            this.gpSeatMap.Controls.Add(this.A2);
-            this.gpSeatMap.Controls.Add(this.A1);
-            this.gpSeatMap.Controls.Add(this.A8);
-            this.gpSeatMap.Controls.Add(this.A7);
-            this.gpSeatMap.Controls.Add(this.A6);
-            this.gpSeatMap.Controls.Add(this.A5);
-            this.gpSeatMap.Controls.Add(this.pictureBox1);
-            this.gpSeatMap.Location = new System.Drawing.Point(401, 12);
-            this.gpSeatMap.Name = "gpSeatMap";
-            this.gpSeatMap.Size = new System.Drawing.Size(322, 414);
-            this.gpSeatMap.TabIndex = 57;
-            this.gpSeatMap.TabStop = false;
+            this.groupBoxSeatMap.Controls.Add(this.pictureBoxSeatMap);
+            this.groupBoxSeatMap.Controls.Add(this.label11);
+            this.groupBoxSeatMap.Controls.Add(this.label1);
+            this.groupBoxSeatMap.Controls.Add(this.numericUpDownX);
+            this.groupBoxSeatMap.Controls.Add(this.numericUpDownY);
+            this.groupBoxSeatMap.Controls.Add(this.buttonAddSection);
+            this.groupBoxSeatMap.Controls.Add(this.label10);
+            this.groupBoxSeatMap.Controls.Add(this.label9);
+            this.groupBoxSeatMap.Controls.Add(this.numericUpDownRow);
+            this.groupBoxSeatMap.Controls.Add(this.label8);
+            this.groupBoxSeatMap.Controls.Add(this.textBoxSection);
+            this.groupBoxSeatMap.Controls.Add(this.numericUpDownColumn);
+            this.groupBoxSeatMap.Controls.Add(this.label7);
+            this.groupBoxSeatMap.Controls.Add(this.buttonRemoveSection);
+            this.groupBoxSeatMap.Controls.Add(this.listBoxSections);
+            this.groupBoxSeatMap.Controls.Add(this.comboBoxMapShape);
+            this.groupBoxSeatMap.Controls.Add(this.lblLayout);
+            this.groupBoxSeatMap.Controls.Add(this.uncheck);
+            this.groupBoxSeatMap.Controls.Add(this.check);
+            this.groupBoxSeatMap.Controls.Add(this.lblActMap);
+            this.groupBoxSeatMap.Controls.Add(this.lblS);
+            this.groupBoxSeatMap.Controls.Add(this.btnSaveMap);
+            this.groupBoxSeatMap.Location = new System.Drawing.Point(401, 12);
+            this.groupBoxSeatMap.Name = "groupBoxSeatMap";
+            this.groupBoxSeatMap.Size = new System.Drawing.Size(464, 414);
+            this.groupBoxSeatMap.TabIndex = 57;
+            this.groupBoxSeatMap.TabStop = false;
+            // 
+            // pictureBoxSeatMap
+            // 
+            this.pictureBoxSeatMap.Location = new System.Drawing.Point(7, 14);
+            this.pictureBoxSeatMap.Name = "pictureBoxSeatMap";
+            this.pictureBoxSeatMap.Size = new System.Drawing.Size(308, 307);
+            this.pictureBoxSeatMap.TabIndex = 86;
+            this.pictureBoxSeatMap.TabStop = false;
+            this.pictureBoxSeatMap.Click += new System.EventHandler(this.pictureBoxSeatMap_Click);
+            this.pictureBoxSeatMap.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxSeatMap_Paint);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(399, 58);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 13);
+            this.label11.TabIndex = 85;
+            this.label11.Text = "Höjd";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(330, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 84;
+            this.label1.Text = "Bredd";
+            // 
+            // numericUpDownX
+            // 
+            this.numericUpDownX.Location = new System.Drawing.Point(335, 74);
+            this.numericUpDownX.Name = "numericUpDownX";
+            this.numericUpDownX.Size = new System.Drawing.Size(60, 20);
+            this.numericUpDownX.TabIndex = 83;
+            this.numericUpDownX.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownX.ValueChanged += new System.EventHandler(this.numericUpDownX_ValueChanged);
+            // 
+            // numericUpDownY
+            // 
+            this.numericUpDownY.Location = new System.Drawing.Point(401, 74);
+            this.numericUpDownY.Name = "numericUpDownY";
+            this.numericUpDownY.Size = new System.Drawing.Size(53, 20);
+            this.numericUpDownY.TabIndex = 82;
+            this.numericUpDownY.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDownY.ValueChanged += new System.EventHandler(this.numericUpDownY_ValueChanged);
+            // 
+            // buttonAddSection
+            // 
+            this.buttonAddSection.Location = new System.Drawing.Point(335, 241);
+            this.buttonAddSection.Name = "buttonAddSection";
+            this.buttonAddSection.Size = new System.Drawing.Size(123, 23);
+            this.buttonAddSection.TabIndex = 81;
+            this.buttonAddSection.Text = "Lägg till sektion";
+            this.buttonAddSection.UseVisualStyleBackColor = true;
+            this.buttonAddSection.Click += new System.EventHandler(this.buttonAddSection_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(335, 199);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(51, 13);
+            this.label10.TabIndex = 80;
+            this.label10.Text = "Kolumner";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(399, 199);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(36, 13);
+            this.label9.TabIndex = 79;
+            this.label9.Text = "Rader";
+            // 
+            // numericUpDownRow
+            // 
+            this.numericUpDownRow.Location = new System.Drawing.Point(336, 216);
+            this.numericUpDownRow.Name = "numericUpDownRow";
+            this.numericUpDownRow.Size = new System.Drawing.Size(60, 20);
+            this.numericUpDownRow.TabIndex = 78;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(334, 160);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 13);
+            this.label8.TabIndex = 77;
+            this.label8.Text = "Namn på sektion";
+            // 
+            // textBoxSection
+            // 
+            this.textBoxSection.Location = new System.Drawing.Point(335, 176);
+            this.textBoxSection.Name = "textBoxSection";
+            this.textBoxSection.Size = new System.Drawing.Size(119, 20);
+            this.textBoxSection.TabIndex = 76;
+            // 
+            // numericUpDownColumn
+            // 
+            this.numericUpDownColumn.Location = new System.Drawing.Point(402, 216);
+            this.numericUpDownColumn.Name = "numericUpDownColumn";
+            this.numericUpDownColumn.Size = new System.Drawing.Size(53, 20);
+            this.numericUpDownColumn.TabIndex = 75;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(330, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 13);
+            this.label7.TabIndex = 74;
+            this.label7.Text = "Välj form på föreställning";
+            // 
+            // buttonRemoveSection
+            // 
+            this.buttonRemoveSection.Location = new System.Drawing.Point(337, 371);
+            this.buttonRemoveSection.Name = "buttonRemoveSection";
+            this.buttonRemoveSection.Size = new System.Drawing.Size(120, 23);
+            this.buttonRemoveSection.TabIndex = 72;
+            this.buttonRemoveSection.Text = "Ta bort sektion";
+            this.buttonRemoveSection.UseVisualStyleBackColor = true;
+            this.buttonRemoveSection.Click += new System.EventHandler(this.buttonRemoveSection_Click);
+            // 
+            // listBoxSections
+            // 
+            this.listBoxSections.FormattingEnabled = true;
+            this.listBoxSections.Location = new System.Drawing.Point(338, 270);
+            this.listBoxSections.Name = "listBoxSections";
+            this.listBoxSections.Size = new System.Drawing.Size(120, 95);
+            this.listBoxSections.TabIndex = 71;
+            this.listBoxSections.SelectedIndexChanged += new System.EventHandler(this.listBoxSections_SelectedIndexChanged);
+            // 
+            // comboBoxMapShape
+            // 
+            this.comboBoxMapShape.FormattingEnabled = true;
+            this.comboBoxMapShape.Items.AddRange(new object[] {
+            "Cirkel",
+            "Rektangel"});
+            this.comboBoxMapShape.Location = new System.Drawing.Point(333, 30);
+            this.comboBoxMapShape.Name = "comboBoxMapShape";
+            this.comboBoxMapShape.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxMapShape.TabIndex = 70;
+            this.comboBoxMapShape.SelectedIndexChanged += new System.EventHandler(this.comboBoxMapShape_SelectedIndexChanged);
+            // 
+            // lblLayout
+            // 
+            this.lblLayout.AutoSize = true;
+            this.lblLayout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLayout.Location = new System.Drawing.Point(14, 398);
+            this.lblLayout.Name = "lblLayout";
+            this.lblLayout.Size = new System.Drawing.Size(41, 13);
+            this.lblLayout.TabIndex = 62;
+            this.lblLayout.Text = "label1";
+            this.lblLayout.Visible = false;
             // 
             // uncheck
             // 
@@ -350,718 +418,6 @@
             this.btnSaveMap.Text = "Spara layout till vald akt";
             this.btnSaveMap.UseVisualStyleBackColor = true;
             this.btnSaveMap.Click += new System.EventHandler(this.btnSaveMap_Click);
-            // 
-            // E8
-            // 
-            this.E8.AutoSize = true;
-            this.E8.Checked = true;
-            this.E8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E8.Location = new System.Drawing.Point(263, 100);
-            this.E8.Name = "E8";
-            this.E8.Size = new System.Drawing.Size(15, 14);
-            this.E8.TabIndex = 64;
-            this.E8.UseVisualStyleBackColor = true;
-            // 
-            // E4
-            // 
-            this.E4.AutoSize = true;
-            this.E4.Checked = true;
-            this.E4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E4.Location = new System.Drawing.Point(248, 100);
-            this.E4.Name = "E4";
-            this.E4.Size = new System.Drawing.Size(15, 14);
-            this.E4.TabIndex = 63;
-            this.E4.UseVisualStyleBackColor = true;
-            // 
-            // E6
-            // 
-            this.E6.AutoSize = true;
-            this.E6.Checked = true;
-            this.E6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E6.Location = new System.Drawing.Point(263, 132);
-            this.E6.Name = "E6";
-            this.E6.Size = new System.Drawing.Size(15, 14);
-            this.E6.TabIndex = 62;
-            this.E6.UseVisualStyleBackColor = true;
-            // 
-            // E2
-            // 
-            this.E2.AutoSize = true;
-            this.E2.Checked = true;
-            this.E2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E2.Location = new System.Drawing.Point(248, 132);
-            this.E2.Name = "E2";
-            this.E2.Size = new System.Drawing.Size(15, 14);
-            this.E2.TabIndex = 61;
-            this.E2.UseVisualStyleBackColor = true;
-            // 
-            // E7
-            // 
-            this.E7.AutoSize = true;
-            this.E7.Checked = true;
-            this.E7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E7.Location = new System.Drawing.Point(263, 116);
-            this.E7.Name = "E7";
-            this.E7.Size = new System.Drawing.Size(15, 14);
-            this.E7.TabIndex = 60;
-            this.E7.UseVisualStyleBackColor = true;
-            // 
-            // E3
-            // 
-            this.E3.AutoSize = true;
-            this.E3.Checked = true;
-            this.E3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E3.Location = new System.Drawing.Point(248, 116);
-            this.E3.Name = "E3";
-            this.E3.Size = new System.Drawing.Size(15, 14);
-            this.E3.TabIndex = 59;
-            this.E3.UseVisualStyleBackColor = true;
-            // 
-            // E5
-            // 
-            this.E5.AutoSize = true;
-            this.E5.Checked = true;
-            this.E5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E5.Location = new System.Drawing.Point(263, 148);
-            this.E5.Name = "E5";
-            this.E5.Size = new System.Drawing.Size(15, 14);
-            this.E5.TabIndex = 58;
-            this.E5.UseVisualStyleBackColor = true;
-            // 
-            // E1
-            // 
-            this.E1.AutoSize = true;
-            this.E1.Checked = true;
-            this.E1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E1.Location = new System.Drawing.Point(248, 148);
-            this.E1.Name = "E1";
-            this.E1.Size = new System.Drawing.Size(15, 14);
-            this.E1.TabIndex = 57;
-            this.E1.UseVisualStyleBackColor = true;
-            // 
-            // F4
-            // 
-            this.F4.AutoSize = true;
-            this.F4.Checked = true;
-            this.F4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F4.Location = new System.Drawing.Point(53, 100);
-            this.F4.Name = "F4";
-            this.F4.Size = new System.Drawing.Size(15, 14);
-            this.F4.TabIndex = 56;
-            this.F4.UseVisualStyleBackColor = true;
-            // 
-            // F8
-            // 
-            this.F8.AutoSize = true;
-            this.F8.Checked = true;
-            this.F8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F8.Location = new System.Drawing.Point(38, 100);
-            this.F8.Name = "F8";
-            this.F8.Size = new System.Drawing.Size(15, 14);
-            this.F8.TabIndex = 55;
-            this.F8.UseVisualStyleBackColor = true;
-            // 
-            // F2
-            // 
-            this.F2.AutoSize = true;
-            this.F2.Checked = true;
-            this.F2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F2.Location = new System.Drawing.Point(53, 132);
-            this.F2.Name = "F2";
-            this.F2.Size = new System.Drawing.Size(15, 14);
-            this.F2.TabIndex = 54;
-            this.F2.UseVisualStyleBackColor = true;
-            // 
-            // F6
-            // 
-            this.F6.AutoSize = true;
-            this.F6.Checked = true;
-            this.F6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F6.Location = new System.Drawing.Point(38, 132);
-            this.F6.Name = "F6";
-            this.F6.Size = new System.Drawing.Size(15, 14);
-            this.F6.TabIndex = 53;
-            this.F6.UseVisualStyleBackColor = true;
-            // 
-            // F3
-            // 
-            this.F3.AutoSize = true;
-            this.F3.Checked = true;
-            this.F3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F3.Location = new System.Drawing.Point(53, 116);
-            this.F3.Name = "F3";
-            this.F3.Size = new System.Drawing.Size(15, 14);
-            this.F3.TabIndex = 52;
-            this.F3.UseVisualStyleBackColor = true;
-            // 
-            // F7
-            // 
-            this.F7.AutoSize = true;
-            this.F7.Checked = true;
-            this.F7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F7.Location = new System.Drawing.Point(38, 116);
-            this.F7.Name = "F7";
-            this.F7.Size = new System.Drawing.Size(15, 14);
-            this.F7.TabIndex = 51;
-            this.F7.UseVisualStyleBackColor = true;
-            // 
-            // F1
-            // 
-            this.F1.AutoSize = true;
-            this.F1.Checked = true;
-            this.F1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F1.Location = new System.Drawing.Point(53, 148);
-            this.F1.Name = "F1";
-            this.F1.Size = new System.Drawing.Size(15, 14);
-            this.F1.TabIndex = 50;
-            this.F1.UseVisualStyleBackColor = true;
-            // 
-            // F5
-            // 
-            this.F5.AutoSize = true;
-            this.F5.Checked = true;
-            this.F5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F5.Location = new System.Drawing.Point(38, 148);
-            this.F5.Name = "F5";
-            this.F5.Size = new System.Drawing.Size(15, 14);
-            this.F5.TabIndex = 49;
-            this.F5.UseVisualStyleBackColor = true;
-            // 
-            // H8
-            // 
-            this.H8.AutoSize = true;
-            this.H8.Checked = true;
-            this.H8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H8.Location = new System.Drawing.Point(106, 59);
-            this.H8.Name = "H8";
-            this.H8.Size = new System.Drawing.Size(15, 14);
-            this.H8.TabIndex = 48;
-            this.H8.UseVisualStyleBackColor = true;
-            // 
-            // H7
-            // 
-            this.H7.AutoSize = true;
-            this.H7.Checked = true;
-            this.H7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H7.Location = new System.Drawing.Point(91, 59);
-            this.H7.Name = "H7";
-            this.H7.Size = new System.Drawing.Size(15, 14);
-            this.H7.TabIndex = 47;
-            this.H7.UseVisualStyleBackColor = true;
-            // 
-            // H6
-            // 
-            this.H6.AutoSize = true;
-            this.H6.Checked = true;
-            this.H6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H6.Location = new System.Drawing.Point(76, 59);
-            this.H6.Name = "H6";
-            this.H6.Size = new System.Drawing.Size(15, 14);
-            this.H6.TabIndex = 46;
-            this.H6.UseVisualStyleBackColor = true;
-            // 
-            // H5
-            // 
-            this.H5.AutoSize = true;
-            this.H5.Checked = true;
-            this.H5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H5.Location = new System.Drawing.Point(61, 59);
-            this.H5.Name = "H5";
-            this.H5.Size = new System.Drawing.Size(15, 14);
-            this.H5.TabIndex = 45;
-            this.H5.UseVisualStyleBackColor = true;
-            // 
-            // H4
-            // 
-            this.H4.AutoSize = true;
-            this.H4.Checked = true;
-            this.H4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H4.Location = new System.Drawing.Point(106, 75);
-            this.H4.Name = "H4";
-            this.H4.Size = new System.Drawing.Size(15, 14);
-            this.H4.TabIndex = 44;
-            this.H4.UseVisualStyleBackColor = true;
-            // 
-            // H3
-            // 
-            this.H3.AutoSize = true;
-            this.H3.Checked = true;
-            this.H3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H3.Location = new System.Drawing.Point(91, 75);
-            this.H3.Name = "H3";
-            this.H3.Size = new System.Drawing.Size(15, 14);
-            this.H3.TabIndex = 43;
-            this.H3.UseVisualStyleBackColor = true;
-            // 
-            // H2
-            // 
-            this.H2.AutoSize = true;
-            this.H2.Checked = true;
-            this.H2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H2.Location = new System.Drawing.Point(76, 75);
-            this.H2.Name = "H2";
-            this.H2.Size = new System.Drawing.Size(15, 14);
-            this.H2.TabIndex = 42;
-            this.H2.UseVisualStyleBackColor = true;
-            // 
-            // H1
-            // 
-            this.H1.AutoSize = true;
-            this.H1.Checked = true;
-            this.H1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H1.Location = new System.Drawing.Point(61, 75);
-            this.H1.Name = "H1";
-            this.H1.Size = new System.Drawing.Size(15, 14);
-            this.H1.TabIndex = 41;
-            // 
-            // G8
-            // 
-            this.G8.AutoSize = true;
-            this.G8.Checked = true;
-            this.G8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G8.Location = new System.Drawing.Point(237, 59);
-            this.G8.Name = "G8";
-            this.G8.Size = new System.Drawing.Size(15, 14);
-            this.G8.TabIndex = 40;
-            this.G8.UseVisualStyleBackColor = true;
-            // 
-            // G7
-            // 
-            this.G7.AutoSize = true;
-            this.G7.Checked = true;
-            this.G7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G7.Location = new System.Drawing.Point(222, 59);
-            this.G7.Name = "G7";
-            this.G7.Size = new System.Drawing.Size(15, 14);
-            this.G7.TabIndex = 39;
-            this.G7.UseVisualStyleBackColor = true;
-            // 
-            // G6
-            // 
-            this.G6.AutoSize = true;
-            this.G6.Checked = true;
-            this.G6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G6.Location = new System.Drawing.Point(207, 59);
-            this.G6.Name = "G6";
-            this.G6.Size = new System.Drawing.Size(15, 14);
-            this.G6.TabIndex = 38;
-            this.G6.UseVisualStyleBackColor = true;
-            // 
-            // G5
-            // 
-            this.G5.AutoSize = true;
-            this.G5.Checked = true;
-            this.G5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G5.Location = new System.Drawing.Point(192, 59);
-            this.G5.Name = "G5";
-            this.G5.Size = new System.Drawing.Size(15, 14);
-            this.G5.TabIndex = 37;
-            this.G5.UseVisualStyleBackColor = true;
-            // 
-            // G4
-            // 
-            this.G4.AutoSize = true;
-            this.G4.Checked = true;
-            this.G4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G4.Location = new System.Drawing.Point(237, 75);
-            this.G4.Name = "G4";
-            this.G4.Size = new System.Drawing.Size(15, 14);
-            this.G4.TabIndex = 36;
-            this.G4.UseVisualStyleBackColor = true;
-            // 
-            // G3
-            // 
-            this.G3.AutoSize = true;
-            this.G3.Checked = true;
-            this.G3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G3.Location = new System.Drawing.Point(222, 75);
-            this.G3.Name = "G3";
-            this.G3.Size = new System.Drawing.Size(15, 14);
-            this.G3.TabIndex = 35;
-            this.G3.UseVisualStyleBackColor = true;
-            // 
-            // G2
-            // 
-            this.G2.AutoSize = true;
-            this.G2.Checked = true;
-            this.G2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G2.Location = new System.Drawing.Point(207, 75);
-            this.G2.Name = "G2";
-            this.G2.Size = new System.Drawing.Size(15, 14);
-            this.G2.TabIndex = 34;
-            this.G2.UseVisualStyleBackColor = true;
-            // 
-            // G1
-            // 
-            this.G1.AutoSize = true;
-            this.G1.Checked = true;
-            this.G1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G1.Location = new System.Drawing.Point(192, 75);
-            this.G1.Name = "G1";
-            this.G1.Size = new System.Drawing.Size(15, 14);
-            this.G1.TabIndex = 33;
-            this.G1.UseVisualStyleBackColor = true;
-            // 
-            // D4
-            // 
-            this.D4.AutoSize = true;
-            this.D4.Checked = true;
-            this.D4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D4.Location = new System.Drawing.Point(53, 186);
-            this.D4.Name = "D4";
-            this.D4.Size = new System.Drawing.Size(15, 14);
-            this.D4.TabIndex = 32;
-            this.D4.UseVisualStyleBackColor = true;
-            // 
-            // D8
-            // 
-            this.D8.AutoSize = true;
-            this.D8.Checked = true;
-            this.D8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D8.Location = new System.Drawing.Point(38, 186);
-            this.D8.Name = "D8";
-            this.D8.Size = new System.Drawing.Size(15, 14);
-            this.D8.TabIndex = 31;
-            this.D8.UseVisualStyleBackColor = true;
-            // 
-            // D2
-            // 
-            this.D2.AutoSize = true;
-            this.D2.Checked = true;
-            this.D2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D2.Location = new System.Drawing.Point(53, 218);
-            this.D2.Name = "D2";
-            this.D2.Size = new System.Drawing.Size(15, 14);
-            this.D2.TabIndex = 30;
-            this.D2.UseVisualStyleBackColor = true;
-            // 
-            // D6
-            // 
-            this.D6.AutoSize = true;
-            this.D6.Checked = true;
-            this.D6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D6.Location = new System.Drawing.Point(38, 218);
-            this.D6.Name = "D6";
-            this.D6.Size = new System.Drawing.Size(15, 14);
-            this.D6.TabIndex = 29;
-            this.D6.UseVisualStyleBackColor = true;
-            // 
-            // D3
-            // 
-            this.D3.AutoSize = true;
-            this.D3.Checked = true;
-            this.D3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D3.Location = new System.Drawing.Point(53, 202);
-            this.D3.Name = "D3";
-            this.D3.Size = new System.Drawing.Size(15, 14);
-            this.D3.TabIndex = 28;
-            this.D3.UseVisualStyleBackColor = true;
-            // 
-            // D7
-            // 
-            this.D7.AutoSize = true;
-            this.D7.Checked = true;
-            this.D7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D7.Location = new System.Drawing.Point(38, 202);
-            this.D7.Name = "D7";
-            this.D7.Size = new System.Drawing.Size(15, 14);
-            this.D7.TabIndex = 27;
-            this.D7.UseVisualStyleBackColor = true;
-            // 
-            // D1
-            // 
-            this.D1.AutoSize = true;
-            this.D1.Checked = true;
-            this.D1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D1.Location = new System.Drawing.Point(53, 234);
-            this.D1.Name = "D1";
-            this.D1.Size = new System.Drawing.Size(15, 14);
-            this.D1.TabIndex = 26;
-            this.D1.UseVisualStyleBackColor = true;
-            // 
-            // D5
-            // 
-            this.D5.AutoSize = true;
-            this.D5.Checked = true;
-            this.D5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D5.Location = new System.Drawing.Point(38, 234);
-            this.D5.Name = "D5";
-            this.D5.Size = new System.Drawing.Size(15, 14);
-            this.D5.TabIndex = 25;
-            this.D5.UseVisualStyleBackColor = true;
-            // 
-            // C6
-            // 
-            this.C6.AutoSize = true;
-            this.C6.Checked = true;
-            this.C6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C6.Location = new System.Drawing.Point(263, 218);
-            this.C6.Name = "C6";
-            this.C6.Size = new System.Drawing.Size(15, 14);
-            this.C6.TabIndex = 24;
-            this.C6.UseVisualStyleBackColor = true;
-            // 
-            // C2
-            // 
-            this.C2.AutoSize = true;
-            this.C2.Checked = true;
-            this.C2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C2.Location = new System.Drawing.Point(248, 218);
-            this.C2.Name = "C2";
-            this.C2.Size = new System.Drawing.Size(15, 14);
-            this.C2.TabIndex = 23;
-            this.C2.UseVisualStyleBackColor = true;
-            // 
-            // C8
-            // 
-            this.C8.AutoSize = true;
-            this.C8.Checked = true;
-            this.C8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C8.Location = new System.Drawing.Point(263, 186);
-            this.C8.Name = "C8";
-            this.C8.Size = new System.Drawing.Size(15, 14);
-            this.C8.TabIndex = 22;
-            this.C8.UseVisualStyleBackColor = true;
-            // 
-            // C4
-            // 
-            this.C4.AutoSize = true;
-            this.C4.Checked = true;
-            this.C4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C4.Location = new System.Drawing.Point(248, 186);
-            this.C4.Name = "C4";
-            this.C4.Size = new System.Drawing.Size(15, 14);
-            this.C4.TabIndex = 21;
-            this.C4.UseVisualStyleBackColor = true;
-            // 
-            // C5
-            // 
-            this.C5.AutoSize = true;
-            this.C5.Checked = true;
-            this.C5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C5.Location = new System.Drawing.Point(263, 234);
-            this.C5.Name = "C5";
-            this.C5.Size = new System.Drawing.Size(15, 14);
-            this.C5.TabIndex = 20;
-            this.C5.UseVisualStyleBackColor = true;
-            // 
-            // C1
-            // 
-            this.C1.AutoSize = true;
-            this.C1.Checked = true;
-            this.C1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C1.Location = new System.Drawing.Point(248, 234);
-            this.C1.Name = "C1";
-            this.C1.Size = new System.Drawing.Size(15, 14);
-            this.C1.TabIndex = 19;
-            this.C1.UseVisualStyleBackColor = true;
-            // 
-            // C7
-            // 
-            this.C7.AutoSize = true;
-            this.C7.Checked = true;
-            this.C7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C7.Location = new System.Drawing.Point(263, 202);
-            this.C7.Name = "C7";
-            this.C7.Size = new System.Drawing.Size(15, 14);
-            this.C7.TabIndex = 18;
-            this.C7.UseVisualStyleBackColor = true;
-            // 
-            // C3
-            // 
-            this.C3.AutoSize = true;
-            this.C3.Checked = true;
-            this.C3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C3.Location = new System.Drawing.Point(248, 202);
-            this.C3.Name = "C3";
-            this.C3.Size = new System.Drawing.Size(15, 14);
-            this.C3.TabIndex = 17;
-            this.C3.UseVisualStyleBackColor = true;
-            // 
-            // B4
-            // 
-            this.B4.AutoSize = true;
-            this.B4.Checked = true;
-            this.B4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B4.Location = new System.Drawing.Point(129, 266);
-            this.B4.Name = "B4";
-            this.B4.Size = new System.Drawing.Size(15, 14);
-            this.B4.TabIndex = 16;
-            this.B4.UseVisualStyleBackColor = true;
-            // 
-            // B3
-            // 
-            this.B3.AutoSize = true;
-            this.B3.Checked = true;
-            this.B3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B3.Location = new System.Drawing.Point(114, 266);
-            this.B3.Name = "B3";
-            this.B3.Size = new System.Drawing.Size(15, 14);
-            this.B3.TabIndex = 15;
-            this.B3.UseVisualStyleBackColor = true;
-            // 
-            // B2
-            // 
-            this.B2.AutoSize = true;
-            this.B2.Checked = true;
-            this.B2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B2.Location = new System.Drawing.Point(99, 266);
-            this.B2.Name = "B2";
-            this.B2.Size = new System.Drawing.Size(15, 14);
-            this.B2.TabIndex = 14;
-            this.B2.UseVisualStyleBackColor = true;
-            // 
-            // B1
-            // 
-            this.B1.AutoSize = true;
-            this.B1.Checked = true;
-            this.B1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B1.Location = new System.Drawing.Point(84, 266);
-            this.B1.Name = "B1";
-            this.B1.Size = new System.Drawing.Size(15, 14);
-            this.B1.TabIndex = 13;
-            this.B1.UseVisualStyleBackColor = true;
-            // 
-            // B8
-            // 
-            this.B8.AutoSize = true;
-            this.B8.Checked = true;
-            this.B8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B8.Location = new System.Drawing.Point(129, 282);
-            this.B8.Name = "B8";
-            this.B8.Size = new System.Drawing.Size(15, 14);
-            this.B8.TabIndex = 12;
-            this.B8.UseVisualStyleBackColor = true;
-            // 
-            // B7
-            // 
-            this.B7.AutoSize = true;
-            this.B7.Checked = true;
-            this.B7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B7.Location = new System.Drawing.Point(114, 282);
-            this.B7.Name = "B7";
-            this.B7.Size = new System.Drawing.Size(15, 14);
-            this.B7.TabIndex = 11;
-            this.B7.UseVisualStyleBackColor = true;
-            // 
-            // B6
-            // 
-            this.B6.AutoSize = true;
-            this.B6.Checked = true;
-            this.B6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B6.Location = new System.Drawing.Point(99, 282);
-            this.B6.Name = "B6";
-            this.B6.Size = new System.Drawing.Size(15, 14);
-            this.B6.TabIndex = 10;
-            this.B6.UseVisualStyleBackColor = true;
-            // 
-            // B5
-            // 
-            this.B5.AutoSize = true;
-            this.B5.Checked = true;
-            this.B5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B5.Location = new System.Drawing.Point(84, 282);
-            this.B5.Name = "B5";
-            this.B5.Size = new System.Drawing.Size(15, 14);
-            this.B5.TabIndex = 9;
-            this.B5.UseVisualStyleBackColor = true;
-            // 
-            // A4
-            // 
-            this.A4.AutoSize = true;
-            this.A4.Checked = true;
-            this.A4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A4.Location = new System.Drawing.Point(213, 266);
-            this.A4.Name = "A4";
-            this.A4.Size = new System.Drawing.Size(15, 14);
-            this.A4.TabIndex = 8;
-            this.A4.UseVisualStyleBackColor = true;
-            // 
-            // A3
-            // 
-            this.A3.AutoSize = true;
-            this.A3.Checked = true;
-            this.A3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A3.Location = new System.Drawing.Point(198, 266);
-            this.A3.Name = "A3";
-            this.A3.Size = new System.Drawing.Size(15, 14);
-            this.A3.TabIndex = 7;
-            this.A3.UseVisualStyleBackColor = true;
-            // 
-            // A2
-            // 
-            this.A2.AutoSize = true;
-            this.A2.Checked = true;
-            this.A2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A2.Location = new System.Drawing.Point(183, 266);
-            this.A2.Name = "A2";
-            this.A2.Size = new System.Drawing.Size(15, 14);
-            this.A2.TabIndex = 6;
-            this.A2.UseVisualStyleBackColor = true;
-            // 
-            // A1
-            // 
-            this.A1.AutoSize = true;
-            this.A1.Checked = true;
-            this.A1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A1.Location = new System.Drawing.Point(168, 266);
-            this.A1.Name = "A1";
-            this.A1.Size = new System.Drawing.Size(15, 14);
-            this.A1.TabIndex = 5;
-            this.A1.UseVisualStyleBackColor = true;
-            // 
-            // A8
-            // 
-            this.A8.AutoSize = true;
-            this.A8.Checked = true;
-            this.A8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A8.Location = new System.Drawing.Point(213, 282);
-            this.A8.Name = "A8";
-            this.A8.Size = new System.Drawing.Size(15, 14);
-            this.A8.TabIndex = 4;
-            this.A8.UseVisualStyleBackColor = true;
-            // 
-            // A7
-            // 
-            this.A7.AutoSize = true;
-            this.A7.Checked = true;
-            this.A7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A7.Location = new System.Drawing.Point(198, 282);
-            this.A7.Name = "A7";
-            this.A7.Size = new System.Drawing.Size(15, 14);
-            this.A7.TabIndex = 3;
-            this.A7.UseVisualStyleBackColor = true;
-            // 
-            // A6
-            // 
-            this.A6.AutoSize = true;
-            this.A6.Checked = true;
-            this.A6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A6.Location = new System.Drawing.Point(183, 282);
-            this.A6.Name = "A6";
-            this.A6.Size = new System.Drawing.Size(15, 14);
-            this.A6.TabIndex = 2;
-            this.A6.UseVisualStyleBackColor = true;
-            // 
-            // A5
-            // 
-            this.A5.AutoSize = true;
-            this.A5.Checked = true;
-            this.A5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A5.Location = new System.Drawing.Point(168, 282);
-            this.A5.Name = "A5";
-            this.A5.Size = new System.Drawing.Size(15, 14);
-            this.A5.TabIndex = 1;
-            this.A5.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::cirkus.Properties.Resources.Sittkarta2;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // labelAntalFriplatser
             // 
@@ -1119,7 +475,6 @@
             this.txtActname.Name = "txtActname";
             this.txtActname.Size = new System.Drawing.Size(137, 20);
             this.txtActname.TabIndex = 21;
-            this.txtActname.Click += new System.EventHandler(this.txtActname_Click);
             // 
             // label4
             // 
@@ -1237,35 +592,27 @@
             this.groupBox1.Size = new System.Drawing.Size(354, 371);
             this.groupBox1.TabIndex = 62;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // lblLayout
-            // 
-            this.lblLayout.AutoSize = true;
-            this.lblLayout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLayout.Location = new System.Drawing.Point(14, 398);
-            this.lblLayout.Name = "lblLayout";
-            this.lblLayout.Size = new System.Drawing.Size(41, 13);
-            this.lblLayout.TabIndex = 62;
-            this.lblLayout.Text = "label1";
-            this.lblLayout.Visible = false;
             // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(740, 432);
+            this.ClientSize = new System.Drawing.Size(884, 432);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gpSeatMap);
+            this.Controls.Add(this.groupBoxSeatMap);
             this.Controls.Add(this.buttonSparaAndringar);
             this.Controls.Add(this.buttonLaggTIllForestallning);
             this.Name = "ShowForm";
             this.Text = "Skapa föreställning";
             this.Load += new System.EventHandler(this.ShowForm_Load);
-            this.gpSeatMap.ResumeLayout(false);
-            this.gpSeatMap.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBoxSeatMap.ResumeLayout(false);
+            this.groupBoxSeatMap.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSeatMap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownColumn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1284,72 +631,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerForsaljningstidTill;
         private System.Windows.Forms.DateTimePicker dateTimePickerDatum;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox gpSeatMap;
-        private System.Windows.Forms.CheckBox E8;
-        private System.Windows.Forms.CheckBox E4;
-        private System.Windows.Forms.CheckBox E6;
-        private System.Windows.Forms.CheckBox E2;
-        private System.Windows.Forms.CheckBox E7;
-        private System.Windows.Forms.CheckBox E3;
-        private System.Windows.Forms.CheckBox E5;
-        private System.Windows.Forms.CheckBox E1;
-        private System.Windows.Forms.CheckBox F4;
-        private System.Windows.Forms.CheckBox F8;
-        private System.Windows.Forms.CheckBox F2;
-        private System.Windows.Forms.CheckBox F6;
-        private System.Windows.Forms.CheckBox F3;
-        private System.Windows.Forms.CheckBox F7;
-        private System.Windows.Forms.CheckBox F1;
-        private System.Windows.Forms.CheckBox F5;
-        private System.Windows.Forms.CheckBox H8;
-        private System.Windows.Forms.CheckBox H7;
-        private System.Windows.Forms.CheckBox H6;
-        private System.Windows.Forms.CheckBox H5;
-        private System.Windows.Forms.CheckBox H4;
-        private System.Windows.Forms.CheckBox H3;
-        private System.Windows.Forms.CheckBox H2;
-        private System.Windows.Forms.CheckBox H1;
-        private System.Windows.Forms.CheckBox G8;
-        private System.Windows.Forms.CheckBox G7;
-        private System.Windows.Forms.CheckBox G6;
-        private System.Windows.Forms.CheckBox G5;
-        private System.Windows.Forms.CheckBox G4;
-        private System.Windows.Forms.CheckBox G3;
-        private System.Windows.Forms.CheckBox G2;
-        private System.Windows.Forms.CheckBox G1;
-        private System.Windows.Forms.CheckBox D4;
-        private System.Windows.Forms.CheckBox D8;
-        private System.Windows.Forms.CheckBox D2;
-        private System.Windows.Forms.CheckBox D6;
-        private System.Windows.Forms.CheckBox D3;
-        private System.Windows.Forms.CheckBox D7;
-        private System.Windows.Forms.CheckBox D1;
-        private System.Windows.Forms.CheckBox D5;
-        private System.Windows.Forms.CheckBox C6;
-        private System.Windows.Forms.CheckBox C2;
-        private System.Windows.Forms.CheckBox C8;
-        private System.Windows.Forms.CheckBox C4;
-        private System.Windows.Forms.CheckBox C5;
-        private System.Windows.Forms.CheckBox C1;
-        private System.Windows.Forms.CheckBox C7;
-        private System.Windows.Forms.CheckBox C3;
-        private System.Windows.Forms.CheckBox B4;
-        private System.Windows.Forms.CheckBox B3;
-        private System.Windows.Forms.CheckBox B2;
-        private System.Windows.Forms.CheckBox B1;
-        private System.Windows.Forms.CheckBox B8;
-        private System.Windows.Forms.CheckBox B7;
-        private System.Windows.Forms.CheckBox B6;
-        private System.Windows.Forms.CheckBox B5;
-        private System.Windows.Forms.CheckBox A4;
-        private System.Windows.Forms.CheckBox A3;
-        private System.Windows.Forms.CheckBox A2;
-        private System.Windows.Forms.CheckBox A1;
-        private System.Windows.Forms.CheckBox A8;
-        private System.Windows.Forms.CheckBox A7;
-        private System.Windows.Forms.CheckBox A6;
-        private System.Windows.Forms.CheckBox A5;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox groupBoxSeatMap;
         private System.Windows.Forms.Button btnSaveMap;
         private System.Windows.Forms.Label lblS;
         private System.Windows.Forms.Label lblActMap;
@@ -1371,5 +653,21 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblLayout;
+        private System.Windows.Forms.ComboBox comboBoxMapShape;
+        private System.Windows.Forms.Button buttonRemoveSection;
+        private System.Windows.Forms.ListBox listBoxSections;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown numericUpDownRow;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxSection;
+        private System.Windows.Forms.NumericUpDown numericUpDownColumn;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button buttonAddSection;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numericUpDownX;
+        private System.Windows.Forms.NumericUpDown numericUpDownY;
+        private System.Windows.Forms.PictureBox pictureBoxSeatMap;
     }
 }
