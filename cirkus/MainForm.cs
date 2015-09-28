@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using System.Configuration;
+using System.Runtime.InteropServices;
 
 namespace cirkus
 {
@@ -33,6 +34,29 @@ namespace cirkus
         private List<show> allShowsList;
         private int CustomerID;
         DataTable dtActs = new DataTable();
+
+        [DllImport("user32")]
+        private static extern bool HideCaret(IntPtr hWnd);
+        public void HideCaret()
+        {
+            HideCaret(textBoxPrintBookingid.Handle);
+            HideCaret(txtPrintDatum.Handle);
+            HideCaret(textBoxPrintShow.Handle);
+            HideCaret(textBoxPrintAct.Handle);
+            HideCaret(textBoxPrintAge.Handle);
+            HideCaret(textBoxPrintPrice.Handle);
+
+            HideCaret(textBoxAntalVuxenBiljetter.Handle);
+            HideCaret(textBoxAntalUngdomsbiljetter.Handle);
+            HideCaret(textBoxAntalBarnbiljetter.Handle);
+            HideCaret(textBoxTotaltAntal.Handle);
+            HideCaret(textBoxKronorVuxenbiljetter.Handle);
+            HideCaret(textBoxKronorUngdomsbiljetter.Handle);
+            HideCaret(textBoxKronorBarnbiljetter.Handle);
+            HideCaret(textBoxTotaltKronor.Handle);
+
+        }
+
         #endregion
         #region Main
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,8 +104,78 @@ namespace cirkus
         private void MainForm_Load(object sender, EventArgs e)
         {
             listCustomers();
-
         }
+        #region HideCaret i textboxar
+        private void textBoxPrintBookingid_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void txtPrintDatum_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxPrintShow_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxPrintAct_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxPrintAge_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxPrintPrice_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxAntalVuxenBiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxAntalUngdomsbiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxAntalBarnbiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxTotaltAntal_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxKronorVuxenbiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxKronorUngdomsbiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxKronorBarnbiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxTotaltKronor_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+        #endregion
 
         #endregion
         #region Biljettförsäljning
@@ -146,6 +240,7 @@ namespace cirkus
             dgTicketActs.ClearSelection();
 
         }
+
         private void dgTicketActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnDeleteTicket.Text = "Radera vald akt";
@@ -1685,5 +1780,7 @@ namespace cirkus
             printPreviewDialog1.Show();
             printPreviewControl1.Document = printDocumentStatistic;
         }
+
+        
     }
 }

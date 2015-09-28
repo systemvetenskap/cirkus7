@@ -191,6 +191,7 @@
             this.txtPrintDatum.ReadOnly = true;
             this.txtPrintDatum.Size = new System.Drawing.Size(126, 20);
             this.txtPrintDatum.TabIndex = 27;
+            this.txtPrintDatum.Click += new System.EventHandler(this.txtPrintDatum_Click);
             // 
             // label11
             // 
@@ -210,6 +211,7 @@
             this.textBoxPrintBookingid.ReadOnly = true;
             this.textBoxPrintBookingid.Size = new System.Drawing.Size(126, 20);
             this.textBoxPrintBookingid.TabIndex = 25;
+            this.textBoxPrintBookingid.Click += new System.EventHandler(this.textBoxPrintBookingid_Click);
             // 
             // label5
             // 
@@ -287,6 +289,7 @@
             this.textBoxPrintPrice.ReadOnly = true;
             this.textBoxPrintPrice.Size = new System.Drawing.Size(126, 20);
             this.textBoxPrintPrice.TabIndex = 18;
+            this.textBoxPrintPrice.Click += new System.EventHandler(this.textBoxPrintPrice_Click);
             // 
             // dgTickets
             // 
@@ -316,6 +319,7 @@
             this.textBoxPrintAct.ReadOnly = true;
             this.textBoxPrintAct.Size = new System.Drawing.Size(126, 20);
             this.textBoxPrintAct.TabIndex = 17;
+            this.textBoxPrintAct.Click += new System.EventHandler(this.textBoxPrintAct_Click);
             // 
             // dgCustomers
             // 
@@ -346,6 +350,7 @@
             this.textBoxPrintShow.ReadOnly = true;
             this.textBoxPrintShow.Size = new System.Drawing.Size(126, 20);
             this.textBoxPrintShow.TabIndex = 16;
+            this.textBoxPrintShow.Click += new System.EventHandler(this.textBoxPrintShow_Click);
             // 
             // textBoxSearchCustomer
             // 
@@ -364,6 +369,7 @@
             this.textBoxPrintAge.ReadOnly = true;
             this.textBoxPrintAge.Size = new System.Drawing.Size(126, 20);
             this.textBoxPrintAge.TabIndex = 15;
+            this.textBoxPrintAge.Click += new System.EventHandler(this.textBoxPrintAge_Click);
             // 
             // btnDeleteTicket
             // 
@@ -640,6 +646,7 @@
             this.textBoxKronorVuxenbiljetter.ReadOnly = true;
             this.textBoxKronorVuxenbiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxKronorVuxenbiljetter.TabIndex = 21;
+            this.textBoxKronorVuxenbiljetter.Click += new System.EventHandler(this.textBoxKronorVuxenbiljetter_Click);
             this.textBoxKronorVuxenbiljetter.TextChanged += new System.EventHandler(this.textBoxKronorVuxenbiljetter_TextChanged);
             // 
             // textBoxAntalUngdomsbiljetter
@@ -649,6 +656,7 @@
             this.textBoxAntalUngdomsbiljetter.ReadOnly = true;
             this.textBoxAntalUngdomsbiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxAntalUngdomsbiljetter.TabIndex = 20;
+            this.textBoxAntalUngdomsbiljetter.Click += new System.EventHandler(this.textBoxAntalUngdomsbiljetter_Click);
             this.textBoxAntalUngdomsbiljetter.TextChanged += new System.EventHandler(this.textBoxAntalUngdomsbiljetter_TextChanged);
             // 
             // textBoxKronorUngdomsbiljetter
@@ -658,6 +666,7 @@
             this.textBoxKronorUngdomsbiljetter.ReadOnly = true;
             this.textBoxKronorUngdomsbiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxKronorUngdomsbiljetter.TabIndex = 19;
+            this.textBoxKronorUngdomsbiljetter.Click += new System.EventHandler(this.textBoxKronorUngdomsbiljetter_Click);
             this.textBoxKronorUngdomsbiljetter.TextChanged += new System.EventHandler(this.textBoxKronorUngdomsbiljetter_TextChanged);
             // 
             // textBoxAntalBarnbiljetter
@@ -667,6 +676,7 @@
             this.textBoxAntalBarnbiljetter.ReadOnly = true;
             this.textBoxAntalBarnbiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxAntalBarnbiljetter.TabIndex = 18;
+            this.textBoxAntalBarnbiljetter.Click += new System.EventHandler(this.textBoxAntalBarnbiljetter_Click);
             this.textBoxAntalBarnbiljetter.TextChanged += new System.EventHandler(this.textBoxAntalBarnbiljetter_TextChanged);
             // 
             // textBoxKronorBarnbiljetter
@@ -676,6 +686,7 @@
             this.textBoxKronorBarnbiljetter.ReadOnly = true;
             this.textBoxKronorBarnbiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxKronorBarnbiljetter.TabIndex = 17;
+            this.textBoxKronorBarnbiljetter.Click += new System.EventHandler(this.textBoxKronorBarnbiljetter_Click);
             this.textBoxKronorBarnbiljetter.TextChanged += new System.EventHandler(this.textBoxKronorBarnbiljetter_TextChanged);
             // 
             // textBoxTotaltAntal
@@ -685,6 +696,7 @@
             this.textBoxTotaltAntal.ReadOnly = true;
             this.textBoxTotaltAntal.Size = new System.Drawing.Size(106, 20);
             this.textBoxTotaltAntal.TabIndex = 16;
+            this.textBoxTotaltAntal.Click += new System.EventHandler(this.textBoxTotaltAntal_Click);
             this.textBoxTotaltAntal.TextChanged += new System.EventHandler(this.textBoxTotaltAntal_TextChanged);
             // 
             // textBoxTotaltKronor
@@ -694,6 +706,7 @@
             this.textBoxTotaltKronor.ReadOnly = true;
             this.textBoxTotaltKronor.Size = new System.Drawing.Size(106, 20);
             this.textBoxTotaltKronor.TabIndex = 15;
+            this.textBoxTotaltKronor.Click += new System.EventHandler(this.textBoxTotaltKronor_Click);
             this.textBoxTotaltKronor.TextChanged += new System.EventHandler(this.textBoxTotaltKronor_TextChanged);
             // 
             // buttonSkrivUtForestallning
@@ -787,6 +800,7 @@
             this.textBoxAntalVuxenBiljetter.ReadOnly = true;
             this.textBoxAntalVuxenBiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxAntalVuxenBiljetter.TabIndex = 5;
+            this.textBoxAntalVuxenBiljetter.Click += new System.EventHandler(this.textBoxAntalVuxenBiljetter_Click);
             this.textBoxAntalVuxenBiljetter.TextChanged += new System.EventHandler(this.textBoxAntalVuxenBiljetter_TextChanged);
             // 
             // buttonSkapaForestalnning
