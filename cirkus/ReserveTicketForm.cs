@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -475,8 +476,7 @@ namespace cirkus
                 conn.Close();
                 panel3.Visible = true;
                 //panel2.Visible = false;
-                string path = "C:\\plats\\";
-                FileStream fs = new FileStream(path, FileMode.Create);
+     
 
 
             }
@@ -772,6 +772,7 @@ namespace cirkus
                     if (Convert.ToBoolean(r.Cells[3].Value) == false)
                         r.Cells[3].Value = true;
                 }
+        
             }
             else
             {
@@ -1007,7 +1008,7 @@ namespace cirkus
             {
                 string seatSection = cb.Name[0].ToString();
                 string seatNumber = cb.Name[1].ToString();
-                if (cb.Checked == true && cb.BackColor == Color.Green)
+                if (cb.Checked == true && cb.BackColor == Color.Green) 
                 {
                     DataRow row = cSeats.NewRow();
                     row[0] = ticketid;
@@ -1016,18 +1017,20 @@ namespace cirkus
                     row[3] = seatNumber;
                     row[4] = agegroup;
                     cSeats.Rows.Add(row);
-
+                    
 
 
                     }
 
                 }
+                
 
                 foreach (DataRow r in cSeats.Rows)
                 {
                     string aid = r[1].ToString();
                     char sect = Char.Parse(r[2].ToString());
                     int nr = int.Parse(r[3].ToString());
+                    string dup = r[5].ToString();
 
                     foreach (DataRow row in currentActs.Rows)
                     {
@@ -1038,13 +1041,19 @@ namespace cirkus
                         if (aid == aid2 && sect == sect2 && nr == nr2)
                         {
                             r[5] = aseatid;
+                           
+
                         }
 
 
                     }
 
+                    
 
                 }
+
+                cSeats = RemDup(cSeats, "seatid");
+                cSeats.AcceptChanges();
                 foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
                 {
 
@@ -1053,8 +1062,9 @@ namespace cirkus
 
                         char sect = Char.Parse(r[2].ToString());
                         string nr = r[3].ToString();
+                        string sactid = r[1].ToString();
                         string s = sect + nr;
-                        if (cb.Name == s && cb.Checked == false && cb.BackColor == Color.Green)
+                        if (cb.Name == s && cb.Checked == false && cb.BackColor == Color.Green && actid.ToString() == sactid)
                         {
 
                             r.Delete();
@@ -1063,6 +1073,7 @@ namespace cirkus
                     }
                     cSeats.AcceptChanges();
                 }
+                
 
 
                 }
@@ -1091,7 +1102,7 @@ namespace cirkus
                         
                                 row[5] = read[0];
 
-            }
+                            }
                             conn.Close();
                             
                             row[0] = ticketid;
@@ -1105,13 +1116,33 @@ namespace cirkus
                       
                         
                         
-                  
+                    
                         
 
 
 
                     }
 
+                }
+                cSeats = RemDup(cSeats, "seatid");
+                cSeats.AcceptChanges();
+                foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+                {
+
+                    foreach (DataRow r in cSeats.Rows)
+                    {
+
+                        char sect = Char.Parse(r[2].ToString());
+                        string nr = r[3].ToString();
+                        string s = sect + nr;
+                        if (cb.Name == s && cb.Checked == false && cb.BackColor == Color.Green)
+                        {
+
+                            r.Delete();
+                        }
+
+                    }
+                    cSeats.AcceptChanges();
                 }
 
             }
@@ -1335,32 +1366,32 @@ namespace cirkus
             tickets.Columns.Add("actid");
             progressBar1.Value = 10;
 
-            for (int i = 0; i <= ticketid; i++)
-            {
+            //for (int i = 0; i <= ticketid; i++)
+            //{
 
-                foreach (DataRow row in cSeats.Rows)
-                {
+            //    foreach (DataRow row in cSeats.Rows)
+            //    {
 
 
-                    if (row[0].ToString() == i.ToString())
-                    {
+            //        if (row[0].ToString() == i.ToString())
+            //        {
 
-                        DataRow rw = tickets.NewRow();
-                        rw[0] = row[0];
-                        rw[1] = row[1];
-                        rw[2] = row[4];
-                        rw[3] = row[5];
-                        tickets.Rows.Add(rw);
+            //            DataRow rw = tickets.NewRow();
+            //            rw[0] = row[0];
+            //            rw[1] = row[1];
+            //            rw[2] = row[4];
+            //            rw[3] = row[5];
+            //            tickets.Rows.Add(rw);
 
-                        progressBar1.Value = 20;
-                        //dgTEST.DataSource = tickets;
-                    }
+            //            progressBar1.Value = 20;
+            //            //dgTEST.DataSource = tickets;
+            //        }
 
-                }
+            //    }
 
-            }
+            //}
 
-            for (int i = 1; i <= nrotickets; i++)
+            for (int i = 0; i < nrotickets; i++)
             {
                 string tid = i.ToString();
 
@@ -1408,23 +1439,26 @@ namespace cirkus
                 conn.Close();
 
                 progressBar1.Value = 30;
-                foreach (DataRow dr in tickets.Rows)
+                foreach (DataRow dr in cSeats.Rows)
                 {
                     progressBar1.Value = 35;
                     string id = dr[0].ToString();
-                    string actid = dr[3].ToString();
-                    string seatid = dr[1].ToString();
-                    string priceid = dr[2].ToString();
+                    string actid = dr[1].ToString();
+                    string section = dr[2].ToString();
+                    string rownr = dr[3].ToString();
+                    
+                    //string priceid = dr[4].ToString();
+                    string seatid = dr[5].ToString();
 
 
                     if (id == tid)
                     {
                         conn.Open();
-                        sql = "insert into booked_seats(available_seats_id, bookingid, priceid ) values(:sid, :bid, :pid)";
+                        sql = "insert into booked_seats(available_seats_id, bookingid) values(:sid, :bid)";
                         cmd = new NpgsqlCommand(sql, conn);
                         cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));
                         cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
-                        cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+                        //cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
                         cmd.ExecuteNonQuery();
 
                         cmd = new NpgsqlCommand("select currval('booked_seats_booked_seat_id_seq');", conn);
@@ -1453,7 +1487,8 @@ namespace cirkus
             }
             progressBar1.Value = 50;
 
-            //SendMail();
+            
+            
 
         }
 
@@ -1652,7 +1687,10 @@ namespace cirkus
                     cb.EndText();
 
                     //image 
-                    iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance("C:\\Users\\Matija\\Source\\Repos\\cirkus73\\cirkus\\Images\\backgroundClown.jpg");
+
+                    string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+
+                    iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance(wanted_path +"\\Resources\\backgroundClown.jpg");
 
                                     //width height
                     PNG.ScaleAbsolute(540f, imageHeight);
@@ -1670,11 +1708,14 @@ namespace cirkus
 
                     actname = "";
 
-                    progressBar1.Value = 85;
+                    //progressBar1.Value = 85;
+                 
+                   
 
                 }
 
                 progressBar1.Value = 100;
+                MessageBox.Show("Här är vi nu");
                 client.Send(mail);
                 this.Close();
 
@@ -1850,14 +1891,14 @@ namespace cirkus
                         int aid = int.Parse(r[1].ToString());
 
 
-                        if (cb.Name == s && aid == actid && ticketid != int.Parse(r[0].ToString()))
+                        if (cb.Name == s && ticketid != int.Parse(r[0].ToString()))
                         {
                             cb.Checked = true;
                             cb.Enabled = false;
                             cb.BackColor = Color.Blue;
 
                         }
-                        else if (cb.Name == s && aid == actid && ticketid == int.Parse(r[0].ToString()))
+                        else if (cb.Name == s && ticketid == int.Parse(r[0].ToString()))
                         {
                             cb.Checked = true;
                             cb.Enabled = true;
@@ -1883,6 +1924,23 @@ namespace cirkus
                 cb.Enabled = false;
             }
 
+        }
+        public DataTable RemDup(DataTable dt, string seatid)
+        {
+            Hashtable ht = new Hashtable();
+            ArrayList dup = new ArrayList();
+
+            foreach(DataRow r in dt.Rows)
+            {
+            if (ht.Contains(r["seatid"]))
+                dup.Add(r);
+            else  
+                ht.Add(r["seatid"], string.Empty);
+            }
+            foreach (DataRow row in dup)
+                dt.Rows.Remove(row);
+
+            return dt;
         }
     }
 }

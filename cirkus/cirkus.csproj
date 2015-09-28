@@ -74,6 +74,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="sendMail.cs" />
     <Compile Include="show.cs" />
     <Compile Include="ShowForm.cs">
       <SubType>Form</SubType>
