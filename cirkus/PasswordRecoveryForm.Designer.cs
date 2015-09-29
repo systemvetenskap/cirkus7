@@ -60,7 +60,7 @@
             this.btnSendPassword.Name = "btnSendPassword";
             this.btnSendPassword.Size = new System.Drawing.Size(323, 39);
             this.btnSendPassword.TabIndex = 2;
-            this.btnSendPassword.Text = "Skicka lösenord";
+            this.btnSendPassword.Text = "Skicka lösenord och användarnamn";
             this.btnSendPassword.UseVisualStyleBackColor = true;
             this.btnSendPassword.Click += new System.EventHandler(this.btnSendPassword_Click);
             // 
@@ -98,7 +98,7 @@
             this.Controls.Add(this.textBoxEmail);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PasswordRecoveryForm";
-            this.Text = "PasswordRecoveryForm";
+            this.Text = "Lösenord och användarnamn";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

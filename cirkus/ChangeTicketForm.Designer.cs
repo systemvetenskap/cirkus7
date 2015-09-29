@@ -155,7 +155,7 @@
             this.Controls.Add(this.dtpTicketTo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ChangeTicketForm";
-            this.Text = "ChangeTicket";
+            this.Text = "Ändra biljett";
             ((System.ComponentModel.ISupportInitialize)(this.dgSelectedCustomerTicket)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

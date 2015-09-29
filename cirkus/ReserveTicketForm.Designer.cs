@@ -1849,7 +1849,7 @@
             this.Controls.Add(this.buttonAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ReserveTicketForm";
-            this.Text = "ReserveTicketForm";
+            this.Text = "Boka biljett";
             this.Load += new System.EventHandler(this.ReserveTicketForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).EndInit();
