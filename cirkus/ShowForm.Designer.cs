@@ -1261,6 +1261,7 @@
             this.Controls.Add(this.buttonSparaAndringar);
             this.Controls.Add(this.buttonLaggTIllForestallning);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ShowForm";
             this.Text = "Skapa föreställning";
             this.Load += new System.EventHandler(this.ShowForm_Load);
