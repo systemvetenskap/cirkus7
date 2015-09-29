@@ -941,7 +941,7 @@ namespace cirkus
                 if (cb != null && cb.Checked && cb.BackColor == Color.Green)
                 {
                     checks++;
-                    fp.Enabled = false;
+                   
                 }
                 if (checks > 1)
                 {
@@ -1637,41 +1637,39 @@ namespace cirkus
                 if (radioRes.Checked == true)
                 {
                     conn.Open();
-                    sql = "insert into booking(customerid,showid, reserved_to, price, type, paid) values(:cid,:shid, :rto, :pid, :tyd, :pai)";
+                    sql = "insert into booking(customerid,showid, reserved_to, paid) values(:cid,:shid, :rto, :pai)";
                     cmd = new NpgsqlCommand(sql, conn);
                     cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", dateReservedto.Value.ToString("yyyy-MM-dd")));
-                    cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
-                    cmd.Parameters.Add(new NpgsqlParameter("tyd", type));
                     cmd.Parameters.Add(new NpgsqlParameter("pai", false));
                     cmd.ExecuteNonQuery();
                     ix++;
+                    MessageBox.Show("Test1");
 
                 }
                 else if (radioPaid.Checked == true && cbDf.Checked == false)
                 {
                     conn.Open();
-                    sql = "insert into booking(customerid,showid, paid, price, type) values(:cid,:shid, :rto, :pid, :tyd)";
+                    sql = "insert into booking(customerid,showid, paid) values(:cid,:shid, :rto)";
                     cmd = new NpgsqlCommand(sql, conn);
                     cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
-                    cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
-                    cmd.Parameters.Add(new NpgsqlParameter("tyd", type));
+
                     cmd.ExecuteNonQuery();
-                        ix++;
+                    MessageBox.Show("Test2");
+                    ix++;
                 }
                 else if (cbDf.Checked == true && radioPaid.Checked == true)
                 {
                     conn.Open();
-                    sql = "insert into booking(showid, paid, price, type) values(:shid, :rto, :pid, :tyd)";
+                    sql = "insert into booking(showid, paid) values(:shid, :rto)";
                     cmd = new NpgsqlCommand(sql, conn);
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
-                    cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
-                    cmd.Parameters.Add(new NpgsqlParameter("tyd", type));
                     cmd.ExecuteNonQuery();
+                    MessageBox.Show("Test3");
                     ix++;
                 }
 
@@ -1720,15 +1718,7 @@ namespace cirkus
                         read.Read();
                         int addedbookedseat = int.Parse(read[0].ToString());
                         conn.Close();
-                        conn.Open();
-                        sql = "insert into ticket(bookingid, booked_seat_id ) values(:bid, :boid)";
-                        cmd = new NpgsqlCommand(sql, conn);
-                        cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
-                        cmd.Parameters.Add(new NpgsqlParameter("boid", addedbookedseat));
-
-
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
+       
 
                         conn.Open();
                         double calculate = priceid / numberOfacts;
@@ -1797,24 +1787,18 @@ namespace cirkus
 
                         }
 
-                        double calculate = priceid / numberOfacts;
+                        //double calculate = priceid / numberOfacts;
                         conn.Open();
                         cmd = new NpgsqlCommand("insert into sold_tickets(showid, actid,type,sum, bookingid,seattype) values(:shid, :aid, :typ, :su, :bid, :st)", conn);
                         cmd.Parameters.Add(new NpgsqlParameter("shid", showid));
                         cmd.Parameters.Add(new NpgsqlParameter("aid", actid));
                         cmd.Parameters.Add(new NpgsqlParameter("typ", type));
-                        cmd.Parameters.Add(new NpgsqlParameter("su", calculate));
+                        cmd.Parameters.Add(new NpgsqlParameter("su", priceid));
                         cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
                         cmd.Parameters.Add(new NpgsqlParameter("st", seattype));
                         cmd.ExecuteNonQuery();
                         conn.Close();
-                        conn.Open();
-                        cmd = new NpgsqlCommand("update booking set price = :pid, type = :tyd where bookingid = :bid", conn);
-                        cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
-                        cmd.Parameters.Add(new NpgsqlParameter("tyd", type));
-                        cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
-                        cmd.ExecuteNonQuery();
-                        conn.Close();
+               
 
                         conn.Open();
                         cmd = new NpgsqlCommand("insert into booked_standing(bookingid, actid)values(:bid, :aid)", conn);
