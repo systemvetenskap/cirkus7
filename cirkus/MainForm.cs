@@ -881,6 +881,9 @@ namespace cirkus
                 da.Fill(dt);
                 dgvShowsList.DataSource = dt;
                 dgvShowsList.Columns["showid"].Visible = false;
+
+                dgvShowsList.Columns[1].HeaderText = "Datum";
+                dgvShowsList.Columns[2].HeaderText = "Föreställningsnamn";
             }
             catch (NpgsqlException ex)
             {
@@ -1271,6 +1274,9 @@ namespace cirkus
                 conn.Close();
 
                 this.dgvAkter.Columns[1].Visible = false;
+
+                dgvAkter.Columns[0].HeaderText = "Akt namn";
+
             }
         }
         private void dgvShowsList_CellClick(object sender, DataGridViewCellEventArgs e)

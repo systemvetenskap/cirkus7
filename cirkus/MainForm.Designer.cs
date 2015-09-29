@@ -601,13 +601,13 @@
             // dgvAkter
             // 
             this.dgvAkter.AllowUserToAddRows = false;
+            this.dgvAkter.AllowUserToDeleteRows = false;
             this.dgvAkter.AllowUserToResizeColumns = false;
             this.dgvAkter.AllowUserToResizeRows = false;
             this.dgvAkter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAkter.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvAkter.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvAkter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAkter.ColumnHeadersVisible = false;
             this.dgvAkter.Location = new System.Drawing.Point(305, 47);
             this.dgvAkter.MultiSelect = false;
             this.dgvAkter.Name = "dgvAkter";
@@ -622,13 +622,13 @@
             // dgvShowsList
             // 
             this.dgvShowsList.AllowUserToAddRows = false;
+            this.dgvShowsList.AllowUserToDeleteRows = false;
             this.dgvShowsList.AllowUserToResizeColumns = false;
             this.dgvShowsList.AllowUserToResizeRows = false;
             this.dgvShowsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvShowsList.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvShowsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvShowsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowsList.ColumnHeadersVisible = false;
             this.dgvShowsList.Location = new System.Drawing.Point(23, 47);
             this.dgvShowsList.MultiSelect = false;
             this.dgvShowsList.Name = "dgvShowsList";
