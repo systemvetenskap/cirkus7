@@ -41,6 +41,7 @@
             this.lblStatus1 = new System.Windows.Forms.Label();
             this.txtBoxNrP = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lblTest = new System.Windows.Forms.Label();
             this.lblStatusAge = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -151,6 +152,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.cbDf = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
             this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             this.label16 = new System.Windows.Forms.Label();
             this.dateReservedto = new System.Windows.Forms.DateTimePicker();
@@ -169,8 +171,6 @@
             this.printDocumentBIljettDirekt = new System.Drawing.Printing.PrintDocument();
             this.printDialogBiljetD = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.lblTest = new System.Windows.Forms.Label();
-            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -342,6 +342,15 @@
             this.groupBox4.TabIndex = 28;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Akter";
+            // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(132, 282);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(41, 13);
+            this.lblTest.TabIndex = 63;
+            this.lblTest.Text = "label12";
             // 
             // lblStatusAge
             // 
@@ -1668,6 +1677,15 @@
             this.panel3.TabIndex = 42;
             this.panel3.Visible = false;
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(253, 233);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 55;
+            this.button10.Text = "button10";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
             // printPreviewControl1
             // 
             this.printPreviewControl1.Location = new System.Drawing.Point(253, 11);
@@ -1807,25 +1825,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // lblTest
-            // 
-            this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(132, 282);
-            this.lblTest.Name = "lblTest";
-            this.lblTest.Size = new System.Drawing.Size(41, 13);
-            this.lblTest.TabIndex = 63;
-            this.lblTest.Text = "label12";
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(253, 233);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 55;
-            this.button10.Text = "button10";
-            this.button10.UseVisualStyleBackColor = true;
-
-            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1848,6 +1847,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonAdd);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ReserveTicketForm";
             this.Text = "ReserveTicketForm";
             this.Load += new System.EventHandler(this.ReserveTicketForm_Load);

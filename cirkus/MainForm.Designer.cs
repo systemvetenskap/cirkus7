@@ -1126,6 +1126,8 @@
             this.Controls.Add(this.labelStaffName);
             this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Välkommen";

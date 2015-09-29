@@ -153,6 +153,7 @@
             this.Controls.Add(this.dgSelectedCustomerTicket);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpTicketTo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ChangeTicketForm";
             this.Text = "ChangeTicket";
             ((System.ComponentModel.ISupportInitialize)(this.dgSelectedCustomerTicket)).EndInit();

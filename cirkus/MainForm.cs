@@ -116,6 +116,7 @@ namespace cirkus
         private void MainForm_Load(object sender, EventArgs e)
         {
             listCustomers();
+            
         }
         #region HideCaret i textboxar
         private void textBoxPrintBookingid_Click(object sender, EventArgs e)

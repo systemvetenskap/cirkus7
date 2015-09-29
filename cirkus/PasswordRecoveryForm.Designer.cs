@@ -96,6 +96,7 @@
             this.Controls.Add(this.btnSendPassword);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxEmail);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PasswordRecoveryForm";
             this.Text = "PasswordRecoveryForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
