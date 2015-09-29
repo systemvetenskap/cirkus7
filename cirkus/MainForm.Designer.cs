@@ -250,7 +250,7 @@
             this.dgTicketActs.ReadOnly = true;
             this.dgTicketActs.RowHeadersVisible = false;
             this.dgTicketActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTicketActs.Size = new System.Drawing.Size(516, 150);
+            this.dgTicketActs.Size = new System.Drawing.Size(516, 144);
             this.dgTicketActs.TabIndex = 22;
             this.dgTicketActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTicketActs_CellClick);
             // 
@@ -338,7 +338,7 @@
             this.dgCustomers.ReadOnly = true;
             this.dgCustomers.RowHeadersVisible = false;
             this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomers.Size = new System.Drawing.Size(188, 331);
+            this.dgCustomers.Size = new System.Drawing.Size(188, 325);
             this.dgCustomers.TabIndex = 14;
             this.dgCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellClick);
             this.dgCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellContentClick);
@@ -375,7 +375,7 @@
             // 
             // btnDeleteTicket
             // 
-            this.btnDeleteTicket.Location = new System.Drawing.Point(217, 412);
+            this.btnDeleteTicket.Location = new System.Drawing.Point(217, 406);
             this.btnDeleteTicket.Name = "btnDeleteTicket";
             this.btnDeleteTicket.Size = new System.Drawing.Size(126, 35);
             this.btnDeleteTicket.TabIndex = 11;
@@ -396,7 +396,7 @@
             // 
             // buttonEditTicket
             // 
-            this.buttonEditTicket.Location = new System.Drawing.Point(359, 412);
+            this.buttonEditTicket.Location = new System.Drawing.Point(359, 406);
             this.buttonEditTicket.Name = "buttonEditTicket";
             this.buttonEditTicket.Size = new System.Drawing.Size(126, 35);
             this.buttonEditTicket.TabIndex = 10;
@@ -416,7 +416,7 @@
             // 
             // buttonReserveTicket
             // 
-            this.buttonReserveTicket.Location = new System.Drawing.Point(607, 412);
+            this.buttonReserveTicket.Location = new System.Drawing.Point(607, 406);
             this.buttonReserveTicket.Name = "buttonReserveTicket";
             this.buttonReserveTicket.Size = new System.Drawing.Size(126, 35);
             this.buttonReserveTicket.TabIndex = 9;
@@ -436,7 +436,7 @@
             // 
             // buttonAddCustomer
             // 
-            this.buttonAddCustomer.Location = new System.Drawing.Point(70, 412);
+            this.buttonAddCustomer.Location = new System.Drawing.Point(8, 406);
             this.buttonAddCustomer.Name = "buttonAddCustomer";
             this.buttonAddCustomer.Size = new System.Drawing.Size(126, 35);
             this.buttonAddCustomer.TabIndex = 8;
@@ -581,9 +581,9 @@
             // 
             // printPreviewControl1
             // 
-            this.printPreviewControl1.Location = new System.Drawing.Point(441, 288);
+            this.printPreviewControl1.Location = new System.Drawing.Point(350, 284);
             this.printPreviewControl1.Name = "printPreviewControl1";
-            this.printPreviewControl1.Size = new System.Drawing.Size(209, 164);
+            this.printPreviewControl1.Size = new System.Drawing.Size(209, 158);
             this.printPreviewControl1.TabIndex = 24;
             this.printPreviewControl1.Visible = false;
             // 
@@ -614,7 +614,7 @@
             this.dgvAkter.ReadOnly = true;
             this.dgvAkter.RowHeadersVisible = false;
             this.dgvAkter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAkter.Size = new System.Drawing.Size(193, 195);
+            this.dgvAkter.Size = new System.Drawing.Size(193, 215);
             this.dgvAkter.TabIndex = 23;
             this.dgvAkter.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAkter_CellClick);
             this.dgvAkter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAkter_KeyUp);
@@ -635,7 +635,7 @@
             this.dgvShowsList.ReadOnly = true;
             this.dgvShowsList.RowHeadersVisible = false;
             this.dgvShowsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShowsList.Size = new System.Drawing.Size(260, 348);
+            this.dgvShowsList.Size = new System.Drawing.Size(260, 354);
             this.dgvShowsList.TabIndex = 22;
             this.dgvShowsList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowsList_CellClick);
             this.dgvShowsList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvShowsList_KeyUp);
@@ -841,7 +841,7 @@
             // btnRaderaKonto
             // 
             this.btnRaderaKonto.Enabled = false;
-            this.btnRaderaKonto.Location = new System.Drawing.Point(22, 364);
+            this.btnRaderaKonto.Location = new System.Drawing.Point(22, 406);
             this.btnRaderaKonto.Name = "btnRaderaKonto";
             this.btnRaderaKonto.Size = new System.Drawing.Size(126, 35);
             this.btnRaderaKonto.TabIndex = 58;
@@ -852,7 +852,7 @@
             // lblPersonnummer
             // 
             this.lblPersonnummer.AutoSize = true;
-            this.lblPersonnummer.Location = new System.Drawing.Point(406, 75);
+            this.lblPersonnummer.Location = new System.Drawing.Point(366, 75);
             this.lblPersonnummer.Name = "lblPersonnummer";
             this.lblPersonnummer.Size = new System.Drawing.Size(129, 13);
             this.lblPersonnummer.TabIndex = 57;
@@ -860,7 +860,7 @@
             // 
             // textBoxPersonnummer
             // 
-            this.textBoxPersonnummer.Location = new System.Drawing.Point(406, 90);
+            this.textBoxPersonnummer.Location = new System.Drawing.Point(366, 90);
             this.textBoxPersonnummer.Name = "textBoxPersonnummer";
             this.textBoxPersonnummer.Size = new System.Drawing.Size(152, 20);
             this.textBoxPersonnummer.TabIndex = 56;
@@ -869,7 +869,7 @@
             // 
             this.LblStatusKonto.AutoSize = true;
             this.LblStatusKonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblStatusKonto.Location = new System.Drawing.Point(406, 339);
+            this.LblStatusKonto.Location = new System.Drawing.Point(366, 339);
             this.LblStatusKonto.Name = "LblStatusKonto";
             this.LblStatusKonto.Size = new System.Drawing.Size(48, 13);
             this.LblStatusKonto.TabIndex = 49;
@@ -879,7 +879,7 @@
             // lblBehorighetsniva
             // 
             this.lblBehorighetsniva.AutoSize = true;
-            this.lblBehorighetsniva.Location = new System.Drawing.Point(629, 284);
+            this.lblBehorighetsniva.Location = new System.Drawing.Point(550, 284);
             this.lblBehorighetsniva.Name = "lblBehorighetsniva";
             this.lblBehorighetsniva.Size = new System.Drawing.Size(86, 13);
             this.lblBehorighetsniva.TabIndex = 46;
@@ -888,7 +888,7 @@
             // lblLosenord
             // 
             this.lblLosenord.AutoSize = true;
-            this.lblLosenord.Location = new System.Drawing.Point(629, 215);
+            this.lblLosenord.Location = new System.Drawing.Point(550, 215);
             this.lblLosenord.Name = "lblLosenord";
             this.lblLosenord.Size = new System.Drawing.Size(54, 13);
             this.lblLosenord.TabIndex = 45;
@@ -912,7 +912,7 @@
             this.dgStaff.RowHeadersVisible = false;
             this.dgStaff.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgStaff.Size = new System.Drawing.Size(304, 262);
+            this.dgStaff.Size = new System.Drawing.Size(304, 310);
             this.dgStaff.TabIndex = 44;
             // 
             // textBoxSearchStaff
@@ -929,7 +929,7 @@
             this.comboBoxBehorighetsniva.Items.AddRange(new object[] {
             "Biljettförsäljare",
             "Administratör"});
-            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(629, 299);
+            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(550, 299);
             this.comboBoxBehorighetsniva.Name = "comboBoxBehorighetsniva";
             this.comboBoxBehorighetsniva.Size = new System.Drawing.Size(152, 21);
             this.comboBoxBehorighetsniva.TabIndex = 28;
@@ -946,7 +946,7 @@
             // 
             // btnTomFalten
             // 
-            this.btnTomFalten.Location = new System.Drawing.Point(655, 364);
+            this.btnTomFalten.Location = new System.Drawing.Point(576, 406);
             this.btnTomFalten.Name = "btnTomFalten";
             this.btnTomFalten.Size = new System.Drawing.Size(126, 35);
             this.btnTomFalten.TabIndex = 32;
@@ -956,7 +956,7 @@
             // 
             // btnUpdateraKonto
             // 
-            this.btnUpdateraKonto.Location = new System.Drawing.Point(200, 364);
+            this.btnUpdateraKonto.Location = new System.Drawing.Point(200, 406);
             this.btnUpdateraKonto.Name = "btnUpdateraKonto";
             this.btnUpdateraKonto.Size = new System.Drawing.Size(126, 35);
             this.btnUpdateraKonto.TabIndex = 31;
@@ -967,7 +967,7 @@
             // lblFornamn
             // 
             this.lblFornamn.AutoSize = true;
-            this.lblFornamn.Location = new System.Drawing.Point(406, 144);
+            this.lblFornamn.Location = new System.Drawing.Point(366, 144);
             this.lblFornamn.Name = "lblFornamn";
             this.lblFornamn.Size = new System.Drawing.Size(51, 13);
             this.lblFornamn.TabIndex = 27;
@@ -975,7 +975,7 @@
             // 
             // btnSkapaKonto
             // 
-            this.btnSkapaKonto.Location = new System.Drawing.Point(406, 364);
+            this.btnSkapaKonto.Location = new System.Drawing.Point(366, 406);
             this.btnSkapaKonto.Name = "btnSkapaKonto";
             this.btnSkapaKonto.Size = new System.Drawing.Size(126, 35);
             this.btnSkapaKonto.TabIndex = 29;
@@ -995,7 +995,7 @@
             // lblEfternamn
             // 
             this.lblEfternamn.AutoSize = true;
-            this.lblEfternamn.Location = new System.Drawing.Point(406, 215);
+            this.lblEfternamn.Location = new System.Drawing.Point(366, 215);
             this.lblEfternamn.Name = "lblEfternamn";
             this.lblEfternamn.Size = new System.Drawing.Size(58, 13);
             this.lblEfternamn.TabIndex = 33;
@@ -1003,7 +1003,7 @@
             // 
             // textBoxLosenord
             // 
-            this.textBoxLosenord.Location = new System.Drawing.Point(629, 230);
+            this.textBoxLosenord.Location = new System.Drawing.Point(550, 230);
             this.textBoxLosenord.Name = "textBoxLosenord";
             this.textBoxLosenord.Size = new System.Drawing.Size(152, 20);
             this.textBoxLosenord.TabIndex = 26;
@@ -1011,7 +1011,7 @@
             // lblTelefonnummer
             // 
             this.lblTelefonnummer.AutoSize = true;
-            this.lblTelefonnummer.Location = new System.Drawing.Point(406, 285);
+            this.lblTelefonnummer.Location = new System.Drawing.Point(366, 285);
             this.lblTelefonnummer.Name = "lblTelefonnummer";
             this.lblTelefonnummer.Size = new System.Drawing.Size(83, 13);
             this.lblTelefonnummer.TabIndex = 34;
@@ -1019,7 +1019,7 @@
             // 
             // textBoxEfternamn
             // 
-            this.textBoxEfternamn.Location = new System.Drawing.Point(406, 230);
+            this.textBoxEfternamn.Location = new System.Drawing.Point(366, 230);
             this.textBoxEfternamn.Name = "textBoxEfternamn";
             this.textBoxEfternamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxEfternamn.TabIndex = 22;
@@ -1027,7 +1027,7 @@
             // lblEpost
             // 
             this.lblEpost.AutoSize = true;
-            this.lblEpost.Location = new System.Drawing.Point(629, 75);
+            this.lblEpost.Location = new System.Drawing.Point(550, 75);
             this.lblEpost.Name = "lblEpost";
             this.lblEpost.Size = new System.Drawing.Size(40, 13);
             this.lblEpost.TabIndex = 36;
@@ -1035,7 +1035,7 @@
             // 
             // textBoxTelefonnummer
             // 
-            this.textBoxTelefonnummer.Location = new System.Drawing.Point(406, 300);
+            this.textBoxTelefonnummer.Location = new System.Drawing.Point(366, 300);
             this.textBoxTelefonnummer.Name = "textBoxTelefonnummer";
             this.textBoxTelefonnummer.Size = new System.Drawing.Size(152, 20);
             this.textBoxTelefonnummer.TabIndex = 23;
@@ -1043,7 +1043,7 @@
             // lblAnvandarnamn
             // 
             this.lblAnvandarnamn.AutoSize = true;
-            this.lblAnvandarnamn.Location = new System.Drawing.Point(629, 144);
+            this.lblAnvandarnamn.Location = new System.Drawing.Point(550, 144);
             this.lblAnvandarnamn.Name = "lblAnvandarnamn";
             this.lblAnvandarnamn.Size = new System.Drawing.Size(82, 13);
             this.lblAnvandarnamn.TabIndex = 38;
@@ -1051,21 +1051,21 @@
             // 
             // textBoxEpost
             // 
-            this.textBoxEpost.Location = new System.Drawing.Point(629, 90);
+            this.textBoxEpost.Location = new System.Drawing.Point(550, 90);
             this.textBoxEpost.Name = "textBoxEpost";
             this.textBoxEpost.Size = new System.Drawing.Size(152, 20);
             this.textBoxEpost.TabIndex = 24;
             // 
             // textBoxFornamn
             // 
-            this.textBoxFornamn.Location = new System.Drawing.Point(406, 159);
+            this.textBoxFornamn.Location = new System.Drawing.Point(366, 159);
             this.textBoxFornamn.Name = "textBoxFornamn";
             this.textBoxFornamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxFornamn.TabIndex = 21;
             // 
             // textBoxAnvandarnamn
             // 
-            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(629, 159);
+            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(550, 159);
             this.textBoxAnvandarnamn.Name = "textBoxAnvandarnamn";
             this.textBoxAnvandarnamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxAnvandarnamn.TabIndex = 25;
