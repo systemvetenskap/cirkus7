@@ -1516,20 +1516,23 @@ namespace cirkus
                 }
                 else if(numberOfacts == showacts.Rows.Count)
                 {
-                    double perc = 0.75;
+                    double perc;
                     if (agegroup == 0)
                     {
+                        perc = 0.75;
                         priceid = (80 * numberOfacts) * perc;
                         type = "Barn";
 
                     }
                     if (agegroup == 1)
                     {
+                        perc = 0.59;
                         priceid = (110 * numberOfacts) * perc;
                         type = "Ungdom";
                     }
                     if (agegroup == 2)
                     {
+                        perc = 0.6667;
                         priceid = (150 * numberOfacts) * perc;
                         type = "Vuxen";
                     }
