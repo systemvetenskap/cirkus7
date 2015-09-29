@@ -1282,23 +1282,25 @@ namespace cirkus
 
             else if(cbDf.Checked == true)
             {
-                ////// Printing 
-                //PrintDialog pd = new PrintDialog();
-                //pd.Document = printDocumentBIljettDirekt;
-                //if (pd.ShowDialog() == DialogResult.OK)
-                //{
-                //    printDocumentBIljettDirekt.Print();
-                //}
+                //////// Printing 
+                ////PrintDialog pd = new PrintDialog();
+                ////pd.Document = printDocumentBIljettDirekt;
+                ////if (pd.ShowDialog() == DialogResult.OK)
+                ////{
+                ////    printDocumentBIljettDirekt.Print();
+                ////}
 
 
-                // Kolla dokumentet innan man skrivar ut
-                printPreviewControl1.Visible = true;
-                printPreviewDialog1.Document = printDocumentBIljettDirekt;
-                printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
-                printPreviewDialog1.Show();
-                printPreviewControl1.Document = printDocumentBIljettDirekt;
+                //// Kolla dokumentet innan man skrivar ut
+                //printPreviewControl1.Visible = true;
+                //printPreviewDialog1.Document = printDocumentBIljettDirekt;
+                //printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
+                //printPreviewDialog1.Show();
+                //printPreviewControl1.Document = printDocumentBIljettDirekt;
+                PrintBiljetter rb = new PrintBiljetter();
+                rb.ShowDialog();
             }
-            //this.Close();
+            this.Close();
 
         }
 

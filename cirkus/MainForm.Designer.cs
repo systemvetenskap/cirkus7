@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtPrintDatum = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxPrintBookingid = new System.Windows.Forms.TextBox();
@@ -145,6 +146,7 @@
             // 
             // tabTicket
             // 
+            this.tabTicket.Controls.Add(this.button1);
             this.tabTicket.Controls.Add(this.txtPrintDatum);
             this.tabTicket.Controls.Add(this.label11);
             this.tabTicket.Controls.Add(this.textBoxPrintBookingid);
@@ -181,6 +183,15 @@
             this.tabTicket.TabIndex = 0;
             this.tabTicket.Text = "Biljettförsäljning";
             this.tabTicket.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(559, 223);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 26);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "Ändra vald biljett";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // txtPrintDatum
             // 
@@ -1237,5 +1248,6 @@
         private System.Windows.Forms.Label lblShows;
         private System.Windows.Forms.Label lblStatistics;
         private System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.Button button1;
     }
 }
