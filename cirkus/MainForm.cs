@@ -35,7 +35,6 @@ namespace cirkus
         private string sql = "";
         public DataTable dt = new DataTable();
         private NpgsqlDataAdapter da;
-        private List<show> allShowsList;
         private int CustomerID;
         DataTable dtActs = new DataTable();
 
