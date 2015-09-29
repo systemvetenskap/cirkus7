@@ -39,6 +39,7 @@
             this.dateTimePickerDatum = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
+            this.lblLayout = new System.Windows.Forms.Label();
             this.uncheck = new System.Windows.Forms.Button();
             this.check = new System.Windows.Forms.Button();
             this.lblActMap = new System.Windows.Forms.Label();
@@ -124,7 +125,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblLayout = new System.Windows.Forms.Label();
             this.gpSeatMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
@@ -302,6 +302,17 @@
             this.gpSeatMap.Size = new System.Drawing.Size(322, 414);
             this.gpSeatMap.TabIndex = 57;
             this.gpSeatMap.TabStop = false;
+            // 
+            // lblLayout
+            // 
+            this.lblLayout.AutoSize = true;
+            this.lblLayout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLayout.Location = new System.Drawing.Point(14, 398);
+            this.lblLayout.Name = "lblLayout";
+            this.lblLayout.Size = new System.Drawing.Size(41, 13);
+            this.lblLayout.TabIndex = 62;
+            this.lblLayout.Text = "label1";
+            this.lblLayout.Visible = false;
             // 
             // uncheck
             // 
@@ -1239,17 +1250,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // lblLayout
-            // 
-            this.lblLayout.AutoSize = true;
-            this.lblLayout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLayout.Location = new System.Drawing.Point(14, 398);
-            this.lblLayout.Name = "lblLayout";
-            this.lblLayout.Size = new System.Drawing.Size(41, 13);
-            this.lblLayout.TabIndex = 62;
-            this.lblLayout.Text = "label1";
-            this.lblLayout.Visible = false;
-            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1260,6 +1260,8 @@
             this.Controls.Add(this.gpSeatMap);
             this.Controls.Add(this.buttonSparaAndringar);
             this.Controls.Add(this.buttonLaggTIllForestallning);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ShowForm";
             this.Text = "Skapa föreställning";
             this.Load += new System.EventHandler(this.ShowForm_Load);

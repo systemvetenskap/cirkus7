@@ -1836,8 +1836,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonAdd);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ReserveTicketForm";
-            this.Text = "ReserveTicketForm";
+            this.Text = "Boka biljett";
             this.Load += new System.EventHandler(this.ReserveTicketForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).EndInit();
             this.groupBox2.ResumeLayout(false);
