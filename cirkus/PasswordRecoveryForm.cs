@@ -86,7 +86,7 @@ namespace cirkus
                     lblStatus.Text = "Lösenordet har skickats till din e-post";
                     return;
                 }
-                catch (NpgsqlException)
+                catch (InvalidOperationException)
                 {
                     lblStatus.Visible = true;
                     lblStatus.ForeColor = Color.Red;
