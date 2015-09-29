@@ -1537,13 +1537,14 @@ namespace cirkus
                 if (radioRes.Checked == true)
                 {
                     conn.Open();
-                    sql = "insert into booking(customerid,showid, reserved_to, price, type) values(:cid,:shid, :rto, :pid, :tyd)";
+                    sql = "insert into booking(customerid,showid, reserved_to, price, type, paid) values(:cid,:shid, :rto, :pid, :tyd, :pai)";
                     cmd = new NpgsqlCommand(sql, conn);
                     cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", dateReservedto.Value.ToString("yyyy-MM-dd")));
                     cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
                     cmd.Parameters.Add(new NpgsqlParameter("tyd", type));
+                    cmd.Parameters.Add(new NpgsqlParameter("pai", false));
                     cmd.ExecuteNonQuery();
                     ix++;
 
