@@ -187,7 +187,7 @@
             // txtPrintDatum
             // 
             this.txtPrintDatum.BackColor = System.Drawing.SystemColors.Window;
-            this.txtPrintDatum.Location = new System.Drawing.Point(769, 116);
+            this.txtPrintDatum.Location = new System.Drawing.Point(777, 116);
             this.txtPrintDatum.Name = "txtPrintDatum";
             this.txtPrintDatum.ReadOnly = true;
             this.txtPrintDatum.Size = new System.Drawing.Size(126, 20);
@@ -198,7 +198,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(769, 101);
+            this.label11.Location = new System.Drawing.Point(777, 101);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 26;
@@ -207,7 +207,7 @@
             // textBoxPrintBookingid
             // 
             this.textBoxPrintBookingid.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintBookingid.Location = new System.Drawing.Point(769, 75);
+            this.textBoxPrintBookingid.Location = new System.Drawing.Point(777, 75);
             this.textBoxPrintBookingid.Name = "textBoxPrintBookingid";
             this.textBoxPrintBookingid.ReadOnly = true;
             this.textBoxPrintBookingid.Size = new System.Drawing.Size(126, 20);
@@ -218,7 +218,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(769, 60);
+            this.label5.Location = new System.Drawing.Point(777, 60);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 24;
@@ -250,7 +250,7 @@
             this.dgTicketActs.ReadOnly = true;
             this.dgTicketActs.RowHeadersVisible = false;
             this.dgTicketActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTicketActs.Size = new System.Drawing.Size(516, 144);
+            this.dgTicketActs.Size = new System.Drawing.Size(527, 144);
             this.dgTicketActs.TabIndex = 22;
             this.dgTicketActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTicketActs_CellClick);
             // 
@@ -276,7 +276,7 @@
             // 
             this.lblPrint.AutoSize = true;
             this.lblPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint.Location = new System.Drawing.Point(769, 19);
+            this.lblPrint.Location = new System.Drawing.Point(777, 19);
             this.lblPrint.Name = "lblPrint";
             this.lblPrint.Size = new System.Drawing.Size(56, 16);
             this.lblPrint.TabIndex = 19;
@@ -285,7 +285,7 @@
             // textBoxPrintPrice
             // 
             this.textBoxPrintPrice.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintPrice.Location = new System.Drawing.Point(769, 302);
+            this.textBoxPrintPrice.Location = new System.Drawing.Point(777, 302);
             this.textBoxPrintPrice.Name = "textBoxPrintPrice";
             this.textBoxPrintPrice.ReadOnly = true;
             this.textBoxPrintPrice.Size = new System.Drawing.Size(126, 20);
@@ -308,14 +308,14 @@
             this.dgTickets.ReadOnly = true;
             this.dgTickets.RowHeadersVisible = false;
             this.dgTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTickets.Size = new System.Drawing.Size(516, 140);
+            this.dgTickets.Size = new System.Drawing.Size(527, 140);
             this.dgTickets.TabIndex = 15;
             this.dgTickets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTickets_CellClick);
             // 
             // textBoxPrintAct
             // 
             this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAct.Location = new System.Drawing.Point(769, 211);
+            this.textBoxPrintAct.Location = new System.Drawing.Point(777, 211);
             this.textBoxPrintAct.Name = "textBoxPrintAct";
             this.textBoxPrintAct.ReadOnly = true;
             this.textBoxPrintAct.Size = new System.Drawing.Size(126, 20);
@@ -332,13 +332,13 @@
             this.dgCustomers.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgCustomers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCustomers.Location = new System.Drawing.Point(8, 75);
+            this.dgCustomers.Location = new System.Drawing.Point(15, 75);
             this.dgCustomers.MultiSelect = false;
             this.dgCustomers.Name = "dgCustomers";
             this.dgCustomers.ReadOnly = true;
             this.dgCustomers.RowHeadersVisible = false;
             this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomers.Size = new System.Drawing.Size(188, 325);
+            this.dgCustomers.Size = new System.Drawing.Size(181, 325);
             this.dgCustomers.TabIndex = 14;
             this.dgCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellClick);
             this.dgCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellContentClick);
@@ -347,7 +347,7 @@
             // textBoxPrintShow
             // 
             this.textBoxPrintShow.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintShow.Location = new System.Drawing.Point(769, 158);
+            this.textBoxPrintShow.Location = new System.Drawing.Point(777, 158);
             this.textBoxPrintShow.Name = "textBoxPrintShow";
             this.textBoxPrintShow.ReadOnly = true;
             this.textBoxPrintShow.Size = new System.Drawing.Size(126, 20);
@@ -366,7 +366,7 @@
             // textBoxPrintAge
             // 
             this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAge.Location = new System.Drawing.Point(769, 261);
+            this.textBoxPrintAge.Location = new System.Drawing.Point(777, 261);
             this.textBoxPrintAge.Name = "textBoxPrintAge";
             this.textBoxPrintAge.ReadOnly = true;
             this.textBoxPrintAge.Size = new System.Drawing.Size(126, 20);
@@ -386,7 +386,7 @@
             // buttonPrint
             // 
             this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrint.Location = new System.Drawing.Point(769, 339);
+            this.buttonPrint.Location = new System.Drawing.Point(777, 339);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(126, 35);
             this.buttonPrint.TabIndex = 8;
@@ -408,7 +408,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(769, 287);
+            this.label8.Location = new System.Drawing.Point(777, 287);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(27, 13);
             this.label8.TabIndex = 12;
@@ -416,7 +416,7 @@
             // 
             // buttonReserveTicket
             // 
-            this.buttonReserveTicket.Location = new System.Drawing.Point(607, 406);
+            this.buttonReserveTicket.Location = new System.Drawing.Point(618, 406);
             this.buttonReserveTicket.Name = "buttonReserveTicket";
             this.buttonReserveTicket.Size = new System.Drawing.Size(126, 35);
             this.buttonReserveTicket.TabIndex = 9;
@@ -428,7 +428,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(769, 196);
+            this.label7.Location = new System.Drawing.Point(777, 196);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 11;
@@ -436,7 +436,7 @@
             // 
             // buttonAddCustomer
             // 
-            this.buttonAddCustomer.Location = new System.Drawing.Point(8, 406);
+            this.buttonAddCustomer.Location = new System.Drawing.Point(15, 406);
             this.buttonAddCustomer.Name = "buttonAddCustomer";
             this.buttonAddCustomer.Size = new System.Drawing.Size(126, 35);
             this.buttonAddCustomer.TabIndex = 8;
@@ -448,7 +448,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(769, 143);
+            this.label6.Location = new System.Drawing.Point(777, 143);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 10;
@@ -469,7 +469,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(769, 246);
+            this.label4.Location = new System.Drawing.Point(777, 246);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 8;
@@ -489,7 +489,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 19);
+            this.label2.Location = new System.Drawing.Point(15, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 16);
             this.label2.TabIndex = 3;
