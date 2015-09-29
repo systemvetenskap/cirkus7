@@ -321,7 +321,8 @@ namespace cirkus
             dgShowActs.Columns[1].HeaderText = "Namn";
             dgShowActs.Columns[2].HeaderText = "Starttid";
             dgShowActs.Columns[3].HeaderText = "Sluttid";
-            dgShowActs.Columns[4].HeaderText = "Lediga platser";
+            dgShowActs.Columns[4].HeaderText = "Parkettplatser";
+            dgShowActs.Columns[5].HeaderText = "Fri placering";
             dgShowActs.ClearSelection();
             dgShowActs.Columns[0].Visible = false;
             conn.Close();
@@ -402,6 +403,9 @@ namespace cirkus
                 dgTickets.DataSource = dtPersons;
                 //comboTicketnr.Text = "2";
                 dgTickets.ClearSelection();
+                dgTickets.Columns[0].Visible = false;
+                dgTickets.Columns[2].Visible = false;
+                dgTickets.Columns[3].Visible = false;
                 load_Seats();
 
             }
@@ -734,6 +738,7 @@ namespace cirkus
             this.dgActs.Columns[3].ReadOnly = true;
             this.dgActs.Columns[0].Visible = false;
             this.dgActs.Columns[1].Visible = false;
+            dgActs.Columns[4].Visible = false;
 
             checkLocked();
             int age = int.Parse(dgTickets[2, dgIndex].Value.ToString());
