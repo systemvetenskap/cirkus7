@@ -277,7 +277,7 @@ namespace cirkus
         
             foreach(DataRow r in dtActs.Rows)
             {
-                textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+", "; 
+                textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+"\n"; 
                 akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + "\n";
 
             }
@@ -558,9 +558,12 @@ namespace cirkus
             SolidBrush drawBrush = new SolidBrush(Color.Black);
 
             int point = 350;
+            int point2 = 0;
             foreach (DataGridViewRow ro in dgTicketActs.Rows)
             {
-                point += 40;
+                point += 60;
+                point2 += 10;
+                
             }
 
             int regtangelP = point + 60;
@@ -601,7 +604,7 @@ namespace cirkus
             e.Graphics.DrawString("Namn:", drawFontBold, drawBrush, new PointF(45, 230));
             e.Graphics.DrawString("Åldersgrupp:", drawFontBold, drawBrush, new PointF(45, 270));
             e.Graphics.DrawString("Akt/plats:", drawFontBold, drawBrush, new PointF(45, 310));
-            e.Graphics.DrawString("Tider:", drawFontBold, drawBrush, new PointF(45, 350));
+            e.Graphics.DrawString("Tider:", drawFontBold, drawBrush, new PointF(45,350 +point2));
             e.Graphics.DrawString("Pris:", drawFontBold, drawBrush, new PointF(45, point));
             e.Graphics.DrawString("---------------------------------------- Klipp här -----------------------------------------------", drawFont, drawBrush, new PointF(00, point + 110));
 
@@ -611,7 +614,7 @@ namespace cirkus
             e.Graphics.DrawString(forestallning, drawFont, drawBrush, new PointF(250, 230));
             e.Graphics.DrawString(aldersgrupp, drawFont, drawBrush, new PointF(250, 270));
             e.Graphics.DrawString(akt, drawFont, drawBrush, new PointF(250, 310));
-            e.Graphics.DrawString(akttider, drawFont, drawBrush, new PointF(250, 350));
+            e.Graphics.DrawString(akttider, drawFont, drawBrush, new PointF(250, 350 + point2));
             e.Graphics.DrawString(pris + " kronor", drawFont, drawBrush, new PointF(250, point));
 
         }
