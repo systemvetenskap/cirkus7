@@ -227,7 +227,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(214, 231);
+            this.label10.Location = new System.Drawing.Point(214, 233);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(142, 16);
             this.label10.TabIndex = 23;
@@ -243,13 +243,13 @@
             this.dgTicketActs.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgTicketActs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgTicketActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTicketActs.Location = new System.Drawing.Point(217, 250);
+            this.dgTicketActs.Location = new System.Drawing.Point(217, 256);
             this.dgTicketActs.MultiSelect = false;
             this.dgTicketActs.Name = "dgTicketActs";
             this.dgTicketActs.ReadOnly = true;
             this.dgTicketActs.RowHeadersVisible = false;
             this.dgTicketActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTicketActs.Size = new System.Drawing.Size(516, 101);
+            this.dgTicketActs.Size = new System.Drawing.Size(516, 108);
             this.dgTicketActs.TabIndex = 22;
             this.dgTicketActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTicketActs_CellClick);
             // 
@@ -336,7 +336,7 @@
             this.dgCustomers.ReadOnly = true;
             this.dgCustomers.RowHeadersVisible = false;
             this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomers.Size = new System.Drawing.Size(188, 368);
+            this.dgCustomers.Size = new System.Drawing.Size(188, 289);
             this.dgCustomers.TabIndex = 14;
             this.dgCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellClick);
             this.dgCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellContentClick);
@@ -373,9 +373,9 @@
             // 
             // btnDeleteTicket
             // 
-            this.btnDeleteTicket.Location = new System.Drawing.Point(346, 357);
+            this.btnDeleteTicket.Location = new System.Drawing.Point(322, 372);
             this.btnDeleteTicket.Name = "btnDeleteTicket";
-            this.btnDeleteTicket.Size = new System.Drawing.Size(126, 35);
+            this.btnDeleteTicket.Size = new System.Drawing.Size(112, 26);
             this.btnDeleteTicket.TabIndex = 11;
             this.btnDeleteTicket.Text = "Radera vald biljett";
             this.btnDeleteTicket.UseVisualStyleBackColor = true;
@@ -384,9 +384,9 @@
             // buttonPrint
             // 
             this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrint.Location = new System.Drawing.Point(769, 357);
+            this.buttonPrint.Location = new System.Drawing.Point(769, 339);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(126, 35);
+            this.buttonPrint.Size = new System.Drawing.Size(126, 25);
             this.buttonPrint.TabIndex = 8;
             this.buttonPrint.Text = "Skriv ut vald biljett";
             this.buttonPrint.UseVisualStyleBackColor = true;
@@ -394,9 +394,9 @@
             // 
             // buttonEditTicket
             // 
-            this.buttonEditTicket.Location = new System.Drawing.Point(214, 357);
+            this.buttonEditTicket.Location = new System.Drawing.Point(440, 372);
             this.buttonEditTicket.Name = "buttonEditTicket";
-            this.buttonEditTicket.Size = new System.Drawing.Size(126, 35);
+            this.buttonEditTicket.Size = new System.Drawing.Size(112, 26);
             this.buttonEditTicket.TabIndex = 10;
             this.buttonEditTicket.Text = "Ändra vald biljett";
             this.buttonEditTicket.UseVisualStyleBackColor = true;
@@ -414,9 +414,9 @@
             // 
             // buttonReserveTicket
             // 
-            this.buttonReserveTicket.Location = new System.Drawing.Point(607, 357);
+            this.buttonReserveTicket.Location = new System.Drawing.Point(625, 372);
             this.buttonReserveTicket.Name = "buttonReserveTicket";
-            this.buttonReserveTicket.Size = new System.Drawing.Size(126, 35);
+            this.buttonReserveTicket.Size = new System.Drawing.Size(108, 24);
             this.buttonReserveTicket.TabIndex = 9;
             this.buttonReserveTicket.Text = "Boka ny biljett";
             this.buttonReserveTicket.UseVisualStyleBackColor = true;
@@ -434,9 +434,9 @@
             // 
             // buttonAddCustomer
             // 
-            this.buttonAddCustomer.Location = new System.Drawing.Point(214, 408);
+            this.buttonAddCustomer.Location = new System.Drawing.Point(90, 370);
             this.buttonAddCustomer.Name = "buttonAddCustomer";
-            this.buttonAddCustomer.Size = new System.Drawing.Size(126, 35);
+            this.buttonAddCustomer.Size = new System.Drawing.Size(106, 26);
             this.buttonAddCustomer.TabIndex = 8;
             this.buttonAddCustomer.Text = "Lägg till ny kund";
             this.buttonAddCustomer.UseVisualStyleBackColor = true;

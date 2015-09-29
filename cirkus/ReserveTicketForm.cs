@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -943,6 +944,96 @@ namespace cirkus
             panel2.Visible = true;
         }
 
+        private void printDocumentBIljettDirekt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            string pris = "";
+            string aldersgrupp = "";
+
+            conn.Open();
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(@"select distinct booking.bookingid,booking.customerid from booking where booking.showid = '" + showid + "' and booking.customerid = '" + customerid + "'", conn);
+            DataTable dtBid = new DataTable();
+
+            da.Fill(dtBid);
+            conn.Close();
+
+            foreach (DataRow row in dtBid.Rows)
+            {
+                System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 18);
+                System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
+                System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
+                SolidBrush drawBrush = new SolidBrush(Color.Black);
+
+
+                int bid = int.Parse(row[0].ToString());
+                conn.Open();
+                da = new NpgsqlDataAdapter(@"select acts.name,seats.section, seats.rownumber, acts.start_time, acts.end_time from ticket
+                                                                inner join booked_seats on ticket.booked_seat_id = booked_seats.booked_seat_id
+                                                                inner join available_seats on booked_seats.available_seats_id = available_seats.available_seats_id
+                                                                inner join acts on available_seats.actid = acts.actid
+                                                                inner join seats on available_seats.seatid = seats.seatid                
+                                                                where ticket.bookingid = '" + bid + "' order by acts.actid", conn);
+
+                DataTable acts = new DataTable();
+
+                da.Fill(acts);
+
+                conn.Close();
+
+                int point = 350;
+                foreach (DataRow r in acts.Rows)
+                {
+                    actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
+                    acttime += " " + r[0].ToString() + ": " + r[3].ToString() + "-" + r[4].ToString() + "\n";
+                    point += 40;
+                }
+
+
+
+                int regtangelP = point + 60;
+
+                ////BACKGROUND IMAGE
+                System.Drawing.Image i2 = cirkus.Properties.Resources.backgroundClown;
+                Point p2 = new Point(100, 100);
+
+                // Create rectangle for displaying image, subtracting 200 (100 for left,100 for right margins).
+                System.Drawing.Rectangle destRect = new System.Drawing.Rectangle(20, 40, 750, regtangelP);
+
+
+                // Create coordinates of rectangle for source image.
+                int x = 0;
+                int y = 0;
+                int width = i2.Width;
+                int height = i2.Height;
+                GraphicsUnit units = GraphicsUnit.Pixel;
+
+
+
+            //e.Graphics.DrawRectangle(Pens.Black, r);
+                e.Graphics.DrawImage(i2, destRect, x, y, width, height, units); // Draw background.
+
+                e.Graphics.DrawString("Biljett Cirkus Kul & Bus", drawFontBoldAndUnderline, drawBrush, new PointF(44, 110));
+
+
+                e.Graphics.DrawString("BokningsID:", drawFontBold, drawBrush, new PointF(45, 150));
+                e.Graphics.DrawString("Datum:", drawFontBold, drawBrush, new PointF(45, 190));
+                e.Graphics.DrawString("Namn:", drawFontBold, drawBrush, new PointF(45, 230));
+                e.Graphics.DrawString("Åldersgrupp:", drawFontBold, drawBrush, new PointF(45, 270));
+                e.Graphics.DrawString("Akt/plats:", drawFontBold, drawBrush, new PointF(45, 310));
+                e.Graphics.DrawString("Tider:", drawFontBold, drawBrush, new PointF(45, 350));
+                e.Graphics.DrawString("Pris:", drawFontBold, drawBrush, new PointF(45, point));
+                e.Graphics.DrawString("---------------------------------------- Klipp här -----------------------------------------------", drawFont, drawBrush, new PointF(00, point + 110));
+
+
+                e.Graphics.DrawString(bokningid, drawFont, drawBrush, new PointF(250, 150));
+                e.Graphics.DrawString(showdate.ToString(), drawFont, drawBrush, new PointF(250, 190));
+                e.Graphics.DrawString(show, drawFont, drawBrush, new PointF(250, 230));
+                e.Graphics.DrawString(aldersgrupp, drawFont, drawBrush, new PointF(250, 270));
+                e.Graphics.DrawString(actname, drawFont, drawBrush, new PointF(250, 310));
+                e.Graphics.DrawString(acttime, drawFont, drawBrush, new PointF(250, 350));
+                e.Graphics.DrawString(pris + " kronor", drawFont, drawBrush, new PointF(250, point));
+            }
+        }
+
         private void button9_Click(object sender, EventArgs e)
         {
             bool best = true;
@@ -1204,14 +1295,33 @@ namespace cirkus
         {
             button1.Enabled = false;
             createBooking();
-            if (cbDf.Checked == false || radioRes.Checked == false)
+            if (cbDf.Checked == false)
             {
                
                 backgroundWorker1.RunWorkerAsync();
                 this.Close();
                
             }
-            this.Close();
+
+            else if(cbDf.Checked == true)
+            {
+                ////// Printing 
+                //PrintDialog pd = new PrintDialog();
+                //pd.Document = printDocumentBIljettDirekt;
+                //if (pd.ShowDialog() == DialogResult.OK)
+                //{
+                //    printDocumentBIljettDirekt.Print();
+                //}
+
+
+                // Kolla dokumentet innan man skrivar ut
+                printPreviewControl1.Visible = true;
+                printPreviewDialog1.Document = printDocumentBIljettDirekt;
+                printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
+                printPreviewDialog1.Show();
+                printPreviewControl1.Document = printDocumentBIljettDirekt;
+            }
+            //this.Close();
 
         }
 

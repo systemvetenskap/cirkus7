@@ -533,7 +533,7 @@ namespace cirkus
             int height = i2.Height;
             GraphicsUnit units = GraphicsUnit.Pixel;
             
-            string aldersgrupp, bokningsnummer, forestallning, akt, pris, date, tider, datum;
+            string aldersgrupp, bokningsnummer, forestallning, akt, pris, tider, datum;
             
             aldersgrupp = textBoxPrintAge.Text;
             bokningsnummer = textBoxPrintBookingid.Text;
@@ -882,10 +882,14 @@ namespace cirkus
                 textBoxAntalVuxenBiljetter.Clear();
                 textBoxKronorVuxenbiljetter.Clear();
 
-                /*dr.Read();
+                //dr.Read();
 
-                textBoxAntalVuxenBiljetter.Text = dr[1].ToString();
-                textBoxKronorVuxenbiljetter.Text = dr[0].ToString();*/
+                //textBoxAntalVuxenBiljetter.Text = dr[1].ToString();
+                //textBoxKronorVuxenbiljetter.Text = dr[0].ToString();
+
+                
+
+                //textBoxPersonnummer.Text = read[0].ToString();
 
                 while (dr.Read())
                 {

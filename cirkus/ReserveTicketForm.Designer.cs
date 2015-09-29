@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReserveTicketForm));
             this.radioPaid = new System.Windows.Forms.RadioButton();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -164,6 +165,10 @@
             this.lblcSeats = new System.Windows.Forms.Label();
             this.labelcurrentActs = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.printDocumentBIljettDirekt = new System.Drawing.Printing.PrintDocument();
+            this.printDialogBiljetD = new System.Windows.Forms.PrintDialog();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -1644,6 +1649,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.printPreviewControl1);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.dateReservedto);
             this.panel3.Controls.Add(this.progressBar1);
@@ -1771,6 +1777,31 @@
             this.labelcurrentActs.Size = new System.Drawing.Size(41, 13);
             this.labelcurrentActs.TabIndex = 59;
             this.labelcurrentActs.Text = "label14";
+            // 
+            // printDocumentBIljettDirekt
+            // 
+            this.printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentBIljettDirekt_PrintPage);
+            // 
+            // printDialogBiljetD
+            // 
+            this.printDialogBiljetD.UseEXDialog = true;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printPreviewControl1
+            // 
+            this.printPreviewControl1.Location = new System.Drawing.Point(253, 11);
+            this.printPreviewControl1.Name = "printPreviewControl1";
+            this.printPreviewControl1.Size = new System.Drawing.Size(259, 156);
+            this.printPreviewControl1.TabIndex = 54;
             // 
             // ReserveTicketForm
             // 
@@ -1962,5 +1993,9 @@
         private System.Windows.Forms.Label labelcurrentActs;
         private System.Windows.Forms.Label lblcSeats;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Drawing.Printing.PrintDocument printDocumentBIljettDirekt;
+        private System.Windows.Forms.PrintDialog printDialogBiljetD;
+        private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
