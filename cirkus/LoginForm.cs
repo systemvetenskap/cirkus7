@@ -43,6 +43,7 @@ namespace cirkus
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            lblStatusLogIn.Visible = false;
             // nya strängar som kommer att bestämma vilket konto vi hämtar från databasen
             string username, password;
 
@@ -70,7 +71,10 @@ namespace cirkus
             }
             catch (InvalidOperationException)
             {
-                MessageBox.Show("Fel användarnamn/lösenord");
+                lblStatusLogIn.Visible = true;
+                lblStatusLogIn.ForeColor = Color.Red;
+                lblStatusLogIn.Text = "Felaktigt användarnamn eller lösenord";
+                return;
             }
             finally
             {

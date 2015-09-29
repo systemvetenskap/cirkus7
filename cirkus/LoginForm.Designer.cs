@@ -33,6 +33,7 @@
             this.textPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblStatusLogIn = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +75,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Cyan;
-            this.label1.Location = new System.Drawing.Point(23, 346);
+            this.label1.Location = new System.Drawing.Point(26, 346);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(182, 15);
             this.label1.TabIndex = 4;
@@ -90,13 +91,26 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // lblStatusLogIn
+            // 
+            this.lblStatusLogIn.AutoSize = true;
+            this.lblStatusLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatusLogIn.ForeColor = System.Drawing.Color.Cyan;
+            this.lblStatusLogIn.Location = new System.Drawing.Point(26, 409);
+            this.lblStatusLogIn.Name = "lblStatusLogIn";
+            this.lblStatusLogIn.Size = new System.Drawing.Size(45, 15);
+            this.lblStatusLogIn.TabIndex = 5;
+            this.lblStatusLogIn.Text = "status";
+            this.lblStatusLogIn.Visible = false;
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(315, 418);
+            this.ClientSize = new System.Drawing.Size(315, 433);
+            this.Controls.Add(this.lblStatusLogIn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textPassword);
@@ -118,6 +132,7 @@
         private System.Windows.Forms.TextBox textPassword;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblStatusLogIn;
     }
 }
 
