@@ -440,7 +440,7 @@ namespace cirkus
         {
             dateReservedto.Value = showdate;
             dateReservedto.Value = dateReservedto.Value.Subtract(TimeSpan.FromDays(7));
-
+            lblTest.Text = nrotickets.ToString();
             if (newcust == true)
             {
                 string fn = txtfnamn.Text;
@@ -1023,6 +1023,8 @@ namespace cirkus
             }
         }
 
+
+
         private void button9_Click(object sender, EventArgs e)
         {
             bool best = true;
@@ -1478,20 +1480,22 @@ namespace cirkus
             tickets.Columns.Add("actid");
             progressBar1.Value = ix;
 
-            
+            string type = "";
             for (int i = 0; i < nrotickets; i++)
             {
-                string type = "";
+                
                 string tid = i.ToString();
                 foreach (DataRow r in dtPersons.Rows)
                 {
-                    if (r[0].ToString() == tid)
+                    if (tid == r[0].ToString())
                     {
+                        agegroup = int.Parse(r[2].ToString());
                         numberOfacts = int.Parse(r[3].ToString());
+                        
                     }
 
                 }
-                if (numberOfacts == acts.Rows.Count)
+                if (numberOfacts == showacts.Rows.Count)
                 {
                     if (agegroup == 0)
                     {
@@ -1531,7 +1535,7 @@ namespace cirkus
 
                 }
 
-
+       
 
 
                 if (radioRes.Checked == true)
@@ -1629,6 +1633,16 @@ namespace cirkus
                         cmd.ExecuteNonQuery();
                         conn.Close();
 
+                        conn.Open();
+                        int calculate = priceid / numberOfacts;
+                        cmd = new NpgsqlCommand("insert into sold_tickets(showid, actid,type,sum, bookingid) values(:shid, :aid, :typ, :su, :bid)", conn);
+                        cmd.Parameters.Add(new NpgsqlParameter("shid", showid));
+                        cmd.Parameters.Add(new NpgsqlParameter("aid", actid));
+                        cmd.Parameters.Add(new NpgsqlParameter("typ", type));
+                        cmd.Parameters.Add(new NpgsqlParameter("su", calculate));
+                        cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
                     }
 
                 }

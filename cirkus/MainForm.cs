@@ -890,11 +890,8 @@ namespace cirkus
             {
                 //Vuxenbiljetter
                 conn.Open();
-                string sql = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.showid from acts
-                                inner join available_seats on acts.actid = available_seats.actid
-                                inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                inner join booking on booked_seats.bookingid = booking.bookingid
-                                where acts.showid = '"+showid+"' and booking.type = 'Vuxen' group by acts.showid, booking.type";
+                string sql = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                         where showid = '"+showid+"' and type = 'Vuxen'";
 
 
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
@@ -931,11 +928,8 @@ namespace cirkus
 
                 //Ungdomsbiljetter
                 conn.Open();
-                string sqlAU = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.showid from acts
-                                inner join available_seats on acts.actid = available_seats.actid
-                                inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                inner join booking on booked_seats.bookingid = booking.bookingid
-                                where acts.showid = '" + showid + "' and booking.type = 'Ungdom' group by acts.showid, booking.type";
+                string sqlAU = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                         where showid = '"+showid+"' and type = 'Ungdom'";
 
                 NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
                 NpgsqlDataReader drAU = cmdAU.ExecuteReader();
@@ -963,11 +957,8 @@ namespace cirkus
 
                 //Barn
                 conn.Open();
-                string sqlKB = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.showid from acts
-                                inner join available_seats on acts.actid = available_seats.actid
-                                inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                inner join booking on booked_seats.bookingid = booking.bookingid
-                                where acts.showid = '" + showid + "' and booking.type = 'Barn' group by acts.showid, booking.type";
+                string sqlKB = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                         where showid = '" + showid + "' and type = 'Barn'"; 
 
                 NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
                 NpgsqlDataReader drKB = cmdKB.ExecuteReader();
@@ -1028,11 +1019,8 @@ namespace cirkus
                     actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
 
                     conn.Open();
-                    string sql = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.actid from acts
-                                    inner join available_seats on acts.actid = available_seats.actid
-                                    inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                    inner join booking on booked_seats.bookingid = booking.bookingid
-                                    where acts.actid = '" + actid + "' and booking.type = 'Vuxen' group by booking.type, acts.actid";
+                    string sql = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                        where actid = '" + actid + "' and type = 'Vuxen'";
 
 
                     NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
@@ -1060,11 +1048,8 @@ namespace cirkus
 
                     //Ungdomsbiljetter
                     conn.Open();
-                    string sqlAU = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.actid from acts
-                                    inner join available_seats on acts.actid = available_seats.actid
-                                    inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                    inner join booking on booked_seats.bookingid = booking.bookingid
-                                    where acts.actid = '" + actid + "' and booking.type = 'Ungdom' group by booking.type, acts.actid";
+                    string sqlAU = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                        where actid = '" + actid + "' and type = 'Ungdom'";
 
                     NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
                     NpgsqlDataReader drAU = cmdAU.ExecuteReader();
@@ -1092,11 +1077,8 @@ namespace cirkus
 
                     //Barn
                     conn.Open();
-                    string sqlKB = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.actid from acts
-                                    inner join available_seats on acts.actid = available_seats.actid
-                                    inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                                    inner join booking on booked_seats.bookingid = booking.bookingid
-                                    where acts.actid = '" + actid + "' and booking.type = 'Barn' group by booking.type, acts.actid";
+                    string sqlKB = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                        where actid = '" + actid + "' and type = 'Barn'";
 
                     NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
                     NpgsqlDataReader drKB = cmdKB.ExecuteReader();
