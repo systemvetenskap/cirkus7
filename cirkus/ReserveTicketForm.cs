@@ -24,7 +24,7 @@ namespace cirkus
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int showid, actid, fillMode, seatid, agegroup, customerid, total, checkedseats, priceid, freeSseats, freeLseats, tickets, nrotickets, ticketid, count, checks;
-        string show, act, customeremail, customerfname, customerlname, pdf, bokningid, actname, suggSeats;
+        string show, act, customeremail, customerfname, customerlname, pdf, bokningid, actname, suggSeats, acttime;
         string sections = "ABCDEFGH";
         private bool newcust;
         private bool seatType = true;
@@ -306,10 +306,11 @@ namespace cirkus
             //load_Seats();
             conn.Close();
             conn.Open();
-            string sql = @"Select acts.actid, acts.name, acts.start_time, acts.end_time, count(available_seats.available_seats_id) from acts 
-                            inner join show on acts.showid = show.showid
-                            inner join available_seats on available_seats.actid = acts.actid
-                            where show.showid = '" + showid + "' group by acts.actid,acts.name, acts.start_time, acts.end_time";
+            string sql = @"select acts.actid,acts.name, acts.start_time, acts.end_time,count(available_seats.available_seats_id)  - count(booked_seats.booked_seat_id) as antal from available_seats
+                        left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                        inner join acts on available_seats.actid = acts.actid
+                        inner join show on acts.showid = show.showid
+                        where show.showid = '"+showid+"' group by acts.actid, acts.name,acts.name, acts.start_time, acts.end_time";
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
             showacts = new DataTable();
 
@@ -1203,12 +1204,12 @@ namespace cirkus
         {
             button1.Enabled = false;
             createBooking();
-            if (cbDf.Checked == false)
+            if (cbDf.Checked == false || radioRes.Checked == false)
             {
                
                 backgroundWorker1.RunWorkerAsync();
                 this.Close();
-                //SendMail();
+               
             }
             this.Close();
 
@@ -1802,7 +1803,7 @@ namespace cirkus
                 {
                     int bid = int.Parse(row[0].ToString());
                     conn.Open();
-                    da = new NpgsqlDataAdapter(@"select acts.name,seats.section, seats.rownumber from ticket
+                    da = new NpgsqlDataAdapter(@"select acts.name,seats.section, seats.rownumber, acts.start_time, acts.end_time from ticket
                                                             inner join booked_seats on ticket.booked_seat_id = booked_seats.booked_seat_id
                                                             inner join available_seats on booked_seats.available_seats_id = available_seats.available_seats_id
                                                             inner join acts on available_seats.actid = acts.actid
@@ -1812,11 +1813,12 @@ namespace cirkus
                     DataTable acts = new DataTable();
                     
                     da.Fill(acts);
+                    
                     conn.Close();
                     foreach (DataRow r in acts.Rows)
                     {
                         actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
-
+                        //acttime += " " + r[0].ToString() + ": " + r[3].ToString() + "-" + r[4].ToString() + "";
                     }
                     conn.Open();
                     cmd = new NpgsqlCommand(@"select sum(price_group_seat.price), price_group_seat.group from price_group_seat
@@ -1830,20 +1832,14 @@ namespace cirkus
                     int pointImage = 600;
                     int imageHeight = 210;
                     int prisPoint = 650;
-                    foreach (DataGridViewRow ro in dgTickets.Rows)
+                    
+                    foreach (DataRow ro in acts.Rows)
                     {
                         pointImage -= 20;
                         imageHeight += 20;
                         prisPoint -= 20;
                     }
-
-
-                    foreach (DataRow r in acts.Rows)
-                    {
-                        actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
-
-                    }
-
+                    
                     while (read.Read())
                     {
                         pris = read[0].ToString();
@@ -1921,7 +1917,7 @@ namespace cirkus
                     cb.SetTextMatrix(60, prisPoint);
                     cb.ShowText("Pris:");
 
-                    cb.SetTextMatrix(0, 550);
+                    cb.SetTextMatrix(0, pointImage - 50);
                     cb.ShowText("-------------------------------------------------------------- Klipp här ------------------------------------------------------------------------------------------------------------------------- ");
 
 
@@ -1941,12 +1937,24 @@ namespace cirkus
 
                     cb.SetTextMatrix(160, 670);
                     cb.ShowText(actname);
+                    int i = 0;
+                    foreach(DataRow rows in acts.Rows)
+                    {
+                        int set = i * 20;
 
-                    cb.SetTextMatrix(160, 650);
-                    cb.ShowText("Tider:");
+                        string s = rows[0].ToString();
+                        string s1 = rows[3].ToString();
+                        string s2 = rows[4].ToString();
+                        cb.SetTextMatrix(160, 650 - set);
+                        
+                        cb.ShowText(s + ": " + s1+ "-" +s2);
+                        i++;
+
+                    }
+                
 
                     cb.SetTextMatrix(160, prisPoint);
-                    cb.ShowText(pris);
+                    cb.ShowText(pris+"kr");
 
                     cb.EndText();
 
@@ -1972,15 +1980,13 @@ namespace cirkus
 
                     actname = "";
 
-                   
-
-
 
                 }
 
                 
                 MessageBox.Show("Här är vi nu");
                 client.Send(mail);
+             
                 
 
             }

@@ -343,7 +343,7 @@ namespace cirkus
                 command.Parameters.AddWithValue("@sale_start", sale_start);
                 command.Parameters.AddWithValue("@sale_stop", sale_stop);
                 command.ExecuteNonQuery();
-            
+           
                 command = new NpgsqlCommand("select currval('show_showid_seq');", conn);
                 NpgsqlDataReader read;
                 read = command.ExecuteReader();
