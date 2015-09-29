@@ -869,7 +869,7 @@
             // 
             this.LblStatusKonto.AutoSize = true;
             this.LblStatusKonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblStatusKonto.Location = new System.Drawing.Point(366, 339);
+            this.LblStatusKonto.Location = new System.Drawing.Point(366, 387);
             this.LblStatusKonto.Name = "LblStatusKonto";
             this.LblStatusKonto.Size = new System.Drawing.Size(48, 13);
             this.LblStatusKonto.TabIndex = 49;
