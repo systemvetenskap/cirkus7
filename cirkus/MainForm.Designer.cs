@@ -195,10 +195,10 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(769, 98);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(769, 101);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 16);
+            this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 26;
             this.label11.Text = "Datum:";
             // 
@@ -215,10 +215,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(769, 57);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(769, 60);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 16);
+            this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 24;
             this.label5.Text = "BokningsNr:";
             // 
@@ -248,7 +248,7 @@
             this.dgTicketActs.ReadOnly = true;
             this.dgTicketActs.RowHeadersVisible = false;
             this.dgTicketActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTicketActs.Size = new System.Drawing.Size(516, 108);
+            this.dgTicketActs.Size = new System.Drawing.Size(516, 150);
             this.dgTicketActs.TabIndex = 22;
             this.dgTicketActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTicketActs_CellClick);
             // 
@@ -306,7 +306,7 @@
             this.dgTickets.ReadOnly = true;
             this.dgTickets.RowHeadersVisible = false;
             this.dgTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTickets.Size = new System.Drawing.Size(516, 143);
+            this.dgTickets.Size = new System.Drawing.Size(516, 140);
             this.dgTickets.TabIndex = 15;
             this.dgTickets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTickets_CellClick);
             // 
@@ -336,7 +336,7 @@
             this.dgCustomers.ReadOnly = true;
             this.dgCustomers.RowHeadersVisible = false;
             this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomers.Size = new System.Drawing.Size(188, 289);
+            this.dgCustomers.Size = new System.Drawing.Size(188, 331);
             this.dgCustomers.TabIndex = 14;
             this.dgCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellClick);
             this.dgCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellContentClick);
@@ -373,9 +373,9 @@
             // 
             // btnDeleteTicket
             // 
-            this.btnDeleteTicket.Location = new System.Drawing.Point(322, 372);
+            this.btnDeleteTicket.Location = new System.Drawing.Point(217, 412);
             this.btnDeleteTicket.Name = "btnDeleteTicket";
-            this.btnDeleteTicket.Size = new System.Drawing.Size(112, 26);
+            this.btnDeleteTicket.Size = new System.Drawing.Size(126, 35);
             this.btnDeleteTicket.TabIndex = 11;
             this.btnDeleteTicket.Text = "Radera vald biljett";
             this.btnDeleteTicket.UseVisualStyleBackColor = true;
@@ -386,7 +386,7 @@
             this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrint.Location = new System.Drawing.Point(769, 339);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(126, 25);
+            this.buttonPrint.Size = new System.Drawing.Size(126, 35);
             this.buttonPrint.TabIndex = 8;
             this.buttonPrint.Text = "Skriv ut vald biljett";
             this.buttonPrint.UseVisualStyleBackColor = true;
@@ -394,9 +394,9 @@
             // 
             // buttonEditTicket
             // 
-            this.buttonEditTicket.Location = new System.Drawing.Point(440, 372);
+            this.buttonEditTicket.Location = new System.Drawing.Point(359, 412);
             this.buttonEditTicket.Name = "buttonEditTicket";
-            this.buttonEditTicket.Size = new System.Drawing.Size(112, 26);
+            this.buttonEditTicket.Size = new System.Drawing.Size(126, 35);
             this.buttonEditTicket.TabIndex = 10;
             this.buttonEditTicket.Text = "Ändra vald biljett";
             this.buttonEditTicket.UseVisualStyleBackColor = true;
@@ -405,18 +405,18 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(769, 284);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(769, 287);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 16);
+            this.label8.Size = new System.Drawing.Size(27, 13);
             this.label8.TabIndex = 12;
             this.label8.Text = "Pris:";
             // 
             // buttonReserveTicket
             // 
-            this.buttonReserveTicket.Location = new System.Drawing.Point(625, 372);
+            this.buttonReserveTicket.Location = new System.Drawing.Point(607, 412);
             this.buttonReserveTicket.Name = "buttonReserveTicket";
-            this.buttonReserveTicket.Size = new System.Drawing.Size(108, 24);
+            this.buttonReserveTicket.Size = new System.Drawing.Size(126, 35);
             this.buttonReserveTicket.TabIndex = 9;
             this.buttonReserveTicket.Text = "Boka ny biljett";
             this.buttonReserveTicket.UseVisualStyleBackColor = true;
@@ -425,18 +425,18 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(769, 193);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(769, 196);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 16);
+            this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "Akt/plats:";
             // 
             // buttonAddCustomer
             // 
-            this.buttonAddCustomer.Location = new System.Drawing.Point(90, 370);
+            this.buttonAddCustomer.Location = new System.Drawing.Point(70, 412);
             this.buttonAddCustomer.Name = "buttonAddCustomer";
-            this.buttonAddCustomer.Size = new System.Drawing.Size(106, 26);
+            this.buttonAddCustomer.Size = new System.Drawing.Size(126, 35);
             this.buttonAddCustomer.TabIndex = 8;
             this.buttonAddCustomer.Text = "Lägg till ny kund";
             this.buttonAddCustomer.UseVisualStyleBackColor = true;
@@ -445,10 +445,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(769, 140);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(769, 143);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 16);
+            this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Föreställning:";
             // 
@@ -466,10 +466,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(766, 243);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(769, 246);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 16);
+            this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Åldersgrupp:";
             // 
@@ -850,7 +850,7 @@
             // lblPersonnummer
             // 
             this.lblPersonnummer.AutoSize = true;
-            this.lblPersonnummer.Location = new System.Drawing.Point(459, 82);
+            this.lblPersonnummer.Location = new System.Drawing.Point(435, 82);
             this.lblPersonnummer.Name = "lblPersonnummer";
             this.lblPersonnummer.Size = new System.Drawing.Size(129, 13);
             this.lblPersonnummer.TabIndex = 57;
@@ -858,7 +858,7 @@
             // 
             // textBoxPersonnummer
             // 
-            this.textBoxPersonnummer.Location = new System.Drawing.Point(459, 97);
+            this.textBoxPersonnummer.Location = new System.Drawing.Point(435, 97);
             this.textBoxPersonnummer.Name = "textBoxPersonnummer";
             this.textBoxPersonnummer.Size = new System.Drawing.Size(152, 20);
             this.textBoxPersonnummer.TabIndex = 56;
@@ -867,7 +867,7 @@
             // 
             this.LblStatusKonto.AutoSize = true;
             this.LblStatusKonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblStatusKonto.Location = new System.Drawing.Point(459, 339);
+            this.LblStatusKonto.Location = new System.Drawing.Point(435, 339);
             this.LblStatusKonto.Name = "LblStatusKonto";
             this.LblStatusKonto.Size = new System.Drawing.Size(48, 13);
             this.LblStatusKonto.TabIndex = 49;
@@ -877,7 +877,7 @@
             // lblBehorighetsniva
             // 
             this.lblBehorighetsniva.AutoSize = true;
-            this.lblBehorighetsniva.Location = new System.Drawing.Point(682, 291);
+            this.lblBehorighetsniva.Location = new System.Drawing.Point(658, 291);
             this.lblBehorighetsniva.Name = "lblBehorighetsniva";
             this.lblBehorighetsniva.Size = new System.Drawing.Size(86, 13);
             this.lblBehorighetsniva.TabIndex = 46;
@@ -886,7 +886,7 @@
             // lblLosenord
             // 
             this.lblLosenord.AutoSize = true;
-            this.lblLosenord.Location = new System.Drawing.Point(682, 222);
+            this.lblLosenord.Location = new System.Drawing.Point(658, 222);
             this.lblLosenord.Name = "lblLosenord";
             this.lblLosenord.Size = new System.Drawing.Size(54, 13);
             this.lblLosenord.TabIndex = 45;
@@ -910,14 +910,14 @@
             this.dgStaff.RowHeadersVisible = false;
             this.dgStaff.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgStaff.Size = new System.Drawing.Size(324, 230);
+            this.dgStaff.Size = new System.Drawing.Size(304, 230);
             this.dgStaff.TabIndex = 44;
             // 
             // textBoxSearchStaff
             // 
             this.textBoxSearchStaff.Location = new System.Drawing.Point(51, 71);
             this.textBoxSearchStaff.Name = "textBoxSearchStaff";
-            this.textBoxSearchStaff.Size = new System.Drawing.Size(252, 20);
+            this.textBoxSearchStaff.Size = new System.Drawing.Size(304, 20);
             this.textBoxSearchStaff.TabIndex = 43;
             this.textBoxSearchStaff.TextChanged += new System.EventHandler(this.textBoxSearchStaff_TextChanged);
             // 
@@ -927,7 +927,7 @@
             this.comboBoxBehorighetsniva.Items.AddRange(new object[] {
             "Biljettförsäljare",
             "Administratör"});
-            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(682, 306);
+            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(658, 306);
             this.comboBoxBehorighetsniva.Name = "comboBoxBehorighetsniva";
             this.comboBoxBehorighetsniva.Size = new System.Drawing.Size(152, 21);
             this.comboBoxBehorighetsniva.TabIndex = 28;
@@ -944,7 +944,7 @@
             // 
             // btnTomFalten
             // 
-            this.btnTomFalten.Location = new System.Drawing.Point(708, 364);
+            this.btnTomFalten.Location = new System.Drawing.Point(684, 364);
             this.btnTomFalten.Name = "btnTomFalten";
             this.btnTomFalten.Size = new System.Drawing.Size(126, 35);
             this.btnTomFalten.TabIndex = 32;
@@ -954,7 +954,7 @@
             // 
             // btnUpdateraKonto
             // 
-            this.btnUpdateraKonto.Location = new System.Drawing.Point(245, 364);
+            this.btnUpdateraKonto.Location = new System.Drawing.Point(229, 364);
             this.btnUpdateraKonto.Name = "btnUpdateraKonto";
             this.btnUpdateraKonto.Size = new System.Drawing.Size(126, 35);
             this.btnUpdateraKonto.TabIndex = 31;
@@ -965,7 +965,7 @@
             // lblFornamn
             // 
             this.lblFornamn.AutoSize = true;
-            this.lblFornamn.Location = new System.Drawing.Point(459, 151);
+            this.lblFornamn.Location = new System.Drawing.Point(435, 151);
             this.lblFornamn.Name = "lblFornamn";
             this.lblFornamn.Size = new System.Drawing.Size(51, 13);
             this.lblFornamn.TabIndex = 27;
@@ -973,7 +973,7 @@
             // 
             // btnSkapaKonto
             // 
-            this.btnSkapaKonto.Location = new System.Drawing.Point(459, 364);
+            this.btnSkapaKonto.Location = new System.Drawing.Point(435, 364);
             this.btnSkapaKonto.Name = "btnSkapaKonto";
             this.btnSkapaKonto.Size = new System.Drawing.Size(126, 35);
             this.btnSkapaKonto.TabIndex = 29;
@@ -993,7 +993,7 @@
             // lblEfternamn
             // 
             this.lblEfternamn.AutoSize = true;
-            this.lblEfternamn.Location = new System.Drawing.Point(459, 222);
+            this.lblEfternamn.Location = new System.Drawing.Point(435, 222);
             this.lblEfternamn.Name = "lblEfternamn";
             this.lblEfternamn.Size = new System.Drawing.Size(58, 13);
             this.lblEfternamn.TabIndex = 33;
@@ -1001,7 +1001,7 @@
             // 
             // textBoxLosenord
             // 
-            this.textBoxLosenord.Location = new System.Drawing.Point(682, 237);
+            this.textBoxLosenord.Location = new System.Drawing.Point(658, 237);
             this.textBoxLosenord.Name = "textBoxLosenord";
             this.textBoxLosenord.Size = new System.Drawing.Size(152, 20);
             this.textBoxLosenord.TabIndex = 26;
@@ -1009,7 +1009,7 @@
             // lblTelefonnummer
             // 
             this.lblTelefonnummer.AutoSize = true;
-            this.lblTelefonnummer.Location = new System.Drawing.Point(459, 292);
+            this.lblTelefonnummer.Location = new System.Drawing.Point(435, 292);
             this.lblTelefonnummer.Name = "lblTelefonnummer";
             this.lblTelefonnummer.Size = new System.Drawing.Size(83, 13);
             this.lblTelefonnummer.TabIndex = 34;
@@ -1017,7 +1017,7 @@
             // 
             // textBoxEfternamn
             // 
-            this.textBoxEfternamn.Location = new System.Drawing.Point(459, 237);
+            this.textBoxEfternamn.Location = new System.Drawing.Point(435, 237);
             this.textBoxEfternamn.Name = "textBoxEfternamn";
             this.textBoxEfternamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxEfternamn.TabIndex = 22;
@@ -1025,7 +1025,7 @@
             // lblEpost
             // 
             this.lblEpost.AutoSize = true;
-            this.lblEpost.Location = new System.Drawing.Point(682, 82);
+            this.lblEpost.Location = new System.Drawing.Point(658, 82);
             this.lblEpost.Name = "lblEpost";
             this.lblEpost.Size = new System.Drawing.Size(40, 13);
             this.lblEpost.TabIndex = 36;
@@ -1033,7 +1033,7 @@
             // 
             // textBoxTelefonnummer
             // 
-            this.textBoxTelefonnummer.Location = new System.Drawing.Point(459, 307);
+            this.textBoxTelefonnummer.Location = new System.Drawing.Point(435, 307);
             this.textBoxTelefonnummer.Name = "textBoxTelefonnummer";
             this.textBoxTelefonnummer.Size = new System.Drawing.Size(152, 20);
             this.textBoxTelefonnummer.TabIndex = 23;
@@ -1041,7 +1041,7 @@
             // lblAnvandarnamn
             // 
             this.lblAnvandarnamn.AutoSize = true;
-            this.lblAnvandarnamn.Location = new System.Drawing.Point(682, 151);
+            this.lblAnvandarnamn.Location = new System.Drawing.Point(658, 151);
             this.lblAnvandarnamn.Name = "lblAnvandarnamn";
             this.lblAnvandarnamn.Size = new System.Drawing.Size(82, 13);
             this.lblAnvandarnamn.TabIndex = 38;
@@ -1049,21 +1049,21 @@
             // 
             // textBoxEpost
             // 
-            this.textBoxEpost.Location = new System.Drawing.Point(682, 97);
+            this.textBoxEpost.Location = new System.Drawing.Point(658, 97);
             this.textBoxEpost.Name = "textBoxEpost";
             this.textBoxEpost.Size = new System.Drawing.Size(152, 20);
             this.textBoxEpost.TabIndex = 24;
             // 
             // textBoxFornamn
             // 
-            this.textBoxFornamn.Location = new System.Drawing.Point(459, 166);
+            this.textBoxFornamn.Location = new System.Drawing.Point(435, 166);
             this.textBoxFornamn.Name = "textBoxFornamn";
             this.textBoxFornamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxFornamn.TabIndex = 21;
             // 
             // textBoxAnvandarnamn
             // 
-            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(682, 166);
+            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(658, 166);
             this.textBoxAnvandarnamn.Name = "textBoxAnvandarnamn";
             this.textBoxAnvandarnamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxAnvandarnamn.TabIndex = 25;
