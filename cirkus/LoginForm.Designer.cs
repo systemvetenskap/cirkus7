@@ -31,8 +31,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textUsername = new System.Windows.Forms.TextBox();
             this.textPassword = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,6 +69,18 @@
             this.textPassword.UseSystemPasswordChar = true;
             this.textPassword.Click += new System.EventHandler(this.textPassword_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Cyan;
+            this.label1.Location = new System.Drawing.Point(23, 346);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Har du glömt ditt lösenord?";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::cirkus.Properties.Resources.cirkus_kul_bus_300x211;
@@ -77,17 +89,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(294, 212);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Cyan;
-            this.label1.Location = new System.Drawing.Point(23, 346);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Har du glömt ditt lösenord?";
             // 
             // LoginForm
             // 
@@ -102,6 +103,7 @@
             this.Controls.Add(this.textUsername);
             this.Controls.Add(this.button1);
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Logga in";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

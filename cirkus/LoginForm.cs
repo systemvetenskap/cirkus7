@@ -27,6 +27,13 @@ namespace cirkus
             textPassword.Clear();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+            PasswordRecoveryForm PwRf = new PasswordRecoveryForm();
+            PwRf.ShowDialog();
+           
+        }
+
         private NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
 
         public LoginForm()
