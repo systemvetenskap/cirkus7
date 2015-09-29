@@ -941,13 +941,14 @@ namespace cirkus
                 if (cb != null && cb.Checked && cb.BackColor == Color.Green)
                 {
                     checks++;
+                    fp.Enabled = false;
                 }
                 if (checks > 1)
                 {
                     cb = sender as CheckBox;
                     if (cb != null && cb.Checked)
                     {
-                        cb.Checked = false;
+                        
                     }
                     lblSeatStatus.Visible = true;
                     lblSeatStatus.ForeColor = Color.Tomato;
@@ -1070,8 +1071,10 @@ namespace cirkus
                 DataRow row = cSeats.NewRow();
                 row[0] = ticketid;
                 row[1] = actid;
-        
+                row[2] = '-';
+                row[3] = 0;
                 row[4] = agegroup;
+                row[5] = 0;
                 row[6] = true;
                 cSeats.Rows.Add(row);
 
@@ -1197,11 +1200,14 @@ namespace cirkus
                     }
 
                 }
-                
+                char sect = '-';
                 foreach (DataRow r in cSeats.Rows)
                 {
                     string aid = r[1].ToString();
-                    char sect = Char.Parse(r[2].ToString());
+                  
+                    sect = Char.Parse(r[2].ToString());
+                    
+                    
                     int nr = int.Parse(r[3].ToString());
                     string dup = r[5].ToString();
 
@@ -1230,7 +1236,7 @@ namespace cirkus
                     foreach (DataRow r in cSeats.Rows)
                     {
 
-                        char sect = Char.Parse(r[2].ToString());
+                        sect = Char.Parse(r[2].ToString());
                         string nr = r[3].ToString();
                         string sactid = r[1].ToString();
                         string s = sect + nr;
