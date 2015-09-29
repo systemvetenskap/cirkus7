@@ -1204,12 +1204,12 @@ namespace cirkus
         {
             button1.Enabled = false;
             createBooking();
-            if (cbDf.Checked == false)
+            if (cbDf.Checked == false || radioRes.Checked == false)
             {
                
                 backgroundWorker1.RunWorkerAsync();
                 this.Close();
-                //SendMail();
+               
             }
             this.Close();
 
@@ -1818,7 +1818,7 @@ namespace cirkus
                     foreach (DataRow r in acts.Rows)
                     {
                         actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
-                        acttime += " " + r[0].ToString() + ": " + r[3].ToString() + "-" + r[4].ToString() + "";
+                        //acttime += " " + r[0].ToString() + ": " + r[3].ToString() + "-" + r[4].ToString() + "";
                     }
                     conn.Open();
                     cmd = new NpgsqlCommand(@"select sum(price_group_seat.price), price_group_seat.group from price_group_seat
@@ -1832,7 +1832,8 @@ namespace cirkus
                     int pointImage = 600;
                     int imageHeight = 210;
                     int prisPoint = 650;
-                    foreach (DataGridViewRow ro in dgTickets.Rows)
+                    
+                    foreach (DataRow ro in acts.Rows)
                     {
                         pointImage -= 20;
                         imageHeight += 20;
@@ -1916,7 +1917,7 @@ namespace cirkus
                     cb.SetTextMatrix(60, prisPoint);
                     cb.ShowText("Pris:");
 
-                    cb.SetTextMatrix(0, 550);
+                    cb.SetTextMatrix(0, pointImage - 50);
                     cb.ShowText("-------------------------------------------------------------- Klipp här ------------------------------------------------------------------------------------------------------------------------- ");
 
 
@@ -1936,12 +1937,24 @@ namespace cirkus
 
                     cb.SetTextMatrix(160, 670);
                     cb.ShowText(actname);
+                    int i = 0;
+                    foreach(DataRow rows in acts.Rows)
+                    {
+                        int set = i * 20;
 
-                    cb.SetTextMatrix(160, 650);
-                    cb.ShowText(acttime);
+                        string s = rows[0].ToString();
+                        string s1 = rows[3].ToString();
+                        string s2 = rows[4].ToString();
+                        cb.SetTextMatrix(160, 650 - set);
+                        
+                        cb.ShowText(s + ": " + s1+ "-" +s2);
+                        i++;
+
+                    }
+                
 
                     cb.SetTextMatrix(160, prisPoint);
-                    cb.ShowText(pris);
+                    cb.ShowText(pris+"kr");
 
                     cb.EndText();
 
@@ -1973,6 +1986,7 @@ namespace cirkus
                 
                 MessageBox.Show("Här är vi nu");
                 client.Send(mail);
+             
                 
 
             }
