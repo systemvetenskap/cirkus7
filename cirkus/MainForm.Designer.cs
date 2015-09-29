@@ -78,7 +78,6 @@
             this.textBoxTotaltKronor = new System.Windows.Forms.TextBox();
             this.buttonSkrivUtForestallning = new System.Windows.Forms.Button();
             this.buttonRaderaForestallning = new System.Windows.Forms.Button();
-            this.buttonAndraForestallning = new System.Windows.Forms.Button();
             this.labelKronor = new System.Windows.Forms.Label();
             this.labelAntal = new System.Windows.Forms.Label();
             this.labelTotalt = new System.Windows.Forms.Label();
@@ -327,6 +326,7 @@
             this.dgCustomers.AllowUserToDeleteRows = false;
             this.dgCustomers.AllowUserToResizeColumns = false;
             this.dgCustomers.AllowUserToResizeRows = false;
+            this.dgCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgCustomers.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgCustomers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -521,7 +521,6 @@
             this.tabShow.Controls.Add(this.textBoxTotaltKronor);
             this.tabShow.Controls.Add(this.buttonSkrivUtForestallning);
             this.tabShow.Controls.Add(this.buttonRaderaForestallning);
-            this.tabShow.Controls.Add(this.buttonAndraForestallning);
             this.tabShow.Controls.Add(this.labelKronor);
             this.tabShow.Controls.Add(this.labelAntal);
             this.tabShow.Controls.Add(this.labelTotalt);
@@ -729,16 +728,6 @@
             this.buttonRaderaForestallning.UseVisualStyleBackColor = true;
             this.buttonRaderaForestallning.Click += new System.EventHandler(this.buttonRaderaForestallning_Click);
             // 
-            // buttonAndraForestallning
-            // 
-            this.buttonAndraForestallning.Location = new System.Drawing.Point(316, 398);
-            this.buttonAndraForestallning.Name = "buttonAndraForestallning";
-            this.buttonAndraForestallning.Size = new System.Drawing.Size(72, 23);
-            this.buttonAndraForestallning.TabIndex = 12;
-            this.buttonAndraForestallning.Text = "(Ändra)";
-            this.buttonAndraForestallning.UseVisualStyleBackColor = true;
-            this.buttonAndraForestallning.Click += new System.EventHandler(this.buttonAndraForestallning_Click);
-            // 
             // labelKronor
             // 
             this.labelKronor.AutoSize = true;
@@ -909,6 +898,7 @@
             this.dgStaff.AllowUserToDeleteRows = false;
             this.dgStaff.AllowUserToResizeColumns = false;
             this.dgStaff.AllowUserToResizeRows = false;
+            this.dgStaff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgStaff.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1174,7 +1164,6 @@
         private System.Windows.Forms.Button buttonSkapaForestalnning;
         private System.Windows.Forms.Button buttonSkrivUtForestallning;
         private System.Windows.Forms.Button buttonRaderaForestallning;
-        private System.Windows.Forms.Button buttonAndraForestallning;
         private System.Windows.Forms.Label labelKronor;
         private System.Windows.Forms.Label labelAntal;
         private System.Windows.Forms.Label labelTotalt;
