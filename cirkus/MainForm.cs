@@ -10,6 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using System.Configuration;
+using System.Runtime.InteropServices;
+using System.Net;
+using System.Web;
+using System.Net.Mail;
+using System.Net.Mime;
 
 namespace cirkus
 {
@@ -30,9 +35,31 @@ namespace cirkus
         private string sql = "";
         public DataTable dt = new DataTable();
         private NpgsqlDataAdapter da;
-        private List<show> allShowsList;
         private int CustomerID;
         DataTable dtActs = new DataTable();
+
+        [DllImport("user32")]
+        private static extern bool HideCaret(IntPtr hWnd);
+        public void HideCaret()
+        {
+            HideCaret(textBoxPrintBookingid.Handle);
+            HideCaret(txtPrintDatum.Handle);
+            HideCaret(textBoxPrintShow.Handle);
+            HideCaret(textBoxPrintAct.Handle);
+            HideCaret(textBoxPrintAge.Handle);
+            HideCaret(textBoxPrintPrice.Handle);
+
+            HideCaret(textBoxAntalVuxenBiljetter.Handle);
+            HideCaret(textBoxAntalUngdomsbiljetter.Handle);
+            HideCaret(textBoxAntalBarnbiljetter.Handle);
+            HideCaret(textBoxTotaltAntal.Handle);
+            HideCaret(textBoxKronorVuxenbiljetter.Handle);
+            HideCaret(textBoxKronorUngdomsbiljetter.Handle);
+            HideCaret(textBoxKronorBarnbiljetter.Handle);
+            HideCaret(textBoxTotaltKronor.Handle);
+
+        }
+
         #endregion
         #region Main
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,7 +89,7 @@ namespace cirkus
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-        public MainForm(string adminAuthorization, string staffUserID, string staffFname, string staffLname)
+        public MainForm(string adminAuthorization, string staffFname, string staffLname, string staffUserID)
         {
             InitializeComponent();
 
@@ -75,13 +102,92 @@ namespace cirkus
             this.staffLname = staffLname;
             this.staffFname = staffFname;
 
-            labelStaffName.Text = staffFname + " " + staffLname;
+            if (adminAuthorization=="1")
+            {
+                adminAuthorization = "administratör";
+            }
+            else if (adminAuthorization=="0")
+            {
+                adminAuthorization = "biljettförsäljare";
+            }
+
+            labelStaffName.Text = "Du är inloggad som: "+ staffFname + " " + staffLname+", " + adminAuthorization;
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
             listCustomers();
-
         }
+        #region HideCaret i textboxar
+        private void textBoxPrintBookingid_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void txtPrintDatum_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxPrintShow_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxPrintAct_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxPrintAge_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxPrintPrice_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxAntalVuxenBiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxAntalUngdomsbiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxAntalBarnbiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxTotaltAntal_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxKronorVuxenbiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxKronorUngdomsbiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxKronorBarnbiljetter_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+
+        private void textBoxTotaltKronor_Click(object sender, EventArgs e)
+        {
+            HideCaret();
+        }
+        #endregion
 
         #endregion
         #region Biljettförsäljning
@@ -146,6 +252,7 @@ namespace cirkus
             dgTicketActs.ClearSelection();
 
         }
+
         private void dgTicketActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnDeleteTicket.Text = "Radera vald akt";
@@ -282,12 +389,15 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
-                            inner join customer on booking.customerid = customer.customerid
-                            inner join booked_seats on booking.bookingid = booked_seats.bookingid 
-                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
-                            inner join show on booking.showid = show.showid 
-                            where customer.customerid = '" + CustomerID + "'AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
+                string sql = @"select booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sold_tickets.sum, booking.reserved_to
+                                                        from booking
+                                                        inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
+                                                        inner join show on sold_tickets.showid = show.showid
+                                                        inner join acts on sold_tickets.actid = acts.actid
+                                                        inner join customer on booking.customerid = customer.customerid
+                                                        where customer.customerid = '"+CustomerID+"' and show.date >=now()::date group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, sold_tickets.seattype, sold_tickets.sum, booking.reserved_to";
+
+
                 try
                 {
                     conn.Open();
@@ -302,7 +412,7 @@ namespace cirkus
                     dgTickets.Columns[2].HeaderText = "Föreställning";
                     dgTickets.Columns[3].HeaderText = "Betald";
                     dgTickets.Columns[4].HeaderText = "Åldersgrupp";
-                    dgTickets.Columns[5].HeaderText = "Pris";
+                    dgTickets.Columns[5].HeaderText = "Pris(kr)";
                     dgTickets.Columns[6].HeaderText = "Reserverad till";
 
                     dgTickets.Columns[2].Width = 100;
@@ -324,15 +434,11 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select booking.bookingid, show.date, show.name, acts.name, seats.section, seats.rownumber, 
-                            price_group_seat.group, price_group_seat.price, booking.reserved_to 
-                            from show inner join acts on show.showid = acts.showid 
-                            inner join available_seats on acts.actid = available_seats.actid
-                            inner join seats on available_seats.seatid = seats.seatid
-                            inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
-                            inner join booking on booked_seats.bookingid = booking.bookingid
-                            inner join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + CustomerID + "'AND show.date < now()::date";
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, type, price, booking.reserved_to from booking
+                            inner join customer on booking.customerid = customer.customerid
+                            inner join booked_seats on booking.bookingid = booked_seats.bookingid 
+                            inner join show on booking.showid = show.showid 
+                            where customer.customerid = '" + CustomerID + "' AND show.date < now()::date group by booking.bookingid, show.date, show.name, booking.paid, type, price ,booking.reserved_to";
                 try
                 {
                     conn.Open();
@@ -426,6 +532,7 @@ namespace cirkus
             ////BACKGROUND IMAGE
             System.Drawing.Image i2 = cirkus.Properties.Resources.backgroundClown;
             Point p2 = new Point(100, 100);
+
             // Create rectangle for displaying image, subtracting 200 (100 for left,100 for right margins).
             Rectangle destRect = new Rectangle(20, 40, 750, regtangelP);
 
@@ -437,7 +544,7 @@ namespace cirkus
             int height = i2.Height;
             GraphicsUnit units = GraphicsUnit.Pixel;
             
-            string aldersgrupp, bokningsnummer, forestallning, akt, pris, date, tider, datum;
+            string aldersgrupp, bokningsnummer, forestallning, akt, pris, tider, datum;
             
             aldersgrupp = textBoxPrintAge.Text;
             bokningsnummer = textBoxPrintBookingid.Text;
@@ -676,10 +783,28 @@ namespace cirkus
             if (checkBoxOlderTickets.Checked==true)
             {
                 listOldTickets();
+
+                buttonPrint.Enabled = false;
+
+                textBoxPrintAct.Enabled = false;
+                textBoxPrintAge.Enabled = false;
+                textBoxPrintPrice.Enabled = false;
+                textBoxPrintBookingid.Enabled = false;
+                txtPrintDatum.Enabled = false;
+                textBoxPrintShow.Enabled = false;
             }
             else if (checkBoxOlderTickets.Checked==false)
             {
                 listTickets();
+
+                buttonPrint.Enabled = true;
+
+                textBoxPrintAct.Enabled = true;
+                textBoxPrintAge.Enabled = true;
+                textBoxPrintPrice.Enabled = true;
+                textBoxPrintBookingid.Enabled = true;
+                txtPrintDatum.Enabled = true;
+                textBoxPrintShow.Enabled = true;
             }
         }
         private void textBoxSearchCustomer_Click(object sender, EventArgs e)
@@ -777,7 +902,8 @@ namespace cirkus
             {
                 //Vuxenbiljetter
                 conn.Open();
-                string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'vuxen'  group by acts.showid, price_group_seat.group";
+                string sql = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                         where showid = '"+showid+"' and type = 'Vuxen'";
 
 
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
@@ -786,10 +912,14 @@ namespace cirkus
                 textBoxAntalVuxenBiljetter.Clear();
                 textBoxKronorVuxenbiljetter.Clear();
 
-                /*dr.Read();
+                //dr.Read();
 
-                textBoxAntalVuxenBiljetter.Text = dr[1].ToString();
-                textBoxKronorVuxenbiljetter.Text = dr[0].ToString();*/
+                //textBoxAntalVuxenBiljetter.Text = dr[1].ToString();
+                //textBoxKronorVuxenbiljetter.Text = dr[0].ToString();
+
+                
+
+                //textBoxPersonnummer.Text = read[0].ToString();
 
                 while (dr.Read())
                 {
@@ -810,7 +940,8 @@ namespace cirkus
 
                 //Ungdomsbiljetter
                 conn.Open();
-                string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'ungdom'  group by acts.showid, price_group_seat.group";
+                string sqlAU = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                         where showid = '"+showid+"' and type = 'Ungdom'";
 
                 NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
                 NpgsqlDataReader drAU = cmdAU.ExecuteReader();
@@ -838,7 +969,8 @@ namespace cirkus
 
                 //Barn
                 conn.Open();
-                string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'barn'  group by acts.showid, price_group_seat.group";
+                string sqlKB = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                         where showid = '" + showid + "' and type = 'Barn'"; 
 
                 NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
                 NpgsqlDataReader drKB = cmdKB.ExecuteReader();
@@ -893,12 +1025,14 @@ namespace cirkus
                 //    //Antal Vuxenbiljetter
                 //    int selectedIndex = dgvAkter.SelectedRows[0].Index;
                 //    actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
-                
-                int selectedIndex = dgvAkter.SelectedRows[0].Index;
-                actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
-                
-                conn.Open();
-                    string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '"+ actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
+                if(dgvAkter.Rows.Count > 0)
+                {
+                    int selectedIndex = dgvAkter.SelectedRows[0].Index;
+                    actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
+
+                    conn.Open();
+                    string sql = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                        where actid = '" + actid + "' and type = 'Vuxen'";
 
 
                     NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
@@ -926,7 +1060,8 @@ namespace cirkus
 
                     //Ungdomsbiljetter
                     conn.Open();
-                    string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '"+ actid +"' and price_group_seat.group = 'ungdom' group by price_group_seat.group, acts.actid";
+                    string sqlAU = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                        where actid = '" + actid + "' and type = 'Ungdom'";
 
                     NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
                     NpgsqlDataReader drAU = cmdAU.ExecuteReader();
@@ -954,7 +1089,8 @@ namespace cirkus
 
                     //Barn
                     conn.Open();
-                    string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'barn' group by price_group_seat.group, acts.actid";
+                    string sqlKB = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
+                                        where actid = '" + actid + "' and type = 'Barn'";
 
                     NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
                     NpgsqlDataReader drKB = cmdKB.ExecuteReader();
@@ -980,26 +1116,28 @@ namespace cirkus
                     conn.Close();
 
                     //Totalt antal
-                    int antalVuxen, antalUngdom, antalBarn;
+                    double antalVuxen, antalUngdom, antalBarn;
                     string totaltSumma;
 
-                    antalVuxen = Convert.ToInt32(textBoxAntalVuxenBiljetter.Text);
-                    antalUngdom = Convert.ToInt32(textBoxAntalUngdomsbiljetter.Text);
-                    antalBarn = Convert.ToInt32(textBoxAntalBarnbiljetter.Text);
+                    antalVuxen = Convert.ToDouble(textBoxAntalVuxenBiljetter.Text);
+                    antalUngdom = Convert.ToDouble(textBoxAntalUngdomsbiljetter.Text);
+                    antalBarn = Convert.ToDouble(textBoxAntalBarnbiljetter.Text);
                     totaltSumma = Convert.ToString(antalVuxen + antalUngdom + antalBarn);
 
                     textBoxTotaltAntal.Text = totaltSumma;
 
                     //Totalt kronor
-                    int kronorVuxen, kronorUngdom, kronorBarn;
+                    double kronorVuxen, kronorUngdom, kronorBarn;
                     string totaltKornor;
 
-                    kronorVuxen = Convert.ToInt32(textBoxKronorVuxenbiljetter.Text);
-                    kronorUngdom = Convert.ToInt32(textBoxKronorUngdomsbiljetter.Text);
-                    kronorBarn = Convert.ToInt32(textBoxKronorBarnbiljetter.Text);
+                    kronorVuxen = Convert.ToDouble(textBoxKronorVuxenbiljetter.Text);
+                    kronorUngdom = Convert.ToDouble(textBoxKronorUngdomsbiljetter.Text);
+                    kronorBarn = Convert.ToDouble(textBoxKronorBarnbiljetter.Text);
                     totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
 
                     textBoxTotaltKronor.Text = totaltKornor;
+                }
+    
                 
 
                 
@@ -1376,6 +1514,7 @@ namespace cirkus
                 string sql = "INSERT INTO staff (ssn,fname,lname,phonenumber,email,username,password,auth) VALUES(:ssn, :fname, :lname, :phonenumber, :email, :username, :password, :auth)";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
+
                 cmd.Parameters.Add(new NpgsqlParameter("ssn", textBoxPersonnummer.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("fname", textBoxFornamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("lname", textBoxEfternamn.Text));
@@ -1383,6 +1522,7 @@ namespace cirkus
                 cmd.Parameters.Add(new NpgsqlParameter("email", textBoxEpost.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("username", textBoxAnvandarnamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("password", textBoxLosenord.Text));
+
 
                 if (comboBoxBehorighetsniva.Text == "Biljettförsäljare")
                 {
@@ -1395,6 +1535,23 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
 
                 }
+                string email = textBoxEpost.Text;
+                string firstname= textBoxFornamn.Text;
+                string lastname= textBoxEfternamn.Text;
+                string password = textBoxLosenord.Text;
+                string username= textBoxAnvandarnamn.Text;
+
+                string confirmation_mail = "Hej " + firstname + " " + lastname + "\nDitt lösenord är: " + password + "\nDitt användarnamn är: " + username + " ";
+
+                MailMessage mail = new MailMessage("kulbusstest@gmail.com", email, "Cirkus Kul&Bus - Ditt nya konto", confirmation_mail);
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                client.Port = 587;
+                client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
+                client.EnableSsl = true;
+
+                client.Send(mail);
+
                 LblStatusKonto.Visible = true;
                 LblStatusKonto.ForeColor = Color.Green;
                 LblStatusKonto.Text = "Användare tillagd";
@@ -1403,13 +1560,13 @@ namespace cirkus
                 conn.Close();
                 ListaPersonal();
                 ResetColorandText();
+
             }
             catch (NpgsqlException)
             {
                 LblStatusKonto.Visible = true;
                 LblStatusKonto.ForeColor = Color.Tomato;
                 LblStatusKonto.Text = "Användaren finns redan";
-
                 conn.Close();
             }
         
@@ -1684,5 +1841,7 @@ namespace cirkus
             printPreviewDialog1.Show();
             printPreviewControl1.Document = printDocumentStatistic;
         }
+
+        
     }
 }

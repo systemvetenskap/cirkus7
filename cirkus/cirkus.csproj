@@ -74,7 +74,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="show.cs" />
+    <Compile Include="PasswordRecoveryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordRecoveryForm.Designer.cs">
+      <DependentUpon>PasswordRecoveryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordRecoveryForm.resx">
+      <DependentUpon>PasswordRecoveryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowForm.resx">
       <DependentUpon>ShowForm.cs</DependentUpon>

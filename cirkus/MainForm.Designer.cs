@@ -78,7 +78,6 @@
             this.textBoxTotaltKronor = new System.Windows.Forms.TextBox();
             this.buttonSkrivUtForestallning = new System.Windows.Forms.Button();
             this.buttonRaderaForestallning = new System.Windows.Forms.Button();
-            this.buttonAndraForestallning = new System.Windows.Forms.Button();
             this.labelKronor = new System.Windows.Forms.Label();
             this.labelAntal = new System.Windows.Forms.Label();
             this.labelTotalt = new System.Windows.Forms.Label();
@@ -139,8 +138,10 @@
             this.tabControl1.Controls.Add(this.tabAccount);
             this.tabControl1.Location = new System.Drawing.Point(7, 12);
             this.tabControl1.Name = "tabControl1";
+            this.tabControl1.Padding = new System.Drawing.Point(6, 5);
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(933, 482);
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -175,10 +176,10 @@
             this.tabTicket.Controls.Add(this.label3);
             this.tabTicket.Controls.Add(this.label2);
             this.tabTicket.Controls.Add(this.label1);
-            this.tabTicket.Location = new System.Drawing.Point(4, 22);
+            this.tabTicket.Location = new System.Drawing.Point(4, 26);
             this.tabTicket.Name = "tabTicket";
             this.tabTicket.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTicket.Size = new System.Drawing.Size(925, 456);
+            this.tabTicket.Size = new System.Drawing.Size(925, 452);
             this.tabTicket.TabIndex = 0;
             this.tabTicket.Text = "Biljettförsäljning";
             this.tabTicket.UseVisualStyleBackColor = true;
@@ -186,38 +187,40 @@
             // txtPrintDatum
             // 
             this.txtPrintDatum.BackColor = System.Drawing.SystemColors.Window;
-            this.txtPrintDatum.Location = new System.Drawing.Point(769, 116);
+            this.txtPrintDatum.Location = new System.Drawing.Point(777, 116);
             this.txtPrintDatum.Name = "txtPrintDatum";
             this.txtPrintDatum.ReadOnly = true;
             this.txtPrintDatum.Size = new System.Drawing.Size(126, 20);
             this.txtPrintDatum.TabIndex = 27;
+            this.txtPrintDatum.Click += new System.EventHandler(this.txtPrintDatum_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(769, 98);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(777, 101);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 16);
+            this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 26;
             this.label11.Text = "Datum:";
             // 
             // textBoxPrintBookingid
             // 
             this.textBoxPrintBookingid.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintBookingid.Location = new System.Drawing.Point(769, 75);
+            this.textBoxPrintBookingid.Location = new System.Drawing.Point(777, 75);
             this.textBoxPrintBookingid.Name = "textBoxPrintBookingid";
             this.textBoxPrintBookingid.ReadOnly = true;
             this.textBoxPrintBookingid.Size = new System.Drawing.Size(126, 20);
             this.textBoxPrintBookingid.TabIndex = 25;
+            this.textBoxPrintBookingid.Click += new System.EventHandler(this.textBoxPrintBookingid_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(769, 57);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(777, 60);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 16);
+            this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 24;
             this.label5.Text = "BokningsNr:";
             // 
@@ -225,7 +228,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(214, 231);
+            this.label10.Location = new System.Drawing.Point(214, 233);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(142, 16);
             this.label10.TabIndex = 23;
@@ -241,13 +244,13 @@
             this.dgTicketActs.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgTicketActs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgTicketActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTicketActs.Location = new System.Drawing.Point(217, 250);
+            this.dgTicketActs.Location = new System.Drawing.Point(217, 256);
             this.dgTicketActs.MultiSelect = false;
             this.dgTicketActs.Name = "dgTicketActs";
             this.dgTicketActs.ReadOnly = true;
             this.dgTicketActs.RowHeadersVisible = false;
             this.dgTicketActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTicketActs.Size = new System.Drawing.Size(516, 101);
+            this.dgTicketActs.Size = new System.Drawing.Size(527, 144);
             this.dgTicketActs.TabIndex = 22;
             this.dgTicketActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTicketActs_CellClick);
             // 
@@ -273,7 +276,7 @@
             // 
             this.lblPrint.AutoSize = true;
             this.lblPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrint.Location = new System.Drawing.Point(769, 19);
+            this.lblPrint.Location = new System.Drawing.Point(777, 19);
             this.lblPrint.Name = "lblPrint";
             this.lblPrint.Size = new System.Drawing.Size(56, 16);
             this.lblPrint.TabIndex = 19;
@@ -282,11 +285,12 @@
             // textBoxPrintPrice
             // 
             this.textBoxPrintPrice.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintPrice.Location = new System.Drawing.Point(769, 302);
+            this.textBoxPrintPrice.Location = new System.Drawing.Point(777, 302);
             this.textBoxPrintPrice.Name = "textBoxPrintPrice";
             this.textBoxPrintPrice.ReadOnly = true;
             this.textBoxPrintPrice.Size = new System.Drawing.Size(126, 20);
             this.textBoxPrintPrice.TabIndex = 18;
+            this.textBoxPrintPrice.Click += new System.EventHandler(this.textBoxPrintPrice_Click);
             // 
             // dgTickets
             // 
@@ -304,18 +308,19 @@
             this.dgTickets.ReadOnly = true;
             this.dgTickets.RowHeadersVisible = false;
             this.dgTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTickets.Size = new System.Drawing.Size(516, 143);
+            this.dgTickets.Size = new System.Drawing.Size(527, 140);
             this.dgTickets.TabIndex = 15;
             this.dgTickets.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTickets_CellClick);
             // 
             // textBoxPrintAct
             // 
             this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAct.Location = new System.Drawing.Point(769, 211);
+            this.textBoxPrintAct.Location = new System.Drawing.Point(777, 211);
             this.textBoxPrintAct.Name = "textBoxPrintAct";
             this.textBoxPrintAct.ReadOnly = true;
             this.textBoxPrintAct.Size = new System.Drawing.Size(126, 20);
             this.textBoxPrintAct.TabIndex = 17;
+            this.textBoxPrintAct.Click += new System.EventHandler(this.textBoxPrintAct_Click);
             // 
             // dgCustomers
             // 
@@ -323,16 +328,17 @@
             this.dgCustomers.AllowUserToDeleteRows = false;
             this.dgCustomers.AllowUserToResizeColumns = false;
             this.dgCustomers.AllowUserToResizeRows = false;
+            this.dgCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgCustomers.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgCustomers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCustomers.Location = new System.Drawing.Point(8, 75);
+            this.dgCustomers.Location = new System.Drawing.Point(15, 75);
             this.dgCustomers.MultiSelect = false;
             this.dgCustomers.Name = "dgCustomers";
             this.dgCustomers.ReadOnly = true;
             this.dgCustomers.RowHeadersVisible = false;
             this.dgCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgCustomers.Size = new System.Drawing.Size(188, 368);
+            this.dgCustomers.Size = new System.Drawing.Size(181, 325);
             this.dgCustomers.TabIndex = 14;
             this.dgCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellClick);
             this.dgCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomers_CellContentClick);
@@ -341,11 +347,12 @@
             // textBoxPrintShow
             // 
             this.textBoxPrintShow.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintShow.Location = new System.Drawing.Point(769, 158);
+            this.textBoxPrintShow.Location = new System.Drawing.Point(777, 158);
             this.textBoxPrintShow.Name = "textBoxPrintShow";
             this.textBoxPrintShow.ReadOnly = true;
             this.textBoxPrintShow.Size = new System.Drawing.Size(126, 20);
             this.textBoxPrintShow.TabIndex = 16;
+            this.textBoxPrintShow.Click += new System.EventHandler(this.textBoxPrintShow_Click);
             // 
             // textBoxSearchCustomer
             // 
@@ -359,15 +366,16 @@
             // textBoxPrintAge
             // 
             this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAge.Location = new System.Drawing.Point(769, 261);
+            this.textBoxPrintAge.Location = new System.Drawing.Point(777, 261);
             this.textBoxPrintAge.Name = "textBoxPrintAge";
             this.textBoxPrintAge.ReadOnly = true;
             this.textBoxPrintAge.Size = new System.Drawing.Size(126, 20);
             this.textBoxPrintAge.TabIndex = 15;
+            this.textBoxPrintAge.Click += new System.EventHandler(this.textBoxPrintAge_Click);
             // 
             // btnDeleteTicket
             // 
-            this.btnDeleteTicket.Location = new System.Drawing.Point(346, 357);
+            this.btnDeleteTicket.Location = new System.Drawing.Point(217, 406);
             this.btnDeleteTicket.Name = "btnDeleteTicket";
             this.btnDeleteTicket.Size = new System.Drawing.Size(126, 35);
             this.btnDeleteTicket.TabIndex = 11;
@@ -378,7 +386,7 @@
             // buttonPrint
             // 
             this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrint.Location = new System.Drawing.Point(769, 357);
+            this.buttonPrint.Location = new System.Drawing.Point(777, 339);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(126, 35);
             this.buttonPrint.TabIndex = 8;
@@ -388,7 +396,7 @@
             // 
             // buttonEditTicket
             // 
-            this.buttonEditTicket.Location = new System.Drawing.Point(214, 357);
+            this.buttonEditTicket.Location = new System.Drawing.Point(359, 406);
             this.buttonEditTicket.Name = "buttonEditTicket";
             this.buttonEditTicket.Size = new System.Drawing.Size(126, 35);
             this.buttonEditTicket.TabIndex = 10;
@@ -399,16 +407,16 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(769, 284);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(777, 287);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 16);
+            this.label8.Size = new System.Drawing.Size(27, 13);
             this.label8.TabIndex = 12;
             this.label8.Text = "Pris:";
             // 
             // buttonReserveTicket
             // 
-            this.buttonReserveTicket.Location = new System.Drawing.Point(607, 357);
+            this.buttonReserveTicket.Location = new System.Drawing.Point(618, 406);
             this.buttonReserveTicket.Name = "buttonReserveTicket";
             this.buttonReserveTicket.Size = new System.Drawing.Size(126, 35);
             this.buttonReserveTicket.TabIndex = 9;
@@ -419,16 +427,16 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(769, 193);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(777, 196);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 16);
+            this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "Akt/plats:";
             // 
             // buttonAddCustomer
             // 
-            this.buttonAddCustomer.Location = new System.Drawing.Point(214, 408);
+            this.buttonAddCustomer.Location = new System.Drawing.Point(15, 406);
             this.buttonAddCustomer.Name = "buttonAddCustomer";
             this.buttonAddCustomer.Size = new System.Drawing.Size(126, 35);
             this.buttonAddCustomer.TabIndex = 8;
@@ -439,10 +447,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(769, 140);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(777, 143);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 16);
+            this.label6.Size = new System.Drawing.Size(69, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Föreställning:";
             // 
@@ -460,10 +468,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(766, 243);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(777, 246);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(85, 16);
+            this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Åldersgrupp:";
             // 
@@ -481,7 +489,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 19);
+            this.label2.Location = new System.Drawing.Point(15, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 16);
             this.label2.TabIndex = 3;
@@ -515,7 +523,6 @@
             this.tabShow.Controls.Add(this.textBoxTotaltKronor);
             this.tabShow.Controls.Add(this.buttonSkrivUtForestallning);
             this.tabShow.Controls.Add(this.buttonRaderaForestallning);
-            this.tabShow.Controls.Add(this.buttonAndraForestallning);
             this.tabShow.Controls.Add(this.labelKronor);
             this.tabShow.Controls.Add(this.labelAntal);
             this.tabShow.Controls.Add(this.labelTotalt);
@@ -524,10 +531,10 @@
             this.tabShow.Controls.Add(this.labelVuxenbiljetter);
             this.tabShow.Controls.Add(this.textBoxAntalVuxenBiljetter);
             this.tabShow.Controls.Add(this.buttonSkapaForestalnning);
-            this.tabShow.Location = new System.Drawing.Point(4, 22);
+            this.tabShow.Location = new System.Drawing.Point(4, 26);
             this.tabShow.Name = "tabShow";
             this.tabShow.Padding = new System.Windows.Forms.Padding(3);
-            this.tabShow.Size = new System.Drawing.Size(925, 456);
+            this.tabShow.Size = new System.Drawing.Size(925, 452);
             this.tabShow.TabIndex = 1;
             this.tabShow.Text = "Föreställning";
             this.tabShow.UseVisualStyleBackColor = true;
@@ -546,7 +553,7 @@
             // 
             this.lblStatistics.AutoSize = true;
             this.lblStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatistics.Location = new System.Drawing.Point(525, 35);
+            this.lblStatistics.Location = new System.Drawing.Point(525, 15);
             this.lblStatistics.Name = "lblStatistics";
             this.lblStatistics.Size = new System.Drawing.Size(63, 16);
             this.lblStatistics.TabIndex = 28;
@@ -556,7 +563,7 @@
             // 
             this.lblActs.AutoSize = true;
             this.lblActs.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActs.Location = new System.Drawing.Point(305, 35);
+            this.lblActs.Location = new System.Drawing.Point(305, 15);
             this.lblActs.Name = "lblActs";
             this.lblActs.Size = new System.Drawing.Size(44, 16);
             this.lblActs.TabIndex = 27;
@@ -566,7 +573,7 @@
             // 
             this.lblShows.AutoSize = true;
             this.lblShows.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblShows.Location = new System.Drawing.Point(23, 35);
+            this.lblShows.Location = new System.Drawing.Point(23, 15);
             this.lblShows.Name = "lblShows";
             this.lblShows.Size = new System.Drawing.Size(112, 16);
             this.lblShows.TabIndex = 26;
@@ -574,16 +581,16 @@
             // 
             // printPreviewControl1
             // 
-            this.printPreviewControl1.Location = new System.Drawing.Point(441, 288);
+            this.printPreviewControl1.Location = new System.Drawing.Point(350, 284);
             this.printPreviewControl1.Name = "printPreviewControl1";
-            this.printPreviewControl1.Size = new System.Drawing.Size(209, 164);
+            this.printPreviewControl1.Size = new System.Drawing.Size(209, 158);
             this.printPreviewControl1.TabIndex = 24;
             this.printPreviewControl1.Visible = false;
             // 
             // checkBoxAllaAkter
             // 
             this.checkBoxAllaAkter.AutoSize = true;
-            this.checkBoxAllaAkter.Location = new System.Drawing.Point(528, 265);
+            this.checkBoxAllaAkter.Location = new System.Drawing.Point(528, 245);
             this.checkBoxAllaAkter.Name = "checkBoxAllaAkter";
             this.checkBoxAllaAkter.Size = new System.Drawing.Size(232, 17);
             this.checkBoxAllaAkter.TabIndex = 25;
@@ -601,13 +608,13 @@
             this.dgvAkter.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvAkter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAkter.ColumnHeadersVisible = false;
-            this.dgvAkter.Location = new System.Drawing.Point(305, 53);
+            this.dgvAkter.Location = new System.Drawing.Point(305, 47);
             this.dgvAkter.MultiSelect = false;
             this.dgvAkter.Name = "dgvAkter";
             this.dgvAkter.ReadOnly = true;
             this.dgvAkter.RowHeadersVisible = false;
             this.dgvAkter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAkter.Size = new System.Drawing.Size(193, 195);
+            this.dgvAkter.Size = new System.Drawing.Size(193, 215);
             this.dgvAkter.TabIndex = 23;
             this.dgvAkter.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAkter_CellClick);
             this.dgvAkter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAkter_KeyUp);
@@ -622,78 +629,85 @@
             this.dgvShowsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvShowsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShowsList.ColumnHeadersVisible = false;
-            this.dgvShowsList.Location = new System.Drawing.Point(23, 53);
+            this.dgvShowsList.Location = new System.Drawing.Point(23, 47);
             this.dgvShowsList.MultiSelect = false;
             this.dgvShowsList.Name = "dgvShowsList";
             this.dgvShowsList.ReadOnly = true;
             this.dgvShowsList.RowHeadersVisible = false;
             this.dgvShowsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShowsList.Size = new System.Drawing.Size(260, 348);
+            this.dgvShowsList.Size = new System.Drawing.Size(260, 354);
             this.dgvShowsList.TabIndex = 22;
             this.dgvShowsList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowsList_CellClick);
             this.dgvShowsList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvShowsList_KeyUp);
             // 
             // textBoxKronorVuxenbiljetter
             // 
-            this.textBoxKronorVuxenbiljetter.Location = new System.Drawing.Point(740, 85);
+            this.textBoxKronorVuxenbiljetter.Location = new System.Drawing.Point(740, 65);
             this.textBoxKronorVuxenbiljetter.Name = "textBoxKronorVuxenbiljetter";
             this.textBoxKronorVuxenbiljetter.ReadOnly = true;
             this.textBoxKronorVuxenbiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxKronorVuxenbiljetter.TabIndex = 21;
+            this.textBoxKronorVuxenbiljetter.Click += new System.EventHandler(this.textBoxKronorVuxenbiljetter_Click);
             this.textBoxKronorVuxenbiljetter.TextChanged += new System.EventHandler(this.textBoxKronorVuxenbiljetter_TextChanged);
             // 
             // textBoxAntalUngdomsbiljetter
             // 
-            this.textBoxAntalUngdomsbiljetter.Location = new System.Drawing.Point(627, 123);
+            this.textBoxAntalUngdomsbiljetter.Location = new System.Drawing.Point(627, 103);
             this.textBoxAntalUngdomsbiljetter.Name = "textBoxAntalUngdomsbiljetter";
             this.textBoxAntalUngdomsbiljetter.ReadOnly = true;
             this.textBoxAntalUngdomsbiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxAntalUngdomsbiljetter.TabIndex = 20;
+            this.textBoxAntalUngdomsbiljetter.Click += new System.EventHandler(this.textBoxAntalUngdomsbiljetter_Click);
             this.textBoxAntalUngdomsbiljetter.TextChanged += new System.EventHandler(this.textBoxAntalUngdomsbiljetter_TextChanged);
             // 
             // textBoxKronorUngdomsbiljetter
             // 
-            this.textBoxKronorUngdomsbiljetter.Location = new System.Drawing.Point(740, 123);
+            this.textBoxKronorUngdomsbiljetter.Location = new System.Drawing.Point(740, 103);
             this.textBoxKronorUngdomsbiljetter.Name = "textBoxKronorUngdomsbiljetter";
             this.textBoxKronorUngdomsbiljetter.ReadOnly = true;
             this.textBoxKronorUngdomsbiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxKronorUngdomsbiljetter.TabIndex = 19;
+            this.textBoxKronorUngdomsbiljetter.Click += new System.EventHandler(this.textBoxKronorUngdomsbiljetter_Click);
             this.textBoxKronorUngdomsbiljetter.TextChanged += new System.EventHandler(this.textBoxKronorUngdomsbiljetter_TextChanged);
             // 
             // textBoxAntalBarnbiljetter
             // 
-            this.textBoxAntalBarnbiljetter.Location = new System.Drawing.Point(627, 161);
+            this.textBoxAntalBarnbiljetter.Location = new System.Drawing.Point(627, 141);
             this.textBoxAntalBarnbiljetter.Name = "textBoxAntalBarnbiljetter";
             this.textBoxAntalBarnbiljetter.ReadOnly = true;
             this.textBoxAntalBarnbiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxAntalBarnbiljetter.TabIndex = 18;
+            this.textBoxAntalBarnbiljetter.Click += new System.EventHandler(this.textBoxAntalBarnbiljetter_Click);
             this.textBoxAntalBarnbiljetter.TextChanged += new System.EventHandler(this.textBoxAntalBarnbiljetter_TextChanged);
             // 
             // textBoxKronorBarnbiljetter
             // 
-            this.textBoxKronorBarnbiljetter.Location = new System.Drawing.Point(740, 161);
+            this.textBoxKronorBarnbiljetter.Location = new System.Drawing.Point(740, 141);
             this.textBoxKronorBarnbiljetter.Name = "textBoxKronorBarnbiljetter";
             this.textBoxKronorBarnbiljetter.ReadOnly = true;
             this.textBoxKronorBarnbiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxKronorBarnbiljetter.TabIndex = 17;
+            this.textBoxKronorBarnbiljetter.Click += new System.EventHandler(this.textBoxKronorBarnbiljetter_Click);
             this.textBoxKronorBarnbiljetter.TextChanged += new System.EventHandler(this.textBoxKronorBarnbiljetter_TextChanged);
             // 
             // textBoxTotaltAntal
             // 
-            this.textBoxTotaltAntal.Location = new System.Drawing.Point(627, 228);
+            this.textBoxTotaltAntal.Location = new System.Drawing.Point(627, 208);
             this.textBoxTotaltAntal.Name = "textBoxTotaltAntal";
             this.textBoxTotaltAntal.ReadOnly = true;
             this.textBoxTotaltAntal.Size = new System.Drawing.Size(106, 20);
             this.textBoxTotaltAntal.TabIndex = 16;
+            this.textBoxTotaltAntal.Click += new System.EventHandler(this.textBoxTotaltAntal_Click);
             this.textBoxTotaltAntal.TextChanged += new System.EventHandler(this.textBoxTotaltAntal_TextChanged);
             // 
             // textBoxTotaltKronor
             // 
-            this.textBoxTotaltKronor.Location = new System.Drawing.Point(740, 228);
+            this.textBoxTotaltKronor.Location = new System.Drawing.Point(740, 208);
             this.textBoxTotaltKronor.Name = "textBoxTotaltKronor";
             this.textBoxTotaltKronor.ReadOnly = true;
             this.textBoxTotaltKronor.Size = new System.Drawing.Size(106, 20);
             this.textBoxTotaltKronor.TabIndex = 15;
+            this.textBoxTotaltKronor.Click += new System.EventHandler(this.textBoxTotaltKronor_Click);
             this.textBoxTotaltKronor.TextChanged += new System.EventHandler(this.textBoxTotaltKronor_TextChanged);
             // 
             // buttonSkrivUtForestallning
@@ -716,20 +730,10 @@
             this.buttonRaderaForestallning.UseVisualStyleBackColor = true;
             this.buttonRaderaForestallning.Click += new System.EventHandler(this.buttonRaderaForestallning_Click);
             // 
-            // buttonAndraForestallning
-            // 
-            this.buttonAndraForestallning.Location = new System.Drawing.Point(316, 398);
-            this.buttonAndraForestallning.Name = "buttonAndraForestallning";
-            this.buttonAndraForestallning.Size = new System.Drawing.Size(72, 23);
-            this.buttonAndraForestallning.TabIndex = 12;
-            this.buttonAndraForestallning.Text = "(Ändra)";
-            this.buttonAndraForestallning.UseVisualStyleBackColor = true;
-            this.buttonAndraForestallning.Click += new System.EventHandler(this.buttonAndraForestallning_Click);
-            // 
             // labelKronor
             // 
             this.labelKronor.AutoSize = true;
-            this.labelKronor.Location = new System.Drawing.Point(737, 69);
+            this.labelKronor.Location = new System.Drawing.Point(737, 49);
             this.labelKronor.Name = "labelKronor";
             this.labelKronor.Size = new System.Drawing.Size(38, 13);
             this.labelKronor.TabIndex = 11;
@@ -738,7 +742,7 @@
             // labelAntal
             // 
             this.labelAntal.AutoSize = true;
-            this.labelAntal.Location = new System.Drawing.Point(624, 69);
+            this.labelAntal.Location = new System.Drawing.Point(624, 49);
             this.labelAntal.Name = "labelAntal";
             this.labelAntal.Size = new System.Drawing.Size(31, 13);
             this.labelAntal.TabIndex = 10;
@@ -747,7 +751,7 @@
             // labelTotalt
             // 
             this.labelTotalt.AutoSize = true;
-            this.labelTotalt.Location = new System.Drawing.Point(525, 228);
+            this.labelTotalt.Location = new System.Drawing.Point(525, 208);
             this.labelTotalt.Name = "labelTotalt";
             this.labelTotalt.Size = new System.Drawing.Size(34, 13);
             this.labelTotalt.TabIndex = 9;
@@ -756,7 +760,7 @@
             // labelBarnbiljetter
             // 
             this.labelBarnbiljetter.AutoSize = true;
-            this.labelBarnbiljetter.Location = new System.Drawing.Point(525, 168);
+            this.labelBarnbiljetter.Location = new System.Drawing.Point(525, 148);
             this.labelBarnbiljetter.Name = "labelBarnbiljetter";
             this.labelBarnbiljetter.Size = new System.Drawing.Size(62, 13);
             this.labelBarnbiljetter.TabIndex = 8;
@@ -765,7 +769,7 @@
             // labelUngdomsbiljetter
             // 
             this.labelUngdomsbiljetter.AutoSize = true;
-            this.labelUngdomsbiljetter.Location = new System.Drawing.Point(525, 130);
+            this.labelUngdomsbiljetter.Location = new System.Drawing.Point(525, 110);
             this.labelUngdomsbiljetter.Name = "labelUngdomsbiljetter";
             this.labelUngdomsbiljetter.Size = new System.Drawing.Size(85, 13);
             this.labelUngdomsbiljetter.TabIndex = 7;
@@ -774,7 +778,7 @@
             // labelVuxenbiljetter
             // 
             this.labelVuxenbiljetter.AutoSize = true;
-            this.labelVuxenbiljetter.Location = new System.Drawing.Point(525, 92);
+            this.labelVuxenbiljetter.Location = new System.Drawing.Point(525, 72);
             this.labelVuxenbiljetter.Name = "labelVuxenbiljetter";
             this.labelVuxenbiljetter.Size = new System.Drawing.Size(70, 13);
             this.labelVuxenbiljetter.TabIndex = 6;
@@ -782,11 +786,12 @@
             // 
             // textBoxAntalVuxenBiljetter
             // 
-            this.textBoxAntalVuxenBiljetter.Location = new System.Drawing.Point(627, 85);
+            this.textBoxAntalVuxenBiljetter.Location = new System.Drawing.Point(627, 65);
             this.textBoxAntalVuxenBiljetter.Name = "textBoxAntalVuxenBiljetter";
             this.textBoxAntalVuxenBiljetter.ReadOnly = true;
             this.textBoxAntalVuxenBiljetter.Size = new System.Drawing.Size(106, 20);
             this.textBoxAntalVuxenBiljetter.TabIndex = 5;
+            this.textBoxAntalVuxenBiljetter.Click += new System.EventHandler(this.textBoxAntalVuxenBiljetter_Click);
             this.textBoxAntalVuxenBiljetter.TextChanged += new System.EventHandler(this.textBoxAntalVuxenBiljetter_TextChanged);
             // 
             // buttonSkapaForestalnning
@@ -826,9 +831,9 @@
             this.tabAccount.Controls.Add(this.textBoxEpost);
             this.tabAccount.Controls.Add(this.textBoxFornamn);
             this.tabAccount.Controls.Add(this.textBoxAnvandarnamn);
-            this.tabAccount.Location = new System.Drawing.Point(4, 22);
+            this.tabAccount.Location = new System.Drawing.Point(4, 26);
             this.tabAccount.Name = "tabAccount";
-            this.tabAccount.Size = new System.Drawing.Size(925, 456);
+            this.tabAccount.Size = new System.Drawing.Size(925, 452);
             this.tabAccount.TabIndex = 2;
             this.tabAccount.Text = "Kontohantering";
             this.tabAccount.UseVisualStyleBackColor = true;
@@ -836,7 +841,7 @@
             // btnRaderaKonto
             // 
             this.btnRaderaKonto.Enabled = false;
-            this.btnRaderaKonto.Location = new System.Drawing.Point(51, 364);
+            this.btnRaderaKonto.Location = new System.Drawing.Point(22, 406);
             this.btnRaderaKonto.Name = "btnRaderaKonto";
             this.btnRaderaKonto.Size = new System.Drawing.Size(126, 35);
             this.btnRaderaKonto.TabIndex = 58;
@@ -847,7 +852,7 @@
             // lblPersonnummer
             // 
             this.lblPersonnummer.AutoSize = true;
-            this.lblPersonnummer.Location = new System.Drawing.Point(459, 82);
+            this.lblPersonnummer.Location = new System.Drawing.Point(366, 75);
             this.lblPersonnummer.Name = "lblPersonnummer";
             this.lblPersonnummer.Size = new System.Drawing.Size(129, 13);
             this.lblPersonnummer.TabIndex = 57;
@@ -855,7 +860,7 @@
             // 
             // textBoxPersonnummer
             // 
-            this.textBoxPersonnummer.Location = new System.Drawing.Point(459, 97);
+            this.textBoxPersonnummer.Location = new System.Drawing.Point(366, 90);
             this.textBoxPersonnummer.Name = "textBoxPersonnummer";
             this.textBoxPersonnummer.Size = new System.Drawing.Size(152, 20);
             this.textBoxPersonnummer.TabIndex = 56;
@@ -864,7 +869,7 @@
             // 
             this.LblStatusKonto.AutoSize = true;
             this.LblStatusKonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblStatusKonto.Location = new System.Drawing.Point(459, 339);
+            this.LblStatusKonto.Location = new System.Drawing.Point(366, 387);
             this.LblStatusKonto.Name = "LblStatusKonto";
             this.LblStatusKonto.Size = new System.Drawing.Size(48, 13);
             this.LblStatusKonto.TabIndex = 49;
@@ -874,7 +879,7 @@
             // lblBehorighetsniva
             // 
             this.lblBehorighetsniva.AutoSize = true;
-            this.lblBehorighetsniva.Location = new System.Drawing.Point(682, 291);
+            this.lblBehorighetsniva.Location = new System.Drawing.Point(550, 284);
             this.lblBehorighetsniva.Name = "lblBehorighetsniva";
             this.lblBehorighetsniva.Size = new System.Drawing.Size(86, 13);
             this.lblBehorighetsniva.TabIndex = 46;
@@ -883,7 +888,7 @@
             // lblLosenord
             // 
             this.lblLosenord.AutoSize = true;
-            this.lblLosenord.Location = new System.Drawing.Point(682, 222);
+            this.lblLosenord.Location = new System.Drawing.Point(550, 215);
             this.lblLosenord.Name = "lblLosenord";
             this.lblLosenord.Size = new System.Drawing.Size(54, 13);
             this.lblLosenord.TabIndex = 45;
@@ -895,25 +900,26 @@
             this.dgStaff.AllowUserToDeleteRows = false;
             this.dgStaff.AllowUserToResizeColumns = false;
             this.dgStaff.AllowUserToResizeRows = false;
+            this.dgStaff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgStaff.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgStaff.GridColor = System.Drawing.SystemColors.Window;
-            this.dgStaff.Location = new System.Drawing.Point(51, 97);
+            this.dgStaff.Location = new System.Drawing.Point(22, 90);
             this.dgStaff.MultiSelect = false;
             this.dgStaff.Name = "dgStaff";
             this.dgStaff.ReadOnly = true;
             this.dgStaff.RowHeadersVisible = false;
             this.dgStaff.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgStaff.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgStaff.Size = new System.Drawing.Size(324, 230);
+            this.dgStaff.Size = new System.Drawing.Size(304, 310);
             this.dgStaff.TabIndex = 44;
             // 
             // textBoxSearchStaff
             // 
-            this.textBoxSearchStaff.Location = new System.Drawing.Point(51, 71);
+            this.textBoxSearchStaff.Location = new System.Drawing.Point(22, 64);
             this.textBoxSearchStaff.Name = "textBoxSearchStaff";
-            this.textBoxSearchStaff.Size = new System.Drawing.Size(252, 20);
+            this.textBoxSearchStaff.Size = new System.Drawing.Size(304, 20);
             this.textBoxSearchStaff.TabIndex = 43;
             this.textBoxSearchStaff.TextChanged += new System.EventHandler(this.textBoxSearchStaff_TextChanged);
             // 
@@ -923,7 +929,7 @@
             this.comboBoxBehorighetsniva.Items.AddRange(new object[] {
             "Biljettförsäljare",
             "Administratör"});
-            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(682, 306);
+            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(550, 299);
             this.comboBoxBehorighetsniva.Name = "comboBoxBehorighetsniva";
             this.comboBoxBehorighetsniva.Size = new System.Drawing.Size(152, 21);
             this.comboBoxBehorighetsniva.TabIndex = 28;
@@ -932,7 +938,7 @@
             // 
             this.lblKonto.AutoSize = true;
             this.lblKonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKonto.Location = new System.Drawing.Point(51, 27);
+            this.lblKonto.Location = new System.Drawing.Point(22, 20);
             this.lblKonto.Name = "lblKonto";
             this.lblKonto.Size = new System.Drawing.Size(111, 16);
             this.lblKonto.TabIndex = 30;
@@ -940,7 +946,7 @@
             // 
             // btnTomFalten
             // 
-            this.btnTomFalten.Location = new System.Drawing.Point(708, 364);
+            this.btnTomFalten.Location = new System.Drawing.Point(576, 406);
             this.btnTomFalten.Name = "btnTomFalten";
             this.btnTomFalten.Size = new System.Drawing.Size(126, 35);
             this.btnTomFalten.TabIndex = 32;
@@ -950,7 +956,7 @@
             // 
             // btnUpdateraKonto
             // 
-            this.btnUpdateraKonto.Location = new System.Drawing.Point(245, 364);
+            this.btnUpdateraKonto.Location = new System.Drawing.Point(200, 406);
             this.btnUpdateraKonto.Name = "btnUpdateraKonto";
             this.btnUpdateraKonto.Size = new System.Drawing.Size(126, 35);
             this.btnUpdateraKonto.TabIndex = 31;
@@ -961,7 +967,7 @@
             // lblFornamn
             // 
             this.lblFornamn.AutoSize = true;
-            this.lblFornamn.Location = new System.Drawing.Point(459, 151);
+            this.lblFornamn.Location = new System.Drawing.Point(366, 144);
             this.lblFornamn.Name = "lblFornamn";
             this.lblFornamn.Size = new System.Drawing.Size(51, 13);
             this.lblFornamn.TabIndex = 27;
@@ -969,7 +975,7 @@
             // 
             // btnSkapaKonto
             // 
-            this.btnSkapaKonto.Location = new System.Drawing.Point(459, 364);
+            this.btnSkapaKonto.Location = new System.Drawing.Point(366, 406);
             this.btnSkapaKonto.Name = "btnSkapaKonto";
             this.btnSkapaKonto.Size = new System.Drawing.Size(126, 35);
             this.btnSkapaKonto.TabIndex = 29;
@@ -980,7 +986,7 @@
             // lblSokPerson
             // 
             this.lblSokPerson.AutoSize = true;
-            this.lblSokPerson.Location = new System.Drawing.Point(51, 56);
+            this.lblSokPerson.Location = new System.Drawing.Point(22, 49);
             this.lblSokPerson.Name = "lblSokPerson";
             this.lblSokPerson.Size = new System.Drawing.Size(61, 13);
             this.lblSokPerson.TabIndex = 39;
@@ -989,7 +995,7 @@
             // lblEfternamn
             // 
             this.lblEfternamn.AutoSize = true;
-            this.lblEfternamn.Location = new System.Drawing.Point(459, 222);
+            this.lblEfternamn.Location = new System.Drawing.Point(366, 215);
             this.lblEfternamn.Name = "lblEfternamn";
             this.lblEfternamn.Size = new System.Drawing.Size(58, 13);
             this.lblEfternamn.TabIndex = 33;
@@ -997,7 +1003,7 @@
             // 
             // textBoxLosenord
             // 
-            this.textBoxLosenord.Location = new System.Drawing.Point(682, 237);
+            this.textBoxLosenord.Location = new System.Drawing.Point(550, 230);
             this.textBoxLosenord.Name = "textBoxLosenord";
             this.textBoxLosenord.Size = new System.Drawing.Size(152, 20);
             this.textBoxLosenord.TabIndex = 26;
@@ -1005,7 +1011,7 @@
             // lblTelefonnummer
             // 
             this.lblTelefonnummer.AutoSize = true;
-            this.lblTelefonnummer.Location = new System.Drawing.Point(459, 292);
+            this.lblTelefonnummer.Location = new System.Drawing.Point(366, 285);
             this.lblTelefonnummer.Name = "lblTelefonnummer";
             this.lblTelefonnummer.Size = new System.Drawing.Size(83, 13);
             this.lblTelefonnummer.TabIndex = 34;
@@ -1013,7 +1019,7 @@
             // 
             // textBoxEfternamn
             // 
-            this.textBoxEfternamn.Location = new System.Drawing.Point(459, 237);
+            this.textBoxEfternamn.Location = new System.Drawing.Point(366, 230);
             this.textBoxEfternamn.Name = "textBoxEfternamn";
             this.textBoxEfternamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxEfternamn.TabIndex = 22;
@@ -1021,7 +1027,7 @@
             // lblEpost
             // 
             this.lblEpost.AutoSize = true;
-            this.lblEpost.Location = new System.Drawing.Point(682, 82);
+            this.lblEpost.Location = new System.Drawing.Point(550, 75);
             this.lblEpost.Name = "lblEpost";
             this.lblEpost.Size = new System.Drawing.Size(40, 13);
             this.lblEpost.TabIndex = 36;
@@ -1029,7 +1035,7 @@
             // 
             // textBoxTelefonnummer
             // 
-            this.textBoxTelefonnummer.Location = new System.Drawing.Point(459, 307);
+            this.textBoxTelefonnummer.Location = new System.Drawing.Point(366, 300);
             this.textBoxTelefonnummer.Name = "textBoxTelefonnummer";
             this.textBoxTelefonnummer.Size = new System.Drawing.Size(152, 20);
             this.textBoxTelefonnummer.TabIndex = 23;
@@ -1037,7 +1043,7 @@
             // lblAnvandarnamn
             // 
             this.lblAnvandarnamn.AutoSize = true;
-            this.lblAnvandarnamn.Location = new System.Drawing.Point(682, 151);
+            this.lblAnvandarnamn.Location = new System.Drawing.Point(550, 144);
             this.lblAnvandarnamn.Name = "lblAnvandarnamn";
             this.lblAnvandarnamn.Size = new System.Drawing.Size(82, 13);
             this.lblAnvandarnamn.TabIndex = 38;
@@ -1045,28 +1051,28 @@
             // 
             // textBoxEpost
             // 
-            this.textBoxEpost.Location = new System.Drawing.Point(682, 97);
+            this.textBoxEpost.Location = new System.Drawing.Point(550, 90);
             this.textBoxEpost.Name = "textBoxEpost";
             this.textBoxEpost.Size = new System.Drawing.Size(152, 20);
             this.textBoxEpost.TabIndex = 24;
             // 
             // textBoxFornamn
             // 
-            this.textBoxFornamn.Location = new System.Drawing.Point(459, 166);
+            this.textBoxFornamn.Location = new System.Drawing.Point(366, 159);
             this.textBoxFornamn.Name = "textBoxFornamn";
             this.textBoxFornamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxFornamn.TabIndex = 21;
             // 
             // textBoxAnvandarnamn
             // 
-            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(682, 166);
+            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(550, 159);
             this.textBoxAnvandarnamn.Name = "textBoxAnvandarnamn";
             this.textBoxAnvandarnamn.Size = new System.Drawing.Size(152, 20);
             this.textBoxAnvandarnamn.TabIndex = 25;
             // 
             // buttonLogOut
             // 
-            this.buttonLogOut.Location = new System.Drawing.Point(872, 1);
+            this.buttonLogOut.Location = new System.Drawing.Point(865, 8);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(68, 27);
             this.buttonLogOut.TabIndex = 1;
@@ -1078,7 +1084,8 @@
             // 
             this.labelStaffName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStaffName.AutoSize = true;
-            this.labelStaffName.Location = new System.Drawing.Point(796, 8);
+            this.labelStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStaffName.Location = new System.Drawing.Point(423, 9);
             this.labelStaffName.Name = "labelStaffName";
             this.labelStaffName.Size = new System.Drawing.Size(35, 13);
             this.labelStaffName.TabIndex = 2;
@@ -1160,7 +1167,6 @@
         private System.Windows.Forms.Button buttonSkapaForestalnning;
         private System.Windows.Forms.Button buttonSkrivUtForestallning;
         private System.Windows.Forms.Button buttonRaderaForestallning;
-        private System.Windows.Forms.Button buttonAndraForestallning;
         private System.Windows.Forms.Label labelKronor;
         private System.Windows.Forms.Label labelAntal;
         private System.Windows.Forms.Label labelTotalt;
