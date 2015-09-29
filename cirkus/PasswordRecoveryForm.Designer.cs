@@ -97,6 +97,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxEmail);
             this.Name = "PasswordRecoveryForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PasswordRecoveryForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
