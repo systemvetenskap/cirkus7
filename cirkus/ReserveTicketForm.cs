@@ -1816,10 +1816,9 @@ namespace cirkus
                         //acttime += " " + r[0].ToString() + ": " + r[3].ToString() + "-" + r[4].ToString() + "";
                     }
                     conn.Open();
-                    cmd = new NpgsqlCommand(@"select sum(price_group_seat.price), price_group_seat.group from price_group_seat
-                                                inner join booked_seats on price_group_seat.priceid = booked_seats.priceid
-                                                inner join booking on booked_seats.bookingid = booking.bookingid
-                                                where booking.bookingid = '" + bid + "'group by price_group_seat.group", conn);
+                    cmd = new NpgsqlCommand(@"select sum(booking.price), booking.type from booking
+                                                inner join booked_seats on booking.bookingid = booked_seats.bookingid
+                                                where booking.bookingid = '" + bid + "' group by booking.type", conn);
                     NpgsqlDataReader read = cmd.ExecuteReader();
                     string pris = "";
                     string aldersgrupp = "";
