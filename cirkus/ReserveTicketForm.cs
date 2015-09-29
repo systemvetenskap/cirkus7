@@ -24,7 +24,7 @@ namespace cirkus
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int showid, actid, fillMode, seatid, agegroup, customerid, total, checkedseats, priceid, freeSseats, freeLseats, tickets, nrotickets, ticketid, count, checks;
-        string show, act, customeremail, customerfname, customerlname, pdf, bokningid, actname, suggSeats;
+        string show, act, customeremail, customerfname, customerlname, pdf, bokningid, actname, suggSeats, acttime;
         string sections = "ABCDEFGH";
         private bool newcust;
         private bool seatType = true;
@@ -1803,7 +1803,7 @@ namespace cirkus
                 {
                     int bid = int.Parse(row[0].ToString());
                     conn.Open();
-                    da = new NpgsqlDataAdapter(@"select acts.name,seats.section, seats.rownumber from ticket
+                    da = new NpgsqlDataAdapter(@"select acts.name,seats.section, seats.rownumber, acts.start_time, acts.end_time from ticket
                                                             inner join booked_seats on ticket.booked_seat_id = booked_seats.booked_seat_id
                                                             inner join available_seats on booked_seats.available_seats_id = available_seats.available_seats_id
                                                             inner join acts on available_seats.actid = acts.actid
@@ -1813,11 +1813,12 @@ namespace cirkus
                     DataTable acts = new DataTable();
                     
                     da.Fill(acts);
+                    
                     conn.Close();
                     foreach (DataRow r in acts.Rows)
                     {
                         actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
-
+                        acttime += " " + r[0].ToString() + ": " + r[3].ToString() + "-" + r[4].ToString() + "";
                     }
                     conn.Open();
                     cmd = new NpgsqlCommand(@"select sum(price_group_seat.price), price_group_seat.group from price_group_seat
@@ -1837,14 +1838,7 @@ namespace cirkus
                         imageHeight += 20;
                         prisPoint -= 20;
                     }
-
-
-                    foreach (DataRow r in acts.Rows)
-                    {
-                        actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
-
-                    }
-
+                    
                     while (read.Read())
                     {
                         pris = read[0].ToString();
@@ -1944,7 +1938,7 @@ namespace cirkus
                     cb.ShowText(actname);
 
                     cb.SetTextMatrix(160, 650);
-                    cb.ShowText("Tider:");
+                    cb.ShowText(acttime);
 
                     cb.SetTextMatrix(160, prisPoint);
                     cb.ShowText(pris);
@@ -1972,9 +1966,6 @@ namespace cirkus
                     mail.Attachments.Add(new Attachment(ms, "Biljett" + bokningid + ".pdf"));
 
                     actname = "";
-
-                   
-
 
 
                 }
