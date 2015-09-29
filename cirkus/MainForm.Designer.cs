@@ -32,9 +32,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
             this.txtPrintDatum = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lbldate = new System.Windows.Forms.Label();
             this.textBoxPrintBookingid = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblBookingid = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dgTicketActs = new System.Windows.Forms.DataGridView();
             this.textBoxSearchTicket = new System.Windows.Forms.TextBox();
@@ -47,18 +47,18 @@
             this.textBoxPrintShow = new System.Windows.Forms.TextBox();
             this.textBoxSearchCustomer = new System.Windows.Forms.TextBox();
             this.textBoxPrintAge = new System.Windows.Forms.TextBox();
-            this.btnDeleteTicket = new System.Windows.Forms.Button();
-            this.buttonPrint = new System.Windows.Forms.Button();
-            this.buttonEditTicket = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.buttonReserveTicket = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.buttonAddCustomer = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.btnDeleteSelectedTicket = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnEditTicket = new System.Windows.Forms.Button();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.btnBookNewTicket = new System.Windows.Forms.Button();
+            this.lblAct = new System.Windows.Forms.Label();
+            this.btnAddCustomer = new System.Windows.Forms.Button();
+            this.lblShow = new System.Windows.Forms.Label();
             this.checkBoxOlderTickets = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblAgeGroup = new System.Windows.Forms.Label();
+            this.lblTickets = new System.Windows.Forms.Label();
+            this.lblCustomers = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabShow = new System.Windows.Forms.TabPage();
             this.btnPreview = new System.Windows.Forms.Button();
@@ -66,52 +66,52 @@
             this.lblActs = new System.Windows.Forms.Label();
             this.lblShows = new System.Windows.Forms.Label();
             this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
-            this.checkBoxAllaAkter = new System.Windows.Forms.CheckBox();
-            this.dgvAkter = new System.Windows.Forms.DataGridView();
-            this.dgvShowsList = new System.Windows.Forms.DataGridView();
-            this.textBoxKronorVuxenbiljetter = new System.Windows.Forms.TextBox();
-            this.textBoxAntalUngdomsbiljetter = new System.Windows.Forms.TextBox();
-            this.textBoxKronorUngdomsbiljetter = new System.Windows.Forms.TextBox();
-            this.textBoxAntalBarnbiljetter = new System.Windows.Forms.TextBox();
-            this.textBoxKronorBarnbiljetter = new System.Windows.Forms.TextBox();
-            this.textBoxTotaltAntal = new System.Windows.Forms.TextBox();
-            this.textBoxTotaltKronor = new System.Windows.Forms.TextBox();
-            this.buttonSkrivUtForestallning = new System.Windows.Forms.Button();
-            this.buttonRaderaForestallning = new System.Windows.Forms.Button();
+            this.checkBoxAllActs = new System.Windows.Forms.CheckBox();
+            this.dgActs = new System.Windows.Forms.DataGridView();
+            this.dgShows = new System.Windows.Forms.DataGridView();
+            this.textBoxKrAdultTickets = new System.Windows.Forms.TextBox();
+            this.textBoxNumberofYouthTickets = new System.Windows.Forms.TextBox();
+            this.textBoxKrYouthTickets = new System.Windows.Forms.TextBox();
+            this.textBoxNumberofChildTickets = new System.Windows.Forms.TextBox();
+            this.textBoxKrChildTickets = new System.Windows.Forms.TextBox();
+            this.textBoxTotalNumberof = new System.Windows.Forms.TextBox();
+            this.textBoxKrTotal = new System.Windows.Forms.TextBox();
+            this.btnPrintStatistics = new System.Windows.Forms.Button();
+            this.btnDeleteShow = new System.Windows.Forms.Button();
             this.labelKronor = new System.Windows.Forms.Label();
             this.labelAntal = new System.Windows.Forms.Label();
-            this.labelTotalt = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.labelBarnbiljetter = new System.Windows.Forms.Label();
             this.labelUngdomsbiljetter = new System.Windows.Forms.Label();
-            this.labelVuxenbiljetter = new System.Windows.Forms.Label();
-            this.textBoxAntalVuxenBiljetter = new System.Windows.Forms.TextBox();
-            this.buttonSkapaForestalnning = new System.Windows.Forms.Button();
+            this.lblAdultTickets = new System.Windows.Forms.Label();
+            this.textBoxNumberofAdultTickets = new System.Windows.Forms.TextBox();
+            this.btnCreateShow = new System.Windows.Forms.Button();
             this.tabAccount = new System.Windows.Forms.TabPage();
-            this.btnRaderaKonto = new System.Windows.Forms.Button();
-            this.lblPersonnummer = new System.Windows.Forms.Label();
-            this.textBoxPersonnummer = new System.Windows.Forms.TextBox();
-            this.LblStatusKonto = new System.Windows.Forms.Label();
-            this.lblBehorighetsniva = new System.Windows.Forms.Label();
-            this.lblLosenord = new System.Windows.Forms.Label();
+            this.btnDeleteAccount = new System.Windows.Forms.Button();
+            this.lblSsnumber = new System.Windows.Forms.Label();
+            this.textBoxSsnumber = new System.Windows.Forms.TextBox();
+            this.LblStatusAccount = new System.Windows.Forms.Label();
+            this.lblAuth = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.dgStaff = new System.Windows.Forms.DataGridView();
             this.textBoxSearchStaff = new System.Windows.Forms.TextBox();
-            this.comboBoxBehorighetsniva = new System.Windows.Forms.ComboBox();
+            this.comboBoxAuth = new System.Windows.Forms.ComboBox();
             this.lblKonto = new System.Windows.Forms.Label();
-            this.btnTomFalten = new System.Windows.Forms.Button();
-            this.btnUpdateraKonto = new System.Windows.Forms.Button();
-            this.lblFornamn = new System.Windows.Forms.Label();
-            this.btnSkapaKonto = new System.Windows.Forms.Button();
+            this.btnEmptyBoxes = new System.Windows.Forms.Button();
+            this.btnUpdateAccount = new System.Windows.Forms.Button();
+            this.lblFirstName = new System.Windows.Forms.Label();
+            this.btnCreateAccount = new System.Windows.Forms.Button();
             this.lblSokPerson = new System.Windows.Forms.Label();
-            this.lblEfternamn = new System.Windows.Forms.Label();
-            this.textBoxLosenord = new System.Windows.Forms.TextBox();
-            this.lblTelefonnummer = new System.Windows.Forms.Label();
-            this.textBoxEfternamn = new System.Windows.Forms.TextBox();
-            this.lblEpost = new System.Windows.Forms.Label();
-            this.textBoxTelefonnummer = new System.Windows.Forms.TextBox();
-            this.lblAnvandarnamn = new System.Windows.Forms.Label();
-            this.textBoxEpost = new System.Windows.Forms.TextBox();
-            this.textBoxFornamn = new System.Windows.Forms.TextBox();
-            this.textBoxAnvandarnamn = new System.Windows.Forms.TextBox();
+            this.lblLastName = new System.Windows.Forms.Label();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.lblPhonenumber = new System.Windows.Forms.Label();
+            this.textBoxLastName = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxFirstname = new System.Windows.Forms.TextBox();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.buttonLogOut = new System.Windows.Forms.Button();
             this.labelStaffName = new System.Windows.Forms.Label();
             this.printDocumentStatistic = new System.Drawing.Printing.PrintDocument();
@@ -125,8 +125,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).BeginInit();
             this.tabShow.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAkter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgShows)).BeginInit();
             this.tabAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgStaff)).BeginInit();
             this.SuspendLayout();
@@ -148,9 +148,9 @@
             // tabTicket
             // 
             this.tabTicket.Controls.Add(this.txtPrintDatum);
-            this.tabTicket.Controls.Add(this.label11);
+            this.tabTicket.Controls.Add(this.lbldate);
             this.tabTicket.Controls.Add(this.textBoxPrintBookingid);
-            this.tabTicket.Controls.Add(this.label5);
+            this.tabTicket.Controls.Add(this.lblBookingid);
             this.tabTicket.Controls.Add(this.label10);
             this.tabTicket.Controls.Add(this.dgTicketActs);
             this.tabTicket.Controls.Add(this.textBoxSearchTicket);
@@ -163,18 +163,18 @@
             this.tabTicket.Controls.Add(this.textBoxPrintShow);
             this.tabTicket.Controls.Add(this.textBoxSearchCustomer);
             this.tabTicket.Controls.Add(this.textBoxPrintAge);
-            this.tabTicket.Controls.Add(this.btnDeleteTicket);
-            this.tabTicket.Controls.Add(this.buttonPrint);
-            this.tabTicket.Controls.Add(this.buttonEditTicket);
-            this.tabTicket.Controls.Add(this.label8);
-            this.tabTicket.Controls.Add(this.buttonReserveTicket);
-            this.tabTicket.Controls.Add(this.label7);
-            this.tabTicket.Controls.Add(this.buttonAddCustomer);
-            this.tabTicket.Controls.Add(this.label6);
+            this.tabTicket.Controls.Add(this.btnDeleteSelectedTicket);
+            this.tabTicket.Controls.Add(this.btnPrint);
+            this.tabTicket.Controls.Add(this.btnEditTicket);
+            this.tabTicket.Controls.Add(this.lblPrice);
+            this.tabTicket.Controls.Add(this.btnBookNewTicket);
+            this.tabTicket.Controls.Add(this.lblAct);
+            this.tabTicket.Controls.Add(this.btnAddCustomer);
+            this.tabTicket.Controls.Add(this.lblShow);
             this.tabTicket.Controls.Add(this.checkBoxOlderTickets);
-            this.tabTicket.Controls.Add(this.label4);
-            this.tabTicket.Controls.Add(this.label3);
-            this.tabTicket.Controls.Add(this.label2);
+            this.tabTicket.Controls.Add(this.lblAgeGroup);
+            this.tabTicket.Controls.Add(this.lblTickets);
+            this.tabTicket.Controls.Add(this.lblCustomers);
             this.tabTicket.Controls.Add(this.label1);
             this.tabTicket.Location = new System.Drawing.Point(4, 26);
             this.tabTicket.Name = "tabTicket";
@@ -194,15 +194,15 @@
             this.txtPrintDatum.TabIndex = 27;
             this.txtPrintDatum.Click += new System.EventHandler(this.txtPrintDatum_Click);
             // 
-            // label11
+            // lbldate
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(777, 101);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
-            this.label11.TabIndex = 26;
-            this.label11.Text = "Datum:";
+            this.lbldate.AutoSize = true;
+            this.lbldate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldate.Location = new System.Drawing.Point(777, 101);
+            this.lbldate.Name = "lbldate";
+            this.lbldate.Size = new System.Drawing.Size(41, 13);
+            this.lbldate.TabIndex = 26;
+            this.lbldate.Text = "Datum:";
             // 
             // textBoxPrintBookingid
             // 
@@ -214,15 +214,15 @@
             this.textBoxPrintBookingid.TabIndex = 25;
             this.textBoxPrintBookingid.Click += new System.EventHandler(this.textBoxPrintBookingid_Click);
             // 
-            // label5
+            // lblBookingid
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(777, 60);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "BokningsNr:";
+            this.lblBookingid.AutoSize = true;
+            this.lblBookingid.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBookingid.Location = new System.Drawing.Point(777, 60);
+            this.lblBookingid.Name = "lblBookingid";
+            this.lblBookingid.Size = new System.Drawing.Size(65, 13);
+            this.lblBookingid.TabIndex = 24;
+            this.lblBookingid.Text = "BokningsNr:";
             // 
             // label10
             // 
@@ -373,86 +373,86 @@
             this.textBoxPrintAge.TabIndex = 15;
             this.textBoxPrintAge.Click += new System.EventHandler(this.textBoxPrintAge_Click);
             // 
-            // btnDeleteTicket
+            // btnDeleteSelectedTicket
             // 
-            this.btnDeleteTicket.Location = new System.Drawing.Point(217, 406);
-            this.btnDeleteTicket.Name = "btnDeleteTicket";
-            this.btnDeleteTicket.Size = new System.Drawing.Size(126, 35);
-            this.btnDeleteTicket.TabIndex = 11;
-            this.btnDeleteTicket.Text = "Radera vald biljett";
-            this.btnDeleteTicket.UseVisualStyleBackColor = true;
-            this.btnDeleteTicket.Click += new System.EventHandler(this.btnDeleteTicket_Click);
+            this.btnDeleteSelectedTicket.Location = new System.Drawing.Point(217, 406);
+            this.btnDeleteSelectedTicket.Name = "btnDeleteSelectedTicket";
+            this.btnDeleteSelectedTicket.Size = new System.Drawing.Size(126, 35);
+            this.btnDeleteSelectedTicket.TabIndex = 11;
+            this.btnDeleteSelectedTicket.Text = "Radera vald biljett";
+            this.btnDeleteSelectedTicket.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedTicket.Click += new System.EventHandler(this.btnDeleteTicket_Click);
             // 
-            // buttonPrint
+            // btnPrint
             // 
-            this.buttonPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrint.Location = new System.Drawing.Point(777, 339);
-            this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(126, 35);
-            this.buttonPrint.TabIndex = 8;
-            this.buttonPrint.Text = "Skriv ut vald biljett";
-            this.buttonPrint.UseVisualStyleBackColor = true;
-            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
+            this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(777, 339);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(126, 35);
+            this.btnPrint.TabIndex = 8;
+            this.btnPrint.Text = "Skriv ut vald biljett";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
-            // buttonEditTicket
+            // btnEditTicket
             // 
-            this.buttonEditTicket.Location = new System.Drawing.Point(359, 406);
-            this.buttonEditTicket.Name = "buttonEditTicket";
-            this.buttonEditTicket.Size = new System.Drawing.Size(126, 35);
-            this.buttonEditTicket.TabIndex = 10;
-            this.buttonEditTicket.Text = "Ändra vald biljett";
-            this.buttonEditTicket.UseVisualStyleBackColor = true;
-            this.buttonEditTicket.Click += new System.EventHandler(this.buttonEditTicket_Click);
+            this.btnEditTicket.Location = new System.Drawing.Point(359, 406);
+            this.btnEditTicket.Name = "btnEditTicket";
+            this.btnEditTicket.Size = new System.Drawing.Size(126, 35);
+            this.btnEditTicket.TabIndex = 10;
+            this.btnEditTicket.Text = "Ändra vald biljett";
+            this.btnEditTicket.UseVisualStyleBackColor = true;
+            this.btnEditTicket.Click += new System.EventHandler(this.buttonEditTicket_Click);
             // 
-            // label8
+            // lblPrice
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(777, 287);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 13);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Pris:";
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice.Location = new System.Drawing.Point(777, 287);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(27, 13);
+            this.lblPrice.TabIndex = 12;
+            this.lblPrice.Text = "Pris:";
             // 
-            // buttonReserveTicket
+            // btnBookNewTicket
             // 
-            this.buttonReserveTicket.Location = new System.Drawing.Point(618, 406);
-            this.buttonReserveTicket.Name = "buttonReserveTicket";
-            this.buttonReserveTicket.Size = new System.Drawing.Size(126, 35);
-            this.buttonReserveTicket.TabIndex = 9;
-            this.buttonReserveTicket.Text = "Boka ny biljett";
-            this.buttonReserveTicket.UseVisualStyleBackColor = true;
-            this.buttonReserveTicket.Click += new System.EventHandler(this.buttonReserveTicket_Click);
+            this.btnBookNewTicket.Location = new System.Drawing.Point(618, 406);
+            this.btnBookNewTicket.Name = "btnBookNewTicket";
+            this.btnBookNewTicket.Size = new System.Drawing.Size(126, 35);
+            this.btnBookNewTicket.TabIndex = 9;
+            this.btnBookNewTicket.Text = "Boka ny biljett";
+            this.btnBookNewTicket.UseVisualStyleBackColor = true;
+            this.btnBookNewTicket.Click += new System.EventHandler(this.buttonReserveTicket_Click);
             // 
-            // label7
+            // lblAct
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(777, 196);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Akt/plats:";
+            this.lblAct.AutoSize = true;
+            this.lblAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAct.Location = new System.Drawing.Point(777, 196);
+            this.lblAct.Name = "lblAct";
+            this.lblAct.Size = new System.Drawing.Size(53, 13);
+            this.lblAct.TabIndex = 11;
+            this.lblAct.Text = "Akt/plats:";
             // 
-            // buttonAddCustomer
+            // btnAddCustomer
             // 
-            this.buttonAddCustomer.Location = new System.Drawing.Point(15, 406);
-            this.buttonAddCustomer.Name = "buttonAddCustomer";
-            this.buttonAddCustomer.Size = new System.Drawing.Size(126, 35);
-            this.buttonAddCustomer.TabIndex = 8;
-            this.buttonAddCustomer.Text = "Lägg till ny kund";
-            this.buttonAddCustomer.UseVisualStyleBackColor = true;
-            this.buttonAddCustomer.Click += new System.EventHandler(this.buttonAddCustomer_Click);
+            this.btnAddCustomer.Location = new System.Drawing.Point(15, 406);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(126, 35);
+            this.btnAddCustomer.TabIndex = 8;
+            this.btnAddCustomer.Text = "Lägg till ny kund";
+            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.buttonAddCustomer_Click);
             // 
-            // label6
+            // lblShow
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(777, 143);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Föreställning:";
+            this.lblShow.AutoSize = true;
+            this.lblShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShow.Location = new System.Drawing.Point(777, 143);
+            this.lblShow.Name = "lblShow";
+            this.lblShow.Size = new System.Drawing.Size(69, 13);
+            this.lblShow.TabIndex = 10;
+            this.lblShow.Text = "Föreställning:";
             // 
             // checkBoxOlderTickets
             // 
@@ -465,35 +465,35 @@
             this.checkBoxOlderTickets.UseVisualStyleBackColor = true;
             this.checkBoxOlderTickets.CheckedChanged += new System.EventHandler(this.checkBoxOlderTickets_CheckedChanged);
             // 
-            // label4
+            // lblAgeGroup
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(777, 246);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Åldersgrupp:";
+            this.lblAgeGroup.AutoSize = true;
+            this.lblAgeGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgeGroup.Location = new System.Drawing.Point(777, 246);
+            this.lblAgeGroup.Name = "lblAgeGroup";
+            this.lblAgeGroup.Size = new System.Drawing.Size(66, 13);
+            this.lblAgeGroup.TabIndex = 8;
+            this.lblAgeGroup.Text = "Åldersgrupp:";
             // 
-            // label3
+            // lblTickets
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(214, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 16);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Biljetter";
+            this.lblTickets.AutoSize = true;
+            this.lblTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTickets.Location = new System.Drawing.Point(214, 19);
+            this.lblTickets.Name = "lblTickets";
+            this.lblTickets.Size = new System.Drawing.Size(61, 16);
+            this.lblTickets.TabIndex = 5;
+            this.lblTickets.Text = "Biljetter";
             // 
-            // label2
+            // lblCustomers
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Kunder";
+            this.lblCustomers.AutoSize = true;
+            this.lblCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomers.Location = new System.Drawing.Point(15, 19);
+            this.lblCustomers.Name = "lblCustomers";
+            this.lblCustomers.Size = new System.Drawing.Size(56, 16);
+            this.lblCustomers.TabIndex = 3;
+            this.lblCustomers.Text = "Kunder";
             // 
             // label1
             // 
@@ -511,26 +511,26 @@
             this.tabShow.Controls.Add(this.lblActs);
             this.tabShow.Controls.Add(this.lblShows);
             this.tabShow.Controls.Add(this.printPreviewControl1);
-            this.tabShow.Controls.Add(this.checkBoxAllaAkter);
-            this.tabShow.Controls.Add(this.dgvAkter);
-            this.tabShow.Controls.Add(this.dgvShowsList);
-            this.tabShow.Controls.Add(this.textBoxKronorVuxenbiljetter);
-            this.tabShow.Controls.Add(this.textBoxAntalUngdomsbiljetter);
-            this.tabShow.Controls.Add(this.textBoxKronorUngdomsbiljetter);
-            this.tabShow.Controls.Add(this.textBoxAntalBarnbiljetter);
-            this.tabShow.Controls.Add(this.textBoxKronorBarnbiljetter);
-            this.tabShow.Controls.Add(this.textBoxTotaltAntal);
-            this.tabShow.Controls.Add(this.textBoxTotaltKronor);
-            this.tabShow.Controls.Add(this.buttonSkrivUtForestallning);
-            this.tabShow.Controls.Add(this.buttonRaderaForestallning);
+            this.tabShow.Controls.Add(this.checkBoxAllActs);
+            this.tabShow.Controls.Add(this.dgActs);
+            this.tabShow.Controls.Add(this.dgShows);
+            this.tabShow.Controls.Add(this.textBoxKrAdultTickets);
+            this.tabShow.Controls.Add(this.textBoxNumberofYouthTickets);
+            this.tabShow.Controls.Add(this.textBoxKrYouthTickets);
+            this.tabShow.Controls.Add(this.textBoxNumberofChildTickets);
+            this.tabShow.Controls.Add(this.textBoxKrChildTickets);
+            this.tabShow.Controls.Add(this.textBoxTotalNumberof);
+            this.tabShow.Controls.Add(this.textBoxKrTotal);
+            this.tabShow.Controls.Add(this.btnPrintStatistics);
+            this.tabShow.Controls.Add(this.btnDeleteShow);
             this.tabShow.Controls.Add(this.labelKronor);
             this.tabShow.Controls.Add(this.labelAntal);
-            this.tabShow.Controls.Add(this.labelTotalt);
+            this.tabShow.Controls.Add(this.lblTotal);
             this.tabShow.Controls.Add(this.labelBarnbiljetter);
             this.tabShow.Controls.Add(this.labelUngdomsbiljetter);
-            this.tabShow.Controls.Add(this.labelVuxenbiljetter);
-            this.tabShow.Controls.Add(this.textBoxAntalVuxenBiljetter);
-            this.tabShow.Controls.Add(this.buttonSkapaForestalnning);
+            this.tabShow.Controls.Add(this.lblAdultTickets);
+            this.tabShow.Controls.Add(this.textBoxNumberofAdultTickets);
+            this.tabShow.Controls.Add(this.btnCreateShow);
             this.tabShow.Location = new System.Drawing.Point(4, 26);
             this.tabShow.Name = "tabShow";
             this.tabShow.Padding = new System.Windows.Forms.Padding(3);
@@ -587,148 +587,148 @@
             this.printPreviewControl1.TabIndex = 24;
             this.printPreviewControl1.Visible = false;
             // 
-            // checkBoxAllaAkter
+            // checkBoxAllActs
             // 
-            this.checkBoxAllaAkter.AutoSize = true;
-            this.checkBoxAllaAkter.Location = new System.Drawing.Point(528, 245);
-            this.checkBoxAllaAkter.Name = "checkBoxAllaAkter";
-            this.checkBoxAllaAkter.Size = new System.Drawing.Size(232, 17);
-            this.checkBoxAllaAkter.TabIndex = 25;
-            this.checkBoxAllaAkter.Text = "Visa statistik för alla akter i vald föreställning";
-            this.checkBoxAllaAkter.UseVisualStyleBackColor = true;
-            this.checkBoxAllaAkter.CheckedChanged += new System.EventHandler(this.checkBoxAllaAkter_CheckedChanged);
+            this.checkBoxAllActs.AutoSize = true;
+            this.checkBoxAllActs.Location = new System.Drawing.Point(528, 245);
+            this.checkBoxAllActs.Name = "checkBoxAllActs";
+            this.checkBoxAllActs.Size = new System.Drawing.Size(232, 17);
+            this.checkBoxAllActs.TabIndex = 25;
+            this.checkBoxAllActs.Text = "Visa statistik för alla akter i vald föreställning";
+            this.checkBoxAllActs.UseVisualStyleBackColor = true;
+            this.checkBoxAllActs.CheckedChanged += new System.EventHandler(this.checkBoxAllaAkter_CheckedChanged);
             // 
-            // dgvAkter
+            // dgActs
             // 
-            this.dgvAkter.AllowUserToAddRows = false;
-            this.dgvAkter.AllowUserToResizeColumns = false;
-            this.dgvAkter.AllowUserToResizeRows = false;
-            this.dgvAkter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvAkter.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvAkter.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvAkter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAkter.ColumnHeadersVisible = false;
-            this.dgvAkter.Location = new System.Drawing.Point(305, 47);
-            this.dgvAkter.MultiSelect = false;
-            this.dgvAkter.Name = "dgvAkter";
-            this.dgvAkter.ReadOnly = true;
-            this.dgvAkter.RowHeadersVisible = false;
-            this.dgvAkter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAkter.Size = new System.Drawing.Size(193, 215);
-            this.dgvAkter.TabIndex = 23;
-            this.dgvAkter.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAkter_CellClick);
-            this.dgvAkter.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAkter_KeyUp);
+            this.dgActs.AllowUserToAddRows = false;
+            this.dgActs.AllowUserToDeleteRows = false;
+            this.dgActs.AllowUserToResizeColumns = false;
+            this.dgActs.AllowUserToResizeRows = false;
+            this.dgActs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgActs.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgActs.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgActs.Location = new System.Drawing.Point(305, 47);
+            this.dgActs.MultiSelect = false;
+            this.dgActs.Name = "dgActs";
+            this.dgActs.ReadOnly = true;
+            this.dgActs.RowHeadersVisible = false;
+            this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgActs.Size = new System.Drawing.Size(193, 215);
+            this.dgActs.TabIndex = 23;
+            this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAkter_CellClick);
+            this.dgActs.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAkter_KeyUp);
             // 
-            // dgvShowsList
+            // dgShows
             // 
-            this.dgvShowsList.AllowUserToAddRows = false;
-            this.dgvShowsList.AllowUserToResizeColumns = false;
-            this.dgvShowsList.AllowUserToResizeRows = false;
-            this.dgvShowsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvShowsList.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvShowsList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvShowsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvShowsList.ColumnHeadersVisible = false;
-            this.dgvShowsList.Location = new System.Drawing.Point(23, 47);
-            this.dgvShowsList.MultiSelect = false;
-            this.dgvShowsList.Name = "dgvShowsList";
-            this.dgvShowsList.ReadOnly = true;
-            this.dgvShowsList.RowHeadersVisible = false;
-            this.dgvShowsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShowsList.Size = new System.Drawing.Size(260, 354);
-            this.dgvShowsList.TabIndex = 22;
-            this.dgvShowsList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowsList_CellClick);
-            this.dgvShowsList.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvShowsList_KeyUp);
+            this.dgShows.AllowUserToAddRows = false;
+            this.dgShows.AllowUserToDeleteRows = false;
+            this.dgShows.AllowUserToResizeColumns = false;
+            this.dgShows.AllowUserToResizeRows = false;
+            this.dgShows.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgShows.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgShows.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgShows.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgShows.Location = new System.Drawing.Point(23, 47);
+            this.dgShows.MultiSelect = false;
+            this.dgShows.Name = "dgShows";
+            this.dgShows.ReadOnly = true;
+            this.dgShows.RowHeadersVisible = false;
+            this.dgShows.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgShows.Size = new System.Drawing.Size(260, 354);
+            this.dgShows.TabIndex = 22;
+            this.dgShows.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowsList_CellClick);
+            this.dgShows.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvShowsList_KeyUp);
             // 
-            // textBoxKronorVuxenbiljetter
+            // textBoxKrAdultTickets
             // 
-            this.textBoxKronorVuxenbiljetter.Location = new System.Drawing.Point(740, 65);
-            this.textBoxKronorVuxenbiljetter.Name = "textBoxKronorVuxenbiljetter";
-            this.textBoxKronorVuxenbiljetter.ReadOnly = true;
-            this.textBoxKronorVuxenbiljetter.Size = new System.Drawing.Size(106, 20);
-            this.textBoxKronorVuxenbiljetter.TabIndex = 21;
-            this.textBoxKronorVuxenbiljetter.Click += new System.EventHandler(this.textBoxKronorVuxenbiljetter_Click);
-            this.textBoxKronorVuxenbiljetter.TextChanged += new System.EventHandler(this.textBoxKronorVuxenbiljetter_TextChanged);
+            this.textBoxKrAdultTickets.Location = new System.Drawing.Point(740, 65);
+            this.textBoxKrAdultTickets.Name = "textBoxKrAdultTickets";
+            this.textBoxKrAdultTickets.ReadOnly = true;
+            this.textBoxKrAdultTickets.Size = new System.Drawing.Size(106, 20);
+            this.textBoxKrAdultTickets.TabIndex = 21;
+            this.textBoxKrAdultTickets.Click += new System.EventHandler(this.textBoxKronorVuxenbiljetter_Click);
+            this.textBoxKrAdultTickets.TextChanged += new System.EventHandler(this.textBoxKronorVuxenbiljetter_TextChanged);
             // 
-            // textBoxAntalUngdomsbiljetter
+            // textBoxNumberofYouthTickets
             // 
-            this.textBoxAntalUngdomsbiljetter.Location = new System.Drawing.Point(627, 103);
-            this.textBoxAntalUngdomsbiljetter.Name = "textBoxAntalUngdomsbiljetter";
-            this.textBoxAntalUngdomsbiljetter.ReadOnly = true;
-            this.textBoxAntalUngdomsbiljetter.Size = new System.Drawing.Size(106, 20);
-            this.textBoxAntalUngdomsbiljetter.TabIndex = 20;
-            this.textBoxAntalUngdomsbiljetter.Click += new System.EventHandler(this.textBoxAntalUngdomsbiljetter_Click);
-            this.textBoxAntalUngdomsbiljetter.TextChanged += new System.EventHandler(this.textBoxAntalUngdomsbiljetter_TextChanged);
+            this.textBoxNumberofYouthTickets.Location = new System.Drawing.Point(627, 103);
+            this.textBoxNumberofYouthTickets.Name = "textBoxNumberofYouthTickets";
+            this.textBoxNumberofYouthTickets.ReadOnly = true;
+            this.textBoxNumberofYouthTickets.Size = new System.Drawing.Size(106, 20);
+            this.textBoxNumberofYouthTickets.TabIndex = 20;
+            this.textBoxNumberofYouthTickets.Click += new System.EventHandler(this.textBoxAntalUngdomsbiljetter_Click);
+            this.textBoxNumberofYouthTickets.TextChanged += new System.EventHandler(this.textBoxAntalUngdomsbiljetter_TextChanged);
             // 
-            // textBoxKronorUngdomsbiljetter
+            // textBoxKrYouthTickets
             // 
-            this.textBoxKronorUngdomsbiljetter.Location = new System.Drawing.Point(740, 103);
-            this.textBoxKronorUngdomsbiljetter.Name = "textBoxKronorUngdomsbiljetter";
-            this.textBoxKronorUngdomsbiljetter.ReadOnly = true;
-            this.textBoxKronorUngdomsbiljetter.Size = new System.Drawing.Size(106, 20);
-            this.textBoxKronorUngdomsbiljetter.TabIndex = 19;
-            this.textBoxKronorUngdomsbiljetter.Click += new System.EventHandler(this.textBoxKronorUngdomsbiljetter_Click);
-            this.textBoxKronorUngdomsbiljetter.TextChanged += new System.EventHandler(this.textBoxKronorUngdomsbiljetter_TextChanged);
+            this.textBoxKrYouthTickets.Location = new System.Drawing.Point(740, 103);
+            this.textBoxKrYouthTickets.Name = "textBoxKrYouthTickets";
+            this.textBoxKrYouthTickets.ReadOnly = true;
+            this.textBoxKrYouthTickets.Size = new System.Drawing.Size(106, 20);
+            this.textBoxKrYouthTickets.TabIndex = 19;
+            this.textBoxKrYouthTickets.Click += new System.EventHandler(this.textBoxKronorUngdomsbiljetter_Click);
+            this.textBoxKrYouthTickets.TextChanged += new System.EventHandler(this.textBoxKronorUngdomsbiljetter_TextChanged);
             // 
-            // textBoxAntalBarnbiljetter
+            // textBoxNumberofChildTickets
             // 
-            this.textBoxAntalBarnbiljetter.Location = new System.Drawing.Point(627, 141);
-            this.textBoxAntalBarnbiljetter.Name = "textBoxAntalBarnbiljetter";
-            this.textBoxAntalBarnbiljetter.ReadOnly = true;
-            this.textBoxAntalBarnbiljetter.Size = new System.Drawing.Size(106, 20);
-            this.textBoxAntalBarnbiljetter.TabIndex = 18;
-            this.textBoxAntalBarnbiljetter.Click += new System.EventHandler(this.textBoxAntalBarnbiljetter_Click);
-            this.textBoxAntalBarnbiljetter.TextChanged += new System.EventHandler(this.textBoxAntalBarnbiljetter_TextChanged);
+            this.textBoxNumberofChildTickets.Location = new System.Drawing.Point(627, 141);
+            this.textBoxNumberofChildTickets.Name = "textBoxNumberofChildTickets";
+            this.textBoxNumberofChildTickets.ReadOnly = true;
+            this.textBoxNumberofChildTickets.Size = new System.Drawing.Size(106, 20);
+            this.textBoxNumberofChildTickets.TabIndex = 18;
+            this.textBoxNumberofChildTickets.Click += new System.EventHandler(this.textBoxAntalBarnbiljetter_Click);
+            this.textBoxNumberofChildTickets.TextChanged += new System.EventHandler(this.textBoxAntalBarnbiljetter_TextChanged);
             // 
-            // textBoxKronorBarnbiljetter
+            // textBoxKrChildTickets
             // 
-            this.textBoxKronorBarnbiljetter.Location = new System.Drawing.Point(740, 141);
-            this.textBoxKronorBarnbiljetter.Name = "textBoxKronorBarnbiljetter";
-            this.textBoxKronorBarnbiljetter.ReadOnly = true;
-            this.textBoxKronorBarnbiljetter.Size = new System.Drawing.Size(106, 20);
-            this.textBoxKronorBarnbiljetter.TabIndex = 17;
-            this.textBoxKronorBarnbiljetter.Click += new System.EventHandler(this.textBoxKronorBarnbiljetter_Click);
-            this.textBoxKronorBarnbiljetter.TextChanged += new System.EventHandler(this.textBoxKronorBarnbiljetter_TextChanged);
+            this.textBoxKrChildTickets.Location = new System.Drawing.Point(740, 141);
+            this.textBoxKrChildTickets.Name = "textBoxKrChildTickets";
+            this.textBoxKrChildTickets.ReadOnly = true;
+            this.textBoxKrChildTickets.Size = new System.Drawing.Size(106, 20);
+            this.textBoxKrChildTickets.TabIndex = 17;
+            this.textBoxKrChildTickets.Click += new System.EventHandler(this.textBoxKronorBarnbiljetter_Click);
+            this.textBoxKrChildTickets.TextChanged += new System.EventHandler(this.textBoxKronorBarnbiljetter_TextChanged);
             // 
-            // textBoxTotaltAntal
+            // textBoxTotalNumberof
             // 
-            this.textBoxTotaltAntal.Location = new System.Drawing.Point(627, 208);
-            this.textBoxTotaltAntal.Name = "textBoxTotaltAntal";
-            this.textBoxTotaltAntal.ReadOnly = true;
-            this.textBoxTotaltAntal.Size = new System.Drawing.Size(106, 20);
-            this.textBoxTotaltAntal.TabIndex = 16;
-            this.textBoxTotaltAntal.Click += new System.EventHandler(this.textBoxTotaltAntal_Click);
-            this.textBoxTotaltAntal.TextChanged += new System.EventHandler(this.textBoxTotaltAntal_TextChanged);
+            this.textBoxTotalNumberof.Location = new System.Drawing.Point(627, 208);
+            this.textBoxTotalNumberof.Name = "textBoxTotalNumberof";
+            this.textBoxTotalNumberof.ReadOnly = true;
+            this.textBoxTotalNumberof.Size = new System.Drawing.Size(106, 20);
+            this.textBoxTotalNumberof.TabIndex = 16;
+            this.textBoxTotalNumberof.Click += new System.EventHandler(this.textBoxTotaltAntal_Click);
+            this.textBoxTotalNumberof.TextChanged += new System.EventHandler(this.textBoxTotaltAntal_TextChanged);
             // 
-            // textBoxTotaltKronor
+            // textBoxKrTotal
             // 
-            this.textBoxTotaltKronor.Location = new System.Drawing.Point(740, 208);
-            this.textBoxTotaltKronor.Name = "textBoxTotaltKronor";
-            this.textBoxTotaltKronor.ReadOnly = true;
-            this.textBoxTotaltKronor.Size = new System.Drawing.Size(106, 20);
-            this.textBoxTotaltKronor.TabIndex = 15;
-            this.textBoxTotaltKronor.Click += new System.EventHandler(this.textBoxTotaltKronor_Click);
-            this.textBoxTotaltKronor.TextChanged += new System.EventHandler(this.textBoxTotaltKronor_TextChanged);
+            this.textBoxKrTotal.Location = new System.Drawing.Point(740, 208);
+            this.textBoxKrTotal.Name = "textBoxKrTotal";
+            this.textBoxKrTotal.ReadOnly = true;
+            this.textBoxKrTotal.Size = new System.Drawing.Size(106, 20);
+            this.textBoxKrTotal.TabIndex = 15;
+            this.textBoxKrTotal.Click += new System.EventHandler(this.textBoxTotaltKronor_Click);
+            this.textBoxKrTotal.TextChanged += new System.EventHandler(this.textBoxTotaltKronor_TextChanged);
             // 
-            // buttonSkrivUtForestallning
+            // btnPrintStatistics
             // 
-            this.buttonSkrivUtForestallning.Location = new System.Drawing.Point(788, 407);
-            this.buttonSkrivUtForestallning.Name = "buttonSkrivUtForestallning";
-            this.buttonSkrivUtForestallning.Size = new System.Drawing.Size(126, 35);
-            this.buttonSkrivUtForestallning.TabIndex = 14;
-            this.buttonSkrivUtForestallning.Text = "Skriv ut statistik";
-            this.buttonSkrivUtForestallning.UseVisualStyleBackColor = true;
-            this.buttonSkrivUtForestallning.Click += new System.EventHandler(this.buttonSkrivUtForestallning_Click);
+            this.btnPrintStatistics.Location = new System.Drawing.Point(788, 407);
+            this.btnPrintStatistics.Name = "btnPrintStatistics";
+            this.btnPrintStatistics.Size = new System.Drawing.Size(126, 35);
+            this.btnPrintStatistics.TabIndex = 14;
+            this.btnPrintStatistics.Text = "Skriv ut statistik";
+            this.btnPrintStatistics.UseVisualStyleBackColor = true;
+            this.btnPrintStatistics.Click += new System.EventHandler(this.buttonSkrivUtForestallning_Click);
             // 
-            // buttonRaderaForestallning
+            // btnDeleteShow
             // 
-            this.buttonRaderaForestallning.Location = new System.Drawing.Point(157, 407);
-            this.buttonRaderaForestallning.Name = "buttonRaderaForestallning";
-            this.buttonRaderaForestallning.Size = new System.Drawing.Size(126, 35);
-            this.buttonRaderaForestallning.TabIndex = 13;
-            this.buttonRaderaForestallning.Text = "Radera föreställning";
-            this.buttonRaderaForestallning.UseVisualStyleBackColor = true;
-            this.buttonRaderaForestallning.Click += new System.EventHandler(this.buttonRaderaForestallning_Click);
+            this.btnDeleteShow.Location = new System.Drawing.Point(157, 407);
+            this.btnDeleteShow.Name = "btnDeleteShow";
+            this.btnDeleteShow.Size = new System.Drawing.Size(126, 35);
+            this.btnDeleteShow.TabIndex = 13;
+            this.btnDeleteShow.Text = "Radera föreställning";
+            this.btnDeleteShow.UseVisualStyleBackColor = true;
+            this.btnDeleteShow.Click += new System.EventHandler(this.buttonRaderaForestallning_Click);
             // 
             // labelKronor
             // 
@@ -748,14 +748,14 @@
             this.labelAntal.TabIndex = 10;
             this.labelAntal.Text = "Antal";
             // 
-            // labelTotalt
+            // lblTotal
             // 
-            this.labelTotalt.AutoSize = true;
-            this.labelTotalt.Location = new System.Drawing.Point(525, 208);
-            this.labelTotalt.Name = "labelTotalt";
-            this.labelTotalt.Size = new System.Drawing.Size(34, 13);
-            this.labelTotalt.TabIndex = 9;
-            this.labelTotalt.Text = "Totalt";
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(525, 208);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(34, 13);
+            this.lblTotal.TabIndex = 9;
+            this.lblTotal.Text = "Totalt";
             // 
             // labelBarnbiljetter
             // 
@@ -775,62 +775,62 @@
             this.labelUngdomsbiljetter.TabIndex = 7;
             this.labelUngdomsbiljetter.Text = "Ungdomsbiljetter";
             // 
-            // labelVuxenbiljetter
+            // lblAdultTickets
             // 
-            this.labelVuxenbiljetter.AutoSize = true;
-            this.labelVuxenbiljetter.Location = new System.Drawing.Point(525, 72);
-            this.labelVuxenbiljetter.Name = "labelVuxenbiljetter";
-            this.labelVuxenbiljetter.Size = new System.Drawing.Size(70, 13);
-            this.labelVuxenbiljetter.TabIndex = 6;
-            this.labelVuxenbiljetter.Text = "Vuxenbiljetter";
+            this.lblAdultTickets.AutoSize = true;
+            this.lblAdultTickets.Location = new System.Drawing.Point(525, 72);
+            this.lblAdultTickets.Name = "lblAdultTickets";
+            this.lblAdultTickets.Size = new System.Drawing.Size(70, 13);
+            this.lblAdultTickets.TabIndex = 6;
+            this.lblAdultTickets.Text = "Vuxenbiljetter";
             // 
-            // textBoxAntalVuxenBiljetter
+            // textBoxNumberofAdultTickets
             // 
-            this.textBoxAntalVuxenBiljetter.Location = new System.Drawing.Point(627, 65);
-            this.textBoxAntalVuxenBiljetter.Name = "textBoxAntalVuxenBiljetter";
-            this.textBoxAntalVuxenBiljetter.ReadOnly = true;
-            this.textBoxAntalVuxenBiljetter.Size = new System.Drawing.Size(106, 20);
-            this.textBoxAntalVuxenBiljetter.TabIndex = 5;
-            this.textBoxAntalVuxenBiljetter.Click += new System.EventHandler(this.textBoxAntalVuxenBiljetter_Click);
-            this.textBoxAntalVuxenBiljetter.TextChanged += new System.EventHandler(this.textBoxAntalVuxenBiljetter_TextChanged);
+            this.textBoxNumberofAdultTickets.Location = new System.Drawing.Point(627, 65);
+            this.textBoxNumberofAdultTickets.Name = "textBoxNumberofAdultTickets";
+            this.textBoxNumberofAdultTickets.ReadOnly = true;
+            this.textBoxNumberofAdultTickets.Size = new System.Drawing.Size(106, 20);
+            this.textBoxNumberofAdultTickets.TabIndex = 5;
+            this.textBoxNumberofAdultTickets.Click += new System.EventHandler(this.textBoxAntalVuxenBiljetter_Click);
+            this.textBoxNumberofAdultTickets.TextChanged += new System.EventHandler(this.textBoxAntalVuxenBiljetter_TextChanged);
             // 
-            // buttonSkapaForestalnning
+            // btnCreateShow
             // 
-            this.buttonSkapaForestalnning.Location = new System.Drawing.Point(23, 407);
-            this.buttonSkapaForestalnning.Name = "buttonSkapaForestalnning";
-            this.buttonSkapaForestalnning.Size = new System.Drawing.Size(126, 35);
-            this.buttonSkapaForestalnning.TabIndex = 4;
-            this.buttonSkapaForestalnning.Text = "Skapa ny föreställning";
-            this.buttonSkapaForestalnning.UseVisualStyleBackColor = true;
-            this.buttonSkapaForestalnning.Click += new System.EventHandler(this.buttonSkapaForestalnning_Click_1);
+            this.btnCreateShow.Location = new System.Drawing.Point(23, 407);
+            this.btnCreateShow.Name = "btnCreateShow";
+            this.btnCreateShow.Size = new System.Drawing.Size(126, 35);
+            this.btnCreateShow.TabIndex = 4;
+            this.btnCreateShow.Text = "Skapa ny föreställning";
+            this.btnCreateShow.UseVisualStyleBackColor = true;
+            this.btnCreateShow.Click += new System.EventHandler(this.buttonSkapaForestalnning_Click_1);
             // 
             // tabAccount
             // 
-            this.tabAccount.Controls.Add(this.btnRaderaKonto);
-            this.tabAccount.Controls.Add(this.lblPersonnummer);
-            this.tabAccount.Controls.Add(this.textBoxPersonnummer);
-            this.tabAccount.Controls.Add(this.LblStatusKonto);
-            this.tabAccount.Controls.Add(this.lblBehorighetsniva);
-            this.tabAccount.Controls.Add(this.lblLosenord);
+            this.tabAccount.Controls.Add(this.btnDeleteAccount);
+            this.tabAccount.Controls.Add(this.lblSsnumber);
+            this.tabAccount.Controls.Add(this.textBoxSsnumber);
+            this.tabAccount.Controls.Add(this.LblStatusAccount);
+            this.tabAccount.Controls.Add(this.lblAuth);
+            this.tabAccount.Controls.Add(this.lblPassword);
             this.tabAccount.Controls.Add(this.dgStaff);
             this.tabAccount.Controls.Add(this.textBoxSearchStaff);
-            this.tabAccount.Controls.Add(this.comboBoxBehorighetsniva);
+            this.tabAccount.Controls.Add(this.comboBoxAuth);
             this.tabAccount.Controls.Add(this.lblKonto);
-            this.tabAccount.Controls.Add(this.btnTomFalten);
-            this.tabAccount.Controls.Add(this.btnUpdateraKonto);
-            this.tabAccount.Controls.Add(this.lblFornamn);
-            this.tabAccount.Controls.Add(this.btnSkapaKonto);
+            this.tabAccount.Controls.Add(this.btnEmptyBoxes);
+            this.tabAccount.Controls.Add(this.btnUpdateAccount);
+            this.tabAccount.Controls.Add(this.lblFirstName);
+            this.tabAccount.Controls.Add(this.btnCreateAccount);
             this.tabAccount.Controls.Add(this.lblSokPerson);
-            this.tabAccount.Controls.Add(this.lblEfternamn);
-            this.tabAccount.Controls.Add(this.textBoxLosenord);
-            this.tabAccount.Controls.Add(this.lblTelefonnummer);
-            this.tabAccount.Controls.Add(this.textBoxEfternamn);
-            this.tabAccount.Controls.Add(this.lblEpost);
-            this.tabAccount.Controls.Add(this.textBoxTelefonnummer);
-            this.tabAccount.Controls.Add(this.lblAnvandarnamn);
-            this.tabAccount.Controls.Add(this.textBoxEpost);
-            this.tabAccount.Controls.Add(this.textBoxFornamn);
-            this.tabAccount.Controls.Add(this.textBoxAnvandarnamn);
+            this.tabAccount.Controls.Add(this.lblLastName);
+            this.tabAccount.Controls.Add(this.textBoxPassword);
+            this.tabAccount.Controls.Add(this.lblPhonenumber);
+            this.tabAccount.Controls.Add(this.textBoxLastName);
+            this.tabAccount.Controls.Add(this.lblEmail);
+            this.tabAccount.Controls.Add(this.textBoxPhoneNumber);
+            this.tabAccount.Controls.Add(this.lblUsername);
+            this.tabAccount.Controls.Add(this.textBoxEmail);
+            this.tabAccount.Controls.Add(this.textBoxFirstname);
+            this.tabAccount.Controls.Add(this.textBoxUsername);
             this.tabAccount.Location = new System.Drawing.Point(4, 26);
             this.tabAccount.Name = "tabAccount";
             this.tabAccount.Size = new System.Drawing.Size(925, 452);
@@ -838,61 +838,61 @@
             this.tabAccount.Text = "Kontohantering";
             this.tabAccount.UseVisualStyleBackColor = true;
             // 
-            // btnRaderaKonto
+            // btnDeleteAccount
             // 
-            this.btnRaderaKonto.Enabled = false;
-            this.btnRaderaKonto.Location = new System.Drawing.Point(22, 406);
-            this.btnRaderaKonto.Name = "btnRaderaKonto";
-            this.btnRaderaKonto.Size = new System.Drawing.Size(126, 35);
-            this.btnRaderaKonto.TabIndex = 58;
-            this.btnRaderaKonto.Text = "Radera konto";
-            this.btnRaderaKonto.UseVisualStyleBackColor = true;
-            this.btnRaderaKonto.Click += new System.EventHandler(this.btnRaderaKonto_Click);
+            this.btnDeleteAccount.Enabled = false;
+            this.btnDeleteAccount.Location = new System.Drawing.Point(22, 406);
+            this.btnDeleteAccount.Name = "btnDeleteAccount";
+            this.btnDeleteAccount.Size = new System.Drawing.Size(126, 35);
+            this.btnDeleteAccount.TabIndex = 58;
+            this.btnDeleteAccount.Text = "Radera konto";
+            this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnRaderaKonto_Click);
             // 
-            // lblPersonnummer
+            // lblSsnumber
             // 
-            this.lblPersonnummer.AutoSize = true;
-            this.lblPersonnummer.Location = new System.Drawing.Point(366, 75);
-            this.lblPersonnummer.Name = "lblPersonnummer";
-            this.lblPersonnummer.Size = new System.Drawing.Size(129, 13);
-            this.lblPersonnummer.TabIndex = 57;
-            this.lblPersonnummer.Text = "Personnummer: (10 siffror)";
+            this.lblSsnumber.AutoSize = true;
+            this.lblSsnumber.Location = new System.Drawing.Point(366, 75);
+            this.lblSsnumber.Name = "lblSsnumber";
+            this.lblSsnumber.Size = new System.Drawing.Size(129, 13);
+            this.lblSsnumber.TabIndex = 57;
+            this.lblSsnumber.Text = "Personnummer: (10 siffror)";
             // 
-            // textBoxPersonnummer
+            // textBoxSsnumber
             // 
-            this.textBoxPersonnummer.Location = new System.Drawing.Point(366, 90);
-            this.textBoxPersonnummer.Name = "textBoxPersonnummer";
-            this.textBoxPersonnummer.Size = new System.Drawing.Size(152, 20);
-            this.textBoxPersonnummer.TabIndex = 56;
+            this.textBoxSsnumber.Location = new System.Drawing.Point(366, 90);
+            this.textBoxSsnumber.Name = "textBoxSsnumber";
+            this.textBoxSsnumber.Size = new System.Drawing.Size(152, 20);
+            this.textBoxSsnumber.TabIndex = 56;
             // 
-            // LblStatusKonto
+            // LblStatusAccount
             // 
-            this.LblStatusKonto.AutoSize = true;
-            this.LblStatusKonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblStatusKonto.Location = new System.Drawing.Point(366, 387);
-            this.LblStatusKonto.Name = "LblStatusKonto";
-            this.LblStatusKonto.Size = new System.Drawing.Size(48, 13);
-            this.LblStatusKonto.TabIndex = 49;
-            this.LblStatusKonto.Text = "label12";
-            this.LblStatusKonto.Visible = false;
+            this.LblStatusAccount.AutoSize = true;
+            this.LblStatusAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblStatusAccount.Location = new System.Drawing.Point(366, 387);
+            this.LblStatusAccount.Name = "LblStatusAccount";
+            this.LblStatusAccount.Size = new System.Drawing.Size(48, 13);
+            this.LblStatusAccount.TabIndex = 49;
+            this.LblStatusAccount.Text = "label12";
+            this.LblStatusAccount.Visible = false;
             // 
-            // lblBehorighetsniva
+            // lblAuth
             // 
-            this.lblBehorighetsniva.AutoSize = true;
-            this.lblBehorighetsniva.Location = new System.Drawing.Point(550, 284);
-            this.lblBehorighetsniva.Name = "lblBehorighetsniva";
-            this.lblBehorighetsniva.Size = new System.Drawing.Size(86, 13);
-            this.lblBehorighetsniva.TabIndex = 46;
-            this.lblBehorighetsniva.Text = "Behörighetsnivå:";
+            this.lblAuth.AutoSize = true;
+            this.lblAuth.Location = new System.Drawing.Point(550, 284);
+            this.lblAuth.Name = "lblAuth";
+            this.lblAuth.Size = new System.Drawing.Size(86, 13);
+            this.lblAuth.TabIndex = 46;
+            this.lblAuth.Text = "Behörighetsnivå:";
             // 
-            // lblLosenord
+            // lblPassword
             // 
-            this.lblLosenord.AutoSize = true;
-            this.lblLosenord.Location = new System.Drawing.Point(550, 215);
-            this.lblLosenord.Name = "lblLosenord";
-            this.lblLosenord.Size = new System.Drawing.Size(54, 13);
-            this.lblLosenord.TabIndex = 45;
-            this.lblLosenord.Text = "Lösenord:";
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(550, 215);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(54, 13);
+            this.lblPassword.TabIndex = 45;
+            this.lblPassword.Text = "Lösenord:";
             // 
             // dgStaff
             // 
@@ -923,16 +923,16 @@
             this.textBoxSearchStaff.TabIndex = 43;
             this.textBoxSearchStaff.TextChanged += new System.EventHandler(this.textBoxSearchStaff_TextChanged);
             // 
-            // comboBoxBehorighetsniva
+            // comboBoxAuth
             // 
-            this.comboBoxBehorighetsniva.FormattingEnabled = true;
-            this.comboBoxBehorighetsniva.Items.AddRange(new object[] {
+            this.comboBoxAuth.FormattingEnabled = true;
+            this.comboBoxAuth.Items.AddRange(new object[] {
             "Biljettförsäljare",
             "Administratör"});
-            this.comboBoxBehorighetsniva.Location = new System.Drawing.Point(550, 299);
-            this.comboBoxBehorighetsniva.Name = "comboBoxBehorighetsniva";
-            this.comboBoxBehorighetsniva.Size = new System.Drawing.Size(152, 21);
-            this.comboBoxBehorighetsniva.TabIndex = 28;
+            this.comboBoxAuth.Location = new System.Drawing.Point(550, 299);
+            this.comboBoxAuth.Name = "comboBoxAuth";
+            this.comboBoxAuth.Size = new System.Drawing.Size(152, 21);
+            this.comboBoxAuth.TabIndex = 28;
             // 
             // lblKonto
             // 
@@ -944,44 +944,44 @@
             this.lblKonto.TabIndex = 30;
             this.lblKonto.Text = "Kontohantering";
             // 
-            // btnTomFalten
+            // btnEmptyBoxes
             // 
-            this.btnTomFalten.Location = new System.Drawing.Point(576, 406);
-            this.btnTomFalten.Name = "btnTomFalten";
-            this.btnTomFalten.Size = new System.Drawing.Size(126, 35);
-            this.btnTomFalten.TabIndex = 32;
-            this.btnTomFalten.Text = "Töm fälten";
-            this.btnTomFalten.UseVisualStyleBackColor = true;
-            this.btnTomFalten.Click += new System.EventHandler(this.btnTomFalten_Click);
+            this.btnEmptyBoxes.Location = new System.Drawing.Point(576, 406);
+            this.btnEmptyBoxes.Name = "btnEmptyBoxes";
+            this.btnEmptyBoxes.Size = new System.Drawing.Size(126, 35);
+            this.btnEmptyBoxes.TabIndex = 32;
+            this.btnEmptyBoxes.Text = "Töm fälten";
+            this.btnEmptyBoxes.UseVisualStyleBackColor = true;
+            this.btnEmptyBoxes.Click += new System.EventHandler(this.btnTomFalten_Click);
             // 
-            // btnUpdateraKonto
+            // btnUpdateAccount
             // 
-            this.btnUpdateraKonto.Location = new System.Drawing.Point(200, 406);
-            this.btnUpdateraKonto.Name = "btnUpdateraKonto";
-            this.btnUpdateraKonto.Size = new System.Drawing.Size(126, 35);
-            this.btnUpdateraKonto.TabIndex = 31;
-            this.btnUpdateraKonto.Text = "Uppdatera/ändra konto";
-            this.btnUpdateraKonto.UseVisualStyleBackColor = true;
-            this.btnUpdateraKonto.Click += new System.EventHandler(this.btnUpdateraKonto_Click);
+            this.btnUpdateAccount.Location = new System.Drawing.Point(200, 406);
+            this.btnUpdateAccount.Name = "btnUpdateAccount";
+            this.btnUpdateAccount.Size = new System.Drawing.Size(126, 35);
+            this.btnUpdateAccount.TabIndex = 31;
+            this.btnUpdateAccount.Text = "Uppdatera/ändra konto";
+            this.btnUpdateAccount.UseVisualStyleBackColor = true;
+            this.btnUpdateAccount.Click += new System.EventHandler(this.btnUpdateraKonto_Click);
             // 
-            // lblFornamn
+            // lblFirstName
             // 
-            this.lblFornamn.AutoSize = true;
-            this.lblFornamn.Location = new System.Drawing.Point(366, 144);
-            this.lblFornamn.Name = "lblFornamn";
-            this.lblFornamn.Size = new System.Drawing.Size(51, 13);
-            this.lblFornamn.TabIndex = 27;
-            this.lblFornamn.Text = "Förnamn:";
+            this.lblFirstName.AutoSize = true;
+            this.lblFirstName.Location = new System.Drawing.Point(366, 144);
+            this.lblFirstName.Name = "lblFirstName";
+            this.lblFirstName.Size = new System.Drawing.Size(51, 13);
+            this.lblFirstName.TabIndex = 27;
+            this.lblFirstName.Text = "Förnamn:";
             // 
-            // btnSkapaKonto
+            // btnCreateAccount
             // 
-            this.btnSkapaKonto.Location = new System.Drawing.Point(366, 406);
-            this.btnSkapaKonto.Name = "btnSkapaKonto";
-            this.btnSkapaKonto.Size = new System.Drawing.Size(126, 35);
-            this.btnSkapaKonto.TabIndex = 29;
-            this.btnSkapaKonto.Text = "Skapa/Lägg till konto";
-            this.btnSkapaKonto.UseVisualStyleBackColor = true;
-            this.btnSkapaKonto.Click += new System.EventHandler(this.btnSkapaKonto_Click);
+            this.btnCreateAccount.Location = new System.Drawing.Point(366, 406);
+            this.btnCreateAccount.Name = "btnCreateAccount";
+            this.btnCreateAccount.Size = new System.Drawing.Size(126, 35);
+            this.btnCreateAccount.TabIndex = 29;
+            this.btnCreateAccount.Text = "Skapa/Lägg till konto";
+            this.btnCreateAccount.UseVisualStyleBackColor = true;
+            this.btnCreateAccount.Click += new System.EventHandler(this.btnSkapaKonto_Click);
             // 
             // lblSokPerson
             // 
@@ -992,83 +992,83 @@
             this.lblSokPerson.TabIndex = 39;
             this.lblSokPerson.Text = "Sök person";
             // 
-            // lblEfternamn
+            // lblLastName
             // 
-            this.lblEfternamn.AutoSize = true;
-            this.lblEfternamn.Location = new System.Drawing.Point(366, 215);
-            this.lblEfternamn.Name = "lblEfternamn";
-            this.lblEfternamn.Size = new System.Drawing.Size(58, 13);
-            this.lblEfternamn.TabIndex = 33;
-            this.lblEfternamn.Text = "Efternamn:";
+            this.lblLastName.AutoSize = true;
+            this.lblLastName.Location = new System.Drawing.Point(366, 215);
+            this.lblLastName.Name = "lblLastName";
+            this.lblLastName.Size = new System.Drawing.Size(58, 13);
+            this.lblLastName.TabIndex = 33;
+            this.lblLastName.Text = "Efternamn:";
             // 
-            // textBoxLosenord
+            // textBoxPassword
             // 
-            this.textBoxLosenord.Location = new System.Drawing.Point(550, 230);
-            this.textBoxLosenord.Name = "textBoxLosenord";
-            this.textBoxLosenord.Size = new System.Drawing.Size(152, 20);
-            this.textBoxLosenord.TabIndex = 26;
+            this.textBoxPassword.Location = new System.Drawing.Point(550, 230);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(152, 20);
+            this.textBoxPassword.TabIndex = 26;
             // 
-            // lblTelefonnummer
+            // lblPhonenumber
             // 
-            this.lblTelefonnummer.AutoSize = true;
-            this.lblTelefonnummer.Location = new System.Drawing.Point(366, 285);
-            this.lblTelefonnummer.Name = "lblTelefonnummer";
-            this.lblTelefonnummer.Size = new System.Drawing.Size(83, 13);
-            this.lblTelefonnummer.TabIndex = 34;
-            this.lblTelefonnummer.Text = "Telefonnummer:";
+            this.lblPhonenumber.AutoSize = true;
+            this.lblPhonenumber.Location = new System.Drawing.Point(366, 285);
+            this.lblPhonenumber.Name = "lblPhonenumber";
+            this.lblPhonenumber.Size = new System.Drawing.Size(83, 13);
+            this.lblPhonenumber.TabIndex = 34;
+            this.lblPhonenumber.Text = "Telefonnummer:";
             // 
-            // textBoxEfternamn
+            // textBoxLastName
             // 
-            this.textBoxEfternamn.Location = new System.Drawing.Point(366, 230);
-            this.textBoxEfternamn.Name = "textBoxEfternamn";
-            this.textBoxEfternamn.Size = new System.Drawing.Size(152, 20);
-            this.textBoxEfternamn.TabIndex = 22;
+            this.textBoxLastName.Location = new System.Drawing.Point(366, 230);
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(152, 20);
+            this.textBoxLastName.TabIndex = 22;
             // 
-            // lblEpost
+            // lblEmail
             // 
-            this.lblEpost.AutoSize = true;
-            this.lblEpost.Location = new System.Drawing.Point(550, 75);
-            this.lblEpost.Name = "lblEpost";
-            this.lblEpost.Size = new System.Drawing.Size(40, 13);
-            this.lblEpost.TabIndex = 36;
-            this.lblEpost.Text = "E post:";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(550, 75);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(40, 13);
+            this.lblEmail.TabIndex = 36;
+            this.lblEmail.Text = "E post:";
             // 
-            // textBoxTelefonnummer
+            // textBoxPhoneNumber
             // 
-            this.textBoxTelefonnummer.Location = new System.Drawing.Point(366, 300);
-            this.textBoxTelefonnummer.Name = "textBoxTelefonnummer";
-            this.textBoxTelefonnummer.Size = new System.Drawing.Size(152, 20);
-            this.textBoxTelefonnummer.TabIndex = 23;
+            this.textBoxPhoneNumber.Location = new System.Drawing.Point(366, 300);
+            this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
+            this.textBoxPhoneNumber.Size = new System.Drawing.Size(152, 20);
+            this.textBoxPhoneNumber.TabIndex = 23;
             // 
-            // lblAnvandarnamn
+            // lblUsername
             // 
-            this.lblAnvandarnamn.AutoSize = true;
-            this.lblAnvandarnamn.Location = new System.Drawing.Point(550, 144);
-            this.lblAnvandarnamn.Name = "lblAnvandarnamn";
-            this.lblAnvandarnamn.Size = new System.Drawing.Size(82, 13);
-            this.lblAnvandarnamn.TabIndex = 38;
-            this.lblAnvandarnamn.Text = "Användarnamn:";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(550, 144);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(82, 13);
+            this.lblUsername.TabIndex = 38;
+            this.lblUsername.Text = "Användarnamn:";
             // 
-            // textBoxEpost
+            // textBoxEmail
             // 
-            this.textBoxEpost.Location = new System.Drawing.Point(550, 90);
-            this.textBoxEpost.Name = "textBoxEpost";
-            this.textBoxEpost.Size = new System.Drawing.Size(152, 20);
-            this.textBoxEpost.TabIndex = 24;
+            this.textBoxEmail.Location = new System.Drawing.Point(550, 90);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(152, 20);
+            this.textBoxEmail.TabIndex = 24;
             // 
-            // textBoxFornamn
+            // textBoxFirstname
             // 
-            this.textBoxFornamn.Location = new System.Drawing.Point(366, 159);
-            this.textBoxFornamn.Name = "textBoxFornamn";
-            this.textBoxFornamn.Size = new System.Drawing.Size(152, 20);
-            this.textBoxFornamn.TabIndex = 21;
+            this.textBoxFirstname.Location = new System.Drawing.Point(366, 159);
+            this.textBoxFirstname.Name = "textBoxFirstname";
+            this.textBoxFirstname.Size = new System.Drawing.Size(152, 20);
+            this.textBoxFirstname.TabIndex = 21;
             // 
-            // textBoxAnvandarnamn
+            // textBoxUsername
             // 
-            this.textBoxAnvandarnamn.Location = new System.Drawing.Point(550, 159);
-            this.textBoxAnvandarnamn.Name = "textBoxAnvandarnamn";
-            this.textBoxAnvandarnamn.Size = new System.Drawing.Size(152, 20);
-            this.textBoxAnvandarnamn.TabIndex = 25;
+            this.textBoxUsername.Location = new System.Drawing.Point(550, 159);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(152, 20);
+            this.textBoxUsername.TabIndex = 25;
             // 
             // buttonLogOut
             // 
@@ -1126,9 +1126,11 @@
             this.Controls.Add(this.labelStaffName);
             this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Välkommen";
+            this.Text = "Cirkus Kul & Bus";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabTicket.ResumeLayout(false);
@@ -1138,8 +1140,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCustomers)).EndInit();
             this.tabShow.ResumeLayout(false);
             this.tabShow.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAkter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowsList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgShows)).EndInit();
             this.tabAccount.ResumeLayout(false);
             this.tabAccount.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgStaff)).EndInit();
@@ -1153,89 +1155,89 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabTicket;
         private System.Windows.Forms.TabPage tabShow;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCustomers;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabAccount;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblTickets;
         private System.Windows.Forms.CheckBox checkBoxOlderTickets;
-        private System.Windows.Forms.Button btnDeleteTicket;
-        private System.Windows.Forms.Button buttonEditTicket;
-        private System.Windows.Forms.Button buttonReserveTicket;
-        private System.Windows.Forms.Button buttonAddCustomer;
+        private System.Windows.Forms.Button btnDeleteSelectedTicket;
+        private System.Windows.Forms.Button btnEditTicket;
+        private System.Windows.Forms.Button btnBookNewTicket;
+        private System.Windows.Forms.Button btnAddCustomer;
         private System.Windows.Forms.Button buttonLogOut;
-        private System.Windows.Forms.TextBox textBoxAntalVuxenBiljetter;
-        private System.Windows.Forms.Button buttonSkapaForestalnning;
-        private System.Windows.Forms.Button buttonSkrivUtForestallning;
-        private System.Windows.Forms.Button buttonRaderaForestallning;
+        private System.Windows.Forms.TextBox textBoxNumberofAdultTickets;
+        private System.Windows.Forms.Button btnCreateShow;
+        private System.Windows.Forms.Button btnPrintStatistics;
+        private System.Windows.Forms.Button btnDeleteShow;
         private System.Windows.Forms.Label labelKronor;
         private System.Windows.Forms.Label labelAntal;
-        private System.Windows.Forms.Label labelTotalt;
+        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label labelBarnbiljetter;
         private System.Windows.Forms.Label labelUngdomsbiljetter;
-        private System.Windows.Forms.Label labelVuxenbiljetter;
-        private System.Windows.Forms.TextBox textBoxKronorVuxenbiljetter;
-        private System.Windows.Forms.TextBox textBoxAntalUngdomsbiljetter;
-        private System.Windows.Forms.TextBox textBoxKronorUngdomsbiljetter;
-        private System.Windows.Forms.TextBox textBoxAntalBarnbiljetter;
-        private System.Windows.Forms.TextBox textBoxKronorBarnbiljetter;
-        private System.Windows.Forms.TextBox textBoxTotaltAntal;
-        private System.Windows.Forms.TextBox textBoxTotaltKronor;
-        private System.Windows.Forms.ComboBox comboBoxBehorighetsniva;
+        private System.Windows.Forms.Label lblAdultTickets;
+        private System.Windows.Forms.TextBox textBoxKrAdultTickets;
+        private System.Windows.Forms.TextBox textBoxNumberofYouthTickets;
+        private System.Windows.Forms.TextBox textBoxKrYouthTickets;
+        private System.Windows.Forms.TextBox textBoxNumberofChildTickets;
+        private System.Windows.Forms.TextBox textBoxKrChildTickets;
+        private System.Windows.Forms.TextBox textBoxTotalNumberof;
+        private System.Windows.Forms.TextBox textBoxKrTotal;
+        private System.Windows.Forms.ComboBox comboBoxAuth;
         private System.Windows.Forms.Label lblKonto;
-        private System.Windows.Forms.Button btnTomFalten;
-        private System.Windows.Forms.Button btnUpdateraKonto;
-        private System.Windows.Forms.Label lblFornamn;
-        private System.Windows.Forms.Button btnSkapaKonto;
+        private System.Windows.Forms.Button btnEmptyBoxes;
+        private System.Windows.Forms.Button btnUpdateAccount;
+        private System.Windows.Forms.Label lblFirstName;
+        private System.Windows.Forms.Button btnCreateAccount;
         private System.Windows.Forms.Label lblSokPerson;
-        private System.Windows.Forms.Label lblEfternamn;
-        private System.Windows.Forms.TextBox textBoxLosenord;
-        private System.Windows.Forms.Label lblTelefonnummer;
-        private System.Windows.Forms.TextBox textBoxEfternamn;
-        private System.Windows.Forms.Label lblEpost;
-        private System.Windows.Forms.TextBox textBoxTelefonnummer;
-        private System.Windows.Forms.Label lblAnvandarnamn;
-        private System.Windows.Forms.TextBox textBoxEpost;
-        private System.Windows.Forms.TextBox textBoxFornamn;
-        private System.Windows.Forms.TextBox textBoxAnvandarnamn;
+        private System.Windows.Forms.Label lblLastName;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label lblPhonenumber;
+        private System.Windows.Forms.TextBox textBoxLastName;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.TextBox textBoxPhoneNumber;
+        private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.TextBox textBoxFirstname;
+        private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.Label labelStaffName;
-        private System.Windows.Forms.DataGridView dgvShowsList;
+        private System.Windows.Forms.DataGridView dgShows;
         private System.Windows.Forms.DataGridView dgCustomers;
         private System.Windows.Forms.TextBox textBoxSearchCustomer;
         private System.Windows.Forms.DataGridView dgStaff;
         private System.Windows.Forms.TextBox textBoxSearchStaff;
         private System.Drawing.Printing.PrintDocument printDocumentStatistic;
         private System.Windows.Forms.DataGridView dgTickets;
-        private System.Windows.Forms.Label lblBehorighetsniva;
-        private System.Windows.Forms.Label lblLosenord;
-        private System.Windows.Forms.DataGridView dgvAkter;
-        private System.Windows.Forms.Label lblPersonnummer;
-        private System.Windows.Forms.TextBox textBoxPersonnummer;
-        private System.Windows.Forms.Label LblStatusKonto;
-        private System.Windows.Forms.Button btnRaderaKonto;
+        private System.Windows.Forms.Label lblAuth;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.DataGridView dgActs;
+        private System.Windows.Forms.Label lblSsnumber;
+        private System.Windows.Forms.TextBox textBoxSsnumber;
+        private System.Windows.Forms.Label LblStatusAccount;
+        private System.Windows.Forms.Button btnDeleteAccount;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private System.Windows.Forms.CheckBox checkBoxAllaAkter;
+        private System.Windows.Forms.CheckBox checkBoxAllActs;
         private System.Windows.Forms.Label lblPrint;
         private System.Windows.Forms.TextBox textBoxPrintPrice;
         private System.Windows.Forms.TextBox textBoxPrintAct;
         private System.Windows.Forms.TextBox textBoxPrintShow;
         private System.Windows.Forms.TextBox textBoxPrintAge;
-        private System.Windows.Forms.Button buttonPrint;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Label lblPrice;
+        private System.Windows.Forms.Label lblAct;
+        private System.Windows.Forms.Label lblShow;
+        private System.Windows.Forms.Label lblAgeGroup;
         private System.Windows.Forms.TextBox textBoxSearchTicket;
         private System.Windows.Forms.Label lblSearchTicket;
         private System.Windows.Forms.DataGridView dgTicketActs;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxPrintBookingid;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblBookingid;
         private System.Drawing.Printing.PrintDocument printDocumentBiljett;
         private System.Windows.Forms.PrintDialog printDialog2;
         private System.Windows.Forms.TextBox txtPrintDatum;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lbldate;
         private System.Windows.Forms.Label lblActs;
         private System.Windows.Forms.Label lblShows;
         private System.Windows.Forms.Label lblStatistics;

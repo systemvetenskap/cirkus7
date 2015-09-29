@@ -152,6 +152,8 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxFname);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "AddCustomerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lägg till ny kund";
