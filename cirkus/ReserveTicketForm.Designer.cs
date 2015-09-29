@@ -151,6 +151,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.cbDf = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             this.label16 = new System.Windows.Forms.Label();
             this.dateReservedto = new System.Windows.Forms.DateTimePicker();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -168,7 +169,8 @@
             this.printDocumentBIljettDirekt = new System.Drawing.Printing.PrintDocument();
             this.printDialogBiljetD = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
+            this.lblTest = new System.Windows.Forms.Label();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActs)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -325,6 +327,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.lblTest);
             this.groupBox4.Controls.Add(this.lblStatusAge);
             this.groupBox4.Controls.Add(this.label13);
             this.groupBox4.Controls.Add(this.label10);
@@ -1649,6 +1652,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.button10);
             this.panel3.Controls.Add(this.printPreviewControl1);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.dateReservedto);
@@ -1663,6 +1667,13 @@
             this.panel3.Size = new System.Drawing.Size(920, 401);
             this.panel3.TabIndex = 42;
             this.panel3.Visible = false;
+            // 
+            // printPreviewControl1
+            // 
+            this.printPreviewControl1.Location = new System.Drawing.Point(253, 11);
+            this.printPreviewControl1.Name = "printPreviewControl1";
+            this.printPreviewControl1.Size = new System.Drawing.Size(259, 156);
+            this.printPreviewControl1.TabIndex = 54;
             // 
             // label16
             // 
@@ -1796,12 +1807,24 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // printPreviewControl1
+            // lblTest
             // 
-            this.printPreviewControl1.Location = new System.Drawing.Point(253, 11);
-            this.printPreviewControl1.Name = "printPreviewControl1";
-            this.printPreviewControl1.Size = new System.Drawing.Size(259, 156);
-            this.printPreviewControl1.TabIndex = 54;
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(132, 282);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(41, 13);
+            this.lblTest.TabIndex = 63;
+            this.lblTest.Text = "label12";
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(253, 233);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 55;
+            this.button10.Text = "button10";
+            this.button10.UseVisualStyleBackColor = true;
+
             // 
             // ReserveTicketForm
             // 
@@ -1997,5 +2020,7 @@
         private System.Windows.Forms.PrintDialog printDialogBiljetD;
         private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.Label lblTest;
+        private System.Windows.Forms.Button button10;
     }
 }
