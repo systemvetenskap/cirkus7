@@ -419,15 +419,12 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select booking.bookingid, show.date, show.name, acts.name, seats.section, seats.rownumber, 
-                            price_group_seat.group, price_group_seat.price, booking.reserved_to 
-                            from show inner join acts on show.showid = acts.showid 
-                            inner join available_seats on acts.actid = available_seats.actid
-                            inner join seats on available_seats.seatid = seats.seatid
-                            inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid
-                            inner join booking on booked_seats.bookingid = booking.bookingid
-                            inner join customer on booking.customerid = customer.customerid WHERE customer.customerid = '" + CustomerID + "'AND show.date < now()::date";
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
+                            inner join customer on booking.customerid = customer.customerid
+                            inner join booked_seats on booking.bookingid = booked_seats.bookingid 
+                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
+                            inner join show on booking.showid = show.showid 
+                            where customer.customerid = '" + CustomerID + "'AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
                 try
                 {
                     conn.Open();
@@ -772,10 +769,28 @@ namespace cirkus
             if (checkBoxOlderTickets.Checked==true)
             {
                 listOldTickets();
+
+                buttonPrint.Enabled = false;
+
+                textBoxPrintAct.Enabled = false;
+                textBoxPrintAge.Enabled = false;
+                textBoxPrintPrice.Enabled = false;
+                textBoxPrintBookingid.Enabled = false;
+                txtPrintDatum.Enabled = false;
+                textBoxPrintShow.Enabled = false;
             }
             else if (checkBoxOlderTickets.Checked==false)
             {
                 listTickets();
+
+                buttonPrint.Enabled = true;
+
+                textBoxPrintAct.Enabled = true;
+                textBoxPrintAge.Enabled = true;
+                textBoxPrintPrice.Enabled = true;
+                textBoxPrintBookingid.Enabled = true;
+                txtPrintDatum.Enabled = true;
+                textBoxPrintShow.Enabled = true;
             }
         }
         private void textBoxSearchCustomer_Click(object sender, EventArgs e)
