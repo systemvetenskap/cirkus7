@@ -342,10 +342,6 @@ namespace cirkus
             acts.Columns.Add("Vald akter", typeof(bool)).SetOrdinal(3);
             acts.Columns.Add("agegroup");
 
-
-
-
-
             selectedseats.Columns.Add("seatid");
             selectedseats.Columns.Add("actid");
             selectedseats.Columns.Add("section");
@@ -370,11 +366,6 @@ namespace cirkus
             cSeats.Columns.Add("priceid");
             cSeats.Columns.Add("seatid");
             lblStatus1.Visible = false;
-
-            
-
-
-
 
 
         }
@@ -403,8 +394,6 @@ namespace cirkus
                     dr[2] = 3;
                     dr[3] = 0;
                     dtPersons.Rows.Add(dr);
-
-
 
                 }
                 dgTickets.DataSource = dtPersons;
@@ -1025,13 +1014,10 @@ namespace cirkus
                     row[4] = agegroup;
                     cSeats.Rows.Add(row);
                     
-
-
                     }
 
                 }
                 
-
                 foreach (DataRow r in cSeats.Rows)
                 {
                     string aid = r[1].ToString();
@@ -1052,10 +1038,7 @@ namespace cirkus
 
                         }
 
-
                     }
-
-                    
 
                 }
 
@@ -1121,12 +1104,6 @@ namespace cirkus
 
                         }
                       
-                        
-                        
-                    
-                        
-
-
 
                     }
 
@@ -1458,7 +1435,7 @@ namespace cirkus
                         }
 
                     }
-                    if(numberOfacts == dgShowActs.Rows.Count)
+                    if(numberOfacts == acts.Rows.Count)
                     {
                         if (agegroup == 0)
                         {
