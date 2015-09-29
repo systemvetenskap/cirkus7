@@ -1360,7 +1360,7 @@ namespace cirkus
             int shid = showid;
             int ix = 0;
             int numberOfacts = 0;
-            string  priceid = "";
+            int priceid = 0; 
             DataTable tickets = new DataTable();
             tickets.Columns.Add("ticketid");
             tickets.Columns.Add("seatid");
@@ -1371,45 +1371,103 @@ namespace cirkus
             
             for (int i = 0; i < nrotickets; i++)
             {
+                string type = "";
                 string tid = i.ToString();
+                foreach (DataRow r in dtPersons.Rows)
+                {
+                    if (r[0].ToString() == tid)
+                    {
+                        numberOfacts = int.Parse(r[3].ToString());
+                    }
+
+                }
+                if (numberOfacts == acts.Rows.Count)
+                {
+                    if (agegroup == 0)
+                    {
+                        priceid = 120;
+                        type = "Barn";
+
+                    }
+                    if (agegroup == 1)
+                    {
+                        priceid = 130;
+                        type = "Ungdom";
+                    }
+                    if (agegroup == 2)
+                    {
+                        priceid = 200;
+                        type = "Vuxen";
+                    }
+                }
+                else
+                {
+                    if (agegroup == 0)
+                    {
+                        priceid = 80 * numberOfacts;
+                        type = "Barn";
+
+                    }
+                    if (agegroup == 1)
+                    {
+                        priceid = 110 * numberOfacts;
+                        type = "Ungdom";
+                    }
+                    if (agegroup == 2)
+                    {
+                        priceid = 150 * numberOfacts;
+                        type = "Vuxen";
+                    }
+
+                }
+
 
 
 
                 if (radioRes.Checked == true)
                 {
                     conn.Open();
-                    sql = "insert into booking(customerid,showid, reserved_to) values(:cid,:shid, :rto)";
+                    sql = "insert into booking(customerid,showid, reserved_to, price, type) values(:cid,:shid, :rto, :pid, :tyd)";
                     cmd = new NpgsqlCommand(sql, conn);
                     cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", dateReservedto.Value.ToString("yyyy-MM-dd")));
+                    cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+                    cmd.Parameters.Add(new NpgsqlParameter("tyd", type));
+                    cmd.ExecuteNonQuery();
                     ix++;
 
                 }
                 else if (radioPaid.Checked == true && cbDf.Checked == false)
                 {
                     conn.Open();
-                    sql = "insert into booking(customerid,showid, paid) values(:cid,:shid, :rto)";
+                    sql = "insert into booking(customerid,showid, paid, price, type) values(:cid,:shid, :rto, :pid, :tyd)";
                     cmd = new NpgsqlCommand(sql, conn);
                     cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
-                    ix++;
+                    cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+                    cmd.Parameters.Add(new NpgsqlParameter("tyd", type));
+                    cmd.ExecuteNonQuery();
+                        ix++;
                 }
                 else if (cbDf.Checked == true && radioPaid.Checked == true)
                 {
                     conn.Open();
-                    sql = "insert into booking(showid, paid) values(:shid, :rto)";
+                    sql = "insert into booking(showid, paid, price, type) values(:shid, :rto, :pid, :tyd)";
                     cmd = new NpgsqlCommand(sql, conn);
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
+                    cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+                    cmd.Parameters.Add(new NpgsqlParameter("tyd", type));
+                    cmd.ExecuteNonQuery();
                     ix++;
                 }
-                
 
 
 
-                cmd.ExecuteNonQuery();
+
+
 
                 cmd = new NpgsqlCommand("select currval('booking_bookingid_seq');", conn);
                 NpgsqlDataReader read;
@@ -1420,66 +1478,26 @@ namespace cirkus
                 conn.Close();
 
                 ix++;
-                foreach (DataRow dr in cSeats.Rows)
-                {
-                    ix++;
-                    string id = dr[0].ToString();
-                    string actid = dr[1].ToString();
-                    string section = dr[2].ToString();
-                    string rownr = dr[3].ToString();
-                    foreach(DataRow r in dtPersons.Rows)
+                    foreach (DataRow dr in cSeats.Rows)
                     {
-                        if(r[0].ToString() == tid)
-                        {
-                            numberOfacts = int.Parse(r[3].ToString());
-                        }
+                        ix++;
+                        string id = dr[0].ToString();
+                        string actid = dr[1].ToString();
+                        string section = dr[2].ToString();
+                        string rownr = dr[3].ToString();
+                  
 
-                    }
-                    if(numberOfacts == acts.Rows.Count)
-                    {
-                        if (agegroup == 0)
-                        {
-                            priceid = "2";
-
-                        }
-                        if(agegroup == 1)
-                        {
-                            priceid = "4";
-                        }    
-                        if(agegroup == 2)
-                        {
-                            priceid = "6";
-                        }
-                    }
-                    else
-                    {
-                        if (agegroup == 0)
-                        {
-                            priceid = "1";
-
-                        }
-                        if (agegroup == 1)
-                        {
-                            priceid = "3";
-                        }
-                        if (agegroup == 2)
-                        {
-                            priceid = "5";
-                        }
-
-                    }
-                   
-                    string seatid = dr[5].ToString();
-                    ix++;
+                        string seatid = dr[5].ToString();
+                        ix++;
 
                     if (id == tid)
                     {
                         conn.Open();
-                        sql = "insert into booked_seats(available_seats_id, bookingid, priceid) values(:sid, :bid, :pid)";
+                        sql = "insert into booked_seats(available_seats_id, bookingid) values(:sid, :bid)";
                         cmd = new NpgsqlCommand(sql, conn);
                         cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));
                         cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
-                        cmd.Parameters.Add(new NpgsqlParameter("pid", priceid));
+                        
                         cmd.ExecuteNonQuery();
 
                         cmd = new NpgsqlCommand("select currval('booked_seats_booked_seat_id_seq');", conn);

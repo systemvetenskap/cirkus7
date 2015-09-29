@@ -377,12 +377,11 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid,  type, price, booking.reserved_to from booking
                             inner join customer on booking.customerid = customer.customerid
                             inner join booked_seats on booking.bookingid = booked_seats.bookingid 
-                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
                             inner join show on booking.showid = show.showid 
-                            where customer.customerid = '" + CustomerID + "'AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
+                            where customer.customerid = '"+CustomerID+"' AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, booking.reserved_to,type, price";
                 try
                 {
                     conn.Open();
@@ -419,12 +418,11 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, sum(price_group_seat.price), booking.reserved_to from booking
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, type, price, booking.reserved_to from booking
                             inner join customer on booking.customerid = customer.customerid
                             inner join booked_seats on booking.bookingid = booked_seats.bookingid 
-                            inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid 
                             inner join show on booking.showid = show.showid 
-                            where customer.customerid = '" + CustomerID + "'AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, price_group_seat.group, price_group_seat.price, booking.reserved_to";
+                            where customer.customerid = '" + CustomerID + "' AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, type, price ,booking.reserved_to";
                 try
                 {
                     conn.Open();
@@ -888,7 +886,11 @@ namespace cirkus
             {
                 //Vuxenbiljetter
                 conn.Open();
-                string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'vuxen'  group by acts.showid, price_group_seat.group";
+                string sql = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.showid from acts
+                                inner join available_seats on acts.actid = available_seats.actid
+                                inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                                inner join booking on booked_seats.bookingid = booking.bookingid
+                                where acts.showid = '"+showid+"' and booking.type = 'Vuxen' group by acts.showid, booking.type";
 
 
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
@@ -921,7 +923,11 @@ namespace cirkus
 
                 //Ungdomsbiljetter
                 conn.Open();
-                string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'ungdom'  group by acts.showid, price_group_seat.group";
+                string sqlAU = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.showid from acts
+                                inner join available_seats on acts.actid = available_seats.actid
+                                inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                                inner join booking on booked_seats.bookingid = booking.bookingid
+                                where acts.showid = '" + showid + "' and booking.type = 'Ungdom' group by acts.showid, booking.type";
 
                 NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
                 NpgsqlDataReader drAU = cmdAU.ExecuteReader();
@@ -949,7 +955,11 @@ namespace cirkus
 
                 //Barn
                 conn.Open();
-                string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'barn'  group by acts.showid, price_group_seat.group";
+                string sqlKB = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.showid from acts
+                                inner join available_seats on acts.actid = available_seats.actid
+                                inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                                inner join booking on booked_seats.bookingid = booking.bookingid
+                                where acts.showid = '" + showid + "' and booking.type = 'Barn' group by acts.showid, booking.type";
 
                 NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
                 NpgsqlDataReader drKB = cmdKB.ExecuteReader();
@@ -1009,7 +1019,11 @@ namespace cirkus
                 actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
                 
                 conn.Open();
-                    string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '"+ actid + "' and price_group_seat.group = 'vuxen' group by price_group_seat.group, acts.actid";
+                string sql = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.actid from acts
+                                    inner join available_seats on acts.actid = available_seats.actid
+                                    inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                                    inner join booking on booked_seats.bookingid = booking.bookingid
+                                    where acts.actid = '" + actid + "' and booking.type = 'Vuxen' group by booking.type, acts.actid";
 
 
                     NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
@@ -1037,9 +1051,13 @@ namespace cirkus
 
                     //Ungdomsbiljetter
                     conn.Open();
-                    string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '"+ actid +"' and price_group_seat.group = 'ungdom' group by price_group_seat.group, acts.actid";
+                    string sqlAU = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.actid from acts
+                                    inner join available_seats on acts.actid = available_seats.actid
+                                    inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                                    inner join booking on booked_seats.bookingid = booking.bookingid
+                                    where acts.actid = '" + actid + "' and booking.type = 'Ungdom' group by booking.type, acts.actid";
 
-                    NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
+                NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
                     NpgsqlDataReader drAU = cmdAU.ExecuteReader();
 
                     textBoxAntalUngdomsbiljetter.Clear();
@@ -1065,9 +1083,13 @@ namespace cirkus
 
                     //Barn
                     conn.Open();
-                    string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.actid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.actid = '" + actid + "' and price_group_seat.group = 'barn' group by price_group_seat.group, acts.actid";
+                    string sqlKB = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.actid from acts
+                                    inner join available_seats on acts.actid = available_seats.actid
+                                    inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                                    inner join booking on booked_seats.bookingid = booking.bookingid
+                                    where acts.actid = '" + actid + "' and booking.type = 'Barn' group by booking.type, acts.actid";
 
-                    NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
+                NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
                     NpgsqlDataReader drKB = cmdKB.ExecuteReader();
 
                     textBoxAntalBarnbiljetter.Clear();

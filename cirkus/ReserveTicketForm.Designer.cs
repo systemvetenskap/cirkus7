@@ -402,7 +402,7 @@
             this.dgActs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgActs.Location = new System.Drawing.Point(180, 59);
+            this.dgActs.Location = new System.Drawing.Point(180, 63);
             this.dgActs.Name = "dgActs";
             this.dgActs.RowHeadersVisible = false;
             this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
