@@ -1113,23 +1113,23 @@ namespace cirkus
                     conn.Close();
 
                     //Totalt antal
-                    int antalVuxen, antalUngdom, antalBarn;
+                    double antalVuxen, antalUngdom, antalBarn;
                     string totaltSumma;
 
-                    antalVuxen = Convert.ToInt32(textBoxAntalVuxenBiljetter.Text);
-                    antalUngdom = Convert.ToInt32(textBoxAntalUngdomsbiljetter.Text);
-                    antalBarn = Convert.ToInt32(textBoxAntalBarnbiljetter.Text);
+                    antalVuxen = Convert.ToDouble(textBoxAntalVuxenBiljetter.Text);
+                    antalUngdom = Convert.ToDouble(textBoxAntalUngdomsbiljetter.Text);
+                    antalBarn = Convert.ToDouble(textBoxAntalBarnbiljetter.Text);
                     totaltSumma = Convert.ToString(antalVuxen + antalUngdom + antalBarn);
 
                     textBoxTotaltAntal.Text = totaltSumma;
 
                     //Totalt kronor
-                    int kronorVuxen, kronorUngdom, kronorBarn;
+                    double kronorVuxen, kronorUngdom, kronorBarn;
                     string totaltKornor;
 
-                    kronorVuxen = Convert.ToInt32(textBoxKronorVuxenbiljetter.Text);
-                    kronorUngdom = Convert.ToInt32(textBoxKronorUngdomsbiljetter.Text);
-                    kronorBarn = Convert.ToInt32(textBoxKronorBarnbiljetter.Text);
+                    kronorVuxen = Convert.ToDouble(textBoxKronorVuxenbiljetter.Text);
+                    kronorUngdom = Convert.ToDouble(textBoxKronorUngdomsbiljetter.Text);
+                    kronorBarn = Convert.ToDouble(textBoxKronorBarnbiljetter.Text);
                     totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
 
                     textBoxTotaltKronor.Text = totaltKornor;

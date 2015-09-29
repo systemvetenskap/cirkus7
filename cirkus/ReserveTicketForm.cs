@@ -1472,7 +1472,7 @@ namespace cirkus
             int shid = showid;
             int ix = 0;
             int numberOfacts = 0;
-            int priceid = 0; 
+            double priceid = 0; 
             DataTable tickets = new DataTable();
             tickets.Columns.Add("ticketid");
             tickets.Columns.Add("seatid");
@@ -1495,26 +1495,7 @@ namespace cirkus
                     }
 
                 }
-                if (numberOfacts == showacts.Rows.Count)
-                {
-                    if (agegroup == 0)
-                    {
-                        priceid = 120;
-                        type = "Barn";
-
-                    }
-                    if (agegroup == 1)
-                    {
-                        priceid = 130;
-                        type = "Ungdom";
-                    }
-                    if (agegroup == 2)
-                    {
-                        priceid = 200;
-                        type = "Vuxen";
-                    }
-                }
-                else
+                if (numberOfacts < showacts.Rows.Count)
                 {
                     if (agegroup == 0)
                     {
@@ -1530,6 +1511,26 @@ namespace cirkus
                     if (agegroup == 2)
                     {
                         priceid = 150 * numberOfacts;
+                        type = "Vuxen";
+                    }
+                }
+                else if(numberOfacts == showacts.Rows.Count)
+                {
+                    double perc = 0.75;
+                    if (agegroup == 0)
+                    {
+                        priceid = (80 * numberOfacts) * perc;
+                        type = "Barn";
+
+                    }
+                    if (agegroup == 1)
+                    {
+                        priceid = (110 * numberOfacts) * perc;
+                        type = "Ungdom";
+                    }
+                    if (agegroup == 2)
+                    {
+                        priceid = (150 * numberOfacts) * perc;
                         type = "Vuxen";
                     }
 
@@ -1634,7 +1635,7 @@ namespace cirkus
                         conn.Close();
 
                         conn.Open();
-                        int calculate = priceid / numberOfacts;
+                        double calculate = priceid / numberOfacts;
                         cmd = new NpgsqlCommand("insert into sold_tickets(showid, actid,type,sum, bookingid) values(:shid, :aid, :typ, :su, :bid)", conn);
                         cmd.Parameters.Add(new NpgsqlParameter("shid", showid));
                         cmd.Parameters.Add(new NpgsqlParameter("aid", actid));
