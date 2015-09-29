@@ -1022,12 +1022,13 @@ namespace cirkus
                 //    //Antal Vuxenbiljetter
                 //    int selectedIndex = dgvAkter.SelectedRows[0].Index;
                 //    actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
-                
-                int selectedIndex = dgvAkter.SelectedRows[0].Index;
-                actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
-                
-                conn.Open();
-                string sql = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.actid from acts
+                if(dgvAkter.Rows.Count > 0)
+                {
+                    int selectedIndex = dgvAkter.SelectedRows[0].Index;
+                    actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
+
+                    conn.Open();
+                    string sql = @"select sum(booking.price), count(booking.type) as antal, booking.type, acts.actid from acts
                                     inner join available_seats on acts.actid = available_seats.actid
                                     inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
                                     inner join booking on booked_seats.bookingid = booking.bookingid
@@ -1065,7 +1066,7 @@ namespace cirkus
                                     inner join booking on booked_seats.bookingid = booking.bookingid
                                     where acts.actid = '" + actid + "' and booking.type = 'Ungdom' group by booking.type, acts.actid";
 
-                NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
+                    NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
                     NpgsqlDataReader drAU = cmdAU.ExecuteReader();
 
                     textBoxAntalUngdomsbiljetter.Clear();
@@ -1097,7 +1098,7 @@ namespace cirkus
                                     inner join booking on booked_seats.bookingid = booking.bookingid
                                     where acts.actid = '" + actid + "' and booking.type = 'Barn' group by booking.type, acts.actid";
 
-                NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
+                    NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
                     NpgsqlDataReader drKB = cmdKB.ExecuteReader();
 
                     textBoxAntalBarnbiljetter.Clear();
@@ -1141,6 +1142,8 @@ namespace cirkus
                     totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
 
                     textBoxTotaltKronor.Text = totaltKornor;
+                }
+    
                 
 
                 
