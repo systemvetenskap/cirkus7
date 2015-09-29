@@ -40,7 +40,7 @@
             // 
             this.textBoxEmail.Location = new System.Drawing.Point(20, 252);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(260, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(280, 20);
             this.textBoxEmail.TabIndex = 0;
             // 
             // label1
@@ -56,9 +56,9 @@
             // 
             // btnSendPassword
             // 
-            this.btnSendPassword.Location = new System.Drawing.Point(20, 290);
+            this.btnSendPassword.Location = new System.Drawing.Point(20, 300);
             this.btnSendPassword.Name = "btnSendPassword";
-            this.btnSendPassword.Size = new System.Drawing.Size(260, 30);
+            this.btnSendPassword.Size = new System.Drawing.Size(280, 39);
             this.btnSendPassword.TabIndex = 2;
             this.btnSendPassword.Text = "Skicka lösenord";
             this.btnSendPassword.UseVisualStyleBackColor = true;
@@ -78,7 +78,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.Cyan;
-            this.lblStatus.Location = new System.Drawing.Point(20, 334);
+            this.lblStatus.Location = new System.Drawing.Point(20, 364);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(45, 15);
             this.lblStatus.TabIndex = 5;
@@ -90,7 +90,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(310, 356);
+            this.ClientSize = new System.Drawing.Size(341, 438);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSendPassword);

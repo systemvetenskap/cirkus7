@@ -41,9 +41,9 @@
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(26, 367);
+            this.button1.Location = new System.Drawing.Point(33, 358);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(260, 39);
+            this.button1.Size = new System.Drawing.Size(280, 39);
             this.button1.TabIndex = 0;
             this.button1.Text = "Logga in";
             this.button1.UseVisualStyleBackColor = false;
@@ -52,9 +52,9 @@
             // textUsername
             // 
             this.textUsername.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textUsername.Location = new System.Drawing.Point(26, 263);
+            this.textUsername.Location = new System.Drawing.Point(33, 243);
             this.textUsername.Name = "textUsername";
-            this.textUsername.Size = new System.Drawing.Size(260, 30);
+            this.textUsername.Size = new System.Drawing.Size(280, 30);
             this.textUsername.TabIndex = 1;
             this.textUsername.Text = "Användarnamn";
             this.textUsername.Click += new System.EventHandler(this.textUsername_Click);
@@ -62,9 +62,9 @@
             // textPassword
             // 
             this.textPassword.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textPassword.Location = new System.Drawing.Point(26, 313);
+            this.textPassword.Location = new System.Drawing.Point(33, 293);
             this.textPassword.Name = "textPassword";
-            this.textPassword.Size = new System.Drawing.Size(260, 30);
+            this.textPassword.Size = new System.Drawing.Size(280, 30);
             this.textPassword.TabIndex = 2;
             this.textPassword.Text = "lösen";
             this.textPassword.UseSystemPasswordChar = true;
@@ -75,17 +75,17 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Cyan;
-            this.label1.Location = new System.Drawing.Point(26, 346);
+            this.label1.Location = new System.Drawing.Point(33, 328);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(182, 15);
+            this.label1.Size = new System.Drawing.Size(289, 15);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Har du glömt ditt lösenord?";
+            this.label1.Text = "Har du glömt ditt lösenord / användarnamn?";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::cirkus.Properties.Resources.cirkus_kul_bus_300x211;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(24, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(294, 212);
             this.pictureBox1.TabIndex = 3;
@@ -96,7 +96,7 @@
             this.lblStatusLogIn.AutoSize = true;
             this.lblStatusLogIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatusLogIn.ForeColor = System.Drawing.Color.Cyan;
-            this.lblStatusLogIn.Location = new System.Drawing.Point(26, 409);
+            this.lblStatusLogIn.Location = new System.Drawing.Point(33, 405);
             this.lblStatusLogIn.Name = "lblStatusLogIn";
             this.lblStatusLogIn.Size = new System.Drawing.Size(45, 15);
             this.lblStatusLogIn.TabIndex = 5;
@@ -109,7 +109,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(315, 433);
+            this.ClientSize = new System.Drawing.Size(341, 438);
             this.Controls.Add(this.lblStatusLogIn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
