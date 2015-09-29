@@ -11,6 +11,10 @@ using System.Windows.Forms;
 using Npgsql;
 using System.Configuration;
 using System.Runtime.InteropServices;
+using System.Net;
+using System.Web;
+using System.Net.Mail;
+using System.Net.Mime;
 
 namespace cirkus
 {
@@ -1487,6 +1491,7 @@ namespace cirkus
                 string sql = "INSERT INTO staff (ssn,fname,lname,phonenumber,email,username,password,auth) VALUES(:ssn, :fname, :lname, :phonenumber, :email, :username, :password, :auth)";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
+
                 cmd.Parameters.Add(new NpgsqlParameter("ssn", textBoxPersonnummer.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("fname", textBoxFornamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("lname", textBoxEfternamn.Text));
@@ -1494,6 +1499,7 @@ namespace cirkus
                 cmd.Parameters.Add(new NpgsqlParameter("email", textBoxEpost.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("username", textBoxAnvandarnamn.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("password", textBoxLosenord.Text));
+
 
                 if (comboBoxBehorighetsniva.Text == "Biljettförsäljare")
                 {
@@ -1506,6 +1512,23 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
 
                 }
+                string email = textBoxEpost.Text;
+                string firstname= textBoxFornamn.Text;
+                string lastname= textBoxEfternamn.Text;
+                string password = textBoxLosenord.Text;
+                string username= textBoxAnvandarnamn.Text;
+
+                string confirmation_mail = "Hej " + firstname + " " + lastname + "\nDitt lösenord är: " + password + "\nDitt användarnamn är: " + username + " ";
+
+                MailMessage mail = new MailMessage("kulbusstest@gmail.com", email, "Cirkus Kul&Bus - Ditt nya konto", confirmation_mail);
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                client.Port = 587;
+                client.Credentials = new System.Net.NetworkCredential("kulbusstest@gmail.com", "Test12345");
+                client.EnableSsl = true;
+
+                client.Send(mail);
+
                 LblStatusKonto.Visible = true;
                 LblStatusKonto.ForeColor = Color.Green;
                 LblStatusKonto.Text = "Användare tillagd";
@@ -1514,13 +1537,13 @@ namespace cirkus
                 conn.Close();
                 ListaPersonal();
                 ResetColorandText();
+
             }
             catch (NpgsqlException)
             {
                 LblStatusKonto.Visible = true;
                 LblStatusKonto.ForeColor = Color.Tomato;
                 LblStatusKonto.Text = "Användaren finns redan";
-
                 conn.Close();
             }
         
