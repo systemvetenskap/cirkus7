@@ -1085,7 +1085,7 @@
             this.labelStaffName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStaffName.AutoSize = true;
             this.labelStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStaffName.Location = new System.Drawing.Point(423, 9);
+            this.labelStaffName.Location = new System.Drawing.Point(604, 13);
             this.labelStaffName.Name = "labelStaffName";
             this.labelStaffName.Size = new System.Drawing.Size(35, 13);
             this.labelStaffName.TabIndex = 2;
@@ -1122,7 +1122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 501);
+            this.ClientSize = new System.Drawing.Size(944, 495);
             this.Controls.Add(this.labelStaffName);
             this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.tabControl1);
