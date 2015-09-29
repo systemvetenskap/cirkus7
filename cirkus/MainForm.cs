@@ -90,7 +90,7 @@ namespace cirkus
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-        public MainForm(string adminAuthorization, string staffUserID, string staffFname, string staffLname)
+        public MainForm(string adminAuthorization, string staffFname, string staffLname, string staffUserID)
         {
             InitializeComponent();
 
@@ -103,7 +103,16 @@ namespace cirkus
             this.staffLname = staffLname;
             this.staffFname = staffFname;
 
-            labelStaffName.Text = staffFname + " " + staffLname;
+            if (adminAuthorization=="1")
+            {
+                adminAuthorization = "administratör";
+            }
+            else if (adminAuthorization=="0")
+            {
+                adminAuthorization = "biljettförsäljare";
+            }
+
+            labelStaffName.Text = "Du är inloggad som: "+ staffFname + " " + staffLname+", " + adminAuthorization;
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
