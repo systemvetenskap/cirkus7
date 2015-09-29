@@ -426,7 +426,7 @@ namespace cirkus
                             inner join customer on booking.customerid = customer.customerid
                             inner join booked_seats on booking.bookingid = booked_seats.bookingid 
                             inner join show on booking.showid = show.showid 
-                            where customer.customerid = '" + CustomerID + "' AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, type, price ,booking.reserved_to";
+                            where customer.customerid = '" + CustomerID + "' AND show.date < now()::date group by booking.bookingid, show.date, show.name, booking.paid, type, price ,booking.reserved_to";
                 try
                 {
                     conn.Open();
