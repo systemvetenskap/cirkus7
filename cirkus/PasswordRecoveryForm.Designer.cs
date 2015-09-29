@@ -40,7 +40,7 @@
             // 
             this.textBoxEmail.Location = new System.Drawing.Point(20, 252);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(280, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(323, 20);
             this.textBoxEmail.TabIndex = 0;
             // 
             // label1
@@ -58,7 +58,7 @@
             // 
             this.btnSendPassword.Location = new System.Drawing.Point(20, 300);
             this.btnSendPassword.Name = "btnSendPassword";
-            this.btnSendPassword.Size = new System.Drawing.Size(280, 39);
+            this.btnSendPassword.Size = new System.Drawing.Size(323, 39);
             this.btnSendPassword.TabIndex = 2;
             this.btnSendPassword.Text = "Skicka lösenord";
             this.btnSendPassword.UseVisualStyleBackColor = true;
@@ -67,7 +67,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::cirkus.Properties.Resources.cirkus_kul_bus_300x211;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(38, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(294, 212);
             this.pictureBox1.TabIndex = 4;
@@ -90,14 +90,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(341, 438);
+            this.ClientSize = new System.Drawing.Size(385, 438);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSendPassword);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxEmail);
             this.Name = "PasswordRecoveryForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PasswordRecoveryForm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
