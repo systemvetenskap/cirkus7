@@ -100,7 +100,7 @@ namespace cirkus
                 textBoxEmail.BackColor = Color.Tomato;
                 lblStatus.Visible = true;
                 lblStatus.ForeColor = Color.Tomato;
-                lblStatus.Text = "Ange en giltig email, max 10 tecken";
+                lblStatus.Text = "Ange en giltig email, max 60 tecken";
                 return;
             }
 

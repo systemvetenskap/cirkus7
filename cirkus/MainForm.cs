@@ -213,6 +213,8 @@ namespace cirkus
             int selectedindex = dgTickets.SelectedRows[0].Index;
             int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
 
+            
+
             string sql = @" select distinct  booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time, sold_tickets.seattype from acts
                                     inner join available_seats on acts.actid = available_seats.actid
                                     inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
@@ -541,10 +543,11 @@ namespace cirkus
 
 
                 // Kolla dokumentet innan man skrivar ut
+               
                 printPreviewControl1.Visible = true;
-                printPreviewDialog1.Document = printDocumentBiljett;
+                printPreviewDialog2.Document = printDocumentBiljett;
                 printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
-                printPreviewDialog1.Show();
+                printPreviewDialog2.Show();
                 printPreviewControl1.Document = printDocumentBiljett;
 
             }
@@ -1595,7 +1598,7 @@ namespace cirkus
                 string password = textBoxPassword.Text;
                 string username= textBoxUsername.Text;
 
-                string confirmation_mail = "Hej " + firstname + " " + lastname + "\nDitt lösenord är: " + password + "\nDitt användarnamn är: " + username + " ";
+                string confirmation_mail = "Hej " + firstname + " " + lastname + "\n\nDitt lösenord är: " + password + "\nDitt användarnamn är: " + username + "\n\n\nOm du har några frågor, vänligen kontakta oss via e-post: kulbusstest@gmail.com eller via telefon 000 000 ";
 
                 MailMessage mail = new MailMessage("kulbusstest@gmail.com", email, "Cirkus Kul&Bus - Ditt nya konto", confirmation_mail);
 
@@ -1816,11 +1819,8 @@ namespace cirkus
                 {
                     cmd.ExecuteNonQuery();
                 }
-                catch (NpgsqlException ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-                    
+                catch (NpgsqlException)
+                {                    
                     DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna användaren. Användaren har en eller flera aktiva föreställningar kopplade till kontot.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return;
@@ -1896,6 +1896,9 @@ namespace cirkus
             printPreviewControl1.Document = printDocumentStatistic;
         }
 
-        
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
