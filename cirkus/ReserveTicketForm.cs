@@ -165,9 +165,10 @@ namespace cirkus
                             }
                         }
 
-
+                        
 
                     }
+      
                     break;
                 case 2:
                     conn.Open();
@@ -322,7 +323,7 @@ namespace cirkus
             dgShowActs.Columns[2].HeaderText = "Starttid";
             dgShowActs.Columns[3].HeaderText = "Sluttid";
             dgShowActs.Columns[4].HeaderText = "Parkettplatser";
-            dgShowActs.Columns[5].HeaderText = "Fri placering";
+            //dgShowActs.Columns[5].HeaderText = "Fri placering";
             dgShowActs.ClearSelection();
             dgShowActs.Columns[0].Visible = false;
             conn.Close();
@@ -1376,7 +1377,7 @@ namespace cirkus
             {
                
                 backgroundWorker1.RunWorkerAsync();
-                this.Close();
+                //this.Close();
                
             }
 
@@ -1727,13 +1728,14 @@ namespace cirkus
 
                         conn.Open();
                         double calculate = priceid / numberOfacts;
-                        cmd = new NpgsqlCommand("insert into sold_tickets(showid, actid,type,sum, bookingid,seattype) values(:shid, :aid, :typ, :su, :bid, :styp)", conn);
+                        cmd = new NpgsqlCommand("insert into sold_tickets(showid, actid,type,sum, bookingid,seattype,seatid) values(:shid, :aid, :typ, :su, :bid, :styp, :sid)", conn);
                         cmd.Parameters.Add(new NpgsqlParameter("shid", showid));
                         cmd.Parameters.Add(new NpgsqlParameter("aid", actid));
                         cmd.Parameters.Add(new NpgsqlParameter("typ", type));
                         cmd.Parameters.Add(new NpgsqlParameter("su", calculate));
                         cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
                         cmd.Parameters.Add(new NpgsqlParameter("styp", seattype));
+                        cmd.Parameters.Add(new NpgsqlParameter("sid", seatid));
                         cmd.ExecuteNonQuery();
                         conn.Close();
 
@@ -1801,6 +1803,7 @@ namespace cirkus
                         cmd.Parameters.Add(new NpgsqlParameter("su", priceid));
                         cmd.Parameters.Add(new NpgsqlParameter("bid", addedbookingid));
                         cmd.Parameters.Add(new NpgsqlParameter("st", seattype));
+                        
                         cmd.ExecuteNonQuery();
                         conn.Close();
                
@@ -2091,12 +2094,10 @@ namespace cirkus
                 {
                     int bid = int.Parse(row[0].ToString());
                     conn.Open();
-                    da = new NpgsqlDataAdapter(@"select acts.name,seats.section, seats.rownumber, acts.start_time, acts.end_time from ticket
-                                                            inner join booked_seats on ticket.booked_seat_id = booked_seats.booked_seat_id
-                                                            inner join available_seats on booked_seats.available_seats_id = available_seats.available_seats_id
-                                                            inner join acts on available_seats.actid = acts.actid
-                                                            inner join seats on available_seats.seatid = seats.seatid                
-                                                            where ticket.bookingid = '" + bid + "' order by acts.actid", conn);
+                    da = new NpgsqlDataAdapter(@"select acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time from acts
+                                                    inner join sold_tickets on acts.actid = sold_tickets.actid
+                                                    left join available_seats on sold_tickets.seatid = available_seats.available_seats_id
+                                                    left join seats on available_seats.seatid = seats.seatid where bookingid = '"+bid+"'", conn);
 
                     DataTable acts = new DataTable();
                     
@@ -2105,7 +2106,15 @@ namespace cirkus
                     conn.Close();
                     foreach (DataRow r in acts.Rows)
                     {
-                        actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
+                        if(r[1].ToString() == null && r[2].ToString() == null)
+                        {
+                            actname += " " + r[0].ToString() + ": Fri placering";
+                        }
+                        else
+                        {
+                            actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
+                        }
+                      
                         //acttime += " " + r[0].ToString() + ": " + r[3].ToString() + "-" + r[4].ToString() + "";
                     }
                     conn.Open();

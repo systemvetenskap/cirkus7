@@ -213,6 +213,8 @@ namespace cirkus
             int selectedindex = dgTickets.SelectedRows[0].Index;
             int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
 
+            
+
             string sql = @" select distinct  booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time, sold_tickets.seattype from acts
                                     inner join available_seats on acts.actid = available_seats.actid
                                     inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
