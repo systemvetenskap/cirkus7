@@ -1139,7 +1139,7 @@
             this.labelStaffName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStaffName.AutoSize = true;
             this.labelStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStaffName.Location = new System.Drawing.Point(604, 4);
+            this.labelStaffName.Location = new System.Drawing.Point(568, 4);
             this.labelStaffName.Name = "labelStaffName";
             this.labelStaffName.Size = new System.Drawing.Size(35, 13);
             this.labelStaffName.TabIndex = 2;
