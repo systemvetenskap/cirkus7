@@ -104,7 +104,7 @@ namespace cirkus
             //da.Fill(acts);
 
             dgActs.DataSource = acts;
-            dgTEST.DataSource = acts;
+            //dgTEST.DataSource = acts;
             if (acts.Rows.Count > 0)
             {
                 for (int row = 0; row < acts.Rows.Count; row++)
@@ -398,7 +398,7 @@ namespace cirkus
             cSeats.Columns.Add("seatid");
             cSeats.Columns.Add("fp", typeof(bool)).SetOrdinal(6);
             lblStatus1.Visible = false;
-
+            lblStatusAge.Visible = false;
 
         }
 
@@ -475,7 +475,7 @@ namespace cirkus
             dateReservedto.Value = showdate;
             dateReservedto.Value = dateReservedto.Value.Subtract(TimeSpan.FromDays(7));
 
-            if (newcust == true)
+            if (newcust == true && cbDf.Checked == false)
             {
                 string fn = txtfnamn.Text;
                 string ln = txtenamn.Text;
@@ -534,6 +534,11 @@ namespace cirkus
                 read.Read();
                 customerid = int.Parse(read[0].ToString());
                 conn.Close();
+
+            }
+            if (newcust == false && cbDf.Checked == false)
+            {
+                panel3.Visible = true;
 
             }
         }
@@ -607,6 +612,7 @@ namespace cirkus
 
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            lblSeatStatus.Visible = false;
             int selectedIndex = dgActs.SelectedRows[0].Index;
 
             actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
@@ -775,6 +781,7 @@ namespace cirkus
             //NpgsqlDataAdapter da = new NpgsqlDataAdapter("select acts.actid, acts.name from acts inner join show on acts.showid = show.showid where show.showid = '"+showid+"'", conn);
             //da.Fill(acts);
             //conn.Close();
+            lblSeatStatus.Visible = false;
             checks = 0;
             cbAgegroup.SelectedIndex = -1;
             int dgIndex = dgTickets.SelectedRows[0].Index;
@@ -1137,7 +1144,7 @@ namespace cirkus
                 row[6] = true;
                 cSeats.Rows.Add(row);
 
-                dgTEST.DataSource = cSeats;
+                //dgTEST.DataSource = cSeats;
 
         }
         else if(fp.Checked == false)
@@ -1236,8 +1243,8 @@ namespace cirkus
             }
             dt2 = RemDup(dt2, "seatid");
             dt2.AcceptChanges();
-            dgTest2.DataSource = dt;
-            dgTEST.DataSource = dt2;
+            //dgTest2.DataSource = dt;
+            //dgTEST.DataSource = dt2;
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
                 if(dt2.Rows.Count > 0)
@@ -1266,6 +1273,8 @@ namespace cirkus
    
             }
         }
+
+
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -1334,7 +1343,9 @@ namespace cirkus
         {
             if(fullShowS == false)
             {
-
+                lblSeatStatus.Visible = true;
+                lblSeatStatus.Text = "Plats bokad";
+                lblSeatStatus.ForeColor = Color.Green;
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
                 string seatSection = cb.Name[0].ToString();
@@ -1426,6 +1437,9 @@ namespace cirkus
                 }
             else if(fullShowS == true)
             {
+                lblSeatStatus.Visible = true;
+                lblSeatStatus.Text = "Plats bokad";
+                lblSeatStatus.ForeColor = Color.Green;
                 foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
                 {
                     string seatSection = cb.Name[0].ToString();
@@ -1523,7 +1537,7 @@ namespace cirkus
             }
 
 
-            dgTEST.DataSource = cSeats;
+            //dgTEST.DataSource = cSeats;
             //dgSeats.DataSource = cSeats;
             //dgSeats.Columns[0].Visible = false;
             //dgSeats.Columns[1].Visible = false;
@@ -2102,7 +2116,7 @@ namespace cirkus
         }
         public void loadSeatMap()
         {
-            dgTEST.DataSource = currentActs;
+            //dgTEST.DataSource = currentActs;
             int selectedIndex = dgActs.SelectedRows[0].Index;
 
             actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
