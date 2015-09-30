@@ -48,7 +48,7 @@ namespace cirkus
         BindingSource filterSacts = new BindingSource();
         NpgsqlCommand cmd;
         MailMessage mail;
-     
+
 
         public ReserveTicketForm()
         {
@@ -84,7 +84,7 @@ namespace cirkus
         }
         private void loadActs()
         {
-    
+
             filterActs.DataSource = acts;
             filterActs.Filter = string.Format("ticketid = '{0}'", dgTickets.SelectedRows[0].Index.ToString());
             int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
@@ -166,10 +166,10 @@ namespace cirkus
                             }
                         }
 
-                        
+
 
                     }
-      
+
                     break;
                 case 2:
                     conn.Open();
@@ -239,7 +239,7 @@ namespace cirkus
 
             //dgSeats.DataSource = seats;
             //dgTest.DataSource = seats;
-            
+
             conn.Close();
 
             conn.Open();
@@ -314,24 +314,50 @@ namespace cirkus
                         left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
                         inner join acts on available_seats.actid = acts.actid
                         inner join show on acts.showid = show.showid
-                        where show.showid = '"+showid+"' group by acts.actid, acts.name,acts.name, acts.start_time, acts.end_time";
+                        where show.showid = '" + showid + "' group by acts.actid, acts.name,acts.name, acts.start_time, acts.end_time";
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
             showacts = new DataTable();
 
             da.Fill(showacts);
+            showacts.Columns.Add("free", typeof(int)).SetOrdinal(5);
             dgShowActs.DataSource = showacts;
             dgShowActs.Columns[1].HeaderText = "Namn";
             dgShowActs.Columns[2].HeaderText = "Starttid";
             dgShowActs.Columns[3].HeaderText = "Sluttid";
             dgShowActs.Columns[4].HeaderText = "Parkettplatser";
-            //dgShowActs.Columns[5].HeaderText = "Fri placering";
-            dgShowActs.ClearSelection();
+            dgShowActs.Columns[5].HeaderText = "Fri placering";
+
             dgShowActs.Columns[0].Visible = false;
             conn.Close();
 
+            string sql2 = @"select distinct acts.actid, acts.free_placement - count(booked_standing.actid)as free from acts
+                                    inner join show on acts.showid = show.showid
+                                    left join booked_standing on acts.actid = booked_standing.actid
+                                    where show.showid = '" + showid + "' group by booked_standing.actid,acts.actid,acts.free_placement ";
+            da = new NpgsqlDataAdapter(sql2, conn);
+            DataTable temp = new DataTable();
+            da.Fill(temp);
 
+            foreach (DataRow r in temp.Rows)
+            {
+                string actid = r[0].ToString();
+                for (int i = 0; i < showacts.Rows.Count; i++)
+                {
+                    DataRow drw = showacts.Rows[i];
+                    string aid = drw[0].ToString();
+                    if (actid == aid)
+                    {
+                        drw[5] = r[1];
+                    }
+
+                }
+
+
+            }
+            dgShowActs.ClearSelection();
 
         }
+
 
         private void ReserveTicketForm_Load(object sender, EventArgs e)
         {
@@ -448,7 +474,7 @@ namespace cirkus
         {
             dateReservedto.Value = showdate;
             dateReservedto.Value = dateReservedto.Value.Subtract(TimeSpan.FromDays(7));
-            
+
             if (newcust == true)
             {
                 string fn = txtfnamn.Text;
@@ -481,20 +507,22 @@ namespace cirkus
                 conn.Close();
                 panel3.Visible = true;
                 //panel2.Visible = false;
-     
+
 
 
             }
             if (newcust == false || cbDf.Checked == true)
             {
                 panel3.Visible = true;
+                radioPaid.Enabled = false;
+                radioRes.Enabled = false;
                 string fn = "temp";
-         
+
                 conn.Open();
 
                 cmd = new NpgsqlCommand("insert into customer(fname) values(:fn)", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
-         
+
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
@@ -592,20 +620,20 @@ namespace cirkus
                 return;
 
             }
-            else if(chck == true)
+            else if (chck == true)
             {
                 clearSeatMap();
                 loadSeatMap();
             }
-            else if(chck == false)
+            else if (chck == false)
             {
                 clearSeatMap();
             }
 
-            
 
 
-       
+
+
 
 
             /*filterseats.Filter = string.Format("actid = '{0}'", actid);
@@ -708,31 +736,65 @@ namespace cirkus
             {
                 total = Convert.ToInt32(txtBoxNrP.Text);
                 //countSeats();
-                foreach (DataGridViewRow r in dgShowActs.Rows)
+                //foreach (DataGridViewRow r in dgShowActs.Rows)
+                //{
+                //    int row = int.Parse(r.ToString());
+                //    int check = Convert.ToInt32(r.Cells[4].Value);
+                //    int check2 = Convert.ToInt32(r.Cells[5].Value);
+                //    if (total > check)
+                //    {
+                //        //dgShowActs.Columns[4].DefaultCellStyle.BackColor = 
+                //        //r.DefaultCellStyle.BackColor = Color.Tomato;
+                //        dgShowActs.Rows[row].Cells[4].Style.BackColor = Color.Tomato;
+                //    }
+                //    else
+                //    {
+                //        //dgShowActs.Columns[4].DefaultCellStyle.BackColor = Color.LawnGreen;
+
+                //    }
+                //    if (check2 < total)
+                //    {
+                //        dgShowActs.Columns[5].DefaultCellStyle.BackColor = Color.Tomato;
+                //        //r.DefaultCellStyle.BackColor = Color.Tomato;
+                //        dgShowActs.Rows[row].Cells[5].Style.BackColor = Color.Tomato;
+
+                //    }
+                //    else
+                //    {
+                //        //dgShowActs.Columns[5].DefaultCellStyle.BackColor = Color.LawnGreen;
+                //        //r.DefaultCellStyle.BackColor = Color.LawnGreen;
+
+                //    }
+
+
+                //}
+                for (int dr = 0; dr < dgShowActs.Rows.Count; dr++)
                 {
-
-                    int check = Convert.ToInt32(r.Cells[4].Value);
-                    if (check < total)
+                    DataGridViewRow row = dgShowActs.Rows[dr];
+                    int check = int.Parse(row.Cells[4].Value.ToString());
+                    int check2 = int.Parse(row.Cells[5].Value.ToString());
+                    if(total > check)
                     {
-
-                        r.DefaultCellStyle.BackColor = Color.Tomato;
+                        dgShowActs.Rows[dr].Cells[4].Style.BackColor = Color.Tomato;
                     }
                     else
                     {
-                        r.DefaultCellStyle.BackColor = Color.LawnGreen;
-
+                        dgShowActs.Rows[dr].Cells[4].Style.BackColor = Color.LawnGreen;
                     }
-
+                    if(total > check2)
+                    {
+                        dgShowActs.Rows[dr].Cells[5].Style.BackColor = Color.Tomato;
+                    }
+                    else
+                    {
+                        dgShowActs.Rows[dr].Cells[5].Style.BackColor = Color.LawnGreen;
+                    }
                 }
             }
-            else
-            {
-
-            }
-
-
-
         }
+
+
+        
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
