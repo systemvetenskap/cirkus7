@@ -169,22 +169,26 @@
             // 
             // buttonLaggTIllForestallning
             // 
+            this.buttonLaggTIllForestallning.BackColor = System.Drawing.Color.White;
+            this.buttonLaggTIllForestallning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(18, 389);
             this.buttonLaggTIllForestallning.Name = "buttonLaggTIllForestallning";
             this.buttonLaggTIllForestallning.Size = new System.Drawing.Size(156, 31);
             this.buttonLaggTIllForestallning.TabIndex = 29;
             this.buttonLaggTIllForestallning.Text = "Skapa föreställning";
-            this.buttonLaggTIllForestallning.UseVisualStyleBackColor = true;
+            this.buttonLaggTIllForestallning.UseVisualStyleBackColor = false;
             this.buttonLaggTIllForestallning.Click += new System.EventHandler(this.buttonLaggTIllForestallning_Click);
             // 
             // buttonSparaAndringar
             // 
+            this.buttonSparaAndringar.BackColor = System.Drawing.Color.White;
+            this.buttonSparaAndringar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSparaAndringar.Location = new System.Drawing.Point(231, 388);
             this.buttonSparaAndringar.Name = "buttonSparaAndringar";
             this.buttonSparaAndringar.Size = new System.Drawing.Size(141, 31);
             this.buttonSparaAndringar.TabIndex = 30;
             this.buttonSparaAndringar.Text = "Spara ändringar";
-            this.buttonSparaAndringar.UseVisualStyleBackColor = true;
+            this.buttonSparaAndringar.UseVisualStyleBackColor = false;
             this.buttonSparaAndringar.Click += new System.EventHandler(this.buttonSparaAndringar_Click);
             // 
             // dateTimePickerForsaljningstidFran
@@ -316,22 +320,26 @@
             // 
             // uncheck
             // 
+            this.uncheck.BackColor = System.Drawing.Color.White;
+            this.uncheck.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.uncheck.Location = new System.Drawing.Point(174, 327);
             this.uncheck.Name = "uncheck";
             this.uncheck.Size = new System.Drawing.Size(141, 31);
             this.uncheck.TabIndex = 68;
             this.uncheck.Text = "Avmarkera alla platser";
-            this.uncheck.UseVisualStyleBackColor = true;
+            this.uncheck.UseVisualStyleBackColor = false;
             this.uncheck.Click += new System.EventHandler(this.uncheck_Click);
             // 
             // check
             // 
+            this.check.BackColor = System.Drawing.Color.White;
+            this.check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.check.Location = new System.Drawing.Point(14, 327);
             this.check.Name = "check";
             this.check.Size = new System.Drawing.Size(141, 31);
             this.check.TabIndex = 67;
             this.check.Text = "Markera alla platser";
-            this.check.UseVisualStyleBackColor = true;
+            this.check.UseVisualStyleBackColor = false;
             this.check.Click += new System.EventHandler(this.check_Click);
             // 
             // lblActMap
@@ -354,12 +362,14 @@
             // 
             // btnSaveMap
             // 
+            this.btnSaveMap.BackColor = System.Drawing.Color.White;
+            this.btnSaveMap.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSaveMap.Location = new System.Drawing.Point(14, 364);
             this.btnSaveMap.Name = "btnSaveMap";
             this.btnSaveMap.Size = new System.Drawing.Size(207, 29);
             this.btnSaveMap.TabIndex = 53;
             this.btnSaveMap.Text = "Spara layout till vald akt";
-            this.btnSaveMap.UseVisualStyleBackColor = true;
+            this.btnSaveMap.UseVisualStyleBackColor = false;
             this.btnSaveMap.Click += new System.EventHandler(this.btnSaveMap_Click);
             // 
             // E8
@@ -1104,24 +1114,28 @@
             // 
             // buttonRaderaAkt
             // 
+            this.buttonRaderaAkt.BackColor = System.Drawing.Color.White;
+            this.buttonRaderaAkt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRaderaAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRaderaAkt.Location = new System.Drawing.Point(157, 304);
             this.buttonRaderaAkt.Name = "buttonRaderaAkt";
             this.buttonRaderaAkt.Size = new System.Drawing.Size(115, 31);
             this.buttonRaderaAkt.TabIndex = 31;
             this.buttonRaderaAkt.Text = "Ta bort akt >>";
-            this.buttonRaderaAkt.UseVisualStyleBackColor = true;
+            this.buttonRaderaAkt.UseVisualStyleBackColor = false;
             this.buttonRaderaAkt.Click += new System.EventHandler(this.buttonRaderaAkt_Click);
             // 
             // buttonLaggTillAkt
             // 
+            this.buttonLaggTillAkt.BackColor = System.Drawing.Color.White;
+            this.buttonLaggTillAkt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLaggTillAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLaggTillAkt.Location = new System.Drawing.Point(157, 242);
             this.buttonLaggTillAkt.Name = "buttonLaggTillAkt";
             this.buttonLaggTillAkt.Size = new System.Drawing.Size(115, 31);
             this.buttonLaggTillAkt.TabIndex = 0;
             this.buttonLaggTillAkt.Text = "<< Lägg till akt";
-            this.buttonLaggTillAkt.UseVisualStyleBackColor = true;
+            this.buttonLaggTillAkt.UseVisualStyleBackColor = false;
             this.buttonLaggTillAkt.Click += new System.EventHandler(this.buttonLaggTillAkt_Click);
             // 
             // txtActname
@@ -1254,7 +1268,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(740, 432);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gpSeatMap);

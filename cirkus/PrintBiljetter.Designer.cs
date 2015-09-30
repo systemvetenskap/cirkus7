@@ -64,12 +64,13 @@
             // 
             // buttonPrintBiljettDirekt
             // 
+            this.buttonPrintBiljettDirekt.BackColor = System.Drawing.Color.White;
             this.buttonPrintBiljettDirekt.Location = new System.Drawing.Point(447, 249);
             this.buttonPrintBiljettDirekt.Name = "buttonPrintBiljettDirekt";
             this.buttonPrintBiljettDirekt.Size = new System.Drawing.Size(112, 26);
             this.buttonPrintBiljettDirekt.TabIndex = 28;
             this.buttonPrintBiljettDirekt.Text = "Print";
-            this.buttonPrintBiljettDirekt.UseVisualStyleBackColor = true;
+            this.buttonPrintBiljettDirekt.UseVisualStyleBackColor = false;
             this.buttonPrintBiljettDirekt.Click += new System.EventHandler(this.buttonPrintBiljettDirekt_Click);
             // 
             // dgTicketActsDirekt
@@ -119,18 +120,21 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(456, 350);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 23);
             this.button1.TabIndex = 31;
             this.button1.Text = "Avsluta";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // PrintBiljetter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(629, 398);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.printPreviewControl1);

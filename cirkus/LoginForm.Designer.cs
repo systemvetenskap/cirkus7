@@ -40,7 +40,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(28, 358);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(323, 39);
