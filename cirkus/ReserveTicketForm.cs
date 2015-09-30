@@ -272,9 +272,6 @@ namespace cirkus
                 dgCustom.Columns[0].HeaderText = "Efternamn";
                 dgCustom.Columns[1].HeaderText = "Förnamn";
                 dgCustom.Columns[2].HeaderText = "ID";
-                dgCustom.Columns[0].Width = 60;
-                dgCustom.Columns[1].Width = 60;
-                dgCustom.Columns[2].Width = 60;
             }
             catch (NpgsqlException ex)
             {
