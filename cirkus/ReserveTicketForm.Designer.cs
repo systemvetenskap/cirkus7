@@ -164,7 +164,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.cbDf = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             this.label16 = new System.Windows.Forms.Label();
             this.dateReservedto = new System.Windows.Forms.DateTimePicker();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -274,7 +273,7 @@
             this.groupBox2.Controls.Add(this.dataGridViewShows);
             this.groupBox2.Location = new System.Drawing.Point(8, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(620, 203);
+            this.groupBox2.Size = new System.Drawing.Size(636, 203);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Föreställning";
@@ -297,14 +296,14 @@
             this.dgShowActs.RowHeadersVisible = false;
             this.dgShowActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgShowActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgShowActs.Size = new System.Drawing.Size(315, 152);
+            this.dgShowActs.Size = new System.Drawing.Size(336, 152);
             this.dgShowActs.TabIndex = 54;
             // 
             // lblStatus1
             // 
             this.lblStatus1.AutoSize = true;
             this.lblStatus1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus1.Location = new System.Drawing.Point(646, 200);
+            this.lblStatus1.Location = new System.Drawing.Point(663, 199);
             this.lblStatus1.Name = "lblStatus1";
             this.lblStatus1.Size = new System.Drawing.Size(47, 15);
             this.lblStatus1.TabIndex = 52;
@@ -312,7 +311,7 @@
             // 
             // txtBoxNrP
             // 
-            this.txtBoxNrP.Location = new System.Drawing.Point(646, 124);
+            this.txtBoxNrP.Location = new System.Drawing.Point(663, 123);
             this.txtBoxNrP.Name = "txtBoxNrP";
             this.txtBoxNrP.Size = new System.Drawing.Size(117, 20);
             this.txtBoxNrP.TabIndex = 5;
@@ -1825,7 +1824,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.printPreviewControl1);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.dateReservedto);
             this.panel3.Controls.Add(this.progressBar1);
@@ -1839,13 +1837,6 @@
             this.panel3.Size = new System.Drawing.Size(920, 401);
             this.panel3.TabIndex = 42;
             this.panel3.Visible = false;
-            // 
-            // printPreviewControl1
-            // 
-            this.printPreviewControl1.Location = new System.Drawing.Point(253, 11);
-            this.printPreviewControl1.Name = "printPreviewControl1";
-            this.printPreviewControl1.Size = new System.Drawing.Size(259, 156);
-            this.printPreviewControl1.TabIndex = 54;
             // 
             // label16
             // 
@@ -1915,7 +1906,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(643, 108);
+            this.label3.Location = new System.Drawing.Point(660, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 54;
@@ -2135,7 +2126,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Drawing.Printing.PrintDocument printDocumentBIljettDirekt;
         private System.Windows.Forms.PrintDialog printDialogBiljetD;
-        private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label19;
