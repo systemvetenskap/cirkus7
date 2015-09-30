@@ -1120,56 +1120,87 @@ namespace cirkus
 
         private void button10_Click(object sender, EventArgs e)
         {
-            string sql = @"select seats.section, seats.rownumber , count(seats.rownumber) as r from available_seats 
+            string sql = @"select seats.section, seats.rownumber, seats.seatid from available_seats 
                             inner join seats on available_seats.seatid = seats.seatid
                             inner join acts on available_seats.actid = acts.actid
                             inner join show on acts.showid = show.showid
                             left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                            where acts.actid = 145 and booked_seats.booked_seat_id is null 
-                            group by seats.section, seats.rownumber, seats.seatid 
-                            order by seats.seatid";
+                            where acts.actid = '"+actid+"' and booked_seats.booked_seat_id is null order by seats.seatid ";
             conn.Open();
             NpgsqlDataAdapter cmd = new NpgsqlDataAdapter(sql, conn);
             DataTable dt = new DataTable();
-            DataTable dt2 = new DataTable();
-            dt2.Columns.Add("nummer");
-            dt2.Columns.Add("sect");
             cmd.Fill(dt);
+            conn.Close();
+
+            //dt = RemDup(dt, "seatid");
+            //dt.AcceptChanges();
+
+            DataTable dt2 = new DataTable();
+            dt2.Columns.Add("nr");
+            dt2.Columns.Add("sect");
+            dt2.Columns.Add("seatid");
+            
+            
             int x = 0;
             int y = 0;
-            for(int dr = 0; dr < dt.Rows.Count - 1; dr++)
+            for (int dr = 0; dr < dt.Rows.Count - 1; dr++)
             {
                 DataRow r = dt.Rows[dr];
                 y = int.Parse(r[1].ToString());
                 string s = r[0].ToString();
-               // MessageBox.Show("Y "+y.ToString()+" "+ s);
+
 
                 for (int row = dr + 1; row <= dr + 1; row++)
                 {
                     DataRow rw = dt.Rows[row];
                     x = int.Parse(rw[1].ToString());
-                   // MessageBox.Show("X: "+ x.ToString()+" "+ rw[0].ToString());
+
                     if (x - y == 1 && s == rw[0].ToString())
                     {
                         DataRow drow = dt2.NewRow();
                         drow[0] = y;
-                      
-                        dt2.Rows.Add(drow);
-                    }
-                    else if (y + 1 == x && s == rw[0].ToString())
-                    {
-                        DataRow drow = dt2.NewRow();
-                        drow[0] = x;
+                        drow[1] = s;
+                        drow[2] = r[2];
 
                         dt2.Rows.Add(drow);
+                        if (y + 1 == x && s == rw[0].ToString())
+                        {
+
+                            drow = dt2.NewRow();
+                            drow[0] = y + 1;
+                            drow[1] = s;
+                            drow[2] = rw[2];
+                            dt2.Rows.Add(drow);
+                        }
+
 
                     }
+
+
 
                 }
 
             }
+            dt2 = RemDup(dt2, "seatid");
+            dt2.AcceptChanges();
+            dgTest2.DataSource = dt;
             dgTEST.DataSource = dt2;
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                for (int dr = 0; dr < nrotickets; dr++)
+                {   
+                    DataRow r = dt2.Rows[dr];
+                    string s = r[1].ToString() + r[0].ToString();
+                    if(cb.Name == s)
+                    {
+                        cb.Checked = false;
+                        cb.Enabled = true;
+                        cb.BackColor = Color.Orange;
 
+                    }
+                    
+                }
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -2100,6 +2131,7 @@ namespace cirkus
 
             return dt;
         }
+
         void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             MessageBox.Show("Test");

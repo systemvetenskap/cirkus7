@@ -170,6 +170,7 @@
             this.printDocumentBIljettDirekt = new System.Drawing.Printing.PrintDocument();
             this.printDialogBiljetD = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.dgTest2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgShowActs)).BeginInit();
@@ -186,6 +187,7 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTEST)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTest2)).BeginInit();
             this.SuspendLayout();
             // 
             // radioPaid
@@ -306,6 +308,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.button10);
             this.groupBox4.Controls.Add(this.fp);
             this.groupBox4.Controls.Add(this.lblStatusAge);
             this.groupBox4.Controls.Add(this.label13);
@@ -1692,7 +1695,6 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button10);
             this.panel3.Controls.Add(this.printPreviewControl1);
             this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.dateReservedto);
@@ -1710,11 +1712,11 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(253, 233);
+            this.button10.Location = new System.Drawing.Point(184, 310);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.Size = new System.Drawing.Size(146, 23);
             this.button10.TabIndex = 55;
-            this.button10.Text = "button10";
+            this.button10.Text = "Föreslå platser";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
@@ -1821,12 +1823,21 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // dgTest2
+            // 
+            this.dgTest2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTest2.Location = new System.Drawing.Point(915, 182);
+            this.dgTest2.Name = "dgTest2";
+            this.dgTest2.Size = new System.Drawing.Size(697, 150);
+            this.dgTest2.TabIndex = 56;
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1715, 1023);
+            this.Controls.Add(this.dgTest2);
             this.Controls.Add(this.dgTEST);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtBoxNrP);
@@ -1864,6 +1875,7 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTEST)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTest2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2010,5 +2022,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox fp;
+        private System.Windows.Forms.DataGridView dgTest2;
     }
 }
