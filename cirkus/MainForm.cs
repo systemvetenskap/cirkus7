@@ -198,6 +198,7 @@ namespace cirkus
         }
         private void EmptyTextboxesTab1()
         {
+            txtPrintDatum.Clear();
             textBoxPrintShow.Clear();
             textBoxPrintBookingid.Clear();
             textBoxPrintPrice.Clear();

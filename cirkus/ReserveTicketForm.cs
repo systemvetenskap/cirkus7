@@ -511,7 +511,7 @@ namespace cirkus
 
 
             }
-            if (newcust == false || cbDf.Checked == true)
+            if (newcust == false && cbDf.Checked == true)
             {
                 panel3.Visible = true;
                 radioPaid.Enabled = false;
@@ -735,39 +735,7 @@ namespace cirkus
             if (EndastSiffror(txtBoxNrP.Text) == true && string.IsNullOrWhiteSpace(txtBoxNrP.Text) == false)
             {
                 total = Convert.ToInt32(txtBoxNrP.Text);
-                //countSeats();
-                //foreach (DataGridViewRow r in dgShowActs.Rows)
-                //{
-                //    int row = int.Parse(r.ToString());
-                //    int check = Convert.ToInt32(r.Cells[4].Value);
-                //    int check2 = Convert.ToInt32(r.Cells[5].Value);
-                //    if (total > check)
-                //    {
-                //        //dgShowActs.Columns[4].DefaultCellStyle.BackColor = 
-                //        //r.DefaultCellStyle.BackColor = Color.Tomato;
-                //        dgShowActs.Rows[row].Cells[4].Style.BackColor = Color.Tomato;
-                //    }
-                //    else
-                //    {
-                //        //dgShowActs.Columns[4].DefaultCellStyle.BackColor = Color.LawnGreen;
 
-                //    }
-                //    if (check2 < total)
-                //    {
-                //        dgShowActs.Columns[5].DefaultCellStyle.BackColor = Color.Tomato;
-                //        //r.DefaultCellStyle.BackColor = Color.Tomato;
-                //        dgShowActs.Rows[row].Cells[5].Style.BackColor = Color.Tomato;
-
-                //    }
-                //    else
-                //    {
-                //        //dgShowActs.Columns[5].DefaultCellStyle.BackColor = Color.LawnGreen;
-                //        //r.DefaultCellStyle.BackColor = Color.LawnGreen;
-
-                //    }
-
-
-                //}
                 for (int dr = 0; dr < dgShowActs.Rows.Count; dr++)
                 {
                     DataGridViewRow row = dgShowActs.Rows[dr];
@@ -1272,25 +1240,30 @@ namespace cirkus
             dgTEST.DataSource = dt2;
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
-                for (int dr = 0; dr < nrotickets; dr++)
-                {   
-                    DataRow r = dt2.Rows[dr];
-                    string s = r[1].ToString() + r[0].ToString();
-                    if(cb.Name == s)
+                if(dt2.Rows.Count > 0)
+                {
+                    for (int dr = 0; dr < nrotickets; dr++)
                     {
-                        if(cb.BackColor != Color.Blue)
+                        DataRow r = dt2.Rows[dr];
+                        string s = r[1].ToString() + r[0].ToString();
+                        if (cb.Name == s)
                         {
-                            cb.Checked = false;
-                            cb.Enabled = true;
+                            if (cb.BackColor != Color.Blue)
+                            {
+                                cb.Checked = false;
+                                cb.Enabled = true;
 
-                            cb.BackColor = Color.Orange;
+                                cb.BackColor = Color.Orange;
 
+
+                            }
 
                         }
 
                     }
-                    
+
                 }
+   
             }
         }
 
@@ -2264,7 +2237,7 @@ namespace cirkus
                 }
 
                 }
-                seatSugg();
+                //seatSugg();
             }
 
 
