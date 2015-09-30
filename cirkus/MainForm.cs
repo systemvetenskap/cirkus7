@@ -666,6 +666,7 @@ namespace cirkus
                     t.Cells[3].Value = r.Cells[3].Value;
                     t.Cells[4].Value = r.Cells[4].Value;
                     t.Cells[5].Value = r.Cells[5].Value;
+                    t.Cells[6].Value = r.Cells[6].Value;
 
                     DataTable dt = new DataTable();
                     dt.Columns.Add("Boknings ID");
@@ -679,12 +680,13 @@ namespace cirkus
                     DataRow row;
                     row = dt.NewRow();
                     row[0] = r.Cells[0].Value;
-                    row[1] = r.Cells[1].Value;
+                    row[1] = DateTime.Parse(r.Cells[1].Value.ToString()).ToShortDateString();
                     row[2] = r.Cells[2].Value;
                     row[3] = r.Cells[3].Value;
                     row[4] = r.Cells[4].Value;
                     row[5] = r.Cells[5].Value;
-
+                    row[6] = DateTime.Parse(r.Cells[6].Value.ToString()).ToShortDateString();
+                 
                     dt.Rows.Add(row);
                     Ctf = new ChangeTicketForm(dt);
                     Ctf.ShowDialog();
