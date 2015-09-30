@@ -295,6 +295,12 @@ namespace cirkus
         }
         private void textBoxSearchTicket_TextChanged(object sender, EventArgs e)
         {
+            if (!EndastSiffror(textBoxSearchTicket.Text)|| textBoxSearchTicket.TextLength>=7)
+            {
+                MessageBox.Show("Du kan endast söka med siffror (max 6 stycken)");
+                return;
+            }
+
             if (string.IsNullOrEmpty(textBoxSearchTicket.Text))
             {
                 dgTickets.DataSource = null;
