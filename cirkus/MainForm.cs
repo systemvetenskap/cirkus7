@@ -372,7 +372,7 @@ namespace cirkus
             TK = textBoxKrTotal.Text;
 
             //(Längd, Höjd)
-            e.Graphics.DrawString("Föreställningsnamn:", drawFont, drawBrush, new PointF(35, 50));
+            e.Graphics.DrawString("Föreställning:", drawFont, drawBrush, new PointF(35, 50));
             e.Graphics.DrawString("Datum:", drawFont, drawBrush, new PointF(35, 100));
             e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 150));
             e.Graphics.DrawString(show_name, drawFontBold, drawBrush, new PointF(300, 50));
@@ -385,7 +385,7 @@ namespace cirkus
             e.Graphics.DrawString("Vuxenbiljetter:", drawFont, drawBrush, new PointF(35, 300));
             e.Graphics.DrawString("Ungdomsbiljetter:", drawFont, drawBrush, new PointF(35, 350));
             e.Graphics.DrawString("Barnbiljetter:", drawFont, drawBrush, new PointF(35, 400));
-            e.Graphics.DrawString("Totallt:", drawFontBoldAndUnderline, drawBrush, new PointF(35, 480));
+            e.Graphics.DrawString("Totalt:", drawFontBoldAndUnderline, drawBrush, new PointF(35, 480));
 
             e.Graphics.DrawString(AV, drawFont, drawBrush, new PointF(300, 300));
             e.Graphics.DrawString(KV, drawFont, drawBrush, new PointF(450, 300));

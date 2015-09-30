@@ -60,8 +60,8 @@ namespace cirkus
         }
         public void loadShows()
         {
+            //string sql = "select show.showid, show.name, show.date from show";
             string sql = "select show.showid, show.name, show.date from show where now()::date  >= sale_start and now()::date <= sale_stop";
-
             conn.Open();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
             shows = new DataTable();
@@ -323,6 +323,8 @@ namespace cirkus
             dgShowActs.Columns[3].HeaderText = "Sluttid";
             dgShowActs.Columns[4].HeaderText = "Parkettplatser";
             dgShowActs.Columns[5].HeaderText = "Fri placering";
+            dgShowActs.Columns[2].Width = 40;
+            dgShowActs.Columns[3].Width = 40;
 
             dgShowActs.Columns[0].Visible = false;
             conn.Close();
