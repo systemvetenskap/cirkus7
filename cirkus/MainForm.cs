@@ -545,9 +545,9 @@ namespace cirkus
                 // Kolla dokumentet innan man skrivar ut
                
                 printPreviewControl1.Visible = true;
-                printPreviewDialog2.Document = printDocumentBiljett;
+                printPreviewDialog1.Document = printDocumentBiljett;
                 printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
-                printPreviewDialog2.Show();
+                printPreviewDialog1.Show();
                 printPreviewControl1.Document = printDocumentBiljett;
 
             }
