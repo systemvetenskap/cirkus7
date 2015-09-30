@@ -125,6 +125,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.gpSeatMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
@@ -169,22 +177,26 @@
             // 
             // buttonLaggTIllForestallning
             // 
+            this.buttonLaggTIllForestallning.BackColor = System.Drawing.Color.White;
+            this.buttonLaggTIllForestallning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(18, 389);
             this.buttonLaggTIllForestallning.Name = "buttonLaggTIllForestallning";
             this.buttonLaggTIllForestallning.Size = new System.Drawing.Size(156, 31);
             this.buttonLaggTIllForestallning.TabIndex = 29;
             this.buttonLaggTIllForestallning.Text = "Skapa föreställning";
-            this.buttonLaggTIllForestallning.UseVisualStyleBackColor = true;
+            this.buttonLaggTIllForestallning.UseVisualStyleBackColor = false;
             this.buttonLaggTIllForestallning.Click += new System.EventHandler(this.buttonLaggTIllForestallning_Click);
             // 
             // buttonSparaAndringar
             // 
+            this.buttonSparaAndringar.BackColor = System.Drawing.Color.White;
+            this.buttonSparaAndringar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSparaAndringar.Location = new System.Drawing.Point(231, 388);
             this.buttonSparaAndringar.Name = "buttonSparaAndringar";
             this.buttonSparaAndringar.Size = new System.Drawing.Size(141, 31);
             this.buttonSparaAndringar.TabIndex = 30;
             this.buttonSparaAndringar.Text = "Spara ändringar";
-            this.buttonSparaAndringar.UseVisualStyleBackColor = true;
+            this.buttonSparaAndringar.UseVisualStyleBackColor = false;
             this.buttonSparaAndringar.Click += new System.EventHandler(this.buttonSparaAndringar_Click);
             // 
             // dateTimePickerForsaljningstidFran
@@ -226,12 +238,20 @@
             // 
             // gpSeatMap
             // 
+            this.gpSeatMap.Controls.Add(this.label19);
             this.gpSeatMap.Controls.Add(this.lblLayout);
+            this.gpSeatMap.Controls.Add(this.label18);
+            this.gpSeatMap.Controls.Add(this.label17);
             this.gpSeatMap.Controls.Add(this.uncheck);
+            this.gpSeatMap.Controls.Add(this.label15);
             this.gpSeatMap.Controls.Add(this.check);
+            this.gpSeatMap.Controls.Add(this.label14);
             this.gpSeatMap.Controls.Add(this.lblActMap);
+            this.gpSeatMap.Controls.Add(this.label12);
             this.gpSeatMap.Controls.Add(this.lblS);
+            this.gpSeatMap.Controls.Add(this.label11);
             this.gpSeatMap.Controls.Add(this.btnSaveMap);
+            this.gpSeatMap.Controls.Add(this.label1);
             this.gpSeatMap.Controls.Add(this.E8);
             this.gpSeatMap.Controls.Add(this.E4);
             this.gpSeatMap.Controls.Add(this.E6);
@@ -316,22 +336,26 @@
             // 
             // uncheck
             // 
+            this.uncheck.BackColor = System.Drawing.Color.White;
+            this.uncheck.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.uncheck.Location = new System.Drawing.Point(174, 327);
             this.uncheck.Name = "uncheck";
             this.uncheck.Size = new System.Drawing.Size(141, 31);
             this.uncheck.TabIndex = 68;
             this.uncheck.Text = "Avmarkera alla platser";
-            this.uncheck.UseVisualStyleBackColor = true;
+            this.uncheck.UseVisualStyleBackColor = false;
             this.uncheck.Click += new System.EventHandler(this.uncheck_Click);
             // 
             // check
             // 
+            this.check.BackColor = System.Drawing.Color.White;
+            this.check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.check.Location = new System.Drawing.Point(14, 327);
             this.check.Name = "check";
             this.check.Size = new System.Drawing.Size(141, 31);
             this.check.TabIndex = 67;
             this.check.Text = "Markera alla platser";
-            this.check.UseVisualStyleBackColor = true;
+            this.check.UseVisualStyleBackColor = false;
             this.check.Click += new System.EventHandler(this.check_Click);
             // 
             // lblActMap
@@ -354,12 +378,14 @@
             // 
             // btnSaveMap
             // 
+            this.btnSaveMap.BackColor = System.Drawing.Color.White;
+            this.btnSaveMap.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSaveMap.Location = new System.Drawing.Point(14, 364);
             this.btnSaveMap.Name = "btnSaveMap";
             this.btnSaveMap.Size = new System.Drawing.Size(207, 29);
             this.btnSaveMap.TabIndex = 53;
             this.btnSaveMap.Text = "Spara layout till vald akt";
-            this.btnSaveMap.UseVisualStyleBackColor = true;
+            this.btnSaveMap.UseVisualStyleBackColor = false;
             this.btnSaveMap.Click += new System.EventHandler(this.btnSaveMap_Click);
             // 
             // E8
@@ -1104,24 +1130,28 @@
             // 
             // buttonRaderaAkt
             // 
+            this.buttonRaderaAkt.BackColor = System.Drawing.Color.White;
+            this.buttonRaderaAkt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRaderaAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRaderaAkt.Location = new System.Drawing.Point(157, 304);
             this.buttonRaderaAkt.Name = "buttonRaderaAkt";
             this.buttonRaderaAkt.Size = new System.Drawing.Size(115, 31);
             this.buttonRaderaAkt.TabIndex = 31;
             this.buttonRaderaAkt.Text = "Ta bort akt >>";
-            this.buttonRaderaAkt.UseVisualStyleBackColor = true;
+            this.buttonRaderaAkt.UseVisualStyleBackColor = false;
             this.buttonRaderaAkt.Click += new System.EventHandler(this.buttonRaderaAkt_Click);
             // 
             // buttonLaggTillAkt
             // 
+            this.buttonLaggTillAkt.BackColor = System.Drawing.Color.White;
+            this.buttonLaggTillAkt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLaggTillAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLaggTillAkt.Location = new System.Drawing.Point(157, 242);
             this.buttonLaggTillAkt.Name = "buttonLaggTillAkt";
             this.buttonLaggTillAkt.Size = new System.Drawing.Size(115, 31);
             this.buttonLaggTillAkt.TabIndex = 0;
             this.buttonLaggTillAkt.Text = "<< Lägg till akt";
-            this.buttonLaggTillAkt.UseVisualStyleBackColor = true;
+            this.buttonLaggTillAkt.UseVisualStyleBackColor = false;
             this.buttonLaggTillAkt.Click += new System.EventHandler(this.buttonLaggTillAkt_Click);
             // 
             // txtActname
@@ -1250,11 +1280,91 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(197, 41);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(19, 16);
+            this.label19.TabIndex = 82;
+            this.label19.Text = "G";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(276, 124);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(18, 16);
+            this.label18.TabIndex = 81;
+            this.label18.Text = "E";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(98, 41);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(19, 16);
+            this.label17.TabIndex = 80;
+            this.label17.Text = "H";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(20, 124);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(17, 16);
+            this.label15.TabIndex = 79;
+            this.label15.Text = "F";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(20, 200);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(19, 16);
+            this.label14.TabIndex = 78;
+            this.label14.Text = "D";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(277, 197);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(18, 16);
+            this.label12.TabIndex = 77;
+            this.label12.Text = "C";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(173, 295);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 16);
+            this.label11.TabIndex = 76;
+            this.label11.Text = "A";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(119, 295);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 16);
+            this.label1.TabIndex = 75;
+            this.label1.Text = "B";
+            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(740, 432);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gpSeatMap);
@@ -1373,5 +1483,13 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblLayout;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label1;
     }
 }

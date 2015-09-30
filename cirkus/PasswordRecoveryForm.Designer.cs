@@ -56,12 +56,14 @@
             // 
             // btnSendPassword
             // 
+            this.btnSendPassword.BackColor = System.Drawing.Color.White;
+            this.btnSendPassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSendPassword.Location = new System.Drawing.Point(20, 300);
             this.btnSendPassword.Name = "btnSendPassword";
             this.btnSendPassword.Size = new System.Drawing.Size(323, 39);
             this.btnSendPassword.TabIndex = 2;
             this.btnSendPassword.Text = "Skicka lösenord och användarnamn";
-            this.btnSendPassword.UseVisualStyleBackColor = true;
+            this.btnSendPassword.UseVisualStyleBackColor = false;
             this.btnSendPassword.Click += new System.EventHandler(this.btnSendPassword_Click);
             // 
             // pictureBox1

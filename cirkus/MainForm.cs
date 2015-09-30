@@ -207,84 +207,87 @@ namespace cirkus
         }
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            EmptyTextboxesTab1();
-            btnDeleteSelectedTicket.Text = "Radera vald biljett";
+            if (dgTickets.Rows.Count > 0)
+            {
+                EmptyTextboxesTab1();
+                btnDeleteSelectedTicket.Text = "Radera vald biljett";
 
-            int selectedindex = dgTickets.SelectedRows[0].Index;
-            int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
+                int selectedindex = dgTickets.SelectedRows[0].Index;
+                int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
 
-            
 
-            string sql = @" select distinct  booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time, sold_tickets.seattype from acts
+
+                string sql = @" select distinct  booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time, sold_tickets.seattype from acts
                                     inner join available_seats on acts.actid = available_seats.actid
                                     inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
                                     inner join seats on available_seats.seatid = seats.seatid
                                     inner join sold_tickets on booked_seats.bookingid = sold_tickets.bookingid
                                     where booked_seats.bookingid = '" + bookingid + "' and sold_tickets.seattype = 'Parkett' order by booked_seats.booked_seat_id";
 
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-            dtActs = new DataTable();
-            da.Fill(dtActs);
-            string sql2 = @"  select distinct booked_standing.booked_standing_id, acts.name, acts.start_time,acts.end_time, sold_tickets.seattype from acts
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                dtActs = new DataTable();
+                da.Fill(dtActs);
+                string sql2 = @"  select distinct booked_standing.booked_standing_id, acts.name, acts.start_time,acts.end_time, sold_tickets.seattype from acts
                                     inner join booked_standing on acts.actid = booked_standing.actid
                                     inner join booking on booked_standing.bookingid = booking.bookingid
                                     inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
                                     where booking.bookingid = '" + bookingid + "' and sold_tickets.seattype = 'Fri placering' order by booked_standing.booked_standing_id";
-            da = new NpgsqlDataAdapter(sql2, conn);
-           
-            DataTable temp = new DataTable();
-            da.Fill(temp);
+                da = new NpgsqlDataAdapter(sql2, conn);
 
-           
-            foreach (DataRow r in temp.Rows)
-            {
-                DataRow row = dtActs.NewRow();
+                DataTable temp = new DataTable();
+                da.Fill(temp);
 
-                row[0] = r[0];
-                row[1] = r[1];
-                row[2] = "Fri placering";
-                row[3] = DBNull.Value;
-                row[4] = r[2];
-                row[5] = r[3];
-                row[6] = r[4];
-          
-                dtActs.Rows.Add(row);
 
+                foreach (DataRow r in temp.Rows)
+                {
+                    DataRow row = dtActs.NewRow();
+
+                    row[0] = r[0];
+                    row[1] = r[1];
+                    row[2] = "Fri placering";
+                    row[3] = DBNull.Value;
+                    row[4] = r[2];
+                    row[5] = r[3];
+                    row[6] = r[4];
+
+                    dtActs.Rows.Add(row);
+
+                }
+
+
+
+
+
+                dgTicketActs.DataSource = dtActs;
+                dgTicketActs.Columns[0].Visible = false;
+                dgTicketActs.Columns[0].HeaderText = "Boknings ID";
+                dgTicketActs.Columns[1].HeaderText = "Akt";
+                dgTicketActs.Columns[2].HeaderText = "Sektion";
+                dgTicketActs.Columns[3].HeaderText = "Sittplats";
+                dgTicketActs.Columns[4].HeaderText = "Starttid";
+                dgTicketActs.Columns[5].HeaderText = "Sluttid";
+                dgTicketActs.Columns[6].HeaderText = "Platstyp";
+
+                dgTicketActs.Columns[0].Width = 90;
+
+
+                textBoxPrintBookingid.Text = dgTickets[0, selectedindex].Value.ToString();
+                txtPrintDatum.Text = DateTime.Parse(dgTickets[1, selectedindex].Value.ToString()).ToShortDateString();
+                textBoxPrintShow.Text = dgTickets[2, selectedindex].Value.ToString();
+                textBoxPrintAge.Text = dgTickets[4, selectedindex].Value.ToString();
+                textBoxPrintPrice.Text = dgTickets[5, selectedindex].Value.ToString();
+
+
+
+                foreach (DataRow r in dtActs.Rows)
+                {
+                    textBoxPrintAct.Text += r[1].ToString() + ": " + r[2].ToString() + r[3].ToString() + "\n";
+                    akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + "\n";
+
+                }
+
+                dgTicketActs.ClearSelection();
             }
-
-
-          
-
-
-            dgTicketActs.DataSource = dtActs;
-            dgTicketActs.Columns[0].Visible = false;
-            dgTicketActs.Columns[0].HeaderText = "Boknings ID";
-            dgTicketActs.Columns[1].HeaderText = "Akt";
-            dgTicketActs.Columns[2].HeaderText = "Sektion";
-            dgTicketActs.Columns[3].HeaderText = "Sittplats";
-            dgTicketActs.Columns[4].HeaderText = "Starttid";
-            dgTicketActs.Columns[5].HeaderText = "Sluttid";
-            dgTicketActs.Columns[6].HeaderText = "Platstyp";
-
-            dgTicketActs.Columns[0].Width = 90;
-
-
-            textBoxPrintBookingid.Text = dgTickets[0, selectedindex].Value.ToString();
-            txtPrintDatum.Text = DateTime.Parse(dgTickets[1, selectedindex].Value.ToString()).ToShortDateString();
-            textBoxPrintShow.Text = dgTickets[2, selectedindex].Value.ToString();
-            textBoxPrintAge.Text = dgTickets[4, selectedindex].Value.ToString();
-            textBoxPrintPrice.Text = dgTickets[5, selectedindex].Value.ToString();
-          
-            
-        
-            foreach(DataRow r in dtActs.Rows)
-            {
-                textBoxPrintAct.Text += r[1].ToString()+ ": "+ r[2].ToString() + r[3].ToString()+"\n"; 
-                akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + "\n";
-
-            }
-
-            dgTicketActs.ClearSelection();
 
         }
 
@@ -295,6 +298,12 @@ namespace cirkus
         }
         private void textBoxSearchTicket_TextChanged(object sender, EventArgs e)
         {
+            if (!EndastSiffror(textBoxSearchTicket.Text)|| textBoxSearchTicket.TextLength>=7)
+            {
+                MessageBox.Show("Du kan endast söka med siffror (max 6 stycken)");
+                return;
+            }
+
             if (string.IsNullOrEmpty(textBoxSearchTicket.Text))
             {
                 dgTickets.DataSource = null;

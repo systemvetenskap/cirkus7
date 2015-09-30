@@ -80,13 +80,14 @@
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.Color.White;
             this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(137, 183);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(106, 23);
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Spara ändringar";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSpara_Click);
             // 
             // lblAnge
@@ -100,12 +101,13 @@
             // 
             // btnChangeTicket
             // 
+            this.btnChangeTicket.BackColor = System.Drawing.Color.White;
             this.btnChangeTicket.Location = new System.Drawing.Point(17, 183);
             this.btnChangeTicket.Name = "btnChangeTicket";
             this.btnChangeTicket.Size = new System.Drawing.Size(106, 23);
             this.btnChangeTicket.TabIndex = 13;
             this.btnChangeTicket.Text = "Ändra biljett";
-            this.btnChangeTicket.UseVisualStyleBackColor = true;
+            this.btnChangeTicket.UseVisualStyleBackColor = false;
             this.btnChangeTicket.Click += new System.EventHandler(this.btnChangeTicket_Click);
             // 
             // lblTodaysDate
@@ -133,6 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(860, 219);
             this.Controls.Add(this.checkBoxPaidTicket);
             this.Controls.Add(this.lblTodaysDate);

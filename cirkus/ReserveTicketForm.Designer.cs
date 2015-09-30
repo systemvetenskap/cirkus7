@@ -212,22 +212,26 @@
             // 
             // buttonAdd
             // 
+            this.buttonAdd.BackColor = System.Drawing.Color.White;
+            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAdd.Location = new System.Drawing.Point(782, 226);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(106, 35);
             this.buttonAdd.TabIndex = 13;
             this.buttonAdd.Text = "Nästa";
-            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonCancel
             // 
+            this.buttonCancel.BackColor = System.Drawing.Color.White;
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCancel.Location = new System.Drawing.Point(663, 226);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 35);
             this.buttonCancel.TabIndex = 14;
             this.buttonCancel.Text = "Avbryt";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.UseVisualStyleBackColor = false;
             // 
             // dataGridViewShows
             // 
@@ -335,12 +339,14 @@
             // 
             // button10
             // 
+            this.button10.BackColor = System.Drawing.Color.White;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button10.Location = new System.Drawing.Point(181, 279);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(146, 23);
             this.button10.TabIndex = 55;
             this.button10.Text = "Föreslå platser";
-            this.button10.UseVisualStyleBackColor = true;
+            this.button10.UseVisualStyleBackColor = false;
             // 
             // fp
             // 
@@ -356,9 +362,10 @@
             // lblStatusAge
             // 
             this.lblStatusAge.AutoSize = true;
+            this.lblStatusAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatusAge.Location = new System.Drawing.Point(181, 94);
             this.lblStatusAge.Name = "lblStatusAge";
-            this.lblStatusAge.Size = new System.Drawing.Size(66, 13);
+            this.lblStatusAge.Size = new System.Drawing.Size(78, 13);
             this.lblStatusAge.TabIndex = 62;
             this.lblStatusAge.Text = "lblStatusAge";
             // 
@@ -434,12 +441,14 @@
             // 
             // visaallt
             // 
+            this.visaallt.BackColor = System.Drawing.Color.White;
+            this.visaallt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.visaallt.Location = new System.Drawing.Point(180, 238);
             this.visaallt.Name = "visaallt";
             this.visaallt.Size = new System.Drawing.Size(147, 35);
             this.visaallt.TabIndex = 27;
             this.visaallt.Text = "Visa lediga platser för hela föreställningen";
-            this.visaallt.UseVisualStyleBackColor = true;
+            this.visaallt.UseVisualStyleBackColor = false;
             this.visaallt.Click += new System.EventHandler(this.button8_Click);
             // 
             // groupBox6
@@ -747,12 +756,14 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Location = new System.Drawing.Point(788, 356);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 35);
             this.button2.TabIndex = 43;
             this.button2.Text = "Nästa";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // gpSeatMap
@@ -943,12 +954,14 @@
             // 
             // btnSaveTicket
             // 
+            this.btnSaveTicket.BackColor = System.Drawing.Color.White;
+            this.btnSaveTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSaveTicket.Location = new System.Drawing.Point(72, 328);
             this.btnSaveTicket.Name = "btnSaveTicket";
             this.btnSaveTicket.Size = new System.Drawing.Size(180, 29);
             this.btnSaveTicket.TabIndex = 53;
             this.btnSaveTicket.Text = "Välj plats/Ändra plats";
-            this.btnSaveTicket.UseVisualStyleBackColor = true;
+            this.btnSaveTicket.UseVisualStyleBackColor = false;
             this.btnSaveTicket.Click += new System.EventHandler(this.btnSaveTicket_Click);
             // 
             // lblS
@@ -1739,12 +1752,14 @@
             // 
             // button3
             // 
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Location = new System.Drawing.Point(675, 356);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(100, 35);
             this.button3.TabIndex = 43;
             this.button3.Text = "Tillbaka";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // panel2
@@ -1773,21 +1788,25 @@
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Location = new System.Drawing.Point(669, 291);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 35);
             this.button4.TabIndex = 44;
             this.button4.Text = "Tillbaka";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // button5
             // 
+            this.button5.BackColor = System.Drawing.Color.White;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.Location = new System.Drawing.Point(782, 291);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(100, 35);
             this.button5.TabIndex = 45;
             this.button5.Text = "Nästa";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // cbDf
@@ -1858,22 +1877,26 @@
             // 
             // button6
             // 
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button6.Location = new System.Drawing.Point(395, 222);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(100, 35);
             this.button6.TabIndex = 46;
             this.button6.Text = "Tillbaka";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(507, 222);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 35);
             this.button1.TabIndex = 36;
             this.button1.Text = "Slutför";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // errorProvider1
@@ -1927,7 +1950,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1715, 1023);
             this.Controls.Add(this.dgTest2);
             this.Controls.Add(this.dgTEST);
