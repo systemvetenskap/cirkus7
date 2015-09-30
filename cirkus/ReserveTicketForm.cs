@@ -30,6 +30,7 @@ namespace cirkus
         private bool newcust;
         private bool seatType = true;
         private bool fullShowS;
+        int addedbookingid = 0;
         DataTable shows, section, dtfSeats, dtPersons;
         DataTable seats = new DataTable();
         DataTable chosenacts = new DataTable();
@@ -487,7 +488,24 @@ namespace cirkus
             if (newcust == false || cbDf.Checked == true)
             {
                 panel3.Visible = true;
-                //panel2.Visible = false;
+                string fn = "temp";
+         
+                conn.Open();
+
+                cmd = new NpgsqlCommand("insert into customer(fname) values(:fn)", conn);
+                cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
+         
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                conn.Open();
+                cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
+                NpgsqlDataReader read;
+                read = cmd.ExecuteReader();
+
+                read.Read();
+                customerid = int.Parse(read[0].ToString());
+                conn.Close();
 
             }
         }
@@ -1527,10 +1545,10 @@ namespace cirkus
         private void button1_Click_1(object sender, EventArgs e)
         {
             button1.Enabled = false;
-            createBooking();
+            
             if (cbDf.Checked == false)
             {
-               
+                createBooking();
                 backgroundWorker1.RunWorkerAsync();
                 //this.Close();
                
@@ -1553,8 +1571,9 @@ namespace cirkus
                 //printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
                 //printPreviewDialog1.Show();
                 //printPreviewControl1.Document = printDocumentBIljettDirekt;
-                PrintBiljetter rb = new PrintBiljetter();
-                rb.ShowDialog();
+                createBooking();
+                //PrintBiljetter rb = new PrintBiljetter();
+                //rb.ShowDialog();
             }
             this.Close();
 
@@ -1725,8 +1744,9 @@ namespace cirkus
             int shid = showid;
             int ix = 0;
             int numberOfacts = 0;
-            double priceid = 0; 
-        
+            double priceid = 0;
+            
+
             progressBar1.Value = ix;
 
             string type = "";
@@ -1808,7 +1828,7 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("pai", false));
                     cmd.ExecuteNonQuery();
                     ix++;
-                    MessageBox.Show("Test1");
+                    MessageBox.Show("inte här");
 
                 }
                 else if (radioPaid.Checked == true && cbDf.Checked == false)
@@ -1821,18 +1841,19 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
 
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Test2");
+                    MessageBox.Show("inte här 2");
                     ix++;
                 }
-                else if (cbDf.Checked == true && radioPaid.Checked == true)
+                else if (cbDf.Checked == true)
                 {
                     conn.Open();
-                    sql = "insert into booking(showid, paid) values(:shid, :rto)";
+                    sql = "insert into booking(customerid, showid, paid) values(:cid, :shid, :rto)";
                     cmd = new NpgsqlCommand(sql, conn);
+                    cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Test3");
+                    MessageBox.Show("Rätt-true");
                     ix++;
                 }
 
@@ -1844,9 +1865,10 @@ namespace cirkus
                 cmd = new NpgsqlCommand("select currval('booking_bookingid_seq');", conn);
                 NpgsqlDataReader read;
                 read = cmd.ExecuteReader();
-
+                
                 read.Read();
-                int addedbookingid = int.Parse(read[0].ToString());
+                addedbookingid = int.Parse(read[0].ToString());
+                MessageBox.Show(addedbookingid.ToString());
                 conn.Close();
 
                 ix++;
@@ -1865,6 +1887,7 @@ namespace cirkus
 
                     if (id == tid && chck == false)
                     {
+                        MessageBox.Show("Rätt-true");
                         conn.Open();
                         sql = "insert into booked_seats(available_seats_id, bookingid) values(:sid, :bid)";
                         cmd = new NpgsqlCommand(sql, conn);
@@ -1978,9 +2001,13 @@ namespace cirkus
                 ix++;
             }
             progressBar1.Value = 100;
-            
-            
-            
+            if(cbDf.Checked == true)
+            {
+                PrintBiljetter rb = new PrintBiljetter(custid);
+                rb.ShowDialog();
+            }
+          
+
 
         }
 

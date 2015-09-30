@@ -21,17 +21,20 @@ namespace cirkus
         string aldersgrupp, bokningsnummer, forestallning, akt, pris, tider, datum;
         string akter = "";
         string akttider = "";
+        int bid = 0;
 
 
-        public PrintBiljetter()
+        public PrintBiljetter(int custid)
         {
             InitializeComponent();
+            bid = custid;
+            
         }
 
         private void PrintBiljetter_Load(object sender, EventArgs e)
         {
             listTicketDirekt();
-            listAct();
+            
         }
 
         private void dgTicketsDirekt_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -50,13 +53,26 @@ namespace cirkus
             datum = DateTime.Parse(dgTicketsDirekt[1, selectedindex].Value.ToString()).ToShortDateString();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("delete from customer where customerid = '" + bid + "'", conn);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            this.Close();
+
+;        }
+
         public void listTicketDirekt()
         {
-            string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid,  type, price, booking.reserved_to from booking
+            MessageBox.Show(" KOlla" + bid.ToString());
+            string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
+                            from booking
+                            inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
+                            inner join show on sold_tickets.showid = show.showid
+                            inner join acts on sold_tickets.actid = acts.actid
                             inner join customer on booking.customerid = customer.customerid
-                            inner join booked_seats on booking.bookingid = booked_seats.bookingid 
-                            inner join show on booking.showid = show.showid 
-                            where customer.customerid = '3' AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, booking.reserved_to,type, price";
+                            where customer.customerid = '" + bid+"'  group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
             try
             {
                 conn.Open();
@@ -83,7 +99,7 @@ namespace cirkus
             {
                 conn.Close();
             }
-
+            listAct();
 
         }
 
@@ -158,6 +174,7 @@ namespace cirkus
                     if (drw[0].ToString() == seltic)
                     {
                         drw.Delete();
+                        dgTicketActsDirekt.DataSource = null;
                     }
                 }
             }

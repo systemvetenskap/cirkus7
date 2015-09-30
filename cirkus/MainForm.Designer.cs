@@ -31,7 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblsumma = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtPrintDatum = new System.Windows.Forms.TextBox();
             this.lbldate = new System.Windows.Forms.Label();
             this.textBoxPrintBookingid = new System.Windows.Forms.TextBox();
@@ -121,8 +122,6 @@
             this.printDocumentBiljett = new System.Drawing.Printing.PrintDocument();
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog2 = new System.Windows.Forms.PrintPreviewDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblsumma = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketActs)).BeginInit();
@@ -151,7 +150,6 @@
             // 
             // tabTicket
             // 
-            this.tabTicket.Controls.Add(this.button1);
             this.tabTicket.Controls.Add(this.lblsumma);
             this.tabTicket.Controls.Add(this.label2);
             this.tabTicket.Controls.Add(this.txtPrintDatum);
@@ -191,14 +189,24 @@
             this.tabTicket.Text = "Biljettförsäljning";
             this.tabTicket.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // lblsumma
             // 
-            this.button1.Location = new System.Drawing.Point(559, 223);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 26);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Ändra vald biljett";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblsumma.AutoSize = true;
+            this.lblsumma.Location = new System.Drawing.Point(702, 218);
+            this.lblsumma.Name = "lblsumma";
+            this.lblsumma.Size = new System.Drawing.Size(35, 13);
+            this.lblsumma.TabIndex = 29;
+            this.lblsumma.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(639, 218);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Summa pris:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtPrintDatum
             // 
@@ -1144,25 +1152,6 @@
             this.printPreviewDialog2.Name = "printPreviewDialog2";
             this.printPreviewDialog2.Visible = false;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(639, 218);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Summa pris:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // lblsumma
-            // 
-            this.lblsumma.AutoSize = true;
-            this.lblsumma.Location = new System.Drawing.Point(702, 218);
-            this.lblsumma.Name = "lblsumma";
-            this.lblsumma.Size = new System.Drawing.Size(35, 13);
-            this.lblsumma.TabIndex = 29;
-            this.lblsumma.Text = "label3";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1287,7 +1276,6 @@
         private System.Windows.Forms.Label lblShows;
         private System.Windows.Forms.Label lblStatistics;
         private System.Windows.Forms.Button btnPreview;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblsumma;
