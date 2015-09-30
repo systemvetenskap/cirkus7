@@ -69,11 +69,11 @@ namespace cirkus
                     username = dr[4].ToString();
                     
 
-                    string password_mail ="Hej "+firstname+" "+lastname+"\nDitt lösenord är: "+password+"\nDitt användarnamn är: "+username+" ";
+                    string password_mail ="Hej "+firstname+" "+lastname+"\n\nDitt lösenord är: "+password+"\nDitt användarnamn är: "+username+ " \n\n\nOm du har några frågor, vänligen kontakta oss via e-post: kulbusstest@gmail.com eller via telefon 000 000 ";
 
                     conn.Close();
 
-                    MailMessage mail = new MailMessage("kulbusstest@gmail.com", email, "Cirkus Kul&Bus - Lösenord", password_mail);
+                    MailMessage mail = new MailMessage("kulbusstest@gmail.com", email, "Cirkus Kul&Bus - Inloggningsuppgifter", password_mail);
 
                     SmtpClient client = new SmtpClient("smtp.gmail.com");
                     client.Port = 587;
