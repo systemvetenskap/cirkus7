@@ -1104,6 +1104,7 @@ namespace cirkus
 
                     textBoxNumberofAdultTickets.Clear();
                     textBoxKrAdultTickets.Clear();
+                    akt_name = dgActs[0, selectedIndex].Value.ToString();
 
                     while (dr.Read())
                     {
@@ -1324,11 +1325,10 @@ namespace cirkus
             {
                 int selectedIndex = dgShows.SelectedRows[0].Index;
                 showid = int.Parse(dgShows[0, selectedIndex].Value.ToString());
-
                 show_name = dgShows[2, selectedIndex].Value.ToString();
-
                 show_date = dgShows[1, selectedIndex].Value.ToString();
 
+                
                 string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
 
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
