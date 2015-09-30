@@ -1896,6 +1896,5 @@ namespace cirkus
             printPreviewControl1.Document = printDocumentStatistic;
         }
 
-        
     }
 }

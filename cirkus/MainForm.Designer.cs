@@ -137,17 +137,19 @@
             this.tabControl1.Controls.Add(this.tabTicket);
             this.tabControl1.Controls.Add(this.tabShow);
             this.tabControl1.Controls.Add(this.tabAccount);
-            this.tabControl1.Location = new System.Drawing.Point(7, 12);
+            this.tabControl1.HotTrack = true;
+            this.tabControl1.Location = new System.Drawing.Point(-6, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(6, 5);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(933, 482);
+            this.tabControl1.Size = new System.Drawing.Size(961, 505);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabTicket
             // 
+            this.tabTicket.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabTicket.Controls.Add(this.txtPrintDatum);
             this.tabTicket.Controls.Add(this.lbldate);
             this.tabTicket.Controls.Add(this.textBoxPrintBookingid);
@@ -180,10 +182,9 @@
             this.tabTicket.Location = new System.Drawing.Point(4, 26);
             this.tabTicket.Name = "tabTicket";
             this.tabTicket.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTicket.Size = new System.Drawing.Size(925, 452);
+            this.tabTicket.Size = new System.Drawing.Size(953, 475);
             this.tabTicket.TabIndex = 0;
             this.tabTicket.Text = "Biljettförsäljning";
-            this.tabTicket.UseVisualStyleBackColor = true;
             // 
             // txtPrintDatum
             // 
@@ -376,33 +377,39 @@
             // 
             // btnDeleteSelectedTicket
             // 
+            this.btnDeleteSelectedTicket.BackColor = System.Drawing.Color.White;
+            this.btnDeleteSelectedTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeleteSelectedTicket.Location = new System.Drawing.Point(217, 406);
             this.btnDeleteSelectedTicket.Name = "btnDeleteSelectedTicket";
             this.btnDeleteSelectedTicket.Size = new System.Drawing.Size(126, 35);
             this.btnDeleteSelectedTicket.TabIndex = 11;
             this.btnDeleteSelectedTicket.Text = "Radera vald biljett";
-            this.btnDeleteSelectedTicket.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedTicket.UseVisualStyleBackColor = false;
             this.btnDeleteSelectedTicket.Click += new System.EventHandler(this.btnDeleteTicket_Click);
             // 
             // btnPrint
             // 
+            this.btnPrint.BackColor = System.Drawing.Color.White;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.Location = new System.Drawing.Point(777, 339);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(126, 35);
             this.btnPrint.TabIndex = 8;
             this.btnPrint.Text = "Skriv ut vald biljett";
-            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
             // btnEditTicket
             // 
+            this.btnEditTicket.BackColor = System.Drawing.Color.White;
+            this.btnEditTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditTicket.Location = new System.Drawing.Point(359, 406);
             this.btnEditTicket.Name = "btnEditTicket";
             this.btnEditTicket.Size = new System.Drawing.Size(126, 35);
             this.btnEditTicket.TabIndex = 10;
             this.btnEditTicket.Text = "Ändra vald biljett";
-            this.btnEditTicket.UseVisualStyleBackColor = true;
+            this.btnEditTicket.UseVisualStyleBackColor = false;
             this.btnEditTicket.Click += new System.EventHandler(this.buttonEditTicket_Click);
             // 
             // lblPrice
@@ -417,12 +424,14 @@
             // 
             // btnBookNewTicket
             // 
+            this.btnBookNewTicket.BackColor = System.Drawing.Color.White;
+            this.btnBookNewTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBookNewTicket.Location = new System.Drawing.Point(618, 406);
             this.btnBookNewTicket.Name = "btnBookNewTicket";
             this.btnBookNewTicket.Size = new System.Drawing.Size(126, 35);
             this.btnBookNewTicket.TabIndex = 9;
             this.btnBookNewTicket.Text = "Boka ny biljett";
-            this.btnBookNewTicket.UseVisualStyleBackColor = true;
+            this.btnBookNewTicket.UseVisualStyleBackColor = false;
             this.btnBookNewTicket.Click += new System.EventHandler(this.buttonReserveTicket_Click);
             // 
             // lblAct
@@ -437,12 +446,14 @@
             // 
             // btnAddCustomer
             // 
+            this.btnAddCustomer.BackColor = System.Drawing.Color.White;
+            this.btnAddCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddCustomer.Location = new System.Drawing.Point(15, 406);
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.Size = new System.Drawing.Size(126, 35);
             this.btnAddCustomer.TabIndex = 8;
             this.btnAddCustomer.Text = "Lägg till ny kund";
-            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.UseVisualStyleBackColor = false;
             this.btnAddCustomer.Click += new System.EventHandler(this.buttonAddCustomer_Click);
             // 
             // lblShow
@@ -507,6 +518,7 @@
             // 
             // tabShow
             // 
+            this.tabShow.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabShow.Controls.Add(this.btnPreview);
             this.tabShow.Controls.Add(this.lblStatistics);
             this.tabShow.Controls.Add(this.lblActs);
@@ -535,19 +547,20 @@
             this.tabShow.Location = new System.Drawing.Point(4, 26);
             this.tabShow.Name = "tabShow";
             this.tabShow.Padding = new System.Windows.Forms.Padding(3);
-            this.tabShow.Size = new System.Drawing.Size(925, 452);
+            this.tabShow.Size = new System.Drawing.Size(953, 475);
             this.tabShow.TabIndex = 1;
             this.tabShow.Text = "Föreställning";
-            this.tabShow.UseVisualStyleBackColor = true;
             // 
             // btnPreview
             // 
+            this.btnPreview.BackColor = System.Drawing.Color.White;
+            this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPreview.Location = new System.Drawing.Point(656, 407);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(126, 35);
             this.btnPreview.TabIndex = 29;
             this.btnPreview.Text = "Förhandsgranska utskrift";
-            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.UseVisualStyleBackColor = false;
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // lblStatistics
@@ -713,22 +726,26 @@
             // 
             // btnPrintStatistics
             // 
+            this.btnPrintStatistics.BackColor = System.Drawing.Color.White;
+            this.btnPrintStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrintStatistics.Location = new System.Drawing.Point(788, 407);
             this.btnPrintStatistics.Name = "btnPrintStatistics";
             this.btnPrintStatistics.Size = new System.Drawing.Size(126, 35);
             this.btnPrintStatistics.TabIndex = 14;
             this.btnPrintStatistics.Text = "Skriv ut statistik";
-            this.btnPrintStatistics.UseVisualStyleBackColor = true;
+            this.btnPrintStatistics.UseVisualStyleBackColor = false;
             this.btnPrintStatistics.Click += new System.EventHandler(this.buttonSkrivUtForestallning_Click);
             // 
             // btnDeleteShow
             // 
+            this.btnDeleteShow.BackColor = System.Drawing.Color.White;
+            this.btnDeleteShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeleteShow.Location = new System.Drawing.Point(157, 407);
             this.btnDeleteShow.Name = "btnDeleteShow";
             this.btnDeleteShow.Size = new System.Drawing.Size(126, 35);
             this.btnDeleteShow.TabIndex = 13;
             this.btnDeleteShow.Text = "Radera föreställning";
-            this.btnDeleteShow.UseVisualStyleBackColor = true;
+            this.btnDeleteShow.UseVisualStyleBackColor = false;
             this.btnDeleteShow.Click += new System.EventHandler(this.buttonRaderaForestallning_Click);
             // 
             // labelKronor
@@ -797,16 +814,19 @@
             // 
             // btnCreateShow
             // 
+            this.btnCreateShow.BackColor = System.Drawing.Color.White;
+            this.btnCreateShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreateShow.Location = new System.Drawing.Point(23, 407);
             this.btnCreateShow.Name = "btnCreateShow";
             this.btnCreateShow.Size = new System.Drawing.Size(126, 35);
             this.btnCreateShow.TabIndex = 4;
             this.btnCreateShow.Text = "Skapa ny föreställning";
-            this.btnCreateShow.UseVisualStyleBackColor = true;
+            this.btnCreateShow.UseVisualStyleBackColor = false;
             this.btnCreateShow.Click += new System.EventHandler(this.buttonSkapaForestalnning_Click_1);
             // 
             // tabAccount
             // 
+            this.tabAccount.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabAccount.Controls.Add(this.btnDeleteAccount);
             this.tabAccount.Controls.Add(this.lblSsnumber);
             this.tabAccount.Controls.Add(this.textBoxSsnumber);
@@ -832,22 +852,24 @@
             this.tabAccount.Controls.Add(this.textBoxEmail);
             this.tabAccount.Controls.Add(this.textBoxFirstname);
             this.tabAccount.Controls.Add(this.textBoxUsername);
+            this.tabAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabAccount.Location = new System.Drawing.Point(4, 26);
             this.tabAccount.Name = "tabAccount";
-            this.tabAccount.Size = new System.Drawing.Size(925, 452);
+            this.tabAccount.Size = new System.Drawing.Size(953, 475);
             this.tabAccount.TabIndex = 2;
             this.tabAccount.Text = "Kontohantering";
-            this.tabAccount.UseVisualStyleBackColor = true;
             // 
             // btnDeleteAccount
             // 
+            this.btnDeleteAccount.BackColor = System.Drawing.Color.White;
             this.btnDeleteAccount.Enabled = false;
+            this.btnDeleteAccount.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeleteAccount.Location = new System.Drawing.Point(22, 406);
             this.btnDeleteAccount.Name = "btnDeleteAccount";
             this.btnDeleteAccount.Size = new System.Drawing.Size(126, 35);
             this.btnDeleteAccount.TabIndex = 58;
             this.btnDeleteAccount.Text = "Radera konto";
-            this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.UseVisualStyleBackColor = false;
             this.btnDeleteAccount.Click += new System.EventHandler(this.btnRaderaKonto_Click);
             // 
             // lblSsnumber
@@ -861,6 +883,8 @@
             // 
             // textBoxSsnumber
             // 
+            this.textBoxSsnumber.BackColor = System.Drawing.Color.White;
+            this.textBoxSsnumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxSsnumber.Location = new System.Drawing.Point(366, 90);
             this.textBoxSsnumber.Name = "textBoxSsnumber";
             this.textBoxSsnumber.Size = new System.Drawing.Size(152, 20);
@@ -902,10 +926,10 @@
             this.dgStaff.AllowUserToResizeColumns = false;
             this.dgStaff.AllowUserToResizeRows = false;
             this.dgStaff.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgStaff.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgStaff.BackgroundColor = System.Drawing.Color.White;
             this.dgStaff.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgStaff.GridColor = System.Drawing.SystemColors.Window;
+            this.dgStaff.GridColor = System.Drawing.Color.White;
             this.dgStaff.Location = new System.Drawing.Point(22, 90);
             this.dgStaff.MultiSelect = false;
             this.dgStaff.Name = "dgStaff";
@@ -947,22 +971,26 @@
             // 
             // btnEmptyBoxes
             // 
+            this.btnEmptyBoxes.BackColor = System.Drawing.Color.White;
+            this.btnEmptyBoxes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEmptyBoxes.Location = new System.Drawing.Point(576, 406);
             this.btnEmptyBoxes.Name = "btnEmptyBoxes";
             this.btnEmptyBoxes.Size = new System.Drawing.Size(126, 35);
             this.btnEmptyBoxes.TabIndex = 32;
             this.btnEmptyBoxes.Text = "Töm fälten";
-            this.btnEmptyBoxes.UseVisualStyleBackColor = true;
+            this.btnEmptyBoxes.UseVisualStyleBackColor = false;
             this.btnEmptyBoxes.Click += new System.EventHandler(this.btnTomFalten_Click);
             // 
             // btnUpdateAccount
             // 
+            this.btnUpdateAccount.BackColor = System.Drawing.Color.White;
+            this.btnUpdateAccount.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdateAccount.Location = new System.Drawing.Point(200, 406);
             this.btnUpdateAccount.Name = "btnUpdateAccount";
             this.btnUpdateAccount.Size = new System.Drawing.Size(126, 35);
             this.btnUpdateAccount.TabIndex = 31;
             this.btnUpdateAccount.Text = "Uppdatera/ändra konto";
-            this.btnUpdateAccount.UseVisualStyleBackColor = true;
+            this.btnUpdateAccount.UseVisualStyleBackColor = false;
             this.btnUpdateAccount.Click += new System.EventHandler(this.btnUpdateraKonto_Click);
             // 
             // lblFirstName
@@ -976,12 +1004,14 @@
             // 
             // btnCreateAccount
             // 
+            this.btnCreateAccount.BackColor = System.Drawing.Color.White;
+            this.btnCreateAccount.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreateAccount.Location = new System.Drawing.Point(366, 406);
             this.btnCreateAccount.Name = "btnCreateAccount";
             this.btnCreateAccount.Size = new System.Drawing.Size(126, 35);
             this.btnCreateAccount.TabIndex = 29;
             this.btnCreateAccount.Text = "Skapa/Lägg till konto";
-            this.btnCreateAccount.UseVisualStyleBackColor = true;
+            this.btnCreateAccount.UseVisualStyleBackColor = false;
             this.btnCreateAccount.Click += new System.EventHandler(this.btnSkapaKonto_Click);
             // 
             // lblSokPerson
@@ -1073,9 +1103,10 @@
             // 
             // buttonLogOut
             // 
-            this.buttonLogOut.Location = new System.Drawing.Point(865, 8);
+            this.buttonLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLogOut.Location = new System.Drawing.Point(870, 1);
             this.buttonLogOut.Name = "buttonLogOut";
-            this.buttonLogOut.Size = new System.Drawing.Size(68, 27);
+            this.buttonLogOut.Size = new System.Drawing.Size(68, 20);
             this.buttonLogOut.TabIndex = 1;
             this.buttonLogOut.Text = "Logga ut";
             this.buttonLogOut.UseVisualStyleBackColor = true;
@@ -1086,7 +1117,7 @@
             this.labelStaffName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStaffName.AutoSize = true;
             this.labelStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStaffName.Location = new System.Drawing.Point(604, 13);
+            this.labelStaffName.Location = new System.Drawing.Point(604, 4);
             this.labelStaffName.Name = "labelStaffName";
             this.labelStaffName.Size = new System.Drawing.Size(35, 13);
             this.labelStaffName.TabIndex = 2;
@@ -1133,6 +1164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(944, 495);
             this.Controls.Add(this.labelStaffName);
             this.Controls.Add(this.buttonLogOut);
