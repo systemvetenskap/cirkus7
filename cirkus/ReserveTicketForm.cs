@@ -30,6 +30,7 @@ namespace cirkus
         private bool newcust;
         private bool seatType = true;
         private bool fullShowS;
+        int addedbookingid = 0;
         DataTable shows, section, dtfSeats, dtPersons;
         DataTable seats = new DataTable();
         DataTable chosenacts = new DataTable();
@@ -438,7 +439,7 @@ namespace cirkus
         {
 
             panel2.Visible = true;
-
+            dgCustom.DataSource = null;
 
 
         }
@@ -487,7 +488,24 @@ namespace cirkus
             if (newcust == false || cbDf.Checked == true)
             {
                 panel3.Visible = true;
-                //panel2.Visible = false;
+                string fn = "temp";
+         
+                conn.Open();
+
+                cmd = new NpgsqlCommand("insert into customer(fname) values(:fn)", conn);
+                cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
+         
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                conn.Open();
+                cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
+                NpgsqlDataReader read;
+                read = cmd.ExecuteReader();
+
+                read.Read();
+                customerid = int.Parse(read[0].ToString());
+                conn.Close();
 
             }
         }
@@ -883,9 +901,9 @@ namespace cirkus
         {
             if(dgActs.Rows.Count > 0)
             {
-                int selectedIndex = dgActs.SelectedRows[0].Index;
+               // int selectedIndex = dgActs.SelectedRows[0].Index;
 
-                actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
+                //actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
                 foreach (DataRow r in cSeats.Rows)
                 {
 
@@ -947,14 +965,19 @@ namespace cirkus
                 if (cb != null && cb.Checked && cb.BackColor == Color.Green)
                 {
                     checks++;
-                   
+
+                }
+                if (cb != null && cb.Checked && cb.BackColor == Color.Orange)
+                {
+                    checks++;
+
                 }
                 if (checks > 1)
                 {
                     cb = sender as CheckBox;
                     if (cb != null && cb.Checked)
                     {
-                        
+                        cb.Checked = false;
                     }
                     lblSeatStatus.Visible = true;
                     lblSeatStatus.ForeColor = Color.Tomato;
@@ -1118,7 +1141,7 @@ namespace cirkus
 
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void seatSugg()
         {
             string sql = @"select seats.section, seats.rownumber, seats.seatid from available_seats 
                             inner join seats on available_seats.seatid = seats.seatid
@@ -1193,9 +1216,15 @@ namespace cirkus
                     string s = r[1].ToString() + r[0].ToString();
                     if(cb.Name == s)
                     {
-                        cb.Checked = false;
-                        cb.Enabled = true;
-                        cb.BackColor = Color.Orange;
+                        if(cb.BackColor != Color.Blue)
+                        {
+                            cb.Checked = false;
+                            cb.Enabled = true;
+
+                            cb.BackColor = Color.Orange;
+
+
+                        }
 
                     }
                     
@@ -1287,8 +1316,21 @@ namespace cirkus
                     cSeats.Rows.Add(row);
                     
                     }
+                    if (cb.Checked == true && cb.BackColor == Color.Orange)
+                    {
+                        DataRow row = cSeats.NewRow();
+                        row[0] = ticketid;
+                        row[1] = actid;
+                        row[2] = seatSection;
+                        row[3] = seatNumber;
+                        row[4] = agegroup;
+                        row[6] = false;
+                        cSeats.Rows.Add(row);
+
+                    }
 
                 }
+
                 char sect = '-';
                 foreach (DataRow r in cSeats.Rows)
                 {
@@ -1330,6 +1372,11 @@ namespace cirkus
                         string sactid = r[1].ToString();
                         string s = sect + nr;
                         if (cb.Name == s && cb.Checked == false && cb.BackColor == Color.Green && actid.ToString() == sactid)
+                        {
+
+                            r.Delete();
+                        }
+                        else if (cb.Name == s && cb.Checked == false && cb.BackColor == Color.Orange && actid.ToString() == sactid)
                         {
 
                             r.Delete();
@@ -1379,7 +1426,40 @@ namespace cirkus
                             cSeats.Rows.Add(row);
 
                         }
+
                       
+
+                    }
+                    else if (cb.Checked == true && cb.BackColor == Color.Orange)
+                    {
+
+                        foreach (DataRow rows in showacts.Rows)
+                        {
+                            DataRow row = cSeats.NewRow();
+                            string aid = rows[0].ToString();
+                            string sql = "select available_seats_id from available_seats inner join seats on available_seats.seatid = seats.seatid where actid = '" + aid + "' and seats.section = '" + seatSection + "' and seats.rownumber = '" + seatNumber + "'";
+                            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                            conn.Open();
+                            NpgsqlDataReader read = cmd.ExecuteReader();
+                            while (read.Read())
+                            {
+
+                                row[5] = read[0];
+
+                            }
+                            conn.Close();
+
+                            row[0] = ticketid;
+                            row[1] = aid;
+                            row[2] = seatSection;
+                            row[3] = seatNumber;
+                            row[4] = agegroup;
+                            row[6] = false;
+                            cSeats.Rows.Add(row);
+
+                        }
+
+
 
                     }
 
@@ -1409,6 +1489,16 @@ namespace cirkus
 
 
             dgTEST.DataSource = cSeats;
+            //dgSeats.DataSource = cSeats;
+            //dgSeats.Columns[0].Visible = false;
+            //dgSeats.Columns[1].Visible = false;
+            //dgSeats.Columns[4].Visible = false;
+            //dgSeats.Columns[5].Visible = false;
+            //dgSeats.Columns[6].Visible = false;
+
+
+
+
 
         }
 
@@ -1455,10 +1545,10 @@ namespace cirkus
         private void button1_Click_1(object sender, EventArgs e)
         {
             button1.Enabled = false;
-            createBooking();
+            
             if (cbDf.Checked == false)
             {
-               
+                createBooking();
                 backgroundWorker1.RunWorkerAsync();
                 //this.Close();
                
@@ -1466,23 +1556,26 @@ namespace cirkus
 
             else if(cbDf.Checked == true)
             {
-                ////// Printing 
-                //PrintDialog pd = new PrintDialog();
-                //pd.Document = printDocumentBIljettDirekt;
-                //if (pd.ShowDialog() == DialogResult.OK)
-                //{
-                //    printDocumentBIljettDirekt.Print();
-                //}
+                //////// Printing 
+                ////PrintDialog pd = new PrintDialog();
+                ////pd.Document = printDocumentBIljettDirekt;
+                ////if (pd.ShowDialog() == DialogResult.OK)
+                ////{
+                ////    printDocumentBIljettDirekt.Print();
+                ////}
 
 
-                // Kolla dokumentet innan man skrivar ut
-                printPreviewControl1.Visible = true;
-                printPreviewDialog1.Document = printDocumentBIljettDirekt;
-                printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
-                printPreviewDialog1.Show();
-                printPreviewControl1.Document = printDocumentBIljettDirekt;
+                //// Kolla dokumentet innan man skrivar ut
+                //printPreviewControl1.Visible = true;
+                //printPreviewDialog1.Document = printDocumentBIljettDirekt;
+                //printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
+                //printPreviewDialog1.Show();
+                //printPreviewControl1.Document = printDocumentBIljettDirekt;
+                createBooking();
+                //PrintBiljetter rb = new PrintBiljetter();
+                //rb.ShowDialog();
             }
-            //this.Close();
+            this.Close();
 
         }
 
@@ -1651,8 +1744,9 @@ namespace cirkus
             int shid = showid;
             int ix = 0;
             int numberOfacts = 0;
-            double priceid = 0; 
-        
+            double priceid = 0;
+            
+
             progressBar1.Value = ix;
 
             string type = "";
@@ -1734,7 +1828,7 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("pai", false));
                     cmd.ExecuteNonQuery();
                     ix++;
-                    MessageBox.Show("Test1");
+                    MessageBox.Show("inte här");
 
                 }
                 else if (radioPaid.Checked == true && cbDf.Checked == false)
@@ -1747,18 +1841,19 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
 
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Test2");
+                    MessageBox.Show("inte här 2");
                     ix++;
                 }
-                else if (cbDf.Checked == true && radioPaid.Checked == true)
+                else if (cbDf.Checked == true)
                 {
                     conn.Open();
-                    sql = "insert into booking(showid, paid) values(:shid, :rto)";
+                    sql = "insert into booking(customerid, showid, paid) values(:cid, :shid, :rto)";
                     cmd = new NpgsqlCommand(sql, conn);
+                    cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Test3");
+                    MessageBox.Show("Rätt-true");
                     ix++;
                 }
 
@@ -1770,9 +1865,10 @@ namespace cirkus
                 cmd = new NpgsqlCommand("select currval('booking_bookingid_seq');", conn);
                 NpgsqlDataReader read;
                 read = cmd.ExecuteReader();
-
+                
                 read.Read();
-                int addedbookingid = int.Parse(read[0].ToString());
+                addedbookingid = int.Parse(read[0].ToString());
+                MessageBox.Show(addedbookingid.ToString());
                 conn.Close();
 
                 ix++;
@@ -1791,6 +1887,7 @@ namespace cirkus
 
                     if (id == tid && chck == false)
                     {
+                        MessageBox.Show("Rätt-true");
                         conn.Open();
                         sql = "insert into booked_seats(available_seats_id, bookingid) values(:sid, :bid)";
                         cmd = new NpgsqlCommand(sql, conn);
@@ -1904,9 +2001,13 @@ namespace cirkus
                 ix++;
             }
             progressBar1.Value = 100;
-            
-            
-            
+            if(cbDf.Checked == true)
+            {
+                PrintBiljetter rb = new PrintBiljetter(custid);
+                rb.ShowDialog();
+            }
+          
+
 
         }
 
@@ -2010,6 +2111,7 @@ namespace cirkus
 
 
                 }
+                seatSugg();
                 foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
                 {
 
@@ -2038,9 +2140,10 @@ namespace cirkus
                     }
 
                 }
+                
 
 
-                        }
+            }
             else if(fullShowS == true)
             {
                 foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
@@ -2099,7 +2202,7 @@ namespace cirkus
                 }
 
                 }
-
+                seatSugg();
             }
 
 
