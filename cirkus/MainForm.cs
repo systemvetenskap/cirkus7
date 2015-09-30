@@ -1819,11 +1819,8 @@ namespace cirkus
                 {
                     cmd.ExecuteNonQuery();
                 }
-                catch (NpgsqlException ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-                    
+                catch (NpgsqlException)
+                {                    
                     DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna användaren. Användaren har en eller flera aktiva föreställningar kopplade till kontot.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     conn.Close();
                     return;
