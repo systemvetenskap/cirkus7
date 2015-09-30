@@ -1118,7 +1118,59 @@ namespace cirkus
 
         }
 
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string sql = @"select seats.section, seats.rownumber , count(seats.rownumber) as r from available_seats 
+                            inner join seats on available_seats.seatid = seats.seatid
+                            inner join acts on available_seats.actid = acts.actid
+                            inner join show on acts.showid = show.showid
+                            left join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                            where acts.actid = 145 and booked_seats.booked_seat_id is null 
+                            group by seats.section, seats.rownumber, seats.seatid 
+                            order by seats.seatid";
+            conn.Open();
+            NpgsqlDataAdapter cmd = new NpgsqlDataAdapter(sql, conn);
+            DataTable dt = new DataTable();
+            DataTable dt2 = new DataTable();
+            dt2.Columns.Add("nummer");
+            dt2.Columns.Add("sect");
+            cmd.Fill(dt);
+            int x = 0;
+            int y = 0;
+            for(int dr = 0; dr < dt.Rows.Count - 1; dr++)
+            {
+                DataRow r = dt.Rows[dr];
+                y = int.Parse(r[1].ToString());
+                string s = r[0].ToString();
+               // MessageBox.Show("Y "+y.ToString()+" "+ s);
 
+                for (int row = dr + 1; row <= dr + 1; row++)
+                {
+                    DataRow rw = dt.Rows[row];
+                    x = int.Parse(rw[1].ToString());
+                   // MessageBox.Show("X: "+ x.ToString()+" "+ rw[0].ToString());
+                    if (x - y == 1 && s == rw[0].ToString())
+                    {
+                        DataRow drow = dt2.NewRow();
+                        drow[0] = y;
+                      
+                        dt2.Rows.Add(drow);
+                    }
+                    else if (y + 1 == x && s == rw[0].ToString())
+                    {
+                        DataRow drow = dt2.NewRow();
+                        drow[0] = x;
+
+                        dt2.Rows.Add(drow);
+
+                    }
+
+                }
+
+            }
+            dgTEST.DataSource = dt2;
+
+        }
 
         private void button9_Click(object sender, EventArgs e)
         {

@@ -543,10 +543,11 @@ namespace cirkus
 
 
                 // Kolla dokumentet innan man skrivar ut
+               
                 printPreviewControl1.Visible = true;
-                printPreviewDialog1.Document = printDocumentBiljett;
+                printPreviewDialog2.Document = printDocumentBiljett;
                 printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
-                printPreviewDialog1.Show();
+                printPreviewDialog2.Show();
                 printPreviewControl1.Document = printDocumentBiljett;
 
             }
