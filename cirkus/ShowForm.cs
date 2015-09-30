@@ -183,9 +183,10 @@ namespace cirkus
                 txtActname.BackColor = Color.White;
                 textBoxAntalFriplatser.BackColor = Color.White;
                 txtActname.Clear();
-                textBoxAntalFriplatser.Clear();
+                textBoxAntalFriplatser.Text = "250";
             }
 
+            
         }
 
         private void buttonRaderaAkt_Click(object sender, EventArgs e)
@@ -206,8 +207,8 @@ namespace cirkus
                 dgActs.Columns[1].Width = 80;
 
                 txtActname.Clear();
-                textBoxAntalFriplatser.Clear();
-                
+                textBoxAntalFriplatser.Text = "250";
+
             }
 
             else
@@ -245,6 +246,7 @@ namespace cirkus
             cSeats.Columns.Add("seatid");
             cSeats.Columns.Add("section");
             cSeats.Columns.Add("rownumber");
+            textBoxAntalFriplatser.Text = "250";
         }
 
         private void buttonSparaAndringar_Click(object sender, EventArgs e)
