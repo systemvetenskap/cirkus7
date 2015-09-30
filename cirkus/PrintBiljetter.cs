@@ -65,7 +65,7 @@ namespace cirkus
 
         public void listTicketDirekt()
         {
-            MessageBox.Show(" KOlla" + bid.ToString());
+            
             string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
                             from booking
                             inner join sold_tickets on booking.bookingid = sold_tickets.bookingid

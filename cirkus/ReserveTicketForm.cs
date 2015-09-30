@@ -1595,7 +1595,7 @@ namespace cirkus
         {
             button1.Enabled = false;
             
-            if (cbDf.Checked == false)
+            if (cbDf.Checked == false && radioPaid.Checked == true)
             {
                 createBooking();
                 backgroundWorker1.RunWorkerAsync();
@@ -1623,6 +1623,10 @@ namespace cirkus
                 createBooking();
                 //PrintBiljetter rb = new PrintBiljetter();
                 //rb.ShowDialog();
+            }
+            else if(radioRes.Checked == true)
+            {
+                createBooking();
             }
             this.Close();
 
@@ -1867,7 +1871,7 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("pai", false));
                     cmd.ExecuteNonQuery();
                     ix++;
-                    MessageBox.Show("inte här");
+                    
 
                 }
                 else if (radioPaid.Checked == true && cbDf.Checked == false)
@@ -1880,7 +1884,7 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
 
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("inte här 2");
+                   
                     ix++;
                 }
                 else if (cbDf.Checked == true)
@@ -1892,7 +1896,7 @@ namespace cirkus
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Rätt-true");
+                 
                     ix++;
                 }
 
@@ -1907,7 +1911,7 @@ namespace cirkus
                 
                 read.Read();
                 addedbookingid = int.Parse(read[0].ToString());
-                MessageBox.Show(addedbookingid.ToString());
+                
                 conn.Close();
 
                 ix++;
@@ -1926,7 +1930,7 @@ namespace cirkus
 
                     if (id == tid && chck == false)
                     {
-                        MessageBox.Show("Rätt-true");
+                        
                         conn.Open();
                         sql = "insert into booked_seats(available_seats_id, bookingid) values(:sid, :bid)";
                         cmd = new NpgsqlCommand(sql, conn);
@@ -2276,7 +2280,7 @@ namespace cirkus
 
         void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            MessageBox.Show("Test");
+            
             conn.Open();
             NpgsqlCommand cmd = new NpgsqlCommand("select customerid, email, fname, lname from customer where customerid = '" + customerid + "';", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
@@ -2508,7 +2512,7 @@ namespace cirkus
                 }
 
                 
-                MessageBox.Show("Här är vi nu");
+                
                 client.Send(mail);
              
                 
