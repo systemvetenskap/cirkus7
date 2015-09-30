@@ -40,6 +40,7 @@
             this.lblStatus1 = new System.Windows.Forms.Label();
             this.txtBoxNrP = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.fp = new System.Windows.Forms.CheckBox();
             this.lblStatusAge = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -148,14 +149,12 @@
             this.A5 = new System.Windows.Forms.CheckBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.cbDf = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
             this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             this.label16 = new System.Windows.Forms.Label();
             this.dateReservedto = new System.Windows.Forms.DateTimePicker();
@@ -171,6 +170,15 @@
             this.printDialogBiljetD = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.dgTest2 = new System.Windows.Forms.DataGridView();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgShowActs)).BeginInit();
@@ -188,6 +196,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTEST)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTest2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioPaid
@@ -261,7 +270,7 @@
             this.groupBox2.Controls.Add(this.dataGridViewShows);
             this.groupBox2.Location = new System.Drawing.Point(8, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(572, 203);
+            this.groupBox2.Size = new System.Drawing.Size(620, 203);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Föreställning";
@@ -284,14 +293,14 @@
             this.dgShowActs.RowHeadersVisible = false;
             this.dgShowActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgShowActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgShowActs.Size = new System.Drawing.Size(258, 152);
+            this.dgShowActs.Size = new System.Drawing.Size(315, 152);
             this.dgShowActs.TabIndex = 54;
             // 
             // lblStatus1
             // 
             this.lblStatus1.AutoSize = true;
             this.lblStatus1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus1.Location = new System.Drawing.Point(599, 199);
+            this.lblStatus1.Location = new System.Drawing.Point(646, 200);
             this.lblStatus1.Name = "lblStatus1";
             this.lblStatus1.Size = new System.Drawing.Size(47, 15);
             this.lblStatus1.TabIndex = 52;
@@ -299,7 +308,7 @@
             // 
             // txtBoxNrP
             // 
-            this.txtBoxNrP.Location = new System.Drawing.Point(599, 123);
+            this.txtBoxNrP.Location = new System.Drawing.Point(646, 124);
             this.txtBoxNrP.Name = "txtBoxNrP";
             this.txtBoxNrP.Size = new System.Drawing.Size(117, 20);
             this.txtBoxNrP.TabIndex = 5;
@@ -325,10 +334,19 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Akter";
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(181, 279);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(146, 23);
+            this.button10.TabIndex = 55;
+            this.button10.Text = "Föreslå platser";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
             // fp
             // 
             this.fp.AutoSize = true;
-            this.fp.Location = new System.Drawing.Point(184, 245);
+            this.fp.Location = new System.Drawing.Point(181, 214);
             this.fp.Name = "fp";
             this.fp.Size = new System.Drawing.Size(83, 17);
             this.fp.TabIndex = 63;
@@ -417,7 +435,7 @@
             // 
             // visaallt
             // 
-            this.visaallt.Location = new System.Drawing.Point(183, 269);
+            this.visaallt.Location = new System.Drawing.Point(180, 238);
             this.visaallt.Name = "visaallt";
             this.visaallt.Size = new System.Drawing.Size(147, 35);
             this.visaallt.TabIndex = 27;
@@ -432,7 +450,7 @@
             this.groupBox6.Controls.Add(this.txttel);
             this.groupBox6.Controls.Add(this.txtenamn);
             this.groupBox6.Controls.Add(this.txtfnamn);
-            this.groupBox6.Location = new System.Drawing.Point(312, 40);
+            this.groupBox6.Location = new System.Drawing.Point(490, 47);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(113, 195);
             this.groupBox6.TabIndex = 34;
@@ -596,7 +614,7 @@
             this.dgCustom.AllowUserToResizeRows = false;
             this.dgCustom.BackgroundColor = System.Drawing.Color.White;
             this.dgCustom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCustom.Location = new System.Drawing.Point(23, 51);
+            this.dgCustom.Location = new System.Drawing.Point(199, 58);
             this.dgCustom.MultiSelect = false;
             this.dgCustom.Name = "dgCustom";
             this.dgCustom.ReadOnly = true;
@@ -608,7 +626,7 @@
             // 
             // textBoxSearchCust
             // 
-            this.textBoxSearchCust.Location = new System.Drawing.Point(78, 25);
+            this.textBoxSearchCust.Location = new System.Drawing.Point(254, 32);
             this.textBoxSearchCust.Name = "textBoxSearchCust";
             this.textBoxSearchCust.Size = new System.Drawing.Size(131, 20);
             this.textBoxSearchCust.TabIndex = 38;
@@ -616,11 +634,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.gpSeatMap);
             this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button9);
             this.panel1.Location = new System.Drawing.Point(8, 267);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(891, 408);
@@ -777,7 +795,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(277, 196);
+            this.label12.Location = new System.Drawing.Point(278, 196);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(18, 16);
             this.label12.TabIndex = 69;
@@ -847,7 +865,7 @@
             this.E8.AutoSize = true;
             this.E8.Checked = true;
             this.E8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E8.Location = new System.Drawing.Point(263, 100);
+            this.E8.Location = new System.Drawing.Point(264, 99);
             this.E8.Name = "E8";
             this.E8.Size = new System.Drawing.Size(15, 14);
             this.E8.TabIndex = 64;
@@ -859,7 +877,7 @@
             this.E4.AutoSize = true;
             this.E4.Checked = true;
             this.E4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E4.Location = new System.Drawing.Point(248, 100);
+            this.E4.Location = new System.Drawing.Point(248, 99);
             this.E4.Name = "E4";
             this.E4.Size = new System.Drawing.Size(15, 14);
             this.E4.TabIndex = 63;
@@ -871,7 +889,7 @@
             this.E6.AutoSize = true;
             this.E6.Checked = true;
             this.E6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E6.Location = new System.Drawing.Point(263, 132);
+            this.E6.Location = new System.Drawing.Point(264, 131);
             this.E6.Name = "E6";
             this.E6.Size = new System.Drawing.Size(15, 14);
             this.E6.TabIndex = 62;
@@ -883,7 +901,7 @@
             this.E2.AutoSize = true;
             this.E2.Checked = true;
             this.E2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E2.Location = new System.Drawing.Point(248, 132);
+            this.E2.Location = new System.Drawing.Point(248, 131);
             this.E2.Name = "E2";
             this.E2.Size = new System.Drawing.Size(15, 14);
             this.E2.TabIndex = 61;
@@ -895,7 +913,7 @@
             this.E7.AutoSize = true;
             this.E7.Checked = true;
             this.E7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E7.Location = new System.Drawing.Point(263, 116);
+            this.E7.Location = new System.Drawing.Point(264, 115);
             this.E7.Name = "E7";
             this.E7.Size = new System.Drawing.Size(15, 14);
             this.E7.TabIndex = 60;
@@ -907,7 +925,7 @@
             this.E3.AutoSize = true;
             this.E3.Checked = true;
             this.E3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E3.Location = new System.Drawing.Point(248, 116);
+            this.E3.Location = new System.Drawing.Point(248, 115);
             this.E3.Name = "E3";
             this.E3.Size = new System.Drawing.Size(15, 14);
             this.E3.TabIndex = 59;
@@ -919,7 +937,7 @@
             this.E5.AutoSize = true;
             this.E5.Checked = true;
             this.E5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E5.Location = new System.Drawing.Point(263, 148);
+            this.E5.Location = new System.Drawing.Point(264, 148);
             this.E5.Name = "E5";
             this.E5.Size = new System.Drawing.Size(15, 14);
             this.E5.TabIndex = 58;
@@ -943,7 +961,7 @@
             this.F4.AutoSize = true;
             this.F4.Checked = true;
             this.F4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F4.Location = new System.Drawing.Point(53, 100);
+            this.F4.Location = new System.Drawing.Point(54, 100);
             this.F4.Name = "F4";
             this.F4.Size = new System.Drawing.Size(15, 14);
             this.F4.TabIndex = 56;
@@ -967,7 +985,7 @@
             this.F2.AutoSize = true;
             this.F2.Checked = true;
             this.F2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F2.Location = new System.Drawing.Point(53, 132);
+            this.F2.Location = new System.Drawing.Point(54, 132);
             this.F2.Name = "F2";
             this.F2.Size = new System.Drawing.Size(15, 14);
             this.F2.TabIndex = 54;
@@ -991,7 +1009,7 @@
             this.F3.AutoSize = true;
             this.F3.Checked = true;
             this.F3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F3.Location = new System.Drawing.Point(53, 116);
+            this.F3.Location = new System.Drawing.Point(54, 116);
             this.F3.Name = "F3";
             this.F3.Size = new System.Drawing.Size(15, 14);
             this.F3.TabIndex = 52;
@@ -1015,7 +1033,7 @@
             this.F1.AutoSize = true;
             this.F1.Checked = true;
             this.F1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F1.Location = new System.Drawing.Point(53, 148);
+            this.F1.Location = new System.Drawing.Point(54, 148);
             this.F1.Name = "F1";
             this.F1.Size = new System.Drawing.Size(15, 14);
             this.F1.TabIndex = 50;
@@ -1039,7 +1057,7 @@
             this.H8.AutoSize = true;
             this.H8.Checked = true;
             this.H8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H8.Location = new System.Drawing.Point(124, 64);
+            this.H8.Location = new System.Drawing.Point(127, 64);
             this.H8.Name = "H8";
             this.H8.Size = new System.Drawing.Size(15, 14);
             this.H8.TabIndex = 48;
@@ -1051,7 +1069,7 @@
             this.H7.AutoSize = true;
             this.H7.Checked = true;
             this.H7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H7.Location = new System.Drawing.Point(109, 64);
+            this.H7.Location = new System.Drawing.Point(111, 64);
             this.H7.Name = "H7";
             this.H7.Size = new System.Drawing.Size(15, 14);
             this.H7.TabIndex = 47;
@@ -1075,7 +1093,7 @@
             this.H5.AutoSize = true;
             this.H5.Checked = true;
             this.H5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H5.Location = new System.Drawing.Point(79, 64);
+            this.H5.Location = new System.Drawing.Point(77, 64);
             this.H5.Name = "H5";
             this.H5.Size = new System.Drawing.Size(15, 14);
             this.H5.TabIndex = 45;
@@ -1087,7 +1105,7 @@
             this.H4.AutoSize = true;
             this.H4.Checked = true;
             this.H4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H4.Location = new System.Drawing.Point(124, 80);
+            this.H4.Location = new System.Drawing.Point(127, 80);
             this.H4.Name = "H4";
             this.H4.Size = new System.Drawing.Size(15, 14);
             this.H4.TabIndex = 44;
@@ -1099,7 +1117,7 @@
             this.H3.AutoSize = true;
             this.H3.Checked = true;
             this.H3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H3.Location = new System.Drawing.Point(109, 80);
+            this.H3.Location = new System.Drawing.Point(111, 80);
             this.H3.Name = "H3";
             this.H3.Size = new System.Drawing.Size(15, 14);
             this.H3.TabIndex = 43;
@@ -1123,7 +1141,7 @@
             this.H1.AutoSize = true;
             this.H1.Checked = true;
             this.H1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H1.Location = new System.Drawing.Point(79, 80);
+            this.H1.Location = new System.Drawing.Point(77, 80);
             this.H1.Name = "H1";
             this.H1.Size = new System.Drawing.Size(15, 14);
             this.H1.TabIndex = 41;
@@ -1134,7 +1152,7 @@
             this.G8.AutoSize = true;
             this.G8.Checked = true;
             this.G8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G8.Location = new System.Drawing.Point(215, 63);
+            this.G8.Location = new System.Drawing.Point(217, 63);
             this.G8.Name = "G8";
             this.G8.Size = new System.Drawing.Size(15, 14);
             this.G8.TabIndex = 40;
@@ -1158,7 +1176,7 @@
             this.G6.AutoSize = true;
             this.G6.Checked = true;
             this.G6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G6.Location = new System.Drawing.Point(185, 63);
+            this.G6.Location = new System.Drawing.Point(184, 63);
             this.G6.Name = "G6";
             this.G6.Size = new System.Drawing.Size(15, 14);
             this.G6.TabIndex = 38;
@@ -1170,7 +1188,7 @@
             this.G5.AutoSize = true;
             this.G5.Checked = true;
             this.G5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G5.Location = new System.Drawing.Point(170, 63);
+            this.G5.Location = new System.Drawing.Point(168, 63);
             this.G5.Name = "G5";
             this.G5.Size = new System.Drawing.Size(15, 14);
             this.G5.TabIndex = 37;
@@ -1182,7 +1200,7 @@
             this.G4.AutoSize = true;
             this.G4.Checked = true;
             this.G4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G4.Location = new System.Drawing.Point(215, 79);
+            this.G4.Location = new System.Drawing.Point(217, 79);
             this.G4.Name = "G4";
             this.G4.Size = new System.Drawing.Size(15, 14);
             this.G4.TabIndex = 36;
@@ -1206,7 +1224,7 @@
             this.G2.AutoSize = true;
             this.G2.Checked = true;
             this.G2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G2.Location = new System.Drawing.Point(185, 79);
+            this.G2.Location = new System.Drawing.Point(184, 79);
             this.G2.Name = "G2";
             this.G2.Size = new System.Drawing.Size(15, 14);
             this.G2.TabIndex = 34;
@@ -1218,7 +1236,7 @@
             this.G1.AutoSize = true;
             this.G1.Checked = true;
             this.G1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G1.Location = new System.Drawing.Point(170, 79);
+            this.G1.Location = new System.Drawing.Point(168, 79);
             this.G1.Name = "G1";
             this.G1.Size = new System.Drawing.Size(15, 14);
             this.G1.TabIndex = 33;
@@ -1230,7 +1248,7 @@
             this.D4.AutoSize = true;
             this.D4.Checked = true;
             this.D4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D4.Location = new System.Drawing.Point(53, 186);
+            this.D4.Location = new System.Drawing.Point(54, 186);
             this.D4.Name = "D4";
             this.D4.Size = new System.Drawing.Size(15, 14);
             this.D4.TabIndex = 32;
@@ -1254,7 +1272,7 @@
             this.D2.AutoSize = true;
             this.D2.Checked = true;
             this.D2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D2.Location = new System.Drawing.Point(53, 218);
+            this.D2.Location = new System.Drawing.Point(54, 218);
             this.D2.Name = "D2";
             this.D2.Size = new System.Drawing.Size(15, 14);
             this.D2.TabIndex = 30;
@@ -1278,7 +1296,7 @@
             this.D3.AutoSize = true;
             this.D3.Checked = true;
             this.D3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D3.Location = new System.Drawing.Point(53, 202);
+            this.D3.Location = new System.Drawing.Point(54, 202);
             this.D3.Name = "D3";
             this.D3.Size = new System.Drawing.Size(15, 14);
             this.D3.TabIndex = 28;
@@ -1302,7 +1320,7 @@
             this.D1.AutoSize = true;
             this.D1.Checked = true;
             this.D1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D1.Location = new System.Drawing.Point(53, 234);
+            this.D1.Location = new System.Drawing.Point(54, 234);
             this.D1.Name = "D1";
             this.D1.Size = new System.Drawing.Size(15, 14);
             this.D1.TabIndex = 26;
@@ -1326,7 +1344,7 @@
             this.C6.AutoSize = true;
             this.C6.Checked = true;
             this.C6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C6.Location = new System.Drawing.Point(263, 218);
+            this.C6.Location = new System.Drawing.Point(264, 216);
             this.C6.Name = "C6";
             this.C6.Size = new System.Drawing.Size(15, 14);
             this.C6.TabIndex = 24;
@@ -1338,7 +1356,7 @@
             this.C2.AutoSize = true;
             this.C2.Checked = true;
             this.C2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C2.Location = new System.Drawing.Point(248, 218);
+            this.C2.Location = new System.Drawing.Point(248, 216);
             this.C2.Name = "C2";
             this.C2.Size = new System.Drawing.Size(15, 14);
             this.C2.TabIndex = 23;
@@ -1350,7 +1368,7 @@
             this.C8.AutoSize = true;
             this.C8.Checked = true;
             this.C8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C8.Location = new System.Drawing.Point(263, 186);
+            this.C8.Location = new System.Drawing.Point(264, 184);
             this.C8.Name = "C8";
             this.C8.Size = new System.Drawing.Size(15, 14);
             this.C8.TabIndex = 22;
@@ -1362,7 +1380,7 @@
             this.C4.AutoSize = true;
             this.C4.Checked = true;
             this.C4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C4.Location = new System.Drawing.Point(248, 186);
+            this.C4.Location = new System.Drawing.Point(248, 184);
             this.C4.Name = "C4";
             this.C4.Size = new System.Drawing.Size(15, 14);
             this.C4.TabIndex = 21;
@@ -1374,7 +1392,7 @@
             this.C5.AutoSize = true;
             this.C5.Checked = true;
             this.C5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C5.Location = new System.Drawing.Point(263, 234);
+            this.C5.Location = new System.Drawing.Point(264, 232);
             this.C5.Name = "C5";
             this.C5.Size = new System.Drawing.Size(15, 14);
             this.C5.TabIndex = 20;
@@ -1386,7 +1404,7 @@
             this.C1.AutoSize = true;
             this.C1.Checked = true;
             this.C1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C1.Location = new System.Drawing.Point(248, 234);
+            this.C1.Location = new System.Drawing.Point(248, 232);
             this.C1.Name = "C1";
             this.C1.Size = new System.Drawing.Size(15, 14);
             this.C1.TabIndex = 19;
@@ -1398,7 +1416,7 @@
             this.C7.AutoSize = true;
             this.C7.Checked = true;
             this.C7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C7.Location = new System.Drawing.Point(263, 202);
+            this.C7.Location = new System.Drawing.Point(264, 200);
             this.C7.Name = "C7";
             this.C7.Size = new System.Drawing.Size(15, 14);
             this.C7.TabIndex = 18;
@@ -1410,7 +1428,7 @@
             this.C3.AutoSize = true;
             this.C3.Checked = true;
             this.C3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C3.Location = new System.Drawing.Point(248, 202);
+            this.C3.Location = new System.Drawing.Point(248, 200);
             this.C3.Name = "C3";
             this.C3.Size = new System.Drawing.Size(15, 14);
             this.C3.TabIndex = 17;
@@ -1422,7 +1440,7 @@
             this.B4.AutoSize = true;
             this.B4.Checked = true;
             this.B4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B4.Location = new System.Drawing.Point(126, 249);
+            this.B4.Location = new System.Drawing.Point(128, 249);
             this.B4.Name = "B4";
             this.B4.Size = new System.Drawing.Size(15, 14);
             this.B4.TabIndex = 16;
@@ -1434,7 +1452,7 @@
             this.B3.AutoSize = true;
             this.B3.Checked = true;
             this.B3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B3.Location = new System.Drawing.Point(111, 249);
+            this.B3.Location = new System.Drawing.Point(112, 249);
             this.B3.Name = "B3";
             this.B3.Size = new System.Drawing.Size(15, 14);
             this.B3.TabIndex = 15;
@@ -1458,7 +1476,7 @@
             this.B1.AutoSize = true;
             this.B1.Checked = true;
             this.B1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B1.Location = new System.Drawing.Point(81, 249);
+            this.B1.Location = new System.Drawing.Point(80, 249);
             this.B1.Name = "B1";
             this.B1.Size = new System.Drawing.Size(15, 14);
             this.B1.TabIndex = 13;
@@ -1470,7 +1488,7 @@
             this.B8.AutoSize = true;
             this.B8.Checked = true;
             this.B8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B8.Location = new System.Drawing.Point(126, 265);
+            this.B8.Location = new System.Drawing.Point(128, 265);
             this.B8.Name = "B8";
             this.B8.Size = new System.Drawing.Size(15, 14);
             this.B8.TabIndex = 12;
@@ -1482,7 +1500,7 @@
             this.B7.AutoSize = true;
             this.B7.Checked = true;
             this.B7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B7.Location = new System.Drawing.Point(111, 265);
+            this.B7.Location = new System.Drawing.Point(112, 265);
             this.B7.Name = "B7";
             this.B7.Size = new System.Drawing.Size(15, 14);
             this.B7.TabIndex = 11;
@@ -1506,7 +1524,7 @@
             this.B5.AutoSize = true;
             this.B5.Checked = true;
             this.B5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B5.Location = new System.Drawing.Point(81, 265);
+            this.B5.Location = new System.Drawing.Point(80, 265);
             this.B5.Name = "B5";
             this.B5.Size = new System.Drawing.Size(15, 14);
             this.B5.TabIndex = 9;
@@ -1518,7 +1536,7 @@
             this.A4.AutoSize = true;
             this.A4.Checked = true;
             this.A4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A4.Location = new System.Drawing.Point(215, 249);
+            this.A4.Location = new System.Drawing.Point(217, 249);
             this.A4.Name = "A4";
             this.A4.Size = new System.Drawing.Size(15, 14);
             this.A4.TabIndex = 8;
@@ -1530,7 +1548,7 @@
             this.A3.AutoSize = true;
             this.A3.Checked = true;
             this.A3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A3.Location = new System.Drawing.Point(200, 249);
+            this.A3.Location = new System.Drawing.Point(201, 249);
             this.A3.Name = "A3";
             this.A3.Size = new System.Drawing.Size(15, 14);
             this.A3.TabIndex = 7;
@@ -1554,7 +1572,7 @@
             this.A1.AutoSize = true;
             this.A1.Checked = true;
             this.A1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A1.Location = new System.Drawing.Point(170, 249);
+            this.A1.Location = new System.Drawing.Point(169, 249);
             this.A1.Name = "A1";
             this.A1.Size = new System.Drawing.Size(15, 14);
             this.A1.TabIndex = 5;
@@ -1566,7 +1584,7 @@
             this.A8.AutoSize = true;
             this.A8.Checked = true;
             this.A8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A8.Location = new System.Drawing.Point(215, 265);
+            this.A8.Location = new System.Drawing.Point(217, 265);
             this.A8.Name = "A8";
             this.A8.Size = new System.Drawing.Size(15, 14);
             this.A8.TabIndex = 4;
@@ -1578,7 +1596,7 @@
             this.A7.AutoSize = true;
             this.A7.Checked = true;
             this.A7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A7.Location = new System.Drawing.Point(200, 265);
+            this.A7.Location = new System.Drawing.Point(201, 265);
             this.A7.Name = "A7";
             this.A7.Size = new System.Drawing.Size(15, 14);
             this.A7.TabIndex = 3;
@@ -1602,7 +1620,7 @@
             this.A5.AutoSize = true;
             this.A5.Checked = true;
             this.A5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A5.Location = new System.Drawing.Point(170, 265);
+            this.A5.Location = new System.Drawing.Point(169, 265);
             this.A5.Name = "A5";
             this.A5.Size = new System.Drawing.Size(15, 14);
             this.A5.TabIndex = 1;
@@ -1629,16 +1647,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(774, 61);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(100, 35);
-            this.button9.TabIndex = 59;
-            this.button9.Text = "Föreslå platser";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label9);
@@ -1657,7 +1665,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 28);
+            this.label9.Location = new System.Drawing.Point(196, 36);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 13);
             this.label9.TabIndex = 46;
@@ -1665,7 +1673,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(308, 243);
+            this.button4.Location = new System.Drawing.Point(669, 291);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 35);
             this.button4.TabIndex = 44;
@@ -1674,7 +1682,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(423, 243);
+            this.button5.Location = new System.Drawing.Point(782, 291);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(100, 35);
             this.button5.TabIndex = 45;
@@ -1685,7 +1693,9 @@
             // cbDf
             // 
             this.cbDf.AutoSize = true;
-            this.cbDf.Location = new System.Drawing.Point(445, 51);
+            this.cbDf.Checked = true;
+            this.cbDf.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbDf.Location = new System.Drawing.Point(18, 40);
             this.cbDf.Name = "cbDf";
             this.cbDf.Size = new System.Drawing.Size(101, 17);
             this.cbDf.TabIndex = 47;
@@ -1709,16 +1719,6 @@
             this.panel3.Size = new System.Drawing.Size(920, 401);
             this.panel3.TabIndex = 42;
             this.panel3.Visible = false;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(184, 310);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(146, 23);
-            this.button10.TabIndex = 55;
-            this.button10.Text = "Föreslå platser";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // printPreviewControl1
             // 
@@ -1791,7 +1791,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(599, 107);
+            this.label3.Location = new System.Drawing.Point(643, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 54;
@@ -1830,6 +1830,107 @@
             this.dgTest2.Name = "dgTest2";
             this.dgTest2.Size = new System.Drawing.Size(697, 150);
             this.dgTest2.TabIndex = 56;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.Green;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(6, 21);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 59;
+            this.checkBox1.UseVisualStyleBackColor = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.checkBox5);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.checkBox4);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.checkBox3);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Location = new System.Drawing.Point(675, 237);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(175, 100);
+            this.groupBox1.TabIndex = 60;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Symbolförklaring";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(28, 21);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(58, 13);
+            this.label20.TabIndex = 60;
+            this.label20.Text = "Ledig plats";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(27, 56);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(145, 13);
+            this.label21.TabIndex = 62;
+            this.label21.Text = "Bokad plats i samma sällskap";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.BackColor = System.Drawing.Color.Blue;
+            this.checkBox3.Checked = true;
+            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox3.Enabled = false;
+            this.checkBox3.Location = new System.Drawing.Point(6, 56);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(15, 14);
+            this.checkBox3.TabIndex = 61;
+            this.checkBox3.UseVisualStyleBackColor = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(28, 40);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(84, 13);
+            this.label22.TabIndex = 64;
+            this.label22.Text = "Föreslagen plats";
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.BackColor = System.Drawing.Color.Orange;
+            this.checkBox4.Enabled = false;
+            this.checkBox4.Location = new System.Drawing.Point(6, 39);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(15, 14);
+            this.checkBox4.TabIndex = 63;
+            this.checkBox4.UseVisualStyleBackColor = false;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(27, 72);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(79, 13);
+            this.label23.TabIndex = 66;
+            this.label23.Text = "Upptagen plats";
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.checkBox5.Checked = true;
+            this.checkBox5.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox5.Enabled = false;
+            this.checkBox5.Location = new System.Drawing.Point(7, 73);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(15, 14);
+            this.checkBox5.TabIndex = 65;
+            this.checkBox5.UseVisualStyleBackColor = false;
             // 
             // ReserveTicketForm
             // 
@@ -1876,6 +1977,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTEST)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTest2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1996,7 +2099,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.DateTimePicker dateReservedto;
         private System.Windows.Forms.CheckBox cbDf;
@@ -2023,5 +2125,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox fp;
         private System.Windows.Forms.DataGridView dgTest2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

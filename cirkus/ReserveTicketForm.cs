@@ -438,7 +438,7 @@ namespace cirkus
         {
 
             panel2.Visible = true;
-
+            dgCustom.DataSource = null;
 
 
         }
@@ -883,9 +883,9 @@ namespace cirkus
         {
             if(dgActs.Rows.Count > 0)
             {
-                int selectedIndex = dgActs.SelectedRows[0].Index;
+               // int selectedIndex = dgActs.SelectedRows[0].Index;
 
-                actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
+                //actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
                 foreach (DataRow r in cSeats.Rows)
                 {
 
@@ -947,14 +947,19 @@ namespace cirkus
                 if (cb != null && cb.Checked && cb.BackColor == Color.Green)
                 {
                     checks++;
-                   
+
+                }
+                if (cb != null && cb.Checked && cb.BackColor == Color.Orange)
+                {
+                    checks++;
+
                 }
                 if (checks > 1)
                 {
                     cb = sender as CheckBox;
                     if (cb != null && cb.Checked)
                     {
-                        
+                        cb.Checked = false;
                     }
                     lblSeatStatus.Visible = true;
                     lblSeatStatus.ForeColor = Color.Tomato;
@@ -1118,7 +1123,7 @@ namespace cirkus
 
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void seatSugg()
         {
             string sql = @"select seats.section, seats.rownumber, seats.seatid from available_seats 
                             inner join seats on available_seats.seatid = seats.seatid
@@ -1193,9 +1198,15 @@ namespace cirkus
                     string s = r[1].ToString() + r[0].ToString();
                     if(cb.Name == s)
                     {
-                        cb.Checked = false;
-                        cb.Enabled = true;
-                        cb.BackColor = Color.Orange;
+                        if(cb.BackColor != Color.Blue)
+                        {
+                            cb.Checked = false;
+                            cb.Enabled = true;
+
+                            cb.BackColor = Color.Orange;
+
+
+                        }
 
                     }
                     
@@ -1287,8 +1298,21 @@ namespace cirkus
                     cSeats.Rows.Add(row);
                     
                     }
+                    if (cb.Checked == true && cb.BackColor == Color.Orange)
+                    {
+                        DataRow row = cSeats.NewRow();
+                        row[0] = ticketid;
+                        row[1] = actid;
+                        row[2] = seatSection;
+                        row[3] = seatNumber;
+                        row[4] = agegroup;
+                        row[6] = false;
+                        cSeats.Rows.Add(row);
+
+                    }
 
                 }
+
                 char sect = '-';
                 foreach (DataRow r in cSeats.Rows)
                 {
@@ -1330,6 +1354,11 @@ namespace cirkus
                         string sactid = r[1].ToString();
                         string s = sect + nr;
                         if (cb.Name == s && cb.Checked == false && cb.BackColor == Color.Green && actid.ToString() == sactid)
+                        {
+
+                            r.Delete();
+                        }
+                        else if (cb.Name == s && cb.Checked == false && cb.BackColor == Color.Orange && actid.ToString() == sactid)
                         {
 
                             r.Delete();
@@ -1379,7 +1408,40 @@ namespace cirkus
                             cSeats.Rows.Add(row);
 
                         }
+
                       
+
+                    }
+                    else if (cb.Checked == true && cb.BackColor == Color.Orange)
+                    {
+
+                        foreach (DataRow rows in showacts.Rows)
+                        {
+                            DataRow row = cSeats.NewRow();
+                            string aid = rows[0].ToString();
+                            string sql = "select available_seats_id from available_seats inner join seats on available_seats.seatid = seats.seatid where actid = '" + aid + "' and seats.section = '" + seatSection + "' and seats.rownumber = '" + seatNumber + "'";
+                            NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                            conn.Open();
+                            NpgsqlDataReader read = cmd.ExecuteReader();
+                            while (read.Read())
+                            {
+
+                                row[5] = read[0];
+
+                            }
+                            conn.Close();
+
+                            row[0] = ticketid;
+                            row[1] = aid;
+                            row[2] = seatSection;
+                            row[3] = seatNumber;
+                            row[4] = agegroup;
+                            row[6] = false;
+                            cSeats.Rows.Add(row);
+
+                        }
+
+
 
                     }
 
@@ -1409,6 +1471,16 @@ namespace cirkus
 
 
             dgTEST.DataSource = cSeats;
+            //dgSeats.DataSource = cSeats;
+            //dgSeats.Columns[0].Visible = false;
+            //dgSeats.Columns[1].Visible = false;
+            //dgSeats.Columns[4].Visible = false;
+            //dgSeats.Columns[5].Visible = false;
+            //dgSeats.Columns[6].Visible = false;
+
+
+
+
 
         }
 
@@ -2010,6 +2082,7 @@ namespace cirkus
 
 
                 }
+                seatSugg();
                 foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
                 {
 
@@ -2038,9 +2111,10 @@ namespace cirkus
                     }
 
                 }
+                
 
 
-                        }
+            }
             else if(fullShowS == true)
             {
                 foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
@@ -2099,7 +2173,7 @@ namespace cirkus
                 }
 
                 }
-
+                seatSugg();
             }
 
 

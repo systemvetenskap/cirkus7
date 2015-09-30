@@ -120,6 +120,8 @@
             this.printDocumentBiljett = new System.Drawing.Printing.PrintDocument();
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog2 = new System.Windows.Forms.PrintPreviewDialog();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblsumma = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketActs)).BeginInit();
@@ -148,6 +150,8 @@
             // 
             // tabTicket
             // 
+            this.tabTicket.Controls.Add(this.lblsumma);
+            this.tabTicket.Controls.Add(this.label2);
             this.tabTicket.Controls.Add(this.txtPrintDatum);
             this.tabTicket.Controls.Add(this.lbldate);
             this.tabTicket.Controls.Add(this.textBoxPrintBookingid);
@@ -1129,6 +1133,25 @@
             this.printPreviewDialog2.Name = "printPreviewDialog2";
             this.printPreviewDialog2.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(639, 218);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Summa pris:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // lblsumma
+            // 
+            this.lblsumma.AutoSize = true;
+            this.lblsumma.Location = new System.Drawing.Point(702, 218);
+            this.lblsumma.Name = "lblsumma";
+            this.lblsumma.Size = new System.Drawing.Size(35, 13);
+            this.lblsumma.TabIndex = 29;
+            this.lblsumma.Text = "label3";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1254,5 +1277,7 @@
         private System.Windows.Forms.Label lblStatistics;
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblsumma;
     }
 }
