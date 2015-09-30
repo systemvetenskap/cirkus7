@@ -151,9 +151,9 @@
             // 
             // tabTicket
             // 
+            this.tabTicket.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabTicket.Controls.Add(this.lblsumma);
             this.tabTicket.Controls.Add(this.label2);
-            this.tabTicket.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabTicket.Controls.Add(this.txtPrintDatum);
             this.tabTicket.Controls.Add(this.lbldate);
             this.tabTicket.Controls.Add(this.textBoxPrintBookingid);
@@ -207,7 +207,6 @@
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 28;
             this.label2.Text = "Summa pris:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtPrintDatum
             // 
