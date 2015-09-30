@@ -86,8 +86,6 @@
     <Compile Include="PrintBiljetter.Designer.cs">
       <DependentUpon>PrintBiljetter.cs</DependentUpon>
     </Compile>
-    <Compile Include="sendMail.cs" />
-    <Compile Include="show.cs" />
     <Compile Include="ShowForm.cs">
       <SubType>Form</SubType>
     </Compile>
