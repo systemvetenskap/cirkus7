@@ -17,8 +17,11 @@ namespace cirkus
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int customerid;
         DataTable dtActs = new DataTable();
-        private string akttider = "";
-        private string akter = "";
+        DataTable dtTicketDirekt = new DataTable();
+        string aldersgrupp, bokningsnummer, forestallning, akt, pris, tider, datum;
+        string akter = "";
+        string akttider = "";
+
 
         public PrintBiljetter()
         {
@@ -31,22 +34,37 @@ namespace cirkus
             listAct();
         }
 
+        private void dgTicketsDirekt_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int selectedindex = dgTicketActsDirekt.SelectedRows[0].Index; //Selected Akt
+            int selectedindexT = dgTicketsDirekt.SelectedRows[0].Index; //Selected Biljett
+
+            string seltic = dgTicketsDirekt[0, selectedindexT].Value.ToString();
+
+            aldersgrupp = dgTicketsDirekt[4, selectedindexT].Value.ToString();
+            bokningsnummer = dgTicketsDirekt[0, selectedindexT].Value.ToString();
+            forestallning = dgTicketsDirekt[2, selectedindexT].Value.ToString();
+            akt = dgTicketActsDirekt[1, selectedindex].Value.ToString();
+            pris = dgTicketsDirekt[5, selectedindexT].Value.ToString();
+            tider = akttider;
+            datum = DateTime.Parse(dgTicketsDirekt[1, selectedindex].Value.ToString()).ToShortDateString();
+        }
+
         public void listTicketDirekt()
         {
             string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid,  type, price, booking.reserved_to from booking
                             inner join customer on booking.customerid = customer.customerid
                             inner join booked_seats on booking.bookingid = booked_seats.bookingid 
                             inner join show on booking.showid = show.showid 
-                            where customer.customerid = '10' AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, booking.reserved_to,type, price";
+                            where customer.customerid = '3' AND show.date >= now()::date group by booking.bookingid, show.date, show.name, booking.paid, booking.reserved_to,type, price";
             try
             {
                 conn.Open();
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                dgTicketsDirekt.DataSource = dt;
-
-                dgTicketsDirekt.DataSource = dt;
+                
+                da.Fill(dtTicketDirekt);
+                dgTicketsDirekt.DataSource = dtTicketDirekt;
+                
                 dgTicketsDirekt.Columns[0].HeaderText = "Boknings ID";
                 dgTicketsDirekt.Columns[1].HeaderText = "Datum";
                 dgTicketsDirekt.Columns[2].HeaderText = "Föreställning";
@@ -71,36 +89,33 @@ namespace cirkus
 
         private void listAct()
         {
-            int selectedindex = dgTicketsDirekt.SelectedRows[0].Index;
-            int bookingid = int.Parse(dgTicketsDirekt[0, selectedindex].Value.ToString());
+            if (dgTicketsDirekt.Rows.Count >= 0)
+            {
+                int selectedindex = dgTicketsDirekt.SelectedRows[0].Index;
+                int bookingid = int.Parse(dgTicketsDirekt[0, selectedindex].Value.ToString());
 
-            string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time from acts
+                string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time from acts
                         inner join available_seats on acts.actid = available_seats.actid
                         inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
                         inner join seats on available_seats.seatid = seats.seatid
                         where booked_seats.bookingid = '" + bookingid + "'order by acts.actid";
 
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-            dtActs = new DataTable();
-            da.Fill(dtActs);
-            
-            dgTicketActsDirekt.DataSource = dtActs;
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                dtActs = new DataTable();
+                da.Fill(dtActs);
 
-            dgTicketActsDirekt.Columns[0].HeaderText = "Boknings ID";
-            dgTicketActsDirekt.Columns[1].HeaderText = "Akt";
-            dgTicketActsDirekt.Columns[2].HeaderText = "Sektion";
-            dgTicketActsDirekt.Columns[3].HeaderText = "Sittplats";
-            dgTicketActsDirekt.Columns[4].HeaderText = "Starttid";
-            dgTicketActsDirekt.Columns[5].HeaderText = "Sluttid";
+                dgTicketActsDirekt.DataSource = dtActs;
 
-            dgTicketActsDirekt.Columns[0].Width = 90;
+                dgTicketActsDirekt.Columns[0].HeaderText = "Boknings ID";
+                dgTicketActsDirekt.Columns[1].HeaderText = "Akt";
+                dgTicketActsDirekt.Columns[2].HeaderText = "Sektion";
+                dgTicketActsDirekt.Columns[3].HeaderText = "Sittplats";
+                dgTicketActsDirekt.Columns[4].HeaderText = "Starttid";
+                dgTicketActsDirekt.Columns[5].HeaderText = "Sluttid";
 
-            foreach (DataRow r in dtActs.Rows)
-            {
-                akter += r[1].ToString() + ": " + r[2].ToString() + r[3].ToString() + ", ";
-                akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + "\n";
-
+                dgTicketActsDirekt.Columns[0].Width = 90;
             }
+            
         }
 
         private void dgTicketActsDirekt_Click(object sender, EventArgs e)
@@ -130,20 +145,45 @@ namespace cirkus
             printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
             printPreviewDialog1.Show();
             printPreviewControl1.Document = printDocumentBIljettDirekt;
+
+
+            int selectedindexT = dgTicketsDirekt.SelectedRows[0].Index; //Selected Biljett
+            string seltic = dgTicketsDirekt[0, selectedindexT].Value.ToString();
+            
+            for (int rw = 0; rw <= dgTicketsDirekt.Rows.Count; rw++)
+            {
+                DataRow drw = dtTicketDirekt.Rows[rw];
+                if (drw.RowState != DataRowState.Deleted)
+                {
+                    if (drw[0].ToString() == seltic)
+                    {
+                        drw.Delete();
+                    }
+                }
+            }
+
+
         }
 
         private void printDocumentBIljettDirekt_PrintPage(object sender, PrintPageEventArgs e)
         {
+            
+            int point = 350;
+            akter = "";
+            akttider = "";
+            foreach (DataRow r in dtActs.Rows)
+            {
+                akter += r[1].ToString() + ": " + r[2].ToString() + r[3].ToString() + ", ";
+                akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + "\n";
+                point += 40;
+            }
+
+
             System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 18);
             System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
             System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
             SolidBrush drawBrush = new SolidBrush(Color.Black);
-
-            int point = 350;
-            foreach (DataGridViewRow ro in dgTicketActsDirekt.Rows)
-            {
-                point += 40;
-            }
+            
 
             int regtangelP = point + 60;
 
@@ -162,19 +202,6 @@ namespace cirkus
             int height = i2.Height;
             GraphicsUnit units = GraphicsUnit.Pixel;
 
-            string aldersgrupp, bokningsnummer, forestallning, akt, pris, tider, datum;
-            int selectedindex = dgTicketActsDirekt.SelectedRows[0].Index;
-            int selectedindexT = dgTicketsDirekt.SelectedRows[0].Index;
-
-            aldersgrupp = dgTicketsDirekt[4, selectedindexT].Value.ToString();
-            bokningsnummer = dgTicketsDirekt[0, selectedindexT].Value.ToString();
-            forestallning = dgTicketsDirekt[2, selectedindexT].Value.ToString();
-            akt = dgTicketActsDirekt[1,selectedindex].Value.ToString();
-            pris = dgTicketsDirekt[5, selectedindexT].Value.ToString();
-            tider = akttider;
-            datum = DateTime.Parse(dgTicketsDirekt[1, selectedindex].Value.ToString()).ToShortDateString();
-
-            
 
             //e.Graphics.DrawRectangle(Pens.Black, r);
             e.Graphics.DrawImage(i2, destRect, x, y, width, height, units); // Draw background.
@@ -200,6 +227,8 @@ namespace cirkus
             e.Graphics.DrawString(akttider, drawFont, drawBrush, new PointF(250, 350));
             e.Graphics.DrawString(pris + " kronor", drawFont, drawBrush, new PointF(250, point));
 
+            
         }
+        
     }
 }

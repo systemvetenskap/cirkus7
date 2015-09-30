@@ -58,6 +58,7 @@
             this.dgTicketsDirekt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgTicketsDirekt.Size = new System.Drawing.Size(516, 106);
             this.dgTicketsDirekt.TabIndex = 16;
+            this.dgTicketsDirekt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTicketsDirekt_CellClick);
             this.dgTicketsDirekt.Click += new System.EventHandler(this.dgTicketsDirekt_Click);
             // 
             // buttonPrintBiljettDirekt
