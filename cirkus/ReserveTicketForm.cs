@@ -545,6 +545,8 @@ namespace cirkus
             if (checkBox2.Checked == true)
             {
                 textBoxSearchCust.Enabled = false;
+                
+                
                 if (this.dgCustom.DataSource != null)
                 {
                     this.dgCustom.DataSource = null;
@@ -563,6 +565,7 @@ namespace cirkus
                 txtepost.Enabled = true;
                 txtfnamn.Enabled = true;
                 txttel.Enabled = true;
+                cbDf.Checked = false;
 
             }
             if (checkBox2.Checked == false)
@@ -1765,17 +1768,7 @@ namespace cirkus
 
         private void create_summary()
         {
-            try
-            {
-
-          
-
-
-            }
-            catch
-            {
-
-            }
+  
         }
         private void clearSelect()
         {
@@ -1837,7 +1830,7 @@ namespace cirkus
                     double perc;
                     if (agegroup == 0)
                     {
-                        perc = 0.75;
+                        perc = 0.8;
                         priceid = (80 * numberOfacts) * perc;
                         type = "Barn";
                         seattype = "Parkett";
@@ -1845,14 +1838,14 @@ namespace cirkus
                     }
                     if (agegroup == 1)
                     {
-                        perc = 0.59;
+                        perc = 0.6;
                         priceid = (110 * numberOfacts) * perc;
                         type = "Ungdom";
                         seattype = "Parkett";
                     }
                     if (agegroup == 2)
                     {
-                        perc = 0.6667;
+                        perc = 0.6;
                         priceid = (150 * numberOfacts) * perc;
                         type = "Vuxen";
                         seattype = "Parkett";
@@ -2012,7 +2005,7 @@ namespace cirkus
                             }
                             if (agegroup == 2)
                             {
-                                perc = 0.6667;
+                                perc = 0.7;
                                 priceid = (150 * numberOfacts) * perc;
                                 type = "Vuxen";
                                 seattype = "Fri placering";
@@ -2351,12 +2344,18 @@ namespace cirkus
                         //acttime += " " + r[0].ToString() + ": " + r[3].ToString() + "-" + r[4].ToString() + "";
                     }
                     conn.Open();
-                    cmd = new NpgsqlCommand(@"select sum(booking.price), booking.type from booking
-                                                inner join booked_seats on booking.bookingid = booked_seats.bookingid
-                                                where booking.bookingid = '" + bid + "' group by booking.type", conn);
+                    cmd = new NpgsqlCommand(@"select sold_tickets.type, sum(sum) from sold_tickets
+                                                inner join booking on sold_tickets.bookingid = booking.bookingid
+                                                where booking.bookingid = '" + bid + "' group by sold_tickets.type", conn);
                     NpgsqlDataReader read = cmd.ExecuteReader();
                     string pris = "";
                     string aldersgrupp = "";
+                    while (read.Read())
+                    {
+                        aldersgrupp = read[0].ToString();
+                        pris = read[1].ToString();
+                    }
+                    conn.Close();
 
                     int pointImage = 600;
                     int imageHeight = 210;
@@ -2369,13 +2368,9 @@ namespace cirkus
                         prisPoint -= 20;
                     }
                     
-                    while (read.Read())
-                    {
-                        pris = read[0].ToString();
-                        aldersgrupp = read[1].ToString();
-                    }
+            
 
-                    conn.Close();
+                    
                     
                     conn.Open();
                     cmd = new NpgsqlCommand("select show.date from show inner join booking on show.showid = booking.showid where booking.bookingid = '" + bid + "'", conn);
