@@ -2247,7 +2247,7 @@ namespace cirkus
                 }
 
                 }
-                //seatSugg();
+                seatSugg();
             }
 
 
