@@ -32,8 +32,10 @@
             this.textUsername = new System.Windows.Forms.TextBox();
             this.textPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblStatusLogIn = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             // textUsername
             // 
             this.textUsername.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textUsername.Location = new System.Drawing.Point(28, 243);
+            this.textUsername.Location = new System.Drawing.Point(28, 237);
             this.textUsername.Name = "textUsername";
             this.textUsername.Size = new System.Drawing.Size(323, 30);
             this.textUsername.TabIndex = 1;
@@ -82,15 +84,6 @@
             this.label1.Text = "Klicka här om du glömt dina inloggningsuppgifter";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::cirkus.Properties.Resources.cirkus_kul_bus_300x211;
-            this.pictureBox1.Location = new System.Drawing.Point(42, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(294, 212);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // lblStatusLogIn
             // 
             this.lblStatusLogIn.AutoSize = true;
@@ -103,6 +96,24 @@
             this.lblStatusLogIn.Text = "status";
             this.lblStatusLogIn.Visible = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::cirkus.Properties.Resources.animated_circus;
+            this.pictureBox2.Location = new System.Drawing.Point(218, -38);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(116, 187);
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::cirkus.Properties.Resources.cirkus_kul_bus_300x211;
+            this.pictureBox1.Location = new System.Drawing.Point(31, 41);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(293, 172);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.button1;
@@ -110,6 +121,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(385, 438);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblStatusLogIn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
@@ -121,6 +133,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Logga in";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -135,6 +148,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblStatusLogIn;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
 

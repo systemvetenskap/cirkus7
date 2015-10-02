@@ -1360,6 +1360,9 @@ namespace cirkus
             printPreviewDialog1.Show();
             printPreviewControl1.Document = printDocumentStatistic;
         }
+
+        
+
         #endregion
         #region Konto
         private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
