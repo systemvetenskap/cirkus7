@@ -60,6 +60,16 @@ namespace cirkus
 
       }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Kolla dokumentet innan man skrivar ut
+            printPreviewControl1.Visible = true;
+            printPreviewDialog1.Document = printDocumentBIljettDirekt;
+            printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
+            printPreviewDialog1.ShowDialog();
+            printPreviewControl1.Document = printDocumentBIljettDirekt;
+        }
+
         public void listTicketDirekt()
         {
             
@@ -149,23 +159,15 @@ namespace cirkus
 
         private void buttonPrintBiljettDirekt_Click(object sender, EventArgs e)
         {
-            //////// Printing 
-            ////PrintDialog pd = new PrintDialog();
-            ////pd.Document = printDocumentBIljettDirekt;
-            ////if (pd.ShowDialog() == DialogResult.OK)
-            ////{
-            ////    printDocumentBIljettDirekt.Print();
-            ////}
+            // Printing 
+            PrintDialog pd = new PrintDialog();
+            pd.Document = printDocumentBIljettDirekt;
+            if (pd.ShowDialog() == DialogResult.OK)
+            {
+                printDocumentBIljettDirekt.Print();
+            }
 
-
-            // Kolla dokumentet innan man skrivar ut
-            printPreviewControl1.Visible = true;
-            printPreviewDialog1.Document = printDocumentBIljettDirekt;
-            printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
-            printPreviewDialog1.Show();
-            printPreviewControl1.Document = printDocumentBIljettDirekt;
-
-
+            // Delete ticket from list after printing
             int selectedindexT = dgTicketsDirekt.SelectedRows[0].Index; //Selected Biljett
             string seltic = dgTicketsDirekt[0, selectedindexT].Value.ToString();
             

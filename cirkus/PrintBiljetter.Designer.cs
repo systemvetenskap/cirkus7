@@ -37,6 +37,7 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketsDirekt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketActsDirekt)).BeginInit();
             this.SuspendLayout();
@@ -65,9 +66,9 @@
             // buttonPrintBiljettDirekt
             // 
             this.buttonPrintBiljettDirekt.BackColor = System.Drawing.Color.White;
-            this.buttonPrintBiljettDirekt.Location = new System.Drawing.Point(447, 249);
+            this.buttonPrintBiljettDirekt.Location = new System.Drawing.Point(474, 321);
             this.buttonPrintBiljettDirekt.Name = "buttonPrintBiljettDirekt";
-            this.buttonPrintBiljettDirekt.Size = new System.Drawing.Size(112, 26);
+            this.buttonPrintBiljettDirekt.Size = new System.Drawing.Size(103, 40);
             this.buttonPrintBiljettDirekt.TabIndex = 28;
             this.buttonPrintBiljettDirekt.Text = "Print";
             this.buttonPrintBiljettDirekt.UseVisualStyleBackColor = false;
@@ -117,18 +118,30 @@
             this.printPreviewControl1.Name = "printPreviewControl1";
             this.printPreviewControl1.Size = new System.Drawing.Size(357, 137);
             this.printPreviewControl1.TabIndex = 30;
+            this.printPreviewControl1.Visible = false;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(456, 350);
+            this.button1.Location = new System.Drawing.Point(43, 321);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 23);
+            this.button1.Size = new System.Drawing.Size(103, 40);
             this.button1.TabIndex = 31;
             this.button1.Text = "Avsluta";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(346, 321);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(122, 40);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "Förhandsgranska utskrift";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // PrintBiljetter
             // 
@@ -136,6 +149,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(629, 398);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.printPreviewControl1);
             this.Controls.Add(this.dgTicketActsDirekt);
@@ -160,5 +174,6 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
