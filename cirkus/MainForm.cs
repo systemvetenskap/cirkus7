@@ -284,6 +284,7 @@ namespace cirkus
         }
         private void textBoxSearchTicket_TextChanged(object sender, EventArgs e)
         {
+            textBoxSearchCustomer.Clear();
             if (!EndastSiffror(textBoxSearchTicket.Text)|| textBoxSearchTicket.TextLength>=7)
             {
                 MessageBox.Show("Du kan endast söka med siffror (max 6 stycken)");
@@ -294,6 +295,8 @@ namespace cirkus
                 dgTickets.DataSource = null;
                 dgTicketActs.DataSource = null;
                 dgCustomers.DataSource = null;
+                checkBoxOlderTickets.Enabled = true;
+
                 listCustomers();
                 listTickets();
             }
@@ -305,21 +308,45 @@ namespace cirkus
                             inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
                             inner join show on sold_tickets.showid = show.showid
                             inner join acts on sold_tickets.actid = acts.actid
-                            inner join customer on booking.customerid = customer.customerid
+                            left join customer on booking.customerid = customer.customerid
                             where booking.bookingid = '"+textBoxSearchTicket.Text+ "'  group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
 
                 string sql2 = @"select customer.fname, customer.lname, customer.customerid from customer
                                     inner join booking on customer.customerid = booking.customerid
                                     where booking.bookingid = '" + textBoxSearchTicket.Text + "'";
+                //conn.Open();
                 NpgsqlDataAdapter cmd = new NpgsqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
              
+                
                 cmd.Fill(dt);
-
-                cmd = new NpgsqlDataAdapter(sql2, conn);
+                conn.Close();
                 DataTable dt2 = new DataTable();
+                conn.Open();
+                cmd = new NpgsqlDataAdapter(sql2, conn);
                 cmd.Fill(dt2);
-                dgCustomers.DataSource = dt2;
+                conn.Close();
+                if (dt2.Rows.Count < 1 && dt.Rows.Count > 0)
+                {
+                    string s = "Direktförsäljning";
+                    DataRow row = dt2.NewRow();
+                    row[0] = s;
+                    row[1] = "";
+                    row[2] = 0;
+                    dt2.Rows.Add(row);
+                    dgCustomers.Columns[1].Visible = false;
+                    dgCustomers.Columns[2].Visible = false;
+                    dgCustomers.DataSource = dt2;
+                    checkBoxOlderTickets.Enabled = false;
+                }
+                else
+                {
+                    dgCustomers.DataSource = dt2;
+                    checkBoxOlderTickets.Enabled = true;
+                }
+          
+
+                
 
                 dgTickets.DataSource = dt;
                 dgTickets.Columns[0].HeaderText = "Boknings ID";
@@ -336,6 +363,8 @@ namespace cirkus
         {
             dgTicketActs.DataSource = null;
             dgTickets.DataSource = null;
+            textBoxSearchCustomer.Clear();
+            checkBoxOlderTickets.Enabled = false;
         }
         private void printDocumentStatistic_PrintPage(object sender, PrintPageEventArgs e)
         {

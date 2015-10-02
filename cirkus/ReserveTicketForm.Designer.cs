@@ -170,6 +170,7 @@
             this.printDocumentBIljettDirekt = new System.Drawing.Printing.PrintDocument();
             this.printDialogBiljetD = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.dgtest = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgShowActs)).BeginInit();
@@ -185,6 +186,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtest)).BeginInit();
             this.SuspendLayout();
             // 
             // radioPaid
@@ -1863,12 +1865,21 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // dgtest
+            // 
+            this.dgtest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgtest.Location = new System.Drawing.Point(1276, 92);
+            this.dgtest.Name = "dgtest";
+            this.dgtest.Size = new System.Drawing.Size(372, 150);
+            this.dgtest.TabIndex = 55;
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1899, 737);
+            this.Controls.Add(this.dgtest);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
@@ -1903,6 +1914,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2049,5 +2061,6 @@
         private System.Windows.Forms.DataGridView dgCustom;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton radioButtonDirectSale;
+        private System.Windows.Forms.DataGridView dgtest;
     }
 }

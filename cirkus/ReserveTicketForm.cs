@@ -472,66 +472,66 @@ namespace cirkus
 
         private void button5_Click(object sender, EventArgs e)
         {
-            dateReservedto.Value = showdate;
-            dateReservedto.Value = dateReservedto.Value.Subtract(TimeSpan.FromDays(7));
+            //dateReservedto.Value = showdate;
+            //dateReservedto.Value = dateReservedto.Value.Subtract(TimeSpan.FromDays(7));
 
-            if (newcust == true && radioButtonDirectSale.Checked == false)
-            {
-                string fn = txtfnamn.Text;
-                string ln = txtenamn.Text;
-                string pn = txttel.Text;
-                string em = txtepost.Text;
-                if (IsValidEmail(em) == false)
-                {
-                    MessageBox.Show("Ange giltig mail");
+            //if (newcust == true && radioButtonDirectSale.Checked == false)
+            //{
+            //    string fn = txtfnamn.Text;
+            //    string ln = txtenamn.Text;
+            //    string pn = txttel.Text;
+            //    string em = txtepost.Text;
+            //    if (IsValidEmail(em) == false)
+            //    {
+            //        MessageBox.Show("Ange giltig mail");
 
-                    return;
-                }
-                conn.Open();
+            //        return;
+            //    }
+            //    conn.Open();
 
-                cmd = new NpgsqlCommand("insert into customer(fname, lname, phonenumber, email) values(:fn, :ln, :pn, :em)", conn);
-                cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
-                cmd.Parameters.Add(new NpgsqlParameter("ln", ln));
-                cmd.Parameters.Add(new NpgsqlParameter("pn", pn));
-                cmd.Parameters.Add(new NpgsqlParameter("em", em));
-                cmd.ExecuteNonQuery();
-                conn.Close();
+            //    cmd = new NpgsqlCommand("insert into customer(fname, lname, phonenumber, email) values(:fn, :ln, :pn, :em)", conn);
+            //    cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
+            //    cmd.Parameters.Add(new NpgsqlParameter("ln", ln));
+            //    cmd.Parameters.Add(new NpgsqlParameter("pn", pn));
+            //    cmd.Parameters.Add(new NpgsqlParameter("em", em));
+            //    cmd.ExecuteNonQuery();
+            //    conn.Close();
 
-                conn.Open();
-                cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
-                NpgsqlDataReader read;
-                read = cmd.ExecuteReader();
+            //    conn.Open();
+            //    cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
+            //    NpgsqlDataReader read;
+            //    read = cmd.ExecuteReader();
 
-                read.Read();
-                customerid = int.Parse(read[0].ToString());
-                conn.Close();
-                panel2.Visible = true;
-            }
-            if (newcust == false && radioButtonDirectSale.Checked == true)
-            {
-                panel2.Visible = true;
-                radioPaid.Enabled = false;
-                radioRes.Enabled = false;
-                string fn = "temp";
+            //    read.Read();
+            //    customerid = int.Parse(read[0].ToString());
+            //    conn.Close();
+            //    panel2.Visible = true;
+            //}
+            //if (newcust == false && radioButtonDirectSale.Checked == true)
+            //{
+            //    panel2.Visible = true;
+            //    radioPaid.Enabled = false;
+            //    radioRes.Enabled = false;
+            //    string fn = "temp";
 
-                conn.Open();
+            //    conn.Open();
 
-                cmd = new NpgsqlCommand("insert into customer(fname) values(:fn)", conn);
-                cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
+            //    cmd = new NpgsqlCommand("insert into customer(fname) values(:fn)", conn);
+            //    cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
 
-                cmd.ExecuteNonQuery();
-                conn.Close();
+            //    cmd.ExecuteNonQuery();
+            //    conn.Close();
 
-                conn.Open();
-                cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
-                NpgsqlDataReader read;
-                read = cmd.ExecuteReader();
+            //    conn.Open();
+            //    cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
+            //    NpgsqlDataReader read;
+            //    read = cmd.ExecuteReader();
 
-                read.Read();
-                customerid = int.Parse(read[0].ToString());
-                conn.Close();
+            //    read.Read();
+            //    customerid = int.Parse(read[0].ToString());
+            //    conn.Close();
 
-            }
+            //}
             if (newcust == false && radioButtonDirectSale.Checked == false)
             {
                 panel2.Visible = true;
@@ -1604,7 +1604,67 @@ namespace cirkus
         private void button1_Click_1(object sender, EventArgs e)
         {
             button1.Enabled = false;
-            
+            dateReservedto.Value = showdate;
+            dateReservedto.Value = dateReservedto.Value.Subtract(TimeSpan.FromDays(7));
+
+            if (newcust == true && radioButtonDirectSale.Checked == false)
+            {
+                string fn = txtfnamn.Text;
+                string ln = txtenamn.Text;
+                string pn = txttel.Text;
+                string em = txtepost.Text;
+                if (IsValidEmail(em) == false)
+                {
+                    MessageBox.Show("Ange giltig mail");
+
+                    return;
+                }
+                conn.Open();
+
+                cmd = new NpgsqlCommand("insert into customer(fname, lname, phonenumber, email) values(:fn, :ln, :pn, :em)", conn);
+                cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
+                cmd.Parameters.Add(new NpgsqlParameter("ln", ln));
+                cmd.Parameters.Add(new NpgsqlParameter("pn", pn));
+                cmd.Parameters.Add(new NpgsqlParameter("em", em));
+                cmd.ExecuteNonQuery();
+                conn.Close();
+
+                conn.Open();
+                cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
+                NpgsqlDataReader read;
+                read = cmd.ExecuteReader();
+
+                read.Read();
+                customerid = int.Parse(read[0].ToString());
+                conn.Close();
+                
+            }
+            if (newcust == false && radioButtonDirectSale.Checked == true)
+            {
+                //panel2.Visible = true;
+                //radioPaid.Enabled = false;
+                //radioRes.Enabled = false;
+                //string fn = "temp";
+
+                //conn.Open();
+
+                //cmd = new NpgsqlCommand("insert into customer(fname) values(:fn)", conn);
+                //cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
+
+                //cmd.ExecuteNonQuery();
+                //conn.Close();
+
+                //conn.Open();
+                //cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
+                //NpgsqlDataReader read;
+                //read = cmd.ExecuteReader();
+
+                //read.Read();
+                //customerid = int.Parse(read[0].ToString());
+                //conn.Close();
+
+            }
+
             if (radioButtonDirectSale.Checked == false && radioPaid.Checked == true)
             {
                 createBooking();
@@ -1792,6 +1852,8 @@ namespace cirkus
 
         private void createBooking()
         {
+            DataTable ds = new DataTable();
+            ds.Columns.Add("bookingid");
             string sql;
             int custid = customerid;
             int shid = showid;
@@ -1867,7 +1929,7 @@ namespace cirkus
        
 
 
-                if (radioRes.Checked == true)
+                if (radioRes.Checked == true && radioButtonDirectSale.Checked == false)
                 {
                     conn.Open();
                     sql = "insert into booking(customerid,showid, reserved_to, paid) values(:cid,:shid, :rto, :pai)";
@@ -1897,9 +1959,8 @@ namespace cirkus
                 else if (radioButtonDirectSale.Checked == true)
                 {
                     conn.Open();
-                    sql = "insert into booking(customerid, showid, paid) values(:cid, :shid, :rto)";
-                    cmd = new NpgsqlCommand(sql, conn);
-                    cmd.Parameters.Add(new NpgsqlParameter("cid", custid));
+                    sql = "insert into booking(showid, paid) values(:shid, :rto)";
+                    cmd = new NpgsqlCommand(sql, conn);                  
                     cmd.Parameters.Add(new NpgsqlParameter("shid", shid));
                     cmd.Parameters.Add(new NpgsqlParameter("rto", true));
                     cmd.ExecuteNonQuery();
@@ -1915,12 +1976,20 @@ namespace cirkus
                 cmd = new NpgsqlCommand("select currval('booking_bookingid_seq');", conn);
                 NpgsqlDataReader read;
                 read = cmd.ExecuteReader();
+
                 
                 read.Read();
                 addedbookingid = int.Parse(read[0].ToString());
                 
                 conn.Close();
+                if (radioButtonDirectSale.Checked == true)
+                {
+                    DataRow row = ds.NewRow();
+                    row[0] = addedbookingid;
+                    ds.Rows.Add(row);
 
+                }
+                dgtest.DataSource = ds;
                 ix++;
                     foreach (DataRow dr in cSeats.Rows)
                     {
@@ -2052,7 +2121,7 @@ namespace cirkus
             }
             if(radioButtonDirectSale.Checked == true)
             {
-                PrintBiljetter rb = new PrintBiljetter(custid);
+                PrintBiljetter rb = new PrintBiljetter(ds);
                 rb.ShowDialog();
             }
           
