@@ -15,7 +15,8 @@ namespace cirkus
     public partial class PrintBiljetter : Form
     {
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-        int customerid;
+        
+        DataTable bidt = new DataTable();
         DataTable dtActs = new DataTable();
         DataTable dtTicketDirekt = new DataTable();
         string aldersgrupp, bokningsnummer, forestallning, akt, pris, tider, datum;
@@ -24,10 +25,10 @@ namespace cirkus
         int bid = 0;
 
 
-        public PrintBiljetter(int custid)
+        public PrintBiljetter(DataTable bdt)
         {
-            InitializeComponent();
-            bid = custid;
+            InitializeComponent();           
+            bidt = bdt;
             
         }
 
@@ -55,13 +56,9 @@ namespace cirkus
 
         private void button1_Click(object sender, EventArgs e)
         {
-            conn.Open();
-            NpgsqlCommand cmd = new NpgsqlCommand("delete from customer where customerid = '" + bid + "'", conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            this.Close();
 
-;        }
+
+      }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -76,19 +73,25 @@ namespace cirkus
         public void listTicketDirekt()
         {
             
-            string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
-                            from booking
-                            inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
-                            inner join show on sold_tickets.showid = show.showid
-                            inner join acts on sold_tickets.actid = acts.actid
-                            inner join customer on booking.customerid = customer.customerid
-                            where customer.customerid = '" + bid+"'  group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
+    
             try
             {
                 conn.Open();
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-                
-                da.Fill(dtTicketDirekt);
+                foreach(DataRow r in bidt.Rows)
+                {
+                    bid = int.Parse(r[0].ToString());
+                    string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
+                            from booking
+                            inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
+                            inner join show on sold_tickets.showid = show.showid
+                            inner join acts on sold_tickets.actid = acts.actid                            
+                            where booking.bookingid = '" + bid + "'  group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+
+                    da.Fill(dtTicketDirekt);
+
+                }
+   
                 dgTicketsDirekt.DataSource = dtTicketDirekt;
                 
                 dgTicketsDirekt.Columns[0].HeaderText = "Boknings ID";
