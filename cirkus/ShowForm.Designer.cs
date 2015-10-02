@@ -39,12 +39,20 @@
             this.dateTimePickerDatum = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.lblLayout = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.uncheck = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
             this.check = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
             this.lblActMap = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.lblS = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.btnSaveMap = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.E8 = new System.Windows.Forms.CheckBox();
             this.E4 = new System.Windows.Forms.CheckBox();
             this.E6 = new System.Windows.Forms.CheckBox();
@@ -125,14 +133,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.labelChildPrice = new System.Windows.Forms.Label();
+            this.labelAdultPrice = new System.Windows.Forms.Label();
+            this.labelYouthPrice = new System.Windows.Forms.Label();
+            this.dateTimePickerChildrenPrice = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerYouthPrice = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerAdultPrice = new System.Windows.Forms.DateTimePicker();
+            this.labelDiscount = new System.Windows.Forms.Label();
+            this.dateTimePickerDiscount = new System.Windows.Forms.DateTimePicker();
             this.gpSeatMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
@@ -141,9 +151,9 @@
             // 
             // textBoxBeskrivning
             // 
-            this.textBoxBeskrivning.Location = new System.Drawing.Point(6, 54);
+            this.textBoxBeskrivning.Location = new System.Drawing.Point(6, 46);
             this.textBoxBeskrivning.Name = "textBoxBeskrivning";
-            this.textBoxBeskrivning.Size = new System.Drawing.Size(137, 20);
+            this.textBoxBeskrivning.Size = new System.Drawing.Size(124, 20);
             this.textBoxBeskrivning.TabIndex = 1;
             this.textBoxBeskrivning.Click += new System.EventHandler(this.textBoxBeskrivning_Click);
             this.textBoxBeskrivning.TextChanged += new System.EventHandler(this.textBoxBeskrivning_TextChanged);
@@ -151,7 +161,7 @@
             // labelBeskrivning
             // 
             this.labelBeskrivning.AutoSize = true;
-            this.labelBeskrivning.Location = new System.Drawing.Point(6, 41);
+            this.labelBeskrivning.Location = new System.Drawing.Point(6, 33);
             this.labelBeskrivning.Name = "labelBeskrivning";
             this.labelBeskrivning.Size = new System.Drawing.Size(62, 13);
             this.labelBeskrivning.TabIndex = 4;
@@ -160,7 +170,7 @@
             // labelDatum
             // 
             this.labelDatum.AutoSize = true;
-            this.labelDatum.Location = new System.Drawing.Point(157, 38);
+            this.labelDatum.Location = new System.Drawing.Point(137, 30);
             this.labelDatum.Name = "labelDatum";
             this.labelDatum.Size = new System.Drawing.Size(38, 13);
             this.labelDatum.TabIndex = 11;
@@ -169,7 +179,7 @@
             // labelForsaljningstid
             // 
             this.labelForsaljningstid.AutoSize = true;
-            this.labelForsaljningstid.Location = new System.Drawing.Point(6, 81);
+            this.labelForsaljningstid.Location = new System.Drawing.Point(6, 73);
             this.labelForsaljningstid.Name = "labelForsaljningstid";
             this.labelForsaljningstid.Size = new System.Drawing.Size(76, 13);
             this.labelForsaljningstid.TabIndex = 14;
@@ -179,9 +189,9 @@
             // 
             this.buttonLaggTIllForestallning.BackColor = System.Drawing.Color.White;
             this.buttonLaggTIllForestallning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(18, 389);
+            this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(9, 417);
             this.buttonLaggTIllForestallning.Name = "buttonLaggTIllForestallning";
-            this.buttonLaggTIllForestallning.Size = new System.Drawing.Size(156, 31);
+            this.buttonLaggTIllForestallning.Size = new System.Drawing.Size(141, 31);
             this.buttonLaggTIllForestallning.TabIndex = 29;
             this.buttonLaggTIllForestallning.Text = "Skapa föreställning";
             this.buttonLaggTIllForestallning.UseVisualStyleBackColor = false;
@@ -191,7 +201,7 @@
             // 
             this.buttonSparaAndringar.BackColor = System.Drawing.Color.White;
             this.buttonSparaAndringar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonSparaAndringar.Location = new System.Drawing.Point(231, 388);
+            this.buttonSparaAndringar.Location = new System.Drawing.Point(166, 417);
             this.buttonSparaAndringar.Name = "buttonSparaAndringar";
             this.buttonSparaAndringar.Size = new System.Drawing.Size(141, 31);
             this.buttonSparaAndringar.TabIndex = 30;
@@ -203,9 +213,9 @@
             // 
             this.dateTimePickerForsaljningstidFran.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerForsaljningstidFran.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerForsaljningstidFran.Location = new System.Drawing.Point(9, 97);
+            this.dateTimePickerForsaljningstidFran.Location = new System.Drawing.Point(6, 89);
             this.dateTimePickerForsaljningstidFran.Name = "dateTimePickerForsaljningstidFran";
-            this.dateTimePickerForsaljningstidFran.Size = new System.Drawing.Size(79, 20);
+            this.dateTimePickerForsaljningstidFran.Size = new System.Drawing.Size(121, 20);
             this.dateTimePickerForsaljningstidFran.TabIndex = 32;
             this.dateTimePickerForsaljningstidFran.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
             this.dateTimePickerForsaljningstidFran.ValueChanged += new System.EventHandler(this.dateTimePickerForsaljningstidFran_ValueChanged);
@@ -213,15 +223,15 @@
             // dateTimePickerForsaljningstidTill
             // 
             this.dateTimePickerForsaljningstidTill.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerForsaljningstidTill.Location = new System.Drawing.Point(123, 97);
+            this.dateTimePickerForsaljningstidTill.Location = new System.Drawing.Point(137, 89);
             this.dateTimePickerForsaljningstidTill.Name = "dateTimePickerForsaljningstidTill";
-            this.dateTimePickerForsaljningstidTill.Size = new System.Drawing.Size(79, 20);
+            this.dateTimePickerForsaljningstidTill.Size = new System.Drawing.Size(99, 20);
             this.dateTimePickerForsaljningstidTill.TabIndex = 33;
             // 
             // dateTimePickerDatum
             // 
             this.dateTimePickerDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDatum.Location = new System.Drawing.Point(157, 54);
+            this.dateTimePickerDatum.Location = new System.Drawing.Point(137, 46);
             this.dateTimePickerDatum.Name = "dateTimePickerDatum";
             this.dateTimePickerDatum.Size = new System.Drawing.Size(99, 20);
             this.dateTimePickerDatum.TabIndex = 34;
@@ -230,7 +240,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 16);
+            this.label2.Location = new System.Drawing.Point(6, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 16);
             this.label2.TabIndex = 53;
@@ -317,28 +327,58 @@
             this.gpSeatMap.Controls.Add(this.A6);
             this.gpSeatMap.Controls.Add(this.A5);
             this.gpSeatMap.Controls.Add(this.pictureBox1);
-            this.gpSeatMap.Location = new System.Drawing.Point(401, 12);
+            this.gpSeatMap.Location = new System.Drawing.Point(441, 4);
             this.gpSeatMap.Name = "gpSeatMap";
-            this.gpSeatMap.Size = new System.Drawing.Size(322, 414);
+            this.gpSeatMap.Size = new System.Drawing.Size(338, 406);
             this.gpSeatMap.TabIndex = 57;
             this.gpSeatMap.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(200, 32);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(19, 16);
+            this.label19.TabIndex = 82;
+            this.label19.Text = "G";
             // 
             // lblLayout
             // 
             this.lblLayout.AutoSize = true;
             this.lblLayout.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLayout.Location = new System.Drawing.Point(14, 398);
+            this.lblLayout.Location = new System.Drawing.Point(129, 386);
             this.lblLayout.Name = "lblLayout";
             this.lblLayout.Size = new System.Drawing.Size(41, 13);
             this.lblLayout.TabIndex = 62;
             this.lblLayout.Text = "label1";
             this.lblLayout.Visible = false;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(279, 115);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(18, 16);
+            this.label18.TabIndex = 81;
+            this.label18.Text = "E";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(101, 32);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(19, 16);
+            this.label17.TabIndex = 80;
+            this.label17.Text = "H";
+            // 
             // uncheck
             // 
             this.uncheck.BackColor = System.Drawing.Color.White;
             this.uncheck.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.uncheck.Location = new System.Drawing.Point(174, 327);
+            this.uncheck.Location = new System.Drawing.Point(191, 318);
             this.uncheck.Name = "uncheck";
             this.uncheck.Size = new System.Drawing.Size(141, 31);
             this.uncheck.TabIndex = 68;
@@ -346,11 +386,21 @@
             this.uncheck.UseVisualStyleBackColor = false;
             this.uncheck.Click += new System.EventHandler(this.uncheck_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(23, 115);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(17, 16);
+            this.label15.TabIndex = 79;
+            this.label15.Text = "F";
+            // 
             // check
             // 
             this.check.BackColor = System.Drawing.Color.White;
             this.check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.check.Location = new System.Drawing.Point(14, 327);
+            this.check.Location = new System.Drawing.Point(6, 317);
             this.check.Name = "check";
             this.check.Size = new System.Drawing.Size(141, 31);
             this.check.TabIndex = 67;
@@ -358,29 +408,59 @@
             this.check.UseVisualStyleBackColor = false;
             this.check.Click += new System.EventHandler(this.check_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(23, 191);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(19, 16);
+            this.label14.TabIndex = 78;
+            this.label14.Text = "D";
+            // 
             // lblActMap
             // 
             this.lblActMap.AutoSize = true;
             this.lblActMap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblActMap.Location = new System.Drawing.Point(144, 153);
+            this.lblActMap.Location = new System.Drawing.Point(147, 144);
             this.lblActMap.Name = "lblActMap";
             this.lblActMap.Size = new System.Drawing.Size(0, 16);
             this.lblActMap.TabIndex = 59;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(280, 188);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(18, 16);
+            this.label12.TabIndex = 77;
+            this.label12.Text = "C";
+            // 
             // lblS
             // 
             this.lblS.AutoSize = true;
-            this.lblS.Location = new System.Drawing.Point(137, -16);
+            this.lblS.Location = new System.Drawing.Point(128, -24);
             this.lblS.Name = "lblS";
             this.lblS.Size = new System.Drawing.Size(35, 13);
             this.lblS.TabIndex = 66;
             this.lblS.Text = "label5";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(176, 286);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 16);
+            this.label11.TabIndex = 76;
+            this.label11.Text = "A";
+            // 
             // btnSaveMap
             // 
             this.btnSaveMap.BackColor = System.Drawing.Color.White;
             this.btnSaveMap.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSaveMap.Location = new System.Drawing.Point(14, 364);
+            this.btnSaveMap.Location = new System.Drawing.Point(59, 352);
             this.btnSaveMap.Name = "btnSaveMap";
             this.btnSaveMap.Size = new System.Drawing.Size(207, 29);
             this.btnSaveMap.TabIndex = 53;
@@ -388,12 +468,22 @@
             this.btnSaveMap.UseVisualStyleBackColor = false;
             this.btnSaveMap.Click += new System.EventHandler(this.btnSaveMap_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(122, 286);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 16);
+            this.label1.TabIndex = 75;
+            this.label1.Text = "B";
+            // 
             // E8
             // 
             this.E8.AutoSize = true;
             this.E8.Checked = true;
             this.E8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E8.Location = new System.Drawing.Point(263, 100);
+            this.E8.Location = new System.Drawing.Point(266, 91);
             this.E8.Name = "E8";
             this.E8.Size = new System.Drawing.Size(15, 14);
             this.E8.TabIndex = 64;
@@ -404,7 +494,7 @@
             this.E4.AutoSize = true;
             this.E4.Checked = true;
             this.E4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E4.Location = new System.Drawing.Point(248, 100);
+            this.E4.Location = new System.Drawing.Point(251, 91);
             this.E4.Name = "E4";
             this.E4.Size = new System.Drawing.Size(15, 14);
             this.E4.TabIndex = 63;
@@ -415,7 +505,7 @@
             this.E6.AutoSize = true;
             this.E6.Checked = true;
             this.E6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E6.Location = new System.Drawing.Point(263, 132);
+            this.E6.Location = new System.Drawing.Point(266, 123);
             this.E6.Name = "E6";
             this.E6.Size = new System.Drawing.Size(15, 14);
             this.E6.TabIndex = 62;
@@ -426,7 +516,7 @@
             this.E2.AutoSize = true;
             this.E2.Checked = true;
             this.E2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E2.Location = new System.Drawing.Point(248, 132);
+            this.E2.Location = new System.Drawing.Point(251, 123);
             this.E2.Name = "E2";
             this.E2.Size = new System.Drawing.Size(15, 14);
             this.E2.TabIndex = 61;
@@ -437,7 +527,7 @@
             this.E7.AutoSize = true;
             this.E7.Checked = true;
             this.E7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E7.Location = new System.Drawing.Point(263, 116);
+            this.E7.Location = new System.Drawing.Point(266, 107);
             this.E7.Name = "E7";
             this.E7.Size = new System.Drawing.Size(15, 14);
             this.E7.TabIndex = 60;
@@ -448,7 +538,7 @@
             this.E3.AutoSize = true;
             this.E3.Checked = true;
             this.E3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E3.Location = new System.Drawing.Point(248, 116);
+            this.E3.Location = new System.Drawing.Point(251, 107);
             this.E3.Name = "E3";
             this.E3.Size = new System.Drawing.Size(15, 14);
             this.E3.TabIndex = 59;
@@ -459,7 +549,7 @@
             this.E5.AutoSize = true;
             this.E5.Checked = true;
             this.E5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E5.Location = new System.Drawing.Point(263, 148);
+            this.E5.Location = new System.Drawing.Point(266, 139);
             this.E5.Name = "E5";
             this.E5.Size = new System.Drawing.Size(15, 14);
             this.E5.TabIndex = 58;
@@ -470,7 +560,7 @@
             this.E1.AutoSize = true;
             this.E1.Checked = true;
             this.E1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.E1.Location = new System.Drawing.Point(248, 148);
+            this.E1.Location = new System.Drawing.Point(251, 139);
             this.E1.Name = "E1";
             this.E1.Size = new System.Drawing.Size(15, 14);
             this.E1.TabIndex = 57;
@@ -481,7 +571,7 @@
             this.F4.AutoSize = true;
             this.F4.Checked = true;
             this.F4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F4.Location = new System.Drawing.Point(53, 100);
+            this.F4.Location = new System.Drawing.Point(56, 91);
             this.F4.Name = "F4";
             this.F4.Size = new System.Drawing.Size(15, 14);
             this.F4.TabIndex = 56;
@@ -492,7 +582,7 @@
             this.F8.AutoSize = true;
             this.F8.Checked = true;
             this.F8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F8.Location = new System.Drawing.Point(38, 100);
+            this.F8.Location = new System.Drawing.Point(41, 91);
             this.F8.Name = "F8";
             this.F8.Size = new System.Drawing.Size(15, 14);
             this.F8.TabIndex = 55;
@@ -503,7 +593,7 @@
             this.F2.AutoSize = true;
             this.F2.Checked = true;
             this.F2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F2.Location = new System.Drawing.Point(53, 132);
+            this.F2.Location = new System.Drawing.Point(56, 123);
             this.F2.Name = "F2";
             this.F2.Size = new System.Drawing.Size(15, 14);
             this.F2.TabIndex = 54;
@@ -514,7 +604,7 @@
             this.F6.AutoSize = true;
             this.F6.Checked = true;
             this.F6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F6.Location = new System.Drawing.Point(38, 132);
+            this.F6.Location = new System.Drawing.Point(41, 123);
             this.F6.Name = "F6";
             this.F6.Size = new System.Drawing.Size(15, 14);
             this.F6.TabIndex = 53;
@@ -525,7 +615,7 @@
             this.F3.AutoSize = true;
             this.F3.Checked = true;
             this.F3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F3.Location = new System.Drawing.Point(53, 116);
+            this.F3.Location = new System.Drawing.Point(56, 107);
             this.F3.Name = "F3";
             this.F3.Size = new System.Drawing.Size(15, 14);
             this.F3.TabIndex = 52;
@@ -536,7 +626,7 @@
             this.F7.AutoSize = true;
             this.F7.Checked = true;
             this.F7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F7.Location = new System.Drawing.Point(38, 116);
+            this.F7.Location = new System.Drawing.Point(41, 107);
             this.F7.Name = "F7";
             this.F7.Size = new System.Drawing.Size(15, 14);
             this.F7.TabIndex = 51;
@@ -547,7 +637,7 @@
             this.F1.AutoSize = true;
             this.F1.Checked = true;
             this.F1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F1.Location = new System.Drawing.Point(53, 148);
+            this.F1.Location = new System.Drawing.Point(56, 139);
             this.F1.Name = "F1";
             this.F1.Size = new System.Drawing.Size(15, 14);
             this.F1.TabIndex = 50;
@@ -558,7 +648,7 @@
             this.F5.AutoSize = true;
             this.F5.Checked = true;
             this.F5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.F5.Location = new System.Drawing.Point(38, 148);
+            this.F5.Location = new System.Drawing.Point(41, 139);
             this.F5.Name = "F5";
             this.F5.Size = new System.Drawing.Size(15, 14);
             this.F5.TabIndex = 49;
@@ -569,7 +659,7 @@
             this.H8.AutoSize = true;
             this.H8.Checked = true;
             this.H8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H8.Location = new System.Drawing.Point(106, 59);
+            this.H8.Location = new System.Drawing.Point(109, 50);
             this.H8.Name = "H8";
             this.H8.Size = new System.Drawing.Size(15, 14);
             this.H8.TabIndex = 48;
@@ -580,7 +670,7 @@
             this.H7.AutoSize = true;
             this.H7.Checked = true;
             this.H7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H7.Location = new System.Drawing.Point(91, 59);
+            this.H7.Location = new System.Drawing.Point(94, 50);
             this.H7.Name = "H7";
             this.H7.Size = new System.Drawing.Size(15, 14);
             this.H7.TabIndex = 47;
@@ -591,7 +681,7 @@
             this.H6.AutoSize = true;
             this.H6.Checked = true;
             this.H6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H6.Location = new System.Drawing.Point(76, 59);
+            this.H6.Location = new System.Drawing.Point(79, 50);
             this.H6.Name = "H6";
             this.H6.Size = new System.Drawing.Size(15, 14);
             this.H6.TabIndex = 46;
@@ -602,7 +692,7 @@
             this.H5.AutoSize = true;
             this.H5.Checked = true;
             this.H5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H5.Location = new System.Drawing.Point(61, 59);
+            this.H5.Location = new System.Drawing.Point(64, 50);
             this.H5.Name = "H5";
             this.H5.Size = new System.Drawing.Size(15, 14);
             this.H5.TabIndex = 45;
@@ -613,7 +703,7 @@
             this.H4.AutoSize = true;
             this.H4.Checked = true;
             this.H4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H4.Location = new System.Drawing.Point(106, 75);
+            this.H4.Location = new System.Drawing.Point(109, 66);
             this.H4.Name = "H4";
             this.H4.Size = new System.Drawing.Size(15, 14);
             this.H4.TabIndex = 44;
@@ -624,7 +714,7 @@
             this.H3.AutoSize = true;
             this.H3.Checked = true;
             this.H3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H3.Location = new System.Drawing.Point(91, 75);
+            this.H3.Location = new System.Drawing.Point(94, 66);
             this.H3.Name = "H3";
             this.H3.Size = new System.Drawing.Size(15, 14);
             this.H3.TabIndex = 43;
@@ -635,7 +725,7 @@
             this.H2.AutoSize = true;
             this.H2.Checked = true;
             this.H2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H2.Location = new System.Drawing.Point(76, 75);
+            this.H2.Location = new System.Drawing.Point(79, 66);
             this.H2.Name = "H2";
             this.H2.Size = new System.Drawing.Size(15, 14);
             this.H2.TabIndex = 42;
@@ -646,7 +736,7 @@
             this.H1.AutoSize = true;
             this.H1.Checked = true;
             this.H1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.H1.Location = new System.Drawing.Point(61, 75);
+            this.H1.Location = new System.Drawing.Point(64, 66);
             this.H1.Name = "H1";
             this.H1.Size = new System.Drawing.Size(15, 14);
             this.H1.TabIndex = 41;
@@ -656,7 +746,7 @@
             this.G8.AutoSize = true;
             this.G8.Checked = true;
             this.G8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G8.Location = new System.Drawing.Point(237, 59);
+            this.G8.Location = new System.Drawing.Point(240, 50);
             this.G8.Name = "G8";
             this.G8.Size = new System.Drawing.Size(15, 14);
             this.G8.TabIndex = 40;
@@ -667,7 +757,7 @@
             this.G7.AutoSize = true;
             this.G7.Checked = true;
             this.G7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G7.Location = new System.Drawing.Point(222, 59);
+            this.G7.Location = new System.Drawing.Point(225, 50);
             this.G7.Name = "G7";
             this.G7.Size = new System.Drawing.Size(15, 14);
             this.G7.TabIndex = 39;
@@ -678,7 +768,7 @@
             this.G6.AutoSize = true;
             this.G6.Checked = true;
             this.G6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G6.Location = new System.Drawing.Point(207, 59);
+            this.G6.Location = new System.Drawing.Point(210, 50);
             this.G6.Name = "G6";
             this.G6.Size = new System.Drawing.Size(15, 14);
             this.G6.TabIndex = 38;
@@ -689,7 +779,7 @@
             this.G5.AutoSize = true;
             this.G5.Checked = true;
             this.G5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G5.Location = new System.Drawing.Point(192, 59);
+            this.G5.Location = new System.Drawing.Point(195, 50);
             this.G5.Name = "G5";
             this.G5.Size = new System.Drawing.Size(15, 14);
             this.G5.TabIndex = 37;
@@ -700,7 +790,7 @@
             this.G4.AutoSize = true;
             this.G4.Checked = true;
             this.G4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G4.Location = new System.Drawing.Point(237, 75);
+            this.G4.Location = new System.Drawing.Point(240, 66);
             this.G4.Name = "G4";
             this.G4.Size = new System.Drawing.Size(15, 14);
             this.G4.TabIndex = 36;
@@ -711,7 +801,7 @@
             this.G3.AutoSize = true;
             this.G3.Checked = true;
             this.G3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G3.Location = new System.Drawing.Point(222, 75);
+            this.G3.Location = new System.Drawing.Point(225, 66);
             this.G3.Name = "G3";
             this.G3.Size = new System.Drawing.Size(15, 14);
             this.G3.TabIndex = 35;
@@ -722,7 +812,7 @@
             this.G2.AutoSize = true;
             this.G2.Checked = true;
             this.G2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G2.Location = new System.Drawing.Point(207, 75);
+            this.G2.Location = new System.Drawing.Point(210, 66);
             this.G2.Name = "G2";
             this.G2.Size = new System.Drawing.Size(15, 14);
             this.G2.TabIndex = 34;
@@ -733,7 +823,7 @@
             this.G1.AutoSize = true;
             this.G1.Checked = true;
             this.G1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.G1.Location = new System.Drawing.Point(192, 75);
+            this.G1.Location = new System.Drawing.Point(195, 66);
             this.G1.Name = "G1";
             this.G1.Size = new System.Drawing.Size(15, 14);
             this.G1.TabIndex = 33;
@@ -744,7 +834,7 @@
             this.D4.AutoSize = true;
             this.D4.Checked = true;
             this.D4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D4.Location = new System.Drawing.Point(53, 186);
+            this.D4.Location = new System.Drawing.Point(56, 177);
             this.D4.Name = "D4";
             this.D4.Size = new System.Drawing.Size(15, 14);
             this.D4.TabIndex = 32;
@@ -755,7 +845,7 @@
             this.D8.AutoSize = true;
             this.D8.Checked = true;
             this.D8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D8.Location = new System.Drawing.Point(38, 186);
+            this.D8.Location = new System.Drawing.Point(41, 177);
             this.D8.Name = "D8";
             this.D8.Size = new System.Drawing.Size(15, 14);
             this.D8.TabIndex = 31;
@@ -766,7 +856,7 @@
             this.D2.AutoSize = true;
             this.D2.Checked = true;
             this.D2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D2.Location = new System.Drawing.Point(53, 218);
+            this.D2.Location = new System.Drawing.Point(56, 209);
             this.D2.Name = "D2";
             this.D2.Size = new System.Drawing.Size(15, 14);
             this.D2.TabIndex = 30;
@@ -777,7 +867,7 @@
             this.D6.AutoSize = true;
             this.D6.Checked = true;
             this.D6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D6.Location = new System.Drawing.Point(38, 218);
+            this.D6.Location = new System.Drawing.Point(41, 209);
             this.D6.Name = "D6";
             this.D6.Size = new System.Drawing.Size(15, 14);
             this.D6.TabIndex = 29;
@@ -788,7 +878,7 @@
             this.D3.AutoSize = true;
             this.D3.Checked = true;
             this.D3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D3.Location = new System.Drawing.Point(53, 202);
+            this.D3.Location = new System.Drawing.Point(56, 193);
             this.D3.Name = "D3";
             this.D3.Size = new System.Drawing.Size(15, 14);
             this.D3.TabIndex = 28;
@@ -799,7 +889,7 @@
             this.D7.AutoSize = true;
             this.D7.Checked = true;
             this.D7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D7.Location = new System.Drawing.Point(38, 202);
+            this.D7.Location = new System.Drawing.Point(41, 193);
             this.D7.Name = "D7";
             this.D7.Size = new System.Drawing.Size(15, 14);
             this.D7.TabIndex = 27;
@@ -810,7 +900,7 @@
             this.D1.AutoSize = true;
             this.D1.Checked = true;
             this.D1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D1.Location = new System.Drawing.Point(53, 234);
+            this.D1.Location = new System.Drawing.Point(56, 225);
             this.D1.Name = "D1";
             this.D1.Size = new System.Drawing.Size(15, 14);
             this.D1.TabIndex = 26;
@@ -821,7 +911,7 @@
             this.D5.AutoSize = true;
             this.D5.Checked = true;
             this.D5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.D5.Location = new System.Drawing.Point(38, 234);
+            this.D5.Location = new System.Drawing.Point(41, 225);
             this.D5.Name = "D5";
             this.D5.Size = new System.Drawing.Size(15, 14);
             this.D5.TabIndex = 25;
@@ -832,7 +922,7 @@
             this.C6.AutoSize = true;
             this.C6.Checked = true;
             this.C6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C6.Location = new System.Drawing.Point(263, 218);
+            this.C6.Location = new System.Drawing.Point(266, 209);
             this.C6.Name = "C6";
             this.C6.Size = new System.Drawing.Size(15, 14);
             this.C6.TabIndex = 24;
@@ -843,7 +933,7 @@
             this.C2.AutoSize = true;
             this.C2.Checked = true;
             this.C2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C2.Location = new System.Drawing.Point(248, 218);
+            this.C2.Location = new System.Drawing.Point(251, 209);
             this.C2.Name = "C2";
             this.C2.Size = new System.Drawing.Size(15, 14);
             this.C2.TabIndex = 23;
@@ -854,7 +944,7 @@
             this.C8.AutoSize = true;
             this.C8.Checked = true;
             this.C8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C8.Location = new System.Drawing.Point(263, 186);
+            this.C8.Location = new System.Drawing.Point(266, 177);
             this.C8.Name = "C8";
             this.C8.Size = new System.Drawing.Size(15, 14);
             this.C8.TabIndex = 22;
@@ -865,7 +955,7 @@
             this.C4.AutoSize = true;
             this.C4.Checked = true;
             this.C4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C4.Location = new System.Drawing.Point(248, 186);
+            this.C4.Location = new System.Drawing.Point(251, 177);
             this.C4.Name = "C4";
             this.C4.Size = new System.Drawing.Size(15, 14);
             this.C4.TabIndex = 21;
@@ -876,7 +966,7 @@
             this.C5.AutoSize = true;
             this.C5.Checked = true;
             this.C5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C5.Location = new System.Drawing.Point(263, 234);
+            this.C5.Location = new System.Drawing.Point(266, 225);
             this.C5.Name = "C5";
             this.C5.Size = new System.Drawing.Size(15, 14);
             this.C5.TabIndex = 20;
@@ -887,7 +977,7 @@
             this.C1.AutoSize = true;
             this.C1.Checked = true;
             this.C1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C1.Location = new System.Drawing.Point(248, 234);
+            this.C1.Location = new System.Drawing.Point(251, 225);
             this.C1.Name = "C1";
             this.C1.Size = new System.Drawing.Size(15, 14);
             this.C1.TabIndex = 19;
@@ -898,7 +988,7 @@
             this.C7.AutoSize = true;
             this.C7.Checked = true;
             this.C7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C7.Location = new System.Drawing.Point(263, 202);
+            this.C7.Location = new System.Drawing.Point(266, 193);
             this.C7.Name = "C7";
             this.C7.Size = new System.Drawing.Size(15, 14);
             this.C7.TabIndex = 18;
@@ -909,7 +999,7 @@
             this.C3.AutoSize = true;
             this.C3.Checked = true;
             this.C3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.C3.Location = new System.Drawing.Point(248, 202);
+            this.C3.Location = new System.Drawing.Point(251, 193);
             this.C3.Name = "C3";
             this.C3.Size = new System.Drawing.Size(15, 14);
             this.C3.TabIndex = 17;
@@ -920,7 +1010,7 @@
             this.B4.AutoSize = true;
             this.B4.Checked = true;
             this.B4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B4.Location = new System.Drawing.Point(129, 266);
+            this.B4.Location = new System.Drawing.Point(132, 257);
             this.B4.Name = "B4";
             this.B4.Size = new System.Drawing.Size(15, 14);
             this.B4.TabIndex = 16;
@@ -931,7 +1021,7 @@
             this.B3.AutoSize = true;
             this.B3.Checked = true;
             this.B3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B3.Location = new System.Drawing.Point(114, 266);
+            this.B3.Location = new System.Drawing.Point(117, 257);
             this.B3.Name = "B3";
             this.B3.Size = new System.Drawing.Size(15, 14);
             this.B3.TabIndex = 15;
@@ -942,7 +1032,7 @@
             this.B2.AutoSize = true;
             this.B2.Checked = true;
             this.B2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B2.Location = new System.Drawing.Point(99, 266);
+            this.B2.Location = new System.Drawing.Point(102, 257);
             this.B2.Name = "B2";
             this.B2.Size = new System.Drawing.Size(15, 14);
             this.B2.TabIndex = 14;
@@ -953,7 +1043,7 @@
             this.B1.AutoSize = true;
             this.B1.Checked = true;
             this.B1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B1.Location = new System.Drawing.Point(84, 266);
+            this.B1.Location = new System.Drawing.Point(87, 257);
             this.B1.Name = "B1";
             this.B1.Size = new System.Drawing.Size(15, 14);
             this.B1.TabIndex = 13;
@@ -964,7 +1054,7 @@
             this.B8.AutoSize = true;
             this.B8.Checked = true;
             this.B8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B8.Location = new System.Drawing.Point(129, 282);
+            this.B8.Location = new System.Drawing.Point(132, 273);
             this.B8.Name = "B8";
             this.B8.Size = new System.Drawing.Size(15, 14);
             this.B8.TabIndex = 12;
@@ -975,7 +1065,7 @@
             this.B7.AutoSize = true;
             this.B7.Checked = true;
             this.B7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B7.Location = new System.Drawing.Point(114, 282);
+            this.B7.Location = new System.Drawing.Point(117, 273);
             this.B7.Name = "B7";
             this.B7.Size = new System.Drawing.Size(15, 14);
             this.B7.TabIndex = 11;
@@ -986,7 +1076,7 @@
             this.B6.AutoSize = true;
             this.B6.Checked = true;
             this.B6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B6.Location = new System.Drawing.Point(99, 282);
+            this.B6.Location = new System.Drawing.Point(102, 273);
             this.B6.Name = "B6";
             this.B6.Size = new System.Drawing.Size(15, 14);
             this.B6.TabIndex = 10;
@@ -997,7 +1087,7 @@
             this.B5.AutoSize = true;
             this.B5.Checked = true;
             this.B5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.B5.Location = new System.Drawing.Point(84, 282);
+            this.B5.Location = new System.Drawing.Point(87, 273);
             this.B5.Name = "B5";
             this.B5.Size = new System.Drawing.Size(15, 14);
             this.B5.TabIndex = 9;
@@ -1008,7 +1098,7 @@
             this.A4.AutoSize = true;
             this.A4.Checked = true;
             this.A4.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A4.Location = new System.Drawing.Point(213, 266);
+            this.A4.Location = new System.Drawing.Point(216, 257);
             this.A4.Name = "A4";
             this.A4.Size = new System.Drawing.Size(15, 14);
             this.A4.TabIndex = 8;
@@ -1019,7 +1109,7 @@
             this.A3.AutoSize = true;
             this.A3.Checked = true;
             this.A3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A3.Location = new System.Drawing.Point(198, 266);
+            this.A3.Location = new System.Drawing.Point(201, 257);
             this.A3.Name = "A3";
             this.A3.Size = new System.Drawing.Size(15, 14);
             this.A3.TabIndex = 7;
@@ -1030,7 +1120,7 @@
             this.A2.AutoSize = true;
             this.A2.Checked = true;
             this.A2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A2.Location = new System.Drawing.Point(183, 266);
+            this.A2.Location = new System.Drawing.Point(186, 257);
             this.A2.Name = "A2";
             this.A2.Size = new System.Drawing.Size(15, 14);
             this.A2.TabIndex = 6;
@@ -1041,7 +1131,7 @@
             this.A1.AutoSize = true;
             this.A1.Checked = true;
             this.A1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A1.Location = new System.Drawing.Point(168, 266);
+            this.A1.Location = new System.Drawing.Point(171, 257);
             this.A1.Name = "A1";
             this.A1.Size = new System.Drawing.Size(15, 14);
             this.A1.TabIndex = 5;
@@ -1052,7 +1142,7 @@
             this.A8.AutoSize = true;
             this.A8.Checked = true;
             this.A8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A8.Location = new System.Drawing.Point(213, 282);
+            this.A8.Location = new System.Drawing.Point(216, 273);
             this.A8.Name = "A8";
             this.A8.Size = new System.Drawing.Size(15, 14);
             this.A8.TabIndex = 4;
@@ -1063,7 +1153,7 @@
             this.A7.AutoSize = true;
             this.A7.Checked = true;
             this.A7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A7.Location = new System.Drawing.Point(198, 282);
+            this.A7.Location = new System.Drawing.Point(201, 273);
             this.A7.Name = "A7";
             this.A7.Size = new System.Drawing.Size(15, 14);
             this.A7.TabIndex = 3;
@@ -1074,7 +1164,7 @@
             this.A6.AutoSize = true;
             this.A6.Checked = true;
             this.A6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A6.Location = new System.Drawing.Point(183, 282);
+            this.A6.Location = new System.Drawing.Point(186, 273);
             this.A6.Name = "A6";
             this.A6.Size = new System.Drawing.Size(15, 14);
             this.A6.TabIndex = 2;
@@ -1085,7 +1175,7 @@
             this.A5.AutoSize = true;
             this.A5.Checked = true;
             this.A5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.A5.Location = new System.Drawing.Point(168, 282);
+            this.A5.Location = new System.Drawing.Point(171, 273);
             this.A5.Name = "A5";
             this.A5.Size = new System.Drawing.Size(15, 14);
             this.A5.TabIndex = 1;
@@ -1094,7 +1184,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::cirkus.Properties.Resources.Sittkarta2;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(300, 300);
             this.pictureBox1.TabIndex = 0;
@@ -1103,7 +1193,7 @@
             // labelAntalFriplatser
             // 
             this.labelAntalFriplatser.AutoSize = true;
-            this.labelAntalFriplatser.Location = new System.Drawing.Point(6, 184);
+            this.labelAntalFriplatser.Location = new System.Drawing.Point(6, 223);
             this.labelAntalFriplatser.Name = "labelAntalFriplatser";
             this.labelAntalFriplatser.Size = new System.Drawing.Size(124, 13);
             this.labelAntalFriplatser.TabIndex = 12;
@@ -1111,9 +1201,9 @@
             // 
             // textBoxAntalFriplatser
             // 
-            this.textBoxAntalFriplatser.Location = new System.Drawing.Point(6, 199);
+            this.textBoxAntalFriplatser.Location = new System.Drawing.Point(6, 238);
             this.textBoxAntalFriplatser.Name = "textBoxAntalFriplatser";
-            this.textBoxAntalFriplatser.Size = new System.Drawing.Size(124, 20);
+            this.textBoxAntalFriplatser.Size = new System.Drawing.Size(121, 20);
             this.textBoxAntalFriplatser.TabIndex = 24;
             this.textBoxAntalFriplatser.Click += new System.EventHandler(this.textBoxAntalFriplatser_Click);
             this.textBoxAntalFriplatser.TextChanged += new System.EventHandler(this.textBoxAntalFriplatser_TextChanged);
@@ -1122,7 +1212,7 @@
             // labelAkter
             // 
             this.labelAkter.AutoSize = true;
-            this.labelAkter.Location = new System.Drawing.Point(6, 145);
+            this.labelAkter.Location = new System.Drawing.Point(6, 184);
             this.labelAkter.Name = "labelAkter";
             this.labelAkter.Size = new System.Drawing.Size(49, 13);
             this.labelAkter.TabIndex = 9;
@@ -1133,9 +1223,9 @@
             this.buttonRaderaAkt.BackColor = System.Drawing.Color.White;
             this.buttonRaderaAkt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRaderaAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRaderaAkt.Location = new System.Drawing.Point(157, 304);
+            this.buttonRaderaAkt.Location = new System.Drawing.Point(146, 348);
             this.buttonRaderaAkt.Name = "buttonRaderaAkt";
-            this.buttonRaderaAkt.Size = new System.Drawing.Size(115, 31);
+            this.buttonRaderaAkt.Size = new System.Drawing.Size(90, 31);
             this.buttonRaderaAkt.TabIndex = 31;
             this.buttonRaderaAkt.Text = "Ta bort akt >>";
             this.buttonRaderaAkt.UseVisualStyleBackColor = false;
@@ -1146,9 +1236,9 @@
             this.buttonLaggTillAkt.BackColor = System.Drawing.Color.White;
             this.buttonLaggTillAkt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLaggTillAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLaggTillAkt.Location = new System.Drawing.Point(157, 242);
+            this.buttonLaggTillAkt.Location = new System.Drawing.Point(146, 281);
             this.buttonLaggTillAkt.Name = "buttonLaggTillAkt";
-            this.buttonLaggTillAkt.Size = new System.Drawing.Size(115, 31);
+            this.buttonLaggTillAkt.Size = new System.Drawing.Size(90, 31);
             this.buttonLaggTillAkt.TabIndex = 0;
             this.buttonLaggTillAkt.Text = "<< Lägg till akt";
             this.buttonLaggTillAkt.UseVisualStyleBackColor = false;
@@ -1156,16 +1246,16 @@
             // 
             // txtActname
             // 
-            this.txtActname.Location = new System.Drawing.Point(6, 161);
+            this.txtActname.Location = new System.Drawing.Point(6, 200);
             this.txtActname.Name = "txtActname";
-            this.txtActname.Size = new System.Drawing.Size(137, 20);
+            this.txtActname.Size = new System.Drawing.Size(124, 20);
             this.txtActname.TabIndex = 21;
             this.txtActname.Click += new System.EventHandler(this.txtActname_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 225);
+            this.label4.Location = new System.Drawing.Point(6, 265);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 13);
             this.label4.TabIndex = 44;
@@ -1180,13 +1270,13 @@
             this.dgActs.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgActs.ColumnHeadersVisible = false;
-            this.dgActs.Location = new System.Drawing.Point(6, 241);
+            this.dgActs.Location = new System.Drawing.Point(6, 281);
             this.dgActs.Name = "dgActs";
             this.dgActs.ReadOnly = true;
             this.dgActs.RowHeadersVisible = false;
             this.dgActs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgActs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgActs.Size = new System.Drawing.Size(141, 98);
+            this.dgActs.Size = new System.Drawing.Size(135, 98);
             this.dgActs.TabIndex = 51;
             this.dgActs.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActs_CellClick);
             // 
@@ -1194,26 +1284,26 @@
             // 
             this.timeEnd.CustomFormat = "HH:mm";
             this.timeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.timeEnd.Location = new System.Drawing.Point(247, 161);
+            this.timeEnd.Location = new System.Drawing.Point(187, 200);
             this.timeEnd.Name = "timeEnd";
             this.timeEnd.ShowUpDown = true;
-            this.timeEnd.Size = new System.Drawing.Size(67, 20);
+            this.timeEnd.Size = new System.Drawing.Size(49, 20);
             this.timeEnd.TabIndex = 53;
             // 
             // timeStart
             // 
             this.timeStart.CustomFormat = "HH:mm";
             this.timeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.timeStart.Location = new System.Drawing.Point(150, 161);
+            this.timeStart.Location = new System.Drawing.Point(134, 200);
             this.timeStart.Name = "timeStart";
             this.timeStart.ShowUpDown = true;
-            this.timeStart.Size = new System.Drawing.Size(68, 20);
+            this.timeStart.Size = new System.Drawing.Size(50, 20);
             this.timeStart.TabIndex = 54;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(218, 164);
+            this.label3.Location = new System.Drawing.Point(190, 184);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 13);
             this.label3.TabIndex = 56;
@@ -1223,7 +1313,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(6, 124);
+            this.label5.Location = new System.Drawing.Point(6, 163);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 58;
@@ -1232,7 +1322,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(94, 100);
+            this.label6.Location = new System.Drawing.Point(137, 73);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(23, 13);
             this.label6.TabIndex = 60;
@@ -1242,7 +1332,7 @@
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(9, 352);
+            this.lblStatus.Location = new System.Drawing.Point(8, 387);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(41, 13);
             this.lblStatus.TabIndex = 61;
@@ -1251,6 +1341,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTimePickerDiscount);
+            this.groupBox1.Controls.Add(this.labelDiscount);
+            this.groupBox1.Controls.Add(this.dateTimePickerAdultPrice);
+            this.groupBox1.Controls.Add(this.dateTimePickerYouthPrice);
+            this.groupBox1.Controls.Add(this.dateTimePickerChildrenPrice);
+            this.groupBox1.Controls.Add(this.labelYouthPrice);
+            this.groupBox1.Controls.Add(this.labelAdultPrice);
+            this.groupBox1.Controls.Add(this.labelChildPrice);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.labelBeskrivning);
             this.groupBox1.Controls.Add(this.lblStatus);
             this.groupBox1.Controls.Add(this.label2);
@@ -1273,99 +1373,122 @@
             this.groupBox1.Controls.Add(this.timeEnd);
             this.groupBox1.Controls.Add(this.timeStart);
             this.groupBox1.Controls.Add(this.labelForsaljningstid);
-            this.groupBox1.Location = new System.Drawing.Point(18, 12);
+            this.groupBox1.Location = new System.Drawing.Point(9, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(354, 371);
+            this.groupBox1.Size = new System.Drawing.Size(412, 406);
             this.groupBox1.TabIndex = 62;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label19
+            // label7
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(197, 41);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(19, 16);
-            this.label19.TabIndex = 82;
-            this.label19.Text = "G";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(271, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(126, 16);
+            this.label7.TabIndex = 62;
+            this.label7.Text = "Ange biljettpriser";
             // 
-            // label18
+            // label8
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(276, 124);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(18, 16);
-            this.label18.TabIndex = 81;
-            this.label18.Text = "E";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(131, 184);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.TabIndex = 63;
+            this.label8.Text = "Från:";
             // 
-            // label17
+            // labelChildPrice
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(98, 41);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(19, 16);
-            this.label17.TabIndex = 80;
-            this.label17.Text = "H";
+            this.labelChildPrice.AutoSize = true;
+            this.labelChildPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChildPrice.Location = new System.Drawing.Point(271, 46);
+            this.labelChildPrice.Name = "labelChildPrice";
+            this.labelChildPrice.Size = new System.Drawing.Size(32, 13);
+            this.labelChildPrice.TabIndex = 64;
+            this.labelChildPrice.Text = "Barn:";
             // 
-            // label15
+            // labelAdultPrice
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(20, 124);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(17, 16);
-            this.label15.TabIndex = 79;
-            this.label15.Text = "F";
+            this.labelAdultPrice.AutoSize = true;
+            this.labelAdultPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAdultPrice.Location = new System.Drawing.Point(271, 108);
+            this.labelAdultPrice.Name = "labelAdultPrice";
+            this.labelAdultPrice.Size = new System.Drawing.Size(40, 13);
+            this.labelAdultPrice.TabIndex = 65;
+            this.labelAdultPrice.Text = "Vuxen:";
             // 
-            // label14
+            // labelYouthPrice
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(20, 200);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(19, 16);
-            this.label14.TabIndex = 78;
-            this.label14.Text = "D";
+            this.labelYouthPrice.AutoSize = true;
+            this.labelYouthPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelYouthPrice.Location = new System.Drawing.Point(271, 77);
+            this.labelYouthPrice.Name = "labelYouthPrice";
+            this.labelYouthPrice.Size = new System.Drawing.Size(50, 13);
+            this.labelYouthPrice.TabIndex = 66;
+            this.labelYouthPrice.Text = "Ungdom:";
             // 
-            // label12
+            // dateTimePickerChildrenPrice
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(277, 197);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(18, 16);
-            this.label12.TabIndex = 77;
-            this.label12.Text = "C";
+            this.dateTimePickerChildrenPrice.CustomFormat = "HH:-";
+            this.dateTimePickerChildrenPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerChildrenPrice.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerChildrenPrice.Location = new System.Drawing.Point(351, 39);
+            this.dateTimePickerChildrenPrice.Name = "dateTimePickerChildrenPrice";
+            this.dateTimePickerChildrenPrice.ShowUpDown = true;
+            this.dateTimePickerChildrenPrice.Size = new System.Drawing.Size(49, 22);
+            this.dateTimePickerChildrenPrice.TabIndex = 67;
             // 
-            // label11
+            // dateTimePickerYouthPrice
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(173, 295);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(18, 16);
-            this.label11.TabIndex = 76;
-            this.label11.Text = "A";
+            this.dateTimePickerYouthPrice.CustomFormat = "HH:-";
+            this.dateTimePickerYouthPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerYouthPrice.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerYouthPrice.Location = new System.Drawing.Point(351, 70);
+            this.dateTimePickerYouthPrice.Name = "dateTimePickerYouthPrice";
+            this.dateTimePickerYouthPrice.ShowUpDown = true;
+            this.dateTimePickerYouthPrice.Size = new System.Drawing.Size(49, 22);
+            this.dateTimePickerYouthPrice.TabIndex = 68;
             // 
-            // label1
+            // dateTimePickerAdultPrice
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(119, 295);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 16);
-            this.label1.TabIndex = 75;
-            this.label1.Text = "B";
+            this.dateTimePickerAdultPrice.CustomFormat = "HH:-";
+            this.dateTimePickerAdultPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerAdultPrice.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerAdultPrice.Location = new System.Drawing.Point(351, 101);
+            this.dateTimePickerAdultPrice.Name = "dateTimePickerAdultPrice";
+            this.dateTimePickerAdultPrice.ShowUpDown = true;
+            this.dateTimePickerAdultPrice.Size = new System.Drawing.Size(49, 22);
+            this.dateTimePickerAdultPrice.TabIndex = 69;
+            // 
+            // labelDiscount
+            // 
+            this.labelDiscount.AutoSize = true;
+            this.labelDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDiscount.Location = new System.Drawing.Point(271, 156);
+            this.labelDiscount.Name = "labelDiscount";
+            this.labelDiscount.Size = new System.Drawing.Size(69, 13);
+            this.labelDiscount.TabIndex = 70;
+            this.labelDiscount.Text = "Rabattsats %";
+            // 
+            // dateTimePickerDiscount
+            // 
+            this.dateTimePickerDiscount.CustomFormat = "HH:-";
+            this.dateTimePickerDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerDiscount.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerDiscount.Location = new System.Drawing.Point(351, 150);
+            this.dateTimePickerDiscount.Name = "dateTimePickerDiscount";
+            this.dateTimePickerDiscount.ShowUpDown = true;
+            this.dateTimePickerDiscount.Size = new System.Drawing.Size(49, 22);
+            this.dateTimePickerDiscount.TabIndex = 71;
             // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(740, 432);
+            this.ClientSize = new System.Drawing.Size(790, 454);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gpSeatMap);
             this.Controls.Add(this.buttonSparaAndringar);
@@ -1491,5 +1614,15 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDiscount;
+        private System.Windows.Forms.Label labelDiscount;
+        private System.Windows.Forms.DateTimePicker dateTimePickerAdultPrice;
+        private System.Windows.Forms.DateTimePicker dateTimePickerYouthPrice;
+        private System.Windows.Forms.DateTimePicker dateTimePickerChildrenPrice;
+        private System.Windows.Forms.Label labelYouthPrice;
+        private System.Windows.Forms.Label labelAdultPrice;
+        private System.Windows.Forms.Label labelChildPrice;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }
