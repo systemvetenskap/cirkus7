@@ -13,6 +13,7 @@ namespace cirkus
 {
     public partial class ChangeTicketForm : Form
     {
+        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         int bookingid;
 
        
@@ -21,6 +22,9 @@ namespace cirkus
             InitializeComponent();
             dgSelectedCustomerTicket.DataSource = dt;
             lblTodaysDate.Text = "Dagens datum: " + DateTime.Now.ToShortDateString();
+            dgSelectedCustomerTicket.Rows[0].Selected = true;
+            int selectedindex = dgSelectedCustomerTicket.SelectedRows[0].Index;
+            bookingid = int.Parse(dgSelectedCustomerTicket[0, selectedindex].Value.ToString());
         }
 
 
@@ -28,7 +32,7 @@ namespace cirkus
         {
             if (checkBoxPaidTicket.Checked==false)
             {
-                NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
+             
 
                 string toDate = dtpTicketTo.Text;
                 string sql = "UPDATE booking SET reserved_to = @toDate WHERE bookingid = @bookingid AND paid = false";
@@ -46,14 +50,15 @@ namespace cirkus
             }
             else if (checkBoxPaidTicket.Checked==true)
             {
-                NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
 
                 string sql = "UPDATE booking SET reserved_to = null WHERE bookingid = @bookingid ";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@bookingid", bookingid);
 
                 string sql2 = "UPDATE booking SET paid = true WHERE bookingid = @bookingid";
                 NpgsqlCommand cmd2 = new NpgsqlCommand(sql2, conn);
                 cmd2.Parameters.AddWithValue("@paid", true);
+                cmd2.Parameters.AddWithValue("@bookingid", bookingid);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
