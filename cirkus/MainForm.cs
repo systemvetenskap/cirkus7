@@ -113,9 +113,9 @@ namespace cirkus
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            listCustomers();
-            
+            listCustomers();          
         }
+        #endregion
         #region HideCaret i textboxar
         private void textBoxPrintBookingid_Click(object sender, EventArgs e)
         {
@@ -131,63 +131,50 @@ namespace cirkus
         {
             HideCaret();
         }
-
         private void textBoxPrintAct_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxPrintAge_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxPrintPrice_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxAntalVuxenBiljetter_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxAntalUngdomsbiljetter_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxAntalBarnbiljetter_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxTotaltAntal_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxKronorVuxenbiljetter_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxKronorUngdomsbiljetter_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxKronorBarnbiljetter_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxTotaltKronor_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-        #endregion
-
         #endregion
         #region Biljettförsäljning
         private void textBoxSearchCustomer_TextChanged(object sender, EventArgs e)
@@ -245,9 +232,7 @@ namespace cirkus
                     row[4] = r[2];
                     row[5] = r[3];
                     row[6] = r[4];
-
                     dtActs.Rows.Add(row);
-
                 }
 
                 dgTicketActs.DataSource = dtActs;
@@ -276,7 +261,6 @@ namespace cirkus
                 dgTicketActs.ClearSelection();
             }
         }
-
         private void dgTicketActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             btnDeleteSelectedTicket.Text = "Radera vald akt";
@@ -317,8 +301,7 @@ namespace cirkus
                 //conn.Open();
                 NpgsqlDataAdapter cmd = new NpgsqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
-             
-                
+                                            
                 cmd.Fill(dt);
                 conn.Close();
                 DataTable dt2 = new DataTable();
@@ -344,10 +327,6 @@ namespace cirkus
                     dgCustomers.DataSource = dt2;
                     checkBoxOlderTickets.Enabled = true;
                 }
-          
-
-                
-
                 dgTickets.DataSource = dt;
                 dgTickets.Columns[0].HeaderText = "Boknings ID";
                 dgTickets.Columns[1].HeaderText = "Datum";
@@ -357,7 +336,6 @@ namespace cirkus
                 dgTickets.Columns[5].HeaderText = "Pris";
                 dgTickets.Columns[6].HeaderText = "Reserverad till";
             }
-
         }
         private void textBoxSearchTicket_Click(object sender, EventArgs e)
         {
@@ -515,7 +493,6 @@ namespace cirkus
                     dgTickets.Columns[6].HeaderText = "Reserverad till";
 
                     dgTickets.Columns[2].Width = 100;
-
                 }
                 catch (NpgsqlException ex)
                 {
@@ -559,11 +536,8 @@ namespace cirkus
                 if (pd.ShowDialog() == DialogResult.OK)
                 {
                     printDocumentBiljett.Print();
-                }
-                
-
+                }               
             }
-
         }
         private void printDocumentBiljett_PrintPage(object sender, PrintPageEventArgs e)
         {
@@ -606,7 +580,6 @@ namespace cirkus
             tider = akttider;
             datum = txtPrintDatum.Text;
 
-            //e.Graphics.DrawRectangle(Pens.Black, r);
             e.Graphics.DrawImage(i2, destRect, x, y, width, height, units); // Draw background.
 
             e.Graphics.DrawString("Biljett Cirkus Kul & Bus", drawFontBoldAndUnderline, drawBrush, new PointF(44, 110));
@@ -619,8 +592,6 @@ namespace cirkus
             e.Graphics.DrawString("Tider:", drawFontBold, drawBrush, new PointF(45,350 +point2));
             e.Graphics.DrawString("Pris:", drawFontBold, drawBrush, new PointF(45, point));
             e.Graphics.DrawString("---------------------------------------- Klipp här -----------------------------------------------", drawFont, drawBrush, new PointF(00, point + 110));
-
-
             e.Graphics.DrawString(bokningsnummer, drawFont, drawBrush, new PointF(250, 150));
             e.Graphics.DrawString(datum, drawFont, drawBrush, new PointF(250, 190));
             e.Graphics.DrawString(forestallning, drawFont, drawBrush, new PointF(250, 230));
@@ -628,7 +599,6 @@ namespace cirkus
             e.Graphics.DrawString(akt, drawFont, drawBrush, new PointF(250, 310));
             e.Graphics.DrawString(akttider, drawFont, drawBrush, new PointF(250, 350 + point2));
             e.Graphics.DrawString(pris + " kronor", drawFont, drawBrush, new PointF(250, point));
-
         }
         private void dgCustomers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -643,7 +613,6 @@ namespace cirkus
                 MessageBox.Show("Välj en biljett först");
                 return;
             }
-
             int SelectedCustomer = this.dgCustomers.SelectedRows[0].Index;
             int SelectedTicket = this.dgTickets.SelectedRows[0].Index;
             int currentRow = dgTickets.SelectedRows[0].Index;
@@ -651,7 +620,6 @@ namespace cirkus
             ChangeTicketForm Ctf;
             
             if (SelectedTicket != -1 && SelectedCustomer != -1 && check == false)
-
             {
                 foreach (DataGridViewRow r in dgTickets.SelectedRows)
                 {
@@ -770,15 +738,12 @@ namespace cirkus
                     NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
                     conn.Open();
 
-            
-
                     try
                     {
                         cmd.ExecuteNonQuery();
                     }
                     catch (NpgsqlException ex)
                     {
-
                         MessageBox.Show(ex.Message);
 
                         DialogResult Warning = MessageBox.Show("Det går ej att ta bort denna akten.", "Varning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -804,11 +769,9 @@ namespace cirkus
                         cmd.ExecuteNonQuery();
                         conn.Close();
                     }
-
                 }
                 listTickets();
             }
-
         }
         private void dgCustomers_KeyUp(object sender, KeyEventArgs e)
         {
@@ -833,7 +796,6 @@ namespace cirkus
                 listOldTickets();
 
                 btnPrint.Enabled = false;
-
                 textBoxPrintAct.Enabled = false;
                 textBoxPrintAge.Enabled = false;
                 textBoxPrintPrice.Enabled = false;
@@ -846,7 +808,6 @@ namespace cirkus
                 listTickets();
 
                 btnPrint.Enabled = true;
-
                 textBoxPrintAct.Enabled = true;
                 textBoxPrintAge.Enabled = true;
                 textBoxPrintPrice.Enabled = true;
@@ -861,12 +822,8 @@ namespace cirkus
             dgTickets.DataSource = null;
             dgTicketActs.DataSource = null;
         }
-
         private void buttonForhandsgranskaUtskrift_Click(object sender, EventArgs e)
         {
-
-            // Kolla dokumentet innan man skrivar ut
-
             printPreviewDialog2.Document = printDocumentBiljett;
             printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
             printPreviewDialog2.Show();
@@ -878,7 +835,6 @@ namespace cirkus
         {
             ShowForm showForm = new ShowForm();
             showForm.ButtonVisibleSparaAndringar();
-
             showForm.ShowDialog();
         }
         private void buttonRaderaForestallning_Click(object sender, EventArgs e)
@@ -961,8 +917,7 @@ namespace cirkus
             finally
             {
                 conn.Close();
-            }
-            
+            }           
         }
         public void LoadStatistics()
         {
@@ -978,26 +933,15 @@ namespace cirkus
                 textBoxNumberofAdultTickets.Clear();
                 textBoxKrAdultTickets.Clear();
 
-                //dr.Read();
-
-                //textBoxAntalVuxenBiljetter.Text = dr[1].ToString();
-                //textBoxKronorVuxenbiljetter.Text = dr[0].ToString();
-
-                
-
-                //textBoxPersonnummer.Text = read[0].ToString();
-
                 while (dr.Read())
                 {
                     textBoxNumberofAdultTickets.Text = dr.GetValue(1).ToString();
                     textBoxKrAdultTickets.Text = dr.GetValue(0).ToString();
                 }
-
                 if (textBoxNumberofAdultTickets.Text == "")
                 {
                     textBoxNumberofAdultTickets.Text = "0";
                 }
-
                 if (textBoxKrAdultTickets.Text == "")
                 {
                     textBoxKrAdultTickets.Text = "0";
@@ -1019,18 +963,15 @@ namespace cirkus
                     textBoxNumberofYouthTickets.Text = drAU.GetValue(1).ToString();
                     textBoxKrYouthTickets.Text = drAU.GetValue(0).ToString();
                 }
-
                 if (textBoxNumberofYouthTickets.Text == "")
                 {
                     textBoxNumberofYouthTickets.Text = "0";
                 }
-
                 if (textBoxKrYouthTickets.Text == "")
                 {
                     textBoxKrYouthTickets.Text = "0";
                 }
                 conn.Close();
-
 
                 //Barn
                 conn.Open();
@@ -1084,11 +1025,6 @@ namespace cirkus
 
             else if (checkBoxAllActs.Checked == false && dgActs.Rows != null)
             {
-                //if (dgvAkter.RowCount != 0)
-                //{
-                //    //Antal Vuxenbiljetter
-                //    int selectedIndex = dgvAkter.SelectedRows[0].Index;
-                //    actid = int.Parse(dgvAkter[1, selectedIndex].Value.ToString());
                 if(dgActs.Rows.Count > 0)
                 {
                     int selectedIndex = dgActs.SelectedRows[0].Index;
@@ -1201,116 +1137,6 @@ namespace cirkus
                     textBoxKrTotal.Text = totaltKornor;
                 }                              
             }
-
-            //if (dgvShowsList.RowCount != 0)
-            //{
-            //    //Vuxenbiljetter
-            //   // int selectedIndex = dgvAkter.SelectedRows[0].Index;
-
-            //    conn.Open();
-            //    string sql = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'vuxen'  group by acts.showid, price_group_seat.group";
-
-
-            //    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-            //    NpgsqlDataReader dr = cmd.ExecuteReader();
-
-            //    textBoxAntalVuxenBiljetter.Clear();
-            //    textBoxKronorVuxenbiljetter.Clear();
-
-            //    while (dr.Read())
-            //    {
-            //        textBoxAntalVuxenBiljetter.Text = dr.GetValue(1).ToString();
-            //        textBoxKronorVuxenbiljetter.Text = dr.GetValue(0).ToString();
-            //    }
-
-            //    if (textBoxAntalVuxenBiljetter.Text == "")
-            //    {
-            //        textBoxAntalVuxenBiljetter.Text = "0";
-            //    }
-
-            //    if (textBoxKronorVuxenbiljetter.Text == "")
-            //    {
-            //        textBoxKronorVuxenbiljetter.Text = "0";
-            //    }
-            //    conn.Close();
-
-            //    //Ungdomsbiljetter
-            //    conn.Open();
-            //    string sqlAU = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'ungdom'  group by acts.showid, price_group_seat.group";
-
-            //    NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
-            //    NpgsqlDataReader drAU = cmdAU.ExecuteReader();
-
-            //    textBoxAntalUngdomsbiljetter.Clear();
-            //    textBoxKronorUngdomsbiljetter.Clear();
-
-            //    while (drAU.Read())
-            //    {
-            //        textBoxAntalUngdomsbiljetter.Text = drAU.GetValue(1).ToString();
-            //        textBoxKronorUngdomsbiljetter.Text = drAU.GetValue(0).ToString();
-            //    }
-
-            //    if (textBoxAntalUngdomsbiljetter.Text == "")
-            //    {
-            //        textBoxAntalUngdomsbiljetter.Text = "0";
-            //    }
-
-            //    if (textBoxKronorUngdomsbiljetter.Text == "")
-            //    {
-            //        textBoxKronorUngdomsbiljetter.Text = "0";
-            //    }
-            //    conn.Close();
-
-
-            //    //Barn
-            //    conn.Open();
-            //    string sqlKB = "select sum(price_group_seat.price), count(price_group_seat.price) as antal, price_group_seat.group, acts.showid from acts inner join available_seats on acts.actid = available_seats.actid inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id inner join price_group_seat on booked_seats.priceid = price_group_seat.priceid where acts.showid = '" + showid + "' and price_group_seat.group = 'ungdom'  group by acts.showid, price_group_seat.group";
-
-            //    NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
-            //    NpgsqlDataReader drKB = cmdKB.ExecuteReader();
-
-            //    textBoxAntalBarnbiljetter.Clear();
-            //    textBoxKronorBarnbiljetter.Clear();
-
-            //    while (drKB.Read())
-            //    {
-            //        textBoxAntalBarnbiljetter.Text = drKB.GetValue(1).ToString();
-            //        textBoxKronorBarnbiljetter.Text = drKB.GetValue(0).ToString();
-            //    }
-
-            //    if (textBoxAntalBarnbiljetter.Text == "")
-            //    {
-            //        textBoxAntalBarnbiljetter.Text = "0";
-            //    }
-
-            //    if (textBoxKronorBarnbiljetter.Text == "")
-            //    {
-            //        textBoxKronorBarnbiljetter.Text = "0";
-            //    }
-            //    conn.Close();
-            //}
-
-            ////Totalt antal
-            //int antalVuxen, antalUngdom, antalBarn;
-            //string totaltSumma;
-
-            //antalVuxen = Convert.ToInt32(textBoxAntalVuxenBiljetter.Text);
-            //antalUngdom = Convert.ToInt32(textBoxAntalUngdomsbiljetter.Text);
-            //antalBarn = Convert.ToInt32(textBoxAntalBarnbiljetter.Text);
-            //totaltSumma = Convert.ToString(antalVuxen + antalUngdom + antalBarn);
-
-            //textBoxTotaltAntal.Text = totaltSumma;
-
-            ////Totalt kronor
-            //int kronorVuxen, kronorUngdom, kronorBarn;
-            //string totaltKornor;
-
-            //kronorVuxen = Convert.ToInt32(textBoxKronorVuxenbiljetter.Text);
-            //kronorUngdom = Convert.ToInt32(textBoxKronorUngdomsbiljetter.Text);
-            //kronorBarn = Convert.ToInt32(textBoxKronorBarnbiljetter.Text);
-            //totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
-
-            //textBoxTotaltKronor.Text = totaltKornor;
         }
         public void LoadAkter()
         {
@@ -1332,7 +1158,6 @@ namespace cirkus
                 this.dgActs.Columns[1].Visible = false;
 
                 dgActs.Columns[0].HeaderText = "Akt namn";
-
             }
         }
         private void dgvShowsList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1356,7 +1181,6 @@ namespace cirkus
         }
         private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
         {
-
             if (e.KeyCode == Keys.Up)
             {
 
@@ -1377,8 +1201,6 @@ namespace cirkus
             {
                 printDocumentStatistic.Print();
             }
-
-
         }
         private void checkBoxAllaAkter_CheckedChanged(object sender, EventArgs e)
         {
@@ -1389,13 +1211,8 @@ namespace cirkus
             printPreviewDialog1.Document = printDocumentStatistic;
             printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
             printPreviewDialog1.ShowDialog();
-            printPreviewControl1.Document = printDocumentStatistic;
-            
-
+            printPreviewControl1.Document = printDocumentStatistic;           
         }
-
-        
-
         #endregion
         #region Konto
         private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
@@ -1507,7 +1324,6 @@ namespace cirkus
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
             ResetColor();
-            //Kontrollerar längden, siffror/bokstäver och tomma fält
             if (textBoxSsnumber.TextLength > 10 || textBoxSsnumber.TextLength < 10 || string.IsNullOrWhiteSpace(textBoxSsnumber.Text))
             {
                 textBoxSsnumber.BackColor = Color.Tomato;
@@ -1572,7 +1388,6 @@ namespace cirkus
                 LblStatusAccount.Text = "Välj en behörighet";
                 return;
             }
-            //Slut kontrollera längden, siffror/bokstäver och tomma fält
             try
             {
                 conn.Open();
@@ -1597,7 +1412,6 @@ namespace cirkus
                 {
                     int auth = 1;
                     cmd.Parameters.Add(new NpgsqlParameter("auth", auth));
-
                 }
                 string email = textBoxEmail.Text;
                 string firstname= textBoxFirstname.Text;
@@ -1624,7 +1438,6 @@ namespace cirkus
                 conn.Close();
                 ListaPersonal();
                 ResetColorandText();
-
             }
             catch (NpgsqlException)
             {
@@ -1632,8 +1445,7 @@ namespace cirkus
                 LblStatusAccount.ForeColor = Color.Tomato;
                 LblStatusAccount.Text = "Användaren finns redan";
                 conn.Close();
-            }
-        
+            }        
         }
         public bool BaraBokstäver(string namn)
         {
@@ -1697,8 +1509,6 @@ namespace cirkus
             }
             else if (dgStaff.SelectedRows.Count > 0 && btnUpdateAccount.Text == "Spara ändringar")
             {
-
-                //Kontrollerar längden, siffror/bokstäver och tomma fält
                 if (textBoxSsnumber.TextLength > 10 || textBoxSsnumber.TextLength < 10 || string.IsNullOrWhiteSpace(textBoxSsnumber.Text))
                 {
                     textBoxSsnumber.BackColor = Color.Tomato;
@@ -1762,9 +1572,7 @@ namespace cirkus
                     LblStatusAccount.ForeColor = Color.Tomato;
                     LblStatusAccount.Text = "Välj en behörighet";
                     return;
-                }
-                //Slut kontrollera längden, siffror/bokstäver och tomma fält
-               
+                }              
                 conn.Open();
 
                 NpgsqlCommand cmd = new NpgsqlCommand(@"update staff set ssn = @ssn, fname = @fn, lname = @ln, phonenumber = @pn, email = @email,                                                         username = @un, password = @pass, auth = @auth where staffid =@id", conn);
@@ -1853,8 +1661,6 @@ namespace cirkus
                 return;
             }         
         }
-        #endregion
-
-        
+        #endregion       
     }
 }
