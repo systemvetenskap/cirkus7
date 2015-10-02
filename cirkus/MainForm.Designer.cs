@@ -684,7 +684,6 @@
             this.textBoxKrAdultTickets.Size = new System.Drawing.Size(106, 20);
             this.textBoxKrAdultTickets.TabIndex = 21;
             this.textBoxKrAdultTickets.Click += new System.EventHandler(this.textBoxKronorVuxenbiljetter_Click);
-            this.textBoxKrAdultTickets.TextChanged += new System.EventHandler(this.textBoxKronorVuxenbiljetter_TextChanged);
             // 
             // textBoxNumberofYouthTickets
             // 
@@ -694,7 +693,6 @@
             this.textBoxNumberofYouthTickets.Size = new System.Drawing.Size(106, 20);
             this.textBoxNumberofYouthTickets.TabIndex = 20;
             this.textBoxNumberofYouthTickets.Click += new System.EventHandler(this.textBoxAntalUngdomsbiljetter_Click);
-            this.textBoxNumberofYouthTickets.TextChanged += new System.EventHandler(this.textBoxAntalUngdomsbiljetter_TextChanged);
             // 
             // textBoxKrYouthTickets
             // 
@@ -704,7 +702,6 @@
             this.textBoxKrYouthTickets.Size = new System.Drawing.Size(106, 20);
             this.textBoxKrYouthTickets.TabIndex = 19;
             this.textBoxKrYouthTickets.Click += new System.EventHandler(this.textBoxKronorUngdomsbiljetter_Click);
-            this.textBoxKrYouthTickets.TextChanged += new System.EventHandler(this.textBoxKronorUngdomsbiljetter_TextChanged);
             // 
             // textBoxNumberofChildTickets
             // 
@@ -714,7 +711,6 @@
             this.textBoxNumberofChildTickets.Size = new System.Drawing.Size(106, 20);
             this.textBoxNumberofChildTickets.TabIndex = 18;
             this.textBoxNumberofChildTickets.Click += new System.EventHandler(this.textBoxAntalBarnbiljetter_Click);
-            this.textBoxNumberofChildTickets.TextChanged += new System.EventHandler(this.textBoxAntalBarnbiljetter_TextChanged);
             // 
             // textBoxKrChildTickets
             // 
@@ -724,7 +720,6 @@
             this.textBoxKrChildTickets.Size = new System.Drawing.Size(106, 20);
             this.textBoxKrChildTickets.TabIndex = 17;
             this.textBoxKrChildTickets.Click += new System.EventHandler(this.textBoxKronorBarnbiljetter_Click);
-            this.textBoxKrChildTickets.TextChanged += new System.EventHandler(this.textBoxKronorBarnbiljetter_TextChanged);
             // 
             // textBoxTotalNumberof
             // 
@@ -734,7 +729,6 @@
             this.textBoxTotalNumberof.Size = new System.Drawing.Size(106, 20);
             this.textBoxTotalNumberof.TabIndex = 16;
             this.textBoxTotalNumberof.Click += new System.EventHandler(this.textBoxTotaltAntal_Click);
-            this.textBoxTotalNumberof.TextChanged += new System.EventHandler(this.textBoxTotaltAntal_TextChanged);
             // 
             // textBoxKrTotal
             // 
@@ -744,7 +738,6 @@
             this.textBoxKrTotal.Size = new System.Drawing.Size(106, 20);
             this.textBoxKrTotal.TabIndex = 15;
             this.textBoxKrTotal.Click += new System.EventHandler(this.textBoxTotaltKronor_Click);
-            this.textBoxKrTotal.TextChanged += new System.EventHandler(this.textBoxTotaltKronor_TextChanged);
             // 
             // btnPrintStatistics
             // 
@@ -832,7 +825,6 @@
             this.textBoxNumberofAdultTickets.Size = new System.Drawing.Size(106, 20);
             this.textBoxNumberofAdultTickets.TabIndex = 5;
             this.textBoxNumberofAdultTickets.Click += new System.EventHandler(this.textBoxAntalVuxenBiljetter_Click);
-            this.textBoxNumberofAdultTickets.TextChanged += new System.EventHandler(this.textBoxAntalVuxenBiljetter_TextChanged);
             // 
             // btnCreateShow
             // 

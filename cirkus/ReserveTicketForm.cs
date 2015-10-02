@@ -388,7 +388,7 @@ namespace cirkus
             dtfSeats.Columns.Add("priceid");
             panel1.Visible = false;
             panel2.Visible = false;
-            panel3.Visible = false;
+            panel2.Visible = false;
             cSeats.Columns.Add("ticketid");
             cSeats.Columns.Add("actid");
             cSeats.Columns.Add("section");
@@ -474,7 +474,7 @@ namespace cirkus
             dateReservedto.Value = showdate;
             dateReservedto.Value = dateReservedto.Value.Subtract(TimeSpan.FromDays(7));
 
-            if (newcust == true && cbDf.Checked == false)
+            if (newcust == true && radioButtonDirectSale.Checked == false)
             {
                 string fn = txtfnamn.Text;
                 string ln = txtenamn.Text;
@@ -504,15 +504,11 @@ namespace cirkus
                 read.Read();
                 customerid = int.Parse(read[0].ToString());
                 conn.Close();
-                panel3.Visible = true;
-                //panel2.Visible = false;
-
-
-
+                panel2.Visible = true;
             }
-            if (newcust == false && cbDf.Checked == true)
+            if (newcust == false && radioButtonDirectSale.Checked == true)
             {
-                panel3.Visible = true;
+                panel2.Visible = true;
                 radioPaid.Enabled = false;
                 radioRes.Enabled = false;
                 string fn = "temp";
@@ -535,9 +531,9 @@ namespace cirkus
                 conn.Close();
 
             }
-            if (newcust == false && cbDf.Checked == false)
+            if (newcust == false && radioButtonDirectSale.Checked == false)
             {
-                panel3.Visible = true;
+                panel2.Visible = true;
 
             }
         }
@@ -561,13 +557,13 @@ namespace cirkus
 
 
                 }
-                cbDf.Enabled = false;
+                radioButtonDirectSale.Enabled = false;
                 newcust = true;
                 txtenamn.Enabled = true;
                 txtepost.Enabled = true;
                 txtfnamn.Enabled = true;
                 txttel.Enabled = true;
-                cbDf.Checked = false;
+                radioButtonDirectSale.Checked = false;
 
             }
             if (checkBox2.Checked == false)
@@ -582,7 +578,7 @@ namespace cirkus
                 txtepost.Enabled = false;
                 txtfnamn.Enabled = false;
                 txttel.Enabled = false;
-                cbDf.Enabled = true;
+                radioButtonDirectSale.Enabled = true;
 
             }
         }
@@ -968,32 +964,6 @@ namespace cirkus
 
         }
 
-        private void cbDf_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbDf.Checked == true)
-            {
-                radioPaid.Enabled = false;
-                radioRes.Enabled = false;
-                dateReservedto.Enabled = false;
-                this.dgCustom.DataSource = null;
-                radioPaid.Checked = true;
-                checkBox2.Enabled = false;
-
-
-            }
-            else if (cbDf.Checked == false)
-            {
-                radioPaid.Enabled = true;
-                radioRes.Enabled = true;
-                dateReservedto.Enabled = true;
-                listCustomers();
-
-                checkBox2.Enabled = true;
-
-            }
-
-        }
-
         private void A1_CheckedChanged(object sender, EventArgs e)
         {
             lblSeatStatus.Visible = false; 
@@ -1276,7 +1246,43 @@ namespace cirkus
             }
         }
 
+        private void radioButtonDirectSale_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonDirectSale.Checked == true)
+            {
+                groupBox6.Enabled = false;
+                this.dgCustom.DataSource = null;
 
+                //radioPaid.Enabled = false;
+                //radioRes.Enabled = false;
+                //dateReservedto.Enabled = false;
+                //this.dgCustom.DataSource = null;
+                //this.dgCustom.Enabled = false;
+                //radioPaid.Checked = true;
+                //checkBox2.Enabled = false;
+
+
+            }
+            else if (radioButtonDirectSale.Checked == false)
+            {
+                radioPaid.Enabled = true;
+                radioRes.Enabled = true;
+                dateReservedto.Enabled = true;
+              
+                listCustomers();
+                checkBox2.Enabled = true;
+            }
+        }
+
+        private void radioPaid_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioPaid.Checked==true)
+            {
+                dateReservedto.Enabled = false;
+                radioButtonDirectSale.Enabled = true;
+
+            }
+        }
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -1555,10 +1561,6 @@ namespace cirkus
 
         private void comboTicketnr_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-
-
-            
 
         }
 
@@ -1575,8 +1577,8 @@ namespace cirkus
 
         private void button6_Click(object sender, EventArgs e)
         {
-            panel3.Visible = false;
-            panel2.Visible = true;
+            panel1.Visible = true;
+            panel2.Visible = false;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -1597,7 +1599,7 @@ namespace cirkus
         {
             button1.Enabled = false;
             
-            if (cbDf.Checked == false && radioPaid.Checked == true)
+            if (radioButtonDirectSale.Checked == false && radioPaid.Checked == true)
             {
                 createBooking();
                 backgroundWorker1.RunWorkerAsync();
@@ -1605,7 +1607,7 @@ namespace cirkus
                
             }
 
-            else if(cbDf.Checked == true)
+            else if(radioButtonDirectSale.Checked == true)
             {
                 //////// Printing 
                 ////PrintDialog pd = new PrintDialog();
@@ -1790,9 +1792,6 @@ namespace cirkus
             int ix = 0;
             int numberOfacts = 0;
             double priceid = 0;
-            
-
-            progressBar1.Value = ix;
 
             string type = "";
             for (int i = 0; i < nrotickets; i++)
@@ -1876,7 +1875,7 @@ namespace cirkus
                     
 
                 }
-                else if (radioPaid.Checked == true && cbDf.Checked == false)
+                else if (radioPaid.Checked == true && radioButtonDirectSale.Checked == false)
                 {
                     conn.Open();
                     sql = "insert into booking(customerid,showid, paid) values(:cid,:shid, :rto)";
@@ -1889,7 +1888,7 @@ namespace cirkus
                    
                     ix++;
                 }
-                else if (cbDf.Checked == true)
+                else if (radioButtonDirectSale.Checked == true)
                 {
                     conn.Open();
                     sql = "insert into booking(customerid, showid, paid) values(:cid, :shid, :rto)";
@@ -2045,8 +2044,7 @@ namespace cirkus
 
                 ix++;
             }
-            progressBar1.Value = 100;
-            if(cbDf.Checked == true)
+            if(radioButtonDirectSale.Checked == true)
             {
                 PrintBiljetter rb = new PrintBiljetter(custid);
                 rb.ShowDialog();

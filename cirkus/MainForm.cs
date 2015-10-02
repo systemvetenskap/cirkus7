@@ -57,7 +57,6 @@ namespace cirkus
             HideCaret(textBoxKrYouthTickets.Handle);
             HideCaret(textBoxKrChildTickets.Handle);
             HideCaret(textBoxKrTotal.Handle);
-
         }
 
         #endregion
@@ -65,7 +64,6 @@ namespace cirkus
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int curTab = tabControl1.SelectedIndex;
-
             switch (curTab)
             {
                 default:
@@ -216,8 +214,6 @@ namespace cirkus
                 int selectedindex = dgTickets.SelectedRows[0].Index;
                 int bookingid = int.Parse(dgTickets[0, selectedindex].Value.ToString());
 
-
-
                 string sql = @" select distinct  booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time, sold_tickets.seattype from acts
                                     inner join available_seats on acts.actid = available_seats.actid
                                     inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
@@ -238,7 +234,6 @@ namespace cirkus
                 DataTable temp = new DataTable();
                 da.Fill(temp);
 
-
                 foreach (DataRow r in temp.Rows)
                 {
                     DataRow row = dtActs.NewRow();
@@ -255,10 +250,6 @@ namespace cirkus
 
                 }
 
-
-
-
-
                 dgTicketActs.DataSource = dtActs;
                 dgTicketActs.Columns[0].Visible = false;
                 dgTicketActs.Columns[0].HeaderText = "Boknings ID";
@@ -271,25 +262,19 @@ namespace cirkus
 
                 dgTicketActs.Columns[0].Width = 90;
 
-
                 textBoxPrintBookingid.Text = dgTickets[0, selectedindex].Value.ToString();
                 txtPrintDatum.Text = DateTime.Parse(dgTickets[1, selectedindex].Value.ToString()).ToShortDateString();
                 textBoxPrintShow.Text = dgTickets[2, selectedindex].Value.ToString();
                 textBoxPrintAge.Text = dgTickets[4, selectedindex].Value.ToString();
                 textBoxPrintPrice.Text = dgTickets[5, selectedindex].Value.ToString();
 
-
-
                 foreach (DataRow r in dtActs.Rows)
                 {
                     textBoxPrintAct.Text += r[1].ToString() + ": " + r[2].ToString() + r[3].ToString() + "\n";
                     akttider += r[1].ToString() + ": " + r[4].ToString() + "-" + r[5].ToString() + "\n";
-
                 }
-
                 dgTicketActs.ClearSelection();
             }
-
         }
 
         private void dgTicketActs_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -304,7 +289,6 @@ namespace cirkus
                 MessageBox.Show("Du kan endast söka med siffror (max 6 stycken)");
                 return;
             }
-
             if (string.IsNullOrEmpty(textBoxSearchTicket.Text))
             {
                 dgTickets.DataSource = null;
@@ -370,7 +354,6 @@ namespace cirkus
             KB = textBoxKrChildTickets.Text;
             TA = textBoxTotalNumberof.Text;
             TK = textBoxKrTotal.Text;
-
             //(Längd, Höjd)
             e.Graphics.DrawString("Föreställning:", drawFont, drawBrush, new PointF(35, 50));
             e.Graphics.DrawString("Datum:", drawFont, drawBrush, new PointF(35, 100));
@@ -442,8 +425,6 @@ namespace cirkus
                             inner join acts on sold_tickets.actid = acts.actid
                             inner join customer on booking.customerid = customer.customerid
                             where customer.customerid = '" + CustomerID + "' and show.date >=now()::date group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
-
-
                 try
                 {
                     conn.Open();
@@ -470,8 +451,7 @@ namespace cirkus
                 finally
                 {
                     conn.Close();
-                }
-         
+                }         
             }
 
         }
@@ -576,8 +556,7 @@ namespace cirkus
             foreach (DataGridViewRow ro in dgTicketActs.Rows)
             {
                 point += 60;
-                point2 += 10;
-                
+                point2 += 10;               
             }
 
             int regtangelP = point + 60;
@@ -588,7 +567,6 @@ namespace cirkus
 
             // Create rectangle for displaying image, subtracting 200 (100 for left,100 for right margins).
             Rectangle destRect = new Rectangle(20, 40, 750, regtangelP);
-
 
             // Create coordinates of rectangle for source image.
             int x = 0;
@@ -612,7 +590,6 @@ namespace cirkus
 
             e.Graphics.DrawString("Biljett Cirkus Kul & Bus", drawFontBoldAndUnderline, drawBrush, new PointF(44, 110));
             
-
             e.Graphics.DrawString("BokningsID:", drawFontBold, drawBrush, new PointF(45, 150));
             e.Graphics.DrawString("Datum:", drawFontBold, drawBrush, new PointF(45, 190));
             e.Graphics.DrawString("Namn:", drawFontBold, drawBrush, new PointF(45, 230));
@@ -652,9 +629,7 @@ namespace cirkus
             bool check = Convert.ToBoolean(dgTickets[3, currentRow].Value);
             ChangeTicketForm Ctf;
             
-
             if (SelectedTicket != -1 && SelectedCustomer != -1 && check == false)
-
 
             {
                 foreach (DataGridViewRow r in dgTickets.SelectedRows)
@@ -690,8 +665,6 @@ namespace cirkus
                     dt.Rows.Add(row);
                     Ctf = new ChangeTicketForm(dt);
                     Ctf.ShowDialog();
-
-
                 }
                 try
                 {
@@ -809,7 +782,6 @@ namespace cirkus
                         cmd = new NpgsqlCommand(sql3, conn);
                         cmd.ExecuteNonQuery();
                         conn.Close();
-
                     }
 
                 }
@@ -890,7 +862,6 @@ namespace cirkus
                 string sql = "DELETE FROM show WHERE showid = '" + selectedID + "'";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
 
-
                 conn.Open();
                 try
                 {
@@ -914,7 +885,6 @@ namespace cirkus
         }
         private void buttonAndraForestallning_Click(object sender, EventArgs e)
         {
-
             
             //int selectedID;
             //DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
@@ -940,7 +910,6 @@ namespace cirkus
             String sql;
             dgShows.DataSource = null;
             dgShows.Rows.Clear();
-
             try
             {
                 conn.Open();
@@ -971,8 +940,6 @@ namespace cirkus
                 conn.Open();
                 string sql = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
                                          where showid = '"+showid+"' and type = 'Vuxen'";
-
-
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
                 NpgsqlDataReader dr = cmd.ExecuteReader();
 
@@ -1009,7 +976,6 @@ namespace cirkus
                 conn.Open();
                 string sqlAU = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
                                          where showid = '"+showid+"' and type = 'Ungdom'";
-
                 NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
                 NpgsqlDataReader drAU = cmdAU.ExecuteReader();
 
@@ -1038,7 +1004,6 @@ namespace cirkus
                 conn.Open();
                 string sqlKB = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
                                          where showid = '" + showid + "' and type = 'Barn'"; 
-
                 NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
                 NpgsqlDataReader drKB = cmdKB.ExecuteReader();
 
@@ -1101,7 +1066,6 @@ namespace cirkus
                     string sql = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
                                         where actid = '" + actid + "' and type = 'Vuxen'";
 
-
                     NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
                     NpgsqlDataReader dr = cmd.ExecuteReader();
 
@@ -1154,7 +1118,6 @@ namespace cirkus
                     }
                     conn.Close();
 
-
                     //Barn
                     conn.Open();
                     string sqlKB = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
@@ -1204,11 +1167,7 @@ namespace cirkus
                     totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
 
                     textBoxKrTotal.Text = totaltKornor;
-                }
-    
-                
-
-                
+                }                              
             }
 
             //if (dgvShowsList.RowCount != 0)
@@ -1320,7 +1279,6 @@ namespace cirkus
             //totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
 
             //textBoxTotaltKronor.Text = totaltKornor;
-
         }
         public void LoadAkter()
         {
@@ -1330,13 +1288,11 @@ namespace cirkus
                 showid = int.Parse(dgShows[0, selectedIndex].Value.ToString());
                 show_name = dgShows[2, selectedIndex].Value.ToString();
                 show_date = dgShows[1, selectedIndex].Value.ToString();
-
-                
+           
                 string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
 
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
-
                 da.Fill(dt);
                 dgActs.DataSource = dt;
                 conn.Close();
@@ -1397,6 +1353,13 @@ namespace cirkus
         {
             LoadStatistics();
         }
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.Document = printDocumentStatistic;
+            printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
+            printPreviewDialog1.Show();
+            printPreviewControl1.Document = printDocumentStatistic;
+        }
         #endregion
         #region Konto
         private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
@@ -1405,7 +1368,6 @@ namespace cirkus
         }
         public void ResetColor()
         {
-
             textBoxSsnumber.BackColor = Color.White;
             textBoxFirstname.BackColor = Color.White;
             textBoxLastName.BackColor = Color.White;
@@ -1472,7 +1434,6 @@ namespace cirkus
                 column3.Width = 100;
 
                 conn.Close();
-
             }
             catch (NpgsqlException ex)
             {
@@ -1482,7 +1443,6 @@ namespace cirkus
             {
                 conn.Close();
             }
-
         }
         public bool EndastSiffror(string värde)
         {
@@ -1511,7 +1471,6 @@ namespace cirkus
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
             ResetColor();
-
             //Kontrollerar längden, siffror/bokstäver och tomma fält
             if (textBoxSsnumber.TextLength > 10 || textBoxSsnumber.TextLength < 10 || string.IsNullOrWhiteSpace(textBoxSsnumber.Text))
             {
@@ -1592,7 +1551,6 @@ namespace cirkus
                 cmd.Parameters.Add(new NpgsqlParameter("email", textBoxEmail.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("username", textBoxUsername.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("password", textBoxPassword.Text));
-
 
                 if (comboBoxAuth.Text == "Biljettförsäljare")
                 {
@@ -1860,54 +1818,5 @@ namespace cirkus
             }         
         }
         #endregion
-
-        private void textBoxKronorUngdomsbiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxAntalBarnbiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxKronorBarnbiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxTotaltAntal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxAntalVuxenBiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxTotaltKronor_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxKronorVuxenbiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxAntalUngdomsbiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPreview_Click(object sender, EventArgs e)
-        {
-            printPreviewDialog1.Document = printDocumentStatistic;
-            printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
-            printPreviewDialog1.Show();
-            printPreviewControl1.Document = printDocumentStatistic;
-        }
-
     }
 }
