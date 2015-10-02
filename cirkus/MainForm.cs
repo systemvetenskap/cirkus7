@@ -298,7 +298,6 @@ namespace cirkus
                 string sql2 = @"select customer.fname, customer.lname, customer.customerid from customer
                                     inner join booking on customer.customerid = booking.customerid
                                     where booking.bookingid = '" + textBoxSearchTicket.Text + "'";
-                //conn.Open();
                 NpgsqlDataAdapter cmd = new NpgsqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                                             
