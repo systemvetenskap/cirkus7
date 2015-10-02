@@ -27,6 +27,13 @@ namespace cirkus
             textPassword.Clear();
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+            PasswordRecoveryForm PwRf = new PasswordRecoveryForm();
+            PwRf.ShowDialog();
+           
+        }
+
         private NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
 
         public LoginForm()
@@ -36,6 +43,7 @@ namespace cirkus
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            lblStatusLogIn.Visible = false;
             // nya strängar som kommer att bestämma vilket konto vi hämtar från databasen
             string username, password;
 
@@ -55,7 +63,11 @@ namespace cirkus
                 read.Read();
 
                 // Hämtar behörigheten från resultatet. Om det inte finns något resultat så avbryts koden här..
+
+                fname = read[1].ToString();
+                lname = read[2].ToString();
                 auth = read[3].ToString();
+
                 conn.Close();
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -63,7 +75,10 @@ namespace cirkus
             }
             catch (InvalidOperationException)
             {
-                MessageBox.Show("Fel användarnamn/lösenord");
+                lblStatusLogIn.Visible = true;
+                lblStatusLogIn.ForeColor = Color.Red;
+                lblStatusLogIn.Text = "Felaktigt användarnamn eller lösenord";
+                return;
             }
             finally
             {

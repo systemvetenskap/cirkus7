@@ -20,6 +20,49 @@ namespace cirkus
             this.staffid = staffid;
         }
 
+        public bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool BaraBokstäver(string namn)
+        {
+            bool okej = true;
+            foreach (char bokstav in namn)
+            {
+                if (!char.IsLetter(bokstav))
+                {
+                    okej = false;
+                }
+            }
+            return okej;
+        }
+        public bool EndastSiffror(string värde)
+        {
+            bool barasiffror = true;
+            foreach (char siffra in värde)
+            {
+                if (!char.IsDigit(siffra))
+                {
+                    barasiffror = false;
+                }
+            }
+            return barasiffror;
+        }
+        public void emptyTextboxes()
+        {
+            textBoxFname.BackColor = Color.White;
+            textBoxLname.BackColor = Color.White;
+            textBoxPhone.BackColor = Color.White;
+            textBoxEmail.BackColor = Color.White;
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -27,10 +70,37 @@ namespace cirkus
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string s = textBoxEmail.Text;
-            if (IsValidEmail(s) == false)
+            emptyTextboxes();
+            if (textBoxFname.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxFname.Text) || !BaraBokstäver(textBoxFname.Text))
             {
-                MessageBox.Show("Ange en giltig mailadress");
+                textBoxFname.BackColor = Color.Tomato;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Ange förnamn, max 60 bokstäver";
+                return;
+            }
+            if (textBoxLname.TextLength > 60 || string.IsNullOrWhiteSpace(textBoxLname.Text)|| !BaraBokstäver(textBoxLname.Text))
+            {
+                textBoxLname.BackColor = Color.Tomato;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Ange efternamn, max 60 bokstäver";
+                return;
+            }
+            if (textBoxPhone.TextLength > 10 || string.IsNullOrWhiteSpace(textBoxPhone.Text) || !EndastSiffror(textBoxPhone.Text))
+            {
+                textBoxPhone.BackColor = Color.Tomato;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Ange telefonnummer, max 10 siffror";
+                return;
+            }
+            if (textBoxEmail.Text.Length > 60 || string.IsNullOrWhiteSpace(textBoxEmail.Text) || !IsValidEmail(textBoxEmail.Text))
+            {
+                textBoxEmail.BackColor = Color.Tomato;
+                lblStatus.Visible = true;
+                lblStatus.ForeColor = Color.Tomato;
+                lblStatus.Text = "Ange en giltig email, max 60 tecken";
                 return;
             }
 
@@ -48,24 +118,16 @@ namespace cirkus
                 command.ExecuteNonQuery();
 
                 conn.Close();
+
+                var frm = Application.OpenForms.OfType<MainForm>().Single();
+                frm.listCustomers();
+
                 this.Close();
             }
             catch (NpgsqlException ex)
             {
                 MessageBox.Show(ex.ToString());
                 conn.Close();
-            }
-        }
-        public bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
             }
         }
     }

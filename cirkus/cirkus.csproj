@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\Desktop\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\PostgreSQL\Npgsql\ms.net45\Npgsql.dll</HintPath>
     </Reference>
@@ -71,7 +74,18 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="show.cs" />
+    <Compile Include="PasswordRecoveryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordRecoveryForm.Designer.cs">
+      <DependentUpon>PasswordRecoveryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintBiljetter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintBiljetter.Designer.cs">
+      <DependentUpon>PrintBiljetter.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +114,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordRecoveryForm.resx">
+      <DependentUpon>PasswordRecoveryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintBiljetter.resx">
+      <DependentUpon>PrintBiljetter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowForm.resx">
       <DependentUpon>ShowForm.cs</DependentUpon>
@@ -134,13 +154,40 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\logo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\cirkus-kul-bus-300x211.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Sittkarta2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\backgroundClown.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgroundClown.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animated-circus-image-0061.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skoj.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0053.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0086.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clown_008.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\108.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\120.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

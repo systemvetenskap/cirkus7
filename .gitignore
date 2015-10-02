@@ -210,3 +210,6 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/cirkus/ChangeTicketForm.cs
+/cirkus/ChangeTicketForm.Designer.cs
+/cirkus/ChangeTicketForm.resx
