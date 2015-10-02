@@ -144,6 +144,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.dgTest = new System.Windows.Forms.DataGridView();
             this.gpSeatMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
@@ -152,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYouth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChildren)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTest)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxBeskrivning
@@ -1516,12 +1518,21 @@
             this.label7.TabIndex = 62;
             this.label7.Text = "Ange biljettpriser";
             // 
+            // dgTest
+            // 
+            this.dgTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTest.Location = new System.Drawing.Point(111, 497);
+            this.dgTest.Name = "dgTest";
+            this.dgTest.Size = new System.Drawing.Size(524, 150);
+            this.dgTest.TabIndex = 63;
+            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(790, 454);
+            this.ClientSize = new System.Drawing.Size(790, 724);
+            this.Controls.Add(this.dgTest);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gpSeatMap);
             this.Controls.Add(this.buttonSparaAndringar);
@@ -1541,6 +1552,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYouth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChildren)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTest)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1662,5 +1674,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownYouth;
         private System.Windows.Forms.NumericUpDown numericUpDownChildren;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.DataGridView dgTest;
     }
 }
