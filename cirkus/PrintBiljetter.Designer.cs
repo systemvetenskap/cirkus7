@@ -58,14 +58,15 @@
             this.dgTicketsDirekt.ReadOnly = true;
             this.dgTicketsDirekt.RowHeadersVisible = false;
             this.dgTicketsDirekt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTicketsDirekt.Size = new System.Drawing.Size(516, 106);
+            this.dgTicketsDirekt.Size = new System.Drawing.Size(534, 106);
             this.dgTicketsDirekt.TabIndex = 16;
             this.dgTicketsDirekt.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTicketsDirekt_CellClick);
             this.dgTicketsDirekt.Click += new System.EventHandler(this.dgTicketsDirekt_Click);
             // 
             // buttonPrintBiljettDirekt
             // 
-            this.buttonPrintBiljettDirekt.BackColor = System.Drawing.Color.White;
+            this.buttonPrintBiljettDirekt.BackColor = System.Drawing.Color.Orange;
+            this.buttonPrintBiljettDirekt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonPrintBiljettDirekt.Location = new System.Drawing.Point(474, 321);
             this.buttonPrintBiljettDirekt.Name = "buttonPrintBiljettDirekt";
             this.buttonPrintBiljettDirekt.Size = new System.Drawing.Size(103, 40);
@@ -90,7 +91,7 @@
             this.dgTicketActsDirekt.ReadOnly = true;
             this.dgTicketActsDirekt.RowHeadersVisible = false;
             this.dgTicketActsDirekt.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTicketActsDirekt.Size = new System.Drawing.Size(516, 95);
+            this.dgTicketActsDirekt.Size = new System.Drawing.Size(534, 95);
             this.dgTicketActsDirekt.TabIndex = 29;
             this.dgTicketActsDirekt.Click += new System.EventHandler(this.dgTicketActsDirekt_Click);
             // 
@@ -122,7 +123,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackColor = System.Drawing.Color.Tomato;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(43, 321);
             this.button1.Name = "button1";
@@ -134,7 +135,8 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackColor = System.Drawing.Color.Orange;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Location = new System.Drawing.Point(346, 321);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(122, 40);

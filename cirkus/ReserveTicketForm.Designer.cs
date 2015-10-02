@@ -152,7 +152,6 @@
             this.A7 = new System.Windows.Forms.CheckBox();
             this.A6 = new System.Windows.Forms.CheckBox();
             this.A5 = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -170,6 +169,7 @@
             this.printDocumentBIljettDirekt = new System.Drawing.Printing.PrintDocument();
             this.printDialogBiljetD = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgShowActs)).BeginInit();
@@ -182,9 +182,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).BeginInit();
             this.panel1.SuspendLayout();
             this.gpSeatMap.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // radioPaid
@@ -202,7 +202,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackColor = System.Drawing.Color.White;
+            this.buttonAdd.BackColor = System.Drawing.Color.PaleGreen;
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAdd.Location = new System.Drawing.Point(789, 267);
             this.buttonAdd.Name = "buttonAdd";
@@ -214,7 +214,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.BackColor = System.Drawing.Color.White;
+            this.buttonCancel.BackColor = System.Drawing.Color.Tomato;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCancel.Location = new System.Drawing.Point(658, 267);
             this.buttonCancel.Name = "buttonCancel";
@@ -419,7 +419,7 @@
             // 
             // visaallt
             // 
-            this.visaallt.BackColor = System.Drawing.Color.White;
+            this.visaallt.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.visaallt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.visaallt.Location = new System.Drawing.Point(180, 269);
             this.visaallt.Name = "visaallt";
@@ -679,7 +679,7 @@
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.BackColor = System.Drawing.Color.Tomato;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button6.Location = new System.Drawing.Point(694, 359);
             this.button6.Name = "button6";
@@ -700,7 +700,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackColor = System.Drawing.Color.PaleGreen;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(801, 359);
             this.button1.Name = "button1";
@@ -911,7 +911,7 @@
             // 
             // btnSaveTicket
             // 
-            this.btnSaveTicket.BackColor = System.Drawing.Color.White;
+            this.btnSaveTicket.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnSaveTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSaveTicket.Location = new System.Drawing.Point(72, 328);
             this.btnSaveTicket.Name = "btnSaveTicket";
@@ -1697,19 +1697,9 @@
             this.A5.UseVisualStyleBackColor = true;
             this.A5.Click += new System.EventHandler(this.A1_CheckedChanged);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::cirkus.Properties.Resources.Sittkarta2;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(300, 309);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.A1_CheckedChanged);
-            // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.BackColor = System.Drawing.Color.Salmon;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Location = new System.Drawing.Point(675, 356);
             this.button3.Name = "button3";
@@ -1822,7 +1812,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackColor = System.Drawing.Color.PaleGreen;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Location = new System.Drawing.Point(788, 356);
             this.button2.Name = "button2";
@@ -1863,6 +1853,16 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::cirkus.Properties.Resources.Sittkarta2;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(300, 309);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.A1_CheckedChanged);
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1899,10 +1899,10 @@
             this.panel1.ResumeLayout(false);
             this.gpSeatMap.ResumeLayout(false);
             this.gpSeatMap.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

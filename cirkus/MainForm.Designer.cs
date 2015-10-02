@@ -401,7 +401,7 @@
             // 
             // btnDeleteSelectedTicket
             // 
-            this.btnDeleteSelectedTicket.BackColor = System.Drawing.Color.White;
+            this.btnDeleteSelectedTicket.BackColor = System.Drawing.Color.Tomato;
             this.btnDeleteSelectedTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeleteSelectedTicket.Location = new System.Drawing.Point(217, 406);
             this.btnDeleteSelectedTicket.Name = "btnDeleteSelectedTicket";
@@ -413,7 +413,7 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.BackColor = System.Drawing.Color.White;
+            this.btnPrint.BackColor = System.Drawing.Color.Orange;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.Location = new System.Drawing.Point(777, 365);
@@ -426,7 +426,7 @@
             // 
             // btnEditTicket
             // 
-            this.btnEditTicket.BackColor = System.Drawing.Color.White;
+            this.btnEditTicket.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnEditTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditTicket.Location = new System.Drawing.Point(359, 406);
             this.btnEditTicket.Name = "btnEditTicket";
@@ -448,7 +448,7 @@
             // 
             // btnBookNewTicket
             // 
-            this.btnBookNewTicket.BackColor = System.Drawing.Color.White;
+            this.btnBookNewTicket.BackColor = System.Drawing.Color.PaleGreen;
             this.btnBookNewTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBookNewTicket.Location = new System.Drawing.Point(618, 406);
             this.btnBookNewTicket.Name = "btnBookNewTicket";
@@ -470,7 +470,7 @@
             // 
             // btnAddCustomer
             // 
-            this.btnAddCustomer.BackColor = System.Drawing.Color.White;
+            this.btnAddCustomer.BackColor = System.Drawing.Color.PaleGreen;
             this.btnAddCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddCustomer.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAddCustomer.Location = new System.Drawing.Point(15, 406);
@@ -578,7 +578,7 @@
             // 
             // btnPreview
             // 
-            this.btnPreview.BackColor = System.Drawing.Color.White;
+            this.btnPreview.BackColor = System.Drawing.Color.Orange;
             this.btnPreview.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPreview.Location = new System.Drawing.Point(656, 407);
             this.btnPreview.Name = "btnPreview";
@@ -681,7 +681,7 @@
             // 
             // textBoxKrAdultTickets
             // 
-            this.textBoxKrAdultTickets.Location = new System.Drawing.Point(740, 65);
+            this.textBoxKrAdultTickets.Location = new System.Drawing.Point(803, 65);
             this.textBoxKrAdultTickets.Name = "textBoxKrAdultTickets";
             this.textBoxKrAdultTickets.ReadOnly = true;
             this.textBoxKrAdultTickets.Size = new System.Drawing.Size(106, 20);
@@ -699,7 +699,7 @@
             // 
             // textBoxKrYouthTickets
             // 
-            this.textBoxKrYouthTickets.Location = new System.Drawing.Point(740, 103);
+            this.textBoxKrYouthTickets.Location = new System.Drawing.Point(803, 103);
             this.textBoxKrYouthTickets.Name = "textBoxKrYouthTickets";
             this.textBoxKrYouthTickets.ReadOnly = true;
             this.textBoxKrYouthTickets.Size = new System.Drawing.Size(106, 20);
@@ -717,7 +717,7 @@
             // 
             // textBoxKrChildTickets
             // 
-            this.textBoxKrChildTickets.Location = new System.Drawing.Point(740, 141);
+            this.textBoxKrChildTickets.Location = new System.Drawing.Point(803, 141);
             this.textBoxKrChildTickets.Name = "textBoxKrChildTickets";
             this.textBoxKrChildTickets.ReadOnly = true;
             this.textBoxKrChildTickets.Size = new System.Drawing.Size(106, 20);
@@ -735,7 +735,7 @@
             // 
             // textBoxKrTotal
             // 
-            this.textBoxKrTotal.Location = new System.Drawing.Point(740, 208);
+            this.textBoxKrTotal.Location = new System.Drawing.Point(803, 208);
             this.textBoxKrTotal.Name = "textBoxKrTotal";
             this.textBoxKrTotal.ReadOnly = true;
             this.textBoxKrTotal.Size = new System.Drawing.Size(106, 20);
@@ -744,7 +744,7 @@
             // 
             // btnPrintStatistics
             // 
-            this.btnPrintStatistics.BackColor = System.Drawing.Color.White;
+            this.btnPrintStatistics.BackColor = System.Drawing.Color.Orange;
             this.btnPrintStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrintStatistics.Location = new System.Drawing.Point(788, 407);
             this.btnPrintStatistics.Name = "btnPrintStatistics";
@@ -756,7 +756,7 @@
             // 
             // btnDeleteShow
             // 
-            this.btnDeleteShow.BackColor = System.Drawing.Color.White;
+            this.btnDeleteShow.BackColor = System.Drawing.Color.Tomato;
             this.btnDeleteShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeleteShow.Location = new System.Drawing.Point(157, 407);
             this.btnDeleteShow.Name = "btnDeleteShow";
@@ -769,7 +769,7 @@
             // labelKronor
             // 
             this.labelKronor.AutoSize = true;
-            this.labelKronor.Location = new System.Drawing.Point(737, 49);
+            this.labelKronor.Location = new System.Drawing.Point(800, 49);
             this.labelKronor.Name = "labelKronor";
             this.labelKronor.Size = new System.Drawing.Size(38, 13);
             this.labelKronor.TabIndex = 11;
@@ -831,7 +831,7 @@
             // 
             // btnCreateShow
             // 
-            this.btnCreateShow.BackColor = System.Drawing.Color.White;
+            this.btnCreateShow.BackColor = System.Drawing.Color.PaleGreen;
             this.btnCreateShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreateShow.Location = new System.Drawing.Point(23, 407);
             this.btnCreateShow.Name = "btnCreateShow";
@@ -878,7 +878,7 @@
             // 
             // btnDeleteAccount
             // 
-            this.btnDeleteAccount.BackColor = System.Drawing.Color.White;
+            this.btnDeleteAccount.BackColor = System.Drawing.Color.Tomato;
             this.btnDeleteAccount.Enabled = false;
             this.btnDeleteAccount.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeleteAccount.Location = new System.Drawing.Point(22, 406);
@@ -988,7 +988,7 @@
             // 
             // btnEmptyBoxes
             // 
-            this.btnEmptyBoxes.BackColor = System.Drawing.Color.White;
+            this.btnEmptyBoxes.BackColor = System.Drawing.Color.Aquamarine;
             this.btnEmptyBoxes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEmptyBoxes.Location = new System.Drawing.Point(576, 406);
             this.btnEmptyBoxes.Name = "btnEmptyBoxes";
@@ -1000,7 +1000,7 @@
             // 
             // btnUpdateAccount
             // 
-            this.btnUpdateAccount.BackColor = System.Drawing.Color.White;
+            this.btnUpdateAccount.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnUpdateAccount.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdateAccount.Location = new System.Drawing.Point(200, 406);
             this.btnUpdateAccount.Name = "btnUpdateAccount";
@@ -1021,7 +1021,7 @@
             // 
             // btnCreateAccount
             // 
-            this.btnCreateAccount.BackColor = System.Drawing.Color.White;
+            this.btnCreateAccount.BackColor = System.Drawing.Color.PaleGreen;
             this.btnCreateAccount.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreateAccount.Location = new System.Drawing.Point(366, 406);
             this.btnCreateAccount.Name = "btnCreateAccount";
@@ -1120,13 +1120,14 @@
             // 
             // buttonLogOut
             // 
+            this.buttonLogOut.BackColor = System.Drawing.Color.White;
             this.buttonLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogOut.Location = new System.Drawing.Point(870, 1);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(68, 20);
             this.buttonLogOut.TabIndex = 1;
             this.buttonLogOut.Text = "Logga ut";
-            this.buttonLogOut.UseVisualStyleBackColor = true;
+            this.buttonLogOut.UseVisualStyleBackColor = false;
             this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
             // labelStaffName
@@ -1179,7 +1180,7 @@
             // 
             // buttonForhandsgranskaUtskrift
             // 
-            this.buttonForhandsgranskaUtskrift.BackColor = System.Drawing.Color.White;
+            this.buttonForhandsgranskaUtskrift.BackColor = System.Drawing.Color.Orange;
             this.buttonForhandsgranskaUtskrift.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonForhandsgranskaUtskrift.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonForhandsgranskaUtskrift.Location = new System.Drawing.Point(777, 318);

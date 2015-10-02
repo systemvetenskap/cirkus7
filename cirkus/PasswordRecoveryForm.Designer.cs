@@ -41,8 +41,9 @@
             // textBoxEmail
             // 
             this.textBoxEmail.Location = new System.Drawing.Point(20, 252);
+            this.textBoxEmail.Multiline = true;
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(323, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(323, 25);
             this.textBoxEmail.TabIndex = 0;
             // 
             // label1
@@ -58,7 +59,7 @@
             // 
             // btnSendPassword
             // 
-            this.btnSendPassword.BackColor = System.Drawing.Color.White;
+            this.btnSendPassword.BackColor = System.Drawing.Color.PaleGreen;
             this.btnSendPassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSendPassword.Location = new System.Drawing.Point(20, 300);
             this.btnSendPassword.Name = "btnSendPassword";
