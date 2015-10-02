@@ -40,12 +40,25 @@
             this.lblStatus1 = new System.Windows.Forms.Label();
             this.txtBoxNrP = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.fp = new System.Windows.Forms.CheckBox();
+            this.lblStatusAge = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dgTickets = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dgActs = new System.Windows.Forms.DataGridView();
+            this.visaallt = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.radioButtonDirectSale = new System.Windows.Forms.RadioButton();
+            this.textBoxSearchCust = new System.Windows.Forms.TextBox();
             this.dateReservedto = new System.Windows.Forms.DateTimePicker();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.txtepost = new System.Windows.Forms.TextBox();
+            this.txttel = new System.Windows.Forms.TextBox();
+            this.txtenamn = new System.Windows.Forms.TextBox();
+            this.txtfnamn = new System.Windows.Forms.TextBox();
             this.radioRes = new System.Windows.Forms.RadioButton();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -57,39 +70,11 @@
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.lblPrice = new System.Windows.Forms.Label();
-            this.lblBseats = new System.Windows.Forms.Label();
-            this.lblActs = new System.Windows.Forms.Label();
-            this.lblTickets = new System.Windows.Forms.Label();
-            this.lblShow = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.fp = new System.Windows.Forms.CheckBox();
-            this.lblStatusAge = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dgTickets = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dgActs = new System.Windows.Forms.DataGridView();
-            this.visaallt = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.txtepost = new System.Windows.Forms.TextBox();
-            this.txttel = new System.Windows.Forms.TextBox();
-            this.txtenamn = new System.Windows.Forms.TextBox();
-            this.txtfnamn = new System.Windows.Forms.TextBox();
             this.dgCustom = new System.Windows.Forms.DataGridView();
-            this.textBoxSearchCust = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cbDf = new System.Windows.Forms.CheckBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.gpSeatMap = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -189,15 +174,13 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgShowActs)).BeginInit();
             this.groupBox4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
+            this.panel2.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.gpSeatMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -208,13 +191,14 @@
             // 
             this.radioPaid.AutoSize = true;
             this.radioPaid.Checked = true;
-            this.radioPaid.Location = new System.Drawing.Point(228, 267);
+            this.radioPaid.Location = new System.Drawing.Point(228, 343);
             this.radioPaid.Name = "radioPaid";
             this.radioPaid.Size = new System.Drawing.Size(91, 17);
             this.radioPaid.TabIndex = 12;
             this.radioPaid.TabStop = true;
             this.radioPaid.Text = "Bokad/Betald";
             this.radioPaid.UseVisualStyleBackColor = true;
+            this.radioPaid.CheckedChanged += new System.EventHandler(this.radioPaid_CheckedChanged);
             // 
             // buttonAdd
             // 
@@ -342,291 +326,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Akter";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.dateReservedto);
-            this.panel3.Controls.Add(this.progressBar1);
-            this.panel3.Controls.Add(this.radioRes);
-            this.panel3.Controls.Add(this.button6);
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.groupBox3);
-            this.panel3.Controls.Add(this.groupBox7);
-            this.panel3.Controls.Add(this.radioPaid);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(918, 407);
-            this.panel3.TabIndex = 42;
-            this.panel3.Visible = false;
-            // 
-            // dateReservedto
-            // 
-            this.dateReservedto.CustomFormat = "yyyy-MM-dd";
-            this.dateReservedto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateReservedto.Location = new System.Drawing.Point(326, 288);
-            this.dateReservedto.Name = "dateReservedto";
-            this.dateReservedto.Size = new System.Drawing.Size(88, 20);
-            this.dateReservedto.TabIndex = 52;
-            this.dateReservedto.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(326, 161);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(358, 35);
-            this.progressBar1.TabIndex = 51;
-            // 
-            // radioRes
-            // 
-            this.radioRes.AutoSize = true;
-            this.radioRes.Location = new System.Drawing.Point(228, 290);
-            this.radioRes.Name = "radioRes";
-            this.radioRes.Size = new System.Drawing.Size(92, 17);
-            this.radioRes.TabIndex = 47;
-            this.radioRes.Text = "Reserverad till";
-            this.radioRes.UseVisualStyleBackColor = true;
-            this.radioRes.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.White;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Location = new System.Drawing.Point(444, 273);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 35);
-            this.button6.TabIndex = 46;
-            this.button6.Text = "Tillbaka";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(579, 273);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 35);
-            this.button1.TabIndex = 36;
-            this.button1.Text = "Slutför";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox3.Controls.Add(this.label24);
-            this.groupBox3.Controls.Add(this.label25);
-            this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Controls.Add(this.label27);
-            this.groupBox3.Controls.Add(this.label28);
-            this.groupBox3.Controls.Add(this.label29);
-            this.groupBox3.Controls.Add(this.label30);
-            this.groupBox3.Controls.Add(this.label31);
-            this.groupBox3.Controls.Add(this.label32);
-            this.groupBox3.Controls.Add(this.label33);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(22, 24);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 283);
-            this.groupBox3.TabIndex = 35;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Sammanfattning";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(106, 103);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(0, 18);
-            this.label24.TabIndex = 45;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(106, 83);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(0, 18);
-            this.label25.TabIndex = 44;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(106, 61);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(0, 18);
-            this.label26.TabIndex = 43;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(106, 41);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(0, 18);
-            this.label27.TabIndex = 42;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(106, 20);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(0, 18);
-            this.label28.TabIndex = 41;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(6, 245);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(31, 15);
-            this.label29.TabIndex = 40;
-            this.label29.Text = "Pris:";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(6, 192);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(92, 15);
-            this.label30.TabIndex = 39;
-            this.label30.Text = "Bokade platser:";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(6, 139);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(37, 15);
-            this.label31.TabIndex = 38;
-            this.label31.Text = "Akter:";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(6, 86);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(80, 15);
-            this.label32.TabIndex = 37;
-            this.label32.Text = "Antal biljetter:";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(6, 33);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(81, 15);
-            this.label33.TabIndex = 36;
-            this.label33.Text = "Föreställning:";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.BackColor = System.Drawing.Color.White;
-            this.groupBox7.Controls.Add(this.lblPrice);
-            this.groupBox7.Controls.Add(this.lblBseats);
-            this.groupBox7.Controls.Add(this.lblActs);
-            this.groupBox7.Controls.Add(this.lblTickets);
-            this.groupBox7.Controls.Add(this.lblShow);
-            this.groupBox7.Controls.Add(this.label8);
-            this.groupBox7.Controls.Add(this.label7);
-            this.groupBox7.Controls.Add(this.label6);
-            this.groupBox7.Controls.Add(this.label5);
-            this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Location = new System.Drawing.Point(22, 24);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(200, 283);
-            this.groupBox7.TabIndex = 35;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Sammanfattning";
-            // 
-            // lblPrice
-            // 
-            this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(106, 103);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(0, 13);
-            this.lblPrice.TabIndex = 45;
-            // 
-            // lblBseats
-            // 
-            this.lblBseats.AutoSize = true;
-            this.lblBseats.Location = new System.Drawing.Point(106, 83);
-            this.lblBseats.Name = "lblBseats";
-            this.lblBseats.Size = new System.Drawing.Size(0, 13);
-            this.lblBseats.TabIndex = 44;
-            // 
-            // lblActs
-            // 
-            this.lblActs.AutoSize = true;
-            this.lblActs.Location = new System.Drawing.Point(106, 61);
-            this.lblActs.Name = "lblActs";
-            this.lblActs.Size = new System.Drawing.Size(0, 13);
-            this.lblActs.TabIndex = 43;
-            // 
-            // lblTickets
-            // 
-            this.lblTickets.AutoSize = true;
-            this.lblTickets.Location = new System.Drawing.Point(106, 41);
-            this.lblTickets.Name = "lblTickets";
-            this.lblTickets.Size = new System.Drawing.Size(0, 13);
-            this.lblTickets.TabIndex = 42;
-            // 
-            // lblShow
-            // 
-            this.lblShow.AutoSize = true;
-            this.lblShow.Location = new System.Drawing.Point(106, 20);
-            this.lblShow.Name = "lblShow";
-            this.lblShow.Size = new System.Drawing.Size(0, 13);
-            this.lblShow.TabIndex = 41;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 248);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 13);
-            this.label8.TabIndex = 40;
-            this.label8.Text = "Pris:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 83);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(81, 13);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "Bokade platser:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 61);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 38;
-            this.label6.Text = "Akter:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 41);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
-            this.label5.TabIndex = 37;
-            this.label5.Text = "Antal biljetter:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
-            this.label4.TabIndex = 36;
-            this.label4.Text = "Föreställning:";
-            // 
             // fp
             // 
             this.fp.AutoSize = true;
@@ -730,6 +429,55 @@
             this.visaallt.UseVisualStyleBackColor = false;
             this.visaallt.Click += new System.EventHandler(this.button8_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.radioButtonDirectSale);
+            this.panel2.Controls.Add(this.textBoxSearchCust);
+            this.panel2.Controls.Add(this.dateReservedto);
+            this.panel2.Controls.Add(this.groupBox6);
+            this.panel2.Controls.Add(this.radioRes);
+            this.panel2.Controls.Add(this.groupBox3);
+            this.panel2.Controls.Add(this.dgCustom);
+            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.radioPaid);
+            this.panel2.Location = new System.Drawing.Point(955, 308);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(918, 407);
+            this.panel2.TabIndex = 42;
+            this.panel2.Visible = false;
+            // 
+            // radioButtonDirectSale
+            // 
+            this.radioButtonDirectSale.AutoSize = true;
+            this.radioButtonDirectSale.Location = new System.Drawing.Point(228, 320);
+            this.radioButtonDirectSale.Name = "radioButtonDirectSale";
+            this.radioButtonDirectSale.Size = new System.Drawing.Size(100, 17);
+            this.radioButtonDirectSale.TabIndex = 53;
+            this.radioButtonDirectSale.TabStop = true;
+            this.radioButtonDirectSale.Text = "Direktförsäljning";
+            this.radioButtonDirectSale.UseVisualStyleBackColor = true;
+            this.radioButtonDirectSale.CheckedChanged += new System.EventHandler(this.radioButtonDirectSale_CheckedChanged);
+            // 
+            // textBoxSearchCust
+            // 
+            this.textBoxSearchCust.Location = new System.Drawing.Point(537, 28);
+            this.textBoxSearchCust.Name = "textBoxSearchCust";
+            this.textBoxSearchCust.Size = new System.Drawing.Size(179, 20);
+            this.textBoxSearchCust.TabIndex = 38;
+            this.textBoxSearchCust.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
+            // 
+            // dateReservedto
+            // 
+            this.dateReservedto.CustomFormat = "yyyy-MM-dd";
+            this.dateReservedto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateReservedto.Location = new System.Drawing.Point(321, 364);
+            this.dateReservedto.Name = "dateReservedto";
+            this.dateReservedto.Size = new System.Drawing.Size(88, 20);
+            this.dateReservedto.TabIndex = 52;
+            this.dateReservedto.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.checkBox2);
@@ -737,9 +485,9 @@
             this.groupBox6.Controls.Add(this.txttel);
             this.groupBox6.Controls.Add(this.txtenamn);
             this.groupBox6.Controls.Add(this.txtfnamn);
-            this.groupBox6.Location = new System.Drawing.Point(288, 59);
+            this.groupBox6.Location = new System.Drawing.Point(228, 28);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(226, 267);
+            this.groupBox6.Size = new System.Drawing.Size(226, 288);
             this.groupBox6.TabIndex = 34;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Kunduppgifter";
@@ -788,6 +536,128 @@
             this.txtfnamn.TabIndex = 0;
             this.txtfnamn.Text = "Förnamn";
             // 
+            // radioRes
+            // 
+            this.radioRes.AutoSize = true;
+            this.radioRes.Location = new System.Drawing.Point(228, 366);
+            this.radioRes.Name = "radioRes";
+            this.radioRes.Size = new System.Drawing.Size(95, 17);
+            this.radioRes.TabIndex = 47;
+            this.radioRes.Text = "Reserverad till:";
+            this.radioRes.UseVisualStyleBackColor = true;
+            this.radioRes.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox3.Controls.Add(this.label24);
+            this.groupBox3.Controls.Add(this.label25);
+            this.groupBox3.Controls.Add(this.label26);
+            this.groupBox3.Controls.Add(this.label27);
+            this.groupBox3.Controls.Add(this.label28);
+            this.groupBox3.Controls.Add(this.label29);
+            this.groupBox3.Controls.Add(this.label30);
+            this.groupBox3.Controls.Add(this.label31);
+            this.groupBox3.Controls.Add(this.label32);
+            this.groupBox3.Controls.Add(this.label33);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(13, 28);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 366);
+            this.groupBox3.TabIndex = 35;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Sammanfattning";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(106, 103);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(0, 18);
+            this.label24.TabIndex = 45;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(106, 83);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(0, 18);
+            this.label25.TabIndex = 44;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(106, 61);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(0, 18);
+            this.label26.TabIndex = 43;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(106, 41);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(0, 18);
+            this.label27.TabIndex = 42;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(106, 20);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(0, 18);
+            this.label28.TabIndex = 41;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(6, 277);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(31, 15);
+            this.label29.TabIndex = 40;
+            this.label29.Text = "Pris:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(6, 216);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(92, 15);
+            this.label30.TabIndex = 39;
+            this.label30.Text = "Bokade platser:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(6, 155);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(37, 15);
+            this.label31.TabIndex = 38;
+            this.label31.Text = "Akter:";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(6, 94);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(80, 15);
+            this.label32.TabIndex = 37;
+            this.label32.Text = "Antal biljetter:";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(6, 33);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(81, 15);
+            this.label33.TabIndex = 36;
+            this.label33.Text = "Föreställning:";
+            // 
             // dgCustom
             // 
             this.dgCustom.AllowUserToAddRows = false;
@@ -797,7 +667,7 @@
             this.dgCustom.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgCustom.BackgroundColor = System.Drawing.Color.White;
             this.dgCustom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgCustom.Location = new System.Drawing.Point(26, 69);
+            this.dgCustom.Location = new System.Drawing.Point(484, 56);
             this.dgCustom.MultiSelect = false;
             this.dgCustom.Name = "dgCustom";
             this.dgCustom.ReadOnly = true;
@@ -807,90 +677,51 @@
             this.dgCustom.TabIndex = 39;
             this.dgCustom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.selected_customer);
             // 
-            // textBoxSearchCust
+            // button6
             // 
-            this.textBoxSearchCust.Location = new System.Drawing.Point(87, 45);
-            this.textBoxSearchCust.Name = "textBoxSearchCust";
-            this.textBoxSearchCust.Size = new System.Drawing.Size(171, 20);
-            this.textBoxSearchCust.TabIndex = 38;
-            this.textBoxSearchCust.TextChanged += new System.EventHandler(this.textBoxSearchCustomer_TextChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.gpSeatMap);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.groupBox4);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(918, 407);
-            this.panel1.TabIndex = 40;
-            this.panel1.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.textBoxSearchCust);
-            this.panel2.Controls.Add(this.groupBox6);
-            this.panel2.Controls.Add(this.cbDf);
-            this.panel2.Controls.Add(this.dgCustom);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(918, 407);
-            this.panel2.TabIndex = 41;
-            this.panel2.Visible = false;
-            // 
-            // cbDf
-            // 
-            this.cbDf.AutoSize = true;
-            this.cbDf.Checked = true;
-            this.cbDf.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDf.Location = new System.Drawing.Point(529, 59);
-            this.cbDf.Name = "cbDf";
-            this.cbDf.Size = new System.Drawing.Size(101, 17);
-            this.cbDf.TabIndex = 47;
-            this.cbDf.Text = "Direktförsäljning";
-            this.cbDf.UseVisualStyleBackColor = true;
-            this.cbDf.CheckedChanged += new System.EventHandler(this.cbDf_CheckedChanged);
+            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button6.Location = new System.Drawing.Point(694, 359);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(100, 35);
+            this.button6.TabIndex = 46;
+            this.button6.Text = "Tillbaka";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(26, 49);
+            this.label9.Location = new System.Drawing.Point(482, 28);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 13);
             this.label9.TabIndex = 46;
             this.label9.Text = "Sök kund";
             // 
-            // button5
+            // button1
             // 
-            this.button5.BackColor = System.Drawing.Color.White;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Location = new System.Drawing.Point(654, 291);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 35);
-            this.button5.TabIndex = 45;
-            this.button5.Text = "Nästa";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(801, 359);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 35);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "Slutför";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // button4
+            // panel1
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Location = new System.Drawing.Point(531, 291);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 35);
-            this.button4.TabIndex = 44;
-            this.button4.Text = "Tillbaka";
-            this.button4.UseVisualStyleBackColor = false;
+            this.panel1.Controls.Add(this.gpSeatMap);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.groupBox4);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Location = new System.Drawing.Point(12, 308);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(918, 407);
+            this.panel1.TabIndex = 40;
+            this.panel1.Visible = false;
             // 
             // gpSeatMap
             // 
@@ -2037,7 +1868,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(918, 407);
+            this.ClientSize = new System.Drawing.Size(1899, 737);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonCancel);
@@ -2055,20 +1887,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgShowActs)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTickets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCustom)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.gpSeatMap.ResumeLayout(false);
             this.gpSeatMap.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -2087,35 +1915,12 @@
         private System.Windows.Forms.DataGridView dataGridViewShows;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox txtepost;
-        private System.Windows.Forms.TextBox txttel;
-        private System.Windows.Forms.TextBox txtenamn;
-        private System.Windows.Forms.TextBox txtfnamn;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label lblPrice;
-        private System.Windows.Forms.Label lblBseats;
-        private System.Windows.Forms.Label lblActs;
-        private System.Windows.Forms.Label lblTickets;
-        private System.Windows.Forms.Label lblShow;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.DataGridView dgCustom;
-        private System.Windows.Forms.TextBox textBoxSearchCust;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbAgegroup;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button visaallt;
@@ -2193,8 +1998,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.CheckBox cbDf;
         private System.Windows.Forms.DataGridView dgShowActs;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
@@ -2236,5 +2039,15 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox textBoxSearchCust;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TextBox txtepost;
+        private System.Windows.Forms.TextBox txttel;
+        private System.Windows.Forms.TextBox txtenamn;
+        private System.Windows.Forms.TextBox txtfnamn;
+        private System.Windows.Forms.DataGridView dgCustom;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RadioButton radioButtonDirectSale;
     }
 }
