@@ -82,10 +82,10 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::cirkus.Properties.Resources.clown2;
-            this.pictureBox2.Location = new System.Drawing.Point(224, 39);
+            this.pictureBox2.Image = global::cirkus.Properties.Resources.clownLosenord;
+            this.pictureBox2.Location = new System.Drawing.Point(213, 21);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(110, 106);
+            this.pictureBox2.Size = new System.Drawing.Size(130, 125);
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 

@@ -130,13 +130,10 @@
   <data name="animated_circus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\animated-circus-image-0061.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="clown2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\0053.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="0086" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\0086.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="clownLosenord" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\120.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

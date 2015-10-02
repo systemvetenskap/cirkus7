@@ -63,16 +63,6 @@ namespace cirkus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _0086 {
-            get {
-                object obj = ResourceManager.GetObject("0086", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap animated_circus {
             get {
                 object obj = ResourceManager.GetObject("animated_circus", resourceCulture);
@@ -103,9 +93,9 @@ namespace cirkus.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap clown2 {
+        internal static System.Drawing.Bitmap clownLosenord {
             get {
-                object obj = ResourceManager.GetObject("clown2", resourceCulture);
+                object obj = ResourceManager.GetObject("clownLosenord", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
