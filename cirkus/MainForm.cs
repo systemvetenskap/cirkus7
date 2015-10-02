@@ -1353,6 +1353,13 @@ namespace cirkus
         {
             LoadStatistics();
         }
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog1.Document = printDocumentStatistic;
+            printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
+            printPreviewDialog1.Show();
+            printPreviewControl1.Document = printDocumentStatistic;
+        }
         #endregion
         #region Konto
         private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
@@ -1811,54 +1818,5 @@ namespace cirkus
             }         
         }
         #endregion
-
-        private void textBoxKronorUngdomsbiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxAntalBarnbiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxKronorBarnbiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxTotaltAntal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxAntalVuxenBiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxTotaltKronor_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxKronorVuxenbiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxAntalUngdomsbiljetter_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPreview_Click(object sender, EventArgs e)
-        {
-            printPreviewDialog1.Document = printDocumentStatistic;
-            printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
-            printPreviewDialog1.Show();
-            printPreviewControl1.Document = printDocumentStatistic;
-        }
-
     }
 }
