@@ -193,10 +193,10 @@
             this.radioPaid.Checked = true;
             this.radioPaid.Location = new System.Drawing.Point(228, 343);
             this.radioPaid.Name = "radioPaid";
-            this.radioPaid.Size = new System.Drawing.Size(91, 17);
+            this.radioPaid.Size = new System.Drawing.Size(85, 17);
             this.radioPaid.TabIndex = 12;
             this.radioPaid.TabStop = true;
-            this.radioPaid.Text = "Bokad/Betald";
+            this.radioPaid.Text = "Boka/Betala";
             this.radioPaid.UseVisualStyleBackColor = true;
             this.radioPaid.CheckedChanged += new System.EventHandler(this.radioPaid_CheckedChanged);
             // 
@@ -541,9 +541,9 @@
             this.radioRes.AutoSize = true;
             this.radioRes.Location = new System.Drawing.Point(228, 366);
             this.radioRes.Name = "radioRes";
-            this.radioRes.Size = new System.Drawing.Size(95, 17);
+            this.radioRes.Size = new System.Drawing.Size(89, 17);
             this.radioRes.TabIndex = 47;
-            this.radioRes.Text = "Reserverad till:";
+            this.radioRes.Text = "Reservera till:";
             this.radioRes.UseVisualStyleBackColor = true;
             this.radioRes.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 

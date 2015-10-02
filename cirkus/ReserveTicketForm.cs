@@ -465,6 +465,7 @@ namespace cirkus
 
             panel2.Visible = true;
             dgCustom.DataSource = null;
+            radioButtonDirectSale.Checked = true;
 
 
         }
@@ -770,7 +771,10 @@ namespace cirkus
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
-
+            if(radioRes.Checked == true)
+            {
+                dateReservedto.Enabled = true;
+            }
         }
 
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1279,7 +1283,9 @@ namespace cirkus
             if (radioPaid.Checked==true)
             {
                 dateReservedto.Enabled = false;
-                radioButtonDirectSale.Enabled = true;
+                //radioButtonDirectSale.Enabled = true;
+                groupBox6.Enabled = true;
+                checkBox2.Enabled = true;
 
             }
         }
