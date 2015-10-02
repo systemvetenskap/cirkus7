@@ -524,22 +524,14 @@ namespace cirkus
             }
             else
             {
-                //////// Printing 
-                //PrintDialog pd = new PrintDialog();
-                //pd.Document = printDocumentBiljett;
-                //if (pd.ShowDialog() == DialogResult.OK)
-                //{
-                //    printDocumentBiljett.Print();
-                //}
-
-
-                // Kolla dokumentet innan man skrivar ut
-               
-                printPreviewControl1.Visible = true;
-                printPreviewDialog2.Document = printDocumentBiljett;
-                printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
-                printPreviewDialog2.Show();
-                printPreviewControl1.Document = printDocumentBiljett;
+                // Printing 
+                PrintDialog pd = new PrintDialog();
+                pd.Document = printDocumentBiljett;
+                if (pd.ShowDialog() == DialogResult.OK)
+                {
+                    printDocumentBiljett.Print();
+                }
+                
 
             }
 
@@ -839,6 +831,17 @@ namespace cirkus
             textBoxSearchTicket.Clear();
             dgTickets.DataSource = null;
             dgTicketActs.DataSource = null;
+        }
+
+        private void buttonForhandsgranskaUtskrift_Click(object sender, EventArgs e)
+        {
+
+            // Kolla dokumentet innan man skrivar ut
+
+            printPreviewDialog2.Document = printDocumentBiljett;
+            printDocumentBiljett.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBiljett_PrintPage);
+            printPreviewDialog2.Show();
+            printPreviewControl1.Document = printDocumentBiljett;
         }
         #endregion
         #region Föreställningar
@@ -1338,16 +1341,15 @@ namespace cirkus
         }
         private void buttonSkrivUtForestallning_Click(object sender, EventArgs e)
         {
-            //// Printing 
-            //PrintDialog pd = new PrintDialog();
-            //pd.Document = printDocumentStatistic;
-            //if (pd.ShowDialog() == DialogResult.OK)
-            //{
-            //    printDocumentStatistic.Print();
-            //}
+            // Printing 
+            PrintDialog pd = new PrintDialog();
+            pd.Document = printDocumentStatistic;
+            if (pd.ShowDialog() == DialogResult.OK)
+            {
+                printDocumentStatistic.Print();
+            }
 
 
-            // Kolla dokumentet innan man skrivar ut
         }
         private void checkBoxAllaAkter_CheckedChanged(object sender, EventArgs e)
         {
@@ -1823,5 +1825,7 @@ namespace cirkus
             }         
         }
         #endregion
+
+        
     }
 }

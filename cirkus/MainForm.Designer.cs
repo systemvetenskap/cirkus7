@@ -122,6 +122,7 @@
             this.printDocumentBiljett = new System.Drawing.Printing.PrintDocument();
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog2 = new System.Windows.Forms.PrintPreviewDialog();
+            this.buttonForhandsgranskaUtskrift = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketActs)).BeginInit();
@@ -152,6 +153,7 @@
             // tabTicket
             // 
             this.tabTicket.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tabTicket.Controls.Add(this.buttonForhandsgranskaUtskrift);
             this.tabTicket.Controls.Add(this.lblsumma);
             this.tabTicket.Controls.Add(this.label2);
             this.tabTicket.Controls.Add(this.txtPrintDatum);
@@ -309,7 +311,7 @@
             // textBoxPrintPrice
             // 
             this.textBoxPrintPrice.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintPrice.Location = new System.Drawing.Point(777, 302);
+            this.textBoxPrintPrice.Location = new System.Drawing.Point(777, 285);
             this.textBoxPrintPrice.Name = "textBoxPrintPrice";
             this.textBoxPrintPrice.ReadOnly = true;
             this.textBoxPrintPrice.Size = new System.Drawing.Size(126, 20);
@@ -339,7 +341,7 @@
             // textBoxPrintAct
             // 
             this.textBoxPrintAct.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAct.Location = new System.Drawing.Point(777, 211);
+            this.textBoxPrintAct.Location = new System.Drawing.Point(777, 201);
             this.textBoxPrintAct.Name = "textBoxPrintAct";
             this.textBoxPrintAct.ReadOnly = true;
             this.textBoxPrintAct.Size = new System.Drawing.Size(126, 20);
@@ -390,7 +392,7 @@
             // textBoxPrintAge
             // 
             this.textBoxPrintAge.BackColor = System.Drawing.SystemColors.Window;
-            this.textBoxPrintAge.Location = new System.Drawing.Point(777, 261);
+            this.textBoxPrintAge.Location = new System.Drawing.Point(777, 246);
             this.textBoxPrintAge.Name = "textBoxPrintAge";
             this.textBoxPrintAge.ReadOnly = true;
             this.textBoxPrintAge.Size = new System.Drawing.Size(126, 20);
@@ -414,7 +416,7 @@
             this.btnPrint.BackColor = System.Drawing.Color.White;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPrint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(777, 339);
+            this.btnPrint.Location = new System.Drawing.Point(777, 365);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(126, 35);
             this.btnPrint.TabIndex = 8;
@@ -438,7 +440,7 @@
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(777, 287);
+            this.lblPrice.Location = new System.Drawing.Point(777, 272);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(27, 13);
             this.lblPrice.TabIndex = 12;
@@ -460,7 +462,7 @@
             // 
             this.lblAct.AutoSize = true;
             this.lblAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAct.Location = new System.Drawing.Point(777, 196);
+            this.lblAct.Location = new System.Drawing.Point(777, 185);
             this.lblAct.Name = "lblAct";
             this.lblAct.Size = new System.Drawing.Size(53, 13);
             this.lblAct.TabIndex = 11;
@@ -470,6 +472,7 @@
             // 
             this.btnAddCustomer.BackColor = System.Drawing.Color.White;
             this.btnAddCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddCustomer.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAddCustomer.Location = new System.Drawing.Point(15, 406);
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.Size = new System.Drawing.Size(126, 35);
@@ -503,7 +506,7 @@
             // 
             this.lblAgeGroup.AutoSize = true;
             this.lblAgeGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgeGroup.Location = new System.Drawing.Point(777, 246);
+            this.lblAgeGroup.Location = new System.Drawing.Point(777, 229);
             this.lblAgeGroup.Name = "lblAgeGroup";
             this.lblAgeGroup.Size = new System.Drawing.Size(66, 13);
             this.lblAgeGroup.TabIndex = 8;
@@ -1174,6 +1177,19 @@
             this.printPreviewDialog2.Name = "printPreviewDialog2";
             this.printPreviewDialog2.Visible = false;
             // 
+            // buttonForhandsgranskaUtskrift
+            // 
+            this.buttonForhandsgranskaUtskrift.BackColor = System.Drawing.Color.White;
+            this.buttonForhandsgranskaUtskrift.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonForhandsgranskaUtskrift.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonForhandsgranskaUtskrift.Location = new System.Drawing.Point(777, 318);
+            this.buttonForhandsgranskaUtskrift.Name = "buttonForhandsgranskaUtskrift";
+            this.buttonForhandsgranskaUtskrift.Size = new System.Drawing.Size(126, 35);
+            this.buttonForhandsgranskaUtskrift.TabIndex = 30;
+            this.buttonForhandsgranskaUtskrift.Text = "Förhandsgranska utskrift";
+            this.buttonForhandsgranskaUtskrift.UseVisualStyleBackColor = false;
+            this.buttonForhandsgranskaUtskrift.Click += new System.EventHandler(this.buttonForhandsgranskaUtskrift_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1302,5 +1318,6 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblsumma;
+        private System.Windows.Forms.Button buttonForhandsgranskaUtskrift;
     }
 }
