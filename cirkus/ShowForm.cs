@@ -421,7 +421,7 @@ namespace cirkus
                             }
                         }
             }
-            MessageBox.Show("Föreställning skapad");
+            
         }
 
         private void textBoxAntalFriplatser_KeyPress(object sender, KeyPressEventArgs e)

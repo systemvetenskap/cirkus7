@@ -133,25 +133,25 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numericUpDownAdult = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownDiscount = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownYouth = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownChildren = new System.Windows.Forms.NumericUpDown();
             this.labelDiscount = new System.Windows.Forms.Label();
             this.labelYouthPrice = new System.Windows.Forms.Label();
             this.labelAdultPrice = new System.Windows.Forms.Label();
             this.labelChildPrice = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDownChildren = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownYouth = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownDiscount = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownAdult = new System.Windows.Forms.NumericUpDown();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.gpSeatMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChildren)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYouth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAdult)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiscount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYouth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChildren)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxBeskrivning
@@ -1385,6 +1385,78 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // numericUpDownAdult
+            // 
+            this.numericUpDownAdult.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAdult.Location = new System.Drawing.Point(346, 100);
+            this.numericUpDownAdult.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numericUpDownAdult.Name = "numericUpDownAdult";
+            this.numericUpDownAdult.Size = new System.Drawing.Size(56, 24);
+            this.numericUpDownAdult.TabIndex = 76;
+            this.numericUpDownAdult.Value = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownDiscount
+            // 
+            this.numericUpDownDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownDiscount.Location = new System.Drawing.Point(346, 154);
+            this.numericUpDownDiscount.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numericUpDownDiscount.Name = "numericUpDownDiscount";
+            this.numericUpDownDiscount.Size = new System.Drawing.Size(56, 24);
+            this.numericUpDownDiscount.TabIndex = 75;
+            this.numericUpDownDiscount.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownYouth
+            // 
+            this.numericUpDownYouth.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownYouth.Location = new System.Drawing.Point(346, 73);
+            this.numericUpDownYouth.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numericUpDownYouth.Name = "numericUpDownYouth";
+            this.numericUpDownYouth.Size = new System.Drawing.Size(56, 24);
+            this.numericUpDownYouth.TabIndex = 73;
+            this.numericUpDownYouth.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDownChildren
+            // 
+            this.numericUpDownChildren.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownChildren.Location = new System.Drawing.Point(346, 46);
+            this.numericUpDownChildren.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numericUpDownChildren.Name = "numericUpDownChildren";
+            this.numericUpDownChildren.Size = new System.Drawing.Size(56, 24);
+            this.numericUpDownChildren.TabIndex = 72;
+            this.numericUpDownChildren.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
             // labelDiscount
             // 
             this.labelDiscount.AutoSize = true;
@@ -1444,78 +1516,6 @@
             this.label7.TabIndex = 62;
             this.label7.Text = "Ange biljettpriser";
             // 
-            // numericUpDownChildren
-            // 
-            this.numericUpDownChildren.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownChildren.Location = new System.Drawing.Point(346, 46);
-            this.numericUpDownChildren.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.numericUpDownChildren.Name = "numericUpDownChildren";
-            this.numericUpDownChildren.Size = new System.Drawing.Size(56, 24);
-            this.numericUpDownChildren.TabIndex = 72;
-            this.numericUpDownChildren.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDownYouth
-            // 
-            this.numericUpDownYouth.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownYouth.Location = new System.Drawing.Point(346, 73);
-            this.numericUpDownYouth.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.numericUpDownYouth.Name = "numericUpDownYouth";
-            this.numericUpDownYouth.Size = new System.Drawing.Size(56, 24);
-            this.numericUpDownYouth.TabIndex = 73;
-            this.numericUpDownYouth.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDownDiscount
-            // 
-            this.numericUpDownDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownDiscount.Location = new System.Drawing.Point(346, 154);
-            this.numericUpDownDiscount.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.numericUpDownDiscount.Name = "numericUpDownDiscount";
-            this.numericUpDownDiscount.Size = new System.Drawing.Size(56, 24);
-            this.numericUpDownDiscount.TabIndex = 75;
-            this.numericUpDownDiscount.Value = new decimal(new int[] {
-            80,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDownAdult
-            // 
-            this.numericUpDownAdult.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownAdult.Location = new System.Drawing.Point(346, 100);
-            this.numericUpDownAdult.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.numericUpDownAdult.Name = "numericUpDownAdult";
-            this.numericUpDownAdult.Size = new System.Drawing.Size(56, 24);
-            this.numericUpDownAdult.TabIndex = 76;
-            this.numericUpDownAdult.Value = new decimal(new int[] {
-            150,
-            0,
-            0,
-            0});
-            // 
             // ShowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1537,10 +1537,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChildren)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYouth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiscount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAdult)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiscount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYouth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChildren)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1661,5 +1661,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownDiscount;
         private System.Windows.Forms.NumericUpDown numericUpDownYouth;
         private System.Windows.Forms.NumericUpDown numericUpDownChildren;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
