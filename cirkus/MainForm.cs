@@ -1214,10 +1214,7 @@ namespace cirkus
         }
         #endregion
         #region Konto
-        private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
-        {
-            ListaPersonal();
-        }
+        #region Methods
         public void ResetColor()
         {
             textBoxSsnumber.BackColor = Color.White;
@@ -1249,11 +1246,6 @@ namespace cirkus
             textBoxPassword.BackColor = Color.White;
             comboBoxAuth.BackColor = Color.White;
         }
-        private void btnTomFalten_Click(object sender, EventArgs e)
-        {
-            ResetColorandText();
-            LblStatusAccount.Visible = false;
-        }
         private void ListaPersonal()
         {
             string sqlSearchStaff = textBoxSearchStaff.Text;
@@ -1273,7 +1265,7 @@ namespace cirkus
 
                 dgStaff.Columns[1].HeaderText = "Efternamn";
                 dgStaff.Columns[2].HeaderText = "Förnamn";
-                dgStaff.Columns[3].HeaderText = "Telefonnummer";               
+                dgStaff.Columns[3].HeaderText = "Telefonnummer";
 
                 DataGridViewColumn column = dgStaff.Columns[0];
                 DataGridViewColumn column1 = dgStaff.Columns[1];
@@ -1319,6 +1311,29 @@ namespace cirkus
             {
                 return false;
             }
+        }
+        public bool BaraBokstäver(string namn)
+        {
+            bool okej = true;
+            foreach (char bokstav in namn)
+            {
+                if (!char.IsLetter(bokstav))
+                {
+                    okej = false;
+                }
+            }
+            return okej;
+        }
+        #endregion
+        #region Events
+        private void btnTomFalten_Click(object sender, EventArgs e)
+        {
+            ResetColorandText();
+            LblStatusAccount.Visible = false;
+        }
+        private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
+        {
+            ListaPersonal();
         }
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
@@ -1445,18 +1460,6 @@ namespace cirkus
                 LblStatusAccount.Text = "Användaren finns redan";
                 conn.Close();
             }        
-        }
-        public bool BaraBokstäver(string namn)
-        {
-            bool okej = true;
-            foreach (char bokstav in namn)
-            {
-                if (!char.IsLetter(bokstav))
-                {
-                    okej = false;
-                }
-            }
-            return okej;
         }
         private void btnUpdateraKonto_Click(object sender, EventArgs e)
         {
@@ -1660,6 +1663,7 @@ namespace cirkus
                 return;
             }         
         }
-        #endregion       
+        #endregion
+        #endregion
     }
 }
