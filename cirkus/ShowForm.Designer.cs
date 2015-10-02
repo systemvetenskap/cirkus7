@@ -133,20 +133,24 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.labelChildPrice = new System.Windows.Forms.Label();
-            this.labelAdultPrice = new System.Windows.Forms.Label();
-            this.labelYouthPrice = new System.Windows.Forms.Label();
-            this.dateTimePickerChildrenPrice = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerYouthPrice = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerAdultPrice = new System.Windows.Forms.DateTimePicker();
             this.labelDiscount = new System.Windows.Forms.Label();
-            this.dateTimePickerDiscount = new System.Windows.Forms.DateTimePicker();
+            this.labelYouthPrice = new System.Windows.Forms.Label();
+            this.labelAdultPrice = new System.Windows.Forms.Label();
+            this.labelChildPrice = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDownChildren = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownYouth = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownDiscount = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownAdult = new System.Windows.Forms.NumericUpDown();
             this.gpSeatMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChildren)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYouth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiscount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAdult)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxBeskrivning
@@ -1341,11 +1345,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePickerDiscount);
+            this.groupBox1.Controls.Add(this.numericUpDownAdult);
+            this.groupBox1.Controls.Add(this.numericUpDownDiscount);
+            this.groupBox1.Controls.Add(this.numericUpDownYouth);
+            this.groupBox1.Controls.Add(this.numericUpDownChildren);
             this.groupBox1.Controls.Add(this.labelDiscount);
-            this.groupBox1.Controls.Add(this.dateTimePickerAdultPrice);
-            this.groupBox1.Controls.Add(this.dateTimePickerYouthPrice);
-            this.groupBox1.Controls.Add(this.dateTimePickerChildrenPrice);
             this.groupBox1.Controls.Add(this.labelYouthPrice);
             this.groupBox1.Controls.Add(this.labelAdultPrice);
             this.groupBox1.Controls.Add(this.labelChildPrice);
@@ -1380,15 +1384,45 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label7
+            // labelDiscount
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(271, 8);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(126, 16);
-            this.label7.TabIndex = 62;
-            this.label7.Text = "Ange biljettpriser";
+            this.labelDiscount.AutoSize = true;
+            this.labelDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDiscount.Location = new System.Drawing.Point(262, 165);
+            this.labelDiscount.Name = "labelDiscount";
+            this.labelDiscount.Size = new System.Drawing.Size(69, 13);
+            this.labelDiscount.TabIndex = 70;
+            this.labelDiscount.Text = "Rabattsats %";
+            // 
+            // labelYouthPrice
+            // 
+            this.labelYouthPrice.AutoSize = true;
+            this.labelYouthPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelYouthPrice.Location = new System.Drawing.Point(262, 84);
+            this.labelYouthPrice.Name = "labelYouthPrice";
+            this.labelYouthPrice.Size = new System.Drawing.Size(50, 13);
+            this.labelYouthPrice.TabIndex = 66;
+            this.labelYouthPrice.Text = "Ungdom:";
+            // 
+            // labelAdultPrice
+            // 
+            this.labelAdultPrice.AutoSize = true;
+            this.labelAdultPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAdultPrice.Location = new System.Drawing.Point(262, 111);
+            this.labelAdultPrice.Name = "labelAdultPrice";
+            this.labelAdultPrice.Size = new System.Drawing.Size(40, 13);
+            this.labelAdultPrice.TabIndex = 65;
+            this.labelAdultPrice.Text = "Vuxen:";
+            // 
+            // labelChildPrice
+            // 
+            this.labelChildPrice.AutoSize = true;
+            this.labelChildPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChildPrice.Location = new System.Drawing.Point(262, 57);
+            this.labelChildPrice.Name = "labelChildPrice";
+            this.labelChildPrice.Size = new System.Drawing.Size(32, 13);
+            this.labelChildPrice.TabIndex = 64;
+            this.labelChildPrice.Text = "Barn:";
             // 
             // label8
             // 
@@ -1399,89 +1433,87 @@
             this.label8.TabIndex = 63;
             this.label8.Text = "Från:";
             // 
-            // labelChildPrice
+            // label7
             // 
-            this.labelChildPrice.AutoSize = true;
-            this.labelChildPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelChildPrice.Location = new System.Drawing.Point(271, 46);
-            this.labelChildPrice.Name = "labelChildPrice";
-            this.labelChildPrice.Size = new System.Drawing.Size(32, 13);
-            this.labelChildPrice.TabIndex = 64;
-            this.labelChildPrice.Text = "Barn:";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(271, 8);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(126, 16);
+            this.label7.TabIndex = 62;
+            this.label7.Text = "Ange biljettpriser";
             // 
-            // labelAdultPrice
+            // numericUpDownChildren
             // 
-            this.labelAdultPrice.AutoSize = true;
-            this.labelAdultPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAdultPrice.Location = new System.Drawing.Point(271, 108);
-            this.labelAdultPrice.Name = "labelAdultPrice";
-            this.labelAdultPrice.Size = new System.Drawing.Size(40, 13);
-            this.labelAdultPrice.TabIndex = 65;
-            this.labelAdultPrice.Text = "Vuxen:";
+            this.numericUpDownChildren.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownChildren.Location = new System.Drawing.Point(346, 46);
+            this.numericUpDownChildren.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numericUpDownChildren.Name = "numericUpDownChildren";
+            this.numericUpDownChildren.Size = new System.Drawing.Size(56, 24);
+            this.numericUpDownChildren.TabIndex = 72;
+            this.numericUpDownChildren.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
             // 
-            // labelYouthPrice
+            // numericUpDownYouth
             // 
-            this.labelYouthPrice.AutoSize = true;
-            this.labelYouthPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelYouthPrice.Location = new System.Drawing.Point(271, 77);
-            this.labelYouthPrice.Name = "labelYouthPrice";
-            this.labelYouthPrice.Size = new System.Drawing.Size(50, 13);
-            this.labelYouthPrice.TabIndex = 66;
-            this.labelYouthPrice.Text = "Ungdom:";
+            this.numericUpDownYouth.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownYouth.Location = new System.Drawing.Point(346, 73);
+            this.numericUpDownYouth.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numericUpDownYouth.Name = "numericUpDownYouth";
+            this.numericUpDownYouth.Size = new System.Drawing.Size(56, 24);
+            this.numericUpDownYouth.TabIndex = 73;
+            this.numericUpDownYouth.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
-            // dateTimePickerChildrenPrice
+            // numericUpDownDiscount
             // 
-            this.dateTimePickerChildrenPrice.CustomFormat = "HH:-";
-            this.dateTimePickerChildrenPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerChildrenPrice.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerChildrenPrice.Location = new System.Drawing.Point(351, 39);
-            this.dateTimePickerChildrenPrice.Name = "dateTimePickerChildrenPrice";
-            this.dateTimePickerChildrenPrice.ShowUpDown = true;
-            this.dateTimePickerChildrenPrice.Size = new System.Drawing.Size(49, 22);
-            this.dateTimePickerChildrenPrice.TabIndex = 67;
+            this.numericUpDownDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownDiscount.Location = new System.Drawing.Point(346, 154);
+            this.numericUpDownDiscount.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numericUpDownDiscount.Name = "numericUpDownDiscount";
+            this.numericUpDownDiscount.Size = new System.Drawing.Size(56, 24);
+            this.numericUpDownDiscount.TabIndex = 75;
+            this.numericUpDownDiscount.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
             // 
-            // dateTimePickerYouthPrice
+            // numericUpDownAdult
             // 
-            this.dateTimePickerYouthPrice.CustomFormat = "HH:-";
-            this.dateTimePickerYouthPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerYouthPrice.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerYouthPrice.Location = new System.Drawing.Point(351, 70);
-            this.dateTimePickerYouthPrice.Name = "dateTimePickerYouthPrice";
-            this.dateTimePickerYouthPrice.ShowUpDown = true;
-            this.dateTimePickerYouthPrice.Size = new System.Drawing.Size(49, 22);
-            this.dateTimePickerYouthPrice.TabIndex = 68;
-            // 
-            // dateTimePickerAdultPrice
-            // 
-            this.dateTimePickerAdultPrice.CustomFormat = "HH:-";
-            this.dateTimePickerAdultPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerAdultPrice.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerAdultPrice.Location = new System.Drawing.Point(351, 101);
-            this.dateTimePickerAdultPrice.Name = "dateTimePickerAdultPrice";
-            this.dateTimePickerAdultPrice.ShowUpDown = true;
-            this.dateTimePickerAdultPrice.Size = new System.Drawing.Size(49, 22);
-            this.dateTimePickerAdultPrice.TabIndex = 69;
-            // 
-            // labelDiscount
-            // 
-            this.labelDiscount.AutoSize = true;
-            this.labelDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDiscount.Location = new System.Drawing.Point(271, 156);
-            this.labelDiscount.Name = "labelDiscount";
-            this.labelDiscount.Size = new System.Drawing.Size(69, 13);
-            this.labelDiscount.TabIndex = 70;
-            this.labelDiscount.Text = "Rabattsats %";
-            // 
-            // dateTimePickerDiscount
-            // 
-            this.dateTimePickerDiscount.CustomFormat = "HH:-";
-            this.dateTimePickerDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerDiscount.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerDiscount.Location = new System.Drawing.Point(351, 150);
-            this.dateTimePickerDiscount.Name = "dateTimePickerDiscount";
-            this.dateTimePickerDiscount.ShowUpDown = true;
-            this.dateTimePickerDiscount.Size = new System.Drawing.Size(49, 22);
-            this.dateTimePickerDiscount.TabIndex = 71;
+            this.numericUpDownAdult.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAdult.Location = new System.Drawing.Point(346, 100);
+            this.numericUpDownAdult.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numericUpDownAdult.Name = "numericUpDownAdult";
+            this.numericUpDownAdult.Size = new System.Drawing.Size(56, 24);
+            this.numericUpDownAdult.TabIndex = 76;
+            this.numericUpDownAdult.Value = new decimal(new int[] {
+            150,
+            0,
+            0,
+            0});
             // 
             // ShowForm
             // 
@@ -1504,6 +1536,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChildren)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYouth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiscount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAdult)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1614,15 +1650,15 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDiscount;
         private System.Windows.Forms.Label labelDiscount;
-        private System.Windows.Forms.DateTimePicker dateTimePickerAdultPrice;
-        private System.Windows.Forms.DateTimePicker dateTimePickerYouthPrice;
-        private System.Windows.Forms.DateTimePicker dateTimePickerChildrenPrice;
         private System.Windows.Forms.Label labelYouthPrice;
         private System.Windows.Forms.Label labelAdultPrice;
         private System.Windows.Forms.Label labelChildPrice;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numericUpDownAdult;
+        private System.Windows.Forms.NumericUpDown numericUpDownDiscount;
+        private System.Windows.Forms.NumericUpDown numericUpDownYouth;
+        private System.Windows.Forms.NumericUpDown numericUpDownChildren;
     }
 }
