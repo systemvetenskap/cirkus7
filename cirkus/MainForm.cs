@@ -1357,8 +1357,10 @@ namespace cirkus
         {
             printPreviewDialog1.Document = printDocumentStatistic;
             printDocumentStatistic.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentStatistic_PrintPage);
-            printPreviewDialog1.Show();
+            printPreviewDialog1.ShowDialog();
             printPreviewControl1.Document = printDocumentStatistic;
+            
+
         }
 
         
