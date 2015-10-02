@@ -372,6 +372,7 @@ namespace cirkus
         }
         void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            var count = 0;
             foreach (DataRow dr in dtActs.Rows)
             {
                 //DataRow dr = dtActs.Rows[drw];
@@ -380,7 +381,10 @@ namespace cirkus
                 int fp = int.Parse(dr[2].ToString());
                 string st = dr[3].ToString();
                 string et = dr[4].ToString();
-
+                if(count == 0)
+                {
+                    Npg
+                }
                 conn.Open();
                 NpgsqlCommand command1 = new NpgsqlCommand("insert into acts(name, showid, free_placement, start_time, end_time) values(:nm, :shid, :fp, :st, :et)", conn);
                 command1.Parameters.Add(new NpgsqlParameter("nm", an));
