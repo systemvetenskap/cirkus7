@@ -68,17 +68,17 @@ namespace cirkus
             {
                 default:
                     //Biljettförsäljning
-                    listCustomers();
+                    ListCustomers();
                     break;
                 case 1:
                     //Föreställning
-                    LoadShows();
-                    LoadAkter();
-                    LoadStatistics();
+                    ListShows();
+                    ListActs();
+                    ListStatistics();
                     break;
                 case 2:
                     //Konto
-                    ListaPersonal();
+                    ListStaff();
                     break;
             }
         }
@@ -113,7 +113,7 @@ namespace cirkus
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            listCustomers();          
+            ListCustomers();          
         }
         #endregion
         #region HideCaret i textboxar
@@ -121,12 +121,10 @@ namespace cirkus
         {
             HideCaret();
         }
-
         private void txtPrintDatum_Click(object sender, EventArgs e)
         {
             HideCaret();
         }
-
         private void textBoxPrintShow_Click(object sender, EventArgs e)
         {
             HideCaret();
@@ -177,9 +175,122 @@ namespace cirkus
         }
         #endregion
         #region Biljettförsäljning
-        private void textBoxSearchCustomer_TextChanged(object sender, EventArgs e)
+        #region Methods in Biljettförsäljning
+        public void ListCustomers()
         {
-            listCustomers();
+            string sqlSearch = textBoxSearchCustomer.Text;
+            string sql = "SELECT lname, fname, customerid FROM customer WHERE LOWER(lname) LIKE LOWER('%" + sqlSearch + "%') OR LOWER(fname) LIKE LOWER('%" + sqlSearch + "%');";
+            try
+            {
+                conn.Open();
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                conn.Close();
+
+                dgCustomers.DataSource = dt;
+                dgCustomers.Columns[0].HeaderText = "Efternamn";
+                dgCustomers.Columns[1].HeaderText = "Förnamn";
+                dgCustomers.Columns[2].HeaderText = "ID";
+                dgCustomers.Columns[0].Width = 60;
+                dgCustomers.Columns[1].Width = 60;
+                dgCustomers.Columns[2].Width = 60;
+            }
+            catch (NpgsqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        public void ListTickets()
+        {
+            int currentRow = dgCustomers.SelectedRows[0].Index;
+            string CustomerID = dgCustomers[2, currentRow].Value.ToString();
+            if (currentRow != -1)
+            {
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
+                            from booking
+                            inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
+                            inner join show on sold_tickets.showid = show.showid
+                            inner join acts on sold_tickets.actid = acts.actid
+                            inner join customer on booking.customerid = customer.customerid
+                            where customer.customerid = '" + CustomerID + "' and show.date >=now()::date group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
+                try
+                {
+                    conn.Open();
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgTickets.DataSource = dt;
+
+                    dgTickets.DataSource = dt;
+                    dgTickets.Columns[0].HeaderText = "Boknings ID";
+                    dgTickets.Columns[1].HeaderText = "Datum";
+                    dgTickets.Columns[2].HeaderText = "Föreställning";
+                    dgTickets.Columns[3].HeaderText = "Betald";
+                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[5].HeaderText = "Pris(kr)";
+                    dgTickets.Columns[6].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[2].Width = 100;
+                }
+                catch (NpgsqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
+        }
+        public void ListOldTickets()
+        {
+            int currentRow = dgCustomers.SelectedRows[0].Index;
+            string CustomerID = dgCustomers[2, currentRow].Value.ToString();
+            if (currentRow != -1)
+            {
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
+                                from booking
+                                inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
+                                inner join show on sold_tickets.showid = show.showid
+                                inner join acts on sold_tickets.actid = acts.actid
+                                inner join customer on booking.customerid = customer.customerid
+                                where customer.customerid = '" + CustomerID + "' and show.date < now()::date group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
+                try
+                {
+                    conn.Open();
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dgTickets.DataSource = dt;
+
+                    dgTickets.DataSource = dt;
+                    dgTickets.Columns[0].HeaderText = "Boknings ID";
+                    dgTickets.Columns[1].HeaderText = "Datum";
+                    dgTickets.Columns[2].HeaderText = "Föreställning";
+                    dgTickets.Columns[3].HeaderText = "Betald";
+                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
+                    dgTickets.Columns[5].HeaderText = "Pris";
+                    dgTickets.Columns[6].HeaderText = "Reserverad till";
+
+                    dgTickets.Columns[2].Width = 100;
+                }
+                catch (NpgsqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+
         }
         private void EmptyTextboxesTab1()
         {
@@ -190,6 +301,12 @@ namespace cirkus
             textBoxPrintAct.Clear();
             textBoxPrintAge.Clear();
             akttider = "";
+        }
+        #endregion
+        #region Events in Biljettförsäljning
+        private void textBoxSearchCustomer_TextChanged(object sender, EventArgs e)
+        {
+            ListCustomers();
         }
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -269,7 +386,7 @@ namespace cirkus
         private void textBoxSearchTicket_TextChanged(object sender, EventArgs e)
         {
             textBoxSearchCustomer.Clear();
-            if (!EndastSiffror(textBoxSearchTicket.Text)|| textBoxSearchTicket.TextLength>=7)
+            if (!OnlyDigits(textBoxSearchTicket.Text)|| textBoxSearchTicket.TextLength>=7)
             {
                 MessageBox.Show("Du kan endast söka med siffror (max 6 stycken)");
                 return;
@@ -281,8 +398,8 @@ namespace cirkus
                 dgCustomers.DataSource = null;
                 checkBoxOlderTickets.Enabled = true;
 
-                listCustomers();
-                listTickets();
+                ListCustomers();
+                ListTickets();
             }
             else
             {
@@ -388,122 +505,6 @@ namespace cirkus
             e.Graphics.DrawString(TA, drawFontBoldAndUnderline, drawBrush, new PointF(300, 480));
             e.Graphics.DrawString(TK, drawFontBoldAndUnderline, drawBrush, new PointF(450, 480));
         }
-        public void listCustomers()
-        {
-            string sqlSearch = textBoxSearchCustomer.Text;
-            string sql = "SELECT lname, fname, customerid FROM customer WHERE LOWER(lname) LIKE LOWER('%" + sqlSearch + "%') OR LOWER(fname) LIKE LOWER('%" + sqlSearch + "%');";
-            try
-            {
-                conn.Open();
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                conn.Close();
-
-                dgCustomers.DataSource = dt;
-                dgCustomers.Columns[0].HeaderText = "Efternamn";
-                dgCustomers.Columns[1].HeaderText = "Förnamn";
-                dgCustomers.Columns[2].HeaderText = "ID";
-                dgCustomers.Columns[0].Width = 60;
-                dgCustomers.Columns[1].Width = 60;
-                dgCustomers.Columns[2].Width = 60;
-            }
-            catch (NpgsqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-            }
-        }
-        public void listTickets()
-        {
-            int currentRow = dgCustomers.SelectedRows[0].Index;
-            string CustomerID = dgCustomers[2, currentRow].Value.ToString();
-            if (currentRow != -1)
-            {
-                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
-                            from booking
-                            inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
-                            inner join show on sold_tickets.showid = show.showid
-                            inner join acts on sold_tickets.actid = acts.actid
-                            inner join customer on booking.customerid = customer.customerid
-                            where customer.customerid = '" + CustomerID + "' and show.date >=now()::date group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
-                try
-                {
-                    conn.Open();
-                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dgTickets.DataSource = dt;
-
-                    dgTickets.DataSource = dt;
-                    dgTickets.Columns[0].HeaderText = "Boknings ID";
-                    dgTickets.Columns[1].HeaderText = "Datum";
-                    dgTickets.Columns[2].HeaderText = "Föreställning";
-                    dgTickets.Columns[3].HeaderText = "Betald";
-                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
-                    dgTickets.Columns[5].HeaderText = "Pris(kr)";
-                    dgTickets.Columns[6].HeaderText = "Reserverad till";
-
-                    dgTickets.Columns[2].Width = 100;
-                }
-                catch (NpgsqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
-                }         
-            }
-
-        }
-        public void listOldTickets()
-        {
-            int currentRow = dgCustomers.SelectedRows[0].Index;
-            string CustomerID = dgCustomers[2, currentRow].Value.ToString();
-            if (currentRow != -1)
-            {
-                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
-                                from booking
-                                inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
-                                inner join show on sold_tickets.showid = show.showid
-                                inner join acts on sold_tickets.actid = acts.actid
-                                inner join customer on booking.customerid = customer.customerid
-                                where customer.customerid = '" + CustomerID + "' and show.date < now()::date group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
-                try
-                {
-                    conn.Open();
-                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dgTickets.DataSource = dt;
-
-                    dgTickets.DataSource = dt;
-                    dgTickets.Columns[0].HeaderText = "Boknings ID";
-                    dgTickets.Columns[1].HeaderText = "Datum";
-                    dgTickets.Columns[2].HeaderText = "Föreställning";
-                    dgTickets.Columns[3].HeaderText = "Betald";
-                    dgTickets.Columns[4].HeaderText = "Åldersgrupp";
-                    dgTickets.Columns[5].HeaderText = "Pris";
-                    dgTickets.Columns[6].HeaderText = "Reserverad till";
-
-                    dgTickets.Columns[2].Width = 100;
-                }
-                catch (NpgsqlException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-
-        }
         private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
             AddCustomerForm custForm = new AddCustomerForm(staffUserId);
@@ -603,7 +604,7 @@ namespace cirkus
         {
             dgTicketActs.DataSource = null;
             EmptyTextboxesTab1();
-            listTickets();
+            ListTickets();
         }
         private void buttonEditTicket_Click(object sender, EventArgs e)
         {
@@ -714,7 +715,7 @@ namespace cirkus
                     }
                     conn.Close();
                 }
-                listTickets();
+                ListTickets();
             }
             else if (btnDeleteSelectedTicket.Text=="Radera vald akt")
             {
@@ -769,30 +770,30 @@ namespace cirkus
                         conn.Close();
                     }
                 }
-                listTickets();
+                ListTickets();
             }
         }
         private void dgCustomers_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up)
             {
-                listTickets();
+                ListTickets();
             }
             else if (e.KeyCode == Keys.Down)
             {
-                listTickets();
+                ListTickets();
             }
         }
         private void dgCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dgTicketActs.DataSource = null;
-            listTickets();
+            ListTickets();
         }
         private void checkBoxOlderTickets_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxOlderTickets.Checked==true)
             {
-                listOldTickets();
+                ListOldTickets();
 
                 btnPrint.Enabled = false;
                 textBoxPrintAct.Enabled = false;
@@ -804,7 +805,7 @@ namespace cirkus
             }
             else if (checkBoxOlderTickets.Checked==false)
             {
-                listTickets();
+                ListTickets();
 
                 btnPrint.Enabled = true;
                 textBoxPrintAct.Enabled = true;
@@ -829,69 +830,10 @@ namespace cirkus
             printPreviewControl1.Document = printDocumentBiljett;
         }
         #endregion
+        #endregion
         #region Föreställningar
-        private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
-        {
-            ShowForm showForm = new ShowForm();
-            showForm.ButtonVisibleSparaAndringar();
-            showForm.ShowDialog();
-        }
-        private void buttonRaderaForestallning_Click(object sender, EventArgs e)
-        {
-            DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade föreställningen ?",
-            "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (Confirmation == DialogResult.Yes)
-            {
-                int selectedID;
-                DataGridViewRow row = this.dgShows.SelectedRows[0];
-                selectedID = Convert.ToInt32(row.Cells["showid"].Value);
-                string sql = "DELETE FROM show WHERE showid = '" + selectedID + "'";
-                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-
-                conn.Open();
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (NpgsqlException)
-                {
-                    MessageBox.Show("Du kan inte ta bort en föreställning med bokade platser.");
-                    return;
-                }
-                conn.Close();
-
-                LoadShows();
-                MessageBox.Show("Förestälningen är raderad!");
-
-                if (Confirmation==DialogResult.No)
-                {
-                    return;
-                }
-            }
-        }
-        private void buttonAndraForestallning_Click(object sender, EventArgs e)
-        {
-            
-            //int selectedID;
-            //DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
-            //selectedID = Convert.ToInt32(row.Cells["showid"].Value);
-
-
-            //string nySelectedID = selectedID.ToString();
-
-            //ShowForm frm = new ShowForm();
-            //frm.SetID(nySelectedID);
-
-            //frm.ButtonVisibleLaggTillForestallning();
-
-            //frm.ShowDialog();
-        }
-        private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            LoadStatistics();
-        }
-        public void LoadShows()
+        #region Methods in Föreställningar
+        public void ListShows()
         {
             DataTable dt = new DataTable();
             String sql;
@@ -916,16 +858,16 @@ namespace cirkus
             finally
             {
                 conn.Close();
-            }           
+            }
         }
-        public void LoadStatistics()
+        public void ListStatistics()
         {
             if (checkBoxAllActs.Checked == true)
             {
                 //Vuxenbiljetter
                 conn.Open();
                 string sql = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
-                                         where showid = '"+showid+"' and type = 'Vuxen'";
+                                         where showid = '" + showid + "' and type = 'Vuxen'";
                 NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
                 NpgsqlDataReader dr = cmd.ExecuteReader();
 
@@ -950,7 +892,7 @@ namespace cirkus
                 //Ungdomsbiljetter
                 conn.Open();
                 string sqlAU = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
-                                         where showid = '"+showid+"' and type = 'Ungdom'";
+                                         where showid = '" + showid + "' and type = 'Ungdom'";
                 NpgsqlCommand cmdAU = new NpgsqlCommand(sqlAU, conn);
                 NpgsqlDataReader drAU = cmdAU.ExecuteReader();
 
@@ -975,7 +917,7 @@ namespace cirkus
                 //Barn
                 conn.Open();
                 string sqlKB = @"select sum(sold_tickets.sum), count(sold_tickets.type) as antal from sold_tickets
-                                         where showid = '" + showid + "' and type = 'Barn'"; 
+                                         where showid = '" + showid + "' and type = 'Barn'";
                 NpgsqlCommand cmdKB = new NpgsqlCommand(sqlKB, conn);
                 NpgsqlDataReader drKB = cmdKB.ExecuteReader();
 
@@ -1024,7 +966,7 @@ namespace cirkus
 
             else if (checkBoxAllActs.Checked == false && dgActs.Rows != null)
             {
-                if(dgActs.Rows.Count > 0)
+                if (dgActs.Rows.Count > 0)
                 {
                     int selectedIndex = dgActs.SelectedRows[0].Index;
                     actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
@@ -1134,10 +1076,10 @@ namespace cirkus
                     totaltKornor = Convert.ToString(kronorVuxen + kronorUngdom + kronorBarn);
 
                     textBoxKrTotal.Text = totaltKornor;
-                }                              
+                }
             }
         }
-        public void LoadAkter()
+        public void ListActs()
         {
             if (dgShows.RowCount != 0)
             {
@@ -1145,7 +1087,7 @@ namespace cirkus
                 showid = int.Parse(dgShows[0, selectedIndex].Value.ToString());
                 show_name = dgShows[2, selectedIndex].Value.ToString();
                 show_date = dgShows[1, selectedIndex].Value.ToString();
-           
+
                 string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
 
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
@@ -1159,23 +1101,86 @@ namespace cirkus
                 dgActs.Columns[0].HeaderText = "Akt namn";
             }
         }
+        #endregion
+        #region Events in Föreställningar
+        private void buttonSkapaForestalnning_Click_1(object sender, EventArgs e)
+        {
+            ShowForm showForm = new ShowForm();
+            showForm.ButtonVisibleSparaAndringar();
+            showForm.ShowDialog();
+        }
+        private void buttonRaderaForestallning_Click(object sender, EventArgs e)
+        {
+            DialogResult Confirmation = MessageBox.Show("Är du säker på att du vill ta bort den markerade föreställningen ?",
+            "Bekräftelse", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (Confirmation == DialogResult.Yes)
+            {
+                int selectedID;
+                DataGridViewRow row = this.dgShows.SelectedRows[0];
+                selectedID = Convert.ToInt32(row.Cells["showid"].Value);
+                string sql = "DELETE FROM show WHERE showid = '" + selectedID + "'";
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
+
+                conn.Open();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (NpgsqlException)
+                {
+                    MessageBox.Show("Du kan inte ta bort en föreställning med bokade platser.");
+                    return;
+                }
+                conn.Close();
+
+                ListShows();
+                MessageBox.Show("Förestälningen är raderad!");
+
+                if (Confirmation==DialogResult.No)
+                {
+                    return;
+                }
+            }
+        }
+        private void buttonAndraForestallning_Click(object sender, EventArgs e)
+        {
+            
+            //int selectedID;
+            //DataGridViewRow row = this.dgvShowsList.SelectedRows[0];
+            //selectedID = Convert.ToInt32(row.Cells["showid"].Value);
+
+
+            //string nySelectedID = selectedID.ToString();
+
+            //ShowForm frm = new ShowForm();
+            //frm.SetID(nySelectedID);
+
+            //frm.ButtonVisibleLaggTillForestallning();
+
+            //frm.ShowDialog();
+        }
+        private void dgvAkter_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ListStatistics();
+        }
         private void dgvShowsList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            LoadAkter();
-            LoadStatistics();
+            ListActs();
+            ListStatistics();
             
         }
         private void dgvShowsList_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Up)
             {
-                LoadAkter();
-                LoadStatistics();
+                ListActs();
+                ListStatistics();
             }
             else if (e.KeyCode == Keys.Down)
             {
-                LoadAkter();
-                LoadStatistics();
+                ListActs();
+                ListStatistics();
             }
         }
         private void dgvAkter_KeyUp(object sender, KeyEventArgs e)
@@ -1183,12 +1188,12 @@ namespace cirkus
             if (e.KeyCode == Keys.Up)
             {
 
-                LoadStatistics();
+                ListStatistics();
             }
             else if (e.KeyCode == Keys.Down)
             {
 
-                LoadStatistics();
+                ListStatistics();
             }
         }
         private void buttonSkrivUtForestallning_Click(object sender, EventArgs e)
@@ -1203,7 +1208,7 @@ namespace cirkus
         }
         private void checkBoxAllaAkter_CheckedChanged(object sender, EventArgs e)
         {
-            LoadStatistics();
+            ListStatistics();
         }
         private void btnPreview_Click(object sender, EventArgs e)
         {
@@ -1213,8 +1218,9 @@ namespace cirkus
             printPreviewControl1.Document = printDocumentStatistic;           
         }
         #endregion
+        #endregion
         #region Konto
-        #region Methods
+        #region Methods in Konto
         public void ResetColor()
         {
             textBoxSsnumber.BackColor = Color.White;
@@ -1246,7 +1252,7 @@ namespace cirkus
             textBoxPassword.BackColor = Color.White;
             comboBoxAuth.BackColor = Color.White;
         }
-        private void ListaPersonal()
+        private void ListStaff()
         {
             string sqlSearchStaff = textBoxSearchStaff.Text;
             string sql = "SELECT staffid, lname, fname, phonenumber  FROM staff WHERE LOWER(fname) LIKE LOWER('%" + sqlSearchStaff + "%') OR LOWER(lname) LIKE LOWER('%" + sqlSearchStaff + "%')";
@@ -1288,7 +1294,7 @@ namespace cirkus
                 conn.Close();
             }
         }
-        public bool EndastSiffror(string värde)
+        public bool OnlyDigits(string värde)
         {
             bool barasiffror = true;
             foreach (char siffra in värde)
@@ -1312,7 +1318,7 @@ namespace cirkus
                 return false;
             }
         }
-        public bool BaraBokstäver(string namn)
+        public bool OnlyLetters(string namn)
         {
             bool okej = true;
             foreach (char bokstav in namn)
@@ -1325,7 +1331,7 @@ namespace cirkus
             return okej;
         }
         #endregion
-        #region Events
+        #region Events in Konto
         private void btnTomFalten_Click(object sender, EventArgs e)
         {
             ResetColorandText();
@@ -1333,7 +1339,7 @@ namespace cirkus
         }
         private void textBoxSearchStaff_TextChanged(object sender, EventArgs e)
         {
-            ListaPersonal();
+            ListStaff();
         }
         private void btnSkapaKonto_Click(object sender, EventArgs e)
         {
@@ -1346,7 +1352,7 @@ namespace cirkus
                 LblStatusAccount.Text = "Ange personnummret, med 10 siffror";
                 return;
             }
-            if (textBoxFirstname.TextLength > 60 || !BaraBokstäver(textBoxFirstname.Text) || string.IsNullOrWhiteSpace(textBoxFirstname.Text))
+            if (textBoxFirstname.TextLength > 60 || !OnlyLetters(textBoxFirstname.Text) || string.IsNullOrWhiteSpace(textBoxFirstname.Text))
             {
                 textBoxFirstname.BackColor = Color.Tomato;
                 LblStatusAccount.Visible = true;
@@ -1354,7 +1360,7 @@ namespace cirkus
                 LblStatusAccount.Text = "Ange förnamn, utan siffror, max 60 bokstäver";
                 return;
             }
-            if (textBoxLastName.TextLength > 60 || !BaraBokstäver(textBoxLastName.Text) || string.IsNullOrWhiteSpace(textBoxLastName.Text))
+            if (textBoxLastName.TextLength > 60 || !OnlyLetters(textBoxLastName.Text) || string.IsNullOrWhiteSpace(textBoxLastName.Text))
             {
                 textBoxLastName.BackColor = Color.Tomato;
                 LblStatusAccount.Visible = true;
@@ -1362,7 +1368,7 @@ namespace cirkus
                 LblStatusAccount.Text = "Ange förnamn, utan siffror, max 60 bokstäver.";
                 return;
             }
-            if (textBoxPhoneNumber.TextLength > 10 || !EndastSiffror(textBoxPhoneNumber.Text) || string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text))
+            if (textBoxPhoneNumber.TextLength > 10 || !OnlyDigits(textBoxPhoneNumber.Text) || string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text))
             {
                 textBoxPhoneNumber.BackColor = Color.Tomato;
                 LblStatusAccount.Visible = true;
@@ -1450,7 +1456,7 @@ namespace cirkus
 
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                ListaPersonal();
+                ListStaff();
                 ResetColorandText();
             }
             catch (NpgsqlException)
@@ -1519,7 +1525,7 @@ namespace cirkus
                     LblStatusAccount.Text = "Ange personnummret, med 10 siffror";
                     return;
                 }
-                if (textBoxFirstname.TextLength > 60 || !BaraBokstäver(textBoxFirstname.Text) || string.IsNullOrWhiteSpace(textBoxFirstname.Text))
+                if (textBoxFirstname.TextLength > 60 || !OnlyLetters(textBoxFirstname.Text) || string.IsNullOrWhiteSpace(textBoxFirstname.Text))
                 {
                     textBoxFirstname.BackColor = Color.Tomato;
                     LblStatusAccount.Visible = true;
@@ -1527,7 +1533,7 @@ namespace cirkus
                     LblStatusAccount.Text = "Ange förnamn, utan siffror, max 60 bokstäver";
                     return;
                 }
-                if (textBoxLastName.TextLength > 60 || !BaraBokstäver(textBoxLastName.Text) || string.IsNullOrWhiteSpace(textBoxLastName.Text))
+                if (textBoxLastName.TextLength > 60 || !OnlyLetters(textBoxLastName.Text) || string.IsNullOrWhiteSpace(textBoxLastName.Text))
                 {
                     textBoxLastName.BackColor = Color.Tomato;
                     LblStatusAccount.Visible = true;
@@ -1535,7 +1541,7 @@ namespace cirkus
                     LblStatusAccount.Text = "Ange förnamn, utan siffror, max 60 bokstäver.";
                     return;
                 }
-                if (textBoxPhoneNumber.TextLength > 10 || !EndastSiffror(textBoxPhoneNumber.Text) || string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text))
+                if (textBoxPhoneNumber.TextLength > 10 || !OnlyDigits(textBoxPhoneNumber.Text) || string.IsNullOrWhiteSpace(textBoxPhoneNumber.Text))
                 {
                     textBoxPhoneNumber.BackColor = Color.Tomato;
                     LblStatusAccount.Visible = true;
@@ -1609,7 +1615,7 @@ namespace cirkus
                 btnEmptyBoxes.Enabled = true;
                 btnDeleteAccount.Enabled = false;
                 dgStaff.Enabled = true;
-                ListaPersonal();
+                ListStaff();
                 btnUpdateAccount.Text = "Uppdatera/ändra konto";
                 textBoxUsername.Enabled = true;
                 btnCreateAccount.Enabled = true;
@@ -1655,7 +1661,7 @@ namespace cirkus
                 LblStatusAccount.Visible = true;
                 LblStatusAccount.ForeColor = Color.Red;
                 LblStatusAccount.Text = "Användare raderad";
-                ListaPersonal();
+                ListStaff();
                 ResetColorandText();
             }
             if (Confirmation == DialogResult.No)

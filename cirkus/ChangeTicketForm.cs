@@ -14,9 +14,7 @@ namespace cirkus
     public partial class ChangeTicketForm : Form
     {
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-        int bookingid;
-
-       
+        int bookingid;     
         public ChangeTicketForm(DataTable dt)
         {
             InitializeComponent();
@@ -26,8 +24,6 @@ namespace cirkus
             int selectedindex = dgSelectedCustomerTicket.SelectedRows[0].Index;
             bookingid = int.Parse(dgSelectedCustomerTicket[0, selectedindex].Value.ToString());
         }
-
-
         private void btnSpara_Click(object sender, EventArgs e)
         {
             if (checkBoxPaidTicket.Checked==false)
@@ -45,7 +41,7 @@ namespace cirkus
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
-                frm.listTickets();
+                frm.ListTickets();
                 this.Close();
             }
             else if (checkBoxPaidTicket.Checked==true)
@@ -66,12 +62,11 @@ namespace cirkus
                 conn.Close();
 
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
-                frm.listTickets();
+                frm.ListTickets();
 
                 this.Close();
             }
         }
-
         private void btnChangeTicket_Click(object sender, EventArgs e)
         {
             checkBoxPaidTicket.Enabled = true;
@@ -80,13 +75,11 @@ namespace cirkus
             btnChangeTicket.Enabled = false;
 
         }
-
         private void dgSelectedTicket(object sender, DataGridViewCellEventArgs e)
         {
             int selectedindex = dgSelectedCustomerTicket.SelectedRows[0].Index;
             bookingid = int.Parse(dgSelectedCustomerTicket[0, selectedindex].Value.ToString());
         }
-
         private void checkBoxPaidTicket_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxPaidTicket.Checked==true)

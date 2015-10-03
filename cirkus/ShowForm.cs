@@ -85,20 +85,15 @@ namespace cirkus
             InitializeComponent();
             backgroundWorker1 = new BackgroundWorker();
             backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
-
-
         }
-
         public void ButtonVisibleSparaAndringar()
         {
             buttonSparaAndringar.Visible = false;
         }
-
         public void ButtonVisibleLaggTillForestallning()
         {
             buttonLaggTIllForestallning.Visible = false;
         }
-
         public void SetID(string s)
         {
             Name = s;
@@ -121,8 +116,6 @@ namespace cirkus
             }
             conn.Close();
         }
-
-
         private void buttonLaggTillAkt_Click(object sender, EventArgs e)
         {
 
@@ -208,7 +201,6 @@ namespace cirkus
 
             
         }
-
         private void buttonRaderaAkt_Click(object sender, EventArgs e)
         {
             DataRow row = dtActs.NewRow();
@@ -239,7 +231,6 @@ namespace cirkus
                 return;
             }
         }
-
         private void ShowForm_Load(object sender, EventArgs e)
         {
             DataColumn id = new DataColumn();
@@ -269,7 +260,6 @@ namespace cirkus
             textBoxAntalFriplatser.Text = "250";
             getSeats();
         }
-
         private void buttonSparaAndringar_Click(object sender, EventArgs e)
         {
             bool allowAdd = true;
@@ -317,7 +307,7 @@ namespace cirkus
 
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
-                frm.LoadShows();
+                frm.ListShows();
 
                 MessageBox.Show("Ändringarna har sparats!");
                 lblStatus.Visible = true;
@@ -325,7 +315,6 @@ namespace cirkus
                 lblStatus.Text = "Ändringarna har sparats";
             }
         }
-
         private void buttonLaggTIllForestallning_Click(object sender, EventArgs e)
         {
             bool allowAdd = true;
@@ -384,8 +373,8 @@ namespace cirkus
                 conn.Close();
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
-                frm.LoadShows();
-                frm.LoadAkter();
+                frm.ListShows();
+                frm.ListActs();
             }
         }
         void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -408,8 +397,6 @@ namespace cirkus
                 command1.Parameters.Add(new NpgsqlParameter("st", st));
                 command1.Parameters.Add(new NpgsqlParameter("et", et));
                 command1.ExecuteNonQuery();
-
-
 
                 NpgsqlCommand command2 = new NpgsqlCommand("select currval('acts_actid_seq');", conn);
                 NpgsqlDataReader read2;
@@ -449,7 +436,6 @@ namespace cirkus
             }
             
         }
-
         private void textBoxAntalFriplatser_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -457,7 +443,6 @@ namespace cirkus
                 e.Handled = true;
             }
         }
-
         private void textBoxAntalFriplatser_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(textBoxAntalFriplatser.Text, "  ^ [0-9]"))
@@ -465,35 +450,29 @@ namespace cirkus
                 textBoxAntalFriplatser.Text = "";
             }
         }
-
         private void textBoxBeskrivning_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void textBoxBeskrivning_Click(object sender, EventArgs e)
         {
 
             textBoxBeskrivning.BackColor = Color.White;
            
         }
-
         private void test_Click(object sender, EventArgs e)
         {
 
 
         }
-
         private void Sittplatser_Enter(object sender, EventArgs e)
         {
 
         }
-
         private void txtActname_Click(object sender, EventArgs e)
         {
             
         }
-
         private void btnSaveMap_Click(object sender, EventArgs e)
         {
 
@@ -535,11 +514,7 @@ namespace cirkus
                                     cSeats.Rows.Add(row);
 
                                 }
-                      
-
-                                
-
-                               
+      
                             }
 
 
@@ -559,8 +534,6 @@ namespace cirkus
 
                         //read = command.ExecuteReader();
                         //read.Read();
-
-
                     }
                 }
                 catch (NpgsqlException ex)
@@ -574,19 +547,14 @@ namespace cirkus
             else
             {
 
-
-
-
             }
      
         }
-
         private void btnLoadMap_Click(object sender, EventArgs e)
         {
 
 
         }
-
         private void check_Click(object sender, EventArgs e)
         {
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
@@ -595,7 +563,6 @@ namespace cirkus
 
             }
         }
-
         private void uncheck_Click(object sender, EventArgs e)
         {
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
@@ -604,22 +571,18 @@ namespace cirkus
 
             }
         }
-
         private void dateTimePickerForsaljningstidFran_ValueChanged(object sender, EventArgs e)
         {
 
         }
-
         private void labelAngeStaplatser_Click(object sender, EventArgs e)
         {
 
         }
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
-
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int selectedIndex = dgActs.SelectedRows[0].Index;
@@ -634,7 +597,6 @@ namespace cirkus
             
             seatmap();
         }
-
         private void textBoxAntalFriplatser_Click(object sender, EventArgs e)
         {
             textBoxAntalFriplatser.BackColor = Color.White;
@@ -646,9 +608,6 @@ namespace cirkus
             conn.Open();
             cmd.Fill(seats);
             conn.Close();
-
-
-
         }       
     }
 }

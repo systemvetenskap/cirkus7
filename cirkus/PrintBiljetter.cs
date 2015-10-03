@@ -31,13 +31,11 @@ namespace cirkus
             bidt = bdt;
             
         }
-
         private void PrintBiljetter_Load(object sender, EventArgs e)
         {
             listTicketDirekt();
             
         }
-
         private void dgTicketsDirekt_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int selectedindex = dgTicketActsDirekt.SelectedRows[0].Index; //Selected Akt
@@ -53,13 +51,11 @@ namespace cirkus
             tider = akttider;
             datum = DateTime.Parse(dgTicketsDirekt[1, selectedindex].Value.ToString()).ToShortDateString();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
 
 
       }
-
         private void button2_Click(object sender, EventArgs e)
         {
             // Kolla dokumentet innan man skrivar ut
@@ -69,7 +65,6 @@ namespace cirkus
             printPreviewDialog1.ShowDialog();
             printPreviewControl1.Document = printDocumentBIljettDirekt;
         }
-
         public void listTicketDirekt()
         {
             
@@ -115,7 +110,6 @@ namespace cirkus
             listAct();
 
         }
-
         private void listAct()
         {
             if (dgTicketsDirekt.Rows.Count >= 0)
@@ -146,17 +140,14 @@ namespace cirkus
             }
             
         }
-
         private void dgTicketActsDirekt_Click(object sender, EventArgs e)
         {
             
         }
-
         private void dgTicketsDirekt_Click(object sender, EventArgs e)
         {
             listAct();
         }
-
         private void buttonPrintBiljettDirekt_Click(object sender, EventArgs e)
         {
             // Printing 
@@ -186,7 +177,6 @@ namespace cirkus
 
 
         }
-
         private void printDocumentBIljettDirekt_PrintPage(object sender, PrintPageEventArgs e)
         {
             
@@ -250,7 +240,6 @@ namespace cirkus
             e.Graphics.DrawString(pris + " kronor", drawFont, drawBrush, new PointF(250, point));
 
             
-        }
-        
+        }     
     }
 }

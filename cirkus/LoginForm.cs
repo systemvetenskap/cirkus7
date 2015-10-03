@@ -15,32 +15,25 @@ namespace cirkus
     public partial class LoginForm : Form
     {
         public string staffUserId, fname, lname, auth;
-
-
         private void textUsername_Click(object sender, EventArgs e)
         {
             textUsername.Clear();
         }
-
         private void textPassword_Click(object sender, EventArgs e)
         {
             textPassword.Clear();
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
             PasswordRecoveryForm PwRf = new PasswordRecoveryForm();
             PwRf.ShowDialog();
            
         }
-
         private NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-
         public LoginForm()
         {
             InitializeComponent();
         }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             lblStatusLogIn.Visible = false;
@@ -71,7 +64,6 @@ namespace cirkus
                 conn.Close();
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-
             }
             catch (InvalidOperationException)
             {

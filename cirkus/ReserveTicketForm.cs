@@ -49,7 +49,6 @@ namespace cirkus
         NpgsqlCommand cmd;
         MailMessage mail;
 
-
         public ReserveTicketForm()
         {
             InitializeComponent();
@@ -216,7 +215,6 @@ namespace cirkus
 
 
         }
-
         private void load_Seats()
         {
             conn.Close();
@@ -295,7 +293,6 @@ namespace cirkus
         {
             dataGridViewShows.CurrentCell.Selected = false;
         }
-
         private void rowselection_changed(object sender, DataGridViewCellEventArgs e)
         {
             dataGridViewShows.BackgroundColor = Color.WhiteSmoke;
@@ -356,8 +353,6 @@ namespace cirkus
             dgShowActs.ClearSelection();
 
         }
-
-
         private void ReserveTicketForm_Load(object sender, EventArgs e)
         {
             clearSelect();
@@ -400,8 +395,6 @@ namespace cirkus
             lblStatusAge.Visible = false;
 
         }
-
-
         private void buttonAdd_Click(object sender, EventArgs e)
         {
 
@@ -459,7 +452,6 @@ namespace cirkus
             }
 
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -469,7 +461,6 @@ namespace cirkus
 
 
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
             //dateReservedto.Value = showdate;
@@ -538,7 +529,6 @@ namespace cirkus
 
             }
         }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked == true)
@@ -583,32 +573,25 @@ namespace cirkus
 
             }
         }
-
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
 
         }
-
         private void selected_seat(object sender, DataGridViewCellEventArgs e)
         {
 
 
             //label11.Text = seatid.ToString();
         }
-
-
-
         private void btnRemSeats_Click(object sender, EventArgs e)
         {
 
         }
-
         private void dgActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             lblSeatStatus.Visible = false;
@@ -734,7 +717,6 @@ namespace cirkus
             //}
 
         }
-
         private void txtBoxNrP_TextChanged(object sender, EventArgs e)
         {
             if (EndastSiffror(txtBoxNrP.Text) == true && string.IsNullOrWhiteSpace(txtBoxNrP.Text) == false)
@@ -765,10 +747,6 @@ namespace cirkus
                 }
             }
         }
-
-
-        
-
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
             if(radioRes.Checked == true)
@@ -776,7 +754,6 @@ namespace cirkus
                 dateReservedto.Enabled = true;
             }
         }
-
         private void dgTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //conn.Open();
@@ -828,7 +805,6 @@ namespace cirkus
 
 
         }
-
         private void button8_Click(object sender, EventArgs e)
         {
             if (cbAgegroup.SelectedIndex != -1)
@@ -852,7 +828,6 @@ namespace cirkus
             }
 
         }
-
         private void dgTickets_SelectionChanged(object sender, EventArgs e)
         {
 
@@ -860,9 +835,6 @@ namespace cirkus
 
 
         }
-
-
-
         private void dgActs_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             int i = 0;
@@ -926,7 +898,6 @@ namespace cirkus
                 checkLocked();
             }
         }
-
         private void dgActs_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             if (dgActs.IsCurrentCellDirty)
@@ -935,7 +906,6 @@ namespace cirkus
             }
 
         }
-
         private void dgActs_SelectionChanged(object sender, EventArgs e)
         {
             if(dgActs.Rows.Count > 0)
@@ -962,12 +932,10 @@ namespace cirkus
             }
 
         }
-
         private void dgTickets_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
         private void A1_CheckedChanged(object sender, EventArgs e)
         {
             lblSeatStatus.Visible = false; 
@@ -999,13 +967,11 @@ namespace cirkus
             }
  
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
             panel2.Visible = true;
         }
-
         private void printDocumentBIljettDirekt_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             string pris = "";
@@ -1095,7 +1061,6 @@ namespace cirkus
                 e.Graphics.DrawString(pris + " kronor", drawFont, drawBrush, new PointF(250, point));
             }
         }
-
         private void fp_CheckedChanged(object sender, EventArgs e)
         {
             if(fp.Checked == true)
@@ -1148,12 +1113,10 @@ namespace cirkus
            
 
         }
-
         private void dgActs_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
         private void seatSugg()
         {
             string sql = @"select seats.section, seats.rownumber, seats.seatid from available_seats 
@@ -1249,7 +1212,6 @@ namespace cirkus
    
             }
         }
-
         private void radioButtonDirectSale_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonDirectSale.Checked == true)
@@ -1277,7 +1239,6 @@ namespace cirkus
                 checkBox2.Enabled = true;
             }
         }
-
         private void radioPaid_CheckedChanged(object sender, EventArgs e)
         {
             if (radioPaid.Checked==true)
@@ -1289,7 +1250,6 @@ namespace cirkus
 
             }
         }
-
         private void button9_Click(object sender, EventArgs e)
         {
             bool best = true;
@@ -1344,7 +1304,6 @@ namespace cirkus
 
 
         }
-
         private void txtBoxNrP_Click(object sender, EventArgs e)
         {
 
@@ -1352,7 +1311,6 @@ namespace cirkus
             lblStatus1.Visible = false;
 
         }
-
         private void btnSaveTicket_Click(object sender, EventArgs e)
         {
             if(fullShowS == false)
@@ -1564,34 +1522,28 @@ namespace cirkus
 
 
         }
-
         private void comboTicketnr_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
         private void radioLoge_CheckedChanged(object sender, EventArgs e)
         {
             seatType = true;
         }
-
         private void radioFri_CheckedChanged(object sender, EventArgs e)
         {
             seatType = false;
 
         }
-
         private void button6_Click(object sender, EventArgs e)
         {
             panel1.Visible = true;
             panel2.Visible = false;
         }
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }
-
         private void selected_customer(object sender, DataGridViewCellEventArgs e)
         {
             int selectedIndex = dgCustom.SelectedRows[0].Index;
@@ -1600,7 +1552,6 @@ namespace cirkus
 
             //lblcustid.Text = customerid.ToString();
         }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             button1.Enabled = false;
@@ -1701,7 +1652,6 @@ namespace cirkus
             this.Close();
 
         }
-
         private void cbAgegroup_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(dgActs.Rows.Count > 0)
@@ -1770,7 +1720,6 @@ namespace cirkus
             }
 
         }
-
         private void dataGridViewActs_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -1839,7 +1788,6 @@ namespace cirkus
 
 
         }
-
         private void create_summary()
         {
   
@@ -1849,7 +1797,6 @@ namespace cirkus
             dataGridViewShows.CurrentCell.Selected = false;
 
         }
-
         private void createBooking()
         {
             DataTable ds = new DataTable();
@@ -2128,7 +2075,6 @@ namespace cirkus
 
 
         }
-
         public void SendMail()
         {
 
@@ -2147,7 +2093,6 @@ namespace cirkus
                 return false;
             }
         }
-
         public bool EndastSiffror(string värde)
         {
             bool barasiffror = true;
@@ -2352,7 +2297,6 @@ namespace cirkus
 
             return dt;
         }
-
         void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             
