@@ -18,6 +18,7 @@ namespace cirkus
         NpgsqlCommand command;
         DataRow row;
         DataTable cSeats = new DataTable();
+        DataTable seats = new DataTable();
         DataTable dtActs, dtSelectedSeats, dt, dtSeats;
         BindingSource bs = new BindingSource();
         BindingSource fs = new BindingSource();
@@ -31,34 +32,50 @@ namespace cirkus
         private void seatmap()
         {
             string sid = selected_actid.ToString();
+            //BindingSource filter = new BindingSource();
+
+            //filter.DataSource = cSeats;
+            //filter.Filter = string.Format("id = '{0}'", dgActs.SelectedRows[0].Index.ToString());
+
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
+
                 cb.Checked = false;
 
             }
 
+
+
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
-                foreach (DataRow row in cSeats.Rows)
+                if(cSeats.Rows.Count > 0)
                 {
-                    string s = row[2].ToString() + row[3].ToString();
-                    lblS.Text = s;
-                    if (row[0].ToString() == sid)
+                    foreach (DataRow row in cSeats.Rows)
                     {
-                        if (cb.Name == s)
+                        string s = row[2].ToString() + row[3].ToString();
+                        lblS.Text = s;
+                        //MessageBox.Show(row[0].ToString());
+                        if (row[0].ToString() == sid)
                         {
-                            cb.Checked = true;
+                            if (cb.Name == s)
+                            {
+                                cb.Checked = true;
+
+                            }
+
+
 
                         }
+                  
 
                     }
-                    else
-                    {
-
-
-                    }
+       
+           
+    
 
                 }
+               
+        
 
             }
 
@@ -250,6 +267,7 @@ namespace cirkus
             cSeats.Columns.Add("section");
             cSeats.Columns.Add("rownumber");
             textBoxAntalFriplatser.Text = "250";
+            getSeats();
         }
 
         private void buttonSparaAndringar_Click(object sender, EventArgs e)
@@ -372,6 +390,7 @@ namespace cirkus
         }
         void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            
             foreach (DataRow dr in dtActs.Rows)
             {
                 //DataRow dr = dtActs.Rows[drw];
@@ -380,7 +399,7 @@ namespace cirkus
                 int fp = int.Parse(dr[2].ToString());
                 string st = dr[3].ToString();
                 string et = dr[4].ToString();
-
+                conn.Close();
                 conn.Open();
                 NpgsqlCommand command1 = new NpgsqlCommand("insert into acts(name, showid, free_placement, start_time, end_time) values(:nm, :shid, :fp, :st, :et)", conn);
                 command1.Parameters.Add(new NpgsqlParameter("nm", an));
@@ -399,27 +418,34 @@ namespace cirkus
                 addedactid = read2[0].ToString();
                 conn.Close();
 
+                int nr = int.Parse(addedactid.ToString());
 
-
-
+                conn.Open();
+                NpgsqlCommand cmd2 = new NpgsqlCommand("Copy available_seats(actid, seatid) from STDIN", conn);
+                NpgsqlCopySerializer ser = new NpgsqlCopySerializer(conn);
+                NpgsqlCopyIn copy = new NpgsqlCopyIn(cmd2, conn, ser.ToStream);
                
-                //for (int drow = 0; drow < cSeats.Rows.Count; drow++)
-                    //foreach (DataRow row in cSeats.Rows)
-                        for (int drow = 0; drow < cSeats.Rows.Count; drow++)
-                        {
-                            DataRow row = cSeats.Rows[drow];
+
+                copy.Start();
+                    foreach (DataRow row in cSeats.Rows)      
+                    {
                             if (int.Parse(row[0].ToString()) == id)
                             {
                                 int seatid = int.Parse(row[1].ToString());
-
-                        conn.Open();
-                        NpgsqlCommand command3 = new NpgsqlCommand("insert into available_seats(actid, seatid) values (:aid, :sid)", conn);
-                                command3.Parameters.Add(new NpgsqlParameter("aid", addedactid));
-                                command3.Parameters.Add(new NpgsqlParameter("sid", seatid));
-                                command3.ExecuteNonQuery();
-                                conn.Close();
+                                    ser.AddInt32(nr);
+                                    ser.AddInt32(seatid);
+                                    ser.EndRow();
+                                    ser.Flush();
+                                //conn.Open();
+                                //NpgsqlCommand command3 = new NpgsqlCommand("insert into available_seats(actid, seatid) values (:aid, :sid)", conn);
+                                //command3.Parameters.Add(new NpgsqlParameter("aid", addedactid));
+                                //command3.Parameters.Add(new NpgsqlParameter("sid", seatid));
+                                //command3.ExecuteNonQuery();
+                                //conn.Close();
                             }
                         }
+                copy.End();
+                ser.Close();
             }
             
         }
@@ -493,35 +519,48 @@ namespace cirkus
                     {
                         if (cb.Checked)
                         {
-                            // Kollar först så att platsen finns!
+                            
                             seatSection = cb.Name[0].ToString();
                             seatNumber = cb.Name[1].ToString();
+                            foreach(DataRow r in seats.Rows)
+                            {
+                                if(seatSection == r[1].ToString() && seatNumber == r[2].ToString())
+                                {
+                                    DataRow row;
+                                    row = cSeats.NewRow();
+                                    row[0] = selected_actid.ToString();
+                                    row[1] = r[0].ToString();
+                                    row[2] = r[1].ToString();
+                                    row[3] = r[2].ToString();
+                                    cSeats.Rows.Add(row);
 
-                            NpgsqlCommand command;
-                            NpgsqlDataReader read;
-                            conn.Open();
-                            command = new NpgsqlCommand("SELECT seatid, section, rownumber FROM seats WHERE rownumber = @rwnr AND section = @section", conn);
-                            command.Parameters.Add(new NpgsqlParameter("@rwnr", seatNumber));
-                            command.Parameters.AddWithValue("@section", seatSection);
+                                }
+                      
 
-                            read = command.ExecuteReader();
-                            read.Read();
+                                
 
-                            DataRow row;
-                            row = cSeats.NewRow();
-                            row[0] = selected_actid.ToString();
-                            row[1] = read[0].ToString();
-                            row[2] = read[1].ToString();
-                            row[3] = read[2].ToString();
-                            cSeats.Rows.Add(row);
+                               
+                            }
 
-                            conn.Close();
 
-                            lblLayout.Visible = true;
-                            lblLayout.ForeColor = Color.Green;
-                            lblLayout.Text = "Layout för vald akt sparad";
-                            lblStatus.Visible = false;
                         }
+                        dgTest.DataSource = cSeats;
+                        lblLayout.Visible = true;
+                        lblLayout.ForeColor = Color.Green;
+                        lblLayout.Text = "Layout för vald akt sparad";
+                        lblStatus.Visible = false;
+                        //dgTest.DataSource = cSeats;
+                        //NpgsqlCommand command;
+                        //NpgsqlDataReader read;
+                        //conn.Open();
+                        //command = new NpgsqlCommand("SELECT seatid, section, rownumber FROM seats WHERE rownumber = @rwnr AND section = @section", conn);
+                        //command.Parameters.Add(new NpgsqlParameter("@rwnr", seatNumber));
+                        //command.Parameters.AddWithValue("@section", seatSection);
+
+                        //read = command.ExecuteReader();
+                        //read.Read();
+
+
                     }
                 }
                 catch (NpgsqlException ex)
@@ -600,6 +639,16 @@ namespace cirkus
         {
             textBoxAntalFriplatser.BackColor = Color.White;
             
+        }
+        private void getSeats()
+        {
+            NpgsqlDataAdapter cmd = new NpgsqlDataAdapter("SELECT seatid, section, rownumber FROM seats", conn);
+            conn.Open();
+            cmd.Fill(seats);
+            conn.Close();
+
+
+
         }       
     }
 }
