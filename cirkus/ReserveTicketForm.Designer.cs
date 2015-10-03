@@ -204,7 +204,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackColor = System.Drawing.Color.White;
+            this.buttonAdd.BackColor = System.Drawing.Color.GreenYellow;
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonAdd.Location = new System.Drawing.Point(789, 267);
             this.buttonAdd.Name = "buttonAdd";
@@ -216,7 +216,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.BackColor = System.Drawing.Color.White;
+            this.buttonCancel.BackColor = System.Drawing.Color.HotPink;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonCancel.Location = new System.Drawing.Point(658, 267);
             this.buttonCancel.Name = "buttonCancel";
@@ -421,7 +421,7 @@
             // 
             // visaallt
             // 
-            this.visaallt.BackColor = System.Drawing.Color.White;
+            this.visaallt.BackColor = System.Drawing.Color.Orange;
             this.visaallt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.visaallt.Location = new System.Drawing.Point(180, 269);
             this.visaallt.Name = "visaallt";
@@ -681,7 +681,7 @@
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.Color.White;
+            this.button6.BackColor = System.Drawing.Color.HotPink;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button6.Location = new System.Drawing.Point(694, 359);
             this.button6.Name = "button6";
@@ -702,7 +702,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackColor = System.Drawing.Color.GreenYellow;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(801, 359);
             this.button1.Name = "button1";
@@ -913,7 +913,7 @@
             // 
             // btnSaveTicket
             // 
-            this.btnSaveTicket.BackColor = System.Drawing.Color.White;
+            this.btnSaveTicket.BackColor = System.Drawing.Color.GreenYellow;
             this.btnSaveTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSaveTicket.Location = new System.Drawing.Point(72, 328);
             this.btnSaveTicket.Name = "btnSaveTicket";
@@ -1711,7 +1711,7 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.BackColor = System.Drawing.Color.HotPink;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Location = new System.Drawing.Point(675, 356);
             this.button3.Name = "button3";
@@ -1824,7 +1824,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackColor = System.Drawing.Color.GreenYellow;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Location = new System.Drawing.Point(788, 356);
             this.button2.Name = "button2";

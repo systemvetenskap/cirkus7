@@ -211,7 +211,7 @@
             // 
             // buttonLaggTIllForestallning
             // 
-            this.buttonLaggTIllForestallning.BackColor = System.Drawing.Color.White;
+            this.buttonLaggTIllForestallning.BackColor = System.Drawing.Color.GreenYellow;
             this.buttonLaggTIllForestallning.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLaggTIllForestallning.Location = new System.Drawing.Point(15, 416);
             this.buttonLaggTIllForestallning.Name = "buttonLaggTIllForestallning";
@@ -223,7 +223,7 @@
             // 
             // buttonSparaAndringar
             // 
-            this.buttonSparaAndringar.BackColor = System.Drawing.Color.White;
+            this.buttonSparaAndringar.BackColor = System.Drawing.Color.GreenYellow;
             this.buttonSparaAndringar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonSparaAndringar.Location = new System.Drawing.Point(184, 416);
             this.buttonSparaAndringar.Name = "buttonSparaAndringar";
@@ -400,7 +400,7 @@
             // 
             // uncheck
             // 
-            this.uncheck.BackColor = System.Drawing.Color.White;
+            this.uncheck.BackColor = System.Drawing.Color.HotPink;
             this.uncheck.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.uncheck.Location = new System.Drawing.Point(191, 318);
             this.uncheck.Name = "uncheck";
@@ -422,7 +422,7 @@
             // 
             // check
             // 
-            this.check.BackColor = System.Drawing.Color.White;
+            this.check.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.check.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.check.Location = new System.Drawing.Point(6, 317);
             this.check.Name = "check";
@@ -482,7 +482,7 @@
             // 
             // btnSaveMap
             // 
-            this.btnSaveMap.BackColor = System.Drawing.Color.White;
+            this.btnSaveMap.BackColor = System.Drawing.Color.GreenYellow;
             this.btnSaveMap.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSaveMap.Location = new System.Drawing.Point(59, 352);
             this.btnSaveMap.Name = "btnSaveMap";
@@ -1244,7 +1244,7 @@
             // 
             // buttonRaderaAkt
             // 
-            this.buttonRaderaAkt.BackColor = System.Drawing.Color.White;
+            this.buttonRaderaAkt.BackColor = System.Drawing.Color.HotPink;
             this.buttonRaderaAkt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonRaderaAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRaderaAkt.Location = new System.Drawing.Point(146, 348);
@@ -1257,7 +1257,7 @@
             // 
             // buttonLaggTillAkt
             // 
-            this.buttonLaggTillAkt.BackColor = System.Drawing.Color.White;
+            this.buttonLaggTillAkt.BackColor = System.Drawing.Color.GreenYellow;
             this.buttonLaggTillAkt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLaggTillAkt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLaggTillAkt.Location = new System.Drawing.Point(146, 281);

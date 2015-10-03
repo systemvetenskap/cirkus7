@@ -59,7 +59,7 @@
             // 
             // btnSendPassword
             // 
-            this.btnSendPassword.BackColor = System.Drawing.Color.White;
+            this.btnSendPassword.BackColor = System.Drawing.Color.GreenYellow;
             this.btnSendPassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSendPassword.Location = new System.Drawing.Point(20, 300);
             this.btnSendPassword.Name = "btnSendPassword";

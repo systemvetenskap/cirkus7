@@ -81,7 +81,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.White;
+            this.btnSave.BackColor = System.Drawing.Color.GreenYellow;
             this.btnSave.Enabled = false;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Location = new System.Drawing.Point(137, 183);
@@ -103,7 +103,7 @@
             // 
             // btnChangeTicket
             // 
-            this.btnChangeTicket.BackColor = System.Drawing.Color.White;
+            this.btnChangeTicket.BackColor = System.Drawing.Color.HotPink;
             this.btnChangeTicket.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnChangeTicket.Location = new System.Drawing.Point(17, 183);
             this.btnChangeTicket.Name = "btnChangeTicket";

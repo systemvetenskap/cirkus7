@@ -65,7 +65,8 @@
             // 
             // buttonPrintBiljettDirekt
             // 
-            this.buttonPrintBiljettDirekt.BackColor = System.Drawing.Color.White;
+            this.buttonPrintBiljettDirekt.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.buttonPrintBiljettDirekt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonPrintBiljettDirekt.Location = new System.Drawing.Point(474, 321);
             this.buttonPrintBiljettDirekt.Name = "buttonPrintBiljettDirekt";
             this.buttonPrintBiljettDirekt.Size = new System.Drawing.Size(103, 40);
@@ -122,7 +123,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackColor = System.Drawing.Color.HotPink;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(43, 321);
             this.button1.Name = "button1";
@@ -134,7 +135,8 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Location = new System.Drawing.Point(346, 321);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(122, 40);
