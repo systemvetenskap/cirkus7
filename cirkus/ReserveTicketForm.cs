@@ -165,8 +165,6 @@ namespace cirkus
                             }
                         }
 
-
-
                     }
 
                     break;
@@ -196,23 +194,6 @@ namespace cirkus
                     }
                     break;
             }
-
-
-
-            //dataGridViewActs.DataSource = acts;
-            //this.dataGridViewActs.Columns[0].Visible = false;
-            //this.dataGridViewActs.Columns[1].Visible = false;
-            //dataGridViewActs.Columns[1].Width = 129;
-            //dataGridViewActs.ClearSelection();
-
-
-
-            //dataGridViewActs.CurrentCell.Selected = false;
-
-            //dgTest.DataSource = acts;
-
-
-
 
         }
         private void load_Seats()
@@ -677,97 +658,7 @@ namespace cirkus
 
 
 
-            /*filterseats.Filter = string.Format("actid = '{0}'", actid);
-            filterBseats.DataSource = selectedseats;
-            filterBseats.Filter = string.Format("actid = '{0}'", actid);
-            dgSeats.Columns[0].Visible = false;
-            dgSeats.Columns[1].Visible = false;
-            /dgBseats.Columns[1].Visible = false;
-            /*dgSeats.DataSource = seats;
-           
-
-            dgBseats.DataSource = selectedseats;
-          
-
         
-            dgSeats.ClearSelection();
-            dgBseats.ClearSelection();*/
-
-            //dgTEST.DataSource = cSeats;
-
-
-            //    }
-            //    foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            //    {
-            //        if (cb.Enabled == false && cb.Checked == false)
-            //        {
-            //            cb.Checked = false;
-            //            cb.BackColor = Color.Gray;
-
-            //        }
-
-
-            //    }
-            //}
-
-            //private void button7_Click(object sender, EventArgs e)
-            //{
-            //    switch (agegroup)
-            //    {
-            //        case 0:
-            //            MessageBox.Show("Välj åldersgrupp");
-            //            return;
-
-            //        case 1:
-            //            priceid = 1;
-
-
-
-
-            //            break;
-            //        case 2:
-            //            priceid = 3;
-            //            break;
-            //        case 3:
-            //            priceid = 5;
-            //            break;
-            //    }
-            //    foreach (DataGridViewRow r in dataGridViewActs.SelectedRows)
-            //    {
-            //        DataGridViewRow t = (DataGridViewRow)r.Clone();
-            //        t.Cells[0].Value = r.Cells[0].Value;
-            //        t.Cells[1].Value = r.Cells[1].Value;
-            //        t.Cells[2].Value = r.Cells[2].Value;
-
-            //        row = chosenacts.NewRow();
-            //        row[0] = r.Cells[0].Value;
-            //        row[1] = r.Cells[1].Value;
-            //        row[2] = r.Cells[2].Value;
-            //        row[3] = priceid;
-            //        chosenacts.Rows.Add(row);
-
-
-
-
-
-            //        dgActs.DataSource = chosenacts;
-            //        filterActs.RemoveAt(dataGridViewActs.SelectedRows[0].Index);
-            //        dgActs.Columns[0].Visible = false;
-            //        dgActs.Columns[1].Visible = false;
-
-
-            //        DataRow[] rows = section.Select("actid ='" + actid + "'");
-            //        foreach (DataRow rw in rows)
-            //            rw.Delete();
-            //        dataGridViewActs.Rows.Remove(dataGridViewActs.SelectedRows[0]);
-            //        dgActs.ClearSelection();
-            //        dataGridViewActs.ClearSelection();
-            //        dgSeats.DataSource = seats;
-            //        reload_datable();
-            //        dgTestActs.DataSource = chosenacts;
-            //        load_Seats();
-
-            //}
 
         }
         private void txtBoxNrP_TextChanged(object sender, EventArgs e)
