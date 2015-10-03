@@ -344,23 +344,44 @@ namespace cirkus
                 date = dateTimePickerDatum.Text;
                 sale_start = dateTimePickerForsaljningstidFran.Value.ToString("yyyy-MM-dd");
                 sale_stop = dateTimePickerForsaljningstidTill.Value.ToString("yyyy-MM-dd");
-
                 int seat_number = Convert.ToInt16(textBoxAntalFriplatser.Text);
+                conn.Open();
+                command = new NpgsqlCommand(@"Insert into pricegroup(childprice_seat, youthchild_seat, adultprice_seat, childprice, youthprice, adultprice, discount_seat, discount) 
+                                                values(:cprices, :yprices, :aprices,:childprice,:youthprice, :adultprice, :discounts, :discount)" , conn);
+                command.Parameters.AddWithValue("cprices", childprice_seat.Value);
+                command.Parameters.AddWithValue("yprices", youthprice_seat.Value);
+                command.Parameters.AddWithValue("aprices", adultprice_seat.Value);
+                command.Parameters.AddWithValue("childprice",childprice.Value );
+                command.Parameters.AddWithValue("youthprice", youthprice.Value);
+                command.Parameters.AddWithValue("adultprice", adultprice.Value);
+                command.Parameters.AddWithValue("discounts", discount_seat.Value);
+                command.Parameters.AddWithValue("discount", discount.Value);
+                command.ExecuteNonQuery();
+
+                command = new NpgsqlCommand("select currval('pricegroup_priceid_seq');", conn);
+                NpgsqlDataReader read;
+                read = command.ExecuteReader();
+                read.Read();
+                int addedprice = int.Parse(read[0].ToString());
+                conn.Close();
+
+                
 
                 conn.Open();
 
-                command = new NpgsqlCommand(@"Insert into show (name, date, sale_start, sale_stop) Values (@name, @date, @sale_start, @sale_stop)", conn);
+                command = new NpgsqlCommand(@"Insert into show (name, date, sale_start, sale_stop, price_group) Values (@name, @date, @sale_start, @sale_stop, @price)", conn);
                 command.Parameters.AddWithValue("@date", date);
                 command.Parameters.AddWithValue("@name", name);
                 command.Parameters.AddWithValue("@sale_start", sale_start);
                 command.Parameters.AddWithValue("@sale_stop", sale_stop);
+                command.Parameters.AddWithValue("@price", addedprice);
                 command.ExecuteNonQuery();
            
                 command = new NpgsqlCommand("select currval('show_showid_seq');", conn);
-                NpgsqlDataReader read;
-                read = command.ExecuteReader();
-                read.Read();
-                addedshowid = read[0].ToString();
+                NpgsqlDataReader read2;
+                read2 = command.ExecuteReader();
+                read2.Read();
+                addedshowid = read2[0].ToString();
                 conn.Close();
 
 
