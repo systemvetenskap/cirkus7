@@ -32,43 +32,50 @@ namespace cirkus
         private void seatmap()
         {
             string sid = selected_actid.ToString();
-            //if(cSeats.Rows.Count > 0 && )
-            //{
-            //    foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            //    {
-            //        cb.Checked = false;
+            //BindingSource filter = new BindingSource();
 
-            //    }
-            //}
-         
+            //filter.DataSource = cSeats;
+            //filter.Filter = string.Format("id = '{0}'", dgActs.SelectedRows[0].Index.ToString());
 
             foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
             {
-                foreach (DataRow row in cSeats.Rows)
+
+                cb.Checked = false;
+
+            }
+
+
+
+            foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
+            {
+                if(cSeats.Rows.Count > 0)
                 {
-                    string s = row[2].ToString() + row[3].ToString();
-                    lblS.Text = s;
-                    if (row[0].ToString() == sid)
+                    foreach (DataRow row in cSeats.Rows)
                     {
-                        if (cb.Name == s)
-                        {
-                            cb.Checked = true;
-
-                        }
-               
-
-                    }
-                    else
-                    {
+                        string s = row[2].ToString() + row[3].ToString();
+                        lblS.Text = s;
+                        //MessageBox.Show(row[0].ToString());
                         if (row[0].ToString() == sid)
                         {
-                            cb.Checked = false;
-                        }
+                            if (cb.Name == s)
+                            {
+                                cb.Checked = true;
 
+                            }
+
+
+
+                        }
+                  
 
                     }
+       
+           
+    
 
                 }
+               
+        
 
             }
 
@@ -512,7 +519,7 @@ namespace cirkus
                     {
                         if (cb.Checked)
                         {
-                            // Kollar först så att platsen finns!
+                            
                             seatSection = cb.Name[0].ToString();
                             seatNumber = cb.Name[1].ToString();
                             foreach(DataRow r in seats.Rows)
