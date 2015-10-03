@@ -155,6 +155,7 @@
             this.Controls.Add(this.dgTicketActsDirekt);
             this.Controls.Add(this.buttonPrintBiljettDirekt);
             this.Controls.Add(this.dgTicketsDirekt);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PrintBiljetter";
             this.Text = "PrintBiljetter";
             this.Load += new System.EventHandler(this.PrintBiljetter_Load);

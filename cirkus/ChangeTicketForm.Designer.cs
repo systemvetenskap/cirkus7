@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChangeTicketForm));
             this.dtpTicketTo = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dgSelectedCustomerTicket = new System.Windows.Forms.DataGridView();
@@ -148,6 +149,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpTicketTo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ChangeTicketForm";
             this.Text = "Ändra biljett";

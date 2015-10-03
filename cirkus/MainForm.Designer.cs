@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
+            this.buttonForhandsgranskaUtskrift = new System.Windows.Forms.Button();
             this.lblsumma = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPrintDatum = new System.Windows.Forms.TextBox();
@@ -122,7 +123,6 @@
             this.printDocumentBiljett = new System.Drawing.Printing.PrintDocument();
             this.printDialog2 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog2 = new System.Windows.Forms.PrintPreviewDialog();
-            this.buttonForhandsgranskaUtskrift = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabTicket.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketActs)).BeginInit();
@@ -191,6 +191,19 @@
             this.tabTicket.Size = new System.Drawing.Size(953, 475);
             this.tabTicket.TabIndex = 0;
             this.tabTicket.Text = "Biljettförsäljning";
+            // 
+            // buttonForhandsgranskaUtskrift
+            // 
+            this.buttonForhandsgranskaUtskrift.BackColor = System.Drawing.Color.White;
+            this.buttonForhandsgranskaUtskrift.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonForhandsgranskaUtskrift.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonForhandsgranskaUtskrift.Location = new System.Drawing.Point(777, 318);
+            this.buttonForhandsgranskaUtskrift.Name = "buttonForhandsgranskaUtskrift";
+            this.buttonForhandsgranskaUtskrift.Size = new System.Drawing.Size(126, 35);
+            this.buttonForhandsgranskaUtskrift.TabIndex = 30;
+            this.buttonForhandsgranskaUtskrift.Text = "Förhandsgranska utskrift";
+            this.buttonForhandsgranskaUtskrift.UseVisualStyleBackColor = false;
+            this.buttonForhandsgranskaUtskrift.Click += new System.EventHandler(this.buttonForhandsgranskaUtskrift_Click);
             // 
             // lblsumma
             // 
@@ -1177,19 +1190,6 @@
             this.printPreviewDialog2.Name = "printPreviewDialog2";
             this.printPreviewDialog2.Visible = false;
             // 
-            // buttonForhandsgranskaUtskrift
-            // 
-            this.buttonForhandsgranskaUtskrift.BackColor = System.Drawing.Color.White;
-            this.buttonForhandsgranskaUtskrift.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonForhandsgranskaUtskrift.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonForhandsgranskaUtskrift.Location = new System.Drawing.Point(777, 318);
-            this.buttonForhandsgranskaUtskrift.Name = "buttonForhandsgranskaUtskrift";
-            this.buttonForhandsgranskaUtskrift.Size = new System.Drawing.Size(126, 35);
-            this.buttonForhandsgranskaUtskrift.TabIndex = 30;
-            this.buttonForhandsgranskaUtskrift.Text = "Förhandsgranska utskrift";
-            this.buttonForhandsgranskaUtskrift.UseVisualStyleBackColor = false;
-            this.buttonForhandsgranskaUtskrift.Click += new System.EventHandler(this.buttonForhandsgranskaUtskrift_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1200,6 +1200,7 @@
             this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
