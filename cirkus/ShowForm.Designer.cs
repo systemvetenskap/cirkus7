@@ -1668,6 +1668,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgActs)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAdult)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDiscount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownYouth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChildren)).EndInit();
             this.ResumeLayout(false);
 
         }
