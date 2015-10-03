@@ -170,7 +170,7 @@
             this.printDocumentBIljettDirekt = new System.Drawing.Printing.PrintDocument();
             this.printDialogBiljetD = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.dgtest = new System.Windows.Forms.DataGridView();
+            this.dgTEST = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.adultdisc = new System.Windows.Forms.Label();
             this.youthdisc = new System.Windows.Forms.Label();
@@ -208,7 +208,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgtest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTEST)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1888,13 +1888,13 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // dgtest
+            // dgTEST
             // 
-            this.dgtest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgtest.Location = new System.Drawing.Point(988, 92);
-            this.dgtest.Name = "dgtest";
-            this.dgtest.Size = new System.Drawing.Size(751, 199);
-            this.dgtest.TabIndex = 55;
+            this.dgTEST.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTEST.Location = new System.Drawing.Point(988, 92);
+            this.dgTEST.Name = "dgTEST";
+            this.dgTEST.Size = new System.Drawing.Size(751, 199);
+            this.dgTEST.TabIndex = 55;
             // 
             // groupBox5
             // 
@@ -2124,7 +2124,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1899, 737);
             this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.dgtest);
+            this.Controls.Add(this.dgTEST);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
@@ -2160,7 +2160,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgtest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTEST)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
@@ -2309,7 +2309,7 @@
         private System.Windows.Forms.DataGridView dgCustom;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton radioButtonDirectSale;
-        private System.Windows.Forms.DataGridView dgtest;
+        private System.Windows.Forms.DataGridView dgTEST;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label priceAdult;
         private System.Windows.Forms.Label priceYouth;
