@@ -22,6 +22,7 @@ namespace cirkus
         BindingSource bs = new BindingSource();
         BindingSource fs = new BindingSource();
         NpgsqlDataAdapter da;
+        int id = 0;
         public string name;
         int selected_actid;
         int selectedIndex;
@@ -65,6 +66,8 @@ namespace cirkus
         public ShowForm()
         {
             InitializeComponent();
+            backgroundWorker1 = new BackgroundWorker();
+            backgroundWorker1.DoWork += new DoWorkEventHandler(backgroundWorker1_DoWork);
 
 
         }
@@ -353,54 +356,72 @@ namespace cirkus
                 addedshowid = read[0].ToString();
                 conn.Close();
 
-                foreach (DataRow r in dtActs.Rows)
-                {
-                    int id = int.Parse(r[0].ToString());
-                    string an = r[1].ToString();
-                    int fp = int.Parse(r[2].ToString());
-                    string st = r[3].ToString();
-                    string et = r[4].ToString();
 
-                    conn.Open();
-                    command = new NpgsqlCommand("insert into acts(name, showid, free_placement, start_time, end_time) values(:nm, :shid, :fp, :st, :et)", conn);
-                    command.Parameters.Add(new NpgsqlParameter("nm", an));
-                    command.Parameters.Add(new NpgsqlParameter("shid", addedshowid));
-                    command.Parameters.Add(new NpgsqlParameter("fp", fp));
-                    command.Parameters.Add(new NpgsqlParameter("st", st));
-                    command.Parameters.Add(new NpgsqlParameter("et", et));
-                    command.ExecuteNonQuery();
+                backgroundWorker1.RunWorkerAsync();
+
+                //for (int drw = 0; drw < dtActs.Rows.Count; drw++)
 
 
-
-                    command = new NpgsqlCommand("select currval('acts_actid_seq');", conn);
-                    read = command.ExecuteReader();
-                    read.Read();
-                    addedactid = read[0].ToString();
-                    conn.Close();
-
-                    
-
-                    foreach (DataRow rw in cSeats.Rows)
-                    {
-                        if (int.Parse(rw[0].ToString()) == id)
-                        {
-                            int seatid = int.Parse(rw[1].ToString());
-                            conn.Open();
-                            command = new NpgsqlCommand("insert into available_seats(actid, seatid) values (:aid, :sid)", conn);
-                            command.Parameters.Add(new NpgsqlParameter("aid", addedactid));
-                            command.Parameters.Add(new NpgsqlParameter("sid", seatid));
-                            command.ExecuteNonQuery();
-                            conn.Close();
-                        }
-                    }                   
-                }
-
-                MessageBox.Show("Föreställning skapad");
+                
+                conn.Close();
                 this.Close();
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
                 frm.LoadShows();
                 frm.LoadAkter();
             }
+        }
+        void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            foreach (DataRow dr in dtActs.Rows)
+            {
+                //DataRow dr = dtActs.Rows[drw];
+                id = int.Parse(dr[0].ToString());
+                string an = dr[1].ToString();
+                int fp = int.Parse(dr[2].ToString());
+                string st = dr[3].ToString();
+                string et = dr[4].ToString();
+
+                conn.Open();
+                NpgsqlCommand command1 = new NpgsqlCommand("insert into acts(name, showid, free_placement, start_time, end_time) values(:nm, :shid, :fp, :st, :et)", conn);
+                command1.Parameters.Add(new NpgsqlParameter("nm", an));
+                command1.Parameters.Add(new NpgsqlParameter("shid", addedshowid));
+                command1.Parameters.Add(new NpgsqlParameter("fp", fp));
+                command1.Parameters.Add(new NpgsqlParameter("st", st));
+                command1.Parameters.Add(new NpgsqlParameter("et", et));
+                command1.ExecuteNonQuery();
+
+
+
+                NpgsqlCommand command2 = new NpgsqlCommand("select currval('acts_actid_seq');", conn);
+                NpgsqlDataReader read2;
+                read2 = command2.ExecuteReader();
+                read2.Read();
+                addedactid = read2[0].ToString();
+                conn.Close();
+
+
+
+
+               
+                //for (int drow = 0; drow < cSeats.Rows.Count; drow++)
+                    //foreach (DataRow row in cSeats.Rows)
+                        for (int drow = 0; drow < cSeats.Rows.Count; drow++)
+                        {
+                            DataRow row = cSeats.Rows[drow];
+                            if (int.Parse(row[0].ToString()) == id)
+                            {
+                                int seatid = int.Parse(row[1].ToString());
+
+                        conn.Open();
+                        NpgsqlCommand command3 = new NpgsqlCommand("insert into available_seats(actid, seatid) values (:aid, :sid)", conn);
+                                command3.Parameters.Add(new NpgsqlParameter("aid", addedactid));
+                                command3.Parameters.Add(new NpgsqlParameter("sid", seatid));
+                                command3.ExecuteNonQuery();
+                                conn.Close();
+                            }
+                        }
+            }
+            
         }
 
         private void textBoxAntalFriplatser_KeyPress(object sender, KeyPressEventArgs e)
