@@ -24,14 +24,14 @@ namespace cirkus
     {
 
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-        int showid, actid, fillMode, seatid, agegroup, customerid, total, checkedseats, priceid, freeSseats, freeLseats, tickets, nrotickets, ticketid, count, checks;
-        string show, act, customeremail, customerfname, customerlname, pdf, bokningid, actname, suggSeats, acttime;
-        string sections = "ABCDEFGH";
+        private int showid, actid, fillMode,  agegroup, customerid, total,  freeSseats, freeLseats,  nrotickets, ticketid,  checks;
+        private string show,customeremail, customerfname, customerlname,  bokningid, actname,  acttime;    
+        private double childS = 0, youthS = 0, adultS = 0, child = 0, youth = 0, adult = 0, discount = 0, discountS = 0;
         private bool newcust;
         private bool seatType = true;
         private bool fullShowS;
-        int addedbookingid = 0;
-        DataTable shows, section, dtfSeats, dtPersons;
+        private int addedbookingid = 0;
+        DataTable shows,  dtfSeats, dtPersons;
         DataTable seats = new DataTable();
         DataTable chosenacts = new DataTable();
         DataTable selectedseats = new DataTable();
@@ -60,7 +60,7 @@ namespace cirkus
         public void loadShows()
         {
             //string sql = "select show.showid, show.name, show.date from show";
-            string sql = "select show.showid, show.name, show.date from show where now()::date  >= sale_start and now()::date <= sale_stop";
+            string sql = "select show.showid, show.name, show.date, show.price_group from show where now()::date  >= sale_start and now()::date <= sale_stop";
             conn.Open();
             NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
             shows = new DataTable();
@@ -298,9 +298,11 @@ namespace cirkus
             dataGridViewShows.BackgroundColor = Color.WhiteSmoke;
             lblStatus1.Visible = false;
             int selectedIndex = dataGridViewShows.SelectedRows[0].Index;
+            
 
             showid = int.Parse(dataGridViewShows[0, selectedIndex].Value.ToString());
             show = dataGridViewShows[1, selectedIndex].Value.ToString();
+            int pricelist = int.Parse(dataGridViewShows[3, selectedIndex].Value.ToString());
             //load_Seats();
             conn.Close();
             conn.Open();
@@ -351,6 +353,45 @@ namespace cirkus
 
             }
             dgShowActs.ClearSelection();
+         
+            conn.Open();
+            NpgsqlCommand cmd = new NpgsqlCommand("Select childprice_seat,youthchild_seat, adultprice_seat, childprice, youthprice, adultprice, discount_seat, discount from pricegroup where priceid = @pid", conn);
+            cmd.Parameters.AddWithValue("@pid", pricelist);
+            NpgsqlDataReader re = cmd.ExecuteReader();
+            //double childS = 0, youthS  = 0, adultS = 0, child = 0, youth = 0, adult = 0, discount = 0, discountS = 0;
+            while (re.Read())
+            {
+                childS = Convert.ToDouble(re[0].ToString());
+                youthS = Convert.ToDouble(re[1].ToString());
+                adultS = Convert.ToDouble(re[2].ToString());
+                child = Convert.ToDouble(re[3].ToString());
+                youth = Convert.ToDouble(re[4].ToString());
+                adult = Convert.ToDouble(re[5].ToString());
+                discountS = Convert.ToDouble(re[6].ToString());
+                discount = Convert.ToDouble(re[7].ToString());
+                conn.Close();
+            }
+            double childdiss = (childS * showacts.Rows.Count) * (discountS / 100);
+            double youthdiss = (youthS * showacts.Rows.Count) * (discountS / 100);
+            double adultdiss = (adultS * showacts.Rows.Count) * (discountS / 100);
+            double childis =   (child * showacts.Rows.Count) * (discount / 100);
+            double youthdis =  (youth * showacts.Rows.Count) * (discount / 100);
+            double adultdis =  (adult * showacts.Rows.Count) * (discount / 100);
+
+            priceChildS.Text = childS.ToString() + " kr";
+            priceYouthS.Text = youthS.ToString() + " kr";
+            priceAdultS.Text = adultS.ToString() + " kr";
+            priceChild.Text = child.ToString() + " kr";
+            priceYouth.Text = youth.ToString() + " kr";
+            priceAdult.Text = adult.ToString() + " kr";
+            childDisS.Text = childdiss.ToString() + " kr";
+            youthDisS.Text = youthdiss.ToString() + " kr";
+            adultDisS.Text = adultdiss.ToString() + " kr";
+            childdis.Text = childis.ToString() + " kr";
+            youthdisc.Text = youthdis.ToString() + " kr";
+            adultdisc.Text = adultdis.ToString() + " kr";
+
+
 
         }
         private void ReserveTicketForm_Load(object sender, EventArgs e)
@@ -394,6 +435,18 @@ namespace cirkus
             lblStatus1.Visible = false;
             lblStatusAge.Visible = false;
 
+            priceChildS.Text = "";
+            priceYouthS.Text = "";
+            priceAdultS.Text = "";
+            priceChild.Text = "";
+            priceYouth.Text = "";
+            priceAdult.Text = "";
+            childDisS.Text = "";
+            youthDisS.Text = "";
+            adultDisS.Text = "";
+            childdis.Text = "";
+            youthdisc.Text = "";
+            adultdisc.Text = "";
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
@@ -1828,45 +1881,48 @@ namespace cirkus
                 {
                     if (agegroup == 0)
                     {
-                        priceid = 80 * numberOfacts;
+                        
+                        priceid = childS * numberOfacts;
                         type = "Barn";
                         seattype = "Parkett";
                     }
                     if (agegroup == 1)
                     {
-                        priceid = 110 * numberOfacts;
+                        priceid = youthS * numberOfacts;
                         type = "Ungdom";
                         seattype = "Parkett";
                     }
                     if (agegroup == 2)
                     {
-                        priceid = 150 * numberOfacts;
+                        priceid = adultS * numberOfacts;
                         type = "Vuxen";
                         seattype = "Parkett";
                     }
                 }
                 else if(numberOfacts == showacts.Rows.Count)
                 {
-                    double perc;
+                   
                     if (agegroup == 0)
                     {
-                        perc = 0.8;
-                        priceid = (80 * numberOfacts) * perc;
+                        
+                        
+                        priceid = (childS * numberOfacts) * (discountS / 100);
                         type = "Barn";
                         seattype = "Parkett";
+                        MessageBox.Show(priceid.ToString());
 
                     }
                     if (agegroup == 1)
                     {
-                        perc = 0.6;
-                        priceid = (110 * numberOfacts) * perc;
+                        
+                        priceid = (youthS * numberOfacts) * (discountS / 100);
                         type = "Ungdom";
                         seattype = "Parkett";
                     }
                     if (agegroup == 2)
                     {
-                        perc = 0.6;
-                        priceid = (150 * numberOfacts) * perc;
+                        
+                        priceid = (adultS * numberOfacts) * (discountS / 100);
                         type = "Vuxen";
                         seattype = "Parkett";
                     }
@@ -1994,46 +2050,48 @@ namespace cirkus
                         {
                             if (agegroup == 0)
                             {
-                                priceid = 50 * numberOfacts;
+                              
+                                priceid = child * numberOfacts;
                                 type = "Barn";
                                 seattype = "Fri placering";
 
                             }
                             if (agegroup == 1)
                             {
-                                priceid = 80 * numberOfacts;
+                                priceid = youth * numberOfacts;
                                 type = "Ungdom";
                                 seattype = "Fri placering";
                             }
                             if (agegroup == 2)
                             {
-                                priceid = 100 * numberOfacts;
+                                priceid = adult * numberOfacts;
                                 type = "Vuxen";
                                 seattype = "Fri placering";
                             }
                         }
                         else if (numberOfacts == showacts.Rows.Count)
                         {
-                            double perc;
+                           
                             if (agegroup == 0)
                             {
-                                perc = 0.6;
-                                priceid = (80 * numberOfacts) * perc;
+                                //  private double childS = 0, youthS = 0, adultS = 0, child = 0, youth = 0, adult = 0, discount = 0, discountS = 0;
+                             
+                                priceid = (child * numberOfacts) * (discount /100);
                                 type = "Barn";
                                 seattype = "Fri placering";
 
                             }
                             if (agegroup == 1)
                             {
-                                perc = 0.8;
-                                priceid = (110 * numberOfacts) * perc;
+
+                                priceid = (youth * numberOfacts) * (discount / 100);
                                 type = "Ungdom";
                                 seattype = "Fri placering";
                             }
                             if (agegroup == 2)
                             {
-                                perc = 0.7;
-                                priceid = (150 * numberOfacts) * perc;
+
+                                priceid = (adult * numberOfacts) * (discount / 100);
                                 type = "Vuxen";
                                 seattype = "Fri placering";
                             }

@@ -171,6 +171,28 @@
             this.printDialogBiljetD = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.dgtest = new System.Windows.Forms.DataGridView();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.priceChildS = new System.Windows.Forms.Label();
+            this.priceYouthS = new System.Windows.Forms.Label();
+            this.priceAdultS = new System.Windows.Forms.Label();
+            this.priceChild = new System.Windows.Forms.Label();
+            this.priceYouth = new System.Windows.Forms.Label();
+            this.priceAdult = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.childDisS = new System.Windows.Forms.Label();
+            this.youthDisS = new System.Windows.Forms.Label();
+            this.adultDisS = new System.Windows.Forms.Label();
+            this.childdis = new System.Windows.Forms.Label();
+            this.youthdisc = new System.Windows.Forms.Label();
+            this.adultdisc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShows)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgShowActs)).BeginInit();
@@ -187,6 +209,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgtest)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // radioPaid
@@ -206,7 +229,7 @@
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.GreenYellow;
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonAdd.Location = new System.Drawing.Point(789, 267);
+            this.buttonAdd.Location = new System.Drawing.Point(824, 267);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(106, 35);
             this.buttonAdd.TabIndex = 13;
@@ -218,7 +241,7 @@
             // 
             this.buttonCancel.BackColor = System.Drawing.Color.HotPink;
             this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonCancel.Location = new System.Drawing.Point(658, 267);
+            this.buttonCancel.Location = new System.Drawing.Point(687, 267);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 35);
             this.buttonCancel.TabIndex = 14;
@@ -281,7 +304,7 @@
             this.dgShowActs.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgShowActs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgShowActs.Enabled = false;
-            this.dgShowActs.Location = new System.Drawing.Point(294, 34);
+            this.dgShowActs.Location = new System.Drawing.Point(284, 34);
             this.dgShowActs.MultiSelect = false;
             this.dgShowActs.Name = "dgShowActs";
             this.dgShowActs.ReadOnly = true;
@@ -295,7 +318,7 @@
             // 
             this.lblStatus1.AutoSize = true;
             this.lblStatus1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus1.Location = new System.Drawing.Point(663, 199);
+            this.lblStatus1.Location = new System.Drawing.Point(662, 227);
             this.lblStatus1.Name = "lblStatus1";
             this.lblStatus1.Size = new System.Drawing.Size(47, 15);
             this.lblStatus1.TabIndex = 52;
@@ -303,7 +326,7 @@
             // 
             // txtBoxNrP
             // 
-            this.txtBoxNrP.Location = new System.Drawing.Point(663, 123);
+            this.txtBoxNrP.Location = new System.Drawing.Point(665, 204);
             this.txtBoxNrP.Name = "txtBoxNrP";
             this.txtBoxNrP.Size = new System.Drawing.Size(71, 20);
             this.txtBoxNrP.TabIndex = 5;
@@ -1841,7 +1864,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(660, 107);
+            this.label3.Location = new System.Drawing.Point(662, 188);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 54;
@@ -1873,12 +1896,234 @@
             this.dgtest.Size = new System.Drawing.Size(372, 150);
             this.dgtest.TabIndex = 55;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.adultdisc);
+            this.groupBox5.Controls.Add(this.youthdisc);
+            this.groupBox5.Controls.Add(this.childdis);
+            this.groupBox5.Controls.Add(this.adultDisS);
+            this.groupBox5.Controls.Add(this.youthDisS);
+            this.groupBox5.Controls.Add(this.childDisS);
+            this.groupBox5.Controls.Add(this.label36);
+            this.groupBox5.Controls.Add(this.label35);
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.priceAdult);
+            this.groupBox5.Controls.Add(this.priceYouth);
+            this.groupBox5.Controls.Add(this.priceChild);
+            this.groupBox5.Controls.Add(this.priceAdultS);
+            this.groupBox5.Controls.Add(this.priceYouthS);
+            this.groupBox5.Controls.Add(this.priceChildS);
+            this.groupBox5.Controls.Add(this.label34);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Location = new System.Drawing.Point(654, 58);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(288, 123);
+            this.groupBox5.TabIndex = 56;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Prislista";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(53, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Parkett";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(167, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Fri placering";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 50);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Barn:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(5, 71);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Ungdom:";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(5, 94);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(40, 13);
+            this.label34.TabIndex = 6;
+            this.label34.Text = "Vuxen:";
+            // 
+            // priceChildS
+            // 
+            this.priceChildS.AutoSize = true;
+            this.priceChildS.Location = new System.Drawing.Point(53, 50);
+            this.priceChildS.Name = "priceChildS";
+            this.priceChildS.Size = new System.Drawing.Size(16, 13);
+            this.priceChildS.TabIndex = 7;
+            this.priceChildS.Text = "kr";
+            // 
+            // priceYouthS
+            // 
+            this.priceYouthS.AutoSize = true;
+            this.priceYouthS.Location = new System.Drawing.Point(53, 71);
+            this.priceYouthS.Name = "priceYouthS";
+            this.priceYouthS.Size = new System.Drawing.Size(35, 13);
+            this.priceYouthS.TabIndex = 8;
+            this.priceYouthS.Text = "label7";
+            // 
+            // priceAdultS
+            // 
+            this.priceAdultS.AutoSize = true;
+            this.priceAdultS.Location = new System.Drawing.Point(53, 94);
+            this.priceAdultS.Name = "priceAdultS";
+            this.priceAdultS.Size = new System.Drawing.Size(35, 13);
+            this.priceAdultS.TabIndex = 9;
+            this.priceAdultS.Text = "label7";
+            // 
+            // priceChild
+            // 
+            this.priceChild.AutoSize = true;
+            this.priceChild.Location = new System.Drawing.Point(167, 50);
+            this.priceChild.Name = "priceChild";
+            this.priceChild.Size = new System.Drawing.Size(35, 13);
+            this.priceChild.TabIndex = 10;
+            this.priceChild.Text = "label7";
+            // 
+            // priceYouth
+            // 
+            this.priceYouth.AutoSize = true;
+            this.priceYouth.Location = new System.Drawing.Point(167, 71);
+            this.priceYouth.Name = "priceYouth";
+            this.priceYouth.Size = new System.Drawing.Size(35, 13);
+            this.priceYouth.TabIndex = 11;
+            this.priceYouth.Text = "label7";
+            // 
+            // priceAdult
+            // 
+            this.priceAdult.AutoSize = true;
+            this.priceAdult.Location = new System.Drawing.Point(167, 94);
+            this.priceAdult.Name = "priceAdult";
+            this.priceAdult.Size = new System.Drawing.Size(35, 13);
+            this.priceAdult.TabIndex = 12;
+            this.priceAdult.Text = "label7";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(106, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Pris/Alla";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(53, 32);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(45, 13);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "Pris/Akt";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(167, 32);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(45, 13);
+            this.label35.TabIndex = 15;
+            this.label35.Text = "Pris/Akt";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(235, 32);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(46, 13);
+            this.label36.TabIndex = 16;
+            this.label36.Text = "Pris/Alla";
+            // 
+            // childDisS
+            // 
+            this.childDisS.AutoSize = true;
+            this.childDisS.Location = new System.Drawing.Point(107, 49);
+            this.childDisS.Name = "childDisS";
+            this.childDisS.Size = new System.Drawing.Size(16, 13);
+            this.childDisS.TabIndex = 17;
+            this.childDisS.Text = "kr";
+            // 
+            // youthDisS
+            // 
+            this.youthDisS.AutoSize = true;
+            this.youthDisS.Location = new System.Drawing.Point(107, 71);
+            this.youthDisS.Name = "youthDisS";
+            this.youthDisS.Size = new System.Drawing.Size(16, 13);
+            this.youthDisS.TabIndex = 18;
+            this.youthDisS.Text = "kr";
+            // 
+            // adultDisS
+            // 
+            this.adultDisS.AutoSize = true;
+            this.adultDisS.Location = new System.Drawing.Point(107, 94);
+            this.adultDisS.Name = "adultDisS";
+            this.adultDisS.Size = new System.Drawing.Size(16, 13);
+            this.adultDisS.TabIndex = 19;
+            this.adultDisS.Text = "kr";
+            // 
+            // childdis
+            // 
+            this.childdis.AutoSize = true;
+            this.childdis.Location = new System.Drawing.Point(235, 50);
+            this.childdis.Name = "childdis";
+            this.childdis.Size = new System.Drawing.Size(16, 13);
+            this.childdis.TabIndex = 20;
+            this.childdis.Text = "kr";
+            // 
+            // youthdisc
+            // 
+            this.youthdisc.AutoSize = true;
+            this.youthdisc.Location = new System.Drawing.Point(235, 71);
+            this.youthdisc.Name = "youthdisc";
+            this.youthdisc.Size = new System.Drawing.Size(16, 13);
+            this.youthdisc.TabIndex = 21;
+            this.youthdisc.Text = "kr";
+            // 
+            // adultdisc
+            // 
+            this.adultdisc.AutoSize = true;
+            this.adultdisc.Location = new System.Drawing.Point(235, 94);
+            this.adultdisc.Name = "adultdisc";
+            this.adultdisc.Size = new System.Drawing.Size(16, 13);
+            this.adultdisc.TabIndex = 22;
+            this.adultdisc.Text = "kr";
+            // 
             // ReserveTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1899, 737);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.dgtest);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -1916,6 +2161,8 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgtest)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2063,5 +2310,27 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton radioButtonDirectSale;
         private System.Windows.Forms.DataGridView dgtest;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label priceAdult;
+        private System.Windows.Forms.Label priceYouth;
+        private System.Windows.Forms.Label priceChild;
+        private System.Windows.Forms.Label priceAdultS;
+        private System.Windows.Forms.Label priceYouthS;
+        private System.Windows.Forms.Label priceChildS;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label adultDisS;
+        private System.Windows.Forms.Label youthDisS;
+        private System.Windows.Forms.Label childDisS;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label adultdisc;
+        private System.Windows.Forms.Label youthdisc;
+        private System.Windows.Forms.Label childdis;
     }
 }
