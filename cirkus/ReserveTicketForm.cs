@@ -1518,6 +1518,19 @@ namespace cirkus
 
             }
         }
+
+        private void label60_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label71_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
         private void txtBoxNrP_TextChanged(object sender, EventArgs e)
         {
             if (EndastSiffror(txtBoxNrP.Text) == true && string.IsNullOrWhiteSpace(txtBoxNrP.Text) == false)
