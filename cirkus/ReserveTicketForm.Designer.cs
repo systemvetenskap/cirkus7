@@ -534,9 +534,10 @@
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.radioPaid);
-            this.panel2.Location = new System.Drawing.Point(92, 420);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(973, 414);
+            this.panel2.Size = new System.Drawing.Size(973, 536);
             this.panel2.TabIndex = 42;
             this.panel2.Visible = false;
             // 
@@ -843,10 +844,9 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.gpSeatMap);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(973, 610);
+            this.panel1.Size = new System.Drawing.Size(973, 536);
             this.panel1.TabIndex = 40;
             this.panel1.Visible = false;
             // 
@@ -2922,7 +2922,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(973, 610);
+            this.ClientSize = new System.Drawing.Size(962, 429);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonCancel);
