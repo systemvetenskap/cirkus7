@@ -165,25 +165,7 @@
     <None Include="Resources\backgroundClown.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\logo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\animated-circus-image-0061.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\skoj.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\0053.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\0086.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\clown_008.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\108.gif" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\120.gif" />
