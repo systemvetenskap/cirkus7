@@ -20,6 +20,7 @@ namespace cirkus
             this.staffid = staffid;
         }
 
+        #region Methods
         public bool IsValidEmail(string email)
         {
             try
@@ -63,11 +64,11 @@ namespace cirkus
             textBoxPhone.BackColor = Color.White;
             textBoxEmail.BackColor = Color.White;
         }
+        #endregion
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             emptyTextboxes();
@@ -120,7 +121,7 @@ namespace cirkus
                 conn.Close();
 
                 var frm = Application.OpenForms.OfType<MainForm>().Single();
-                frm.listCustomers();
+                frm.ListCustomers();
 
                 this.Close();
             }

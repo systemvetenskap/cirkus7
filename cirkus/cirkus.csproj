@@ -55,7 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Act.cs" />
     <Compile Include="AddCustomerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +78,12 @@
     </Compile>
     <Compile Include="PasswordRecoveryForm.Designer.cs">
       <DependentUpon>PasswordRecoveryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintBiljetter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintBiljetter.Designer.cs">
+      <DependentUpon>PrintBiljetter.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowForm.cs">
       <SubType>Form</SubType>
@@ -111,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PasswordRecoveryForm.resx">
       <DependentUpon>PasswordRecoveryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintBiljetter.resx">
+      <DependentUpon>PrintBiljetter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowForm.resx">
       <DependentUpon>ShowForm.cs</DependentUpon>
@@ -148,16 +156,19 @@
     <None Include="Resources\cirkus-kul-bus-300x211.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Sittkarta2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Images\backgroundClown.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\backgroundClown.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\logo.jpg" />
+    <None Include="Resources\animated-circus-image-0061.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\120.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sittkarta2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

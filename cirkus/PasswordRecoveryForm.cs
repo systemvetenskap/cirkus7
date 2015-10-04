@@ -33,9 +33,7 @@ namespace cirkus
                 return false;
             }
         }
-
         private NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
-
         private void btnSendPassword_Click(object sender, EventArgs e)
         {
             string email = textBoxEmail.Text;
