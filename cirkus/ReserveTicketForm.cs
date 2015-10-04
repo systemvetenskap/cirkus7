@@ -267,8 +267,7 @@ namespace cirkus
 
             da.Fill(fullShow);
 
-            //dgSeats.DataSource = seats;
-            //dgTest.DataSource = seats;
+ 
 
             conn.Close();
 
@@ -311,7 +310,7 @@ namespace cirkus
         private void seat_sectionchanged(object sender, EventArgs e)
         {
             conn.Close();
-            //load_Seats();
+          
         }
         private void checked_seats(object sender, ItemCheckEventArgs e)
         {
@@ -321,17 +320,7 @@ namespace cirkus
                 e.NewValue = CheckState.Unchecked;
 
             }
-            //if (e.CurrentValue == CheckState.Unchecked)
-            //{
-            //    checkedseats++;
-            //    calculate_people();
-            //}
-            //else if (e.CurrentValue == CheckState.Checked)
-            //{
-            //    checkedseats--;
-            //    calculate_people();
 
-            //}
         }
         private void added_child(object sender, EventArgs e)
         {
@@ -682,7 +671,7 @@ namespace cirkus
         }
         public void loadSeatMap()
         {
-            //dgTEST.DataSource = currentActs;
+          
             int selectedIndex = dgActs.SelectedRows[0].Index;
 
             actid = int.Parse(dgActs[1, selectedIndex].Value.ToString());
@@ -880,7 +869,7 @@ namespace cirkus
                 da.Fill(dtBid);
                 conn.Close();
 
-                //dgTEST.DataSource = dtBid;
+             
                 foreach (DataRow row in dtBid.Rows)
                 {
                     int bid = int.Parse(row[0].ToString());
@@ -906,7 +895,7 @@ namespace cirkus
                             actname += " " + r[0].ToString() + ": " + r[1].ToString() + r[2].ToString();
                         }
 
-                        //acttime += " " + r[0].ToString() + ": " + r[3].ToString() + "-" + r[4].ToString() + "";
+                        
                     }
                     conn.Open();
                     cmd = new NpgsqlCommand(@"select sold_tickets.type, sum(sum) from sold_tickets
@@ -942,19 +931,7 @@ namespace cirkus
 
                     bokningid = bid.ToString();
 
-                    //MemoryStream ms = new MemoryStream();
-                    //Document doc = new Document(PageSize.A4, 36, 72, 108, 180);
-                    //PdfWriter writer = PdfWriter.GetInstance(doc, ms);
-
-                    //Drawing
-                    //doc.Open();
-                    //doc.Add(new Paragraph("BiljettNr:" + bokningid));
-                    //doc.Add(new Paragraph("Föreställning:" + show));
-                    //doc.Add(new Paragraph("Åldersgrupp:" + aldersgrupp));
-                    //doc.Add(new Paragraph("Biljett för " + actname));
-                    //doc.Add(new Paragraph("Pris:" + pris));
-                    //doc.Add(new Chunk(new iTextSharp.text.pdf.draw.LineSeparator(0.0F, 100.0F, BaseColor.BLACK, Element.ALIGN_LEFT, 1)));
-
+      
                     #region PDF
 
                     MemoryStream ms = new MemoryStream();
@@ -962,7 +939,7 @@ namespace cirkus
                     PdfWriter writer = PdfWriter.GetInstance(doc, ms);
 
                     doc.Open();
-                    ////Drawing
+                 
 
                     //Rectangle
                     PdfContentByte contentunder = writer.DirectContentUnder;
@@ -1049,7 +1026,7 @@ namespace cirkus
 
                     iTextSharp.text.Image PNG = iTextSharp.text.Image.GetInstance(path + "\\Resources\\backgroundClown.jpg");
 
-                    //width height
+                  
                     PNG.ScaleAbsolute(540f, imageHeight);
 
                     PNG.SetAbsolutePosition(30, pointImage);
@@ -1213,15 +1190,15 @@ namespace cirkus
 
                 int regtangelP = point + 60;
 
-                ////BACKGROUND IMAGE
+      
                 System.Drawing.Image i2 = cirkus.Properties.Resources.backgroundClown;
                 Point p2 = new Point(100, 100);
 
-                // Create rectangle for displaying image, subtracting 200 (100 for left,100 for right margins).
+     
                 System.Drawing.Rectangle destRect = new System.Drawing.Rectangle(20, 40, 750, regtangelP);
 
 
-                // Create coordinates of rectangle for source image.
+       
                 int x = 0;
                 int y = 0;
                 int width = i2.Width;
@@ -1230,8 +1207,8 @@ namespace cirkus
 
 
 
-                //e.Graphics.DrawRectangle(Pens.Black, r);
-                e.Graphics.DrawImage(i2, destRect, x, y, width, height, units); // Draw background.
+        
+                e.Graphics.DrawImage(i2, destRect, x, y, width, height, units); 
 
                 e.Graphics.DrawString("Biljett Cirkus Kul & Bus", drawFontBoldAndUnderline, drawBrush, new PointF(44, 110));
 
@@ -1461,66 +1438,7 @@ namespace cirkus
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            //dateReservedto.Value = showdate;
-            //dateReservedto.Value = dateReservedto.Value.Subtract(TimeSpan.FromDays(7));
 
-            //if (newcust == true && radioButtonDirectSale.Checked == false)
-            //{
-            //    string fn = txtfnamn.Text;
-            //    string ln = txtenamn.Text;
-            //    string pn = txttel.Text;
-            //    string em = txtepost.Text;
-            //    if (IsValidEmail(em) == false)
-            //    {
-            //        MessageBox.Show("Ange giltig mail");
-
-            //        return;
-            //    }
-            //    conn.Open();
-
-            //    cmd = new NpgsqlCommand("insert into customer(fname, lname, phonenumber, email) values(:fn, :ln, :pn, :em)", conn);
-            //    cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
-            //    cmd.Parameters.Add(new NpgsqlParameter("ln", ln));
-            //    cmd.Parameters.Add(new NpgsqlParameter("pn", pn));
-            //    cmd.Parameters.Add(new NpgsqlParameter("em", em));
-            //    cmd.ExecuteNonQuery();
-            //    conn.Close();
-
-            //    conn.Open();
-            //    cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
-            //    NpgsqlDataReader read;
-            //    read = cmd.ExecuteReader();
-
-            //    read.Read();
-            //    customerid = int.Parse(read[0].ToString());
-            //    conn.Close();
-            //    panel2.Visible = true;
-            //}
-            //if (newcust == false && radioButtonDirectSale.Checked == true)
-            //{
-            //    panel2.Visible = true;
-            //    radioPaid.Enabled = false;
-            //    radioRes.Enabled = false;
-            //    string fn = "temp";
-
-            //    conn.Open();
-
-            //    cmd = new NpgsqlCommand("insert into customer(fname) values(:fn)", conn);
-            //    cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
-
-            //    cmd.ExecuteNonQuery();
-            //    conn.Close();
-
-            //    conn.Open();
-            //    cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
-            //    NpgsqlDataReader read;
-            //    read = cmd.ExecuteReader();
-
-            //    read.Read();
-            //    customerid = int.Parse(read[0].ToString());
-            //    conn.Close();
-
-            //}
             if (newcust == false && radioButtonDirectSale.Checked == false)
             {
                 panel2.Visible = true;
@@ -1644,7 +1562,7 @@ namespace cirkus
             cbAgegroup.SelectedIndex = -1;
             int dgIndex = dgTickets.SelectedRows[0].Index;
             ticketid = int.Parse(dgTickets[0, dgIndex].Value.ToString());
-            //bool lckd = Convert.ToBoolean(dgTickets[3, dgIndex].Value.ToString());
+           
             loadActs();
             this.dgActs.Columns[0].ReadOnly = true;
             this.dgActs.Columns[1].ReadOnly = true;
@@ -1709,7 +1627,7 @@ namespace cirkus
                     else
                     {
                         fp.Checked = false;
-                        //clearSeatMap();
+                        
                     }
 
                 }
@@ -1907,13 +1825,7 @@ namespace cirkus
                 groupBox6.Enabled = false;
                 this.dgCustom.DataSource = null;
 
-                //radioPaid.Enabled = false;
-                //radioRes.Enabled = false;
-                //dateReservedto.Enabled = false;
-                //this.dgCustom.DataSource = null;
-                //this.dgCustom.Enabled = false;
-                //radioPaid.Checked = true;
-                //checkBox2.Enabled = false;
+   
             }
             else if (radioButtonDirectSale.Checked == false)
             {
@@ -1960,23 +1872,7 @@ namespace cirkus
                 }
 
             }
-            //Kolla platser som är grönmarkerade, föreslå platser bredvid varandra efter rangordning av sektioner A - bäst, H-sämst
-            /*foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
-            {
-                string s = sections[count].ToString();
 
-                if(cb.BackColor == Color.Green && cb.Name[0].ToString() == s)
-                {
-                    
-                    label14.Text = count.ToString();
-
-                }
-                else
-                {
-                    
-                }
-
-            }*/
 
         }
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -2192,7 +2088,7 @@ namespace cirkus
 
             customerid = int.Parse(dgCustom[2, selectedIndex].Value.ToString());
 
-            //lblcustid.Text = customerid.ToString();
+           
         }
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -2234,27 +2130,7 @@ namespace cirkus
             }
             if (newcust == false && radioButtonDirectSale.Checked == true)
             {
-                //panel2.Visible = true;
-                //radioPaid.Enabled = false;
-                //radioRes.Enabled = false;
-                //string fn = "temp";
-
-                //conn.Open();
-
-                //cmd = new NpgsqlCommand("insert into customer(fname) values(:fn)", conn);
-                //cmd.Parameters.Add(new NpgsqlParameter("fn", fn));
-
-                //cmd.ExecuteNonQuery();
-                //conn.Close();
-
-                //conn.Open();
-                //cmd = new NpgsqlCommand("select currval('customer_customerid_seq');", conn);
-                //NpgsqlDataReader read;
-                //read = cmd.ExecuteReader();
-
-                //read.Read();
-                //customerid = int.Parse(read[0].ToString());
-                //conn.Close();
+ 
 
             }
 
@@ -2262,29 +2138,14 @@ namespace cirkus
             {
                 createBooking();
                 backgroundWorker1.RunWorkerAsync();
-                //this.Close();
+                this.Close();
             }
 
             else if(radioButtonDirectSale.Checked == true)
             {
-                //////// Printing 
-                ////PrintDialog pd = new PrintDialog();
-                ////pd.Document = printDocumentBIljettDirekt;
-                ////if (pd.ShowDialog() == DialogResult.OK)
-                ////{
-                ////    printDocumentBIljettDirekt.Print();
-                ////}
-
-
-                //// Kolla dokumentet innan man skrivar ut
-                //printPreviewControl1.Visible = true;
-                //printPreviewDialog1.Document = printDocumentBIljettDirekt;
-                //printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
-                //printPreviewDialog1.Show();
-                //printPreviewControl1.Document = printDocumentBIljettDirekt;
+     
                 createBooking();
-                //PrintBiljetter rb = new PrintBiljetter();
-                //rb.ShowDialog();
+               
             }
             else if(radioRes.Checked == true)
             {
@@ -2408,14 +2269,7 @@ namespace cirkus
 
             }
             label39.Text = price.ToString();
-            //childS = Convert.ToDouble(re[0].ToString());
-            //youthS = Convert.ToDouble(re[1].ToString());
-            //adultS = Convert.ToDouble(re[2].ToString());
-            //child = Convert.ToDouble(re[3].ToString());
-            //youth = Convert.ToDouble(re[4].ToString());
-            //adult = Convert.ToDouble(re[5].ToString());
-            //discountS = Convert.ToDouble(re[6].ToString());
-            //discount = Convert.ToDouble(re[7].ToString());
+
 
         }
       
