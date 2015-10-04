@@ -23,8 +23,6 @@ namespace cirkus
         string akter = "";
         string akttider = "";
         int bid = 0;
-
-
         public PrintBiljetter(DataTable bdt)
         {
             InitializeComponent();           

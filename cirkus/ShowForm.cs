@@ -14,6 +14,7 @@ namespace cirkus
 {
     public partial class ShowForm : Form
     {
+        #region Variables in ShowForm
         NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         NpgsqlCommand command;
         DataRow row;
@@ -23,7 +24,6 @@ namespace cirkus
         BindingSource bs = new BindingSource();
         BindingSource fs = new BindingSource();
         NpgsqlDataAdapter da;
-        #region Variables in ShowForm
         int id = 0;
         public string name;
         int selected_actid;

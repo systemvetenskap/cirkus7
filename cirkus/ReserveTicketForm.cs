@@ -22,8 +22,8 @@ namespace cirkus
 {
     public partial class ReserveTicketForm : Form
     {
-        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         #region Variables in ReserveTicketForm
+        NpgsqlConnection conn = new NpgsqlConnection("Server=webblabb.miun.se;Port=5432; User Id=pgmvaru_g7;Password=akrobatik;Database=pgmvaru_g7;SSL=true;");
         private int showid, actid, fillMode,  agegroup, customerid, total,  freeSseats, freeLseats,  nrotickets, ticketid,  checks;
         private string show,customeremail, customerfname, customerlname,  bokningid, actname,  acttime;    
         private double childS = 0, youthS = 0, adultS = 0, child = 0, youth = 0, adult = 0, discount = 0, discountS = 0;
