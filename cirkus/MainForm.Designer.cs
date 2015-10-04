@@ -32,7 +32,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabTicket = new System.Windows.Forms.TabPage();
             this.buttonForhandsgranskaUtskrift = new System.Windows.Forms.Button();
-            this.lblsumma = new System.Windows.Forms.Label();
+            this.lblsum = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPrintDatum = new System.Windows.Forms.TextBox();
             this.lbldate = new System.Windows.Forms.Label();
@@ -154,7 +154,7 @@
             // 
             this.tabTicket.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tabTicket.Controls.Add(this.buttonForhandsgranskaUtskrift);
-            this.tabTicket.Controls.Add(this.lblsumma);
+            this.tabTicket.Controls.Add(this.lblsum);
             this.tabTicket.Controls.Add(this.label2);
             this.tabTicket.Controls.Add(this.txtPrintDatum);
             this.tabTicket.Controls.Add(this.lbldate);
@@ -205,23 +205,23 @@
             this.buttonForhandsgranskaUtskrift.UseVisualStyleBackColor = false;
             this.buttonForhandsgranskaUtskrift.Click += new System.EventHandler(this.buttonForhandsgranskaUtskrift_Click);
             // 
-            // lblsumma
+            // lblsum
             // 
-            this.lblsumma.AutoSize = true;
-            this.lblsumma.Location = new System.Drawing.Point(702, 218);
-            this.lblsumma.Name = "lblsumma";
-            this.lblsumma.Size = new System.Drawing.Size(35, 13);
-            this.lblsumma.TabIndex = 29;
-            this.lblsumma.Text = "label3";
+            this.lblsum.AutoSize = true;
+            this.lblsum.Location = new System.Drawing.Point(702, 218);
+            this.lblsum.Name = "lblsum";
+            this.lblsum.Size = new System.Drawing.Size(13, 13);
+            this.lblsum.TabIndex = 29;
+            this.lblsum.Text = "0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(639, 218);
+            this.label2.Location = new System.Drawing.Point(570, 218);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(127, 13);
             this.label2.TabIndex = 28;
-            this.label2.Text = "Summa pris:";
+            this.label2.Text = "Summa vald föreställning:";
             // 
             // txtPrintDatum
             // 
@@ -1320,7 +1320,7 @@
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblsumma;
+        private System.Windows.Forms.Label lblsum;
         private System.Windows.Forms.Button buttonForhandsgranskaUtskrift;
     }
 }

@@ -212,13 +212,13 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to, show.showid
                             from booking
                             inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
                             inner join show on sold_tickets.showid = show.showid
                             inner join acts on sold_tickets.actid = acts.actid
                             inner join customer on booking.customerid = customer.customerid
-                            where customer.customerid = '" + CustomerID + "' and show.date >=now()::date group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
+                            where customer.customerid = '" + CustomerID + "' and show.date >=now()::date group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to, show.showid";
                 try
                 {
                     conn.Open();
@@ -235,6 +235,7 @@ namespace cirkus
                     dgTickets.Columns[4].HeaderText = "Åldersgrupp";
                     dgTickets.Columns[5].HeaderText = "Pris(kr)";
                     dgTickets.Columns[6].HeaderText = "Reserverad till";
+                    dgTickets.Columns[7].Visible = false;
 
                     dgTickets.Columns[2].Width = 100;
                 }
@@ -255,13 +256,13 @@ namespace cirkus
             string CustomerID = dgCustomers[2, currentRow].Value.ToString();
             if (currentRow != -1)
             {
-                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to, show.showid
                                 from booking
                                 inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
                                 inner join show on sold_tickets.showid = show.showid
                                 inner join acts on sold_tickets.actid = acts.actid
                                 inner join customer on booking.customerid = customer.customerid
-                                where customer.customerid = '" + CustomerID + "' and show.date < now()::date group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
+                                where customer.customerid = '" + CustomerID + "' and show.date < now()::date group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to,show.showid";
                 try
                 {
                     conn.Open();
@@ -301,6 +302,24 @@ namespace cirkus
             textBoxPrintAct.Clear();
             textBoxPrintAge.Clear();
             akttider = "";
+        }
+        private void calcSum()
+        {
+            double sum = 0;
+            int selcust = dgCustomers.SelectedRows[0].Index;
+            int cust = int.Parse(dgCustomers[2, selcust].Value.ToString());
+            int selShow = dgTickets.SelectedRows[0].Index;
+            int showid = int.Parse(dgTickets[7, selShow].Value.ToString());
+            for (int dr = 0; dr < dgTickets.Rows.Count; dr++)
+            {
+                DataGridViewRow row = dgTickets.Rows[dr];
+                if(showid == int.Parse(row.Cells[7].Value.ToString()))
+                {
+                    sum += Double.Parse(row.Cells[5].Value.ToString());
+                }
+
+            }
+            lblsum.Text = sum.ToString();
         }
         #endregion
         #region Events in Biljettförsäljning
@@ -369,7 +388,7 @@ namespace cirkus
                 textBoxPrintShow.Text = dgTickets[2, selectedindex].Value.ToString();
                 textBoxPrintAge.Text = dgTickets[4, selectedindex].Value.ToString();
                 textBoxPrintPrice.Text = dgTickets[5, selectedindex].Value.ToString();
-
+                calcSum();
                 foreach (DataRow r in dtActs.Rows)
                 {
                     textBoxPrintAct.Text += r[1].ToString() + ": " + r[2].ToString() + r[3].ToString() + "\n";
@@ -404,13 +423,13 @@ namespace cirkus
             else
             {
                 dgTicketActs.DataSource = null;
-                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to
+                string sql = @"select distinct booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type,  sum(sold_tickets.sum) as pris, booking.reserved_to, show.showid
                             from booking
                             inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
                             inner join show on sold_tickets.showid = show.showid
                             inner join acts on sold_tickets.actid = acts.actid
                             left join customer on booking.customerid = customer.customerid
-                            where booking.bookingid = '"+textBoxSearchTicket.Text+ "'  group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to";
+                            where booking.bookingid = '"+textBoxSearchTicket.Text+ "'  group by booking.bookingid, show.date, show.name, booking.paid, sold_tickets.type, booking.reserved_to, show.showid";
 
                 string sql2 = @"select customer.fname, customer.lname, customer.customerid from customer
                                     inner join booking on customer.customerid = booking.customerid
