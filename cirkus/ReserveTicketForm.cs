@@ -1499,6 +1499,19 @@ namespace cirkus
 
                 actid = int.Parse(dgActs[1, selectedIndex3].Value.ToString());
                 aname = dgActs[2, selectedIndex3].Value.ToString();
+                foreach(DataRow drows in acts.Rows)
+                {
+                    
+                    if(ticketid.ToString() == drows[0].ToString() && drows[1].ToString() == actid.ToString() && Convert.ToBoolean(drows[3].ToString()) == true)
+                    {
+                        loadSeatMap();
+                    }
+                    else if(ticketid.ToString() == drows[0].ToString() && drows[1].ToString() == actid.ToString() && Convert.ToBoolean(drows[3].ToString()) == false)
+                    {
+                        clearSeatMap();
+                    }
+                }
+                
                 foreach (DataRow r in cSeats.Rows)
                 {
 
@@ -1529,7 +1542,15 @@ namespace cirkus
 
         }
 
-
+        private void dgActs_Click(object sender, EventArgs e)
+        {
+            if(this.dgActs.Columns[3].ReadOnly == true)
+            {
+                lblStatusAge.Visible = true;
+                lblStatusAge.ForeColor = Color.Tomato;
+                lblStatusAge.Text = "Vänligen välj åldersgrupp";
+            }
+        }
 
         private void txtBoxNrP_TextChanged(object sender, EventArgs e)
         {
@@ -2200,7 +2221,7 @@ namespace cirkus
                     agegroup = 4;
                     MessageBox.Show("Välj åldersgrupp för biljetten");
                     this.dgActs.Columns[3].ReadOnly = true;
-                    dgActs.Enabled = false;
+                    //dgActs.Enabled = false;
                     return;
                 }
                 foreach (DataRow r in acts.Rows)
