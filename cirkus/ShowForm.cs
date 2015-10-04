@@ -540,7 +540,7 @@ namespace cirkus
 
 
                         }
-                        dgTest.DataSource = cSeats;
+                      
                         lblLayout.Visible = true;
                         lblLayout.ForeColor = Color.Green;
                         lblLayout.Text = "Layout för vald akt sparad";
