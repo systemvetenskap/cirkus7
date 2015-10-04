@@ -488,7 +488,7 @@ namespace cirkus
                     ds.Rows.Add(row);
 
                 }
-                dgTEST.DataSource = ds;
+           
                 ix++;
                 foreach (DataRow dr in cSeats.Rows)
                 {
@@ -1385,7 +1385,7 @@ namespace cirkus
 
                 }
      
-                    dgTEST.DataSource = acts;
+                   
                 dgTickets.DataSource = dtPersons;
                 //comboTicketnr.Text = "2";
                 dgTickets.ClearSelection();
@@ -1790,7 +1790,7 @@ namespace cirkus
                 row[6] = true;
                 cSeats.Rows.Add(row);
 
-                dgTEST.DataSource = cSeats;
+              
         }
         else if(fp.Checked == false)
         {
@@ -1923,7 +1923,7 @@ namespace cirkus
                     }
 
                 }
-                dgTEST.DataSource = cSeats;
+              
                 char sect = '-';
                 foreach (DataRow r in cSeats.Rows)
                 {
