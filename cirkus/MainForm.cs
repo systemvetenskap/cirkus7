@@ -1097,7 +1097,8 @@ namespace cirkus
                 int selectedIndex = dgShows.SelectedRows[0].Index;
                 showid = int.Parse(dgShows[0, selectedIndex].Value.ToString());
                 show_name = dgShows[2, selectedIndex].Value.ToString();
-                show_date = dgShows[1, selectedIndex].Value.ToString();
+                //show_date = dgShows[1, selectedIndex].Value.ToString();
+                show_date = DateTime.Parse(dgShows[1, selectedIndex].Value.ToString()).ToShortDateString(); 
 
                 string sql = "select name, actid from acts where showid = '" + showid + "' group by name, actid order by name";
 

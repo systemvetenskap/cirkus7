@@ -103,7 +103,6 @@ namespace cirkus
 
             NpgsqlCommand cmd = new NpgsqlCommand("select a.actid, a.name , s.date, s.name, s.seat_number, s.showid, s.sale_start, s.sale_stop from show s inner join acts a on s.showid = a.showid where s.showid = '" + Name + "' group by a.actid, a.name , s.date, s.name, s.seat_number, s.showid, s.sale_start, s.sale_stop ", conn);
             NpgsqlDataReader dr = cmd.ExecuteReader();
-            Act newAct = new Act();
 
             while (dr.Read())
             {
