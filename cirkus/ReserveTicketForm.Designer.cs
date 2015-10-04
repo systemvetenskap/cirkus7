@@ -1721,7 +1721,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::cirkus.Properties.Resources.Sittkarta2;
             this.pictureBox1.Location = new System.Drawing.Point(6, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(300, 309);
