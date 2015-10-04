@@ -36,7 +36,6 @@
             this.printDialogBiljetD = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.printPreviewControl1 = new System.Windows.Forms.PrintPreviewControl();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketsDirekt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTicketActsDirekt)).BeginInit();
@@ -121,18 +120,6 @@
             this.printPreviewControl1.TabIndex = 30;
             this.printPreviewControl1.Visible = false;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.HotPink;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(43, 321);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 40);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Avsluta";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -152,7 +139,6 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(629, 398);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.printPreviewControl1);
             this.Controls.Add(this.dgTicketActsDirekt);
             this.Controls.Add(this.buttonPrintBiljettDirekt);
@@ -176,7 +162,6 @@
         private System.Windows.Forms.PrintDialog printDialogBiljetD;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.PrintPreviewControl printPreviewControl1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }
 }
