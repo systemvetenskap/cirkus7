@@ -462,28 +462,38 @@ namespace cirkus
         }
         private void printDocumentStatistic_PrintPage(object sender, PrintPageEventArgs e)
         {
-            System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 18);
-            System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
-            System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
+            
+                System.Drawing.Font drawFont = new System.Drawing.Font("Arial", 18);
+                System.Drawing.Font drawFontBold = new System.Drawing.Font("Arial", 18, FontStyle.Bold);
+                System.Drawing.Font drawFontBoldAndUnderline = new System.Drawing.Font("Arial", 18, FontStyle.Bold | FontStyle.Underline);
+                SolidBrush drawBrush = new SolidBrush(Color.Black);
 
-            string AV, AU, AB, KV, KU, KB, TA, TK;
+                string AV, AU, AB, KV, KU, KB, TA, TK;
 
-            AV = textBoxNumberofAdultTickets.Text;
-            AU = textBoxNumberofYouthTickets.Text;
-            AB = textBoxNumberofChildTickets.Text;
-            KV = textBoxKrAdultTickets.Text;
-            KU = textBoxKrYouthTickets.Text;
-            KB = textBoxKrChildTickets.Text;
-            TA = textBoxTotalNumberof.Text;
-            TK = textBoxKrTotal.Text;
-            //(Längd, Höjd)
-            e.Graphics.DrawString("Föreställning:", drawFont, drawBrush, new PointF(35, 50));
-            e.Graphics.DrawString("Datum:", drawFont, drawBrush, new PointF(35, 100));
-            e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 150));
-            e.Graphics.DrawString(show_name, drawFontBold, drawBrush, new PointF(300, 50));
-            e.Graphics.DrawString(show_date, drawFontBold, drawBrush, new PointF(300, 100));
-            e.Graphics.DrawString(akt_name, drawFontBold, drawBrush, new PointF(300, 150));
+                AV = textBoxNumberofAdultTickets.Text;
+                AU = textBoxNumberofYouthTickets.Text;
+                AB = textBoxNumberofChildTickets.Text;
+                KV = textBoxKrAdultTickets.Text;
+                KU = textBoxKrYouthTickets.Text;
+                KB = textBoxKrChildTickets.Text;
+                TA = textBoxTotalNumberof.Text;
+                TK = textBoxKrTotal.Text;
+                //(Längd, Höjd)
+                e.Graphics.DrawString("Föreställning:", drawFont, drawBrush, new PointF(35, 50));
+                e.Graphics.DrawString("Datum:", drawFont, drawBrush, new PointF(35, 100));
+                e.Graphics.DrawString("Akt:", drawFont, drawBrush, new PointF(35, 150));
+                e.Graphics.DrawString(show_name, drawFontBold, drawBrush, new PointF(300, 50));
+                e.Graphics.DrawString(show_date, drawFontBold, drawBrush, new PointF(300, 100));
+
+            if (checkBoxAllActs.Checked != true)
+            {
+                e.Graphics.DrawString(akt_name, drawFontBold, drawBrush, new PointF(300, 150));
+            }
+
+            else
+            {
+                e.Graphics.DrawString("Alla akter", drawFontBold, drawBrush, new PointF(300, 150));
+            }
 
             e.Graphics.DrawString("Antal", drawFontBold, drawBrush, new PointF(300, 250));
             e.Graphics.DrawString("Kronor", drawFontBold, drawBrush, new PointF(450, 250));
@@ -504,6 +514,7 @@ namespace cirkus
 
             e.Graphics.DrawString(TA, drawFontBoldAndUnderline, drawBrush, new PointF(300, 480));
             e.Graphics.DrawString(TK, drawFontBoldAndUnderline, drawBrush, new PointF(450, 480));
+          
         }
         private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
