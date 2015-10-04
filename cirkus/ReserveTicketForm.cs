@@ -1441,10 +1441,21 @@ namespace cirkus
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            panel2.Visible = true;
-            dgCustom.DataSource = null;
-            radioButtonDirectSale.Checked = true;
-            create_summary();
+            
+            if(cSeats.Rows.Count < dtPersons.Rows.Count)
+            {
+                MessageBox.Show("Välj minst en plats till varje person!");
+
+            }
+            else
+            {
+                panel2.Visible = true;
+                dgCustom.DataSource = null;
+                radioButtonDirectSale.Checked = true;
+                create_summary();
+
+            }
+          
 
 
         }
