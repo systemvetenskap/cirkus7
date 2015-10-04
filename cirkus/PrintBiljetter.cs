@@ -38,9 +38,9 @@ namespace cirkus
         }
         private void dgTicketsDirekt_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int selectedindex = dgTicketActsDirekt.SelectedRows[0].Index; //Selected Akt
+            //Selected Akt
             int selectedindexT = dgTicketsDirekt.SelectedRows[0].Index; //Selected Biljett
-
+            int selectedindex = dgTicketActsDirekt.SelectedRows[0].Index;
             string seltic = dgTicketsDirekt[0, selectedindexT].Value.ToString();
 
             aldersgrupp = dgTicketsDirekt[4, selectedindexT].Value.ToString();
@@ -117,15 +117,39 @@ namespace cirkus
                 int selectedindex = dgTicketsDirekt.SelectedRows[0].Index;
                 int bookingid = int.Parse(dgTicketsDirekt[0, selectedindex].Value.ToString());
 
-                string sql = @"select booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time from acts
-                        inner join available_seats on acts.actid = available_seats.actid
-                        inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
-                        inner join seats on available_seats.seatid = seats.seatid
-                        where booked_seats.bookingid = '" + bookingid + "'order by acts.actid";
+                string sql = @" select distinct  booked_seats.booked_seat_id, acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time, sold_tickets.seattype from acts
+                                    inner join available_seats on acts.actid = available_seats.actid
+                                    inner join booked_seats on available_seats.available_seats_id = booked_seats.available_seats_id
+                                    inner join seats on available_seats.seatid = seats.seatid
+                                    inner join sold_tickets on booked_seats.bookingid = sold_tickets.bookingid
+                                    where booked_seats.bookingid = '" + bookingid + "' and sold_tickets.seattype = 'Parkett' order by booked_seats.booked_seat_id";
 
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
                 dtActs = new DataTable();
                 da.Fill(dtActs);
+                string sql2 = @"  select distinct booked_standing.booked_standing_id, acts.name, acts.start_time,acts.end_time, sold_tickets.seattype from acts
+                                    inner join booked_standing on acts.actid = booked_standing.actid
+                                    inner join booking on booked_standing.bookingid = booking.bookingid
+                                    inner join sold_tickets on booking.bookingid = sold_tickets.bookingid
+                                    where booking.bookingid = '" + bookingid + "' and sold_tickets.seattype = 'Fri placering' order by booked_standing.booked_standing_id";
+                da = new NpgsqlDataAdapter(sql2, conn);
+
+                DataTable temp = new DataTable();
+                da.Fill(temp);
+
+                foreach (DataRow r in temp.Rows)
+                {
+                    DataRow row = dtActs.NewRow();
+
+                    row[0] = r[0];
+                    row[1] = r[1];
+                    row[2] = "Fri placering";
+                    row[3] = DBNull.Value;
+                    row[4] = r[2];
+                    row[5] = r[3];
+                    row[6] = r[4];
+                    dtActs.Rows.Add(row);
+                }
 
                 dgTicketActsDirekt.DataSource = dtActs;
 
@@ -135,6 +159,7 @@ namespace cirkus
                 dgTicketActsDirekt.Columns[3].HeaderText = "Sittplats";
                 dgTicketActsDirekt.Columns[4].HeaderText = "Starttid";
                 dgTicketActsDirekt.Columns[5].HeaderText = "Sluttid";
+                dgTicketActsDirekt.Columns[6].HeaderText = "Platstyp";
 
                 dgTicketActsDirekt.Columns[0].Width = 90;
             }

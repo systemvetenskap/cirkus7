@@ -74,6 +74,7 @@ namespace cirkus
             dataGridViewShows.Columns[2].HeaderText = "Datum";
 
             this.dataGridViewShows.Columns[0].Visible = false;
+            this.dataGridViewShows.Columns[3].Visible = false;
 
 
             conn.Close();
@@ -1040,7 +1041,7 @@ namespace cirkus
         }
         private void fp_CheckedChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("test");
+            
             if(fp.Checked == true)
             {
                 foreach (CheckBox cb in gpSeatMap.Controls.OfType<CheckBox>())
@@ -1763,16 +1764,59 @@ namespace cirkus
         }
         private void create_summary()
         {
+            int numberOfacts = 0;
+            double priceid = 0;
             label31.Text = "";
             label37.Text = showname;
             int countT = dtPersons.Rows.Count;
             label38.Text = countT.ToString();
+            double price = 0;
 
-     
+
             foreach (DataRow r in cSeats.Rows)
             {
-                label31.Text += r[7].ToString() + ": " + r[2].ToString() + r[3].ToString()+"\r\n"; 
+                label31.Text += r[7].ToString() + ": " + r[2].ToString() + r[3].ToString() + "\r\n";
             }
+            foreach(DataRow rw in dtPersons.Rows)
+            {
+                int id = int.Parse(rw[0].ToString());
+                int nroact = int.Parse(rw[3].ToString());
+
+                foreach(DataRow rows in cSeats.Rows)
+                {
+                    int id2 = int.Parse(rows[0].ToString());
+                    int age = int.Parse(rows[4].ToString());
+                    if(id == id2 && Convert.ToBoolean(rows[6].ToString()) == false)
+                    {
+                        if(age == 0)
+                        price += childS;
+                        if (age == 1)
+                        price += youthS;
+                        if (age == 2)
+                         price += adultS;
+                    }
+                    else if (id == id2 && Convert.ToBoolean(rows[6].ToString()) == true)
+                    {
+                        if (age == 0)
+                            price += child;
+                        if (age == 1)
+                            price += youth;
+                        if (age == 2)
+                            price += adult;
+                    }
+                }
+
+
+            }
+            label39.Text = price.ToString();
+            //childS = Convert.ToDouble(re[0].ToString());
+            //youthS = Convert.ToDouble(re[1].ToString());
+            //adultS = Convert.ToDouble(re[2].ToString());
+            //child = Convert.ToDouble(re[3].ToString());
+            //youth = Convert.ToDouble(re[4].ToString());
+            //adult = Convert.ToDouble(re[5].ToString());
+            //discountS = Convert.ToDouble(re[6].ToString());
+            //discount = Convert.ToDouble(re[7].ToString());
 
         }
         private void clearSelect()
@@ -2056,9 +2100,10 @@ namespace cirkus
             }
             if(radioButtonDirectSale.Checked == true)
             {
+                this.Close();
                 PrintBiljetter rb = new PrintBiljetter(ds);
                 rb.ShowDialog();
-                this.Close();
+                
             }
           
 
