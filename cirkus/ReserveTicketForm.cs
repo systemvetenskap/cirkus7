@@ -414,7 +414,7 @@ namespace cirkus
                         priceid = (childS * numberOfacts) * (discountS / 100);
                         type = "Barn";
                         seattype = "Parkett";
-                        MessageBox.Show(priceid.ToString());
+                       
 
                     }
                     if (agegroup == 1)
@@ -874,7 +874,7 @@ namespace cirkus
                 {
                     int bid = int.Parse(row[0].ToString());
                     conn.Open();
-                    da = new NpgsqlDataAdapter(@"select acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time from acts
+                    da = new NpgsqlDataAdapter(@"select acts.name, seats.section, seats.rownumber, acts.start_time, acts.end_time, sold_tickets.seattype from acts
                                                     inner join sold_tickets on acts.actid = sold_tickets.actid
                                                     left join available_seats on sold_tickets.seatid = available_seats.available_seats_id
                                                     left join seats on available_seats.seatid = seats.seatid where bookingid = '" + bid + "'", conn);
@@ -886,7 +886,7 @@ namespace cirkus
                     conn.Close();
                     foreach (DataRow r in acts.Rows)
                     {
-                        if (r[1].ToString() == null && r[2].ToString() == null)
+                        if (r[5].ToString() == "Fri placering") 
                         {
                             actname += " " + r[0].ToString() + ": Fri placering";
                         }
