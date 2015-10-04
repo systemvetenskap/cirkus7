@@ -250,6 +250,7 @@
             this.buttonCancel.TabIndex = 14;
             this.buttonCancel.Text = "Avbryt";
             this.buttonCancel.UseVisualStyleBackColor = false;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // dataGridViewShows
             // 

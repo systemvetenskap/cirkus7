@@ -178,7 +178,6 @@
             this.textBoxBeskrivning.Size = new System.Drawing.Size(124, 20);
             this.textBoxBeskrivning.TabIndex = 1;
             this.textBoxBeskrivning.Click += new System.EventHandler(this.textBoxBeskrivning_Click);
-            this.textBoxBeskrivning.TextChanged += new System.EventHandler(this.textBoxBeskrivning_TextChanged);
             // 
             // labelBeskrivning
             // 
@@ -240,7 +239,6 @@
             this.dateTimePickerForsaljningstidFran.Size = new System.Drawing.Size(121, 20);
             this.dateTimePickerForsaljningstidFran.TabIndex = 32;
             this.dateTimePickerForsaljningstidFran.Value = new System.DateTime(2015, 9, 21, 0, 0, 0, 0);
-            this.dateTimePickerForsaljningstidFran.ValueChanged += new System.EventHandler(this.dateTimePickerForsaljningstidFran_ValueChanged);
             // 
             // dateTimePickerForsaljningstidTill
             // 
@@ -1272,7 +1270,6 @@
             this.txtActname.Name = "txtActname";
             this.txtActname.Size = new System.Drawing.Size(124, 20);
             this.txtActname.TabIndex = 21;
-            this.txtActname.Click += new System.EventHandler(this.txtActname_Click);
             // 
             // label4
             // 
@@ -1393,7 +1390,6 @@
             this.groupBox1.Size = new System.Drawing.Size(547, 406);
             this.groupBox1.TabIndex = 62;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox2
             // 

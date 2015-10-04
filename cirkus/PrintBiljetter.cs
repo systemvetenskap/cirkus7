@@ -23,8 +23,6 @@ namespace cirkus
         string akter = "";
         string akttider = "";
         int bid = 0;
-
-
         public PrintBiljetter(DataTable bdt)
         {
             InitializeComponent();           
@@ -59,7 +57,6 @@ namespace cirkus
         private void button2_Click(object sender, EventArgs e)
         {
             // Kolla dokumentet innan man skrivar ut
-            printPreviewControl1.Visible = true;
             printPreviewDialog1.Document = printDocumentBIljettDirekt;
             printDocumentBIljettDirekt.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(printDocumentBIljettDirekt_PrintPage);
             printPreviewDialog1.ShowDialog();
